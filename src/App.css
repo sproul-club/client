@@ -23,7 +23,7 @@
   line-height: 18px;
   border-radius: 50px;
   font-weight: bold;
-  margin-right: 30px;
+  margin-right: 25px;
   width:120px;
 }
 
@@ -47,81 +47,68 @@
   margin-right: 20px;
 }
 
-@media screen and (max-width: 500px) {
-
-  .header a {
-    float: none;
-    display: block;
-    text-align:center;
-
-  }
-  .header-right {
-    float: none;
-  }
+.content {
+  position: relative;
+  widows: 100%;
+  min-height: 87vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-/*sections below are horribly implemented, need to fix the way the image
-and the text float because when you resize, they overlap since
-both have position set to absolute*/
-.body{
+.text {
+  position: relative;
+  padding: 100px 50px 100px 150px;
+  box-sizing: border-box;
+  max-width: 600px;
+  margin-left: -10px;
+  float: left;
+  text-align: left;
+}
+
+.text h3 {
   color:#2B2B2B;
+  font-size: 2em;
+  line-height: 1.2em;
   font-family: montserrat, sans-serif;
   font-weight: 700;
   font-style: normal;
-  position:absolute;
-  text-align:left;
-  margin-left:130px;
-  padding-top: 140px;
-  font-weight:bold;
-  line-height:10px;
-  font-size:30px;
-  padding-bottom:30px;
 }
 
-.description{
-  font-weight:normal;
-  font-size:15px;
-  padding-top:1px;
-  padding-bottom:20px;
+.text p {
+  color:#2B2B2B;
+  font-size: 1.1em;
+  line-height: 1.2em;
   font-family: roboto,sans-serif;
   font-weight: 400;
   font-style: normal;
+  padding-bottom: 12px;
+  margin-top: -10px;
 }
 
-.explore a {
+.text a {
+  font-size: .9em;
+  text-align: left;
+  line-height: 1em;
+  background:white;
   font-family: montserrat, sans-serif;
   font-weight: 700;
   font-style: normal;
-  float: left;
+  display: inline-block;
   color: #ffffff;
-  text-align: center;
-  padding: 12px;
-  text-decoration: none;
-  font-size: 14px;
-  line-height: 18px;
-  border-radius: 50px;
-  font-weight: bold;
-  margin-right: 30px;
-  width:120px;
   background-color: #8ACEFD;
   text-decoration: none;
-  color:white;
+  padding: 14px 20px 14px 20px;
+  border-radius: 50px;
+  text-align: center;
 }
 
-.sproul, .ball1, .ball2, .ball3, .ball4, .screen1, .screen2, .screen3 {
-  position: absolute;
+.content .imageContainer {
+  position: relative;
+  padding-top: 50px;
+  margin-right: 120px;
   width: 442px;
   height: 383px;
-}
-
-.imageContainer {
-  width: 442px;
-  height: 383px;
-  float: right;
-  margin-top: 100px;
-  margin-right: 130px;
-  display: flex;
-  /*disallow selection for the image*/
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -129,6 +116,55 @@ both have position set to absolute*/
   -ms-user-select: none;
   user-select: none;
 }
+
+.content .imageContainer img {
+  position: absolute;
+  width: 442px;
+  height: 383px;
+  margin-left: -200px;
+}
+
+
+@media screen and (max-width: 800px) {
+
+  .header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin: 0px;
+    align-items: center;
+  }
+  .header a {
+    float: none;
+    display: block;
+    text-align: center;
+    margin: 0px;
+  }
+  .header-right {
+    float: none;
+    margin-right: 0px;
+  }
+
+  .content {
+    flex-direction: column-reverse;
+  }
+
+  .content .text {
+    padding: 75px;
+  }
+
+  .content .imageContainer {
+    float: right;
+    margin-right: 0px;
+    margin-bottom: -40px;
+  }
+
+  .text {
+    text-align: center;
+  }
+}
+
 
 @media (prefers-reduced-motion: no-preference) {
   .screen3 {

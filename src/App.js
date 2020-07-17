@@ -20,27 +20,22 @@ function App() {
           <a className="active" href="add">Add a club</a>
         </div>
       </div>
-      <div className="body">
-        <p>Find your student</p>
-        <p>community at Berkeley</p>
-        <div className="description">
-          <p>sproul.club simplifies and improves the experience</p>
-          <p>of discovering student organizations and clubs</p>
-          <p>on campus - built by students, for students</p>
-        </div>
-        <div className="explore">
+      <div className="content">
+        <div className="text">
+          <h3>Find your student community at Berkeley</h3>
+          <p>sproul.club simplifies and improves the experience on campus - built by students, for students</p>
           <a href="#catalog">Explore clubs</a>
         </div>
-      </div>
-      <div className="imageContainer">
-        <img src={sproul} className="sproul" alt="sproul" />
-        <img src={ball1} className="ball1" alt="sproul" />
-        <img src={ball2} className="ball2" alt="sproul" />
-        <img src={ball3} className="ball3" alt="sproul" />
-        <img src={ball4} className="ball4" alt="sproul" />
-        <img src={screen1} className="screen1" alt="sproul" />
-        <img src={screen2} className="screen2" alt="sproul" />
-        <img src={screen3} className="screen3" alt="sproul" />
+        <div className="imageContainer">
+            <img src={sproul} className="sproul" alt="sproul" />
+            <img src={ball1} className="ball1" alt="sproul" />
+            <img src={ball2} className="ball2" alt="sproul" />
+            <img src={ball3} className="ball3" alt="sproul" />
+            <img src={ball4} className="ball4" alt="sproul" />
+            <img src={screen1} className="screen1" alt="sproul" />
+            <img src={screen2} className="screen2" alt="sproul" />
+            <img src={screen3} className="screen3" alt="sproul" />
+        </div>
       </div>
     </div>
   );
