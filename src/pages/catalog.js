@@ -1,8 +1,5 @@
 import React from 'react';
 import "./catalog.css";
-// import Accordion from 'react-bootstrap/Accordion';
-import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button'; 
 import {
     Accordion,
     AccordionItem,
@@ -10,10 +7,43 @@ import {
     AccordionItemButton,
     AccordionItemPanel,
 } from 'react-accessible-accordion';
+import {
+    Button,
+    Form,
+    TextBox,
+    CheckBox,
+} from 'react-form-elements';
+
+// https://10xn41w767.codesandbox.io/#objects
+import { Multiselect } from 'multiselect-react-dropdown';
 
 
 const Catalog = () => {
+    var tagOptions = [{key: "ASUC", id: 0},
+    {key: "Business", id: 1},
+    {key: "CalGreek", id: 2},
+    {key: "Community Service", id: 3},
+    {key: "Computer Science", id: 4},
+    {key: "Consulting", id: 5},
+    {key: "Cultural", id: 6},
+    {key: "Design", id: 7},
+    {key: "Engineering", id: 8},
+    {key: "Environment & Sustainability", id: 9},
+    {key: "Health & Wellness", id: 10},
+    {key: "Media & Publication", id: 11},
+    {key: "Religious & Spiritual", id: 12},
+    {key: "Performing Arts", id: 13},
+    {key: "Political", id: 14},
+    {key: "Sciences", id: 15},
+    {key: "Sports & Recreation", id: 16},
+    {key: "Social Good", id: 17},
+    {key: "Technology", id: 18}];
+
+    var appplicationOptions = ["Requires app", "No app required"];
+    var memberOptions = ["Looking for members", "Not looking for members"];
+
   return (
+      
       <div className="App">
         <div className="header">
           <a href="/" class="logo">sproul.club</a>
@@ -34,7 +64,10 @@ const Catalog = () => {
                 </AccordionItemHeading>
                 <AccordionItemPanel>
                     <p>
-                        put search bar here lols
+                        <Form>
+                            <TextBox name="name" label="" placeholder="Search by name" />
+                            <Button>Search</Button>
+                        </Form>
                     </p>
                 </AccordionItemPanel>
             </AccordionItem>
@@ -46,7 +79,7 @@ const Catalog = () => {
                 </AccordionItemHeading>
                 <AccordionItemPanel>
                     <p>
-                        put dropdown selection for clubs here
+                    <Multiselect options={tagOptions} selectionLimit="3" displayValue="key" showCheckbox={true}/>
                     </p>
                 </AccordionItemPanel>
             </AccordionItem>
@@ -58,7 +91,20 @@ const Catalog = () => {
                 </AccordionItemHeading>
                 <AccordionItemPanel>
                     <p>
-                        put 2 checkboxes here
+                    <Form>
+                        <CheckBox
+                        label="Requires app"
+                        isChecked={false}
+                        name="checkbox"
+                        value="checkbox value"
+                        />
+                        <CheckBox
+                        label="No app required"
+                        isChecked={false}
+                        name="checkbox"
+                        value="checkbox value"
+                        />
+                    </Form>
                     </p>
                 </AccordionItemPanel>
             </AccordionItem>
@@ -70,7 +116,18 @@ const Catalog = () => {
                 </AccordionItemHeading>
                 <AccordionItemPanel>
                     <p>
-                        put 2 checkboxes here
+                    <CheckBox
+                        label="Looking for members"
+                        isChecked={false}
+                        name="checkbox"
+                        value="checkbox value"
+                        />
+                        <CheckBox
+                        label="Not looking for members"
+                        isChecked={false}
+                        name="checkbox"
+                        value="checkbox value"
+                        />
                     </p>
                 </AccordionItemPanel>
             </AccordionItem>

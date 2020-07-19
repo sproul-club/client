@@ -15,7 +15,6 @@
       line-height: 14px;
   }
 
-
   .accordion {
     /* border: 1px solid rgba(0, 0, 0, 0.1); */
     width: 100%;
@@ -29,7 +28,7 @@
     color: #444;
     cursor: pointer;
     padding-top: 18px;
-    padding-bottom: 18px;
+    padding-bottom: 6px;
     width: 100%;
     text-align: left;
     border: none;
@@ -66,7 +65,7 @@
 }
 
 .accordion__panel {
-    padding: 20px;
+    /* padding: 5px; */
     animation: fadein 0.35s ease-in;
     /* padding: 18px; */
     text-align: left;
