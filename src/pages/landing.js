@@ -1,24 +1,24 @@
 import React from 'react';
 import "./landing.css";
-import sproul from './assets/sproul.png';
-import ball1 from './assets/ball1.png';
-import ball2 from './assets/ball2.png';
-import ball3 from './assets/ball3.png';
-import ball4 from './assets/ball4.png';
-import screen1 from './assets/screen1.png';
-import screen2 from './assets/screen2.png';
-import screen3 from './assets/screen3.png';
+import sproul from './assets/sproul.svg';
+import ball1 from './assets/ball1.svg';
+import ball2 from './assets/ball2.svg';
+import ball3 from './assets/ball3.svg';
+import ball4 from './assets/ball4.svg';
+import screen1 from './assets/screen1.svg';
+import screen2 from './assets/screen2.svg';
+import screen3 from './assets/screen3.svg';
 
 
 const Landing = () => {
   return (
-      <div className="App">
+      <div className="landing">
         <div className="header">
           <a href="" class="logo">sproul.club</a>
           <div className="header-right">
             <a href="catalog">Catalog</a>
             <a href="login">Club sign in</a>
-            <a className="active" href="add">Add a club</a>
+            <a className="active" href="signup">Add a club</a>
           </div>
         </div>
         <div className="content">
