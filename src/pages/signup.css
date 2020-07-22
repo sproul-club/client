@@ -120,20 +120,43 @@
     background:lightgray;
 }
 
-.signup .form .nextbutton {
-    margin-top: 16px;
-    text-align: right;
-    width:100%;
-    margin-right:40px
+.signup .form .inputs .buttonWrapper {
+    width: 100%;
 }
 
-.signup .form .nextbutton a {
+.signup .form .inputs .buttonWrapper .nextButton {
+    float:right;
+    margin-right: 20px;
+}
+
+.signup .form .inputs .buttonWrapper .prevButton {
+    float:left;
+    margin-left: 20px;
+    margin-top: 63px;
+}
+
+.signup .form .inputs .buttonWrapper .submitButton {
+    float:right;
+    margin-right: 20px;
+    margin-top: 63px;
+}
+
+.signup .form button {
+    margin-top: 10px;
+    font-family: montserrat, sans-serif;
+    font-weight: 700;
+    font-style: normal;
     background-color: #8ACEFD;
     color: white;
     text-decoration: none;
     padding: 8px 16px 8px 16px;
-    border-radius: 6px;
+    border-radius: 8px;
+    border: none;
     font-size: 14px;
+}
+
+.signup .form button:focus {
+    outline: 0px;
 }
 
 .signup .form .inputs .userInput {

@@ -1,7 +1,7 @@
 import React from 'react';
 import './signup.css';
 // import Form from 'react-bootstrap/Form';
-import MultiStepForm from "./multistepform.js";
+import MultiStepForm from "./twostepform.js";
 
 const SignUp = () => {
     return (
@@ -32,24 +32,6 @@ const SignUp = () => {
                     <div className="formwrapper">
                         <MultiStepForm />
                     </div>
-
-                    {/* <Form className="inputs">
-                        <Form.Group controlId="clubname">
-                            <Form.Control type="clubname" className="userInput" placeholder="Club Name"/>
-                        </Form.Group>
-                        <Form.Group controlId="email">
-                            <Form.Control type="email" className="userInput" placeholder="Email address - use the organization's email" />
-                        </Form.Group>
-                        <Form.Group controlId="pw">
-                            <Form.Control type="password" className="userInput" placeholder="Password" />
-                        </Form.Group>
-                        <Form.Group controlId="confirm">
-                            <Form.Control type="password" className="userInput" placeholder="Confirm password" />
-                        </Form.Group>
-                    </Form>
-                    <div className="nextbutton">
-                        <a href="/">Next →</a>
-                    </div> */}
                 </div>
             </div>
         </div>
