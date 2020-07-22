@@ -29,9 +29,7 @@ const SignUp = () => {
 
                     <h2>Register your club</h2>
 
-                    <div className="formwrapper">
-                        <MultiStepForm />
-                    </div>
+                    <MultiStepForm />
                 </div>
             </div>
         </div>
