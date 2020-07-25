@@ -1,5 +1,7 @@
 import React from 'react';
 import "./catalog.css";
+// import ethicalheader from './assets/ethicalheader.png';
+
 import {
     Accordion,
     AccordionItem,
@@ -14,9 +16,19 @@ import {
     CheckBox,
 } from 'react-form-elements';
 
+import { makeStyles } from '@material-ui/core/styles';
+import { 
+    Card,
+    CardActionArea,
+    CardActions,
+    CardContent,
+    CardMedia, 
+    Typography,
+    Grid
+} from "@material-ui/core";
+
 // https://10xn41w767.codesandbox.io/#objects
 import { Multiselect } from 'multiselect-react-dropdown';
-
 
 const Catalog = () => {
     var tagOptions = [{key: "ASUC", id: 0},
@@ -42,6 +54,16 @@ const Catalog = () => {
     var appplicationOptions = ["Requires app", "No app required"];
     var memberOptions = ["Looking for members", "Not looking for members"];
 
+    const useStyles = makeStyles({
+        root: {
+            minWidth: 200,
+        },
+        media: {
+          height: 140,
+        },
+      });
+
+    const classes = useStyles();
   return (
       
       <div className="App">
@@ -79,7 +101,7 @@ const Catalog = () => {
                 </AccordionItemHeading>
                 <AccordionItemPanel>
                     <p>
-                    <Multiselect options={tagOptions} selectionLimit="3" displayValue="key" showCheckbox={true}/>
+                    <Multiselect options={tagOptions} selectionLimit="3" displayValue="key" showCheckbox={true} />
                     </p>
                 </AccordionItemPanel>
             </AccordionItem>
@@ -132,6 +154,31 @@ const Catalog = () => {
                 </AccordionItemPanel>
             </AccordionItem>
             </Accordion>
+            </div>
+            <div className="cards">
+                <Grid container spacing={4}>
+                    <Grid item xs={12} sm={6} md={4}> 
+                        <Card className={classes.root}>
+                        <CardActionArea>
+                            <CardMedia
+                                style ={{ height: 0, paddingTop: '56%'}}
+                                classname={classes.media}
+                                image={require ("./assets/ethicalheader.png")}
+                                title="EthiCAL Apparel Header"
+                            />
+                            <CardContent>
+                                <Typography gutterBottom variant="h5" component="h2">
+                                    EthiCAL Apparel
+                                </Typography>
+                                <Typography variant="body2" color="textSecondary" component="p">
+                                    tags go here
+                                </Typography>
+                            </CardContent>
+                        </CardActionArea>
+                        </Card>
+                    </Grid>
+                    
+                </Grid>
             </div>
         </div>
       </div>

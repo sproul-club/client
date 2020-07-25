@@ -4,6 +4,7 @@
 
   /* sidebar do be looking garbage on horizontal resize -karen */
   .sidebar {
+      /* background-color: yellow; */
       text-align: left;
       align-self: start;
       margin-top: 20px;
@@ -15,13 +16,29 @@
       line-height: 14px;
   }
 
+  
+  .cards {
+    flex: 1;
+    /* -- flex-direction: row; */
+    background-color: transparent;
+    text-align: left;
+    align-self: start;
+    margin-top: 20px;
+    /* -- width: 300px; */
+    float: left;
+    color: #2B2B2B;
+    padding: 12px;
+    font-size: 14px;
+    line-height: 14px;
+  } 
+
   .accordion {
     /* border: 1px solid rgba(0, 0, 0, 0.1); */
     width: 100%;
     text-align: left;
     margin-left: 15px;
 
-}
+  }
 
 .accordion__button {
     /* background-color: #f4f4f4; */
@@ -231,34 +248,11 @@
       float: none;
       margin-right: 0px;
     }
-  
-    .content {
-      flex-direction: column-reverse;
-    }
-  
-    .content .text {
-      padding: 75px;
-      text-align: center;
-    }
-  
-    .content .imageContainer {
-      float: right;
-      margin-right: 0px;
-      margin-top: 20px;
-      margin-bottom: -30px;
-      width: 368px;
-      height: 319px;
-    }
-  
-  
-    .content .imageContainer img {
-      position: absolute;
-      width: 368px;
-      height: 319px;
-      margin-left: -180px;
-    }
 
-    .sidebar {
-        background-color: pink;
+    .content {
+      align-items: flex-start;
+      align-content: flex-start;
+      align-self: flex-start;
+      background-color: lightpink;
     }
   }
