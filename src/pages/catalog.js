@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { searchClubs } from '../actions/catalog';
 import './catalog.css';
 
-const Catalog = ({ searchClubs }) => {
+const Catalog = ({ searchClubs, clubs }) => {
   const [name, setName] = useState('');
   const [tags, setTags] = useState('');
   const [appReq, setAppReq] = useState('');
@@ -75,8 +75,8 @@ const Catalog = ({ searchClubs }) => {
 
       <button onClick={searchAllClubs}>Search Clubs</button>
       <div>
-        {Object.keys(catalogData).map((clubId, i) => {
-          const { name, tags, req_app, status } = catalogData[clubId];
+        {clubs.map((club, i) => {
+          const { name, tags, req_app, status } = club;
 
           return (
             <div key={i} className="club">
@@ -92,7 +92,11 @@ const Catalog = ({ searchClubs }) => {
   );
 };
 
-export default connect(null, { searchClubs })(Catalog);
+const mapStateToProps = (state) => ({
+  clubs: state.catalog.clubs,
+});
+
+export default connect(mapStateToProps, { searchClubs })(Catalog);
 
 const catalogData = {
   1: {
