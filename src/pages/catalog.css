@@ -253,6 +253,7 @@
       align-items: flex-start;
       align-content: flex-start;
       align-self: flex-start;
-      background-color: lightpink;
+      /* background-color: lightpink; */
+      flex-direction: column;
     }
   }

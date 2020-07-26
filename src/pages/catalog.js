@@ -177,6 +177,126 @@ const Catalog = () => {
                         </CardActionArea>
                         </Card>
                     </Grid>
+                    <Grid item xs={12} sm={6} md={4}> 
+                        <Card className={classes.root}>
+                        <CardActionArea>
+                            <CardMedia
+                                style ={{ height: 0, paddingTop: '56%'}}
+                                classname={classes.media}
+                                image={require ("./assets/ethicalheader.png")}
+                                title="EthiCAL Apparel Header"
+                            />
+                            <CardContent>
+                                <Typography gutterBottom variant="h5" component="h2">
+                                    EthiCAL Apparel
+                                </Typography>
+                                <Typography variant="body2" color="textSecondary" component="p">
+                                    tags go here
+                                </Typography>
+                            </CardContent>
+                        </CardActionArea>
+                        </Card>
+                    </Grid>
+                    <Grid item xs={12} sm={6} md={4}> 
+                        <Card className={classes.root}>
+                        <CardActionArea>
+                            <CardMedia
+                                style ={{ height: 0, paddingTop: '56%'}}
+                                classname={classes.media}
+                                image={require ("./assets/ethicalheader.png")}
+                                title="EthiCAL Apparel Header"
+                            />
+                            <CardContent>
+                                <Typography gutterBottom variant="h5" component="h2">
+                                    EthiCAL Apparel
+                                </Typography>
+                                <Typography variant="body2" color="textSecondary" component="p">
+                                    tags go here
+                                </Typography>
+                            </CardContent>
+                        </CardActionArea>
+                        </Card>
+                    </Grid>
+                    <Grid item xs={12} sm={6} md={4}> 
+                        <Card className={classes.root}>
+                        <CardActionArea>
+                            <CardMedia
+                                style ={{ height: 0, paddingTop: '56%'}}
+                                classname={classes.media}
+                                image={require ("./assets/ethicalheader.png")}
+                                title="EthiCAL Apparel Header"
+                            />
+                            <CardContent>
+                                <Typography gutterBottom variant="h5" component="h2">
+                                    EthiCAL Apparel
+                                </Typography>
+                                <Typography variant="body2" color="textSecondary" component="p">
+                                    tags go here
+                                </Typography>
+                            </CardContent>
+                        </CardActionArea>
+                        </Card>
+                    </Grid>
+                    <Grid item xs={12} sm={6} md={4}> 
+                        <Card className={classes.root}>
+                        <CardActionArea>
+                            <CardMedia
+                                style ={{ height: 0, paddingTop: '56%'}}
+                                classname={classes.media}
+                                image={require ("./assets/ethicalheader.png")}
+                                title="EthiCAL Apparel Header"
+                            />
+                            <CardContent>
+                                <Typography gutterBottom variant="h5" component="h2">
+                                    EthiCAL Apparel
+                                </Typography>
+                                <Typography variant="body2" color="textSecondary" component="p">
+                                    tags go here
+                                </Typography>
+                            </CardContent>
+                        </CardActionArea>
+                        </Card>
+                    </Grid>
+                    <Grid item xs={12} sm={6} md={4}> 
+                        <Card className={classes.root}>
+                        <CardActionArea>
+                            <CardMedia
+                                style ={{ height: 0, paddingTop: '56%'}}
+                                classname={classes.media}
+                                image={require ("./assets/ethicalheader.png")}
+                                title="EthiCAL Apparel Header"
+                            />
+                            <CardContent>
+                                <Typography gutterBottom variant="h5" component="h2">
+                                    EthiCAL Apparel
+                                </Typography>
+                                <Typography variant="body2" color="textSecondary" component="p">
+                                    tags go here
+                                </Typography>
+                            </CardContent>
+                        </CardActionArea>
+                        </Card>
+                    </Grid>
+                    <Grid item xs={12} sm={6} md={4}> 
+                        <Card className={classes.root}>
+                        <CardActionArea>
+                            <CardMedia
+                                style ={{ height: 0, paddingTop: '56%'}}
+                                classname={classes.media}
+                                image={require ("./assets/ethicalheader.png")}
+                                title="EthiCAL Apparel Header"
+                            />
+                            <CardContent>
+                                <Typography gutterBottom variant="h5" component="h2">
+                                    EthiCAL Apparel
+                                </Typography>
+                                <Typography variant="body2" color="textSecondary" component="p">
+                                    tags go here
+                                </Typography>
+                            </CardContent>
+                        </CardActionArea>
+                        </Card>
+                    </Grid>
                     
                 </Grid>
             </div>
