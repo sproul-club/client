@@ -1,6 +1,6 @@
 import React from 'react';
 import './signup.css';
-// import Form from 'react-bootstrap/Form';
+
 import MultiStepForm from "./twostepform.js";
 
 const SignUp = () => {
@@ -24,11 +24,6 @@ const SignUp = () => {
                     </ol>
                 </div>
                 <div className="form">
-                    <div className="imageContainer">
-                    </div>
-
-                    <h2>Register your club</h2>
-
                     <MultiStepForm />
                 </div>
             </div>
