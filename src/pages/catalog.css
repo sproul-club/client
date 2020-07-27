@@ -1,0 +1,20 @@
+.catalog {
+  margin: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.text-input,
+button,
+.radio {
+  width: 300px;
+  margin-top: 10px;
+}
+
+
+.club {
+  border: 1px solid black;
+  padding: 15px;
+  width: 300px;
+  margin-top: 20px;
+}
