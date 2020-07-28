@@ -1,7 +1,8 @@
 import React from 'react';
 import "./catalog.css";
+import GridComponent from "./GridComponent"
 // import ethicalheader from './assets/ethicalheader.png';
-
+ 
 import {
     Accordion,
     AccordionItem,
@@ -15,7 +16,7 @@ import {
     TextBox,
     CheckBox,
 } from 'react-form-elements';
-
+ 
 import { makeStyles } from '@material-ui/core/styles';
 import { 
     Card,
@@ -26,10 +27,10 @@ import {
     Typography,
     Grid
 } from "@material-ui/core";
-
+ 
 // https://10xn41w767.codesandbox.io/#objects
 import { Multiselect } from 'multiselect-react-dropdown';
-
+ 
 const Catalog = () => {
     var tagOptions = [{key: "ASUC", id: 0},
     {key: "Business", id: 1},
@@ -50,10 +51,10 @@ const Catalog = () => {
     {key: "Sports & Recreation", id: 16},
     {key: "Social Good", id: 17},
     {key: "Technology", id: 18}];
-
+ 
     var appplicationOptions = ["Requires app", "No app required"];
     var memberOptions = ["Looking for members", "Not looking for members"];
-
+ 
     const useStyles = makeStyles({
         root: {
             minWidth: 200,
@@ -62,7 +63,7 @@ const Catalog = () => {
           height: 140,
         },
       });
-
+ 
     const classes = useStyles();
   return (
       
@@ -156,33 +157,11 @@ const Catalog = () => {
             </Accordion>
             </div>
             <div className="cards">
-                <Grid container spacing={4}>
-                    <Grid item xs={12} sm={6} md={4}> 
-                        <Card className={classes.root}>
-                        <CardActionArea>
-                            <CardMedia
-                                style ={{ height: 0, paddingTop: '56%'}}
-                                classname={classes.media}
-                                image={require ("./assets/ethicalheader.png")}
-                                title="EthiCAL Apparel Header"
-                            />
-                            <CardContent>
-                                <Typography gutterBottom variant="h5" component="h2">
-                                    EthiCAL Apparel
-                                </Typography>
-                                <Typography variant="body2" color="textSecondary" component="p">
-                                    tags go here
-                                </Typography>
-                            </CardContent>
-                        </CardActionArea>
-                        </Card>
-                    </Grid>
-                    
-                </Grid>
+                <GridComponent classes={classes}/>
             </div>
         </div>
       </div>
     );
 };
-
+ 
 export { Catalog };
