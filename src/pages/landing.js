@@ -1,24 +1,30 @@
 import React from 'react';
 import "./landing.css";
-import sproul from './assets/sproul.png';
-import ball1 from './assets/ball1.png';
-import ball2 from './assets/ball2.png';
-import ball3 from './assets/ball3.png';
-import ball4 from './assets/ball4.png';
-import screen1 from './assets/screen1.png';
-import screen2 from './assets/screen2.png';
-import screen3 from './assets/screen3.png';
+import sproul from './assets/sproul.svg';
+import ball1 from './assets/ball1.svg';
+import ball2 from './assets/ball2.svg';
+import ball3 from './assets/ball3.svg';
+import ball4 from './assets/ball4.svg';
+import screen1 from './assets/screen1.svg';
+import screen2 from './assets/screen2.svg';
+import screen3 from './assets/screen3.svg';
+import blob1 from './assets/blob1.svg';
+import blob2 from './assets/blob2.svg';
+import blob3 from './assets/blob3.svg';
 
 
 const Landing = () => {
   return (
-      <div className="App">
+      <div className="landing">
+        <img src={blob1} className="blob1" alt="sproul" />
+        <img src={blob2} className="blob2" alt="sproul" />
+        <img src={blob3} className="blob3" alt="sproul" />
         <div className="header">
-          <a href="" class="logo">sproul.club</a>
+          <a href="/" class="logo">sproul.club</a>
           <div className="header-right">
-            <a href="catalog">Catalog</a>
-            <a href="login">Club sign in</a>
-            <a className="active" href="add">Add a club</a>
+            <a href="/">Catalog</a>
+            <a href="/">Club sign in</a>
+            <a className="active" href="/">Add a club</a>
           </div>
         </div>
         <div className="content">
@@ -26,7 +32,7 @@ const Landing = () => {
             <h3>Find your community at Berkeley - now virtually!</h3>
             <p>sproul.club simplifies and improves the experience of discovering student organizations and clubs on
             campus - built by students, for students.</p>
-            <a href="catalog">Explore clubs</a>
+            <a href="/">Discover clubs</a>
           </div>
           <div className="imageContainer">
               <img src={sproul} className="sproul" alt="sproul" />
@@ -38,6 +44,29 @@ const Landing = () => {
               <img src={screen2} className="screen2" alt="sproul" />
               <img src={screen3} className="screen3" alt="sproul" />
           </div>
+        </div>
+        <div className="moreContent">
+          <div className="heading">
+            <h2>Planned Features</h2>
+          </div>
+          <div className="featureWrapper">
+            <div className="feature">
+              <h2>Search</h2>
+              <p>clubs by tags, application requirement, and more!</p>
+            </div>
+            <div className="feature">
+              <h2>View</h2>
+              <p>club descriptions, recruitment timelines, and more!</p>
+            </div>
+            <div className="feature">
+              <h2>Add</h2>
+              <p>and edit your own registered student organization!</p>
+            </div>
+          </div>
+          <div className="interestForm">
+            <h2>Fill out our club interest form!</h2>
+            <a href="/">Interest form</a>
+            </div>
         </div>
       </div>
     );
