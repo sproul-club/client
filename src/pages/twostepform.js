@@ -52,7 +52,7 @@ const MultiStepForm = () => {
 
         const tagsList = [];
         for (var i=0; i<tags.length; i++) {
-            tagsList.push(tags[i].label);
+            tagsList.push(tags[i].value);
         }
 
         setStep(currStep + 1);
@@ -80,10 +80,10 @@ const MultiStepForm = () => {
 
     }
 
-    const handleChange = (value) => {
-        console.log(value);
-        console.log('Hi');
-    }
+    // const handleChange = (value) => {
+    //     console.log(value);
+    //     console.log('Hi');
+    // }
 
     return(
         <div className="inputs">
