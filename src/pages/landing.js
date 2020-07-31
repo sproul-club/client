@@ -1,5 +1,7 @@
 import React from 'react';
 import "./landing.css";
+import ScrollAnimation from 'react-animate-on-scroll';
+import "animate.css/animate.min.css";
 import sproul from './assets/sproul.svg';
 import ball1 from './assets/ball1.svg';
 import ball2 from './assets/ball2.svg';
@@ -8,17 +10,12 @@ import ball4 from './assets/ball4.svg';
 import screen1 from './assets/screen1.svg';
 import screen2 from './assets/screen2.svg';
 import screen3 from './assets/screen3.svg';
-import blob1 from './assets/blob1.svg';
-import blob2 from './assets/blob2.svg';
-import blob3 from './assets/blob3.svg';
+import screenshot from './assets/screenshot.png';
 
 
 const Landing = () => {
   return (
       <div className="landing">
-        <img src={blob1} className="blob1" alt="sproul" />
-        <img src={blob2} className="blob2" alt="sproul" />
-        <img src={blob3} className="blob3" alt="sproul" />
         <div className="header">
           <a href="/" class="logo">sproul.club</a>
           <div className="header-right">
@@ -32,7 +29,7 @@ const Landing = () => {
             <h3>Find your community at Berkeley - now virtually!</h3>
             <p>sproul.club simplifies and improves the experience of discovering student organizations and clubs on
             campus - built by students, for students.</p>
-            <a href="/">Discover clubs</a>
+            <a href="/">Sign up for early access</a>
           </div>
           <div className="imageContainer">
               <img src={sproul} className="sproul" alt="sproul" />
@@ -46,26 +43,50 @@ const Landing = () => {
           </div>
         </div>
         <div className="moreContent">
-          <div className="heading">
-            <h2>Planned Features</h2>
-          </div>
           <div className="featureWrapper">
-            <div className="feature">
-              <h2>Search</h2>
-              <p>clubs by tags, application requirement, and more!</p>
+            <div className="feature1">
+              <ScrollAnimation animateIn="animate__fadeIn" animateOnce={true}>
+                <div className="description">
+                  <h2>Explore student clubs that align with your interests. All in one place.</h2>
+                  <p>No more rummaging through Facebook posts.
+                      Start searching for organizations and clubs by tags,
+                      application requirements and more!</p>
+                </div>
+              </ScrollAnimation>
+              <ScrollAnimation animateIn="animate__fadeInRight" animateOnce={true}>
+                <img src={screenshot} className="screenshot"/>
+              </ScrollAnimation>
             </div>
-            <div className="feature">
-              <h2>View</h2>
-              <p>club descriptions, recruitment timelines, and more!</p>
+            <div className="feature2">
+              <ScrollAnimation animateIn="animate__fadeInLeft" animateOnce={true}>
+                <img src={screenshot} className="screenshot"/>
+              </ScrollAnimation>
+              <ScrollAnimation animateIn="animate__fadeIn" animateOnce={true}>
+                <div className="description">
+                    <h2>We bring the organization info you want to know directly to you.</h2>
+                    <p>Learn key information about a club, application 
+                      status, recruitment timelines and upcoming 
+                      events, in just a glance.</p>
+                  </div>
+              </ScrollAnimation>
             </div>
-            <div className="feature">
-              <h2>Add</h2>
-              <p>and edit your own registered student organization!</p>
+            <div className="feature3">
+              <ScrollAnimation animateIn="animate__fadeIn" animateOnce={true}>
+                <div className="description">
+                  <h2>Add, edit, and manage a student organization page of your own.</h2>
+                  <p>It’s time to get seen and discovered. Reach 
+                    thousands of students, link them to important
+                    resources and show them how to get involved!</p>
+                </div>
+              </ScrollAnimation>
+              <ScrollAnimation animateIn="animate__fadeInRight" animateOnce={true}>
+                <img src={screenshot} className="screenshot"/>
+              </ScrollAnimation>
             </div>
           </div>
           <div className="interestForm">
-            <h2>Fill out our club interest form!</h2>
-            <a href="/">Interest form</a>
+            <h2>Now accepting student clubs and organizations</h2>
+            <a href="/">Sign up for early access</a>
             </div>
         </div>
       </div>
