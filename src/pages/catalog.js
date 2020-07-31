@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './catalog.css';
 import GridComponent from './GridComponent';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { searchClubs } from '../actions/catalog';
 // import ethicalheader from './assets/ethicalheader.png';
@@ -70,15 +71,15 @@ const Catalog = ({ searchClubs }) => {
   return (
     <div className="App">
       <div className="header">
-        <a href="/" className="logo">
+        <Link to="/" className="logo">
           sproul.club
-        </a>
+        </Link>
         <div className="header-right">
-          <a href="catalog">Catalog</a>
-          <a href="login">Club sign in</a>
-          <a className="active" href="add">
+          <Link to="/catalog">Catalog</Link>
+          <Link to="/signinc">Club sign in</Link>
+          <Link to="/signup" className="active">
             Add a club
-          </a>
+          </Link>
         </div>
       </div>
       <div className="content">
