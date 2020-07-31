@@ -10,13 +10,16 @@
 }
 
 .landing .header {
+  background-color: rgba(255, 255, 255, 0.6);
   font-family: montserrat, sans-serif;
   font-weight: 700;
   font-style: normal;
   overflow: hidden;
-  padding-top: 30px;
+  padding-top: 20px;
   padding-left: 30px;
+  padding-bottom: 20px;
   max-width: 100vw;
+  border-bottom: 1px solid #c4c4c4a9;
 }
 
 .landing .header a {
@@ -191,24 +194,27 @@
 }
 
 .landing .moreContent .feature1 .description {
-  width: 480px;
+  display: flex;
+  flex-direction: column;
   position: relative;
   float: right;
-  margin-right: 150px;
+  margin-right: 75px;
 }
 
 .landing .moreContent .feature2 .description {
-  width: 480px;
+  display: flex;
+  flex-direction: column;
   position: relative;
   float: left;
-  margin-left: 150px;
+  margin-left: 75px;
 }
 
 .landing .moreContent .feature3 .description {
-  width: 480px;
+  display: flex;
+  flex-direction: column;
   position: relative;
   float: right;
-  margin-right: 150px;
+  margin-right: 75px;
 }
 
 .landing .moreContent .feature1 img {
@@ -325,6 +331,7 @@
     align-items: center;
     padding: 0px;
     padding-top: 30px;
+    padding-bottom: 30px;
   }
 
   .landing .header a {
@@ -337,14 +344,18 @@
   .landing .header-right {
     float: none;
     margin-right: 0px;
+    margin: 0px;
   }
 
   .landing .content {
     flex-direction: column-reverse;
     margin-bottom: 0px;
+    justify-content: center;
+    align-items: center;
   }
 
   .landing .content .text {
+    margin: 0px;
     margin-top: 50px;
     padding: 75px;
     text-align: center;
@@ -353,11 +364,11 @@
   }
 
   .landing .content .text h3{
-    font-size: 28px;
+    font-size: 24px;
   }
 
   .landing .content .text p{
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .landing .content .imageContainer {
@@ -380,13 +391,6 @@
     flex-direction: column;
     height: 800px;
     text-align: center;
-  }
-
-  .landing .moreContent .featureWrapper .description{
-    margin:0px;
-    float: none;
-    text-align: center;
-    justify-content: center;
   }
 
   .landing .moreContent .featureWrapper .description{
