@@ -364,7 +364,7 @@
   }
 
   .landing .content .text h3{
-    font-size: 24px;
+    font-size: 22px;
   }
 
   .landing .content .text p{
@@ -399,14 +399,19 @@
     flex-direction: column;
     float: none;
     align-items: center;
-  }
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 20px;
+    }
 
   .landing .moreContent .featureWrapper .description p{
     text-align: center;
+    font-size: 14px;
   }
 
   .landing .moreContent .featureWrapper .description h2{
     text-align: center;
+    font-size: 20px;
   }
 
   .landing .moreContent .featureWrapper .feature1 {
