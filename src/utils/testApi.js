@@ -1,5 +1,6 @@
 export const catalogTestApi = (searchInput) => {
   const { name, tags, app_req, status } = searchInput;
+  console.log('searched: ', name, tags, app_req, status);
 
   const filtered = Object.keys(catalogData)
     .map((key) => catalogData[key])
@@ -9,7 +10,7 @@ export const catalogTestApi = (searchInput) => {
   return filtered;
 };
 
-const catalogData = {
+export const catalogData = {
   1: {
     name: 'EthiCal',
     tags: ['Business', 'Design', 'Environment'],

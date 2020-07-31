@@ -4,7 +4,6 @@ import { catalogTestApi } from '../utils/testApi';
 // Search Clubs
 
 export const searchClubs = (searchParams) => async (dispatch) => {
-  const { text, tags, app_req, status } = searchParams;
   console.log(searchParams);
 
   try {
