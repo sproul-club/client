@@ -13,7 +13,7 @@ import {
   AccordionItemButton,
   AccordionItemPanel,
 } from 'react-accessible-accordion';
-import { Button, Form, TextBox, CheckBox } from 'react-form-elements';
+import { Form, TextBox, CheckBox } from 'react-form-elements';
 
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -62,7 +62,6 @@ const Catalog = ({ searchClubs }) => {
 
   const searchAllClubs = () => {
     const tags = multiselectRef.current.getSelectedItems();
-    console.log({ name, tags, appReq, status });
     const searchParams = { name, tags, appReq, status };
 
     searchClubs(searchParams);
@@ -76,7 +75,7 @@ const Catalog = ({ searchClubs }) => {
         </Link>
         <div className="header-right">
           <Link to="/catalog">Catalog</Link>
-          <Link to="/signinc">Club sign in</Link>
+          <Link to="/signin">Club sign in</Link>
           <Link to="/signup" className="active">
             Add a club
           </Link>
@@ -84,8 +83,12 @@ const Catalog = ({ searchClubs }) => {
       </div>
       <div className="content">
         <div className="sidebar">
-          <Accordion allowMultipleExpanded allowZeroExpanded>
-            <AccordionItem>
+          <Accordion
+            allowMultipleExpanded
+            allowZeroExpanded
+            preExpanded={['a', 'b', 'c', 'd']}
+          >
+            <AccordionItem className="accordion-group" uuid="a">
               <AccordionItemHeading>
                 <AccordionItemButton>Search</AccordionItemButton>
               </AccordionItemHeading>
@@ -97,12 +100,13 @@ const Catalog = ({ searchClubs }) => {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Search by name"
+                    style={{ width: '97.5%', height: '25px' }}
                   />
-                  <Button>Search</Button>
+                  <button className="search-button">Search</button>
                 </Form>
               </AccordionItemPanel>
             </AccordionItem>
-            <AccordionItem>
+            <AccordionItem className="accordion-group" uuid="b">
               <AccordionItemHeading>
                 <AccordionItemButton>Club Tags</AccordionItemButton>
               </AccordionItemHeading>
@@ -116,7 +120,7 @@ const Catalog = ({ searchClubs }) => {
                 />
               </AccordionItemPanel>
             </AccordionItem>
-            <AccordionItem>
+            <AccordionItem className="accordion-group" uuid="c">
               <AccordionItemHeading>
                 <AccordionItemButton>
                   Application Requirements
@@ -139,7 +143,7 @@ const Catalog = ({ searchClubs }) => {
                 />
               </AccordionItemPanel>
             </AccordionItem>
-            <AccordionItem>
+            <AccordionItem className="accordion-group" uuid="d">
               <AccordionItemHeading>
                 <AccordionItemButton>Member Status</AccordionItemButton>
               </AccordionItemHeading>

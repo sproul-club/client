@@ -11,7 +11,7 @@ const SignUp = () => {
         <Link to="/catalog">← Back to catalog</Link>
         <div className="header-right">
           <p>Already registered your club?</p>
-          <Link href="/signin">Sign in</Link>
+          <Link to="/signin">Sign in</Link>
         </div>
       </div>
       <div className="content">

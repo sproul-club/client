@@ -11,8 +11,6 @@ import {
 import { connect } from 'react-redux';
 
 function GridComponent(props) {
-  console.log('clubs: ', props.clubs);
-
   const GridList = props.clubs.map((club, i) => (
     <Grid item xs={12} sm={6} md={4} key={i}>
       <Card className={props.classes.root}>
