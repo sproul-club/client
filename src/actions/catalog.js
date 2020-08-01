@@ -1,21 +1,17 @@
-import { TEST, SEARCH_CLUBS } from './types';
+import { SEARCH_CLUBS } from './types';
 import { catalogTestApi } from '../utils/testApi';
 
 // Search Clubs
 
 export const searchClubs = (searchParams) => async (dispatch) => {
-  console.log(searchParams);
-
   try {
+    // Once we have the API routes from Tejas, we can replace this with
+    // either a GET request with params as part of the route
+    // or a POST request with a content type header and body = params
     const res = catalogTestApi(searchParams);
 
     dispatch({ type: SEARCH_CLUBS, payload: res });
-    dispatch({ type: TEST });
   } catch (err) {
     console.log(err);
-    // dispatch({
-    //   type: CATALOG_ERROR,
-    //   payload: { err }
-    // })
   }
 };
