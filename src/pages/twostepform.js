@@ -211,12 +211,20 @@ const StepThree = (props) => {
         return null;
     }
     return (
-        <div className="complete">
-            <h3>You're all set!</h3>
-            <h3>Please check your organization's email for a confirmation link</h3>
-            <h2>Didn't receive an email?</h2>
-            <a href="/">Click here</a>
+    <div className="formGroup">
+        <div className="formHeader">
+            <div className="bigImageContainer">
+            </div>
         </div>
+        <div className="complete">
+            <h2>You're all set!</h2>
+            <h3>Please check your organization's email for a confirmation link.</h3>
+            <div className="resendEmail">
+                <h4>Didn't receive an email?</h4>
+                <a href="/">Click here</a>
+            </div>
+        </div>
+    </div>
     )
 }
 
