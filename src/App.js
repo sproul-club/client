@@ -39,13 +39,14 @@ class App extends Component {
     return (
       <Provider store={store}>
         <Router>
-          <Switch>
+          <Switch location={isModal ? this.previousLocation : location}>
             <Route exact path="/" component={Landing} />
             <Route path="/catalog" component={Catalog} />
             <Route exact path="/signup" component={SignUp} />
             <Route exact path="/modal/:id" component={Modal}/>
             <Route>{'404'}</Route>
           </Switch>
+          {isModal ? <Route exact path="/modal/:id" component={Modal} /> : null }
         </Router>
       </Provider>
     );
