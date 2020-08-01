@@ -119,7 +119,8 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    height:460px;
+    width: 328px;
+    height: 460px;
 }
 
 .signup .form .inputs .formGroup .formHeader{
@@ -200,4 +201,44 @@
 
 ::placeholder {
     color: #949494;
+}
+
+
+.signup .form .bigImageContainer {
+    margin-top: 20px;
+    width:200px;
+    height:180px;
+    background:lightgray;
+}
+
+.signup .form .formGroup .complete {
+    display: flex;
+    flex-direction: column;
+    margin: 30px 0px 30px;
+    height: 250px;
+    line-height: 1.4;
+}
+
+.signup .form .formGroup .complete h2 {
+    margin: 0px 21px 19px;
+    font-size: 15px;
+}
+
+.signup .form .formGroup .complete h3 {
+    margin: 0px 21px 19px;
+    font-size: 13px;
+}
+
+.signup .form .formGroup .complete .resendEmail {
+    margin-top: 60px;
+    font-size: 12px;
+}
+
+.signup .form .formGroup .complete h4 {
+    font-weight: lighter;
+    margin: 0px;
+}
+
+.signup .form .formGroup .complete a {
+    text-decoration-line: none;
 }
