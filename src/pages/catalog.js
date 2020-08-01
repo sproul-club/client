@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './catalog.css';
 import GridComponent from './GridComponent';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { searchClubs } from '../actions/catalog';
 // import ethicalheader from './assets/ethicalheader.png';
@@ -100,7 +100,7 @@ const Catalog = ({ searchClubs }) => {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Search by name"
-                    style={{ width: '97.5%', height: '25px' }}
+                    style={{ width: '97.5%', height: '25px', }}
                   />
                   <button className="search-button">Search</button>
                 </Form>
@@ -174,4 +174,4 @@ const Catalog = ({ searchClubs }) => {
   );
 };
 
-export default connect(null, { searchClubs })(Catalog);
+export default withRouter(connect(null, { searchClubs })(Catalog));

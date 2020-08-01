@@ -39,7 +39,7 @@ const Landing = () => {
             student organizations and clubs on campus - built by students, for
             students.
           </p>
-          <a href="/">Discover clubs</a>
+          <a href="/catalog">Discover clubs</a>
         </div>
         <div className="imageContainer">
           <img src={sproul} className="sproul" alt="sproul" />
