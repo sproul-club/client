@@ -30,7 +30,7 @@ const Landing = () => {
             <h3>Find your community at Berkeley - now virtually!</h3>
             <p>sproul.club simplifies and improves the experience of discovering student organizations and clubs on
             campus - built by students, for students.</p>
-            <a href="/">Sign up for early access</a>
+            <a href="https://airtable.com/shr4wECf5beHGLgfV">Sign up for early access</a>
           </div>
           <div className="imageContainer">
               <img src={sproul} className="sproul" alt="sproul" />
@@ -87,7 +87,7 @@ const Landing = () => {
           </div>
           <div className="interestForm">
             <h2>Now accepting student clubs and organizations</h2>
-            <a href="/">Sign up for early access</a>
+            <a href="https://airtable.com/shr4wECf5beHGLgfV">Sign up for early access</a>
             </div>
         </div>
       </div>
