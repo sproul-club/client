@@ -10,8 +10,9 @@ import ball4 from './assets/ball4.svg';
 import screen1 from './assets/screen1.svg';
 import screen2 from './assets/screen2.svg';
 import screen3 from './assets/screen3.svg';
-import screenshot from './assets/screenshot.png';
-
+import mock1 from './assets/mock1.png';
+import mock2 from './assets/mock2.png';
+import mock3 from './assets/mock3.png';
 
 const Landing = () => {
   return (
@@ -19,7 +20,7 @@ const Landing = () => {
         <div className="header">
           <a href="/" class="logo">sproul.club</a>
           <div className="header-right">
-            <a href="/">Catalog</a>
+            <a href="/">Discover</a>
             <a href="/">Club sign in</a>
             <a className="active" href="/">Add a club</a>
           </div>
@@ -50,23 +51,23 @@ const Landing = () => {
                   <h2>Explore student clubs that align with your interests. All in one place.</h2>
                   <p>No more rummaging through Facebook posts.
                       Start searching for organizations and clubs by tags,
-                      application requirements and more!</p>
+                      application requirements, and more!</p>
                 </div>
               </ScrollAnimation>
               <ScrollAnimation animateIn="animate__fadeInRight" animateOnce={true}>
-                <img src={screenshot} className="screenshot"/>
+                <img src={mock1} className="screenshot"/>
               </ScrollAnimation>
             </div>
             <div className="feature2">
               <ScrollAnimation animateIn="animate__fadeInLeft" animateOnce={true}>
-                <img src={screenshot} className="screenshot"/>
+                <img src={mock2} className="screenshot"/>
               </ScrollAnimation>
               <ScrollAnimation animateIn="animate__fadeIn" animateOnce={true}>
                 <div className="description">
                     <h2>We bring the organization info you want to know directly to you.</h2>
                     <p>Learn key information about a club, application 
-                      status, recruitment timelines and upcoming 
-                      events, in just a glance.</p>
+                      statuses, recruitment timelines, and upcoming 
+                      events in just a glance.</p>
                   </div>
               </ScrollAnimation>
             </div>
@@ -76,11 +77,11 @@ const Landing = () => {
                   <h2>Add, edit, and manage a student organization page of your own.</h2>
                   <p>It’s time to get seen and discovered. Reach 
                     thousands of students, link them to important
-                    resources and show them how to get involved!</p>
+                    resources, and show them how to get involved!</p>
                 </div>
               </ScrollAnimation>
               <ScrollAnimation animateIn="animate__fadeInRight" animateOnce={true}>
-                <img src={screenshot} className="screenshot"/>
+                <img src={mock3} className="screenshot"/>
               </ScrollAnimation>
             </div>
           </div>
