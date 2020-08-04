@@ -8,11 +8,18 @@ import ball4 from './assets/ball4.png';
 import screen1 from './assets/screen1.png';
 import screen2 from './assets/screen2.png';
 import screen3 from './assets/screen3.png';
-
-
+import ClubPage from './ClubPage.js';
+const data = {name: "EthiCAL Apparel", 
+              desc: "We are a student-run social enterprise that provides affordable, high-quality screen printing and free design services on ethically-made clothing. We help create custom designs for organizations and sell our own clothing and sticker line through our online shop. Our profits are directed to a variety of social good initiatives, from Kiva microloans to disadvantaged entrepreneurs to partnerships with local organizations. Members develop their design skills, business knowledge, and social awareness.",
+              tags: ["Business", "Design", "Environment and Sustainability"],
+              reqApp: true,
+              open: true}
 const Landing = () => {
   return (
-      <div className="App">
+    <div>
+      <ClubPage data={data} />
+    
+      {/*<div className="App">
         <div className="header">
           <a href="" class="logo">sproul.club</a>
           <div className="header-right">
@@ -39,7 +46,8 @@ const Landing = () => {
               <img src={screen3} className="screen3" alt="sproul" />
           </div>
         </div>
-      </div>
+  </div>*/}
+  </div>
     );
 };
 
