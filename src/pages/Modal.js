@@ -5,7 +5,7 @@ import './modal.css';
 const Modal = ({ match, history }) => {
   const back = e => {
     e.stopPropagation();
-    history.goBack();
+    history.push(`/catalog`);
   };
   return (
     <div
