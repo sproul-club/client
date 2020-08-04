@@ -18,7 +18,7 @@ function GridComponent(props) {
         <CardActionArea>
             <Link
               to={{
-                pathname: "/modal/" + club.name,
+                pathname: "/club/" + club.name,
                 state: { modal: true}
               }}
             >
