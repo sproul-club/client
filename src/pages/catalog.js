@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './catalog.css';
 import GridComponent from './GridComponent';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { searchClubs } from '../actions/catalog';
 // import ethicalheader from './assets/ethicalheader.png';
@@ -12,7 +13,7 @@ import {
   AccordionItemButton,
   AccordionItemPanel,
 } from 'react-accessible-accordion';
-import { Button, Form, TextBox, CheckBox } from 'react-form-elements';
+import { Form, TextBox, CheckBox } from 'react-form-elements';
 
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -61,30 +62,36 @@ const Catalog = ({ searchClubs }) => {
 
   const searchAllClubs = () => {
     const tags = multiselectRef.current.getSelectedItems();
-    console.log({ name, tags, appReq, status });
     const searchParams = { name, tags, appReq, status };
 
+    // Calls searchClubs redux action, which hits the backend API
+    // then updates the apps state in redux to be the response
+    // This data is then read in the GridComponent through mapStateToProps
     searchClubs(searchParams);
   };
 
   return (
     <div className="App">
       <div className="header">
-        <a href="/" className="logo">
+        <Link to="/" className="logo">
           sproul.club
-        </a>
+        </Link>
         <div className="header-right">
-          <a href="catalog">Catalog</a>
-          <a href="login">Club sign in</a>
-          <a className="active" href="add">
+          <Link to="/catalog">Catalog</Link>
+          <Link to="/signin">Club sign in</Link>
+          <Link to="/signup" className="active">
             Add a club
-          </a>
+          </Link>
         </div>
       </div>
       <div className="content">
         <div className="sidebar">
-          <Accordion allowMultipleExpanded allowZeroExpanded>
-            <AccordionItem>
+          <Accordion
+            allowMultipleExpanded
+            allowZeroExpanded
+            preExpanded={['a', 'b', 'c', 'd']}
+          >
+            <AccordionItem className="accordion-group" uuid="a">
               <AccordionItemHeading>
                 <AccordionItemButton>Search</AccordionItemButton>
               </AccordionItemHeading>
@@ -96,12 +103,13 @@ const Catalog = ({ searchClubs }) => {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Search by name"
+                    style={{ width: '97.5%', height: '25px' }}
                   />
-                  <Button>Search</Button>
+                  <button className="search-button">Search</button>
                 </Form>
               </AccordionItemPanel>
             </AccordionItem>
-            <AccordionItem>
+            <AccordionItem className="accordion-group" uuid="b">
               <AccordionItemHeading>
                 <AccordionItemButton>Club Tags</AccordionItemButton>
               </AccordionItemHeading>
@@ -115,7 +123,7 @@ const Catalog = ({ searchClubs }) => {
                 />
               </AccordionItemPanel>
             </AccordionItem>
-            <AccordionItem>
+            <AccordionItem className="accordion-group" uuid="c">
               <AccordionItemHeading>
                 <AccordionItemButton>
                   Application Requirements
@@ -138,7 +146,7 @@ const Catalog = ({ searchClubs }) => {
                 />
               </AccordionItemPanel>
             </AccordionItem>
-            <AccordionItem>
+            <AccordionItem className="accordion-group" uuid="d">
               <AccordionItemHeading>
                 <AccordionItemButton>Member Status</AccordionItemButton>
               </AccordionItemHeading>

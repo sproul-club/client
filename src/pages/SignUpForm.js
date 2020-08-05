@@ -243,6 +243,11 @@ const StepThree = (props) => {
         return null;
     }
     return (
+    <div className="formGroup">
+        <div className="formHeader">
+            <div className="bigImageContainer">
+            </div>
+        </div>
         <div className="complete">
             <div className="imageContainer">
                 </div>
@@ -251,6 +256,7 @@ const StepThree = (props) => {
             <h2>Didn't receive an email?</h2>
             <a href="/signup">Click here</a>
         </div>
+    </div>
     )
 }
 

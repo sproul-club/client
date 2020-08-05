@@ -38,6 +38,24 @@
   margin-left: 15px;
 }
 
+.search-button {
+  height: 25px;
+  width: 60px;
+  border-radius: 3px;
+  background: #87cdff;
+  color: white;
+  margin-top: 8px;
+  border: none;
+  cursor: pointer;
+}
+.search-button:hover {
+  background: #9fd5fb;
+}
+
+.accordion-group {
+  margin-bottom: 15px;
+}
+
 .accordion__button {
   /* background-color: #f4f4f4; */
   color: #444;

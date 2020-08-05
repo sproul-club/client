@@ -92,7 +92,7 @@ const Landing = () => {
             </div>
         </div>
       </div>
-    );
+  );
 };
 
 export { Landing };
