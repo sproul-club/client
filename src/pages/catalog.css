@@ -119,7 +119,7 @@
 }
 
 /*the header acts a wonky when you resize the browser window*/
-.header {
+/* .header {
   font-family: montserrat, sans-serif;
   font-weight: 700;
   font-style: normal;
@@ -238,9 +238,9 @@
   width: 442px;
   height: 383px;
   margin-left: -200px;
-}
+} */
 
-@media screen and (max-width: 850px) {
+/* @media screen and (max-width: 850px) {
   .header {
     display: flex;
     flex-direction: column;
@@ -265,6 +265,6 @@
     align-content: flex-start;
     align-self: flex-start;
     /* background-color: lightpink; */
-    flex-direction: column;
+    /* flex-direction: column;
   }
-}
+} */

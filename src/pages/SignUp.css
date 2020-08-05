@@ -151,6 +151,9 @@
 
 .signup .form .inputs .buttonWrapper {
     margin-bottom: 12px;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: row;
 }
 
 .signup .form .inputs .buttonWrapper .nextButton {
@@ -161,6 +164,35 @@
 .signup .form .inputs .buttonWrapper .prevButton {
     float:left;
     margin-left: 7.7px;
+}
+
+.signup .form .inputs .buttonWrapper .help {
+    display: flex;
+    align-items: flex-end;
+    flex-direction: row;
+    padding: 10px;
+    padding-bottom: 5px;
+    width: 60%;
+}
+
+.signup .form .inputs .buttonWrapper p{
+    font-family: roboto, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 12px;
+    margin: 0px;
+    float: left;
+    margin-right: 6px;
+    color: #757575;
+    letter-spacing: 0.05em;
+}
+
+.signup .form .inputs .buttonWrapper a{
+    text-decoration: none;
+    font-size: 12px;
+    margin: 0px;
+    float: left;
+    color: #2B2B2B;
 }
 
 .signup .form .inputs .buttonWrapper .submitButton {
@@ -199,17 +231,101 @@
     color: #4e4e4e;
 }
 
+.signup .form .inputs .formGroup .userInputInvalid {
+    width: 290px;
+    padding: 10px;
+    margin: 8px;
+    font-family: montserrat, sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 12px;
+    border-radius: 5px;
+    border: solid 1px #FF2D2D;
+    color: #4e4e4e;
+}
+
+.signup .form .inputs .formGroup .conError {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    margin-left: 150px;
+    margin-top: 320px;
+    background: white;
+    border-radius: 6px;
+    padding-left: 8px;
+    padding-right: 8px;
+    box-shadow: 3px 3px 5px rgb(0, 0, 0, 0.2);
+}
+
+.signup .form .inputs .formGroup .conError img {
+    height: 14px;
+    width: 14px;
+    margin-right: 6px;
+}
+
+.signup .form .inputs .formGroup .conError p {
+    color: #FF2D2D;
+    font-family: montserrat, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 12px;
+    line-height: 8px;
+}
+
+.signup .form .inputs .formGroup .conErrorNone {
+    display: none;
+}
+
+.signup .form .inputs .complete {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+}
+
+.signup .form .inputs .complete .imageContainer {
+    margin-bottom: 40px;
+}
+
+.signup .form .inputs .complete h3{
+    margin: 0px;
+    margin-bottom: 20px;
+    font-family: montserrat, sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.signup .form .inputs .complete h2{
+    margin: 0px;
+    margin-top: 80px;
+    font-size: 12px;
+    color: #757575;
+}
+
+.signup .form .inputs .complete a{
+    text-decoration: none;
+    font-size: 12px;
+    margin: 4px;
+    float: left;
+    color: #2B2B2B;
+}
+
 ::placeholder {
     color: #949494;
 }
 
 
-.signup .form .bigImageContainer {
+/* .signup .form .bigImageContainer {
     margin-top: 20px;
     width:200px;
     height:180px;
     background:lightgray;
-}
+} */
 
 .signup .form .formGroup .complete {
     display: flex;

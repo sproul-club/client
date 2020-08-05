@@ -1,17 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import './signup.css';
-
-import MultiStepForm from './twostepform.js';
+import './SignUp.css';
+import MultiStepForm from "./SignUpForm.js";
 
 const SignUp = () => {
   return (
     <div className="signup">
       <div className="header">
-        <Link to="/catalog">← Back to catalog</Link>
+        <a href="/catalog">← Back to catalog</a>
         <div className="header-right">
           <p>Already registered your club?</p>
-          <Link to="/signin">Sign in</Link>
+          <a href="/">Sign in</a>
         </div>
       </div>
       <div className="content">
