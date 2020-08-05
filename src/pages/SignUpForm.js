@@ -244,10 +244,6 @@ const StepThree = (props) => {
     }
     return (
     <div className="formGroup">
-        <div className="formHeader">
-            <div className="bigImageContainer">
-            </div>
-        </div>
         <div className="complete">
             <div className="imageContainer">
                 </div>

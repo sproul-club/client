@@ -320,12 +320,12 @@
 }
 
 
-.signup .form .bigImageContainer {
+/* .signup .form .bigImageContainer {
     margin-top: 20px;
     width:200px;
     height:180px;
     background:lightgray;
-}
+} */
 
 .signup .form .formGroup .complete {
     display: flex;
