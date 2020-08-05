@@ -1,5 +1,5 @@
 import React from 'react';
-import "./landing.css";
+import "./Landing.css";
 import ScrollAnimation from 'react-animate-on-scroll';
 import "animate.css/animate.min.css";
 import sproul from './assets/sproul.svg';

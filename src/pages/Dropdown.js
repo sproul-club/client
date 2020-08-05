@@ -48,7 +48,7 @@ const customStyles = {
   }),
 };
 
-const DropdownSelect = (props) => (
+const Dropdown = (props) => (
   <Select
     styles={customStyles}
     theme={(theme) => ({
@@ -69,4 +69,4 @@ const DropdownSelect = (props) => (
   />
 );
 
-export default DropdownSelect;
+export default Dropdown;

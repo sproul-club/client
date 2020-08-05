@@ -1,7 +1,7 @@
 import React from 'react';
-import './signup.css';
+import './SignUp.css';
 
-import MultiStepForm from "./twostepform.js";
+import MultiStepForm from "./SignUpForm.js";
 
 const SignUp = () => {
     return (

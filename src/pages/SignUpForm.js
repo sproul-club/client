@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import DropdownSearch from "./dropdownsearch2.js";
+import Dropdown from "./Dropdown.js";
 import error from './assets/error.svg';
 
 const MultiStepForm = () => {
@@ -210,19 +210,19 @@ const StepTwo = (props) => {
                 <h2>Register your club</h2>
             </div>
             <div className="drops">
-                <DropdownSearch
+                <Dropdown
                 options={props.recruitOptions}
                 binary={false}
                 search={false}
                 placeholder='Select recruitment status'
                 set={props.setRecruit}/>
-                <DropdownSearch
+                <Dropdown
                 options={props.appOptions}
                 binary={false}
                 search={false}
                 placeholder='Select application requirement'
                 set={props.setAppReq}/>
-                <DropdownSearch
+                <Dropdown
                 options={props.tagOptions}
                 multi={true}
                 search={true}
