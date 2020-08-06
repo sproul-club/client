@@ -28,11 +28,6 @@ class App extends Component {
   render() {
     const { location } = this.props;
 
-    const isModal = !!(
-      location.state &&
-      location.state.modal &&
-      this.previousLocation !== location
-    ); // not initial render
     
     console.log(location);
     return (

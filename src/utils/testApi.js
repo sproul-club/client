@@ -35,4 +35,22 @@ export const catalogData = {
     req_app: false,
     status: true,
   },
+  5: {
+    name: 'Kanye West Fanclub',
+    tags: ['Political', 'Yeezy'],
+    req_app: false,
+    status: true,
+  },
+  6: {
+    name: 'Kanye West Fanclub',
+    tags: ['Political', 'Yeezy'],
+    req_app: false,
+    status: true,
+  },
+  7: {
+    name: 'Kanye West Fanclub',
+    tags: ['Political', 'Yeezy'],
+    req_app: false,
+    status: true,
+  },
 };
