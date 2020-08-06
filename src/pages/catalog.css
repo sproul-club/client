@@ -104,6 +104,10 @@
   /* background-color: pink; */
 }
 
+.content {
+  min-height: calc(100vh - 176px);
+}
+
 /* -------------------------------------------------- */
 /* ---------------- Animation part ------------------ */
 /* -------------------------------------------------- */
@@ -265,6 +269,6 @@
     align-content: flex-start;
     align-self: flex-start;
     /* background-color: lightpink; */
-    /* flex-direction: column;
+/* flex-direction: column;
   }
 } */
