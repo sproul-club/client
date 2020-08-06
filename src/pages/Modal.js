@@ -13,11 +13,9 @@ const Modal = ({ match, history }) => {
       <div onClick={back} className="modal-wrapper"/>
 
       <div className="modal">
+        <span class="modal-close" onClick={back}>&times;</span>
         <h1>{match.params.id}</h1>
-        hellooooo modal
-        <button type="button" onClick={back}>
-          Close
-        </button>
+        <p>content goes here</p>
       </div>
 
       

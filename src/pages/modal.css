@@ -13,7 +13,7 @@
   
   .modal {
     width: 80%;
-    height: fit-content;
+    max-height: 80%;
     background-color: white;
     position: fixed;
     top: 10%;
@@ -22,6 +22,7 @@
     box-shadow: 2px 4px 20px 0px rgba(0, 0, 0, 0.75);
     border-radius: 10px;
     padding: 20px;
+    overflow-y: auto;
     /* style={{
       position: "absolute",
       background: "#fff",
@@ -32,6 +33,13 @@
       border: "20px solid #444",
       width: "80%",
     }} */
+  }
 
+  .modal-close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
   }
   
