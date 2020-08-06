@@ -4,6 +4,8 @@ import GridComponent from './GridComponent';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { searchClubs } from '../actions/catalog';
+import DropdownSearch from "./dropdownsearch2.js";
+
 // import ethicalheader from './assets/ethicalheader.png';
 
 import {
@@ -22,25 +24,29 @@ import { Multiselect } from 'multiselect-react-dropdown';
 
 const Catalog = ({ searchClubs }) => {
   var tagOptions = [
-    { key: 'ASUC', id: 0 },
-    { key: 'Business', id: 1 },
-    { key: 'CalGreek', id: 2 },
-    { key: 'Community Service', id: 3 },
-    { key: 'Computer Science', id: 4 },
-    { key: 'Consulting', id: 5 },
-    { key: 'Cultural', id: 6 },
-    { key: 'Design', id: 7 },
-    { key: 'Engineering', id: 8 },
-    { key: 'Environment & Sustainability', id: 9 },
-    { key: 'Health & Wellness', id: 10 },
-    { key: 'Media & Publication', id: 11 },
-    { key: 'Religious & Spiritual', id: 12 },
+    { key: 'Advocacy', id: 0 },
+    { key: 'ASUC', id: 1 },
+    { key: 'Business', id: 2 },
+    { key: 'CalGreek', id: 3 },
+    { key: 'Community Service', id: 4 },
+    { key: 'Computer Science', id: 5 },
+    { key: 'Consulting', id: 6 },
+    { key: 'Cultural', id: 7 },
+    { key: 'Design', id: 8 },
+    { key: 'Engineering', id: 9 },
+    { key: 'Environment & Sustainability', id: 10 },
+    { key: 'Health & Wellness', id: 11 },
+    { key: 'Media & Publication', id: 12 },
     { key: 'Performing Arts', id: 13 },
     { key: 'Political', id: 14 },
-    { key: 'Sciences', id: 15 },
-    { key: 'Sports & Recreation', id: 16 },
-    { key: 'Social Good', id: 17 },
-    { key: 'Technology', id: 18 },
+    { key: 'Pre-professional', id: 15 },
+    { key: 'Religious & Spiritual', id: 16 },
+    { key: 'Research', id: 17 },
+    { key: 'Sciences', id: 18 },
+    { key: 'Social', id: 19 },
+    { key: 'Social Good', id: 20 },
+    { key: 'Sports & Recreation', id: 21 },
+    { key: 'Technology', id: 22 },
   ];
 
   const useStyles = makeStyles({
@@ -118,6 +124,8 @@ const Catalog = ({ searchClubs }) => {
                   ref={multiselectRef}
                   showCheckbox={true}
                 />
+                
+                
               </AccordionItemPanel>
             </AccordionItem>
             <AccordionItem className="accordion-group" uuid="c">
