@@ -1,0 +1,18 @@
+.footer-wrapper {
+  bottom: 0;
+  width: 100vw;
+  height: 50px;
+  text-align: center;
+  border-top: 1px solid #ddd;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: 16px;
+}
+
+.line-1 {
+  margin-bottom: 5px;
+}
+
+.sproul {
+  color: #54a0f1;
+}
