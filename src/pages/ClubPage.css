@@ -117,7 +117,7 @@
 }
 
 .desc-text {
-    margin-left: 3%;
+    margin-left: 4%;
     margin-right: 3%;
     margin-bottom: 3%;
     font-family: roboto, sans-serif;
@@ -169,6 +169,21 @@
     border-radius: 10px;
 }
 
+.resources-flex {
+    display: flex;
+    flex-direction: column;
+}
+
+#resources {
+    margin-left: 1.65vw;
+}
+
+.res-img {
+    position: relative;
+    margin-left: 0.7vw;
+    top: 0.3vw;
+    width: 1.5vw;
+}
 .link-flex {
     position: relative;
     width: 75%;
@@ -196,12 +211,84 @@
 /*GENERAL TAGS*/
 p {
     position: relative;
-    margin: 1vw 1vw 1vw 0vw;
+    margin: 1vw 1vw 1.7vw 0.7vw;
     left: 3%;
-    top: 0px;
+    top: 0.7vw;
     font-family: monserrat, sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 1.4vw;
     color: #3D3D3D;
 }
+
+
+/*====================================*/
+/*ACCORDION TAGS*/
+.accordion {
+    /* border: 1px solid rgba(0, 0, 0, 0.1); */
+    width: 100%;
+    text-align: left;
+    margin-left: 15px;
+  }
+  
+  .accordion__button {
+    /* background-color: #f4f4f4; */
+    color: #444;
+    cursor: pointer;
+    padding-top: 0.5vw;
+    padding-left: 3vw;
+    padding-bottom: 1vw;
+    width: 95%;
+    text-align: left;
+    border-radius: 10px;
+  }
+  
+  .event-flex-container {
+      width:87%;
+      display: inline-flex;
+      font-family: roboto, sans-serif;
+      font-size: 1.2vw;
+      justify-content: space-between;
+  }
+
+  .event-flex-left {
+      font-weight: bold;
+  }
+  .accordion__button:focus {
+    outline: 0;
+  }
+  
+  .accordion__button:before {
+    display: inline-block;
+    content: '';
+    height: 0.5vw;
+    width: 0.5vw;
+    margin-right: 10px;
+    border-bottom: 2px solid currentColor;
+    border-right: 2px solid currentColor;
+    transform: rotate(-135deg);
+  }
+  
+  .accordion__button[aria-expanded='true']::before,
+  .accordion__button[aria-selected='true']::before {
+    transform: rotate(45deg);
+  }
+  
+  [hidden] {
+    display: none;
+  }
+  
+  .accordion__panel {
+    animation: fadein 0.35s ease-in;
+    text-align: left;
+    border: none;
+    width: 45.5vw;
+    font-family: roboto, sans-serif;
+    font-size: 1.2vw;
+    margin-left: 4.3vw;
+    padding: 1vw 1vw 1vw 1vw;
+    margin-top: 0.5vw;
+    margin-bottom: 1vw;
+    background-color: #E2E2E2;
+    border-radius: 6px;
+  }

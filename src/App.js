@@ -20,7 +20,7 @@ class App extends Component {
         <Router>
           <Switch>
             <Route exact path="/" component={Landing} />
-            <Route path="/catalog" component={Catalog} />>
+            <Route path="/catalog" component={Catalog} />
           </Switch>
         </Router>
       </Provider>

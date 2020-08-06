@@ -1,32 +1,21 @@
 import React from "react"
 import './ClubPage.css'
-import {
-    Accordion,
-    AccordionItem,
-    AccordionItemHeading,
-    AccordionItemButton,
-    AccordionItemPanel,
-  } from 'react-accessible-accordion';
+import EventAccord from './EventAccord'
 
-const testList = ['1','2','3','4']
+const resList = [{name:"Design Workshop Slides", link:"https://www.coolmathgames.com/"},
+                 {name:"Infosession Slides", link:"https://www.poptropica.com/"},
+                 {name:"Infosession Recording", link:"https://www.target.com/"}]
 
+const resComps = resList.map((res) =>
+    <div className="desc-text" id="resources">
+        {res.name}
+        <a target="_blank" href={res.link}>
+            <img className="res-img" src={require('./assets/linkImages/resLink.png')}/>
+        </a>
+    </div>
+)
 
-const accordList = testList.map((string) =>
-    <Accordion allowZeroExpanded >
-        <AccordionItem key={string}>
-            <AccordionItemHeading>
-                <AccordionItemButton> 
-                    test
-                </AccordionItemButton>
-            </AccordionItemHeading>
-            <AccordionItemPanel>
-                test2
-            </AccordionItemPanel>
-        </AccordionItem>
-    </Accordion>)
-    
 function ClubPage(props) {
-
     const tagList = props.data.tags.map((tag) =>
         <div className="tag"> {tag} </div>
     )
@@ -61,15 +50,17 @@ function ClubPage(props) {
                         
                     </div>      
                 </div>
+
                 <div className="desc-box">
                     <p>Description</p>
                     <body className="desc-text">
                         {props.data.desc}
                     </body>
                 </div>
+
                 <div className="events-box">
                     <p>Events</p>
-                    {accordList}
+                    <EventAccord data={props.data}/>
                 </div>
             </div>
 
@@ -77,15 +68,29 @@ function ClubPage(props) {
                 <div className="contact-box">
                     <p>Contact Us</p>
                     <div className="link-flex">
-                        <img className="link-image" src={require('./assets/linkImages/webLink.png')}/>
+                        <a target="_blank" href={props.data.socials[0].web}>
+                            <img className="link-image" src={require('./assets/linkImages/webLink.png')}/>
+                        </a>
+                        <a target="_blank" href={props.data.socials[0].email}>
                         <img className="link-image" src={require('./assets/linkImages/emailLink.png')}/>
+                        </a>
+                        <a target="_blank" href={props.data.socials[0].ig}>
                         <img className="link-image" src={require('./assets/linkImages/igLink.png')}/>
+                        </a>
+                        <a target="_blank" href={props.data.socials[0].fb}>
                         <img className="link-image" src={require('./assets/linkImages/fbLink.png')}/>
+                        </a>
+                        <a target="_blank" href={props.data.socials[0].twt}>
                         <img className="link-image" src={require('./assets/linkImages/twtLink.png')}/>
+                        </a>
                     </div>
                 </div>
+
                 <div className="resources-box">
                     <p>Resources</p>
+                    <div className="resources-flex">
+                        {resComps}
+                    </div>
                 </div>
             </div>            
         </div>
