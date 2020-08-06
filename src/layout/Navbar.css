@@ -52,6 +52,10 @@
   font-size: 22px;
 }
 
+.signin {
+  margin-right: 40px !important;
+}
+
 .hidden {
   display: none;
 }

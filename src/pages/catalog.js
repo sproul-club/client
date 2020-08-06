@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './catalog.css';
 import GridComponent from './GridComponent';
+import Navbar from '../layout/Navbar';
+import Footer from '../layout/Footer';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { searchClubs } from '../actions/catalog';
@@ -72,18 +74,7 @@ const Catalog = ({ searchClubs }) => {
 
   return (
     <div className="App">
-      <div className="header">
-        <Link to="/" className="logo">
-          sproul.club
-        </Link>
-        <div className="header-right">
-          <Link to="/catalog">Catalog</Link>
-          <Link to="/signin">Club sign in</Link>
-          <Link to="/signup" className="active">
-            Add a club
-          </Link>
-        </div>
-      </div>
+      <Navbar />
       <div className="content">
         <div className="sidebar">
           <Accordion
@@ -173,6 +164,7 @@ const Catalog = ({ searchClubs }) => {
           <GridComponent classes={classes} />
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
