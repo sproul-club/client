@@ -7,9 +7,9 @@ import {
   withRouter,
 } from 'react-router-dom';
 
-import { Landing } from './pages/landing.js';
+import { Landing } from './pages/Landing.js';
 import Catalog from './pages/catalog.js';
-import { SignUp } from './pages/signup.js';
+import { SignUp } from './pages/SignUp.js';
 import Modal from './pages/Modal.js';
 import store from './store';
 import { Provider } from 'react-redux';

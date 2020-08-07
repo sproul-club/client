@@ -1,3 +1,4 @@
-export const TEST = 'TEST'
+export const SEARCH_CLUBS = 'SEARCH_CLUBS';
 
-export const SEARCH_CLUBS = 'SEARCH_CLUBS'
+export const USER_LOADED = 'USER_LOADED';
+export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';

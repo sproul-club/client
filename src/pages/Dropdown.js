@@ -23,20 +23,20 @@ const customStyles = {
   menu: (provided, state) => ({
     ...provided,
     margin: 8,
-    'margin-top': 2,
+    marginTop: 2,
     width: 310,
-    'font-size': '12px',
-    'font-family': 'montserrat, sans-serif',
-    'font-weight': 400,
-    'font-style': 'normal',
-    'text-align': 'left',
+    fontSize: '12px',
+    fontFamily: 'montserrat, sans-serif',
+    fontWeight: 400,
+    fontStyle: 'normal',
+    textAlign: 'left',
     color: '#4e4e4e',
   }),
   multiValueRemove: (provided, state) => ({
     ...provided,
     background: '#8ACEFD',
     color: 'white',
-    'border-radius': 10,
+    borderRadius: 10,
   }),
   singleValue: (provided, state) => ({
     ...provided,
@@ -48,7 +48,7 @@ const customStyles = {
   }),
 };
 
-const DropdownSelect = (props) => (
+const Dropdown = (props) => (
   <Select
     styles={customStyles}
     theme={(theme) => ({
@@ -69,4 +69,4 @@ const DropdownSelect = (props) => (
   />
 );
 
-export default DropdownSelect;
+export default Dropdown;

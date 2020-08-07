@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './catalog.css';
 import GridComponent from './GridComponent';
+import Navbar from '../layout/Navbar';
+import Footer from '../layout/Footer';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { searchClubs } from '../actions/catalog';
@@ -70,23 +72,15 @@ const Catalog = ({ searchClubs }) => {
     const tags = multiselectRef.current.getSelectedItems();
     const searchParams = { name, tags, appReq, status };
 
+    // Calls searchClubs redux action, which hits the backend API
+    // then updates the apps state in redux to be the response
+    // This data is then read in the GridComponent through mapStateToProps
     searchClubs(searchParams);
   };
 
   return (
     <div className="App">
-      <div className="header">
-        <Link to="/" className="logo">
-          sproul.club
-        </Link>
-        <div className="header-right">
-          <Link to="/catalog">Catalog</Link>
-          <Link to="/signin">Club sign in</Link>
-          <Link to="/signup" className="active">
-            Add a club
-          </Link>
-        </div>
-      </div>
+      <Navbar />
       <div className="content">
         <div className="sidebar">
           <Accordion
@@ -178,6 +172,7 @@ const Catalog = ({ searchClubs }) => {
           <GridComponent classes={classes} />
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

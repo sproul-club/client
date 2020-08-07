@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import DropdownSearch from "./dropdownsearch2.js";
+import Dropdown from "./Dropdown.js";
+import error from './assets/error.svg';
 
 const MultiStepForm = () => {
     var tagOptions = [{label:"ASUC", value: 0},
@@ -37,6 +38,9 @@ const MultiStepForm = () => {
     const [tags, setTags] = useState([]);
     const [appReq, setAppReq] = useState({});
     const [recruiting, setRecruit] = useState({});
+    const [conInvalid, setConInvalid] = useState('userInput');
+    const [emailInvalid, setEmailInvalid] = useState('userInput');
+    const [conError, setConError] = useState('conErrorNone');
 
     const submitValue = () => {
         const frmdetails = {
@@ -48,7 +52,6 @@ const MultiStepForm = () => {
             'App Reqirement': appReq,
             'Recruiting': recruiting,
         }
-        console.log(frmdetails);
 
         const tagsList = [];
         for (var i=0; i<tags.length; i++) {
@@ -57,14 +60,14 @@ const MultiStepForm = () => {
 
         setStep(currStep + 1);
 
-        alert(`Here's what you submitted: \n 
-           Club name: ${clubName} \n
-           Email: ${email} \n 
-           Password: ${pw} \n
-           Password confirmation: ${con} \n
-           Tags: ${tagsList} \n
-           App required: ${appReq.value} \n
-           Membership status: ${recruiting.value}`);
+        // alert(`Here's what you submitted: \n 
+        //    Club name: ${clubName} \n
+        //    Email: ${email} \n 
+        //    Password: ${pw} \n
+        //    Password confirmation: ${con} \n
+        //    Tags: ${tagsList} \n
+        //    App required: ${appReq.value} \n
+        //    Membership status: ${recruiting.value}`);
     }
 
     const _prev = () => {
@@ -72,18 +75,31 @@ const MultiStepForm = () => {
     }
 
     const _next = () => {
-        if (pw === con) {
+        if (pw === con /*&& pw != ''*/) {
             setStep(currStep + 1);
         } else {
-            alert('Passwords do not match!')
+            setConInvalid("userInputInvalid");
+            setConError("conError");
+            // alert('Passwords do not match!');
         }
-
     }
 
-    // const handleChange = (value) => {
-    //     console.log(value);
-    //     console.log('Hi');
-    // }
+    const conChange = (event) => {
+        setConfirm(event);
+        if (conInvalid==="userInputInvalid") {
+            setConInvalid("userInput")
+        }
+        if (conError==="conError") {
+            setConError("conErrorNone")
+        }
+    }
+
+    const emailOnChange = (event) => {
+        setEmail(event);
+        if (emailInvalid==="userInputInvalid") {
+            setConInvalid("userInput")
+        }
+    }
 
     return(
         <div className="inputs">
@@ -91,15 +107,21 @@ const MultiStepForm = () => {
                 currStep={currStep}
                 setStep={setStep}
                 setClubName={setClubName}
-                setEmail={setEmail}
+                setEmail={emailOnChange}
                 setPassword={setPassword}
-                setConfirm={setConfirm}
+                setConfirm={conChange}
+                setConInvalid={setConInvalid}
+                setEmailInvalid={setEmailInvalid}
                 _prev={_prev}
                 _next={_next}
                 clubName={clubName}
                 pw={pw}
                 email={email}
-                con={con}/>
+                con={con}
+                conInvalid={conInvalid}
+                emailInvalid={emailInvalid}
+                conError={conError}
+                />
             <StepTwo
                 currStep={currStep}
                 submitValue={submitValue}
@@ -125,8 +147,14 @@ const StepOne = (props) => {
     if (props.currStep !== 1) {
         return null;
     }
+    let conForm = props.conInvalid
+    let conError = props.conError
     return (
         <div className="formGroup">
+            <div className={conError}>
+                <img src={error} className="errorIcon"/>
+                <p>passwords do not match</p>
+            </div>
             <div className="formHeader">
                 <div className="imageContainer">
                 </div>
@@ -154,12 +182,16 @@ const StepOne = (props) => {
             />
             <input
                 type="password"
-                className="userInput"
+                className={conForm}
                 placeholder="Confirm password"
                 value={props.con}
                 onChange={e => props.setConfirm(e.target.value)}
             />
             <div className="buttonWrapper">
+                <div className="help">
+                    <p>Invalid email?</p>
+                    <a href="/">Click here</a>
+                </div>
                 <button onClick={props._next} className="nextButton">Next →</button>
             </div>
         </div>
@@ -178,19 +210,19 @@ const StepTwo = (props) => {
                 <h2>Register your club</h2>
             </div>
             <div className="drops">
-                <DropdownSearch
+                <Dropdown
                 options={props.recruitOptions}
                 binary={false}
                 search={false}
                 placeholder='Select recruitment status'
                 set={props.setRecruit}/>
-                <DropdownSearch
+                <Dropdown
                 options={props.appOptions}
                 binary={false}
                 search={false}
                 placeholder='Select application requirement'
                 set={props.setAppReq}/>
-                <DropdownSearch
+                <Dropdown
                 options={props.tagOptions}
                 multi={true}
                 search={true}
@@ -211,12 +243,16 @@ const StepThree = (props) => {
         return null;
     }
     return (
+    <div className="formGroup">
         <div className="complete">
+            <div className="imageContainer">
+                </div>
             <h3>You're all set!</h3>
-            <h3>Please check your organization's email for a confirmation link</h3>
+            <h3>Please check your organization's email for a confirmation link.</h3>
             <h2>Didn't receive an email?</h2>
-            <a href="/">Click here</a>
+            <a href="/signup">Click here</a>
         </div>
+    </div>
     )
 }
 

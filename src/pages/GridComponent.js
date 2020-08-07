@@ -47,6 +47,7 @@ function GridComponent(props) {
   );
 }
 
+// This function gets a piece of the app state that is stored in redux store
 const mapStateToProps = (state) => ({
   clubs: state.catalog.clubs,
 });
