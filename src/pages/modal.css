@@ -13,7 +13,7 @@
   
   .modal {
     width: 80%;
-    max-height: 80%;
+    height: 80%;
     background-color: white;
     position: fixed;
     top: 10%;
