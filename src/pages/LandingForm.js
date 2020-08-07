@@ -26,7 +26,7 @@ const LandingForm = () => {
         // do i do https or http
         axios({
             method: 'POST',
-            url: 'http://flask-env.eba-pqksjc9b.us-west-1.elasticbeanstalk.com/api/future-sign-up',
+            url: 'https://sc-backend-v0.herokuapp.com/api/future-sign-up',
             data: formDetails,
             headers: { 'Content-Type': 'application/json' },
         })
