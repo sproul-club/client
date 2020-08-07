@@ -20,7 +20,7 @@ const LandingForm = () => {
 
         axios({
             method: 'POST',
-            url: 'https://sc-backend-v0.herokuapp.com/api/future-sign-up',
+            url: 'https://c19a3d7d6801.ngrok.io',
             data: formDetails,
             headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': "*" },
         })
