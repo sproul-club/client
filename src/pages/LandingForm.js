@@ -17,19 +17,12 @@ const LandingForm = () => {
             'poc-name' : pocName,
             'poc-email' : pocEmail
         };
-        console.log(formDetails);
 
-        // e.preventDefault(); idk what this is do i need it
-
-        // i'm sorry i'm only familiar with fetch cries (':
-        // should i do /api/ or no
-        // do i do https or http
         axios({
             method: 'POST',
             url: 'https://sc-backend-v0.herokuapp.com/api/future-sign-up',
             data: formDetails,
-            "Access-Control-Allow-Origin": "*",
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': "*" },
         })
         .then(function (response) {
             //handle success
