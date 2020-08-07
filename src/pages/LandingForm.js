@@ -28,6 +28,7 @@ const LandingForm = () => {
             method: 'POST',
             url: 'https://sc-backend-v0.herokuapp.com/api/future-sign-up',
             data: formDetails,
+            "Access-Control-Allow-Origin": "*",
             headers: { 'Content-Type': 'application/json' },
         })
         .then(function (response) {
