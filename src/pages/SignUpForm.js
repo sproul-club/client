@@ -212,20 +212,20 @@ const StepTwo = (props) => {
             <div className="drops">
                 <Dropdown
                 options={props.recruitOptions}
-                binary={false}
+                multi={false}
                 search={false}
                 placeholder='Select recruitment status'
                 set={props.setRecruit}/>
                 <Dropdown
                 options={props.appOptions}
-                binary={false}
+                multi={false}
                 search={false}
                 placeholder='Select application requirement'
                 set={props.setAppReq}/>
                 <Dropdown
                 options={props.tagOptions}
                 multi={true}
-                search={true}
+                search={false}
                 placeholder='Add up to 3 tags'
                 set={props.setTags}/>
             </div>
@@ -246,7 +246,7 @@ const StepThree = (props) => {
     <div className="formGroup">
         <div className="complete">
             <div className="imageContainer">
-                </div>
+            </div>
             <h3>You're all set!</h3>
             <h3>Please check your organization's email for a confirmation link.</h3>
             <h2>Didn't receive an email?</h2>
