@@ -106,7 +106,13 @@
 
 .content {
   min-height: calc(100vh - 176px);
+  position: relative;
+  widows: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
+
 
 /* -------------------------------------------------- */
 /* ---------------- Animation part ------------------ */
