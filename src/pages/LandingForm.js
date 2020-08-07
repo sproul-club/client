@@ -17,6 +17,7 @@ const LandingForm = () => {
             'poc-name' : pocName,
             'poc-email' : pocEmail
         };
+        console.log(formDetails);
 
         // e.preventDefault(); idk what this is do i need it
 
@@ -25,7 +26,7 @@ const LandingForm = () => {
         // do i do https or http
         axios({
             method: 'POST',
-            url: 'https://flask-env.eba-pqksjc9b.us-west-1.elasticbeanstalk.com/api/future-sign-up',
+            url: 'http://flask-env.eba-pqksjc9b.us-west-1.elasticbeanstalk.com/api/future-sign-up',
             data: formDetails,
             headers: { 'Content-Type': 'application/json' },
         })
