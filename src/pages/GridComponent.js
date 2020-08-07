@@ -21,6 +21,10 @@ function GridComponent(props) {
                 pathname: "/club/" + club.name,
                 state: { modal: true}
               }}
+              style={{
+                textDecorationLine: 'None',
+                color: 'Black'
+              }}
             >
           <CardMedia
             style={{ height: 0, paddingTop: '56%' }}

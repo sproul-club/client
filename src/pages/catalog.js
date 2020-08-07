@@ -6,7 +6,7 @@ import Footer from '../layout/Footer';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { searchClubs } from '../actions/catalog';
-import DropdownSearch from "./dropdownsearch2.js";
+import DropdownSearch from "./Dropdown.js";
 
 // import ethicalheader from './assets/ethicalheader.png';
 
