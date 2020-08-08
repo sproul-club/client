@@ -9,12 +9,23 @@ import {
 } from '@material-ui/core';
 
 import { connect } from 'react-redux';
+import { withRouter, Link } from "react-router-dom";
 
 function GridComponent(props) {
   const GridList = props.clubs.map((club, i) => (
     <Grid item xs={12} sm={6} md={4} key={i}>
       <Card className={props.classes.root}>
         <CardActionArea>
+            <Link
+              to={{
+                pathname: "/club/" + club.name,
+                state: { modal: true}
+              }}
+              style={{
+                textDecorationLine: 'None',
+                color: 'Black'
+              }}
+            >
           <CardMedia
             style={{ height: 0, paddingTop: '56%' }}
             className={props.classes.media}
@@ -28,6 +39,7 @@ function GridComponent(props) {
               {club.tags.map((tag) => tag)}
             </Typography>
           </CardContent>
+          </Link>
         </CardActionArea>
       </Card>
     </Grid>
@@ -44,4 +56,4 @@ const mapStateToProps = (state) => ({
   clubs: state.catalog.clubs,
 });
 
-export default connect(mapStateToProps)(GridComponent);
+export default withRouter(connect(mapStateToProps)(GridComponent));

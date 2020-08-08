@@ -35,4 +35,22 @@ export const catalogData = {
     req_app: false,
     status: true,
   },
+  5: {
+    name: 'DiversaTech',
+    tags: ['Technology', 'Consulting'],
+    req_app: false,
+    status: true,
+  },
+  6: {
+    name: 'Society of Women Engineers',
+    tags: ['Social', 'Engineering'],
+    req_app: false,
+    status: true,
+  },
+  7: {
+    name: 'Blueprint',
+    tags: ['Technology', 'Computer Science', 'Consulting'],
+    req_app: false,
+    status: true,
+  },
 };
