@@ -32,9 +32,8 @@ const Modal = ({ match, history }) => {
 
       <div className="modal">
         <span class="modal-close" onClick={back}>&times;</span>
-        <h1>{match.params.id}</h1>
+        {/* <h1>{match.params.id}</h1> */}
         <ClubPage data={data} />
-        {/* <p>content goes here</p> */}
       </div>
 
       
