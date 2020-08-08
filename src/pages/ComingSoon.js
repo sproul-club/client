@@ -21,14 +21,14 @@ const ComingSoon = () => {
           </div>
         </div>
         <div className="dotContainer">
-          <img src={ball1} className="ball1" />
-          <img src={ball2} className="ball2" />
-          <img src={ball3} className="ball3" />
-          <img src={ball4} className="ball4" />
+          <img src={ball1} className="ball1" alt="dot"/>
+          <img src={ball2} className="ball2" alt="dot"/>
+          <img src={ball3} className="ball3" alt="dot"/>
+          <img src={ball4} className="ball4" alt="dot"/>
         </div>
         <div className="blobContainer">
-          <img src={blob2} className="blob2" />
-          <img src={blob1} className="blob1" />
+          <img src={blob2} className="blob2" alt="blob"/>
+          <img src={blob1} className="blob1" alt="blob"/>
         </div>
         <Footer />
       </div>

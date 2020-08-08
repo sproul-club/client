@@ -3,56 +3,6 @@
   flex-direction: column;
   width: 100%;
   overflow-x: hidden;
-  /*background-image: url("./assets/background.svg");*/
-/*  background-repeat: no-repeat;
-  background-size: cover;
-*/}
-
-.comingsoon .header {
-  background-color: rgba(255, 255, 255, 0.6);
-  font-family: montserrat, sans-serif;
-  font-weight: 700;
-  font-style: normal;
-  overflow: hidden;
-  padding-top: 20px;
-  padding-left: 30px;
-  padding-bottom: 20px;
-  max-width: 100vw;
-  border-bottom: 1px solid #c4c4c4a9;
-}
-
-.comingsoon .header a {
-  float: left;
-  color: #2B2B2B;
-  text-align: center;
-  padding: 12px;
-  text-decoration: none;
-  font-size: 14px;
-  line-height: 18px;
-  border-radius: 6px;
-  font-weight: bold;
-  margin-right: 25px;
-  width:120px;
-}
-
-.comingsoon .header a.logo {
-  font-size: 20px;
-  font-weight: bold;
-  color: #2B2B2B;
-}
-
-.comingsoon .header a:hover {
-  color: #444444;
-}
-
-.comingsoon .header a.active {
-  background-color: #54A0F1;
-  color: white;
-}
-
-.comingsoon .header-right {
-  float: right;
-  margin-right: 20px;
 }
 
 .comingsoon .text {
@@ -63,7 +13,7 @@
   position: relative;
   box-sizing: border-box;
   widows: 100%;
-  height: 80vh;
+  height: 75vh;
   /*min-height: 87vh;*/
   overflow: hidden;
 }
@@ -75,6 +25,10 @@
   font-family: montserrat, sans-serif;
   font-weight: 700;
   line-height: 15px;
+}
+
+.comingsoon .text h3 b {
+  font-style: bold;
 }
 
 .comingsoon .text p {
@@ -137,7 +91,7 @@
 
 .comingsoon .dotContainer .ball4 {
   left: 200px;
-  top: 80%;
+  top: 83%;
 }
 
 .comingsoon .blobContainer {
