@@ -1,5 +1,7 @@
 import React from 'react';
 import "./ComingSoon.css";
+import Navbar from '../layout/Navbar';
+import Footer from '../layout/Footer';
 import ball1 from './assets/ball1cropped.svg';
 import ball2 from './assets/ball2cropped.svg';
 import ball3 from './assets/ball3cropped.svg';
@@ -10,14 +12,7 @@ import blob2 from './assets/blobblue.png';
 const ComingSoon = () => {
   return (
       <div className="comingsoon">
-        <div className="header">
-          <a href="/" class="logo">sproul.club</a>
-          <div className="header-right">
-            <a href="/">Discover</a>
-            <a href="/">Club sign in</a>
-            <a className="active" href="/">Add a club</a>
-          </div>
-        </div>
+        <Navbar />
         <div className="text">
           <h3>We are <b>almost</b> there</h3>
           <p>Stay tuned for something amazing.</p>
@@ -35,6 +30,7 @@ const ComingSoon = () => {
           <img src={blob2} className="blob2" />
           <img src={blob1} className="blob1" />
         </div>
+        <Footer />
       </div>
   );
 };
