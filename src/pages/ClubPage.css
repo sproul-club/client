@@ -224,19 +224,20 @@ p {
 
 /*====================================*/
 /*ACCORDION TAGS*/
-.accordion {
+.accordion-club {
     /* border: 1px solid rgba(0, 0, 0, 0.1); */
     width: 100%;
     text-align: left;
     margin-left: 15px;
   }
   
-  .accordion__button {
+  .accordion__button-club {
     /* background-color: #f4f4f4; */
     color: #444;
     cursor: pointer;
     padding-top: 0.5vw;
-    padding-left: 3vw;
+    padding-left: 1vw;
+    left: 3%;
     padding-bottom: 1vw;
     width: 95%;
     text-align: left;
@@ -254,11 +255,11 @@ p {
   .event-flex-left {
       font-weight: bold;
   }
-  .accordion__button:focus {
+  .accordion__button-club:focus {
     outline: 0;
   }
   
-  .accordion__button:before {
+  .accordion__button-club:before {
     display: inline-block;
     content: '';
     height: 0.5vw;
@@ -269,8 +270,8 @@ p {
     transform: rotate(-135deg);
   }
   
-  .accordion__button[aria-expanded='true']::before,
-  .accordion__button[aria-selected='true']::before {
+  .accordion__button-club[aria-expanded='true']::before,
+  .accordion__button-club[aria-selected='true']::before {
     transform: rotate(45deg);
   }
   
@@ -278,14 +279,14 @@ p {
     display: none;
   }
   
-  .accordion__panel {
+  .accordion__panel-event {
     animation: fadein 0.35s ease-in;
     text-align: left;
     border: none;
-    width: 45.5vw;
+    width: 80%;
     font-family: roboto, sans-serif;
     font-size: 1.2vw;
-    margin-left: 4.3vw;
+    margin-left: 2vw;
     padding: 1vw 1vw 1vw 1vw;
     margin-top: 0.5vw;
     margin-bottom: 1vw;

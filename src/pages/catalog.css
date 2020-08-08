@@ -31,6 +31,16 @@
   line-height: 14px;
 }
 
+
+.tag {
+  margin-left: 0.5vw;
+  background-color: #E2E2E2;
+  border-radius: 6px;
+  padding: 0.2vw 1vw 0.2vw 1vw;
+  font-family: roboto, sans-serif;
+  font-size: 1.2vw;
+}
+
 .accordion {
   /* border: 1px solid rgba(0, 0, 0, 0.1); */
   width: 100%;
@@ -51,6 +61,7 @@
 .search-button:hover {
   background: #9fd5fb;
 }
+
 
 .accordion-group {
   margin-bottom: 15px;

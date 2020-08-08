@@ -12,6 +12,9 @@ import { connect } from 'react-redux';
 import { withRouter, Link } from "react-router-dom";
 
 function GridComponent(props) {
+  const tagList = props.clubs.tags.map((tag) =>
+        <div className="tag"> {tag} </div>
+    )
   const GridList = props.clubs.map((club, i) => (
     <Grid item xs={12} sm={6} md={4} key={i}>
       <Card className={props.classes.root}>
@@ -36,7 +39,10 @@ function GridComponent(props) {
               {club.name}
             </Typography>
             <Typography variant="body2" color="textSecondary" component="p">
-              {club.tags.map((tag) => tag)}
+        <div className="tag"> {club.tags.map((tag) => tag)} </div>
+        <div className="tags-flex">
+                            {tagList}
+                        </div>
             </Typography>
           </CardContent>
           </Link>
