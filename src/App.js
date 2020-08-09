@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom';
 
 import { Landing } from './pages/Landing.js';
+import { ComingSoon } from './pages/ComingSoon.js';
 import Catalog from './pages/catalog.js';
 import { SignUp } from './pages/SignUp.js';
 import Modal from './pages/Modal.js';
@@ -35,6 +36,7 @@ class App extends Component {
         <Router>
           <Switch>
             <Route exact path="/" component={Landing} />
+            <Route exact path="/comingsoon" component={ComingSoon} />
             <Route path="/catalog" component={Catalog} />
             <Route exact path="/signup" component={SignUp} />
             <Route exact path="/club/:id" component={Catalog}/>
