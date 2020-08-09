@@ -1,4 +1,10 @@
-import { USER_LOADED, REGISTER_SUCCESS, CLEAR_PROFILE, LOGOUT } from './types';
+import {
+  USER_LOADED,
+  REGISTER_SUCCESS,
+  LOGIN_SUCCESS,
+  CLEAR_PROFILE,
+  LOGOUT,
+} from './types';
 import setAuthToken from '../utils/setAuthToken';
 
 // TODO:
@@ -70,7 +76,7 @@ export const login = ({ email, password }) => async (dispatch) => {
 
     // Calls redux reducer that puts the token into local storage
     // and token and isAuthenticated=true in app state
-    dispatch({ type: REGISTER_SUCCESS, payload: res.data });
+    dispatch({ type: LOGIN_SUCCESS, payload: res.data });
     // Load user into app state
     dispatch(loadUser());
   } catch (err) {

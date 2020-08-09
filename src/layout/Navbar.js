@@ -8,9 +8,11 @@ import useOnClickOutside from '../utils/useOnClickOutside';
 
 const Navbar = ({ isAuthenticated }) => {
   const [navbarVis, setNavbarVis] = useState(true);
+  const [dropdownVis, setDropownVis] = useState(false);
 
   const hideNavbar = () => setNavbarVis(false);
   const toggleNavbar = () => setNavbarVis((navbarVis) => !navbarVis);
+  const toggleDropdown = () => setDropownVis((dropdownVis) => !dropdownVis);
 
   const ref = useRef();
 
@@ -23,7 +25,7 @@ const Navbar = ({ isAuthenticated }) => {
 
   const loggedOutLinks = (
     <>
-      <Link href="/catalog">Discover</Link>
+      <Link href="/catalog" className='nav-link'>Discover</Link>
       <Link className="signin" to="/signin">
         Club sign in
       </Link>
@@ -35,11 +37,26 @@ const Navbar = ({ isAuthenticated }) => {
 
   const loggedInLinks = (
     <>
-      <Link href="/catalog">Discover</Link>
-      <Link className="active" href="/signup">
-        <div className="profile-dropdow"></div>
-        organizationname@berkeley.edu
-      </Link>
+      <div
+        className="org-menu"
+        href="/signup"
+        // onMouseEnter={() => setDropownVis(true)}
+        // onMouseLeave={() => setDropownVis(false)}
+      >
+        <div className="org-email" onClick={toggleDropdown}>
+          organizationname@berkeley.edu
+          <i style={{ marginLeft: '5px' }} className="fas fa-caret-down"></i>
+        </div>
+        {dropdownVis && (
+          <div className="dropdown">
+            <div className="option">Edit Club Page</div>
+            <div className="option" id="mid-option">
+              Account Security
+            </div>
+            <div className="option">Log Out</div>
+          </div>
+        )}
+      </div>
     </>
   );
 
@@ -50,7 +67,7 @@ const Navbar = ({ isAuthenticated }) => {
         <Link to="/" className="logo">
           sproul.club
         </Link>
-        <div className="hamburger" onClick={() => toggleNavbar()}>
+        <div className="hamburger" onClick={toggleNavbar}>
           <i className="fas fa-bars"></i>
         </div>
       </div>
@@ -59,7 +76,7 @@ const Navbar = ({ isAuthenticated }) => {
         <Link to="/" className="logo">
           sproul.club
         </Link>
-        <div className="hamburger" onClick={() => toggleNavbar()}>
+        <div className="hamburger" onClick={toggleNavbar}>
           <i className="fas fa-bars"></i>
         </div>
         <div className="header-right">
