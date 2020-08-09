@@ -46,7 +46,7 @@
 
 .header-right {
   float: right;
-  margin-right: 20px;
+  margin-right: 10px;
 }
 
 .hamburger {
@@ -121,19 +121,22 @@
 }
 
 @media screen and (max-width: 850px) {
+  .header-right {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 0px;
+    align-items: center;
+    margin-top: 15px;
+  }
   .hamburger {
     display: unset;
-  }
-  .header-right {
-    margin-top: 15px;
-    margin-left: 70px;
-    text-align: center;
-    flex-direction: column;
   }
   .header-right a {
     margin: 10px;
   }
   .signin {
     margin-top: 0px !important;
+    margin: 0px !important;
   }
 }

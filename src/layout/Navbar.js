@@ -24,13 +24,13 @@ const Navbar = ({ isAuthenticated, logout, history }) => {
 
   const loggedOutLinks = (
     <>
-      <Link href="/catalog" className="nav-link">
+      <Link href="/catalog" to="/catalog">
         Discover
       </Link>
       <Link className="signin" to="/signin">
         Club sign in
       </Link>
-      <Link className="active" href="/signup">
+      <Link className="active" to="/signup">
         Add a club
       </Link>
     </>
