@@ -1,0 +1,51 @@
+.admin-page {
+  display: flex;
+  flex-direction: row;
+}
+
+.admin-sidebar {
+  height: 60vh;
+  display: flex;
+  min-width: 250px;
+  max-width: 250px;
+  padding-top: 20px;
+  flex-direction: column;
+  box-shadow: 1px 0.5px 0px rgba(0, 0, 0, 0.07),
+    1px 0.5px 0px rgba(0, 0, 0, 0.15);
+}
+
+.admin-sidebar a {
+  color: #aaa;
+  font-size: 20px;
+  text-decoration: none;
+  padding: 25px 40px;
+  font-weight: bold;
+}
+.admin-sidebar a:hover {
+  color: #54a0f1;
+}
+
+.admin-sidebar .selected {
+  color: #54a0f1;
+}
+
+.admin-content {
+  padding: 20px 50px;
+  max-width: 900px;
+}
+
+.admin-text {
+  font-size: 18px;
+}
+
+.add-resource {
+  padding: 10px 20px;
+}
+.add-resource .input {
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+}
+.input .input-label {
+  width: 100px;
+}
