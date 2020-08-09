@@ -24,12 +24,10 @@ const Landing = () => {
       <div className="content">
         <div className="text">
           <h3>Find your community at Berkeley - now virtually!</h3>
-          <p>
-            sproul.club simplifies the experience of discovering student
-            organizations, clubs and communities on campus. Built by students,
-            for students.
-          </p>
-          <a href="#interestform">Sign up for early access</a>
+            <p>sproul.club simplifies the experience of discovering 
+              student organizations, clubs and communities
+              on campus. Built by students, for students.</p>
+            <a href="#interestform">Sign up for early access</a>
         </div>
         <div className="imageContainer">
           <img src={sproul} className="sproul" alt="sproul" />

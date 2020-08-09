@@ -303,7 +303,7 @@
     float: right;
     padding-top: 20px;
     margin-right: 0px;
-    margin-top: 60px;
+    margin-top: 50px;
     width: 368px;
     height: 319px;
     margin-bottom: 50px;
@@ -513,16 +513,16 @@
   .screen1 {
     animation: screens infinite 4s linear;
   }
-  .ball3 {
+  .landing .ball3 {
     animation: balls infinite 4s linear;
   }
-  .ball2 {
+  .landing .ball2 {
     animation: balls infinite 3.6s linear;
   }
-  .ball1 {
+  .landing .ball1 {
     animation: balls infinite 3.3s linear;
   }
-  .ball4 {
+  .landing .ball4 {
     animation: balls infinite 3s linear;
   }
 }

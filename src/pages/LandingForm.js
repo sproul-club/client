@@ -20,20 +20,21 @@ const LandingForm = () => {
 
         axios({
             method: 'POST',
-            url: 'https://c19a3d7d6801.ngrok.io/api/future-sign-up',
+            url: 'https://sc-backend-v0.herokuapp.com/api/future-sign-up',
             data: formDetails,
-            headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': "*" },
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+            },
         })
         .then(function (response) {
             //handle success
-            console.log(response);
+            setStep(currStep + 1);
         })
-        .catch(function (response) {
+        .catch(function (error) {
             //handle error
-            console.log(response);
+            alert(error.response.data.reason);
         });
-
-        setStep(currStep + 1);
     }
 
     return(
