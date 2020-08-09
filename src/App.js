@@ -36,9 +36,9 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Landing} />
             <Route exact path="/comingsoon" component={ComingSoon} />
-            <Route path='/signin' component={ComingSoon}/>
-            <Route path="/catalog" component={ComingSoon} />
-            <Route exact path="/signup" component={ComingSoon} />
+            <Route path="/signin" component={ComingSoon} />
+            <Route path="/catalog" component={Catalog} />
+            <Route exact path="/signup" component={SignUp} />
             <Route exact path="/club/:id" component={ComingSoon} />
             <Route>{'404'}</Route>
           </Switch>

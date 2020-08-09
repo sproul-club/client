@@ -7,7 +7,7 @@ import './Navbar.css';
 import useOnClickOutside from '../utils/useOnClickOutside';
 
 const Navbar = ({ isAuthenticated, logout, history }) => {
-  const [navbarVis, setNavbarVis] = useState(true);
+  const [navbarVis, setNavbarVis] = useState(false);
   const [dropdownVis, setDropownVis] = useState(false);
 
   const toggleNavbar = () => setNavbarVis((navbarVis) => !navbarVis);
@@ -70,7 +70,7 @@ const Navbar = ({ isAuthenticated, logout, history }) => {
         <div className="hamburger" onClick={toggleNavbar}>
           <i className="fas fa-bars"></i>
         </div>
-        {navbarVis && (
+        {(navbarVis || window.innerWidth >= 800) && (
           <div className="header-right">
             {isAuthenticated ? loggedInLinks : loggedOutLinks}
           </div>
