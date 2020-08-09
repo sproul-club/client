@@ -64,30 +64,20 @@ const Navbar = ({ isAuthenticated, logout, history }) => {
   return (
     <>
       {/* This is the mobile header without  */}
-      {navbarVis && window.innerWidth <= 800 ? (
-        <div className="header" ref={ref}>
-          <Link to="/" className="logo">
-            sproul.club
-          </Link>
-          <div className="hamburger" onClick={toggleNavbar}>
-            <i className="fas fa-bars"></i>
-          </div>
+
+      <div className="header" ref={ref}>
+        <Link to="/" className="logo">
+          sproul.club
+        </Link>
+        <div className="hamburger" onClick={toggleNavbar}>
+          <i className="fas fa-bars"></i>
         </div>
-      ) : (
-        <div className="header" ref={ref}>
-          <Link to="/" className="logo">
-            sproul.club
-          </Link>
-          <div className="hamburger" onClick={toggleNavbar}>
-            <i className="fas fa-bars"></i>
-          </div>
+        {navbarVis && (
           <div className="header-right">
             {isAuthenticated ? loggedInLinks : loggedOutLinks}
           </div>
-        </div>
-      )}
-
-      {/*  This the main header, shown when dropdown is open as well */}
+        )}
+      </div>
     </>
   );
 };
