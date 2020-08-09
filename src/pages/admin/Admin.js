@@ -19,7 +19,8 @@ const Admin = () => {
           <Link
             to="/admin/profile"
             className={
-              window.location.pathname === '/admin/profile'
+              window.location.pathname === '/admin/profile' ||
+              window.location.pathname === '/admin'
                 ? 'selected page-link'
                 : 'page-link'
             }
