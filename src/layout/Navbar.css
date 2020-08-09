@@ -65,7 +65,7 @@
 }
 
 .org-menu {
-  margin-top: 5px;
+  margin-top: 3px;
   padding: 5px 10px;
   color: #333;
   cursor: pointer;
@@ -99,6 +99,7 @@
   padding: 5px;
   border-radius: 5px;
   border: 0.5px solid rgb(190, 190, 190);
+  z-index: 999;
 }
 
 .option {
@@ -107,7 +108,6 @@
   height: 30px;
   line-height: 30px;
   padding: 5px 10px;
-  z-index: 999;
 }
 
 .option:hover {

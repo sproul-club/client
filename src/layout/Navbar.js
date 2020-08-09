@@ -1,16 +1,15 @@
 import React, { useState, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout } from '../actions/auth';
 
 import './Navbar.css';
 import useOnClickOutside from '../utils/useOnClickOutside';
 
-const Navbar = ({ isAuthenticated }) => {
+const Navbar = ({ isAuthenticated, logout, history }) => {
   const [navbarVis, setNavbarVis] = useState(true);
   const [dropdownVis, setDropownVis] = useState(false);
 
-  const hideNavbar = () => setNavbarVis(false);
   const toggleNavbar = () => setNavbarVis((navbarVis) => !navbarVis);
   const toggleDropdown = () => setDropownVis((dropdownVis) => !dropdownVis);
 
@@ -19,13 +18,15 @@ const Navbar = ({ isAuthenticated }) => {
   // If it is on mobile, and the navbar is visible, if click outside, hide sidebar
   useOnClickOutside(ref, () => {
     if (window.innerWidth <= 800 && navbarVis === true) {
-      hideNavbar();
+      setNavbarVis(false);
     }
   });
 
   const loggedOutLinks = (
     <>
-      <Link href="/catalog" className='nav-link'>Discover</Link>
+      <Link href="/catalog" className="nav-link">
+        Discover
+      </Link>
       <Link className="signin" to="/signin">
         Club sign in
       </Link>
@@ -53,7 +54,9 @@ const Navbar = ({ isAuthenticated }) => {
             <div className="option" id="mid-option">
               Account Security
             </div>
-            <div className="option">Log Out</div>
+            <div className="option" onClick={() => logout(history)}>
+              Log Out
+            </div>
           </div>
         )}
       </div>
@@ -91,4 +94,4 @@ const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
 });
 
-export default connect(mapStateToProps, { logout })(Navbar);
+export default connect(mapStateToProps, { logout })(withRouter(Navbar));

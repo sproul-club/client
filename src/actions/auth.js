@@ -89,7 +89,7 @@ export const login = ({ email, password }) => async (dispatch) => {
 export const logout = (history) => (dispatch) => {
   // this will push back to dashboard
   // will need to connect logout component with import { withRouter } from 'react-router'
-  history.push('/dashboard');
+  history.push('/');
   dispatch({ type: CLEAR_PROFILE });
   dispatch({ type: LOGOUT });
 };
