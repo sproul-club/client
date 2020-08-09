@@ -37,11 +37,11 @@ const Navbar = () => {
           <i className="fas fa-bars"></i>
         </div>
         <div className="header-right">
-          <a href="/">Discover</a>
-          <a className="signin" href="/">
+          <a href="/comingsoon">Discover</a>
+          <a className="signin" href="/comingsoon">
             Club sign in
           </a>
-          <a className="active" href="/">
+          <a className="active" href="/comingsoon">
             Add a club
           </a>
         </div>
