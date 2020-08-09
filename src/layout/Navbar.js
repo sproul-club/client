@@ -1,8 +1,12 @@
 import React, { useState, useRef } from 'react';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { logout } from '../actions/auth';
+
 import './Navbar.css';
 import useOnClickOutside from '../utils/useOnClickOutside';
 
-const Navbar = () => {
+const Navbar = ({ isAuthenticated }) => {
   const [navbarVis, setNavbarVis] = useState(true);
 
   const hideNavbar = () => setNavbarVis(false);
@@ -17,37 +21,57 @@ const Navbar = () => {
     }
   });
 
+  const loggedOutLinks = (
+    <>
+      <Link href="/catalog">Discover</Link>
+      <Link className="signin" to="/signin">
+        Club sign in
+      </Link>
+      <Link className="active" href="/signup">
+        Add a club
+      </Link>
+    </>
+  );
+
+  const loggedInLinks = (
+    <>
+      <Link href="/catalog">Discover</Link>
+      <Link className="active" href="/signup">
+        <div className="profile-dropdow"></div>
+        organizationname@berkeley.edu
+      </Link>
+    </>
+  );
+
   return (
     <>
       {/* This is the mobile header without  */}
       <div className={navbarVis ? 'header hidden' : 'header'} ref={ref}>
-        <a href="/" className="logo">
+        <Link to="/" className="logo">
           sproul.club
-        </a>
+        </Link>
         <div className="hamburger" onClick={() => toggleNavbar()}>
           <i className="fas fa-bars"></i>
         </div>
       </div>
       {/*  This the main header, shown when dropdown is open as well */}
       <div className={navbarVis ? 'header' : 'header hidden'} ref={ref}>
-        <a href="/" className="logo">
+        <Link to="/" className="logo">
           sproul.club
-        </a>
+        </Link>
         <div className="hamburger" onClick={() => toggleNavbar()}>
           <i className="fas fa-bars"></i>
         </div>
         <div className="header-right">
-          <a href="/">Discover</a>
-          <a className="signin" href="/">
-            Club sign in
-          </a>
-          <a className="active" href="/">
-            Add a club
-          </a>
+          {isAuthenticated ? loggedInLinks : loggedOutLinks}
         </div>
       </div>
     </>
   );
 };
 
-export default Navbar;
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+});
+
+export default connect(mapStateToProps, { logout })(Navbar);
