@@ -115,7 +115,7 @@
   cursor: pointer;
 }
 
-#mid-option {
+.mid-option {
   border-top: none;
   border-bottom: none;
 }
