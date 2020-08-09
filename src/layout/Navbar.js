@@ -63,8 +63,6 @@ const Navbar = ({ isAuthenticated, logout, history }) => {
 
   return (
     <>
-      {/* This is the mobile header without  */}
-
       <div className="header" ref={ref}>
         <Link to="/" className="logo">
           sproul.club
