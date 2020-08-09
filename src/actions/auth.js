@@ -58,15 +58,18 @@ export const register = ({ name, email, password }) => async (dispatch) => {
 
 // TODO:
 // Login User
-export const login = ({ email, password }) => async (dispatch) => {
+export const login = (email: null, password: null, history) => async (
+  dispatch
+) => {
   // Set headers
   const config = {
     headers: {
       'Content-Type': 'application/json',
     },
   };
+  console.log('logging in');
 
-  const body = JSON.stringify({ email, password });
+  // const body = JSON.stringify({ email, password });
 
   try {
     // Once we have routes, it will create a new user on backend
@@ -79,6 +82,7 @@ export const login = ({ email, password }) => async (dispatch) => {
     dispatch({ type: LOGIN_SUCCESS, payload: res.data });
     // Load user into app state
     dispatch(loadUser());
+    history.push('/admin');
   } catch (err) {
     console.log(err);
   }

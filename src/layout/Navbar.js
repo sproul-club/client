@@ -1,12 +1,12 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { logout } from '../actions/auth';
+import { logout, login } from '../actions/auth';
 
 import './Navbar.css';
 import useOnClickOutside from '../utils/useOnClickOutside';
 
-const Navbar = ({ isAuthenticated, logout, history }) => {
+const Navbar = ({ isAuthenticated, logout, login, history }) => {
   const [navbarVis, setNavbarVis] = useState(false);
   const [dropdownVis, setDropownVis] = useState(false);
 
@@ -27,10 +27,17 @@ const Navbar = ({ isAuthenticated, logout, history }) => {
       <Link to="/catalog" className="nav-link">
         Discover
       </Link>
-      <Link to="/signin" className="signin">
+      {/* <Link to="/signin" className="nav-link signin">
         Club sign in
-      </Link>
-      <Link to="/signup" className="active">
+      </Link> */}
+      <span
+        className="nav-link signin"
+        style={{ cursor: 'pointer' }}
+        onClick={()=>login('test','wow',history)}
+      >
+        Temp Login
+      </span>
+      <Link to="/signup" className="nav-link active">
         Add a club
       </Link>
     </>
@@ -50,8 +57,12 @@ const Navbar = ({ isAuthenticated, logout, history }) => {
         </div>
         {dropdownVis && (
           <div className="dropdown">
-            <div className="option">Edit Club Page</div>
-            <div className="option mid-option">Account Security</div>
+            <Link className="option" to="/admin">
+              Edit Club Page
+            </Link>
+            <Link to="/comingsoon" className="option mid-option">
+              Account Security
+            </Link>
             <div className="option" onClick={() => logout(history)}>
               Log Out
             </div>
@@ -64,7 +75,7 @@ const Navbar = ({ isAuthenticated, logout, history }) => {
   return (
     <>
       <div className="header" ref={ref}>
-        <Link to="/" className="logo">
+        <Link to="/" className="nav-link logo">
           sproul.club
         </Link>
         <div className="hamburger" onClick={toggleNavbar}>
@@ -84,4 +95,4 @@ const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
 });
 
-export default connect(mapStateToProps, { logout })(withRouter(Navbar));
+export default connect(mapStateToProps, { logout, login })(withRouter(Navbar));
