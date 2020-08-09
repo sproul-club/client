@@ -24,13 +24,13 @@ const Navbar = ({ isAuthenticated, logout, history }) => {
 
   const loggedOutLinks = (
     <>
-      <Link href="/catalog" to="/catalog">
+      <Link to="/catalog" className="nav-link">
         Discover
       </Link>
-      <Link className="signin" to="/signin">
+      <Link to="/signin" className="signin">
         Club sign in
       </Link>
-      <Link className="active" to="/signup">
+      <Link to="/signup" className="active">
         Add a club
       </Link>
     </>
@@ -51,9 +51,7 @@ const Navbar = ({ isAuthenticated, logout, history }) => {
         {dropdownVis && (
           <div className="dropdown">
             <div className="option">Edit Club Page</div>
-            <div className="option" id="mid-option">
-              Account Security
-            </div>
+            <div className="option mid-option">Account Security</div>
             <div className="option" onClick={() => logout(history)}>
               Log Out
             </div>
@@ -66,26 +64,30 @@ const Navbar = ({ isAuthenticated, logout, history }) => {
   return (
     <>
       {/* This is the mobile header without  */}
-      <div className={navbarVis ? 'header hidden' : 'header'} ref={ref}>
-        <Link to="/" className="logo">
-          sproul.club
-        </Link>
-        <div className="hamburger" onClick={toggleNavbar}>
-          <i className="fas fa-bars"></i>
+      {navbarVis && window.innerWidth <= 800 ? (
+        <div className="header" ref={ref}>
+          <Link to="/" className="logo">
+            sproul.club
+          </Link>
+          <div className="hamburger" onClick={toggleNavbar}>
+            <i className="fas fa-bars"></i>
+          </div>
         </div>
-      </div>
+      ) : (
+        <div className="header" ref={ref}>
+          <Link to="/" className="logo">
+            sproul.club
+          </Link>
+          <div className="hamburger" onClick={toggleNavbar}>
+            <i className="fas fa-bars"></i>
+          </div>
+          <div className="header-right">
+            {isAuthenticated ? loggedInLinks : loggedOutLinks}
+          </div>
+        </div>
+      )}
+
       {/*  This the main header, shown when dropdown is open as well */}
-      <div className={navbarVis ? 'header' : 'header hidden'} ref={ref}>
-        <Link to="/" className="logo">
-          sproul.club
-        </Link>
-        <div className="hamburger" onClick={toggleNavbar}>
-          <i className="fas fa-bars"></i>
-        </div>
-        <div className="header-right">
-          {isAuthenticated ? loggedInLinks : loggedOutLinks}
-        </div>
-      </div>
     </>
   );
 };
