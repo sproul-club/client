@@ -25,11 +25,10 @@ class App extends Component {
       this.previousLocation = location;
     }
   }
- 
+
   render() {
     const { location } = this.props;
 
-    
     console.log(location);
     return (
       <Provider store={store}>
@@ -37,9 +36,10 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Landing} />
             <Route exact path="/comingsoon" component={ComingSoon} />
-            <Route path="/catalog" component={Catalog} />
-            <Route exact path="/signup" component={SignUp} />
-            <Route exact path="/club/:id" component={Catalog}/>
+            <Route path="/signin" component={ComingSoon} />
+            <Route path="/catalog" component={ComingSoon} />
+            <Route exact path="/signup" component={ComingSoon} />
+            <Route exact path="/club/:id" component={ComingSoon} />
             <Route>{'404'}</Route>
           </Switch>
           <Route exact path="/club/:id" component={Modal} />
