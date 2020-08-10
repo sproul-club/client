@@ -13,7 +13,7 @@ export const catalogTestApi = (searchInput) => {
 export const catalogData = {
   1: {
     name: 'EthiCal',
-    tags: ['Business', 'Design', 'Environment'],
+    tags: ['Business', 'Design', 'Environmental'],
     req_app: true,
     status: true,
   },

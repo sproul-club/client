@@ -6,7 +6,7 @@ import Footer from '../layout/Footer';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { searchClubs } from '../actions/catalog';
-import DropdownSearch from "./Dropdown.js";
+import Dropdown from "./Dropdown.js";
 
 // import ethicalheader from './assets/ethicalheader.png';
 
@@ -21,34 +21,30 @@ import { Form, TextBox, CheckBox } from 'react-form-elements';
 
 import { makeStyles } from '@material-ui/core/styles';
 
-// https://10xn41w767.codesandbox.io/#objects
-import { Multiselect } from 'multiselect-react-dropdown';
-
 const Catalog = ({ searchClubs }) => {
   var tagOptions = [
-    { key: 'Advocacy', id: 0 },
-    { key: 'ASUC', id: 1 },
-    { key: 'Business', id: 2 },
-    { key: 'CalGreek', id: 3 },
-    { key: 'Community Service', id: 4 },
-    { key: 'Computer Science', id: 5 },
-    { key: 'Consulting', id: 6 },
-    { key: 'Cultural', id: 7 },
-    { key: 'Design', id: 8 },
-    { key: 'Engineering', id: 9 },
-    { key: 'Environment & Sustainability', id: 10 },
-    { key: 'Health & Wellness', id: 11 },
-    { key: 'Media & Publication', id: 12 },
-    { key: 'Performing Arts', id: 13 },
-    { key: 'Political', id: 14 },
-    { key: 'Pre-professional', id: 15 },
-    { key: 'Religious & Spiritual', id: 16 },
-    { key: 'Research', id: 17 },
-    { key: 'Sciences', id: 18 },
-    { key: 'Social', id: 19 },
-    { key: 'Social Good', id: 20 },
-    { key: 'Sports & Recreation', id: 21 },
-    { key: 'Technology', id: 22 },
+    { label: 'Advocacy', value: 0 },
+    { label: 'Business', value: 1 },
+    { label: 'CalGreek', value: 2 },
+    { label: 'Community Service', value: 3 },
+    { label: 'Computer Science', value: 4 },
+    { label: 'Consulting', value: 5 },
+    { label: 'Cultural', value: 6 },
+    { label: 'Design', value: 7 },
+    { label: 'Engineering', value: 8 },
+    { label: 'Environmental', value: 9 },
+    { label: 'Health', value: 10 },
+    { label: 'Media', value: 11 },
+    { label: 'Performing Arts', value: 12 },
+    { label: 'Political', value: 13 },
+    { label: 'Pre-professional', value: 14 },
+    { label: 'Religious & Spiritual', value: 15 },
+    { label: 'Research', value: 16 },
+    { label: 'Sciences', value: 17 },
+    { label: 'Social', value: 18 },
+    { label: 'Social Good', value: 19 },
+    { label: 'Sports & Rec.', value: 20 },
+    { label: 'Technology', value: 21 },
   ];
 
   const useStyles = makeStyles({
@@ -65,11 +61,12 @@ const Catalog = ({ searchClubs }) => {
   const [name, setName] = useState('');
   const [appReq, setAppReq] = useState(true);
   const [status, setStatus] = useState(true);
+  const [tags, setTags] = useState([]);
 
   const multiselectRef = React.createRef();
 
   const searchAllClubs = () => {
-    const tags = multiselectRef.current.getSelectedItems();
+    // const tags = multiselectRef.current.getSelectedItems();
     const searchParams = { name, tags, appReq, status };
 
     // Calls searchClubs redux action, which hits the backend API
@@ -89,9 +86,6 @@ const Catalog = ({ searchClubs }) => {
             preExpanded={['a', 'b', 'c', 'd']}
           >
             <AccordionItem className="accordion-group" uuid="a">
-              <AccordionItemHeading>
-                <AccordionItemButton>Search</AccordionItemButton>
-              </AccordionItemHeading>
               <AccordionItemPanel>
                 <Form onSubmit={() => searchAllClubs()} name="submit">
                   <TextBox
@@ -111,13 +105,13 @@ const Catalog = ({ searchClubs }) => {
                 <AccordionItemButton>Club Tags</AccordionItemButton>
               </AccordionItemHeading>
               <AccordionItemPanel>
-                <Multiselect
+
+                <Dropdown
                   options={tagOptions}
-                  selectionLimit="3"
-                  displayValue="key"
-                  ref={multiselectRef}
-                  showCheckbox={true}
-                />
+                  multi={true}
+                  search={true}
+                  placeholder='Add up to 3 tags'
+                  set={setTags}/>
                 
                 
               </AccordionItemPanel>

@@ -29,9 +29,9 @@ class App extends Component {
   }
 
   render() {
-    const { location } = this.props;
+    // const { location } = this.props;
 
-    console.log(location);
+    // console.log(location);
     return (
       <Provider store={store}>
         <Router>
