@@ -5,7 +5,7 @@ import ClubPage from './ClubPage.js';
 
 const data = {name: "EthiCAL Apparel", 
               desc: "We are a student-run social enterprise that provides affordable, high-quality screen printing and free design services on ethically-made clothing. We help create custom designs for organizations and sell our own clothing and sticker line through our online shop. Our profits are directed to a variety of social good initiatives, from Kiva microloans to disadvantaged entrepreneurs to partnerships with local organizations. Members develop their design skills, business knowledge, and social awareness.",
-              tags: ["Business", "Design", "Environment and Sustainability"],
+              tags: ["Business", "Design", "Environmental"],
               reqApp: true,
               open: true,
               events: 

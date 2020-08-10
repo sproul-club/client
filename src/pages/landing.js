@@ -3,7 +3,7 @@ import './Landing.css';
 import ScrollAnimation from 'react-animate-on-scroll';
 import Navbar from '../layout/Navbar';
 import Footer from '../layout/Footer';
-import 'animate.css/animate.min.css';
+
 import sproul from './assets/sproul.svg';
 import ball1 from './assets/ball1.svg';
 import ball2 from './assets/ball2.svg';
