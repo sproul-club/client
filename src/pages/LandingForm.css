@@ -60,7 +60,7 @@
 }
 
 .landing .imgContainer {
-  width: 300px;
+  width: 200px;
   margin-bottom: 10px;
   margin-top: 5px;
 }
@@ -191,7 +191,7 @@
     margin-top: 0px;
   }
   .landing .moreContent .interestForm .formGroup {
-    width: auto;
+    width: 100%;
   }
 
   .landing .inputs .formGroup .userInput {
@@ -199,7 +199,12 @@
     width: 100%;
   }
   .landing .inputs .formGroup p {
-    margin-left: -10px;
+    margin-left: -15px;
+  }
+
+  .landing .inputs .formGroup h2 {
+    width: 100%;
+    margin-right: 35px;
   }
 }
 
