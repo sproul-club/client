@@ -32,9 +32,7 @@ const Landing = () => {
             sproul.club helps you discover student clubs, organizations, and
             communities on campus.
           </p>
-          <p>
-            <a href="#interestform">Sign up for early access</a>
-          </p>
+          <a href="#interestform">Sign up for early access</a>
         </div>
       </div>
       <div className="moreContent">
