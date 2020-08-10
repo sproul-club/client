@@ -210,7 +210,7 @@
 
 /*====================================*/
 /*GENERAL TAGS*/
-p {
+.desc-box p, .events-box p, .contact-box p, .resources-box p {
     position: relative;
     margin: 1vw 1vw 1.7vw 0.7vw;
     left: 3%;

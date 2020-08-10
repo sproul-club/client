@@ -14,21 +14,26 @@
   widows: 100%;
   min-height: 87vh;
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
+  justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
+
+
 
 .landing .text {
   display: flex;
   flex-direction: column;
   position: relative;
-  padding: 100px 50px 100px 150px;
+  /* padding: 100px 50px 100px 150px; */
   box-sizing: border-box;
   max-width: 650px;
   margin-left: -20px;
   float: left;
-  text-align: left;
+  text-align: center;
 }
+
 
 .landing .text h3 {
   color: #2b2b2b;
@@ -287,7 +292,6 @@
     text-align: center;
     display: flex;
     align-items: center;
-    width: 375px;
   }
 
   .landing .content .text h3 {

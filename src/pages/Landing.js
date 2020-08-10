@@ -22,13 +22,6 @@ const Landing = () => {
     <div className="landing">
       <Navbar />
       <div className="content">
-        <div className="text">
-          <h3>Find your community at Berkeley - now virtually!</h3>
-            <p>sproul.club simplifies the experience of discovering 
-              student organizations, clubs and communities
-              on campus. Built by students, for students.</p>
-            <a href="#interestform">Sign up for early access</a>
-        </div>
         <div className="imageContainer">
           <img src={sproul} className="sproul" alt="sproul" />
           <img src={ball1} className="ball1" alt="sproul" />
@@ -38,6 +31,11 @@ const Landing = () => {
           <img src={screen1} className="screen1" alt="sproul" />
           <img src={screen2} className="screen2" alt="sproul" />
           <img src={screen3} className="screen3" alt="sproul" />
+        </div>
+        <div className="text">
+          <h3>Find your community at Berkeley</h3>
+            <p>sproul.club helps you discover student clubs, organizations, and communities on campus.</p>
+            <p><a href="#interestform">Sign up for early access</a></p>
         </div>
       </div>
       <div className="moreContent">
