@@ -129,7 +129,7 @@
   }
 
   .landing .content {
-    flex-direction: column-reverse;
+    /* flex-direction: column-reverse; */
     margin-bottom: 30px;
     justify-content: center;
     align-items: center;
