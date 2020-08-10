@@ -12,7 +12,7 @@ const Admin = () => {
   console.log(window.location.pathname);
 
   return (
-    <>
+    <div className="clubEdit">
       <Navbar />
       <div className="admin-page">
         <div className="admin-sidebar">
@@ -45,7 +45,7 @@ const Admin = () => {
                 : 'page-link'
             }
           >
-            How to get involved
+            How to Get Involved
           </Link>
           <Link
             to="/admin/resources"
@@ -78,7 +78,7 @@ const Admin = () => {
           </Switch>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
