@@ -20,8 +20,6 @@
   flex-direction: column;
 }
 
-
-
 .landing .text {
   display: flex;
   flex-direction: column;
@@ -33,7 +31,6 @@
   float: left;
   text-align: center;
 }
-
 
 .landing .text h3 {
   color: #2b2b2b;
@@ -192,7 +189,7 @@
   letter-spacing: 0.05em;
   text-align: left;
 }
-.landing .moreContent .feature2 p{
+.landing .moreContent .feature2 p {
   width: 400px;
   font-family: roboto, sans-serif;
   font-weight: 400;
@@ -200,7 +197,7 @@
   letter-spacing: 0.05em;
   text-align: left;
 }
-.landing .moreContent .feature3 p{
+.landing .moreContent .feature3 p {
   width: 400px;
   font-family: roboto, sans-serif;
   font-weight: 400;
@@ -218,7 +215,7 @@
   margin: 0;
   text-align: left;
 }
-.landing .moreContent .feature2 h2{
+.landing .moreContent .feature2 h2 {
   line-height: 40px;
   width: 500px;
   font-family: montserrat, sans-serif;
@@ -227,7 +224,7 @@
   margin: 0;
   text-align: left;
 }
-.landing .moreContent .feature3 h2{
+.landing .moreContent .feature3 h2 {
   line-height: 40px;
   width: 500px;
   font-family: montserrat, sans-serif;

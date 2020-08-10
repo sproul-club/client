@@ -35,7 +35,7 @@ function ClubPage(props) {
 
             <div className="flex-container-left">
                 <div className="logo-box">
-                    <img className="logo" src={require("./assets/ethicalLogo.jpg")}/>
+                    <img className="club-logo" src={require("./assets/ethicalLogo.jpg")}/>
                     <div className="club-info-flex">
                         <div className="club-title">
                             {props.data.name}
