@@ -4,7 +4,7 @@
 
 /* sidebar do be looking garbage on horizontal resize -karen */
 .sidebar {
-  /* background-color: yellow; */
+  background-color: yellow;
   text-align: left;
   align-self: start;
   margin-top: 20px;
@@ -19,14 +19,13 @@
 .cards {
   flex: 1;
   /* -- flex-direction: row; */
-  background-color: transparent;
   text-align: left;
   align-self: start;
   margin-top: 20px;
   /* -- width: 300px; */
   float: left;
   color: #2b2b2b;
-  padding: 12px;
+  padding: 30px;
   font-size: 14px;
   line-height: 14px;
 }
