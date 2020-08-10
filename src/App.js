@@ -9,9 +9,9 @@ import {
 
 import { Landing } from './pages/Landing.js';
 import { ComingSoon } from './pages/ComingSoon.js';
-import Catalog from './pages/catalog.js';
-import { SignUp } from './pages/SignUp.js';
-import Admin from './pages/admin/Admin.js';
+// import Catalog from './pages/catalog.js';
+// import { SignUp } from './pages/SignUp.js';
+// import Admin from './pages/admin/Admin.js';
 import Modal from './pages/Modal.js';
 import store from './store';
 import { Provider } from 'react-redux';
@@ -28,9 +28,9 @@ class App extends Component {
   }
 
   render() {
-    const { location } = this.props;
+    // const { location } = this.props;
 
-    console.log(location);
+    // console.log(location);
     return (
       <Provider store={store}>
         <Router>

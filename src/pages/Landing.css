@@ -28,6 +28,7 @@
   box-sizing: border-box;
   max-width: 650px;
   margin-left: -20px;
+  margin-top: -30px;
   float: left;
   text-align: center;
 }
@@ -74,8 +75,8 @@
 
 .landing .content .imageContainer {
   position: relative;
-  padding-top: 50px;
   margin-right: 120px;
+  margin-top: -50px;
   width: 442px;
   height: 383px;
   -webkit-touch-callout: none;
@@ -276,7 +277,7 @@
   }
 
   .landing .content {
-    flex-direction: column-reverse;
+    /* flex-direction: column-reverse; */
     margin-bottom: 30px;
     justify-content: center;
     align-items: center;
@@ -304,15 +305,16 @@
     float: right;
     padding-top: 20px;
     margin-right: 0px;
-    margin-top: 50px;
-    width: 368px;
+    margin-left: 0px;
+    margin-top: -30px;
+    width: 360px;
     height: 319px;
-    margin-bottom: 50px;
+    /* margin-bottom: 50px; */
   }
 
   .landing .content .imageContainer img {
     position: absolute;
-    width: 368px;
+    width: 360px;
     height: 319px;
     margin-left: -180px;
   }
@@ -437,7 +439,6 @@
   .landing .content .imageContainer {
     float: right;
     margin-right: 70px;
-    margin-top: 36px;
     margin-bottom: -40px;
     width: 634.5px;
     height: 550px;

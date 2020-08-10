@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Admin.css';
 import { Route, Switch, Link } from 'react-router-dom';
 import Navbar from '../../layout/Navbar';
@@ -9,7 +9,6 @@ import Events from './Events';
 import Resources from './Resources';
 
 const Admin = () => {
-  console.log(window.location.pathname);
 
   return (
     <div className="clubEdit">

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout, login } from '../actions/auth';
@@ -30,7 +30,7 @@ const Navbar = ({ isAuthenticated, logout, login, history }) => {
       <Link to="/signin" className="nav-link signin">
         Club sign in
       </Link>
-    {/*<span
+      {/*<span
         className="nav-link signin"
         style={{ cursor: 'pointer' }}
         onClick={()=>login('test','wow',history)}

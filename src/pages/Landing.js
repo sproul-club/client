@@ -4,19 +4,19 @@ import ScrollAnimation from 'react-animate-on-scroll';
 import Navbar from '../layout/Navbar';
 import Footer from '../layout/Footer';
 import 'animate.css/animate.min.css';
-import sproul from './assets/sproul.svg';
-import ball1 from './assets/ball1.svg';
-import ball2 from './assets/ball2.svg';
-import ball3 from './assets/ball3.svg';
-import ball4 from './assets/ball4.svg';
-import screen1 from './assets/screen1.svg';
-import screen2 from './assets/screen2.svg';
-import screen3 from './assets/screen3.svg';
+// import sproul from './assets/sproul.svg';
+// import ball1 from './assets/ball1.svg';
+// import ball2 from './assets/ball2.svg';
+// import ball3 from './assets/ball3.svg';
+// import ball4 from './assets/ball4.svg';
+// import screen1 from './assets/screen1.svg';
+// import screen2 from './assets/screen2.svg';
+// import screen3 from './assets/screen3.svg';
 import mock1 from './assets/mock1.png';
 import mock2 from './assets/mock2.png';
 import mock3 from './assets/mock3.png';
 import bearshehe from './assets/formbears.svg';
-import LandingForm from './LandingForm.js'
+import LandingForm from './LandingForm.js';
 
 const Landing = () => {
   return (
@@ -24,12 +24,17 @@ const Landing = () => {
       <Navbar />
       <div className="content">
         <div className="imageContainer">
-          <img src={bearshehe} className="bears" alt="bears"/>
+          <img src={bearshehe} className="bears" alt="bears" />
         </div>
         <div className="text">
           <h3>Find your community at Berkeley</h3>
-            <p>sproul.club helps you discover student clubs, organizations, and communities on campus.</p>
-            <p><a href="#interestform">Sign up for early access</a></p>
+          <p>
+            sproul.club helps you discover student clubs, organizations, and
+            communities on campus.
+          </p>
+          <p>
+            <a href="#interestform">Sign up for early access</a>
+          </p>
         </div>
       </div>
       <div className="moreContent">
@@ -52,12 +57,12 @@ const Landing = () => {
               animateIn="animate__fadeInRight"
               animateOnce={true}
             >
-              <img src={mock1} className="screenshot" />
+              <img src={mock1} className="screenshot" alt='mock1'/>
             </ScrollAnimation>
           </div>
           <div className="feature2">
             <ScrollAnimation animateIn="animate__fadeInLeft" animateOnce={true}>
-              <img src={mock2} className="screenshot" />
+              <img src={mock2} className="screenshot" alt='mock2'/>
             </ScrollAnimation>
             <ScrollAnimation animateIn="animate__fadeIn" animateOnce={true}>
               <div className="description">
@@ -89,7 +94,7 @@ const Landing = () => {
               animateIn="animate__fadeInRight"
               animateOnce={true}
             >
-              <img src={mock3} className="screenshot" />
+              <img src={mock3} className="screenshot" alt='mock3'/>
             </ScrollAnimation>
           </div>
           <div className="interestForm" id="interestform">
