@@ -39,8 +39,8 @@ const Profile = () => {
     <div>
       <h3>Profile</h3>
       <div className="admin-text">
-        Add an organization logo, profile banner, edit your tags, membership
-        status, application requirements, and a description.
+        Add an organization logo and profile banner, and edit your tags, membership
+        status, application requirements, and club's description.
       </div>
       <div className="formGroup">
         <div className="formElement">

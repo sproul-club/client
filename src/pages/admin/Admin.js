@@ -45,7 +45,7 @@ const Admin = () => {
                 : 'page-link'
             }
           >
-            How to get involved
+            How to Get Involved
           </Link>
           <Link
             to="/admin/resources"

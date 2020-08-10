@@ -63,7 +63,7 @@
   margin-bottom: 30px;
 }
 
-.formGroup {
+.admin-page .formGroup {
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
@@ -129,7 +129,7 @@
   font-size: 16px;
 }
 
-button {
+.admin-page button {
   margin-bottom: 20px;
   float: right;
   background: #54a0f1;
