@@ -10,8 +10,6 @@
 }
 
 .landing .content {
-  position: relative;
-  widows: 100%;
   min-height: 87vh;
   display: flex;
   /* justify-content: space-between; */
@@ -56,7 +54,6 @@
 }
 
 .landing .text a {
-  width: 180px;
   font-size: 0.9em;
   text-align: left;
   line-height: 1em;
@@ -68,17 +65,22 @@
   color: #ffffff;
   background-color: #54a0f1;
   text-decoration: none;
-  padding: 14px 20px 14px 20px;
+  padding: 14px 30px 14px 30px;
   border-radius: 6px;
   text-align: center;
 }
 
 .landing .content .imageContainer {
-  position: relative;
-  margin-right: 120px;
-  margin-top: -50px;
-  width: 442px;
-  height: 383px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 375px;
+}
+
+.landing .content .imageContainer img {
+  margin-top: 30px;
+  width: 450px;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -87,15 +89,8 @@
   user-select: none;
 }
 
-.landing .content .imageContainer img {
-  position: absolute;
-  width: 442px;
-  height: 383px;
-  margin-left: -200px;
-}
-
 .landing .moreContent {
-  margin-top: 150px;
+  margin-top: 100px;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -306,17 +301,17 @@
     padding-top: 20px;
     margin-right: 0px;
     margin-left: 0px;
-    margin-top: -30px;
+    margin-top: 10px;
     width: 360px;
-    height: 319px;
+    height: 300px;
     /* margin-bottom: 50px; */
   }
 
   .landing .content .imageContainer img {
     position: absolute;
+    margin-top: 0px;
     width: 360px;
     height: 319px;
-    margin-left: -180px;
   }
 
   .landing .moreContent .featureWrapper {
@@ -339,12 +334,16 @@
     text-align: center;
     font-size: 14px;
     width: 375px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 
   .landing .moreContent .featureWrapper .description h2 {
     text-align: center;
     font-size: 20px;
     width: 375px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 
   .landing .moreContent .featureWrapper .feature1 {
@@ -397,7 +396,7 @@
   }
 
   .landing .moreContent .feature2 img {
-    margin-left: 6px;
+    margin-left: 5px;
   }
 
   .landing .moreContent h2 {
@@ -437,17 +436,12 @@
   }
 
   .landing .content .imageContainer {
-    float: right;
-    margin-right: 70px;
-    margin-bottom: -40px;
-    width: 634.5px;
+    width: 600px;
     height: 550px;
   }
 
   .landing .content .imageContainer img {
-    width: 634.5px;
-    height: 550px;
-    margin-left: -340px;
+    width: 600px;
   }
 
   .landing .moreContent {
@@ -497,6 +491,7 @@
 
   .landing .moreContent .interestForm img {
     min-height: 0px;
+    width: 250px;
   }
 
   .landing .moreContent .interestForm .imgContainer {
