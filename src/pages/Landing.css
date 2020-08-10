@@ -69,6 +69,11 @@
   text-align: center;
 }
 
+.landing .text a:hover {
+  background-color: #6eaff5;
+}
+
+
 .landing .content .imageContainer {
   display: flex;
   align-items: center;
