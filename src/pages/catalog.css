@@ -4,7 +4,6 @@
 
 /* sidebar do be looking garbage on horizontal resize -karen */
 .sidebar {
-  background-color: yellow;
   text-align: left;
   align-self: start;
   margin-top: 20px;
@@ -201,7 +200,6 @@
     align-items: flex-start;
     align-content: flex-start;
     align-self: flex-start;
-    /* background-color: lightpink; */
     flex-direction: column;
   }
 } 

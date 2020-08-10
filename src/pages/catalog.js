@@ -21,33 +21,30 @@ import { Form, TextBox, CheckBox } from 'react-form-elements';
 
 import { makeStyles } from '@material-ui/core/styles';
 
-// https://10xn41w767.codesandbox.io/#objects
-import { Multiselect } from 'multiselect-react-dropdown';
-
 const Catalog = ({ searchClubs }) => {
   var tagOptions = [
-    { key: 'Advocacy', id: 0 },
-    { key: 'Business', id: 1 },
-    { key: 'CalGreek', id: 2 },
-    { key: 'Community Service', id: 3 },
-    { key: 'Computer Science', id: 4 },
-    { key: 'Consulting', id: 5 },
-    { key: 'Cultural', id: 6 },
-    { key: 'Design', id: 7 },
-    { key: 'Engineering', id: 8 },
-    { key: 'Environmental', id: 9 },
-    { key: 'Health', id: 10 },
-    { key: 'Media', id: 11 },
-    { key: 'Performing Arts', id: 12 },
-    { key: 'Political', id: 13 },
-    { key: 'Pre-professional', id: 14 },
-    { key: 'Religious & Spiritual', id: 15 },
-    { key: 'Research', id: 16 },
-    { key: 'Sciences', id: 17 },
-    { key: 'Social', id: 18 },
-    { key: 'Social Good', id: 19 },
-    { key: 'Sports & Rec.', id: 20 },
-    { key: 'Technology', id: 21 },
+    { label: 'Advocacy', id: 0 },
+    { label: 'Business', id: 1 },
+    { label: 'CalGreek', id: 2 },
+    { label: 'Community Service', id: 3 },
+    { label: 'Computer Science', id: 4 },
+    { label: 'Consulting', id: 5 },
+    { label: 'Cultural', id: 6 },
+    { label: 'Design', id: 7 },
+    { label: 'Engineering', id: 8 },
+    { label: 'Environmental', id: 9 },
+    { label: 'Health', id: 10 },
+    { label: 'Media', id: 11 },
+    { label: 'Performing Arts', id: 12 },
+    { label: 'Political', id: 13 },
+    { label: 'Pre-professional', id: 14 },
+    { label: 'Religious & Spiritual', id: 15 },
+    { label: 'Research', id: 16 },
+    { label: 'Sciences', id: 17 },
+    { label: 'Social', id: 18 },
+    { label: 'Social Good', id: 19 },
+    { label: 'Sports & Rec.', id: 20 },
+    { label: 'Technology', id: 21 },
   ];
 
   const useStyles = makeStyles({
@@ -89,9 +86,6 @@ const Catalog = ({ searchClubs }) => {
             preExpanded={['a', 'b', 'c', 'd']}
           >
             <AccordionItem className="accordion-group" uuid="a">
-              <AccordionItemHeading>
-                <AccordionItemButton>Search</AccordionItemButton>
-              </AccordionItemHeading>
               <AccordionItemPanel>
                 <Form onSubmit={() => searchAllClubs()} name="submit">
                   <TextBox
@@ -118,15 +112,6 @@ const Catalog = ({ searchClubs }) => {
                   search={true}
                   placeholder='Add up to 3 tags'
                   set={setTags}/>
-
-                {/* yo replace this shit with dropdown.js */}
-                {/* <Multiselect
-                  options={tagOptions}
-                  selectionLimit="3"
-                  displayValue="key"
-                  ref={multiselectRef}
-                  showCheckbox={true}
-                /> */}
                 
                 
               </AccordionItemPanel>
