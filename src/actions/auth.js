@@ -6,6 +6,7 @@ import {
   LOGOUT,
 } from './types';
 import setAuthToken from '../utils/setAuthToken';
+import axios from 'axios';
 
 // TODO:
 // Load User
@@ -43,8 +44,8 @@ export const register = ({ name, email, password }) => async (dispatch) => {
   try {
     // Once we have routes, it will create a new user on backend
     // and will return signed jwt
-    // const res = await axios.post('/api/users', body, config);
-    const res = {};
+    let res = await axios.post('/api/users', body, config);
+    res = {};
 
     // Calls redux reducer that puts the token into local storage
     // and token and isAuthenticated=true in app state
@@ -69,13 +70,13 @@ export const login = (email: null, password: null, history) => async (
   };
   console.log('logging in');
 
-  // const body = JSON.stringify({ email, password });
+  const body = JSON.stringify({ email, password });
 
   try {
     // Once we have routes, it will create a new user on backend
     // and will return signed jwt
-    // const res = await axios.post('/api/users', body, config);
-    const res = {};
+    let res = await axios.post('/api/users', body, config);
+    res = {};
 
     // Calls redux reducer that puts the token into local storage
     // and token and isAuthenticated=true in app state
