@@ -1,0 +1,214 @@
+.comingsoon {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.comingsoon .text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  box-sizing: border-box;
+  widows: 100%;
+  min-height: 75vh;
+  flex-grow: 1;
+  overflow: hidden;
+}
+
+.comingsoon .text h3 {
+  color: #2b2b2b;
+  font-size: 2.5em;
+  font-family: montserrat, sans-serif;
+  font-weight: 700;
+  line-height: 100%;
+}
+
+.comingsoon .text h3 b {
+  font-style: bold;
+}
+
+.comingsoon .text p {
+  color: #2b2b2b;
+  font-size: 1.1em;
+  line-height: 1.4em;
+  font-family: roboto, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  padding-bottom: 5px;
+  margin-top: -20px;
+  letter-spacing: 0.04em;
+}
+
+.comingsoon .text a {
+  width: 120px;
+  font-size: 0.9em;
+  text-align: left;
+  line-height: 1em;
+  background: white;
+  font-family: montserrat, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  display: inline-block;
+  color: #ffffff;
+  background-color: #54a0f1;
+  text-decoration: none;
+  padding: 14px;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.comingsoon .dotContainer {
+  position: absolute;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+}
+
+.comingsoon .dotContainer img {
+  position: absolute;
+  width: 55px;
+}
+
+.comingsoon .dotContainer .ball1 {
+  left: 55%;
+  top: 15%;
+}
+
+.comingsoon .dotContainer .ball2 {
+  left: 90px;
+  top: 40%;
+}
+
+.comingsoon .dotContainer .ball3 {
+  left: 85%;
+  top: 60%;
+}
+
+.comingsoon .dotContainer .ball4 {
+  left: 200px;
+  top: 83%;
+}
+
+.comingsoon .blobContainer {
+  position: fixed;
+  z-index: -2;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  /*  display: grid;
+  grid-template-areas: "blob2 blob1";
+  grid-template-columns: 1fr 1fr;
+  column-gap: 350px;*/
+}
+
+.comingsoon .blobContainer .blob1 {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  transform: translate(100px, 150px);
+  /*grid-area: "blob1";
+  align-self: end;*/
+  height: 90%;
+}
+
+.comingsoon .blobContainer .blob2 {
+  position: absolute;
+  left: -10%;
+  top: -15%;
+  /*grid-area: "blob2";*/
+  height: 90%;
+}
+
+@media screen and (max-width: 850px) {
+  .comingsoon {
+    background: white;
+  }
+
+  .landing .content {
+    flex-direction: column-reverse;
+    margin-bottom: 30px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .comingsoon .content .text {
+    margin: 0px;
+    margin-top: 150px;
+    margin-bottom: 75px;
+    padding: 0px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    width: 375px;
+  }
+
+  .comingsoon .content .text h3 {
+    font-size: 24px;
+  }
+
+  .comingsoon .content .text p {
+    font-size: 14px;
+    letter-spacing: 0.05em;
+  }
+
+  .comingsoon .content .imageContainer {
+    float: right;
+    margin-right: 0px;
+    margin-top: 60px;
+    margin-bottom: -40px;
+    width: 368px;
+    height: 319px;
+  }
+
+  .comingsoon .content .imageContainer img {
+    position: absolute;
+    width: 368px;
+    height: 319px;
+    margin-left: -180px;
+  }
+}
+
+@media screen and (min-width: 1700px) {
+  .comingsoon .content {
+    margin-bottom: 70px;
+  }
+
+  .comingsoon .content .text {
+    display: flex;
+    max-width: 900px;
+  }
+
+  .comingsoon .content .text h3 {
+    font-size: 40px;
+  }
+
+  .comingsoon .content .text p {
+    font-size: 24px;
+    letter-spacing: 0.05em;
+  }
+
+  .comingsoon .content .text a {
+    font-size: 20px;
+    width: 300px;
+    padding: 20px 10px 20px 10px;
+  }
+
+  .comingsoon .content .imageContainer {
+    float: right;
+    margin-right: 70px;
+    margin-top: 36px;
+    margin-bottom: -40px;
+    width: 634.5px;
+    height: 550px;
+  }
+
+  .comingsoon .content .imageContainer img {
+    width: 634.5px;
+    height: 550px;
+    margin-left: -340px;
+  }
+}

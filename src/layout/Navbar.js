@@ -1,53 +1,98 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Link, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { logout, login } from '../actions/auth';
+
 import './Navbar.css';
 import useOnClickOutside from '../utils/useOnClickOutside';
 
-const Navbar = () => {
-  const [navbarVis, setNavbarVis] = useState(true);
+const Navbar = ({ isAuthenticated, logout, login, history }) => {
+  const [navbarVis, setNavbarVis] = useState(false);
+  const [dropdownVis, setDropownVis] = useState(false);
 
-  const hideNavbar = () => setNavbarVis(false);
   const toggleNavbar = () => setNavbarVis((navbarVis) => !navbarVis);
+  const toggleDropdown = () => setDropownVis((dropdownVis) => !dropdownVis);
 
   const ref = useRef();
 
   // If it is on mobile, and the navbar is visible, if click outside, hide sidebar
   useOnClickOutside(ref, () => {
     if (window.innerWidth <= 800 && navbarVis === true) {
-      hideNavbar();
+      setNavbarVis(false);
     }
   });
 
+  const loggedOutLinks = (
+    <>
+      <Link to="/catalog" className="nav-link">
+        Discover
+      </Link>
+      <Link to="/signin" className="nav-link signin">
+        Club sign in
+      </Link>
+    {/*<span
+        className="nav-link signin"
+        style={{ cursor: 'pointer' }}
+        onClick={()=>login('test','wow',history)}
+      >
+        Temp Login
+      </span>*/}
+      <Link to="/signup" className="nav-link active">
+        Add a club
+      </Link>
+    </>
+  );
+
+  const loggedInLinks = (
+    <>
+      <div
+        className="org-menu"
+        href="/signup"
+        // onMouseEnter={() => setDropownVis(true)}
+        // onMouseLeave={() => setDropownVis(false)}
+      >
+        <div className="org-email" onClick={toggleDropdown}>
+          organizationname@berkeley.edu
+          <i style={{ marginLeft: '5px' }} className="fas fa-caret-down"></i>
+        </div>
+        {dropdownVis && (
+          <div className="dropdown">
+            <Link className="option" to="/admin">
+              Edit Club Page
+            </Link>
+            <Link to="/comingsoon" className="option mid-option">
+              Account Security
+            </Link>
+            <div className="option" onClick={() => logout(history)}>
+              Log Out
+            </div>
+          </div>
+        )}
+      </div>
+    </>
+  );
+
   return (
     <>
-      {/* This is the mobile header without  */}
-      <div className={navbarVis ? 'header hidden' : 'header'} ref={ref}>
-        <a href="/" className="logo">
+      <div className="header" ref={ref}>
+        <Link to="/" className="nav-link logo">
           sproul.club
-        </a>
-        <div className="hamburger" onClick={() => toggleNavbar()}>
+        </Link>
+        <div className="hamburger" onClick={toggleNavbar}>
           <i className="fas fa-bars"></i>
         </div>
-      </div>
-      {/*  This the main header, shown when dropdown is open as well */}
-      <div className={navbarVis ? 'header' : 'header hidden'} ref={ref}>
-        <a href="/" className="logo">
-          sproul.club
-        </a>
-        <div className="hamburger" onClick={() => toggleNavbar()}>
-          <i className="fas fa-bars"></i>
-        </div>
-        <div className="header-right">
-          <a href="/">Discover</a>
-          <a className="signin" href="/">
-            Club sign in
-          </a>
-          <a className="active" href="/">
-            Add a club
-          </a>
-        </div>
+        {(navbarVis || window.innerWidth >= 800) && (
+          <div className="header-right">
+            {isAuthenticated ? loggedInLinks : loggedOutLinks}
+          </div>
+        )}
       </div>
     </>
   );
 };
 
-export default Navbar;
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+});
+
+export default connect(mapStateToProps, { logout, login })(withRouter(Navbar));

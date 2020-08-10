@@ -12,7 +12,7 @@
   border-bottom: 1px solid #c4c4c4a9;
 }
 
-.header a {
+.header .nav-link {
   float: left;
   color: #2b2b2b;
   text-align: center;
@@ -22,8 +22,11 @@
   line-height: 18px;
   border-radius: 6px;
   font-weight: bold;
-  margin-right: 25px;
   width: 120px;
+}
+.header a:hover {
+  color: #54a0f1;
+  cursor: pointer;
 }
 
 .header a.logo {
@@ -32,17 +35,17 @@
   color: #2b2b2b;
 }
 
-.header a:hover {
-  color: #444444;
-}
-
 .header a.active {
   background-color: #54a0f1;
   color: white;
 }
+.header a.active:hover {
+  background-color: #6eaff5;
+}
+
 .header-right {
   float: right;
-  margin-right: 20px;
+  margin-right: 10px;
 }
 
 .hamburger {
@@ -60,20 +63,83 @@
   display: none;
 }
 
+.org-menu {
+  margin-top: 3px;
+  padding: 5px 10px;
+  color: #333;
+  cursor: pointer;
+  border-radius: 10px;
+  border: 0.5px solid #ddd;
+  box-shadow: 0 0.5px 1px rgba(0, 0, 0, 0.16), 0 0.5px 1px rgba(0, 0, 0, 0.23);
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+}
+.org-menu:hover {
+  box-shadow: 0 0.5px 1px rgba(0, 0, 0, 0.3), 0 0.5px 1px rgba(0, 0, 0, 0.4);
+}
+
+.org-email {
+  margin: auto 0;
+  font-size: 14px;
+  padding: 5px 10px;
+}
+
+.dropdown {
+  margin-top: 10px;
+  font-size: 14px;
+  position: absolute;
+  text-align: right;
+  right: 50px;
+  display: flex;
+  float: right;
+  background: white;
+  flex-direction: column;
+  padding: 5px;
+  border-radius: 5px;
+  border: 0.5px solid rgb(190, 190, 190);
+  z-index: 999;
+}
+
+.option {
+  float: right;
+  background: white;
+  margin-right: 0px;
+  height: 30px;
+  line-height: 30px;
+  padding: 5px 10px;
+  text-decoration: none;
+  color: #333;
+}
+
+.option:hover {
+  color: #54a0f1;
+  cursor: pointer;
+}
+
+.mid-option {
+  border-top: none;
+  border-bottom: none;
+}
+
 @media screen and (max-width: 850px) {
+  .header-right {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 0px;
+    align-items: center;
+    margin-top: 15px;
+  }
   .hamburger {
     display: unset;
   }
-  .header-right {
-    margin-top: 15px;
-    margin-left: 70px;
-    text-align: center;
-    flex-direction: column;
-  }
-  .header-right a {
-    margin: 10px;
+  .header-right .nav-link {
+    margin: 0px;
   }
   .signin {
     margin-top: 0px !important;
+    margin: 0px !important;
   }
 }

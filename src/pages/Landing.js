@@ -15,6 +15,7 @@ import screen3 from './assets/screen3.svg';
 import mock1 from './assets/mock1.png';
 import mock2 from './assets/mock2.png';
 import mock3 from './assets/mock3.png';
+import LandingForm from './LandingForm.js'
 
 const Landing = () => {
   return (
@@ -23,14 +24,10 @@ const Landing = () => {
       <div className="content">
         <div className="text">
           <h3>Find your community at Berkeley - now virtually!</h3>
-          <p>
-            sproul.club simplifies the experience of discovering student
-            organizations, clubs and communities on campus. Built by students,
-            for students.
-          </p>
-          <a href="https://airtable.com/shr4wECf5beHGLgfV">
-            Sign up for early access
-          </a>
+            <p>sproul.club simplifies the experience of discovering 
+              student organizations, clubs and communities
+              on campus. Built by students, for students.</p>
+            <a href="#interestform">Sign up for early access</a>
         </div>
         <div className="imageContainer">
           <img src={sproul} className="sproul" alt="sproul" />
@@ -103,12 +100,12 @@ const Landing = () => {
               <img src={mock3} className="screenshot" />
             </ScrollAnimation>
           </div>
-        </div>
-        <div className="interestForm">
-          <h2>Now accepting student clubs and organizations</h2>
-          <a href="https://airtable.com/shr4wECf5beHGLgfV">
-            Sign up for early access
-          </a>
+          <div className="interestForm" id="interestform">
+            <h2>Now accepting student clubs and organizations!</h2>
+            <div className="form">
+              <LandingForm />
+            </div>
+          </div>
         </div>
       </div>
       <Footer />

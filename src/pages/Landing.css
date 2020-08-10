@@ -96,7 +96,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 2100px;
+  height: 2700px;
   align-items: center;
   justify-content: flex-start;
 }
@@ -164,18 +164,19 @@
 }
 
 .landing .moreContent .feature1 img {
-  height: 400px;
+  height: 420px;
   position: relative;
-  margin-right: 50px;
+  margin-right: 74px;
 }
 .landing .moreContent .feature2 img {
-  height: 400px;
+  height: 420px;
   position: relative;
+  margin-left: 24px;
 }
 .landing .moreContent .feature3 img {
-  height: 400px;
+  height: 420px;
   position: relative;
-  margin-right: 50px;
+  margin-right: 74px;
 }
 
 .landing .moreContent .feature1 p {
@@ -186,8 +187,7 @@
   letter-spacing: 0.05em;
   text-align: left;
 }
-
-.landing .moreContent .feature2 p {
+.landing .moreContent .feature2 p{
   width: 400px;
   font-family: roboto, sans-serif;
   font-weight: 400;
@@ -195,8 +195,7 @@
   letter-spacing: 0.05em;
   text-align: left;
 }
-
-.landing .moreContent .feature3 p {
+.landing .moreContent .feature3 p{
   width: 400px;
   font-family: roboto, sans-serif;
   font-weight: 400;
@@ -214,8 +213,7 @@
   margin: 0;
   text-align: left;
 }
-
-.landing .moreContent .feature2 h2 {
+.landing .moreContent .feature2 h2{
   line-height: 40px;
   width: 500px;
   font-family: montserrat, sans-serif;
@@ -224,8 +222,7 @@
   margin: 0;
   text-align: left;
 }
-
-.landing .moreContent .feature3 h2 {
+.landing .moreContent .feature3 h2{
   line-height: 40px;
   width: 500px;
   font-family: montserrat, sans-serif;
@@ -262,6 +259,15 @@
   color: #2b2b2b;
 }
 
+.landing .moreContent .interestForm {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 900px;
+  justify-content: flex-start;
+  align-items: center;
+}
+
 @media screen and (max-width: 850px) {
   .landing {
     background: white;
@@ -276,7 +282,6 @@
 
   .landing .content .text {
     margin: 0px;
-    margin-top: 100px;
     margin-bottom: 75px;
     padding: 0px;
     text-align: center;
@@ -298,10 +303,10 @@
     float: right;
     padding-top: 20px;
     margin-right: 0px;
-    margin-top: 0px;
-    margin-bottom: -40px;
+    margin-top: 50px;
     width: 368px;
     height: 319px;
+    margin-bottom: 50px;
   }
 
   .landing .content .imageContainer img {
@@ -313,7 +318,6 @@
 
   .landing .moreContent .featureWrapper {
     flex-direction: column;
-    height: 1400px;
     text-align: center;
   }
 
@@ -378,26 +382,29 @@
 
   .landing .moreContent {
     flex-direction: column;
-    /* height: 1200px; */
-    height: 1800px;
+    height: 2500px;
     text-align: center;
     margin-top: 0px;
   }
 
   .landing .moreContent img {
-    max-height: 200px;
-    margin-left: 54px;
-    width: 316px;
+    max-height: 280px;
+    margin-left: 76px;
     margin-bottom: 20px;
   }
 
   .landing .moreContent .feature2 img {
-    margin: 0px;
+    margin-left: 6px;
   }
 
   .landing .moreContent h2 {
     font-size: 20px;
     width: 90%;
+  }
+
+  .landing .moreContent .interestForm {
+    margin-top: 0px;
+    height: 730px;
   }
 }
 
@@ -442,11 +449,11 @@
   }
 
   .landing .moreContent {
-    height: 2600px;
+    height: 3400px;
   }
 
   .landing .moreContent img {
-    min-height: 500px;
+    min-height: 600px;
   }
 
   .landing .moreContent .description {
@@ -464,16 +471,18 @@
   }
 
   .landing .moreContent .feature1 {
-    margin-bottom: 250px;
-    height: 550px;
+    margin-bottom: 150px;
+    height: 600px;
   }
 
   .landing .moreContent .feature2 {
-    margin-bottom: 250px;
+    margin-bottom: 150px;
+    height: 600px;
   }
 
   .landing .moreContent .feature3 {
-    margin-bottom: 250px;
+    margin-bottom: 150px;
+    height: 600px;
   }
 
   .landing .moreContent .interestForm {
@@ -484,10 +493,13 @@
     font-size: 32px;
   }
 
-  .landing .moreContent .interestForm a {
-    font-size: 20px;
-    width: 300px;
-    padding: 20px 10px 20px 10px;
+  .landing .moreContent .interestForm img {
+    min-height: 0px;
+  }
+
+  .landing .moreContent .interestForm .imgContainer {
+    text-align: center;
+    width: 75%;
   }
 }
 
@@ -501,16 +513,16 @@
   .screen1 {
     animation: screens infinite 4s linear;
   }
-  .ball3 {
+  .landing .ball3 {
     animation: balls infinite 4s linear;
   }
-  .ball2 {
+  .landing .ball2 {
     animation: balls infinite 3.6s linear;
   }
-  .ball1 {
+  .landing .ball1 {
     animation: balls infinite 3.3s linear;
   }
-  .ball4 {
+  .landing .ball4 {
     animation: balls infinite 3s linear;
   }
 }

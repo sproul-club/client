@@ -4,43 +4,39 @@ import Select from 'react-select';
 const customStyles = {
   multiValue: (provided, state) => ({
     ...provided,
-    background: '#8ACEFD',
+    background: '#54a0f1',
     color: 'white',
-    'border-radius': 10,
+    'border-radius': 30,
   }),
   control: () => ({
     display: 'flex',
-    width: 310,
-    margin: 7,
-    marginBottom: 8,
-    fontSize: 12,
-    fontFamily: 'montserrat, sans-serif',
-    fontWeight: 600,
-    fontStyle: 'normal',
-    border: 'solid 1px #949494',
+    width: '430px',
+    margin: 0,
+    fontSize: 14,
+    border: 'solid 1px #2b2b2b',
     borderRadius: 5,
+    'line-height': 16,
+    padding: 0,
+    background: 'white',
   }),
   menu: (provided, state) => ({
     ...provided,
-    margin: 8,
+    margin: 0,
     marginTop: 2,
-    width: 310,
-    fontSize: '12px',
-    fontFamily: 'montserrat, sans-serif',
-    fontWeight: 600,
-    fontStyle: 'normal',
+    width: '430px',
+    fontSize: 16,
     textAlign: 'left',
-    color: '#4e4e4e',
+    color: '#2b2b2b',
   }),
   multiValueRemove: (provided, state) => ({
     ...provided,
-    background: '#8ACEFD',
+    background: '#54a0f1',
     color: 'white',
-    borderRadius: 10,
+    borderRadius: 30,
   }),
   singleValue: (provided, state) => ({
     ...provided,
-    color: '#4e4e4e',
+    color: '#2b2b2b',
   }),
   indicatorSeparator: (provided, state) => ({
     ...provided,
@@ -57,7 +53,7 @@ const Dropdown = (props) => (
         ...theme.colors,
         neutral50: '#949494',
         danger: 'white',
-        dangerLight: '#8ACEFD',
+        dangerLight: '#54a0f1',
         neutral80: 'white',
       },
     })}
@@ -65,7 +61,8 @@ const Dropdown = (props) => (
     isMulti={props.multi}
     options={props.options}
     placeholder={props.placeholder}
-    onChange={(e) => props.set(e)}
+    maxMenuHeight={200}
+    // onChange={(e) => props.set(e)}
   />
 );
 
