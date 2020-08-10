@@ -15,6 +15,7 @@ import screen3 from './assets/screen3.svg';
 import mock1 from './assets/mock1.png';
 import mock2 from './assets/mock2.png';
 import mock3 from './assets/mock3.png';
+import bearshehe from './assets/formbears.svg';
 import LandingForm from './LandingForm.js'
 
 const Landing = () => {
@@ -23,14 +24,7 @@ const Landing = () => {
       <Navbar />
       <div className="content">
         <div className="imageContainer">
-          <img src={sproul} className="sproul" alt="sproul" />
-          <img src={ball1} className="ball1" alt="sproul" />
-          <img src={ball2} className="ball2" alt="sproul" />
-          <img src={ball3} className="ball3" alt="sproul" />
-          <img src={ball4} className="ball4" alt="sproul" />
-          <img src={screen1} className="screen1" alt="sproul" />
-          <img src={screen2} className="screen2" alt="sproul" />
-          <img src={screen3} className="screen3" alt="sproul" />
+          <img src={bearshehe} className="bears" alt="bears"/>
         </div>
         <div className="text">
           <h3>Find your community at Berkeley</h3>
