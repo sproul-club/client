@@ -6,7 +6,7 @@ import Footer from '../layout/Footer';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { searchClubs } from '../actions/catalog';
-import DropdownSearch from "./Dropdown.js";
+import Dropdown from "./Dropdown.js";
 
 // import ethicalheader from './assets/ethicalheader.png';
 
@@ -64,11 +64,12 @@ const Catalog = ({ searchClubs }) => {
   const [name, setName] = useState('');
   const [appReq, setAppReq] = useState(true);
   const [status, setStatus] = useState(true);
+  const [tags, setTags] = useState([]);
 
   const multiselectRef = React.createRef();
 
   const searchAllClubs = () => {
-    const tags = multiselectRef.current.getSelectedItems();
+    // const tags = multiselectRef.current.getSelectedItems();
     const searchParams = { name, tags, appReq, status };
 
     // Calls searchClubs redux action, which hits the backend API
@@ -110,13 +111,22 @@ const Catalog = ({ searchClubs }) => {
                 <AccordionItemButton>Club Tags</AccordionItemButton>
               </AccordionItemHeading>
               <AccordionItemPanel>
-                <Multiselect
+
+                <Dropdown
+                  options={tagOptions}
+                  multi={true}
+                  search={true}
+                  placeholder='Add up to 3 tags'
+                  set={setTags}/>
+
+                {/* yo replace this shit with dropdown.js */}
+                {/* <Multiselect
                   options={tagOptions}
                   selectionLimit="3"
                   displayValue="key"
                   ref={multiselectRef}
                   showCheckbox={true}
-                />
+                /> */}
                 
                 
               </AccordionItemPanel>
