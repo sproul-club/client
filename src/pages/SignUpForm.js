@@ -4,27 +4,30 @@ import registerImage from './assets/register.png';
 import error from './assets/error.svg';
 
 const MultiStepForm = () => {
-  var tagOptions = [
-    { label: 'ASUC', value: 0 },
-    { label: 'Business', value: 1 },
-    { label: 'CalGreek', value: 2 },
-    { label: 'Community Service', value: 3 },
-    { label: 'Computer Science', value: 4 },
-    { label: 'Consulting', value: 5 },
-    { label: 'Cultural', value: 6 },
-    { label: 'Design', value: 7 },
-    { label: 'Engineering', value: 8 },
-    { label: 'Environmental', value: 9 },
-    { label: 'Health & Wellness', value: 10 },
-    { label: 'Media & Publication', value: 11 },
-    { label: 'Religious & Spiritual', value: 12 },
-    { label: 'Performing Arts', value: 13 },
-    { label: 'Political', value: 14 },
-    { label: 'Sciences', value: 15 },
-    { label: 'Sports & Recreation', value: 16 },
-    { label: 'Social Good', value: 17 },
-    { label: 'Technology', value: 18 },
-  ];
+    var tagOptions = [
+        { label: 'Advocacy', id: 0 },
+        { label: 'Business', id: 1 },
+        { label: 'CalGreek', id: 2 },
+        { label: 'Community Service', id: 3 },
+        { label: 'Computer Science', id: 4 },
+        { label: 'Consulting', id: 5 },
+        { label: 'Cultural', id: 6 },
+        { label: 'Design', id: 7 },
+        { label: 'Engineering', id: 8 },
+        { label: 'Environmental', id: 9 },
+        { label: 'Health', id: 10 },
+        { label: 'Media', id: 11 },
+        { label: 'Performing Arts', id: 12 },
+        { label: 'Political', id: 13 },
+        { label: 'Pre-professional', id: 14 },
+        { label: 'Religious & Spiritual', id: 15 },
+        { label: 'Research', id: 16 },
+        { label: 'Sciences', id: 17 },
+        { label: 'Social', id: 18 },
+        { label: 'Social Good', id: 19 },
+        { label: 'Sports & Rec.', id: 20 },
+        { label: 'Technology', id: 21 },
+      ];
 
   var appOptions = [
     { value: 1, label: 'Application required' },

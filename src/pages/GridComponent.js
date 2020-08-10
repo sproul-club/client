@@ -12,6 +12,7 @@ import { connect } from 'react-redux';
 import { withRouter, Link } from "react-router-dom";
 
 function GridComponent(props) {
+
   const GridList = props.clubs.map((club, i) => (
     <Grid item xs={12} sm={6} md={4} key={i}>
       <Card className={props.classes.root}>
@@ -32,12 +33,30 @@ function GridComponent(props) {
             image={require('./assets/ethicalheader.png')}
           />
           <CardContent>
-            <Typography gutterBottom variant="h5" component="h2">
+            {/*<Typography gutterBottom variant="h5" component="h2">
               {club.name}
-            </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
-              {club.tags.map((tag) => tag)}
-            </Typography>
+            </Typography>*/}
+            <div className="info-flex">
+              <div className="icon-title-flex">
+                <img className="card-club-logo" src={require('./assets/ethicalLogo.jpg')}/>
+                <div className="club-name">
+                  {club.name}
+                </div>
+              </div>
+                <div className="tags-flex-test">
+                { club.tags.map(tag => 
+                  <div className="tag-test"> {tag} </div>
+                )}
+                </div>
+                <div className="req-flex">
+                  {club.req_app ? 
+                    <div className="tag-test" id="app-req">✎ Requires App</div> : 
+                    <div className="tag-test" id="app-not-req">😊 No App Required</div>}
+                  {club.status ?
+                    <div className="tag-test" id="open-tag">✓ Taking New Members</div> :
+                    <div className="tag-test" id="not-open-tag">✗ Not Taking New Members</div>}
+                </div>
+            </div>
           </CardContent>
           </Link>
         </CardActionArea>
