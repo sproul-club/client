@@ -27,16 +27,16 @@ const Navbar = ({ isAuthenticated, logout, login, history }) => {
       <Link to="/catalog" className="nav-link">
         Discover
       </Link>
-      {/* <Link to="/signin" className="nav-link signin">
+      <Link to="/signin" className="nav-link signin">
         Club sign in
-      </Link> */}
-       <span
+      </Link>
+    {/*<span
         className="nav-link signin"
         style={{ cursor: 'pointer' }}
         onClick={()=>login('test','wow',history)}
       >
         Temp Login
-      </span>
+      </span>*/}
       <Link to="/signup" className="nav-link active">
         Add a club
       </Link>
