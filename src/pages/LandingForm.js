@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './LandingForm.css';
 import axios from 'axios';
-import bearshehe from './assets/formbears.svg';
+import formbear from './assets/formbear.svg';
 
 const LandingForm = () => {
   const [currStep, setStep] = useState(1);
@@ -63,7 +63,7 @@ const StepOne = (props) => {
     <div className="formGroup">
       <div className="formHeader">
         <div className="imgContainer">
-          <img src={bearshehe} className="bears" alt="bears" />
+          <img src={formbear} className="bears" alt="bears" />
         </div>
         <h2>Can't wait? Sign up now for early access!</h2>
       </div>
@@ -112,7 +112,7 @@ const StepTwo = (props) => {
     <div className="formGroup">
       <div className="complete">
         <div className="imgContainer">
-          <img src={bearshehe} className="bears" alt="bears" />
+          <img src={formbear} className="bears" alt="bears" />
         </div>
         <div className="messageText">
           <h3>Thanks for signing up!</h3>

@@ -15,7 +15,7 @@ import 'animate.css/animate.min.css';
 import mock1 from './assets/mock1.png';
 import mock2 from './assets/mock2.png';
 import mock3 from './assets/mock3.png';
-import bearshehe from './assets/formbears.svg';
+import bearshehe from './assets/landingbears.svg';
 import LandingForm from './LandingForm.js';
 
 const Landing = () => {
