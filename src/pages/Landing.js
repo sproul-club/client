@@ -30,7 +30,7 @@ const Landing = () => {
           <h3>Find your community at Berkeley</h3>
           <p>
             sproul.club helps you discover student clubs, organizations, and
-            communities on campus.
+            communities on campus - now virtually!
           </p>
           <a href="#interestform">Sign up for early access</a>
         </div>
