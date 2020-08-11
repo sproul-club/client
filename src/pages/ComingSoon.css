@@ -128,13 +128,6 @@
     background: white;
   }
 
-  .landing .content {
-    /* flex-direction: column-reverse; */
-    margin-bottom: 30px;
-    justify-content: center;
-    align-items: center;
-  }
-
   .comingsoon .content .text {
     margin: 0px;
     margin-top: 150px;
