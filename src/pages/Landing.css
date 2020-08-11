@@ -17,6 +17,7 @@
   align-items: center;
   flex-direction: column;
   margin-bottom: 40px;
+  margin-top: -70px;
 }
 
 .landing .text {
@@ -72,7 +73,6 @@
 .landing .text a:hover {
   background-color: #6eaff5;
 }
-
 
 .landing .content .imageContainer {
   display: flex;
@@ -297,6 +297,8 @@
 
   .landing .content .text p {
     font-size: 14px;
+    padding-left: 10px;
+    padding-right: 10px;
     letter-spacing: 0.05em;
   }
 
