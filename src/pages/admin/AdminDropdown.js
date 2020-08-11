@@ -34,6 +34,11 @@ const customStyles = {
     color: 'white',
     borderRadius: 30,
   }),
+  multiValueLabel: (provided, state) => ({
+    ...provided,
+    color: 'white',
+    'margin-left': "4px",
+  }),
   singleValue: (provided, state) => ({
     ...provided,
     color: '#2b2b2b',
@@ -54,7 +59,6 @@ const Dropdown = (props) => (
         neutral50: '#949494',
         danger: 'white',
         dangerLight: '#54a0f1',
-        neutral80: 'white',
       },
     })}
     isSearchable={props.search}
@@ -62,7 +66,6 @@ const Dropdown = (props) => (
     options={props.options}
     placeholder={props.placeholder}
     maxMenuHeight={200}
-    // onChange={(e) => props.set(e)}
   />
 );
 

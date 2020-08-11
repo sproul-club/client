@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Dropdown from './AdminDropdown.js';
 import ImageUploader from 'react-images-upload';
 
@@ -35,6 +35,25 @@ const Profile = () => {
     { value: 0, label: 'Not accepting members' },
   ];
 
+  const [orgName, setOrgName] = useState('Organization Name');
+  const [orgEmail, setOrgEmail] = useState('organizationname@berkeley.edu');
+  const [descr, setDescr] = useState("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
+  const [descrChars, setChars] = useState(1000-descr.length);
+
+  const submit = () => {
+    const profileInfo = {
+      "org-name": orgName,
+      "org-email": orgEmail,
+      "org-description": descr,
+    };
+    console.log(profileInfo);
+  }
+
+  const descrChange = (e) => {
+    setDescr(e.target.value);
+    setChars(1000-e.target.value.length);
+  }
+
   return (
     <div>
       <h3>Profile</h3>
@@ -48,6 +67,8 @@ const Profile = () => {
           <input
               className="userInput"
               type="text"
+              value={orgName}
+              onChange={e => setOrgName(e.target.value)}
           />
         </div>
         <div className="formElement">
@@ -55,8 +76,14 @@ const Profile = () => {
           <input
               className="userInput"
               type="text"
+              disabled="disabled"
+              value={orgEmail}
+              onChange={e => setOrgEmail(e.target.value)}
           />
         </div>
+        <p className="subtitle">
+          This setting cannot be changed. Please contact <span style={{"color": "#54a0f1"}}>sproul.club@gmail.com</span> for further assistance.
+        </p>
         <div className="formElement">
           <p>Tags</p>
           <Dropdown
@@ -138,13 +165,22 @@ const Profile = () => {
           <p>Description</p>
           <textarea
               className="descriptionInput"
-              placeholder="Enter a short description about your organization! (1000 char. max)"
+              placeholder="Enter a short description about your organization."
               type="text"
               maxLength={1000}
+              value={descr}
+              onChange={descrChange}
           />
         </div>
+        <p className="subtitle">
+          {descrChars} characters remaining
+        </p>
       </div>
-      <button className="saveButton">Save changes</button>
+      <button
+      className="saveButton"
+      onClick={submit}>
+          Save changes
+      </button>
     </div>
   );
 };
