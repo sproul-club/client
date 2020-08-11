@@ -4,7 +4,7 @@ import ImageUploader from 'react-images-upload';
 
 const Profile = () => {
   var tagOptions = [
-    { label: 'ASUC', value: 0 },
+    { label: 'Advocacy', value: 0 },
     { label: 'Business', value: 1 },
     { label: 'CalGreek', value: 2 },
     { label: 'Community Service', value: 3 },
@@ -14,15 +14,18 @@ const Profile = () => {
     { label: 'Design', value: 7 },
     { label: 'Engineering', value: 8 },
     { label: 'Environmental', value: 9 },
-    { label: 'Health & Wellness', value: 10 },
-    { label: 'Media & Publication', value: 11 },
-    { label: 'Religious & Spiritual', value: 12 },
-    { label: 'Performing Arts', value: 13 },
-    { label: 'Political', value: 14 },
-    { label: 'Sciences', value: 15 },
-    { label: 'Sports & Recreation', value: 16 },
-    { label: 'Social Good', value: 17 },
-    { label: 'Technology', value: 18 },
+    { label: 'Health', value: 10 },
+    { label: 'Media', value: 11 },
+    { label: 'Performing Arts', value: 12 },
+    { label: 'Political', value: 13 },
+    { label: 'Pre-professional', value: 14 },
+    { label: 'Religious & Spiritual', value: 15 },
+    { label: 'Research', value: 16 },
+    { label: 'Sciences', value: 17 },
+    { label: 'Social', value: 18 },
+    { label: 'Social Good', value: 19 },
+    { label: 'Sports & Rec.', value: 20 },
+    { label: 'Technology', value: 21 },
   ];
 
   var appOptions = [
