@@ -71,7 +71,7 @@ const StepOne = (props) => {
       <input
         className="userInput"
         type="text"
-        placeholder="<insert club name>"
+        placeholder="Name of Organization "
         onChange={(e) => props.setClubName(e.target.value)}
       />
       <p>Organization email</p>
