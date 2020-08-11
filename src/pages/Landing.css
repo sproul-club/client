@@ -13,11 +13,11 @@
   min-height: 87vh;
   display: flex;
   /* justify-content: space-between; */
-  justify-content: center;
+  justify-content: top;
+  padding-top: 40px;
   align-items: center;
   flex-direction: column;
   margin-bottom: 40px;
-  margin-top: -70px;
 }
 
 .landing .text {
@@ -276,10 +276,7 @@
   }
 
   .landing .content {
-    /* flex-direction: column-reverse; */
     margin-bottom: 30px;
-    justify-content: center;
-    align-items: center;
   }
 
   .landing .content .text {
@@ -297,8 +294,6 @@
 
   .landing .content .text p {
     font-size: 14px;
-    padding-left: 10px;
-    padding-right: 10px;
     letter-spacing: 0.05em;
   }
 
