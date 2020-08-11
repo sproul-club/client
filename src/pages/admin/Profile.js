@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import Dropdown from './AdminDropdown.js';
-import ImageUploader from 'react-images-upload';
+import ImageUploader from '../../react-images-upload';
 
 const Profile = () => {
   var tagOptions = [
