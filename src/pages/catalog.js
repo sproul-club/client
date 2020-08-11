@@ -87,8 +87,7 @@ const Catalog = ({ searchClubs }) => {
           >
             <AccordionItem className="accordion-group" uuid="a">
               <AccordionItemPanel>
-                <Form onSubmit={() => searchAllClubs()} name="submit">
-                  <div class="search-bar"> 
+                <Form className='search-bar' onSubmit={() => searchAllClubs()} name="submit">
                   <TextBox
                     name="name"
                     label=""
@@ -97,8 +96,7 @@ const Catalog = ({ searchClubs }) => {
                     placeholder="Search by name"
                     style={{ width: '275px', height: '34px', borderRadius: '5px', border: 'transparent', marginLeft: '-10px', paddingLeft: '7px'}}
                   />
-                  <button className="search-button"><i class="fa fa-search"></i></button>
-                  </div>
+                  <button className="search-button" type="submit" style={{ marginLeft: '-5px'}}><i class="fa fa-search"></i></button>
                 </Form>
               </AccordionItemPanel>
             </AccordionItem>
