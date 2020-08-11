@@ -13,7 +13,8 @@
   min-height: 87vh;
   display: flex;
   /* justify-content: space-between; */
-  justify-content: center;
+  justify-content: top;
+  padding-top: 40px;
   align-items: center;
   flex-direction: column;
   margin-bottom: 40px;
@@ -67,6 +68,10 @@
   padding: 14px 30px 14px 30px;
   border-radius: 6px;
   text-align: center;
+}
+
+.landing .text a:hover {
+  background-color: #6eaff5;
 }
 
 .landing .content .imageContainer {
@@ -271,10 +276,7 @@
   }
 
   .landing .content {
-    /* flex-direction: column-reverse; */
     margin-bottom: 30px;
-    justify-content: center;
-    align-items: center;
   }
 
   .landing .content .text {

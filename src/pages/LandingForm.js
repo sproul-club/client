@@ -71,14 +71,14 @@ const StepOne = (props) => {
       <input
         className="userInput"
         type="text"
-        placeholder="Organization name"
+        placeholder="Name of Organization "
         onChange={(e) => props.setClubName(e.target.value)}
       />
       <p>Organization email</p>
       <input
         className="userInput"
         type="text"
-        placeholder="Organization email"
+        placeholder="ex. organizationname@gmail.com"
         onChange={(e) => props.setClubEmail(e.target.value)}
       />
       <p>Point of contact name</p>
