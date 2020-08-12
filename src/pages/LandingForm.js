@@ -117,8 +117,7 @@ const StepTwo = (props) => {
         <div className="messageText">
           <h3>Thanks for signing up!</h3>
           <h3>
-            You will be the first to be notified when we launch.
-            <span role="img" aria-label="smiley">
+            You will be the first to be notified when we launch. <span role="img" aria-label="smiley">
               &#x1F60A;
             </span>
           </h3>
