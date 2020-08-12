@@ -40,40 +40,37 @@
   width: 100%;
   height: 80vh;
   overflow-y: scroll;
-  overflow-x: scroll;
 }
 
-.admin-text {
+.admin-page .admin-text {
   font-size: 18px;
+  margin-bottom: 30px;
 }
 
-.add-resource {
+.admin-page .add-resource {
   padding: 10px 20px;
 }
-.add-resource .input {
+.admin-page .add-resource .input {
   display: flex;
   flex-direction: row;
   margin: 10px;
 }
-.input .input-label {
+.admin-page .input .input-label {
   width: 100px;
 }
 
-.admin-text {
-  margin-bottom: 30px;
-}
-
 .admin-page .formGroup {
+  /* display: table; */
   display: flex;
   flex-direction: column;
-  overflow-y: scroll;
+  overflow-x: scroll;
   background: #F8F8F8;
   padding: 30px;
   padding-top: 50px;
   margin-bottom: 30px;
 }
 
-.formElement {
+.admin-page .formElement {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -82,28 +79,13 @@
   margin-bottom: 30px;
 }
 
-.formElementDescription {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  width: 100%;
-  line-height: 12px;
-  margin-bottom: 30px;
-}
-
-.formElementDescription p {
+.admin-page .formElement p {
   text-align: right;
   width: 180px;
   margin-right: 30px;
 }
 
-.formElement p {
-  text-align: right;
-  width: 180px;
-  margin-right: 30px;
-}
-
-.formElement .userInput{
+.admin-page .formElement .userInput{
   font-size: 16px;
   width: 418px;
   height: 34px;
@@ -112,7 +94,22 @@
   border-radius: 5px;
 }
 
-.formElementDescription .descriptionInput{
+.admin-page .formElementDescription {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  width: 100%;
+  line-height: 12px;
+  margin-bottom: 30px;
+}
+
+.admin-page .formElementDescription p {
+  text-align: right;
+  width: 180px;
+  margin-right: 30px;
+}
+
+.admin-page .formElementDescription .descriptionInput{
   width: 500px;
   height: 200px;
   padding: 20px;
@@ -125,7 +122,7 @@
   font-size: 16px;
 }
 
-.formElementDescription .descriptionInput::placeholder{
+.admin-page .formElementDescription .descriptionInput::placeholder{
   font-size: 16px;
 }
 
@@ -141,7 +138,7 @@
   border: none;
 }
 
-button:hover {
+.admin-page button:hover {
   background: #6eaff5;
   cursor: pointer;
 }
