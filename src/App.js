@@ -44,7 +44,6 @@ class App extends Component {
             <Route exact path="/club/:id" component={ComingSoon} />
             <Route>{'404'}</Route>
           </Switch>
-          <Route exact path="/club/:id" component={Modal} />
         </Router>
       </Provider>
     );
