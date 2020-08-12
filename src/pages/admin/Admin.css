@@ -123,6 +123,7 @@
   font-weight: 400;
   font-style: normal;
   font-size: 16px;
+  margin-bottom: 4px;
 }
 
 .formElementDescription .descriptionInput::placeholder{
@@ -144,4 +145,11 @@
 button:hover {
   background: #6eaff5;
   cursor: pointer;
+}
+
+.subtitle {
+  margin-top: -30px;
+  font-size: 10px;
+  margin-left: 210px;
+  margin-bottom: 20px;
 }
