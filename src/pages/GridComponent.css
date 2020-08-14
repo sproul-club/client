@@ -1,0 +1,113 @@
+.info-flex {
+  display: flex;
+  flex-direction: column;    
+}
+
+.icon-title-flex {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.card-club-logo {
+  width: 60px;
+  height: 60px;
+  margin-right: 15px;
+}
+
+.club-name {
+  font-size: 35px;
+  font-family: montserrat, sans-serif;
+  font-weight: bold;
+
+}
+
+.grid-tags-flex {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-left: -13px;
+
+}
+
+.grid-tag {
+  margin-top: 8px;
+  margin-left: 15px;
+  background-color: #E2E2E2;
+  border-radius: 6px;
+  padding: 0.2vw 1vw 0.2vw 1vw;
+  font-family: roboto, sans-serif;
+  font-size: 25px;
+}
+
+.req-flex {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+#app-req {
+  background-color: #FFF1AE;
+}
+
+#app-not-req {
+  background-color: #CDEAFF;
+}
+
+#open-tag {
+  background-color: #C9F0C9;
+}
+
+#not-open-tag {
+  background-color: #FFD6D6
+}
+
+@media (max-width: 1920px) {
+  .card-club-logo {
+      width: 35px;
+      height: 35px;
+      margin-right: 10px;
+    }
+    
+    .club-name {
+      font-size: 15px;
+      font-family: montserrat, sans-serif;
+      font-weight: bold;
+  
+    }
+    .grid-tags-flex {
+      margin-left: -5px;
+  
+    }
+    .req-flex {
+      margin-left: 2px;
+    }
+  .grid-tag {
+      font-size: 10px;
+      margin-top: 4px;
+      margin-left: 4px;
+  }
+}
+@media screen and (max-width: 850px) {
+
+  .card-club-logo {
+      width: 45px;
+      height: 45px;
+      margin-right: 15px;
+    }
+    
+    .club-name {
+      font-size: 18px;
+      font-family: montserrat, sans-serif;
+      font-weight: bold;
+  
+    }
+  .req-flex {
+    margin-left: -2px;
+  }
+  .grid-tag {
+      font-size: 13px;
+      margin-top: 4px;
+      margin-left: 8px;
+  }
+}
