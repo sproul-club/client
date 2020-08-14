@@ -148,6 +148,10 @@
   align-items: center;
 }
 
+.landing .inputs .formGroup .messageText a:hover {
+  background-color: #6eaff5;
+}
+
 .landing .inputs .formGroup .complete .imgContainer {
   margin-top: 10px;
 }

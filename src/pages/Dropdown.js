@@ -42,6 +42,11 @@ const customStyles = {
     ...provided,
     color: '#4e4e4e',
   }),
+  multiValueLabel: (provided, state) => ({
+    ...provided,
+    color: 'white',
+    'margin-left': "4px",
+  }),
   indicatorSeparator: (provided, state) => ({
     ...provided,
     width: 0,
@@ -58,7 +63,6 @@ const Dropdown = (props) => (
         neutral50: '#949494',
         danger: 'white',
         dangerLight: '#8ACEFD',
-        neutral80: 'white',
       },
     })}
     isSearchable={props.search}

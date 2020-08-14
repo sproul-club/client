@@ -95,13 +95,13 @@ const Landing = () => {
               <img src={mock3} className="screenshot" alt='mock3'/>
             </ScrollAnimation>
           </div>
-          <div className="interestForm" id="interestform">
+        </div>
+        <div className="interestForm" id="interestform">
             <h2>Now accepting student clubs and organizations!</h2>
             <div className="form">
               <LandingForm />
             </div>
           </div>
-        </div>
       </div>
       <Footer />
     </div>
