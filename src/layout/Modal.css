@@ -29,4 +29,9 @@
   right: 10px;
   cursor: pointer;
   color: #333;
+  font-size: 24px;
+}
+
+.exit:hover {
+  color: #999;
 }

@@ -37,7 +37,7 @@ const customStyles = {
   multiValueLabel: (provided, state) => ({
     ...provided,
     color: 'white',
-    'margin-left': "4px",
+    'margin-left': '4px',
   }),
   singleValue: (provided, state) => ({
     ...provided,
@@ -61,6 +61,7 @@ const Dropdown = (props) => (
         dangerLight: '#54a0f1',
       },
     })}
+    defaultValue={props.defaultValue || null}
     isSearchable={props.search}
     isMulti={props.multi}
     options={props.options}

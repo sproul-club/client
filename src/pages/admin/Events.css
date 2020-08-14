@@ -1,0 +1,86 @@
+.add-resource .input-time {
+  width: 350px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.formGroup .event {
+  display: flex;
+  flex-direction: row;
+  padding: 30px;
+  /* margin: 20px; */
+  margin-bottom: 20px;
+  height: 150px;
+  background: white;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0.5px 1px rgba(0, 0, 0, 0.5);
+}
+
+.event-content {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+
+.event-controls {
+  width: calc(20% - 40px);
+  padding-left: 50px;
+  position: relative;
+}
+
+.event-controls .fas {
+  margin-left: 20px;
+  font-size: 24px;
+  color: #777;
+  cursor: pointer;
+  float: right;
+}
+
+.event-content-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 20px;
+}
+
+.event-title {
+  font-weight: 700;
+}
+
+.event-content-text {
+  height: 100px;
+  margin-top: 15px;
+  font-size: 18px;
+  white-space: wrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.formElement .textarea {
+  width: 418px;
+}
+
+.events-list {
+  padding: 20px;
+}
+
+.add-resource {
+  padding: 30px 80px;
+  padding-left: 0px;
+}
+
+.add-resource .input {
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+}
+
+.modal-input {
+  border: 1px solid #555;
+  font-size: 16px;
+  width: 150px;
+  height: 34px;
+  padding-left: 12px;
+  border-radius: 5px;
+}

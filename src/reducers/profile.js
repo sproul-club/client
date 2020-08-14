@@ -1,7 +1,8 @@
 import { CLEAR_PROFILE, UPDATE_PROFILE } from '../actions/types';
+import { profileData } from '../utils/testApi';
 
 const initialState = {
-  profile: null,
+  profile: profileData,
 };
 
 export default function (state = initialState, action) {
@@ -9,7 +10,7 @@ export default function (state = initialState, action) {
 
   switch (type) {
     case UPDATE_PROFILE:
-      return { ...state, profile: payload.profile };
+      return { ...state, profile: payload };
     case CLEAR_PROFILE:
       return { ...state, profile: null };
     default:
