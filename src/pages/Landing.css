@@ -274,7 +274,7 @@
   .landing .moreContent .featureWrapper .description p {
     text-align: center;
     font-size: 14px;
-    width: 80%;
+    width: 90%;
   }
 
   .landing .moreContent .featureWrapper .description h2 {
@@ -282,7 +282,7 @@
     font-size: 20px;
     padding-left: 10px;
     padding-right: 10px;
-    width: 90%;
+    width: 95%;
   }
 
   .landing .moreContent .featureWrapper .feature1, .feature3 {
