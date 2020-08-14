@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { UPDATE_PROFILE } from './types';
+import { deleteEventTestApi } from '../utils/testApi';
 
 // Create profile
 
@@ -41,7 +42,12 @@ export const updateEvent = (formData) => async (dispatch) => {
   }
 };
 
-export const deleteEvent = (id) => {};
+export const deleteEvent = (id) => async (dispatch) => {
+  const res = deleteEventTestApi(id);
+
+  console.log('res:', res);
+  dispatch({ type: UPDATE_PROFILE, payload: res });
+};
 
 export const deleteResource = (id) => {};
 

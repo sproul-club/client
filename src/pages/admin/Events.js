@@ -5,7 +5,7 @@ import { addEvent, updateEvent } from '../../actions/profile';
 import DeleteModal from './DeleteModal';
 import './Events.css';
 
-const Events = ({ addEvent, updateEvent, events }) => {
+const Events = ({ addEvent, updateEvent, profile: { events } }) => {
   const [showModal, setShowModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
 
@@ -143,8 +143,4 @@ const Events = ({ addEvent, updateEvent, events }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  events: state.profile.profile.events,
-});
-
-export default connect(mapStateToProps, { addEvent, updateEvent })(Events);
+export default connect(null, { addEvent, updateEvent })(Events);

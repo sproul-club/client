@@ -10,7 +10,7 @@ export default function (state = initialState, action) {
 
   switch (type) {
     case UPDATE_PROFILE:
-      return { ...state, profile: payload.profile };
+      return { ...state, profile: payload };
     case CLEAR_PROFILE:
       return { ...state, profile: null };
     default:
