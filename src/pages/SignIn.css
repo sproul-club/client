@@ -2,53 +2,14 @@
   position: relative;
   widows: 100%;
   min-height: 87vh;
+  display: relative;
+  /* flex-direction: column;
+  align-items: center; */
+}
+
+.signin .subheader {
   display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.signin .content .text {
-  margin-right: 150px;
-}
-
-.signin .content .text h3 {
-  padding-top: 10px;
-  font-size: 40px;
-}
-
-.signin .content .text li {
-  display: flex;
-  align-items: center;
-  counter-increment: li;
-  margin: 30px;
-  font-family: roboto, sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 16px;
-  padding-top: 10px;
-}
-
-.signin .content .text ol {
-  list-style: none;
-  counter-reset: li;
-  margin-left: -30px;
-}
-
-.signin .content .text li::before {
-  content: counter(li);
-  color: white;
-  display: inline-block;
-  width: 0.8em;
-  margin-left: -1.5em;
-  margin-right: 0.5em;
-  text-align: center;
-  direction: rtl;
-  background: #8acefd;
-  border-radius: 1000px;
-  padding: 12px;
-  font-size: 25px;
-  font-weight: 700;
-  line-height: 0.8em;
+  justify-content: space-between;
 }
 
 .signin .form {
