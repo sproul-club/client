@@ -41,6 +41,10 @@ export const updateEvent = (formData) => async (dispatch) => {
   }
 };
 
+export const deleteEvent = (id) => {};
+
+export const deleteResource = (id) => {};
+
 // Get club user profile
 
 // Delete profile / account

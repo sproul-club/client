@@ -1,7 +1,8 @@
 import { CLEAR_PROFILE, UPDATE_PROFILE } from '../actions/types';
+import { profileData } from '../utils/testApi';
 
 const initialState = {
-  profile: null,
+  profile: profileData,
 };
 
 export default function (state = initialState, action) {

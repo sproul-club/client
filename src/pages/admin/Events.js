@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import Modal from '../../layout/Modal';
 import { connect } from 'react-redux';
 import { addEvent, updateEvent } from '../../actions/profile';
+import DeleteModal from './DeleteModal';
 import './Events.css';
 
-const Events = ({ addEvent, updateEvent }) => {
+const Events = ({ addEvent, updateEvent, events }) => {
   const [showModal, setShowModal] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
 
   const [title, setTitle] = useState('');
   const [eventLink, setEventLink] = useState('');
@@ -16,7 +18,7 @@ const Events = ({ addEvent, updateEvent }) => {
 
   const saveEvent = (event: null) => {
     const eventInfo = { title, eventLink, start, eventTime, text };
-    event ? addEvent(eventInfo) : updateEvent(event, eventInfo);
+    event ? updateEvent(event.id, eventInfo) : addEvent(eventInfo);
   };
 
   const editEvent = (event) => {
@@ -25,6 +27,7 @@ const Events = ({ addEvent, updateEvent }) => {
     setStart(event.start);
     setEventTime(event.eventTime);
     setText(event.text);
+    setActiveEvent(event);
     setShowModal(true);
   };
 
@@ -34,7 +37,13 @@ const Events = ({ addEvent, updateEvent }) => {
     setStart('');
     setEventTime('');
     setText('');
+    setActiveEvent(null);
     setShowModal(true);
+  };
+
+  const openDeleteModal = (event) => {
+    setActiveEvent(event);
+    setShowDeleteModal(true);
   };
 
   return (
@@ -46,22 +55,36 @@ const Events = ({ addEvent, updateEvent }) => {
       <div className="formGroup">
         <div className="events-list">
           {events.map((event) => (
-            <div className="event">
-              <div className="event-content">
-                <div className="event-content-header">
-                  <div className="event-title">{event.title}</div>
-                  <div className="event-date">{event.start}</div>
+            <>
+              <div className="event">
+                <div className="event-content">
+                  <div className="event-content-header">
+                    <div className="event-title">{event.title}</div>
+                    <div className="event-date">{event.start}</div>
+                  </div>
+                  <div className="event-content-text">{event.text}</div>
                 </div>
-                <div className="event-content-text">{event.text}</div>
+                <div className="event-controls">
+                  <i
+                    className="fas fa-trash"
+                    onClick={() => openDeleteModal(event)}
+                  ></i>
+                  <i
+                    className="fas fa-edit"
+                    onClick={() => editEvent(event)}
+                  ></i>
+                </div>
               </div>
-              <div className="event-controls">
-                <i className="fas fa-trash"></i>
-                <i className="fas fa-edit" onClick={() => editEvent(event)}></i>
-              </div>
-            </div>
+            </>
           ))}
         </div>
       </div>
+      <DeleteModal
+        type="event"
+        item={activeEvent}
+        showModal={showDeleteModal}
+        setShowModal={setShowDeleteModal}
+      />
       <button onClick={openAddEvent}>Add Event</button>
 
       <Modal showModal={showModal} setShowModal={setShowModal}>
@@ -113,7 +136,7 @@ const Events = ({ addEvent, updateEvent }) => {
               onChange={(e) => setText(e.target.value)}
             />
           </div>
-          <button type="submit">Add Event</button>
+          <button type="submit">{activeEvent ? 'Update' : 'Add Event'}</button>
         </div>
       </Modal>
     </div>
@@ -121,33 +144,7 @@ const Events = ({ addEvent, updateEvent }) => {
 };
 
 const mapStateToProps = (state) => ({
-  events: state.profile.events,
+  events: state.profile.profile.events,
 });
 
 export default connect(mapStateToProps, { addEvent, updateEvent })(Events);
-
-const events = [
-  {
-    title: 'Event Title Extravaganza',
-    start: 'Nov 30, 2020',
-    text:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi ducimus libero, soluta natus fuga ipsum at eaque commodi, consequuntur, quas enim hic cumque. Officiis, perferendis quaerat a minima, accusantium animi voluptatum eum et distinctio, nam rerum dolorum ratione id odit nesciunt? Necessitatibus, explicabo! Pariatur quae in, blanditiis voluptates dolor incidunt.',
-  },
-  {
-    title: 'Cool Fun Party',
-    start: 'Nov 30, 2020',
-    text:
-      'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Velit quasi, dolores at accusamus recusandae magnam. Explicabo adipisci qui culpa soluta error, quos libero incidunt, placeat labore alias odio. Excepturi eligendi soluta officia. Autem officiis soluta veniam fugiat pariatur cupiditate culpa, quod molestias beatae eum est ducimus facere nulla eveniet recusandae!',
-  },
-  {
-    title: "Let's have a great time",
-    start: 'Nov 18, 2020',
-    text:
-      'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sit aut odit dolores nulla nobis earum exercitationem nesciunt quisquam. Est odit quam recusandae ullam nulla deserunt velit veniam praesentium. Fugiat dolor natus esse explicabo excepturi voluptas impedit fugit error maiores. Quod beatae voluptates provident blanditiis nostrum facilis pariatur similique accusantium veniam.',
-  },
-  {
-    title: "Let's have a great time",
-    start: 'Nov 18, 2020',
-    text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus',
-  },
-];

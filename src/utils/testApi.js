@@ -10,6 +10,34 @@ export const catalogTestApi = (searchInput) => {
   return filtered;
 };
 
+export const profileData = {
+  events: [
+    {
+      title: 'Event Title Extravaganza',
+      start: 'Nov 30, 2020',
+      text:
+        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi ducimus libero, soluta natus fuga ipsum at eaque commodi, consequuntur, quas enim hic cumque. Officiis, perferendis quaerat a minima, accusantium animi voluptatum eum et distinctio, nam rerum dolorum ratione id odit nesciunt? Necessitatibus, explicabo! Pariatur quae in, blanditiis voluptates dolor incidunt.',
+    },
+    {
+      title: 'Cool Fun Party',
+      start: 'Nov 30, 2020',
+      text:
+        'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Velit quasi, dolores at accusamus recusandae magnam. Explicabo adipisci qui culpa soluta error, quos libero incidunt, placeat labore alias odio. Excepturi eligendi soluta officia. Autem officiis soluta veniam fugiat pariatur cupiditate culpa, quod molestias beatae eum est ducimus facere nulla eveniet recusandae!',
+    },
+    {
+      title: "Let's have a great time",
+      start: 'Nov 18, 2020',
+      text:
+        'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sit aut odit dolores nulla nobis earum exercitationem nesciunt quisquam. Est odit quam recusandae ullam nulla deserunt velit veniam praesentium. Fugiat dolor natus esse explicabo excepturi voluptas impedit fugit error maiores. Quod beatae voluptates provident blanditiis nostrum facilis pariatur similique accusantium veniam.',
+    },
+    {
+      title: "Let's have a great time",
+      start: 'Nov 18, 2020',
+      text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus',
+    },
+  ],
+};
+
 export const catalogData = {
   1: {
     name: 'EthiCal',
@@ -54,3 +82,29 @@ export const catalogData = {
     status: true,
   },
 };
+
+export const events = [
+  {
+    title: 'Event Title Extravaganza',
+    start: 'Nov 30, 2020',
+    text:
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi ducimus libero, soluta natus fuga ipsum at eaque commodi, consequuntur, quas enim hic cumque. Officiis, perferendis quaerat a minima, accusantium animi voluptatum eum et distinctio, nam rerum dolorum ratione id odit nesciunt? Necessitatibus, explicabo! Pariatur quae in, blanditiis voluptates dolor incidunt.',
+  },
+  {
+    title: 'Cool Fun Party',
+    start: 'Nov 30, 2020',
+    text:
+      'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Velit quasi, dolores at accusamus recusandae magnam. Explicabo adipisci qui culpa soluta error, quos libero incidunt, placeat labore alias odio. Excepturi eligendi soluta officia. Autem officiis soluta veniam fugiat pariatur cupiditate culpa, quod molestias beatae eum est ducimus facere nulla eveniet recusandae!',
+  },
+  {
+    title: "Let's have a great time",
+    start: 'Nov 18, 2020',
+    text:
+      'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sit aut odit dolores nulla nobis earum exercitationem nesciunt quisquam. Est odit quam recusandae ullam nulla deserunt velit veniam praesentium. Fugiat dolor natus esse explicabo excepturi voluptas impedit fugit error maiores. Quod beatae voluptates provident blanditiis nostrum facilis pariatur similique accusantium veniam.',
+  },
+  {
+    title: "Let's have a great time",
+    start: 'Nov 18, 2020',
+    text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus',
+  },
+];
