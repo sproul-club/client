@@ -15,6 +15,7 @@
 .header .nav-link {
   float: left;
   color: #2b2b2b;
+  transition: color 0.15s;
   text-align: center;
   padding: 12px;
   text-decoration: none;
@@ -37,6 +38,7 @@
 
 .header a.active {
   background-color: #54a0f1;
+  transition: background-color 0.15s;
   color: white;
 }
 .header a.active:hover {
@@ -55,8 +57,8 @@
   font-size: 22px;
 }
 
-.signin {
-  margin-right: 40px !important;
+.nav-link.signin {
+  margin-right: 40px;
 }
 
 .hidden {

@@ -1,253 +1,101 @@
 .signin .content {
   position: relative;
-  widows: 100%;
-  min-height: 87vh;
-  display: relative;
-  /* flex-direction: column;
-  align-items: center; */
-}
-
-.signin .subheader {
+  /* window height - header */  
+  height: calc(100vh - 83px);
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .signin .form {
-  font-family: montserrat, sans-serif;
-  font-weight: 700;
-  font-style: normal;
-  box-shadow: 3px 3px 1px rgb(0, 0, 0, 0.3);
-  text-align: center;
-  width: 350px;
-  height: 460px;
-  border-radius: 15px;
-  padding: 20px;
+  position: relative;
+  padding: 40px 50px;
+  overflow-y: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.signin .form .formGroup {
+  padding-bottom: 100px;
+  display: flex;
+  flex-direction: column;
+}
+
+.signin .form .formHeader h2 {
   margin-top: 20px;
-  border: solid 1px #949494;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  margin-bottom: 10px;
 }
 
-.signin .form .inputs {
-  display: flex;
-  justify-content: flex-start;
-}
-
-.signin .form .inputs .formGroup {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  width: 328px;
-  height: 460px;
-}
-
-.signin .form .inputs .formGroup .formHeader {
-  float: top;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 10px;
-}
-
-.signin .form h2 {
-  font-size: 20px;
-}
-
-.signin .form img {
-  height: 125px;
-  width: auto;
-}
-
-.signin .form .inputs .formGroup .drops {
-  display: flex;
-  flex-direction: column-reverse;
-  justify-content: flex-end;
-  align-items: flex-start;
-  height: 400px;
-}
-
-.signin .form .inputs .buttonWrapper {
-  margin-bottom: 12px;
-  justify-content: space-between;
-  display: flex;
-  flex-direction: row;
-}
-
-.signin .form .inputs .buttonWrapper .nextButton {
-  float: right;
-  margin-right: 9px;
-}
-
-.signin .form .inputs .buttonWrapper .prevButton {
-  float: left;
-  margin-left: 7.7px;
-}
-
-.signin .form .inputs .buttonWrapper .help {
-  display: flex;
-  align-items: flex-end;
-  flex-direction: row;
-  padding: 10px;
-  padding-bottom: 5px;
-  width: 60%;
-}
-
-.signin .form .inputs .buttonWrapper p {
-  font-family: roboto, sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 12px;
-  margin: 0px;
-  float: left;
-  margin-right: 6px;
-  color: #757575;
-  letter-spacing: 0.05em;
-}
-
-.signin .form .inputs .buttonWrapper a {
-  text-decoration: none;
-  font-size: 12px;
-  margin: 0px;
-  float: left;
-  color: #2b2b2b;
-}
-
-.signin .form .inputs .buttonWrapper .submitButton {
-  float: right;
-  margin-right: 7.7px;
-}
-
-.signin .form button {
-  margin-top: 10px;
-  font-family: montserrat, sans-serif;
-  font-weight: 700;
-  font-style: normal;
-  background-color: #8acefd;
-  color: white;
-  text-decoration: none;
-  padding: 8px 16px 8px 16px;
-  border-radius: 8px;
-  border: none;
-  font-size: 14px;
-}
-
-:focus {
-  outline: 0px;
-}
-
-.signin .form .inputs .formGroup .userInput {
-  width: 290px;
-  padding: 10px;
-  margin: 8px;
-  font-family: montserrat, sans-serif;
+.signin .form p {
+  margin-top: 15px;
+  margin-bottom: 2.5px;
   font-weight: 600;
-  font-style: normal;
-  font-size: 12px;
-  border-radius: 5px;
-  border: solid 1px #949494;
-  color: #4e4e4e;
 }
 
-.signin .form .inputs .formGroup .userInputInvalid {
-  width: 290px;
-  padding: 10px;
-  margin: 8px;
-  font-family: montserrat, sans-serif;
-  font-weight: 600;
-  font-style: normal;
-  font-size: 12px;
-  border-radius: 5px;
-  border: solid 1px #ff2d2d;
-  color: #4e4e4e;
-}
-
-.signin .form .inputs .formGroup .conError {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  margin-left: 150px;
-  margin-top: 320px;
-  background: white;
-  border-radius: 6px;
-  padding-left: 8px;
-  padding-right: 8px;
-  box-shadow: 3px 3px 5px rgb(0, 0, 0, 0.2);
-}
-
-.signin .form .inputs .formGroup .conError img {
-  height: 14px;
-  width: 14px;
-  margin-right: 6px;
-}
-
-.signin .form .inputs .formGroup .conError p {
-  color: #ff2d2d;
-  font-family: montserrat, sans-serif;
-  font-weight: 700;
-  font-style: normal;
-  font-size: 12px;
-  line-height: 8px;
-}
-
-.signin .form .inputs .formGroup .conErrorNone {
-  display: none;
-}
-
-.signin .form .inputs .complete {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 25px;
-}
-
-.signin .form .inputs .complete .imageContainer {
-  margin-bottom: 40px;
-}
-
-.signin .form .inputs .complete h3 {
-  margin: 0px;
-  margin-bottom: 20px;
-  font-family: montserrat, sans-serif;
-  font-weight: 600;
-  font-style: normal;
-  font-size: 16px;
-  line-height: 24px;
-}
-
-.signin .form .inputs .complete h2 {
-  margin: 0px;
-  margin-top: 80px;
-  font-size: 12px;
-  color: #757575;
-}
-
-.signin .form .inputs .complete a {
+.signin .form a {
+  margin-top: 8px;
   text-decoration: none;
+  font-family: montserrat, sans-serif;
+  font-weight: 500;
   font-size: 12px;
-  margin: 4px;
-  float: left;
-  color: #2b2b2b;
-}
-
-::placeholder {
   color: #949494;
+  transition: color 0.15s;
+}
+
+.signin .form a:hover {
+  color: #4e4e4e;
+}
+
+.signin .form .userInput {
+  /* screen width - padding - border - input padding */
+  width: calc(100vw - 100px - 2px - 18px);
+  max-width: 290px;
+  padding: 9px;
+  border-radius: 5px;
+  border: solid 1px #949494;
+  box-shadow: 1.5px 2px 3px #888888b5;
+  font-family: montserrat, sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 12px;
+  color: #4e4e4e;
+}
+
+.signin .form .buttonWrapper .submitButton {
+  /* screen width - padding */
+  width: calc(100vw - 100px);
+  max-width: 310px;
+  margin-top: 20px;
+  padding: 10px 16px 10px 16px;
+  border-radius: 7px;
+  border: none;
+  box-shadow: 1px 2px 3px #888888b5;
+  text-decoration: none;
+  font-family: montserrat, sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 14px;
+  color: white;
+  background-color: #87CDFF;
+  transition: background-color 0.15s;
+}
+
+.signin .form .buttonWrapper .submitButton:hover {
+  background-color: #71c4ff;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 800px) {
   .signin .content {
-    align-items: unset;
-  }
-  .signin .content .text {
-    display: none;
-  }
-  .signin .content .form {
-    border: none;
-    box-shadow: none;
-    margin-top: 0px;
+    display: inline;
   }
 }
+
+@media screen and (max-height: 470px) {
+  .signin .content {
+    height: 387px;
+  }
+}
+
+/* WEBKIT FOR OLD SAFARI VERSIONS */

@@ -10,10 +10,6 @@ const SignIn = () => {
       <Navbar />
       <div className="signin">
         <div className="content">
-          <div className="subheader">
-            <Link to="/">Edit Club Page</Link>
-            <Link to="/">Edit Club Page</Link>
-          </div>
           <div className="form">
             <SignInForm />
           </div>
