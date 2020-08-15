@@ -101,14 +101,14 @@
   margin-bottom: 10px;
 }
 
-/* .userInput {
+.resourcesInput {
   font-size: 14px;
   width: 418px;
   height: 34px;
   padding-left: 12px;
   border: solid 1px;
   border-radius: 5px;
-} */
+} 
 
 #buttons-flex {
   display: flex;

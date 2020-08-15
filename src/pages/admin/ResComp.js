@@ -81,9 +81,9 @@ const ResComp = (props) => {
               <div className="gray-modal">
                 <div className="input-holder">
                   <div className='input-title'>Resource Title</div>
-                  <input value={name} placeholder="Type resource name" className="userInput" type="text" onChange={changeName}></input>
+                  <input value={name} placeholder="Type resource name" className="resourcesInput" type="text" onChange={changeName}></input>
                   <div className='input-title'>URL Link</div>
-                  <input value={link} placeholder="+ Add a link (google drive, google form, youtube, etc)" className="userInput" type="text" onChange={changeLink}></input>
+                  <input value={link} placeholder="+ Add a link (google drive, google form, youtube, etc)" className="resourcesInput" type="text" onChange={changeLink}></input>
                 </div>
               </div>
             <div id="buttons-flex">

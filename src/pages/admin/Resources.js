@@ -97,9 +97,9 @@ const Resources = () => {
             <div className="gray-modal">
               <div className="input-holder">
                 <div className='input-title'>Resource Title</div>
-                <input value={newName} placeholder="Type resource name" className="userInput" type="text" onChange={changeTitle}></input>
+                <input value={newName} placeholder="Type resource name" className="resourcesInput" type="text" onChange={changeTitle}></input>
                 <div className='input-title'>URL Link</div>
-                <input value={newLink} placeholder="+ Add a link (google drive, google form, youtube, etc)" className="userInput" type="text" onChange={changeLink}></input>
+                <input value={newLink} placeholder="+ Add a link (google drive, google form, youtube, etc)" className="resourcesInput" type="text" onChange={changeLink}></input>
               </div>
             </div>
             <div id="buttons-flex">
