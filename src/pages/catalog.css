@@ -181,7 +181,7 @@
   /* background-color: pink; */
 }
 
-.content {
+.App .content {
   min-height: calc(100vh - 176px);
   /* position: relative;
   widows: 100%; */
@@ -207,7 +207,7 @@
 
 
  @media screen and (max-width: 850px) {
-  .content {
+  .App .content {
     align-items: flex-start;
     align-content: flex-start;
     align-self: flex-start;
