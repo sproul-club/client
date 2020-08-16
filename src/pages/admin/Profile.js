@@ -61,8 +61,8 @@ const Profile = ({ profile }) => {
     <div>
       <h3>Profile</h3>
       <div className="admin-text">
-        Add an organization logo and profile banner, and edit your tags,
-        membership status, application requirements, and club's description.
+        Add an organization logo, profile banner, edit your tags,
+        membership status, application requirements, and organization description.
       </div>
       <div className="formGroup">
         <div className="formElement">
@@ -175,7 +175,7 @@ const Profile = ({ profile }) => {
             className="descriptionInput"
             placeholder="Enter a short description about your organization."
             type="text"
-            maxLength={1000}
+            maxLength={500}
             value={descr}
             onChange={descrChange}
           />

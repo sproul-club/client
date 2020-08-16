@@ -10,7 +10,7 @@ const ContactInfo = ({ profile }) => {
       </div>
       <div className="formGroup">
       <div className="formElement">
-          <p>Email Address <div>*</div></p>
+          <p>Email Address * <div> </div></p>
           <input
               className="userInput"
               type="text"
