@@ -5,7 +5,7 @@ import './RecoverPassword.css';
 import image from './assets/register.png';
 
 
-const RecoverForm = () => {
+const RecoverPasswordForm = () => {
     const [currStep, setStep] = useState(1);
     const [email, setEmail] = useState('');
 
@@ -91,4 +91,4 @@ const StepTwo = (props) => {
     )
 }
 
-export default RecoverForm;
+export default RecoverPasswordForm;
