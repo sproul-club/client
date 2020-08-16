@@ -12,6 +12,7 @@ import { ComingSoon } from './pages/ComingSoon.js';
 import Catalog from './pages/catalog.js';
 import { SignUp } from './pages/SignUp.js';
 import { SignIn } from './pages/SignIn.js';
+import { RecoverPassword } from './pages/RecoverPassword.js';
 import Admin from './pages/admin/Admin.js';
 import Modal from './pages/Modal.js';
 import store from './store';
@@ -42,6 +43,7 @@ class App extends Component {
             <Route path="/catalog" component={Catalog} />
             <Route exact path="/signup" component={SignUp} />
             <Route exact path="/signin" component={SignIn} />
+            <Route exact path="/recover" component={RecoverPassword} />
             <Route exact path="/club/:id" component={Modal} />
             <Route>{'404'}</Route>
           </Switch>

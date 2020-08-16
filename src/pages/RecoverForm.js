@@ -1,60 +1,94 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 import './RecoverPassword.css';
 import image from './assets/register.png';
 
 
 const RecoverForm = () => {
+    const [currStep, setStep] = useState(1);
+    const [email, setEmail] = useState('');
 
+    const submitEmail = () => {
+        const fromdetails = {
+            Email: email,
+        };
+        
+        setStep(currStep + 1);
+
+        // axios({
+        //     // method: 'POST',
+        //     // url: 'https://sc-backend-v0.herokuapp.com/api/future-sign-up',
+        //     // data: formDetails,
+        //     // headers: {
+        //     //   'Content-Type': 'application/json',
+        //     //   'Access-Control-Allow-Origin': '*',
+        //     // },
+        // })
+        //   .then(function (response) {
+        //     //handle success
+        //     setStep(currStep + 1);
+        //   })
+        //   .catch(function (error) {
+        //     //handle error, aka email not confirmed
+        //     alert(error.response.data.reason);
+        //   });
+    };    
 
     return (
     <>
         <StepOne
-        conError={conError}
+        email={email}
+        currStep={currStep}
+        setEmail={setEmail}
+        submitEmail={submitEmail}
         />
-        <StepTwo
-        />
-        <StepThree currStep={currStep} />
+        <StepTwo currStep={currStep} />
     </>
     );
 }
 
+const StepOne = (props) => {
+    if (props.currStep !== 1) {
+        return null;
+    }
+    return (
+    <>
+        <div className="imgContainer one">
+            <img src={image} alt="forgot password" />
+        </div>
+        <div className="text">
+            <h2>Recover your password</h2>
+        </div>
+        <input
+            className="userInput"
+            type="text"
+            onChange={(e) => props.setEmail(e.target.value)}
+        />
+        <Link to="/recover" className="forgotEmail">Forgot email?</Link>
+        <button onClick={props.submitEmail} className="button submitEmail">
+          Submit
+        </button>
+    </>
+    )
+}
 
+const StepTwo = (props) => {
+    if (props.currStep !== 2) {
+        return null;
+    }
+    return (
+    <>
+        <div className="imgContainer two">
+            <img src={image} alt="forgot password" />
+        </div>
+        <div className="text">
+            <h2>Recover your password</h2>
+            <p>Please check your organization's inbox for a password recovery email.</p>
+        </div>
+        <a href="/" class="button backHome">Back to homepage</a>
+    </>
+    )
+}
 
-<div className="imgContainer">
-<img src={image} alt="forgot password" />
-</div>
-<div className="header">
-<h2>Recover your password</h2>
-</div>
-<input
-className="userInput"
-type="text"
-onChange={(e) => setEmail(e.target.value)}
-/>
-<Link to="/recover">Forgot email?</Link>
-
-
-<div className="formGroup">
-<div className="formHeader">
-    <h2>Sign into sproul.club</h2>
-</div>
-<p>Email</p>
-<input
-    className="userInput"
-    type="text"
-    onChange={(e) => setEmail(e.target.value)}
-/>
-<p>Password</p>
-<input
-    className="userInput"
-    type="text"
-    onChange={(e) => setPassword(e.target.value)}
-/>
-<Link to="/recover">Forgot password?</Link>
-<div className="buttonWrapper">
-    <button className="submitButton" onClick={submitValue}>
-    Sign in
-    </button>
-</div>
-</div>
+export default RecoverForm;
