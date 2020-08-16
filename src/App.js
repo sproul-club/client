@@ -38,11 +38,11 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Landing} />
             <Route exact path="/comingsoon" component={ComingSoon} />
-            <Route path="/admin" component={ComingSoon} />
-            <Route path="/catalog" component={ComingSoon} />
-            <Route exact path="/signup" component={ComingSoon} />
-            <Route exact path="/signin" component={ComingSoon} />
-            <Route exact path="/club/:id" component={ComingSoon} />
+            <Route path="/admin" component={Admin} />
+            <Route path="/catalog" component={Catalog} />
+            <Route exact path="/signup" component={SignUp} />
+            <Route exact path="/signin" component={SignIn} />
+            <Route exact path="/club/:id" component={Modal} />
             <Route>{'404'}</Route>
           </Switch>
         </Router>
