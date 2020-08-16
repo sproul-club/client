@@ -13,24 +13,26 @@ const SignInForm = () => {
             Password: pw,
         };
     
-        axios({
-            // method: 'POST',
-            // url: 'https://sc-backend-v0.herokuapp.com/api/future-sign-up',
-            // data: formDetails,
-            // headers: {
-            //   'Content-Type': 'application/json',
-            //   'Access-Control-Allow-Origin': '*',
-            // },
-        })
-          .then(function (response) {
-            //handle success
-            window.location.href = "sproul.club/admin";
-          })
-          .catch(function (error) {
-            //handle error
-            alert(error.response.data.reason);
-          });
-      };    
+        window.location.href = "/admin";
+
+        // axios({
+        //     // method: 'POST',
+        //     // url: 'https://sc-backend-v0.herokuapp.com/api/future-sign-up',
+        //     // data: formDetails,
+        //     // headers: {
+        //     //   'Content-Type': 'application/json',
+        //     //   'Access-Control-Allow-Origin': '*',
+        //     // },
+        // })
+        //   .then(function (response) {
+        //     //handle success
+        //     window.location.href = "/admin";
+        //   })
+        //   .catch(function (error) {
+        //     //handle error
+        //     alert(error.response.data.reason);
+        //   });
+    };    
 
     return (
     <div className="formGroup">
