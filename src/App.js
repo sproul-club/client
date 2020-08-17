@@ -27,6 +27,7 @@ import Footer from './layout/Footer.js';
 import Navbar from './layout/Navbar.js';
 import { Card } from '@material-ui/core';
 import auth from './reducers/auth.js';
+import catalog from './reducers/catalog.js';
 
 class App extends Component {
   previousLocation = this.props.location;
