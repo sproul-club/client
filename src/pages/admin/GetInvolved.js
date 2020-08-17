@@ -3,11 +3,18 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 
 const GetInvolved = ({ profile }) => {
-  const [involvedDesc, setInvolvedDesc] = useState(profile.description);
+  const [involvedDescr, setInvolvedDescr] = useState(profile.description);
+  /*const [involvedDesc, setInvolvedDesc] = useState(profile.description);*/
+  const [descrChars, setChars] = useState(250 - involvedDescr.length);
+
+  const descrChange = (e) => {
+    setInvolvedDescr(e.target.value);
+    setChars(250 - e.target.value.length);
+  };
 
   const submitValue = (e) => {
     const formDetails = {
-      'involved-desc': involvedDesc,
+      'involved-desc': involvedDescr,
     };
 
     // axios({
@@ -27,6 +34,7 @@ const GetInvolved = ({ profile }) => {
     //     alert(error.response.data.reason);
     //   });
   };
+  
 
   return (
     <div>
@@ -36,17 +44,21 @@ const GetInvolved = ({ profile }) => {
         organization!
       </div>
       <div className="formGroup">
-        <div className="formElementDescription">
+        <div className="formElement">
           <p>Description</p>
           <textarea
             className="descriptionInput"
-            placeholder="Enter a short description about how to get involved! (500 char. max)"
+            placeholder="Enter a short description about how to get involved!"
             type="text"
-            maxLength={500}
-            value={involvedDesc}
+            maxLength={250}
+            /*value={involvedDesc}
             onChange={(e) => setInvolvedDesc(e.target.value)}
+            */
+           value={involvedDescr}
+            onChange={descrChange}
           />
         </div>
+        <p className="subtitle">{descrChars} characters remaining</p>
       </div>
       <button className="saveButton" onClick={submitValue}>
         Save changes{' '}
