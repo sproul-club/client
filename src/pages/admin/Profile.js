@@ -41,7 +41,7 @@ const Profile = ({ profile }) => {
   const [orgName, setOrgName] = useState(profile.name);
   const [orgEmail, setOrgEmail] = useState(profile.email);
   const [descr, setDescr] = useState(profile.description);
-  const [descrChars, setChars] = useState(1000 - descr.length);
+  const [descrChars, setChars] = useState(500 - descr.length);
 
   const submit = () => {
     const profileInfo = {
@@ -54,15 +54,15 @@ const Profile = ({ profile }) => {
 
   const descrChange = (e) => {
     setDescr(e.target.value);
-    setChars(1000 - e.target.value.length);
+    setChars(500 - e.target.value.length);
   };
 
   return (
     <div>
       <h3>Profile</h3>
       <div className="admin-text">
-        Add an organization logo and profile banner, and edit your tags,
-        membership status, application requirements, and club's description.
+        Add an organization logo, profile banner, edit your tags,
+        membership status, application requirements, and organization description.
       </div>
       <div className="formGroup">
         <div className="formElement">
@@ -147,7 +147,7 @@ const Profile = ({ profile }) => {
         <div className="formElement">
           <p>Banner</p>
           <ImageUploader
-            label="16:9 ratio - e.g. Facebook cover image"
+            label="820 x 312 pixels - e.g. Facebook cover image"
             buttonStyles={{
               background: '#54a0f1',
             }}
@@ -169,13 +169,13 @@ const Profile = ({ profile }) => {
             maxFileSize={5242880}
           />
         </div>
-        <div className="formElementDescription">
+        <div className="formElement">
           <p>Description</p>
           <textarea
             className="descriptionInput"
             placeholder="Enter a short description about your organization."
             type="text"
-            maxLength={1000}
+            maxLength={500}
             value={descr}
             onChange={descrChange}
           />

@@ -50,22 +50,22 @@
 .signin .form .userInput {
   /* screen width - padding - border - input padding */
   width: calc(100vw - 100px - 2px - 18px);
-  max-width: 290px;
-  padding: 9px;
+  max-width: 325px;
+  padding: 12px;
   border-radius: 5px;
   border: solid 1px #949494;
   box-shadow: 1.5px 2px 3px #888888b5;
   font-family: montserrat, sans-serif;
   font-weight: 600;
   font-style: normal;
-  font-size: 12px;
+  font-size: 14px;
   color: #4e4e4e;
 }
 
 .signin .form .buttonWrapper .submitButton {
   /* screen width - padding */
   width: calc(100vw - 100px);
-  max-width: 310px;
+  max-width: 350px;
   margin-top: 20px;
   padding: 10px 16px 10px 16px;
   border-radius: 7px;
@@ -75,14 +75,14 @@
   font-family: montserrat, sans-serif;
   font-weight: 600;
   font-style: normal;
-  font-size: 14px;
+  font-size: 16px;
   color: white;
-  background-color: #87CDFF;
+  background-color: #54a0f1;
   transition: background-color 0.15s;
 }
 
 .signin .form .buttonWrapper .submitButton:hover {
-  background-color: #71c4ff;
+  background-color: #6eaff5;
   cursor: pointer;
 }
 

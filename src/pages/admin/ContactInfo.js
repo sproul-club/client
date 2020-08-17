@@ -10,9 +10,10 @@ const ContactInfo = ({ profile }) => {
       </div>
       <div className="formGroup">
       <div className="formElement">
-          <p>Email Address <div>*</div></p>
+          <p>Email Address * <div> </div></p>
           <input
               className="userInput"
+              placeholder="+  add a contact email"
               type="text"
           />
         </div>
@@ -20,6 +21,7 @@ const ContactInfo = ({ profile }) => {
           <p>Website</p>
           <input
               className="userInput"
+              placeholder="+  add a link"
               type="text"
           />
         </div>
@@ -27,6 +29,7 @@ const ContactInfo = ({ profile }) => {
           <p>Linkedin</p>
           <input
               className="userInput"
+              placeholder="+  add a link"
               type="text"
           />
         </div>
@@ -34,6 +37,7 @@ const ContactInfo = ({ profile }) => {
           <p>Facebook</p>
           <input
               className="userInput"
+              placeholder="+  add a link"
               type="text"
           />
         </div>
@@ -41,6 +45,7 @@ const ContactInfo = ({ profile }) => {
           <p>Instagram</p>
           <input
               className="userInput"
+              placeholder="+  add a link"
               type="text"
           />
         </div>
@@ -48,6 +53,7 @@ const ContactInfo = ({ profile }) => {
           <p>Twitter</p>
           <input
               className="userInput"
+              placeholder="+  add a link"
               type="text"
           />
         </div>
@@ -55,6 +61,7 @@ const ContactInfo = ({ profile }) => {
           <p>Github</p>
           <input
               className="userInput"
+              placeholder="+  add a link"
               type="text"
           />
         </div>
@@ -62,6 +69,7 @@ const ContactInfo = ({ profile }) => {
           <p>Behance</p>
           <input
               className="userInput"
+              placeholder="+  add a link"
               type="text"
           />
         </div>
@@ -69,6 +77,7 @@ const ContactInfo = ({ profile }) => {
           <p>Medium</p>
           <input
               className="userInput"
+              placeholder="+  add a link"
               type="text"
           />
         </div>

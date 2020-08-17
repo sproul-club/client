@@ -17,6 +17,17 @@ import Admin from './pages/admin/Admin.js';
 import Modal from './pages/Modal.js';
 import store from './store';
 import { Provider } from 'react-redux';
+import RecoverForm from './pages/RecoverForm.js';
+import ClubPage from './pages/ClubPage.js';
+import Dropdown from './pages/Dropdown.js';
+import EventAccord from './pages/EventAccord.js';
+import SignInForm from './pages/SignInForm.js';
+import GridComponent from './pages/GridComponent.js';
+import Footer from './layout/Footer.js';
+import Navbar from './layout/Navbar.js';
+import { Card } from '@material-ui/core';
+import auth from './reducers/auth.js';
+import catalog from './reducers/catalog.js';
 
 class App extends Component {
   previousLocation = this.props.location;
