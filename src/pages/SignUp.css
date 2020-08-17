@@ -133,6 +133,15 @@
   width: 60%;
 }
 
+.signup .form .inputs .buttonWrapper .help a {
+  color: #949494;
+  transition: color 0.15s;
+}
+
+.signup .form .inputs .buttonWrapper .help a:hover {
+  color: #4e4e4e;
+}
+
 .signup .form .inputs .buttonWrapper p {
   font-family: roboto, sans-serif;
   font-weight: 400;
@@ -163,13 +172,17 @@
   font-family: montserrat, sans-serif;
   font-weight: 700;
   font-style: normal;
-  background-color: #8acefd;
+  background-color: #54a0f1;
   color: white;
   text-decoration: none;
   padding: 8px 16px 8px 16px;
   border-radius: 8px;
   border: none;
   font-size: 14px;
+}
+
+.signup .form button:hover {
+  background-color: #6eaff5;
 }
 
 :focus {

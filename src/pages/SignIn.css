@@ -1,0 +1,101 @@
+.signin .content {
+  position: relative;
+  /* window height - header */  
+  height: calc(100vh - 83px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.signin .form {
+  position: relative;
+  padding: 40px 50px;
+  overflow-y: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.signin .form .formGroup {
+  padding-bottom: 100px;
+  display: flex;
+  flex-direction: column;
+}
+
+.signin .form .formHeader h2 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.signin .form p {
+  margin-top: 15px;
+  margin-bottom: 2.5px;
+  font-weight: 600;
+}
+
+.signin .form a {
+  margin-top: 8px;
+  text-decoration: none;
+  font-family: montserrat, sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  color: #949494;
+  transition: color 0.15s;
+}
+
+.signin .form a:hover {
+  color: #4e4e4e;
+}
+
+.signin .form .userInput {
+  /* screen width - padding - border - input padding */
+  width: calc(100vw - 100px - 2px - 18px);
+  max-width: 325px;
+  padding: 12px;
+  border-radius: 5px;
+  border: solid 1px #949494;
+  box-shadow: 1.5px 2px 3px #888888b5;
+  font-family: montserrat, sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 14px;
+  color: #4e4e4e;
+}
+
+.signin .form .buttonWrapper .submitButton {
+  /* screen width - padding */
+  width: calc(100vw - 100px);
+  max-width: 350px;
+  margin-top: 20px;
+  padding: 10px 16px 10px 16px;
+  border-radius: 7px;
+  border: none;
+  box-shadow: 1px 2px 3px #888888b5;
+  text-decoration: none;
+  font-family: montserrat, sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 16px;
+  color: white;
+  background-color: #54a0f1;
+  transition: background-color 0.15s;
+}
+
+.signin .form .buttonWrapper .submitButton:hover {
+  background-color: #6eaff5;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 800px) {
+  .signin .content {
+    display: inline;
+  }
+}
+
+@media screen and (max-height: 470px) {
+  .signin .content {
+    height: 387px;
+  }
+}
+
+/* WEBKIT FOR OLD SAFARI VERSIONS */

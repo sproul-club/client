@@ -1,14 +1,20 @@
-import React,  { useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
+import { connect } from 'react-redux';
 
+const GetInvolved = ({ profile }) => {
+  const [involvedDescr, setInvolvedDescr] = useState(profile.description);
+  /*const [involvedDesc, setInvolvedDesc] = useState(profile.description);*/
+  const [descrChars, setChars] = useState(250 - involvedDescr.length);
 
-const GetInvolved = () => {
-  const [involvedDesc, setInvolvedDesc] = useState('');
-  const prevDesc = 'Make some API req - want the previous description to go here';
+  const descrChange = (e) => {
+    setInvolvedDescr(e.target.value);
+    setChars(250 - e.target.value.length);
+  };
 
   const submitValue = (e) => {
     const formDetails = {
-      'involved-desc': involvedDesc,
+      'involved-desc': involvedDescr,
     };
 
     // axios({
@@ -28,6 +34,7 @@ const GetInvolved = () => {
     //     alert(error.response.data.reason);
     //   });
   };
+  
 
   return (
     <div>
@@ -37,21 +44,25 @@ const GetInvolved = () => {
         organization!
       </div>
       <div className="formGroup">
-        
-        <div className="formElementDescription">
+        <div className="formElement">
           <p>Description</p>
           <textarea
-              className="descriptionInput"
-              placeholder="Enter a short description about how to get involved! (500 char. max)"
-              type="text"
-              maxLength={500}
-              onChange={(e) => setInvolvedDesc(e.target.value)}>
-              {prevDesc}
-          </textarea>
-          
+            className="descriptionInput"
+            placeholder="Enter a short description about how to get involved!"
+            type="text"
+            maxLength={250}
+            /*value={involvedDesc}
+            onChange={(e) => setInvolvedDesc(e.target.value)}
+            */
+           value={involvedDescr}
+            onChange={descrChange}
+          />
         </div>
+        <p className="subtitle">{descrChars} characters remaining</p>
       </div>
-      <button className="saveButton" onClick={submitValue}>Save changes </button>
+      <button className="saveButton" onClick={submitValue}>
+        Save changes{' '}
+      </button>
     </div>
   );
 };

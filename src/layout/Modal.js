@@ -6,7 +6,9 @@ const Modal = ({ showModal, setShowModal, children }) => {
   const ref = useRef();
 
   useOnClickOutside(ref, () => {
-    setShowModal(false);
+    if (showModal) {
+      setShowModal(false);
+    }
   });
 
   return (
