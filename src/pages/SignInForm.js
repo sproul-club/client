@@ -9,23 +9,28 @@ const SignInForm = () => {
     
     const submitValue = (e) => {
         const formDetails = {
-            Email: email,
-            Password: pw,
+            "email": email,
+            "password": pw,
         };
     
         window.location.href = "/admin";
 
         // axios({
-        //     // method: 'POST',
-        //     // url: 'https://sc-backend-v0.herokuapp.com/api/future-sign-up',
-        //     // data: formDetails,
-        //     // headers: {
-        //     //   'Content-Type': 'application/json',
-        //     //   'Access-Control-Allow-Origin': '*',
-        //     // },
+        //     method: 'POST',
+        //     url: 'https://sc-backend-v0.herokuapp.com/api/user/login',
+        //     data: formDetails,
+        //     headers: {
+        //       'Content-Type': 'application/json',
+        //       'Access-Control-Allow-Origin': '*',
+        //     },
         // })
         //   .then(function (response) {
         //     //handle success
+        //     axios({
+        //         method: 'GET',
+        //         url: 'https://sc-backend-v0.herokuapp.com/api/admin/profile',
+        //         headers: {'Authorization': 'Bearer'+ response.access},
+        //     })
         //     window.location.href = "/admin";
         //   })
         //   .catch(function (error) {

@@ -30,7 +30,7 @@ const customStyles = {
     fontWeight: 300,
     fontStyle: 'normal',
     textAlign: 'left',
-    color: '#4e4e4e',
+    color: (state.selectProps.value && state.selectProps.value.length >= 3) ? '#cccccc' : '#4e4e4e'
   }),
   multiValueRemove: (provided, state) => ({
     ...provided,
@@ -65,6 +65,20 @@ const customStyles = {
   }),
 };
 
+const handleChange = (value, props) => {
+  if (props.multi) {
+    if (value && value.length >= 3) {
+      // recolor option text to light grey, to look unclickable :'(
+      if (value.length > 3) {
+        value.pop();                // remove 4th tag
+        props.error('tagError');    // make popup visible for ~2s
+        setTimeout(function() {props.error('tagErrorNone');}, 1000);
+      }
+    }
+  }
+  props.set(value);
+}
+
 const Dropdown = (props) => (
   <Select
     styles={customStyles}
@@ -81,11 +95,11 @@ const Dropdown = (props) => (
     isMulti={props.multi}
     options={props.options}
     placeholder={props.placeholder}
-    onChange={(e) => props.set(e)}
+    onChange={(e) => handleChange(e, props)}
     closeMenuOnSelect={!props.multi}
-    isOptionDisabled ={(o, value) => (value.length >= 3) ? true : false}
-    
-    defaultMenuIsOpen={true}
+    // isOptionDisabled ={(o, value) => (value.length >= 3) ? true : false}
+
+    // defaultMenuIsOpen={true}
   />
 );
 
