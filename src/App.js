@@ -16,6 +16,7 @@ import Admin from './pages/admin/Admin.js';
 import Modal from './pages/Modal.js';
 import store from './store';
 import { Provider } from 'react-redux';
+import PrivateRoute from './utils/PrivateRoute';
 
 class App extends Component {
   previousLocation = this.props.location;
@@ -38,7 +39,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Landing} />
             <Route exact path="/comingsoon" component={ComingSoon} />
-            <Route path="/admin" component={Admin} />
+            <PrivateRoute path="/admin" component={Admin} />
             <Route path="/catalog" component={Catalog} />
             <Route exact path="/signup" component={SignUp} />
             <Route exact path="/signin" component={SignIn} />
