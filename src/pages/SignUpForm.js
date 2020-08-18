@@ -5,7 +5,7 @@ import error from './assets/error.svg';
 import { connect } from 'react-redux';
 import { register } from '../actions/auth';
 
-const MultiStepForm = () => {
+const MultiStepForm = ({ register }) => {
   var tagOptions = [
     { label: 'Advocacy', value: 0 },
     { label: 'Business', value: 1 },
@@ -53,21 +53,13 @@ const MultiStepForm = () => {
   const [emailInvalid, setEmailInvalid] = useState('userInput');
   const [conError, setConError] = useState('conErrorNone');
 
-  const submitValue = ({register}) => {
-    const frmdetails = {
-      name: clubName,
-      Email: email,
-      Password: pw,
-      Confirm: con,
-      Tags: tags,
-      'App Reqirement': appReq,
-      Recruiting: recruiting,
-    };
-
+  const submitValue = () => {
     const tagsList = [];
     for (var i = 0; i < tags.length; i++) {
       tagsList.push(tags[i].value);
     }
+  
+    register(clubName, email, pw, tagsList, !!appReq.value, !!recruiting.value);
 
     setStep(currStep + 1);
   };
@@ -271,4 +263,4 @@ const StepThree = (props) => {
   );
 };
 
-export default connect(null, {register})(MultiStepForm)
+export default connect(null, { register })(MultiStepForm);

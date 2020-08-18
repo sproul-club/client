@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import Dropdown from './AdminDropdown.js';
+import { connect } from 'react-redux';
 import ImageUploader from '../../react-images-upload';
+import { updateProfile } from '../../actions/profile';
 
-const Profile = ({ profile }) => {
+const Profile = ({ profile, updateProfile }) => {
   var tagOptions = [
     { label: 'Advocacy', value: 0 },
     { label: 'Business', value: 1 },
@@ -39,9 +41,12 @@ const Profile = ({ profile }) => {
   ];
 
   const [orgName, setOrgName] = useState(profile.name);
-  const [orgEmail, setOrgEmail] = useState(profile.email);
-  const [descr, setDescr] = useState(profile.description);
+  const [orgEmail, setOrgEmail] = useState(profile.owner);
+  const [descr, setDescr] = useState(profile['about-us']);
   const [descrChars, setChars] = useState(1000 - descr.length);
+  const [tags, setTags] = useState(profile.tags.map((tag) => tagOptions[tag]));
+  const [appReq, setAppReq] = useState(true);
+  const [recruiting, setRecruit] = useState(false);
 
   const submit = () => {
     const profileInfo = {
@@ -50,6 +55,16 @@ const Profile = ({ profile }) => {
       'org-description': descr,
     };
     console.log(profileInfo);
+    const newProfile = {
+      ...profile,
+      name: orgName,
+      tags: tags.map((tags) => tags.value),
+      'about-us': descr,
+      'app-required': appReq,
+      'new-members': recruiting,
+    };
+    console.log('new profile: ', newProfile);
+    updateProfile(newProfile);
   };
 
   const descrChange = (e) => {
@@ -97,6 +112,7 @@ const Profile = ({ profile }) => {
             search={false}
             defaultValue={profile.tags.map((tag) => tagOptions[tag])}
             placeholder="Add up to 3 tags"
+            set={setTags}
           />
         </div>
         <div className="formElement">
@@ -107,6 +123,7 @@ const Profile = ({ profile }) => {
             search={false}
             defaultValue={appOptions[profile.appRequired === true ? 0 : 1]}
             placeholder="Select application requirement"
+            set={setAppReq}
           />
         </div>
         <div className="formElement">
@@ -117,6 +134,7 @@ const Profile = ({ profile }) => {
             search={false}
             defaultValue={recruitOptions[profile.newMembers === true ? 0 : 1]}
             placeholder="Select recruitment status"
+            set={setRecruit}
           />
         </div>
         <div className="formElement">
@@ -189,4 +207,4 @@ const Profile = ({ profile }) => {
   );
 };
 
-export default Profile;
+export default connect(null, { updateProfile })(Profile);

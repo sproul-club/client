@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { Link, withRouter, Redirect } from 'react-router-dom';
 import axios from 'axios';
 import './SignIn.css';
 import { connect } from 'react-redux';
 import { login } from '../actions/auth';
 
-const SignInForm = ({ login, history }) => {
+const SignInForm = ({ login, history, isAuthenticated }) => {
   const [email, setEmail] = useState('');
   const [pw, setPassword] = useState('');
+
+  if (isAuthenticated) {
+    return <Redirect to="/admin" />;
+  }
 
   const submitValue = (e) => {
     e.preventDefault();
@@ -42,4 +46,8 @@ const SignInForm = ({ login, history }) => {
   );
 };
 
-export default connect(null, { login })(withRouter(SignInForm));
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+});
+
+export default connect(mapStateToProps, { login })(withRouter(SignInForm));
