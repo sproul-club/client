@@ -59,6 +59,10 @@ const customStyles = {
     ...provided,
     cursor: 'pointer',
   }),
+  valueContainer: (provided, state) => ({
+    ...provided,
+    padding: '5px 8px',
+  }),
 };
 
 const Dropdown = (props) => (
