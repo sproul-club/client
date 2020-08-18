@@ -51,6 +51,14 @@ const customStyles = {
     ...provided,
     width: 0,
   }),
+  clearIndicator: (provided, state) => ({
+    ...provided,
+    cursor: 'pointer',
+  }),
+  dropdownIndicator: (provided, state) => ({
+    ...provided,
+    cursor: 'pointer',
+  }),
 };
 
 const Dropdown = (props) => (
@@ -70,6 +78,24 @@ const Dropdown = (props) => (
     options={props.options}
     placeholder={props.placeholder}
     onChange={(e) => props.set(e)}
+    closeMenuOnSelect={!props.multi}
+    isOptionDisabled ={(o, value) => (value.length >= 3) ? true : false}
+
+    
+    // isOptionDisabled ={(v) => {
+    //   console.log(v)
+    //   (v.length >= 3) ? true : false
+    // }}
+
+    // onChange={(e) => {
+    //   console.log(e);
+    //   if (e.length <= 3) {
+    //     console.log("in here")
+    //     props.set(e);
+    //   }
+    // }}
+
+    // onChange={(e) => props.set(e)}
   />
 );
 

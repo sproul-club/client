@@ -110,6 +110,15 @@ const MultiStepForm = () => {
     }
   };
 
+  // const setThreeTags = (value) => {
+  //   console.log(value)
+  //   console.log(tags)
+  //   if ( tags.length < 3 ) {
+  //     setTags(value)
+  //     console.log(tags)
+  //   }
+  // }
+
   return (
     <div className="inputs">
       <StepOne
