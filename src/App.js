@@ -17,7 +17,7 @@ import Admin from './pages/admin/Admin.js';
 import Modal from './pages/Modal.js';
 import store from './store';
 import { Provider } from 'react-redux';
-import RecoverForm from './pages/RecoverForm.js';
+import RecoverForm from './pages/RecoverPasswordForm.js';
 import ClubPage from './pages/ClubPage.js';
 import Dropdown from './pages/Dropdown.js';
 import EventAccord from './pages/EventAccord.js';
