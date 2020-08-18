@@ -1,10 +1,9 @@
 import { SEARCH_CLUBS } from '../actions/types';
-import { catalogData } from '../utils/testApi';
 
-const allClubs = Object.keys(catalogData).map((club) => catalogData[club]);
+// const allClubs = Object.keys(catalogData).map((club) => catalogData[club]);
 
 const initialState = {
-  clubs: allClubs,
+  clubs: [],
 };
 
 export default function (state = initialState, action) {

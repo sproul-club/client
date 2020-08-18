@@ -12,7 +12,7 @@ const Modal = ({ showModal, setShowModal, children }) => {
   });
 
   return (
-    <div classname="modal">
+    <div>
       {showModal && (
         <div className="popup">
           <div className="popup_inner" ref={ref}>

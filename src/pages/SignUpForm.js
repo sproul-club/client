@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import Dropdown from './Dropdown.js';
 import registerImage from './assets/register.png';
 import error from './assets/error.svg';
-import {register} from '../actions/auth.js';
+import { connect } from 'react-redux';
+import { register } from '../actions/auth';
 
-const MultiStepForm = () => {
+
+const MultiStepForm = ({ register }) => {
   var tagOptions = [
     { label: 'Advocacy', value: 0 },
     { label: 'Business', value: 1 },
@@ -57,16 +59,13 @@ const MultiStepForm = () => {
   const [tagError, setTagError] = useState('tagErrorNone');
 
   const submitValue = () => {
-
+    
     const tagsList = [];
     for (var i = 0; i < tags.length; i++) {
       tagsList.push(tags[i].value);
     }
 
-    const appRequired = appReq.value;
-    const newMembers = recruiting.value;
-
-    /* register */
+    register(clubName, email, pw, tagsList, !!appReq.value, !!recruiting.value);
 
     setStep(currStep + 1);
   };
@@ -166,7 +165,7 @@ const StepOne = (props) => {
   return (
     <div className="formGroup">
       <div className={conError}>
-        <img src={error} className="errorIcon" />
+        <img alt="error" src={error} className="errorIcon" />
         <p>passwords do not match</p>
       </div>
       <div className={emailError}>
@@ -292,4 +291,4 @@ const StepThree = (props) => {
   );
 };
 
-export default MultiStepForm;
+export default connect(null, { register })(MultiStepForm);

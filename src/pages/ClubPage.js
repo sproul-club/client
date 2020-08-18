@@ -28,21 +28,33 @@ function ClubPage(props) {
 
   const appReq = props.data.reqApp ? (
     <div className="tag" id="app-req">
-      ✎ Requires App
+      <span role="img" aria-label="emoji">
+        ✎
+      </span>{' '}
+      Requires App
     </div>
   ) : (
     <div className="tag" id="app-not-req">
-      😊 No App Required
+      <span role="img" aria-label="emoji">
+        😊
+      </span>{' '}
+      No App Required
     </div>
   );
 
   const clubOpen = props.data.open ? (
     <div className="tag" id="open-tag">
-      ✓ Taking New Members
+      <span role="img" aria-label="emoji">
+        ✓
+      </span>{' '}
+      Taking New Members
     </div>
   ) : (
     <div className="tag" id="not-open-tag">
-      ✗ Not Taking New Members
+      <span role="img" aria-label="emoji">
+        ✗
+      </span>{' '}
+      Not Taking New Members
     </div>
   );
 
