@@ -58,7 +58,7 @@ const MultiStepForm = ({ register }) => {
     for (var i = 0; i < tags.length; i++) {
       tagsList.push(tags[i].value);
     }
-  
+
     register(clubName, email, pw, tagsList, !!appReq.value, !!recruiting.value);
 
     setStep(currStep + 1);
@@ -146,7 +146,7 @@ const StepOne = (props) => {
   return (
     <div className="formGroup">
       <div className={conError}>
-        <img src={error} className="errorIcon" />
+        <img alt="error" src={error} className="errorIcon" />
         <p>passwords do not match</p>
       </div>
       <div className="formHeader">

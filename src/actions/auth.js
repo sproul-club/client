@@ -1,4 +1,4 @@
-import { LOAD_PROFILE, REGISTER_SUCCESS, LOGIN_SUCCESS, LOGOUT } from './types';
+import { REGISTER_SUCCESS, LOGIN_SUCCESS, LOGOUT } from './types';
 import axios from 'axios';
 import { loadProfile } from './profile';
 

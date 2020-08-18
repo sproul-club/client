@@ -1,7 +1,12 @@
 import axios from 'axios';
-import { LOAD_PROFILE, UPDATE_PROFILE } from './types';
+import {
+  LOAD_PROFILE,
+  UPDATE_PROFILE,
+  ADD_EVENT,
+  UPDATE_EVENT,
+  DELETE_EVENT,
+} from './types';
 import setAuthToken from '../utils/setAuthToken';
-import { deleteEventTestApi } from '../utils/testApi';
 
 // Load Profile
 export const loadProfile = () => async (dispatch) => {
@@ -47,6 +52,7 @@ export const updateProfile = (formData) => async (dispatch) => {
       justTheRightData,
       config
     );
+    console.log(res);
 
     dispatch({ type: UPDATE_PROFILE, payload: formData });
   } catch (err) {
@@ -55,51 +61,128 @@ export const updateProfile = (formData) => async (dispatch) => {
 };
 
 // TODO
-// Update profile
-export const addEvent = (formData) => async (dispatch) => {
+// Add Event
+// This does not work if they do not enter the right type of link?
+export const addEvent = (formData, events) => async (dispatch) => {
   try {
     const config = {
       headers: {
         'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
       },
     };
-    // const res = await axios.put('/api/profile/event', formData, config);
-    const res = {};
 
-    dispatch({ type: UPDATE_PROFILE, payload: res.data });
+    const event = JSON.stringify(formData);
+
+    const res = await axios.post('/api/admin/events', event, config);
+
+    console.log(res);
+    dispatch({ type: ADD_EVENT, payload: events.push(formData) });
   } catch (err) {
     console.log(err);
   }
 };
 
 // We can just have a "save profile" that will send in a complete copy of the profile data and update it (riskier?)
-export const updateEvent = (formData) => async (dispatch) => {
+export const updateEvent = (eventId, eventInfo) => async (dispatch) => {
   try {
     const config = {
       headers: {
         'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
       },
     };
+    const event = JSON.stringify(eventInfo);
     // This will hit the api that will add the event, and return the new data with event added
     // and then update the profile information in state to be correct
-    // const res = await axios.put('/api/profile/event', formData, config);
-    const res = {};
+    const res = await axios.put(`/api/admin/events/${eventId}`, event, config);
 
-    dispatch({ type: UPDATE_PROFILE, payload: res.data });
+    dispatch({ type: UPDATE_EVENT, payload: res.data });
   } catch (err) {
     console.log(err);
   }
 };
 
 export const deleteEvent = (id) => async (dispatch) => {
-  const res = deleteEventTestApi(id);
-
-  console.log('res:', res);
-  dispatch({ type: UPDATE_PROFILE, payload: res });
+  try {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+      },
+    };
+    // This will hit the api that will add the event, and return the new data with event added
+    // and then update the profile information in state to be correct
+    const res = await axios.delete(`/api/admin/events/${id}`, config);
+    console.log('delete!', res);
+    dispatch({ type: DELETE_EVENT, payload: res.data });
+  } catch (err) {
+    console.log(err);
+  }
 };
 
-export const deleteResource = (id) => {};
+// TODO
+// Add Resource
+export const addResource = (formData, resources) => async (dispatch) => {
+  try {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+      },
+    };
 
-// Get club user profile
+    const resource = JSON.stringify(formData);
 
-// Delete profile / account
+    const res = await axios.post('/api/admin/resources', resource, config);
+
+    console.log(res);
+    dispatch({ type: ADD_EVENT, payload: resources.push(formData) });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+// We can just have a "save profile" that will send in a complete copy of the profile data and update it (riskier?)
+export const updateResource = (resourceId, resourceInfo) => async (
+  dispatch
+) => {
+  try {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+      },
+    };
+    const resource = JSON.stringify(resourceInfo);
+    // This will hit the api that will add the event, and return the new data with event added
+    // and then update the profile information in state to be correct
+    const res = await axios.put(
+      `/api/admin/resources/${resourceId}`,
+      resource,
+      config
+    );
+
+    dispatch({ type: UPDATE_EVENT, payload: res.data });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const deleteResource = (id) => async (dispatch) => {
+  try {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+      },
+    };
+    // This will hit the api that will add the event, and return the new data with event added
+    // and then update the profile information in state to be correct
+    const res = await axios.delete(`/api/admin/resources/${id}`, config);
+    console.log('delete!', res);
+    dispatch({ type: DELETE_EVENT, payload: res.data });
+  } catch (err) {
+    console.log(err);
+  }
+};

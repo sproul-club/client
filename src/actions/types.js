@@ -7,3 +7,6 @@ export const CLEAR_PROFILE = 'CLEAR_PROFILE';
 export const LOGOUT = 'LOGOUT';
 
 export const UPDATE_PROFILE = 'UPDATE_PROFILE';
+export const UPDATE_EVENT = 'UPDATE_EVENT';
+export const DELETE_EVENT = 'DELETE_EVENT';
+export const ADD_EVENT = 'ADD_EVENT';

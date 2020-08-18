@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import { updateProfile } from '../../actions/profile';
 import { connect } from 'react-redux';
 

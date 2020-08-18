@@ -127,6 +127,24 @@ const ContactInfo = ({ profile, updateProfile }) => {
             type="text"
           />
         </div>
+        <div className="formElement">
+          <p>Youtube</p>
+          <input
+            className="userInput"
+            value={youtube}
+            onChange={(e) => setYoutube(e.target.value)}
+            type="text"
+          />
+        </div>
+        <div className="formElement">
+          <p>Google Calendar</p>
+          <input
+            className="userInput"
+            value={gcalendar}
+            onChange={(e) => setGcalendar(e.target.value)}
+            type="text"
+          />
+        </div>
       </div>
       <button className="saveButton" onClick={saveContactInfo}>
         Save changes
