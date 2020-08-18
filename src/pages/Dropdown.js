@@ -4,9 +4,9 @@ import Select from 'react-select';
 const customStyles = {
   multiValue: (provided, state) => ({
     ...provided,
-    background: '#8ACEFD',
-    color: 'white',
-    'border-radius': 10,
+    background: '#D1D3D4',
+    color: '#2b2b2b',
+    'border-radius': 4,
   }),
   control: () => ({
     display: 'flex',
@@ -15,7 +15,7 @@ const customStyles = {
     marginBottom: 8,
     fontSize: 12,
     fontFamily: 'montserrat, sans-serif',
-    fontWeight: 300,
+    fontWeight: 400,
     fontStyle: 'normal',
     border: 'solid 1px #949494',
     borderRadius: 5,
@@ -30,12 +30,12 @@ const customStyles = {
     fontWeight: 300,
     fontStyle: 'normal',
     textAlign: 'left',
-    color: '#4e4e4e',
+    color: (state.selectProps.value && state.selectProps.value.length >= 3) ? '#cccccc' : '#4e4e4e'
   }),
   multiValueRemove: (provided, state) => ({
     ...provided,
-    background: '#8ACEFD',
-    color: 'white',
+    background: '#D1D3D4',
+    color: '#2b2b2b',
     borderRadius: 10,
   }),
   singleValue: (provided, state) => ({
@@ -44,14 +44,46 @@ const customStyles = {
   }),
   multiValueLabel: (provided, state) => ({
     ...provided,
-    color: 'white',
     'margin-left': "4px",
   }),
   indicatorSeparator: (provided, state) => ({
     ...provided,
     width: 0,
   }),
+
+  clearIndicator: (provided, state) => ({
+    ...provided,
+    cursor: 'pointer',
+  }),
+  dropdownIndicator: (provided, state) => ({
+    ...provided,
+    cursor: 'pointer',
+  }),
+  valueContainer: (provided, state) => ({
+    ...provided,
+    padding: '5px 8px',
+  }),
+  "@media only screen and (min-width: 1700px)": {
+    menu: (provided, state) => ({
+      ...provided,
+      width: 500,
+    }),
+  },
 };
+
+const handleChange = (value, props) => {
+  if (props.multi) {
+    if (value && value.length >= 3) {
+      // recolor option text to light grey, to look unclickable :'(
+      if (value.length > 3) {
+        value.pop();                // remove 4th tag
+        props.error('tagError');    // make popup visible for ~2s
+        setTimeout(function() {props.error('tagErrorNone');}, 1000);
+      }
+    }
+  }
+  props.set(value);
+}
 
 const Dropdown = (props) => (
   <Select
@@ -61,15 +93,18 @@ const Dropdown = (props) => (
       colors: {
         ...theme.colors,
         neutral50: '#949494',
-        danger: 'white',
-        dangerLight: '#8ACEFD',
+        danger: '#2b2b2b',
+        dangerLight: '#D1D3D4',
       },
     })}
+    classNamePrefix="drop"
     isSearchable={props.search}
     isMulti={props.multi}
     options={props.options}
     placeholder={props.placeholder}
-    onChange={(e) => props.set(e)}
+    onChange={(e) => handleChange(e, props)}
+    closeMenuOnSelect={!props.multi}
+    maxMenuHeight={200}
   />
 );
 

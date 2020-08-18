@@ -12,11 +12,14 @@ import { ComingSoon } from './pages/ComingSoon.js';
 import Catalog from './pages/catalog.js';
 import { SignUp } from './pages/SignUp.js';
 import { SignIn } from './pages/SignIn.js';
+import { RecoverPassword } from './pages/RecoverPassword.js';
 import Admin from './pages/admin/Admin.js';
 // import Modal from './pages/Modal.js';
 import store from './store';
 import { loadProfile } from './actions/profile';
 import { Provider } from 'react-redux';
+import RecoverForm from './pages/RecoverPasswordForm.js';
+import ClubPage from './pages/ClubPage.js';
 import PrivateRoute from './utils/PrivateRoute';
 
 const App = () => {
@@ -42,5 +45,6 @@ const App = () => {
     </Provider>
   );
 };
+
 
 export default withRouter(App);

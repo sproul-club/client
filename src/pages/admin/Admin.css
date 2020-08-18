@@ -92,7 +92,7 @@
   border-radius: 5px;
 }
 
-.admin-page .formElementDescription .descriptionInput {
+.admin-page .formElement .descriptionInput {
   width: 500px;
   height: 200px;
   padding: 20px;
@@ -106,7 +106,7 @@
   margin-bottom: 4px;
 }
 
-.admin-page .formElementDescription .descriptionInput::placeholder{
+.admin-page .formElement .descriptionInput::placeholder{
   font-size: 16px;
 }
 

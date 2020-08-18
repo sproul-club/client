@@ -6,8 +6,8 @@ import SignInForm from './SignInForm.js';
 const SignIn = () => {
   return (
     <>
-      <Navbar />
       <div className="signin">
+        <Navbar />
         <div className="content">
           <div className="form">
             <SignInForm />

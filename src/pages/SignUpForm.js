@@ -5,6 +5,7 @@ import error from './assets/error.svg';
 import { connect } from 'react-redux';
 import { register } from '../actions/auth';
 
+
 const MultiStepForm = ({ register }) => {
   var tagOptions = [
     { label: 'Advocacy', value: 0 },
@@ -32,14 +33,16 @@ const MultiStepForm = ({ register }) => {
   ];
 
   var appOptions = [
-    { value: 1, label: 'Application required' },
-    { value: 0, label: 'No application required' },
+    { value: true, label: 'Application required' },
+    { value: false, label: 'No application required' },
   ];
 
   var recruitOptions = [
-    { value: 1, label: 'Accepting members' },
-    { value: 0, label: 'Not accepting members' },
+    { value: true, label: 'Accepting members' },
+    { value: false, label: 'Not accepting members' },
   ];
+
+  var emails = ["ethicalapparel@gmail.com"];
 
   const [clubName, setClubName] = useState('');
   const [email, setEmail] = useState('');
@@ -47,13 +50,16 @@ const MultiStepForm = ({ register }) => {
   const [con, setConfirm] = useState('');
   const [currStep, setStep] = useState(1);
   const [tags, setTags] = useState([]);
-  const [appReq, setAppReq] = useState({});
-  const [recruiting, setRecruit] = useState({});
+  const [appReq, setAppReq] = useState(true);
+  const [recruiting, setRecruit] = useState(true);
   const [conInvalid, setConInvalid] = useState('userInput');
   const [emailInvalid, setEmailInvalid] = useState('userInput');
   const [conError, setConError] = useState('conErrorNone');
+  const [emailError, setEmailError] = useState('emailErrorNone');
+  const [tagError, setTagError] = useState('tagErrorNone');
 
   const submitValue = () => {
+    
     const tagsList = [];
     for (var i = 0; i < tags.length; i++) {
       tagsList.push(tags[i].value);
@@ -69,18 +75,25 @@ const MultiStepForm = ({ register }) => {
   };
 
   const _next = () => {
-    if (pw === con /*&& pw != ''*/) {
-      setStep(currStep + 1);
-    } else {
-      setConInvalid('userInputInvalid');
-      setConError('conError');
-      // alert('Passwords do not match!');
+    if (email != 'b') {
+      setEmailInvalid('emailInputInvalid');
+      setEmailError('emailError');
     }
+
+    if (pw != con || pw === '') {
+      setConInvalid('conInputInvalid');
+      setConError('conError');
+    }
+
+    if (pw === con && email ==='b') {
+      setStep(currStep + 1);
+    }
+
   };
 
   const conChange = (event) => {
     setConfirm(event);
-    if (conInvalid === 'userInputInvalid') {
+    if (conInvalid === 'conInputInvalid') {
       setConInvalid('userInput');
     }
     if (conError === 'conError') {
@@ -90,13 +103,16 @@ const MultiStepForm = ({ register }) => {
 
   const emailOnChange = (event) => {
     setEmail(event);
-    if (emailInvalid === 'userInputInvalid') {
-      setConInvalid('userInput');
+    if (emailInvalid === 'emailInputInvalid') {
+      setEmailInvalid('userInput');
+    }
+    if (emailError === 'emailError') {
+      setEmailError('emailErrorNone');
     }
   };
 
   return (
-    <div className="inputs">
+    <>
       <StepOne
         currStep={currStep}
         setStep={setStep}
@@ -104,8 +120,6 @@ const MultiStepForm = ({ register }) => {
         setEmail={emailOnChange}
         setPassword={setPassword}
         setConfirm={conChange}
-        setConInvalid={setConInvalid}
-        setEmailInvalid={setEmailInvalid}
         _prev={_prev}
         _next={_next}
         clubName={clubName}
@@ -115,6 +129,7 @@ const MultiStepForm = ({ register }) => {
         conInvalid={conInvalid}
         emailInvalid={emailInvalid}
         conError={conError}
+        emailError={emailError}
       />
       <StepTwo
         currStep={currStep}
@@ -123,6 +138,7 @@ const MultiStepForm = ({ register }) => {
         setAppReq={setAppReq}
         setTags={setTags}
         setRecruit={setRecruit}
+        setTagError={setTagError}
         _prev={_prev}
         _next={_next}
         appReq={appReq}
@@ -131,9 +147,10 @@ const MultiStepForm = ({ register }) => {
         tagOptions={tagOptions}
         appOptions={appOptions}
         recruitOptions={recruitOptions}
+        tagError={tagError}
       />
       <StepThree currStep={currStep} />
-    </div>
+    </>
   );
 };
 
@@ -143,11 +160,17 @@ const StepOne = (props) => {
   }
   let conForm = props.conInvalid;
   let conError = props.conError;
+  let emailForm = props.emailInvalid;
+  let emailError = props.emailError;
   return (
     <div className="formGroup">
       <div className={conError}>
         <img alt="error" src={error} className="errorIcon" />
         <p>passwords do not match</p>
+      </div>
+      <div className={emailError}>
+        <img src={error} className="errorIcon" />
+        <p>email is invalid</p>
       </div>
       <div className="formHeader">
         <div className="imageContainer">
@@ -163,7 +186,7 @@ const StepOne = (props) => {
         onChange={(e) => props.setClubName(e.target.value)}
       />
       <input
-        className="userInput"
+        className={emailForm}
         type="email"
         placeholder="Email address - use your organization's email"
         value={props.email}
@@ -202,6 +225,10 @@ const StepTwo = (props) => {
   }
   return (
     <div className="formGroup">
+      <div className={props.tagError}>
+        <img src={error} className="errorIcon" />
+        <p>reached max tag number</p>
+      </div>
       <div className="formHeader">
         <div className="imageContainer">
           <img src={registerImage} alt="" />
@@ -229,6 +256,7 @@ const StepTwo = (props) => {
           search={false}
           placeholder="Add up to 3 tags"
           set={props.setTags}
+          error={props.setTagError}
         />
       </div>
 

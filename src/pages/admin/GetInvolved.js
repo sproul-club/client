@@ -4,10 +4,16 @@ import { connect } from 'react-redux';
 
 const GetInvolved = ({ profile, updateProfile }) => {
   const [involvedDesc, setInvolvedDesc] = useState(profile['get-involved']);
+   const [descrChars, setChars] = useState(250 - involvedDescr.length);
+
+  const descrChange = (e) => {
+    setInvolvedDescr(e.target.value);
+    setChars(250 - e.target.value.length);
+  };
 
   const submitValue = (e) => {
     updateProfile({ ...profile, 'get-involved': involvedDesc });
-  };
+
 
   return (
     <div>
@@ -17,17 +23,21 @@ const GetInvolved = ({ profile, updateProfile }) => {
         organization!
       </div>
       <div className="formGroup">
-        <div className="formElementDescription">
+        <div className="formElement">
           <p>Description</p>
           <textarea
             className="descriptionInput"
-            placeholder="Enter a short description about how to get involved! (500 char. max)"
+            placeholder="Enter a short description about how to get involved!"
             type="text"
-            maxLength={500}
-            value={involvedDesc}
+            maxLength={250}
+            /*value={involvedDesc}
             onChange={(e) => setInvolvedDesc(e.target.value)}
+            */
+           value={involvedDescr}
+            onChange={descrChange}
           />
         </div>
+        <p className="subtitle">{descrChars} characters remaining</p>
       </div>
       <button className="saveButton" onClick={submitValue}>
         Save changes{' '}
