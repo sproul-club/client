@@ -15,6 +15,8 @@ const ContactInfo = ({ profile }) => {
               className="userInput"
               placeholder="+  add a contact email"
               type="text"
+              value={profile.email}
+              disabled="disabled"
           />
         </div>
         <div className="formElement">

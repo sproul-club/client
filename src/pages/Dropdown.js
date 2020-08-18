@@ -4,9 +4,9 @@ import Select from 'react-select';
 const customStyles = {
   multiValue: (provided, state) => ({
     ...provided,
-    background: '#8ACEFD',
-    color: 'white',
-    'border-radius': 10,
+    background: '#D1D3D4',
+    color: '#2b2b2b',
+    'border-radius': 4,
   }),
   control: () => ({
     display: 'flex',
@@ -15,7 +15,7 @@ const customStyles = {
     marginBottom: 8,
     fontSize: 12,
     fontFamily: 'montserrat, sans-serif',
-    fontWeight: 300,
+    fontWeight: 400,
     fontStyle: 'normal',
     border: 'solid 1px #949494',
     borderRadius: 5,
@@ -34,8 +34,8 @@ const customStyles = {
   }),
   multiValueRemove: (provided, state) => ({
     ...provided,
-    background: '#8ACEFD',
-    color: 'white',
+    background: '#D1D3D4',
+    color: '#2b2b2b',
     borderRadius: 10,
   }),
   singleValue: (provided, state) => ({
@@ -44,13 +44,18 @@ const customStyles = {
   }),
   multiValueLabel: (provided, state) => ({
     ...provided,
-    color: 'white',
     'margin-left': "4px",
   }),
   indicatorSeparator: (provided, state) => ({
     ...provided,
     width: 0,
   }),
+  "@media only screen and (min-width: 1700px)": {
+    menu: (provided, state) => ({
+      ...provided,
+      width: 500,
+    }),
+  },
 };
 
 const Dropdown = (props) => (
@@ -61,15 +66,17 @@ const Dropdown = (props) => (
       colors: {
         ...theme.colors,
         neutral50: '#949494',
-        danger: 'white',
-        dangerLight: '#8ACEFD',
+        danger: '#2b2b2b',
+        dangerLight: '#D1D3D4',
       },
     })}
+    classNamePrefix="drop"
     isSearchable={props.search}
     isMulti={props.multi}
     options={props.options}
     placeholder={props.placeholder}
     onChange={(e) => props.set(e)}
+    maxMenuHeight={200}
   />
 );
 
