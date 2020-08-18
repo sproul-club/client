@@ -84,22 +84,8 @@ const Dropdown = (props) => (
     onChange={(e) => props.set(e)}
     closeMenuOnSelect={!props.multi}
     isOptionDisabled ={(o, value) => (value.length >= 3) ? true : false}
-
     
-    // isOptionDisabled ={(v) => {
-    //   console.log(v)
-    //   (v.length >= 3) ? true : false
-    // }}
-
-    // onChange={(e) => {
-    //   console.log(e);
-    //   if (e.length <= 3) {
-    //     console.log("in here")
-    //     props.set(e);
-    //   }
-    // }}
-
-    // onChange={(e) => props.set(e)}
+    defaultMenuIsOpen={true}
   />
 );
 
