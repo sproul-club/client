@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import Dropdown from './Dropdown.js';
 import registerImage from './assets/register.png';
 import error from './assets/error.svg';
+import { connect } from 'react-redux';
+import { register } from '../actions/auth';
 
 const MultiStepForm = () => {
   var tagOptions = [
@@ -51,9 +53,9 @@ const MultiStepForm = () => {
   const [emailInvalid, setEmailInvalid] = useState('userInput');
   const [conError, setConError] = useState('conErrorNone');
 
-  const submitValue = () => {
+  const submitValue = ({register}) => {
     const frmdetails = {
-      'Club name': clubName,
+      name: clubName,
       Email: email,
       Password: pw,
       Confirm: con,
@@ -68,15 +70,6 @@ const MultiStepForm = () => {
     }
 
     setStep(currStep + 1);
-
-    // alert(`Here's what you submitted: \n
-    //    Club name: ${clubName} \n
-    //    Email: ${email} \n
-    //    Password: ${pw} \n
-    //    Password confirmation: ${con} \n
-    //    Tags: ${tagsList} \n
-    //    App required: ${appReq.value} \n
-    //    Membership status: ${recruiting.value}`);
   };
 
   const _prev = () => {
@@ -278,4 +271,4 @@ const StepThree = (props) => {
   );
 };
 
-export default MultiStepForm;
+export default connect(null, {register})(MultiStepForm)

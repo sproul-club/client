@@ -8,6 +8,8 @@ import {
 import setAuthToken from '../utils/setAuthToken';
 import axios from 'axios';
 
+axios.defaults.baseURL = 'https://sc-backend-v0.herokuapp.com';
+
 // TODO:
 // Load User
 export const loadUser = () => async (dispatch) => {
@@ -31,27 +33,41 @@ export const loadUser = () => async (dispatch) => {
 
 // TODO:
 // Register User
-export const register = ({ name, email, password }) => async (dispatch) => {
+export const register = ({
+  name,
+  email,
+  password,
+  tags,
+  app_required,
+  new_members,
+}) => async (dispatch) => {
   // Set headers
   const config = {
     headers: {
       'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
     },
   };
 
-  const body = JSON.stringify({ name, email, password });
+  const body = JSON.stringify({
+    name,
+    email,
+    password,
+    tags,
+    'app-required': app_required,
+    'new-members': new_members,
+  });
 
   try {
     // Once we have routes, it will create a new user on backend
     // and will return signed jwt
-    let res = await axios.post('/api/users', body, config);
-    res = {};
+    let res = await axios.post('/api/user/register', body, config);
 
-    // Calls redux reducer that puts the token into local storage
-    // and token and isAuthenticated=true in app state
     dispatch({ type: REGISTER_SUCCESS, payload: res.data });
-    // Load user into app state
-    dispatch(loadUser());
+
+    console.log(res);
+    // // Load user into app state
+    // dispatch(loadUser());
   } catch (err) {
     console.log(err);
   }
@@ -75,14 +91,13 @@ export const login = (email: null, password: null, history) => async (
   try {
     // Once we have routes, it will create a new user on backend
     // and will return signed jwt
-    let res = await axios.post('/api/users', body, config);
-    res = {};
+    let res = await axios.post('/api/user/login', body, config);
+    console.log(res);
 
     // Calls redux reducer that puts the token into local storage
     // and token and isAuthenticated=true in app state
     dispatch({ type: LOGIN_SUCCESS, payload: res.data });
-    // Load user into app state
-    dispatch(loadUser());
+
     history.push('/admin');
   } catch (err) {
     console.log(err);
