@@ -54,6 +54,7 @@ const MultiStepForm = () => {
   const [emailInvalid, setEmailInvalid] = useState('userInput');
   const [conError, setConError] = useState('conErrorNone');
   const [emailError, setEmailError] = useState('emailErrorNone');
+  const [tagError, setTagError] = useState('tagErrorNone');
 
   const submitValue = () => {
 
@@ -138,6 +139,7 @@ const MultiStepForm = () => {
         setAppReq={setAppReq}
         setTags={setTags}
         setRecruit={setRecruit}
+        setTagError={setTagError}
         _prev={_prev}
         _next={_next}
         appReq={appReq}
@@ -146,6 +148,7 @@ const MultiStepForm = () => {
         tagOptions={tagOptions}
         appOptions={appOptions}
         recruitOptions={recruitOptions}
+        tagError={tagError}
       />
       <StepThree currStep={currStep} />
     </>
@@ -223,6 +226,10 @@ const StepTwo = (props) => {
   }
   return (
     <div className="formGroup">
+      <div className={props.tagError}>
+        <img src={error} className="errorIcon" />
+        <p>reached max tag number</p>
+      </div>
       <div className="formHeader">
         <div className="imageContainer">
           <img src={registerImage} alt="" />
@@ -250,6 +257,7 @@ const StepTwo = (props) => {
           search={false}
           placeholder="Add up to 3 tags"
           set={props.setTags}
+          error={props.setTagError}
         />
       </div>
 
