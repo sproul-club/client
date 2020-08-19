@@ -5,6 +5,9 @@ import {
   ADD_EVENT,
   UPDATE_EVENT,
   DELETE_EVENT,
+  ADD_RESOURCE,
+  UPDATE_RESOURCE,
+  DELETE_RESOURCE,
 } from '../actions/types';
 
 const initialState = {
@@ -13,17 +16,17 @@ const initialState = {
     name: '',
     owner: '',
     tags: [],
-    'app-required': false,
-    'new-members': false,
-    'about-us': '',
-    'get-involved': '',
-    'social-media-links': [],
+    app_required: false,
+    new_members: false,
+    about_us: '',
+    get_involved: '',
+    social_media_links: {},
   },
   resources: [],
   events: [],
   images: {
-    'logo-url': '',
-    'banner-url': '',
+    logo_url: '',
+    banner_url: '',
   },
 };
 
@@ -43,11 +46,13 @@ export default function (state = initialState, action) {
     case CLEAR_PROFILE:
       return { ...state, profile: null };
     case ADD_EVENT:
-      return { ...state, events: payload };
     case UPDATE_EVENT:
-      return { ...state, events: payload };
     case DELETE_EVENT:
-      return { ...state };
+      return { ...state, events: payload };
+    case ADD_RESOURCE:
+    case UPDATE_RESOURCE:
+    case DELETE_RESOURCE:
+      return { ...state, resources: payload };
     default:
       return state;
   }

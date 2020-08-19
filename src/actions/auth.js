@@ -28,11 +28,9 @@ export const register = (
     email,
     password,
     tags,
-    'app-required': app_required,
-    'new-members': new_members,
+    app_required,
+    new_members,
   });
-
-  console.log('body:', body);
 
   try {
     let res = await axios.post('/api/user/register', body, config);
@@ -59,7 +57,6 @@ export const login = (email, password, history) => async (dispatch) => {
     // Once we have routes, it will create a new user on backend
     // and will return signed jwt
     let res = await axios.post('/api/user/login', body, config);
-    console.log(res);
 
     // Calls redux reducer that puts the token into local storage
     // and token and isAuthenticated=true in app state

@@ -9,7 +9,7 @@ import GetInvolved from './GetInvolved';
 import Events from './Events';
 import Resources from './Resources';
 
-const Admin = ({ profile }) => {
+const Admin = ({ profile, events, resources }) => {
   return (
     <div className="clubEdit">
       <Navbar />
@@ -79,11 +79,11 @@ const Admin = ({ profile }) => {
             />
             <Route
               path="/admin/resources"
-              render={() => <Resources profile={profile} />}
+              render={() => <Resources resources={resources} />}
             />
             <Route
               path="/admin/events"
-              render={() => <Events profile={profile} />}
+              render={() => <Events events={events} />}
             />
             <Route path="/admin" render={() => <Profile profile={profile} />} />
           </Switch>
@@ -95,6 +95,8 @@ const Admin = ({ profile }) => {
 
 const mapStateToProps = (state) => ({
   profile: state.profile.profile,
+  events: state.profile.events,
+  resources: state.profile.resources
 });
 
 export default connect(mapStateToProps)(Admin);
