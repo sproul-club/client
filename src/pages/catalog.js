@@ -17,6 +17,7 @@ import {
   AccordionItemButton,
   AccordionItemPanel,
 } from 'react-accessible-accordion';
+
 import { Form, TextBox, CheckBox } from 'react-form-elements';
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -118,9 +119,9 @@ const Catalog = ({ searchClubs }) => {
               </AccordionItemPanel>
             </AccordionItem>
             <AccordionItem className="accordion-group" uuid="b">
-              <AccordionItemHeading>
-                <AccordionItemButton>Club Tags</AccordionItemButton>
-              </AccordionItemHeading>
+                <AccordionItemHeading>
+                    <AccordionItemButton>Club Tags</AccordionItemButton>
+                </AccordionItemHeading>
               <AccordionItemPanel>
                 <Dropdown
                   options={tagOptions}

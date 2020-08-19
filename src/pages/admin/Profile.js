@@ -43,7 +43,7 @@ const Profile = ({ profile, updateProfile }) => {
   const [orgName, setOrgName] = useState(profile.name);
   const [orgEmail, setOrgEmail] = useState(profile.owner);
   const [descr, setDescr] = useState(profile['about-us']);
-  const [descrChars, setChars] = useState(1000 - descr.length);
+  const [descrChars, setChars] = useState(1000 - profile['about-us'].length);
   const [tags, setTags] = useState(profile.tags.map((tag) => tagOptions[tag]));
   const [appReq, setAppReq] = useState(true);
   const [recruiting, setRecruit] = useState(false);
