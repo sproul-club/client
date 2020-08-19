@@ -1,0 +1,10 @@
+.security {
+    height: 100vh;
+    overflow-y: hidden;
+}
+
+.security h3 {
+    font-size: 22px;
+    width: 100%;
+    text-align: center;
+}

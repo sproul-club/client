@@ -60,7 +60,7 @@ const Navbar = ({ isAuthenticated, logout, login, history }) => {
             <Link className="option" to="/admin">
               Edit Club Page
             </Link>
-            <Link to="/comingsoon" className="option mid-option">
+            <Link to="/admin/security" className="option mid-option">
               Account Security
             </Link>
             <div className="option" onClick={() => logout(history)}>
