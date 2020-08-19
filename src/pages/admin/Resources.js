@@ -85,14 +85,14 @@ const Resources = ({
   }
 
   /*Create all resource components based on content saved in array*/
-  const resComps = resources.map((res, i) => (
+  const resComps = resources ? resources.map((res, i) => (
     <ResComp
       key={i}
       data={res}
       entryChange={entryChange}
       removeRes={removeRes}
     />
-  ));
+  )) : <></>;
 
   return (
     <div>

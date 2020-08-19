@@ -4,7 +4,6 @@
   background: #f8f8f8;
   align-items: center;
   margin-bottom: 10px;
-  border-radius: 5px;
   width: 90%;
 }
 
@@ -82,7 +81,6 @@
   flex-direction: column;
   background: #f8f8f8;
   margin-bottom: 10px;
-  border-radius: 5px;
   margin-left: 5%;
   width: 85%;
   padding-bottom: 40px;
