@@ -3,7 +3,7 @@ import { updateProfile } from '../../actions/profile';
 import { connect } from 'react-redux';
 
 const GetInvolved = ({ profile, updateProfile }) => {
-  const [involvedDesc, setInvolvedDesc] = useState(profile['get-involved']);
+  const [involvedDescr, setInvolvedDescr] = useState(profile['get-involved']);
    const [descrChars, setChars] = useState(250 - involvedDescr.length);
 
   const descrChange = (e) => {
@@ -12,7 +12,8 @@ const GetInvolved = ({ profile, updateProfile }) => {
   };
 
   const submitValue = (e) => {
-    updateProfile({ ...profile, 'get-involved': involvedDesc });
+    updateProfile({ ...profile, 'get-involved': involvedDescr });
+  }
 
 
   return (
@@ -33,7 +34,7 @@ const GetInvolved = ({ profile, updateProfile }) => {
             /*value={involvedDesc}
             onChange={(e) => setInvolvedDesc(e.target.value)}
             */
-           value={involvedDescr}
+            value={involvedDescr}
             onChange={descrChange}
           />
         </div>
