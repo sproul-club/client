@@ -46,5 +46,4 @@ const App = () => {
   );
 };
 
-
 export default withRouter(App);
