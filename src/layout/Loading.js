@@ -1,8 +1,20 @@
 import React from 'react';
-import './Loading.css'
+import './Loading.css';
 
 const Loading = () => {
-  return <h1 className="loading-title">Loading</h1>;
+  return (
+    <div className="loading">
+      <div class="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div className='loading-text'>
+      Loading
+      </div>
+    </div>
+  );
 };
 
 export default Loading;
