@@ -12,14 +12,11 @@ import { ComingSoon } from './pages/ComingSoon.js';
 import Catalog from './pages/catalog.js';
 import { SignUp } from './pages/SignUp.js';
 import { SignIn } from './pages/SignIn.js';
-import { RecoverPassword } from './pages/RecoverPassword.js';
 import Admin from './pages/admin/Admin.js';
 // import Modal from './pages/Modal.js';
 import store from './store';
 import { loadProfile } from './actions/profile';
 import { Provider } from 'react-redux';
-import RecoverForm from './pages/RecoverPasswordForm.js';
-import ClubPage from './pages/ClubPage.js';
 import PrivateRoute from './utils/PrivateRoute';
 
 const App = () => {
@@ -34,10 +31,10 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={Landing} />
           <Route exact path="/comingsoon" component={ComingSoon} />
-          <PrivateRoute path="/admin" component={Admin} />
-          <Route path="/catalog" component={Catalog} />
-          <Route exact path="/signup" component={SignUp} />
-          <Route exact path="/signin" component={SignIn} />
+          <PrivateRoute path="/admin" component={ComingSoon} />
+          <Route path="/catalog" component={ComingSoon} />
+          <Route exact path="/signup" component={ComingSoon} />
+          <Route exact path="/signin" component={ComingSoon} />
           <Route exact path="/club/:id" component={ComingSoon} />
           <Route>{'404'}</Route>
         </Switch>
