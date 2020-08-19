@@ -119,15 +119,7 @@ const Events = ({ addEvent, updateEvent, events }) => {
                   <div className="event-content">
                     <div className="event-content-header">
                       <div className="event-title">{event.name}</div>
-                      <div className="event-date">
-                        {event.event_start} - {event.event_end}
-                      </div>
-                    </div>
-                    <div className="event-content-text">
-                      {event.description}
-                    </div>
-                  </div>
-                  <div className="event-controls">
+                      <div className="event-controls">
                     <i
                       className="fas fa-trash"
                       onClick={() => openDeleteModal(event)}
@@ -137,6 +129,17 @@ const Events = ({ addEvent, updateEvent, events }) => {
                       onClick={() => editEvent(event)}
                     ></i>
                   </div>
+                    </div>
+                    <div className="event-content-header">
+                      <div className="event-date">
+                        {event.event_start} - {event.event_end}
+                      </div>
+                    </div>
+                    <div className="event-content-text">
+                      {event.description}
+                    </div>
+                  </div>
+                  
                 </div>
               </>
             ))}
