@@ -59,7 +59,7 @@ const ResComp = (props) => {
   return (
     <div className="res-flex">
       <div className="title-buttons-flex">
-        <div className="res-num">Resource #{props.data.id + 1}</div>
+        <div className="res-num">Resource #{props.num + 1}</div>
         <div className="del-edit-flex">
           <img
             alt="remove"

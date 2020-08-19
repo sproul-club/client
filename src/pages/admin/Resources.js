@@ -10,13 +10,13 @@ import {
 import './Resources.css';
 
 const Resources = ({
-  profile,
+  resources: resourceState,
   addResource,
   updateResource,
   deleteResource,
 }) => {
   /*Holds all existing resources and keeps count*/
-  const [resources, setResources] = useState(profile.resources);
+  const [resources, setResources] = useState(resourceState);
   const [resCount, setResCount] = useState(0);
 
   /*Determines if add resource shown*/
@@ -55,7 +55,8 @@ const Resources = ({
     setResources([...resources, emptyRes]);
     setResCount((prevCount) => prevCount + 1);
     console.log('resources: ', resCount);
-    addResource(emptyRes, resources);
+    // call add resource action
+    addResource(emptyRes);
     setNewName('');
     setNewLink('');
     setShowModal(false);
@@ -88,6 +89,7 @@ const Resources = ({
   const resComps = resources ? resources.map((res, i) => (
     <ResComp
       key={i}
+      num={i}
       data={res}
       entryChange={entryChange}
       removeRes={removeRes}

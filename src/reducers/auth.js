@@ -10,7 +10,7 @@ const initialState = {
   isAuthenticated: false,
   loading: true,
 };
-
+ 
 export default function (state = initialState, action) {
   const { type, payload } = action;
 
