@@ -29,74 +29,6 @@
   line-height: 14px;
 }
 
-/*GRID COMPONENT STYLYING*/
-.info-flex {
-  display: flex;
-  flex-direction: column;
-  
-}
-
-.icon-title-flex {
-  display: flex;
-  flex-direction: row;
-}
-
-.card-club-logo {
-  width: 1.8vw;
-  height: 1.8vw;
-  position: relative;
-  bottom: 0.3vw;
-  margin-right: 0.5vw;
-}
-
-.club-name {
-  font-size: 1.2vw;
-  font-family: montserrat, sans-serif;
-  font-weight: bold;
-}
-
-.tags-flex-test {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  position: relative;
-  left: -0.6vw;
-
-}
-
-.tag-test {
-  margin-top: 0.3vw;
-  margin-left: 0.5vw;
-  background-color: #E2E2E2;
-  border-radius: 6px;
-  padding: 0.2vw 1vw 0.2vw 1vw;
-  font-family: roboto, sans-serif;
-  font-size: 0.7vw;
-}
-
-.req-flex {
-  display: flex;
-  flex-direction: row;
-  position: relative;
-  left: -0.6vw;
-}
-
-#app-req {
-  background-color: #FFF1AE;
-}
-
-#app-not-req {
-  background-color: #CDEAFF;
-}
-
-#open-tag {
-  background-color: #C9F0C9;
-}
-
-#not-open-tag {
-  background-color: #FFD6D6
-}
-
 .accordion {
   /* border: 1px solid rgba(0, 0, 0, 0.1); */
   width: 100%;
@@ -181,7 +113,7 @@
   /* background-color: pink; */
 }
 
-.content {
+.App .content {
   min-height: calc(100vh - 176px);
   /* position: relative;
   widows: 100%; */
@@ -207,7 +139,7 @@
 
 
  @media screen and (max-width: 850px) {
-  .content {
+  .App .content {
     align-items: flex-start;
     align-content: flex-start;
     align-self: flex-start;

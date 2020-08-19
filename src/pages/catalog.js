@@ -49,7 +49,8 @@ const Catalog = ({ searchClubs }) => {
 
   const useStyles = makeStyles({
     root: {
-      minWidth: 200,
+      width: 400,
+      display: 'inline-block',
     },
     media: {
       height: 140,
