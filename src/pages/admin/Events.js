@@ -96,7 +96,7 @@ const Events = ({ addEvent, updateEvent, events }) => {
 
     if (startDate.getDay() == endDate.getDay() && startDate.getMonth() == endDate.getMonth() && 
     startDate.getDay() == endDate.getDay() && startDate.getFullYear() == endDate.getFullYear()) {
-      return formatDate(startDate) + ' ' + convertTime(startDate) + ' - ' + convertTime(endDate);
+      return formatDate(startDate) + ' - ' + convertTime(endDate);
     }
     else {
       return formatDate(startDate) + ' - ' + formatDate(endDate);
@@ -132,7 +132,7 @@ const Events = ({ addEvent, updateEvent, events }) => {
                     </div>
                     <div className="event-content-header">
                       <div className="event-date">
-                        {event.event_start} - {event.event_end}
+                        {formatDates(event.event_start, event.event_end)}
                       </div>
                     </div>
                     <div className="event-content-text">
