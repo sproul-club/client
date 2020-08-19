@@ -44,7 +44,13 @@ const Navbar = ({ isAuthenticated, logout, login, history }) => {
   );
 
   const loggedInLinks = (
-    <>
+    <div style={{ display: 'flex', flexDirection: 'row' }}>
+      <Link to="/catalog" className="nav-link hide-sm">
+        Discover
+      </Link>
+      <Link to="/comingsoon" className="nav-link hide-sm">
+        View Profile
+      </Link>
       <div
         className="org-menu"
         href="/signup"
@@ -69,7 +75,7 @@ const Navbar = ({ isAuthenticated, logout, login, history }) => {
           </div>
         )}
       </div>
-    </>
+    </div>
   );
 
   return (
