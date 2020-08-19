@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout, login } from '../actions/auth';
@@ -9,6 +9,18 @@ import useOnClickOutside from '../utils/useOnClickOutside';
 const Navbar = ({ isAuthenticated, logout, login, history }) => {
   const [navbarVis, setNavbarVis] = useState(false);
   const [dropdownVis, setDropownVis] = useState(false);
+  const [navFixed, setNavFixed] = useState(false);
+
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY === 0) {
+        setNavFixed(false);
+      } else if (window.scrollY > 50) {
+        setNavFixed(true);
+        console.log('PAST');
+      }
+    });
+  });
 
   const toggleNavbar = () => setNavbarVis((navbarVis) => !navbarVis);
   const toggleDropdown = () => setDropownVis((dropdownVis) => !dropdownVis);
@@ -80,7 +92,7 @@ const Navbar = ({ isAuthenticated, logout, login, history }) => {
 
   return (
     <>
-      <div className="header" ref={ref}>
+      <div className={navFixed ? 'header fixed-nav' : 'header'} ref={ref}>
         <Link to="/" className="nav-link logo">
           sproul.club
         </Link>
