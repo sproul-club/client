@@ -59,15 +59,16 @@ const Catalog = ({ searchClubs }) => {
   const classes = useStyles();
 
   const [name, setName] = useState('');
-  const [appReq, setAppReq] = useState(true);
-  const [status, setStatus] = useState(true);
+  const [appReq, setAppReq] = useState(null);
+  const [status, setStatus] = useState(null);
   const [tags, setTags] = useState([]);
 
   // const multiselectRef = React.createRef();
 
   const searchAllClubs = () => {
     // const tags = multiselectRef.current.getSelectedItems();
-    const searchParams = { name, tags, appReq, status };
+    const tagValues = tags.map((tag) => tag.value);
+    const searchParams = { name, tags: tagValues, appReq, status };
 
     // Calls searchClubs redux action, which hits the backend API
     // then updates the apps state in redux to be the response
@@ -147,7 +148,7 @@ const Catalog = ({ searchClubs }) => {
                 />
                 <CheckBox
                   label="No app required"
-                  isChecked={!appReq}
+                  isChecked={!appReq && appReq !== null}
                   onClick={() => setAppReq(false)}
                   name="noAppReq"
                   value="checkbox value"
@@ -168,7 +169,7 @@ const Catalog = ({ searchClubs }) => {
                 />
                 <CheckBox
                   label="Not looking for members"
-                  isChecked={!status}
+                  isChecked={!status && appReq !== null}
                   onClick={() => setStatus(false)}
                   name="checkbox"
                   value="checkbox value"

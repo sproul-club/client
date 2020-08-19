@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Modal from '../../layout/Modal';
 import { connect } from 'react-redux';
 import { addEvent, updateEvent } from '../../actions/profile';
+import { validURL, normalizeUrl } from '../../utils/normalizeUrl';
 import DeleteModal from './DeleteModal';
 import './Events.css';
 
@@ -21,11 +22,12 @@ const Events = ({ addEvent, updateEvent, events }) => {
   const saveEvent = (event: null) => {
     const eventInfo = {
       name: title,
-      link: eventLink,
+      link: normalizeUrl(eventLink),
       event_start: start,
       event_end: eventTime,
       description: text,
     };
+    if (!validURL(eventLink)) return alert('Please enter a valid URL');
     activeEvent
       ? updateEvent(event.id, eventInfo)
       : addEvent(eventInfo, events);

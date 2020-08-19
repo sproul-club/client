@@ -29,8 +29,6 @@ export const loadProfile = () => async (dispatch) => {
 
 // Update profile
 export const updateProfile = (formData) => async (dispatch) => {
-  console.log('FORMDATA:', formData);
-
   const justTheRightData = JSON.stringify({
     name: formData.name,
     tags: formData.tags,
@@ -41,8 +39,6 @@ export const updateProfile = (formData) => async (dispatch) => {
     social_media_links: formData.social_media_links,
   });
 
-  console.log('new formdata: ', justTheRightData);
-
   try {
     const config = {
       headers: {
@@ -50,12 +46,7 @@ export const updateProfile = (formData) => async (dispatch) => {
         'Access-Control-Allow-Origin': '*',
       },
     };
-    const res = await axios.post(
-      '/api/admin/profile',
-      justTheRightData,
-      config
-    );
-    console.log(res);
+    await axios.post('/api/admin/profile', justTheRightData, config);
 
     dispatch({ type: UPDATE_PROFILE, payload: formData });
   } catch (err) {

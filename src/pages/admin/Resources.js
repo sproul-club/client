@@ -8,6 +8,7 @@ import {
   deleteResource,
 } from '../../actions/profile';
 import './Resources.css';
+import { validURL, normalizeUrl } from '../../utils/normalizeUrl';
 
 const Resources = ({
   resources: resourceState,
@@ -50,8 +51,9 @@ const Resources = ({
   function addRes() {
     const emptyRes = {
       name: newName,
-      link: newLink,
+      link: normalizeUrl(newLink),
     };
+    if (!validURL(newLink)) return alert('Please enter a valid URL');
     setResources([...resources, emptyRes]);
     setResCount((prevCount) => prevCount + 1);
     console.log('resources: ', resCount);
