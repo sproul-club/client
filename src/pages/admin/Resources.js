@@ -82,7 +82,7 @@ const Resources = ({
   }, [resourceState])
  
   /*Create all resource components based on content saved in array*/
-  const resComps = resources ? resources.map((res, i) => (
+  const resComps = resources.map((res, i) => (
     <ResComp
       key={i}
       num={i}
@@ -90,8 +90,8 @@ const Resources = ({
       entryChange={entryChange}
       removeRes={removeRes}
     />
-  )) : <></>;
-
+  ));
+ 
   return (
     <div>
       <h3>Resources</h3>
