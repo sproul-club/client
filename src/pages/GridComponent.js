@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Card,
   CardActionArea,
@@ -10,9 +10,15 @@ import {
 
 import { connect } from 'react-redux';
 import { withRouter, Link } from 'react-router-dom';
+import { loadClubs, searchClubs } from '../actions/catalog';
 import './GridComponent.css';
 
 function GridComponent(props) {
+  useEffect(() => {
+    // Return unfiltered clubs so there is some data there when first rendered
+    props.loadClubs();
+  }, []);
+
   const GridList = props.clubs.map((club, i) => (
     <Grid item xs={12} sm={6} md={4} key={i}>
       <Card className={props.classes.root}>
@@ -101,4 +107,6 @@ const mapStateToProps = (state) => ({
   clubs: state.catalog.clubs,
 });
 
-export default withRouter(connect(mapStateToProps)(GridComponent));
+export default connect(mapStateToProps, { loadClubs, searchClubs })(
+  withRouter(GridComponent)
+);

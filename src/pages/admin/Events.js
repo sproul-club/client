@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import Modal from '../../layout/Modal';
 import { connect } from 'react-redux';
 import { addEvent, updateEvent } from '../../actions/profile';
+import { validURL, normalizeUrl } from '../../utils/normalizeUrl';
 import DeleteModal from './DeleteModal';
 import './Events.css';
 
-const Events = ({ addEvent, updateEvent, profile: { events } }) => {
+const Events = ({ addEvent, updateEvent, events }) => {
   const [showModal, setShowModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
 
@@ -21,33 +22,35 @@ const Events = ({ addEvent, updateEvent, profile: { events } }) => {
   const saveEvent = (event: null) => {
     const eventInfo = {
       name: title,
-      link: eventLink,
-      'event-start': start,
-      'event-end': eventTime,
+      link: normalizeUrl(eventLink),
+      event_start: start,
+      event_end: eventTime,
       description: text,
     };
-    activeEvent !== null
+    if (!validURL(eventLink)) return alert('Please enter a valid URL');
+    activeEvent
       ? updateEvent(event.id, eventInfo)
       : addEvent(eventInfo, events);
+    setShowModal(false);
   };
 
   const editEvent = (event) => {
+    setActiveEvent(true);
     setTitle(event.name);
     setEventLink(event.link);
-    setStart(event['event-start']);
-    setEventTime(event['event-end']);
+    setStart(event.event_start);
+    setEventTime(event.event_end);
     setText(event.description);
-    setActiveEvent(event);
     setShowModal(true);
   };
 
   const openAddEvent = () => {
+    setActiveEvent(false);
     setTitle('');
     setEventLink('');
     setStart('');
     setEventTime('');
     setText('');
-    setActiveEvent(null);
     setShowModal(true);
   };
 
@@ -64,40 +67,44 @@ const Events = ({ addEvent, updateEvent, profile: { events } }) => {
       </p>
       <div className="formGroup">
         <div className="events-list">
-          {events && 
+          {events &&
             events.map((event) => (
-            <>
-              <div className="event">
-                <div className="event-content">
-                  <div className="event-content-header">
-                    <div className="event-title">{event.name}</div>
-                    <div className="event-date">
-                      {event['event-start']} - {event['event-end']}
+              <>
+                <div className="event">
+                  <div className="event-content">
+                    <div className="event-content-header">
+                      <div className="event-title">{event.name}</div>
+                      <div className="event-date">
+                        {event.event_start} - {event.event_end}
+                      </div>
+                    </div>
+                    <div className="event-content-text">
+                      {event.description}
                     </div>
                   </div>
-                  <div className="event-content-text">{event.description}</div>
+                  <div className="event-controls">
+                    <i
+                      className="fas fa-trash"
+                      onClick={() => openDeleteModal(event)}
+                    ></i>
+                    <i
+                      className="fas fa-edit"
+                      onClick={() => editEvent(event)}
+                    ></i>
+                  </div>
                 </div>
-                <div className="event-controls">
-                  <i
-                    className="fas fa-trash"
-                    onClick={() => openDeleteModal(event)}
-                  ></i>
-                  <i
-                    className="fas fa-edit"
-                    onClick={() => editEvent(event)}
-                  ></i>
-                </div>
-              </div>
-            </>
-          ))}
+              </>
+            ))}
         </div>
         <img
           className="add-button"
           src={require('../assets/linkImages/addEvent.png')}
           onClick={openAddEvent}
-          alt='add event'
+          alt="add event"
         />
       </div>
+
+      {/* Delete event modal */}
       <DeleteModal
         type="event"
         item={activeEvent}

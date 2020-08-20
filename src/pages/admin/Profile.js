@@ -42,29 +42,21 @@ const Profile = ({ profile, updateProfile }) => {
 
   const [orgName, setOrgName] = useState(profile.name);
   const [orgEmail, setOrgEmail] = useState(profile.owner);
-  const [descr, setDescr] = useState(profile['about-us']);
+  const [descr, setDescr] = useState("hello");
   const [descrChars, setChars] = useState(500 - descr.length);
   const [tags, setTags] = useState(profile.tags.map((tag) => tagOptions[tag]));
   const [appReq, setAppReq] = useState(true);
   const [recruiting, setRecruit] = useState(false);
 
-
   const submit = () => {
-    const profileInfo = {
-      'org-name': orgName,
-      'org-email': orgEmail,
-      'org-description': descr,
-    };
-    console.log(profileInfo);
     const newProfile = {
       ...profile,
       name: orgName,
       tags: tags.map((tags) => tags.value),
-      'about-us': descr,
-      'app-required': appReq,
-      'new-members': recruiting,
+      about_us: descr,
+      app_required: appReq,
+      new_members: recruiting,
     };
-    console.log('new profile: ', newProfile);
     updateProfile(newProfile);
   };
 
@@ -77,8 +69,8 @@ const Profile = ({ profile, updateProfile }) => {
     <div>
       <h3>Profile</h3>
       <div className="admin-text">
-        Add an organization logo, profile banner, edit your tags,
-        membership status, application requirements, and organization description.
+        Add an organization logo, profile banner, edit your tags, membership
+        status, application requirements, and organization description.
       </div>
       <div className="formGroup">
         <div className="formElement">
@@ -166,7 +158,7 @@ const Profile = ({ profile, updateProfile }) => {
         <div className="formElement">
           <p>Banner</p>
           <ImageUploader
-            label="820 x 312 pixels - e.g. Facebook cover image"
+            label="16:9 ratio - e.g. Facebook cover image"
             buttonStyles={{
               background: '#54a0f1',
             }}

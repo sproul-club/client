@@ -5,13 +5,16 @@ import {
   ADD_EVENT,
   UPDATE_EVENT,
   DELETE_EVENT,
+  ADD_RESOURCE,
+  UPDATE_RESOURCE,
+  DELETE_RESOURCE,
 } from './types';
 import setAuthToken from '../utils/setAuthToken';
 
 // Load Profile
 export const loadProfile = () => async (dispatch) => {
   if (localStorage.token) {
-    // setAuthToken
+    // setAuthToken as header
     setAuthToken(localStorage.token);
   }
 
@@ -26,19 +29,15 @@ export const loadProfile = () => async (dispatch) => {
 
 // Update profile
 export const updateProfile = (formData) => async (dispatch) => {
-  console.log('FORMDATA:', formData);
-
   const justTheRightData = JSON.stringify({
     name: formData.name,
     tags: formData.tags,
-    'app-required': formData['app-required'],
-    'new-members': formData['new-members'],
-    'about-us': formData['about-us'],
-    'get-involved': formData['get-involved'],
-    'social-media-links': formData['social-media-links'],
+    app_required: formData.app_required,
+    new_members: formData.new_members,
+    about_us: formData.about_us,
+    get_involved: formData.get_involved,
+    social_media_links: formData.social_media_links,
   });
-
-  console.log('new formdata: ', justTheRightData);
 
   try {
     const config = {
@@ -47,12 +46,7 @@ export const updateProfile = (formData) => async (dispatch) => {
         'Access-Control-Allow-Origin': '*',
       },
     };
-    const res = await axios.post(
-      '/api/admin/profile',
-      justTheRightData,
-      config
-    );
-    console.log(res);
+    await axios.post('/api/admin/profile', justTheRightData, config);
 
     dispatch({ type: UPDATE_PROFILE, payload: formData });
   } catch (err) {
@@ -63,7 +57,7 @@ export const updateProfile = (formData) => async (dispatch) => {
 // TODO
 // Add Event
 // This does not work if they do not enter the right type of link?
-export const addEvent = (formData, events) => async (dispatch) => {
+export const addEvent = (formData) => async (dispatch) => {
   try {
     const config = {
       headers: {
@@ -77,7 +71,7 @@ export const addEvent = (formData, events) => async (dispatch) => {
     const res = await axios.post('/api/admin/events', event, config);
 
     console.log(res);
-    dispatch({ type: ADD_EVENT, payload: events.push(formData) });
+    dispatch({ type: ADD_EVENT, payload: res.data });
   } catch (err) {
     console.log(err);
   }
@@ -95,7 +89,9 @@ export const updateEvent = (eventId, eventInfo) => async (dispatch) => {
     const event = JSON.stringify(eventInfo);
     // This will hit the api that will add the event, and return the new data with event added
     // and then update the profile information in state to be correct
+    console.log('update event');
     const res = await axios.put(`/api/admin/events/${eventId}`, event, config);
+    console.log(res);
 
     dispatch({ type: UPDATE_EVENT, payload: res.data });
   } catch (err) {
@@ -137,7 +133,7 @@ export const addResource = (formData, resources) => async (dispatch) => {
     const res = await axios.post('/api/admin/resources', resource, config);
 
     console.log(res);
-    dispatch({ type: ADD_EVENT, payload: resources.push(formData) });
+    dispatch({ type: ADD_RESOURCE, payload: res.data });
   } catch (err) {
     console.log(err);
   }
@@ -163,7 +159,7 @@ export const updateResource = (resourceId, resourceInfo) => async (
       config
     );
 
-    dispatch({ type: UPDATE_EVENT, payload: res.data });
+    dispatch({ type: UPDATE_RESOURCE, payload: res.data });
   } catch (err) {
     console.log(err);
   }
@@ -180,8 +176,8 @@ export const deleteResource = (id) => async (dispatch) => {
     // This will hit the api that will add the event, and return the new data with event added
     // and then update the profile information in state to be correct
     const res = await axios.delete(`/api/admin/resources/${id}`, config);
-    console.log('delete!', res);
-    dispatch({ type: DELETE_EVENT, payload: res.data });
+
+    dispatch({ type: DELETE_RESOURCE, payload: res.data });
   } catch (err) {
     console.log(err);
   }

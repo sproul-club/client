@@ -8,15 +8,16 @@ import {
   deleteResource,
 } from '../../actions/profile';
 import './Resources.css';
+import { validURL, normalizeUrl } from '../../utils/normalizeUrl';
 
 const Resources = ({
-  profile,
+  resources: resourceState,
   addResource,
   updateResource,
   deleteResource,
 }) => {
   /*Holds all existing resources and keeps count*/
-  const [resources, setResources] = useState(profile.resources);
+  const [resources, setResources] = useState(resourceState);
   const [resCount, setResCount] = useState(0);
 
   /*Determines if add resource shown*/
@@ -50,12 +51,14 @@ const Resources = ({
   function addRes() {
     const emptyRes = {
       name: newName,
-      link: newLink,
+      link: normalizeUrl(newLink),
     };
+    if (!validURL(newLink)) return alert('Please enter a valid URL');
     setResources([...resources, emptyRes]);
     setResCount((prevCount) => prevCount + 1);
     console.log('resources: ', resCount);
-    addResource(emptyRes, resources);
+    // call add resource action
+    addResource(emptyRes);
     setNewName('');
     setNewLink('');
     setShowModal(false);
@@ -88,6 +91,7 @@ const Resources = ({
   const resComps = resources ? resources.map((res, i) => (
     <ResComp
       key={i}
+      num={i}
       data={res}
       entryChange={entryChange}
       removeRes={removeRes}

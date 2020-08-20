@@ -19,8 +19,6 @@ import Admin from './pages/admin/Admin.js';
 import store from './store';
 import { loadProfile } from './actions/profile';
 import { Provider } from 'react-redux';
-import RecoverForm from './pages/RecoverPasswordForm.js';
-import ClubPage from './pages/ClubPage.js';
 import PrivateRoute from './utils/PrivateRoute';
 
 const App = () => {
@@ -47,6 +45,5 @@ const App = () => {
     </Provider>
   );
 };
-
 
 export default withRouter(App);

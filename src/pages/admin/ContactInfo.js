@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import { updateProfile } from '../../actions/profile';
 
 const ContactInfo = ({ profile, updateProfile }) => {
-  const contactInfo = profile['social-media-links'];
+  const contactInfo = profile.social_media_links;
 
-  const [email, setEmail] = useState(contactInfo['contact-email']);
+  const [email, setEmail] = useState(contactInfo.contact_email);
   const [website, setWebsite] = useState(contactInfo.website);
   const [facebook, setFacebook] = useState(contactInfo.facebook);
   const [instagram, setInstagram] = useState(contactInfo.instagram);
@@ -20,8 +20,8 @@ const ContactInfo = ({ profile, updateProfile }) => {
   const saveContactInfo = () => {
     updateProfile({
       ...profile,
-      'social-media-links': {
-        'contact-email': email,
+      social_media_links: {
+        contact_email: email,
         website,
         facebook,
         instagram,
@@ -46,7 +46,7 @@ const ContactInfo = ({ profile, updateProfile }) => {
       <div className="formGroup">
         <div className="formElement">
           <p>
-            Email Address <div>*</div>
+            Email Address <span>*</span>
           </p>
           <input
             className="userInput"
