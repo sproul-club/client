@@ -134,6 +134,13 @@
   border-bottom: none;
 }
 
+.nav-link.hide-sm {
+  width: auto;
+  padding-left: 0px;
+  padding-right: 0px;
+  margin-right: 60px;
+}
+
 @media screen and (max-width: 850px) {
   .header-right {
     width: 100%;

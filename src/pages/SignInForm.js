@@ -32,7 +32,7 @@ const SignInForm = ({ login, history, isAuthenticated }) => {
       <p>Password</p>
       <input
         className="userInput"
-        type="text"
+        type="password"
         onChange={(e) => setPassword(e.target.value)}
       />
       <Link to="/recover">Forgot password?</Link>

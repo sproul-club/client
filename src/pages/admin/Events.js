@@ -60,7 +60,7 @@ const Events = ({ addEvent, updateEvent, events }) => {
   };
 
   return (
-    <div>
+    <div className="events">
       <h3>Events</h3>
       <p>
         Add events related to recruitment, meetings, and other public events!
@@ -113,7 +113,12 @@ const Events = ({ addEvent, updateEvent, events }) => {
       />
 
       <Modal showModal={showModal} setShowModal={setShowModal}>
-        <div className="add-resource">
+        <div className = "eventModal">
+        <h3 id="res-bold">Add New Event</h3>
+        <p id="res-desc">
+          Link an event for prospective or current members!
+        </p>
+        <div className="gray-modal">
           <div className="formElement">
             <p>Event Name</p>
             <input
@@ -177,10 +182,11 @@ const Events = ({ addEvent, updateEvent, events }) => {
               onChange={(e) => setText(e.target.value)}
             />
           </div>
-          <button type="submit" onClick={saveEvent}>
+        </div>
+        <button type="submit" onClick={saveEvent}>
             {activeEvent ? 'Update' : 'Add Event'}
           </button>
-        </div>
+          </div>
       </Modal>
     </div>
   );

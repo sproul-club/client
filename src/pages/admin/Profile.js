@@ -42,8 +42,8 @@ const Profile = ({ profile, updateProfile }) => {
 
   const [orgName, setOrgName] = useState(profile.name);
   const [orgEmail, setOrgEmail] = useState(profile.owner);
-  const [descr, setDescr] = useState(profile.about_us);
-  const [descrChars, setChars] = useState(1000 - descr.length);
+  const [descr, setDescr] = useState("hello");
+  const [descrChars, setChars] = useState(500 - descr.length);
   const [tags, setTags] = useState(profile.tags.map((tag) => tagOptions[tag]));
   const [appReq, setAppReq] = useState(true);
   const [recruiting, setRecruit] = useState(false);
@@ -158,7 +158,7 @@ const Profile = ({ profile, updateProfile }) => {
         <div className="formElement">
           <p>Banner</p>
           <ImageUploader
-            label="820 x 312 pixels - e.g. Facebook cover image"
+            label="16:9 ratio - e.g. Facebook cover image"
             buttonStyles={{
               background: '#54a0f1',
             }}

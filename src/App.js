@@ -12,6 +12,8 @@ import { ComingSoon } from './pages/ComingSoon.js';
 import Catalog from './pages/catalog.js';
 import { SignUp } from './pages/SignUp.js';
 import { SignIn } from './pages/SignIn.js';
+import { RecoverPassword } from './pages/RecoverPassword.js';
+import { Security } from './pages/admin/Security.js';
 import Admin from './pages/admin/Admin.js';
 // import Modal from './pages/Modal.js';
 import store from './store';
@@ -36,6 +38,7 @@ const App = () => {
           <Route exact path="/signup" component={ComingSoon} />
           <Route exact path="/signin" component={ComingSoon} />
           <Route exact path="/club/:id" component={ComingSoon} />
+          <Route exact path="/security" component={ComingSoon} />
           <Route>{'404'}</Route>
         </Switch>
       </Router>
