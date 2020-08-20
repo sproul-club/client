@@ -18,7 +18,13 @@ const data = {name: "EthiCAL Apparel",
               {name:"Infosession Slides", link:"https://www.poptropica.com/"},
               {name:"Infosession Recording", link:"https://www.target.com/"}],
               socials:
-              [{web: "https://www.pokemon.com/us/", email: "https://www.pokemon.com/us/", ig:"https://www.pokemon.com/us/", fb:"https://www.pokemon.com/us/", twt:"https://www.pokemon.com/us/"}]}
+              [
+                {social: "web", link: "https://www.pokemon.com"},
+                {social: "email", link: "https://www.pokemon.com"},
+                {social: "ig", link: "https://www.pokemon.com"},
+                {social: "fb", link: "https://www.pokemon.com"},
+                {social: "twt", link: "https://www.pokemon.com"}
+            ]}
 
 const Modal = ({ match, history }) => {
   const back = e => {
