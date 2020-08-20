@@ -1,5 +1,9 @@
 .card-grid {
+    display: grid;
+    grid-gap: 1rem;
     justify-content: center;
+    display: inline-block; 
+    align-content: flex-start;
 }
 
 .info-flex {

@@ -28,13 +28,13 @@ const Modal = ({ match, history }) => {
   return (
     <div> 
 
-      <div onClick={back} className="modal-wrapper"/>
+      {/* <div onClick={back} className="modal-wrapper"/>
 
       <div className="modal">
-        <span class="modal-close" onClick={back}>&times;</span>
+        <span class="modal-close" onClick={back}>&times;</span> */}
         {/* <h1>{match.params.id}</h1> */}
         <ClubPage data={data} />
-      </div>
+      {/* </div> */}
 
       
     

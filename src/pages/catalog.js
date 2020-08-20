@@ -51,6 +51,8 @@ const Catalog = ({ searchClubs }) => {
     root: {
       width: 400,
       display: 'inline-block',
+      alignItems: 'center',
+      justifyContent: 'center',
     },
     media: {
       height: 140,

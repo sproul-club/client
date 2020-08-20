@@ -1,6 +1,8 @@
 import React from 'react';
 import './ClubPage.css';
 import EventAccord from './EventAccord';
+import Navbar from '../layout/Navbar';
+import Footer from '../layout/Footer';
 
 const resList = [
   { name: 'Design Workshop Slides', link: 'https://www.coolmathgames.com/' },
@@ -48,6 +50,7 @@ function ClubPage(props) {
 
   return (
     <div>
+      <Navbar />
       <div className="header-img"></div>
 
       <div className="flex-container-left">
@@ -145,6 +148,7 @@ function ClubPage(props) {
           <div className="resources-flex">{resComps}</div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

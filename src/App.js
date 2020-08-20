@@ -13,6 +13,7 @@ import Catalog from './pages/catalog.js';
 import { SignUp } from './pages/SignUp.js';
 import Admin from './pages/admin/Admin.js';
 import Modal from './pages/Modal.js';
+import ClubPage from './pages/ClubPage.js';
 import store from './store';
 import { Provider } from 'react-redux';
 
@@ -44,7 +45,6 @@ class App extends Component {
             <Route exact path="/club/:id" component={Modal} />
             <Route>{'404'}</Route>
           </Switch>
-          <Route exact path="/club/:id" component={Modal} />
         </Router>
       </Provider>
     );

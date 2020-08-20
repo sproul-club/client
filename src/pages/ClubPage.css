@@ -5,6 +5,7 @@
   height: 45%;
   left: 5%;
   top: 5%;
+  margin-top: 83px;
   background-image: url('./assets/ethicalheader.png');
   background-size: cover;
   background-position: 50% 10%;
@@ -20,6 +21,8 @@
   width: 58.5%;
   left: 5%;
   top: 52%;
+  margin-bottom: 4%;
+  margin-top: 83px;
 }
 
 .logo-box {
@@ -148,6 +151,8 @@
   width: 30.5%;
   top: 52%;
   left: 64.5%;
+  margin-bottom: 4%;
+  margin-top: 83px;
 }
 
 .contact-box {
