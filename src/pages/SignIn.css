@@ -1,22 +1,37 @@
 .signin .content {
   position: relative;
-  /* window height - header */  
-  height: calc(100vh - 83px);
+  /* window height - header - footer */  
+  height: calc(100vh - 87px - 61px);
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
+  align-items: center;
+}
+
+.signin .loginImage {
+  width: 42%;
+  max-width: 524px;
+  max-height: 420px;
+  margin-right: 4vw;
 }
 
 .signin .form {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  margin-right: 4vw;
+  margin-top: 40px;
+  overflow-y: hidden;
 }
 
 .signin .form .formGroup {
+  width: calc(100vw - 100px);
+  max-width: 325px;
+  padding-bottom: 100px;
   display: flex;
   flex-direction: column;
+}
+
+.signin .form h2 {
+  margin-bottom: 10px;
 }
 
 .signin .form p {
@@ -40,10 +55,11 @@
 }
 
 .signin .form .userInput {
-  /* screen width - padding - border - input padding */
-  width: calc(100vw - 100px - 2px - 18px);
-  max-width: 325px;
-  padding: 12px;
+  /* screen width - padding - border - shadow - input padding */
+  width: calc(100vw - 100px - 2px - 1.5px - 18px);
+  /* formGroup max-width - the rest */
+  max-width: calc(325px - 2px - 1.5px - 18px);
+  padding: 9px;
   border-radius: 5px;
   border: solid 1px #949494;
   box-shadow: 1.5px 2px 3px #888888b5;
@@ -54,12 +70,13 @@
   color: #4e4e4e;
 }
 
-.signin .form .buttonWrapper .submitButton {
+.signin .form .submitButton {
   /* screen width - padding */
   width: calc(100vw - 100px);
-  max-width: 350px;
+  /* max-width - shadow */
+  max-width: calc(325px - 2px);
   margin-top: 20px;
-  padding: 10px 16px 10px 16px;
+  padding: 10px;
   border-radius: 7px;
   border: none;
   box-shadow: 1px 2px 3px #888888b5;
@@ -67,27 +84,60 @@
   font-family: montserrat, sans-serif;
   font-weight: 600;
   font-style: normal;
-  font-size: 16px;
+  font-size: 14px;
   color: white;
   background-color: #54a0f1;
   transition: background-color 0.15s;
 }
 
-.signin .form .buttonWrapper .submitButton:hover {
+.signin .form .submitButton:hover {
   background-color: #6eaff5;
   cursor: pointer;
 }
 
-@media screen and (max-width: 800px) {
-  .signin .content {
-    display: inline;
+@media screen and (max-height: 700px) {
+  .signin .loginImage {
+    width: 38%;
   }
 }
 
-@media screen and (max-height: 470px) {
-  .signin .content {
-    height: 387px;
+@media screen and (max-height: 625px) {
+  .signin .loginImage {
+    width: 33%;
   }
 }
+
+@media screen and (max-height: 597px) {
+  .signin .content {
+    height: 450px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .signin .content {
+    /* form + image + extra */
+    min-height: calc(340px + 200px + 100px);
+    flex-direction: column-reverse;
+    justify-content: space-evenly;
+  }
+
+  .signin .loginImage {
+    height: 200px;
+    width: 250px;
+    margin-right: 0px;
+  }
+
+  .signin .form {
+    margin-right: 0px;
+    margin-top: 0px;
+    margin-bottom: 20px;
+  }
+
+  .signin .form .formGroup {
+    padding-bottom: 2px;
+  }
+
+}
+
 
 /* WEBKIT FOR OLD SAFARI VERSIONS */
