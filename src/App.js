@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 
 import {
   BrowserRouter as Router,
@@ -11,44 +11,38 @@ import { Landing } from './pages/Landing.js';
 import { ComingSoon } from './pages/ComingSoon.js';
 import Catalog from './pages/catalog.js';
 import { SignUp } from './pages/SignUp.js';
+import { SignIn } from './pages/SignIn.js';
+import { RecoverPassword } from './pages/RecoverPassword.js';
+import { Security } from './pages/admin/Security.js';
 import Admin from './pages/admin/Admin.js';
-import Modal from './pages/Modal.js';
-import ClubPage from './pages/ClubPage.js';
+// import Modal from './pages/Modal.js';
 import store from './store';
+import { loadProfile } from './actions/profile';
 import { Provider } from 'react-redux';
+import PrivateRoute from './utils/PrivateRoute';
 
-class App extends Component {
-  previousLocation = this.props.location;
+const App = () => {
+  useEffect(() => {
+    console.log('reload app');
+    store.dispatch(loadProfile());
+  }, []);
 
-  componentWillUpdate() {
-    let { location } = this.props;
-
-    if (!(location.state && location.state.modal)) {
-      this.previousLocation = location;
-    }
-  }
-
-  render() {
-    // const { location } = this.props;
-
-    // console.log(location);
-    return (
-      <Provider store={store}>
-        <Router>
-          <Switch>
-            <Route exact path="/" component={Landing} />
-            <Route exact path="/comingsoon" component={ComingSoon} />
-            <Route path="/admin" component={Admin} />
-            <Route path="/signin" component={ComingSoon} />
-            <Route path="/catalog" component={Catalog} />
-            <Route exact path="/signup" component={ComingSoon} />
-            <Route exact path="/club/:id" component={Modal} />
-            <Route>{'404'}</Route>
-          </Switch>
-        </Router>
-      </Provider>
-    );
-  }
-}
-
+  return (
+    <Provider store={store}>
+      <Router>
+        <Switch>
+          <Route exact path="/" component={Landing} />
+          <Route exact path="/comingsoon" component={ComingSoon} />
+          <PrivateRoute path="/admin" component={ComingSoon} />
+          <Route path="/catalog" component={ComingSoon} />
+          <Route exact path="/signup" component={ComingSoon} />
+          <Route exact path="/signin" component={ComingSoon} />
+          <Route exact path="/club/:id" component={ComingSoon} />
+          <Route exact path="/security" component={ComingSoon} />
+          <Route>{'404'}</Route>
+        </Switch>
+      </Router>
+    </Provider>
+  );
+};
 export default withRouter(App);

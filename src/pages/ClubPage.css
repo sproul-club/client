@@ -11,7 +11,7 @@
   border-radius: 10px;
   border: 1px solid #c4c4c4;
 }
- 
+
 .flex-container-chungus {
   width: 75vw;
   left: 12.5vw;
@@ -21,7 +21,7 @@
   flex-direction: row;
   justify-content: space-between;
 }
-
+ 
 /*====================================*/
 /*LEFT FLEXBOX*/
 .flex-container-left {
@@ -172,7 +172,7 @@
  
 .resources-box {
   width: 100%;
-  margin-top: 1.5%;
+  margin-top: 2%;
   background: #ffffff;
   border: 1px solid #c4c4c4;
   box-sizing: border-box;
@@ -211,9 +211,6 @@
   margin-left: 1vw;
   height: auto;
 }
-
-
-
 /*====================================*/
 /*GENERAL TAGS*/
 .desc-box p,
@@ -251,6 +248,7 @@
   text-align: left;
   border-radius: 10px;
 }
+
 .accordion__heading-club {
   display: inline-block;
   width: 1%;

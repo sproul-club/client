@@ -6,11 +6,13 @@ const Modal = ({ showModal, setShowModal, children }) => {
   const ref = useRef();
 
   useOnClickOutside(ref, () => {
-    setShowModal(false);
+    if (showModal) {
+      setShowModal(false);
+    }
   });
 
   return (
-    <div classname="modal">
+    <div>
       {showModal && (
         <div className="popup">
           <div className="popup_inner" ref={ref}>

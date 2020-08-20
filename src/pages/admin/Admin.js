@@ -1,6 +1,7 @@
 import React from 'react';
 import './Admin.css';
 import { Route, Switch, Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import Navbar from '../../layout/Navbar';
 import Profile from './Profile';
 import ContactInfo from './ContactInfo';
@@ -8,8 +9,7 @@ import GetInvolved from './GetInvolved';
 import Events from './Events';
 import Resources from './Resources';
 
-const Admin = () => {
-
+const Admin = ({ profile, events, resources }) => {
   return (
     <div className="clubEdit">
       <Navbar />
@@ -69,11 +69,23 @@ const Admin = () => {
         </div>
         <div className="admin-content">
           <Switch>
-            <Route path="/admin/contact" component={ContactInfo} />
-            <Route path="/admin/getinvolved" component={GetInvolved} />
-            <Route path="/admin/resources" component={Resources} />
-            <Route path="/admin/events" component={Events} />
-            <Route path="/admin" component={Profile} />
+            <Route
+              path="/admin/contact"
+              render={() => <ContactInfo profile={profile} />}
+            />
+            <Route
+              path="/admin/getinvolved"
+              render={() => <GetInvolved profile={profile} />}
+            />
+            <Route
+              path="/admin/resources"
+              render={() => <Resources resources={resources} />}
+            />
+            <Route
+              path="/admin/events"
+              render={() => <Events events={events} />}
+            />
+            <Route path="/admin" render={() => <Profile profile={profile} />} />
           </Switch>
         </div>
       </div>
@@ -81,4 +93,10 @@ const Admin = () => {
   );
 };
 
-export default Admin;
+const mapStateToProps = (state) => ({
+  profile: state.profile.profile,
+  events: state.profile.events,
+  resources: state.profile.resources
+});
+
+export default connect(mapStateToProps)(Admin);

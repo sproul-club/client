@@ -24,7 +24,7 @@ const data = {name: "EthiCAL Apparel",
                 {social: "ig", link: "https://www.pokemon.com"},
                 {social: "fb", link: "https://www.pokemon.com"},
                 {social: "twt", link: "https://www.pokemon.com"}
-            ]}
+              ]}
 
 const Modal = ({ match, history }) => {
   const back = e => {

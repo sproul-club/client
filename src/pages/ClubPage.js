@@ -20,7 +20,6 @@ function ClubPage(props) {
       </a>)
       : null
   ))
-
   const resComps = props.data.resources.map((res) => (
     <div className="desc-text" id="resources">
       {res.name}
@@ -33,7 +32,7 @@ function ClubPage(props) {
       </a>
     </div>
   ));
-  
+
   const tagList = props.data.tags.map((tag) => (
     <div className="tag"> {tag} </div>
   ));
@@ -108,8 +107,10 @@ function ClubPage(props) {
           </div>
         </div>
       <Footer />
+
     </div>
   );
 }
- 
+
 export default ClubPage;
+

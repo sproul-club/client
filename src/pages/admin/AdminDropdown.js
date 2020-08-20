@@ -4,9 +4,9 @@ import Select from 'react-select';
 const customStyles = {
   multiValue: (provided, state) => ({
     ...provided,
-    background: '#54a0f1',
-    color: 'white',
-    'border-radius': 30,
+    background: '#D1D3D4',
+    color: '#2b2b2b',
+    'border-radius': 4,
   }),
   control: () => ({
     display: 'flex',
@@ -30,9 +30,13 @@ const customStyles = {
   }),
   multiValueRemove: (provided, state) => ({
     ...provided,
-    background: '#54a0f1',
-    color: 'white',
+    background: '#D1D3D4',
+    color: '#2b2b2b',
     borderRadius: 30,
+  }),
+  multiValueLabel: (provided, state) => ({
+    ...provided,
+    'margin-left': '4px',
   }),
   singleValue: (provided, state) => ({
     ...provided,
@@ -52,17 +56,16 @@ const Dropdown = (props) => (
       colors: {
         ...theme.colors,
         neutral50: '#949494',
-        danger: 'white',
-        dangerLight: '#54a0f1',
-        neutral80: 'white',
+        danger: '#2b2b2b',
+        dangerLight: '#D1D3D4',
       },
     })}
+    defaultValue={props.defaultValue || null}
     isSearchable={props.search}
     isMulti={props.multi}
     options={props.options}
     placeholder={props.placeholder}
     maxMenuHeight={200}
-    // onChange={(e) => props.set(e)}
   />
 );
 

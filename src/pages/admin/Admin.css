@@ -38,94 +38,75 @@
 .admin-content {
   padding: 20px 50px;
   width: 100%;
-  height: 80vh;
-  overflow-y: scroll;
-  overflow-x: scroll;
+  height: calc(100vh - 84px - 20px - 20px); /* viewport - navbar - padding*/
+  overflow-y: auto;
 }
 
-.admin-text {
-  font-size: 18px;
+.admin-page .admin-text {
+  margin-bottom: 30px;
 }
 
-.add-resource {
+.admin-page .add-resource {
   padding: 10px 20px;
 }
-.add-resource .input {
+.admin-page .add-resource .input {
   display: flex;
   flex-direction: row;
   margin: 10px;
 }
-.input .input-label {
+.admin-page .input .input-label {
   width: 100px;
-}
-
-.admin-text {
-  margin-bottom: 30px;
 }
 
 .admin-page .formGroup {
   display: flex;
   flex-direction: column;
-  overflow-y: scroll;
-  background: #F8F8F8;
+  overflow-y: auto;
+  background: #f8f8f8;
   padding: 30px;
-  padding-top: 50px;
+  padding-top: 30px;
   margin-bottom: 30px;
 }
 
-.formElement {
+.admin-page .formElement {
   display: flex;
   flex-direction: row;
   align-items: center;
   width: 100%;
   line-height: 12px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
-.formElementDescription {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  width: 100%;
-  line-height: 12px;
-  margin-bottom: 30px;
-}
-
-.formElementDescription p {
+.admin-page .formElement p {
   text-align: right;
   width: 180px;
   margin-right: 30px;
 }
 
-.formElement p {
-  text-align: right;
-  width: 180px;
-  margin-right: 30px;
-}
-
-.formElement .userInput{
+.admin-page .formElement .userInput{
   font-size: 16px;
   width: 418px;
   height: 34px;
   padding-left: 12px;
-  border: solid 1px;
+  border: solid 1px #555;
   border-radius: 5px;
 }
 
-.formElementDescription .descriptionInput{
+.admin-page .formElement .descriptionInput {
   width: 500px;
   height: 200px;
   padding: 20px;
   border: solid 1px;
   border-radius: 5px;
-  resize:none;
+  resize: none;
   font-family: 'Helvetica Neue', sans-serif;
   font-weight: 400;
   font-style: normal;
   font-size: 16px;
+  margin-bottom: 4px;
 }
 
-.formElementDescription .descriptionInput::placeholder{
+.admin-page .formElement .descriptionInput::placeholder{
   font-size: 16px;
 }
 
@@ -139,9 +120,27 @@
   font-weight: 700;
   font-size: 16px;
   border: none;
+  margin-right: 0px;
 }
 
-button:hover {
+.admin-page button:hover {
   background: #6eaff5;
   cursor: pointer;
+}
+
+.subtitle {
+  margin-top: -20px;
+  font-size: 10px;
+  margin-left: 210px;
+  margin-bottom: 20px;
+}
+
+.delete-modal {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 150px;
+  width: 300px;
+  text-align: center;
+  align-items: center;
 }
