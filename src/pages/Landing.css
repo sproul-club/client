@@ -208,7 +208,7 @@
   align-items: center;
 }
 
-@media screen and (max-width: 1160px) {
+@media screen and (max-width: 850px) {
   .landing {
     background: white;
   }
