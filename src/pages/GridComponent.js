@@ -43,9 +43,6 @@ function GridComponent(props) {
               image={require('./assets/ethicalheader.png')}
             />
             <CardContent>
-              {/*<Typography gutterBottom variant="h5" component="h2">
-              {club.name}
-            </Typography>*/}
               <div className="info-flex">
                 <div className="icon-title-flex">
                   <img
@@ -87,13 +84,13 @@ function GridComponent(props) {
                       Not Taking New Members
                     </div>
                   )}
+                </div>
                 <div className="grid-tags-flex">
                   { club.tags.map(tag => 
                     <div className="grid-tag"> {tag} </div>
                   )}
                 </div>
-                </div>
-              </div>
+              
             </CardContent>
           </Link>
         </CardActionArea>
