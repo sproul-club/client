@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { deleteEvent, deleteResource } from '../../actions/profile';
 import { connect } from 'react-redux';
 import Modal from '../../layout/Modal';

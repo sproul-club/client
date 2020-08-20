@@ -1,6 +1,7 @@
 import React from 'react';
 import './SignIn.css';
 import Navbar from '../layout/Navbar';
+import Footer from '../layout/Footer';
 import SignInForm from './SignInForm.js';
 import loginImage from './assets/login.png';
 
@@ -15,6 +16,7 @@ const SignIn = () => {
             <SignInForm />
           </div>
         </div>
+        <Footer />
       </div>
     </>
   );

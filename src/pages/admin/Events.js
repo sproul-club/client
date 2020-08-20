@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import Modal from '../../layout/Modal';
 import { connect } from 'react-redux';
 import { addEvent, updateEvent } from '../../actions/profile';
+import { validURL, normalizeUrl } from '../../utils/normalizeUrl';
 import DeleteModal from './DeleteModal';
 import './Events.css';
 
-const Events = ({ addEvent, updateEvent, profile: { events } }) => {
+const Events = ({ addEvent, updateEvent, events }) => {
   const [showModal, setShowModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
 
@@ -13,31 +14,43 @@ const Events = ({ addEvent, updateEvent, profile: { events } }) => {
   const [eventLink, setEventLink] = useState('');
   const [start, setStart] = useState('');
   const [eventTime, setEventTime] = useState('');
+  const [endDate, setEndDate] = useState('');
+  const [eventEndTime, setEventEndTime] = useState('');
   const [text, setText] = useState('');
-  const [activeEvent, setActiveEvent] = useState({});
+  const [activeEvent, setActiveEvent] = useState(null);
 
   const saveEvent = (event: null) => {
-    const eventInfo = { title, eventLink, start, eventTime, text };
-    event ? updateEvent(event.id, eventInfo) : addEvent(eventInfo);
+    const eventInfo = {
+      name: title,
+      link: normalizeUrl(eventLink),
+      event_start: start,
+      event_end: eventTime,
+      description: text,
+    };
+    if (!validURL(eventLink)) return alert('Please enter a valid URL');
+    activeEvent
+      ? updateEvent(event.id, eventInfo)
+      : addEvent(eventInfo, events);
+    setShowModal(false);
   };
 
   const editEvent = (event) => {
-    setTitle(event.title);
-    setEventLink(event.eventLink);
-    setStart(event.start);
-    setEventTime(event.eventTime);
-    setText(event.text);
-    setActiveEvent(event);
+    setActiveEvent(true);
+    setTitle(event.name);
+    setEventLink(event.link);
+    setStart(event.event_start);
+    setEventTime(event.event_end);
+    setText(event.description);
     setShowModal(true);
   };
 
   const openAddEvent = () => {
+    setActiveEvent(false);
     setTitle('');
     setEventLink('');
     setStart('');
     setEventTime('');
     setText('');
-    setActiveEvent(null);
     setShowModal(true);
   };
 
@@ -47,53 +60,70 @@ const Events = ({ addEvent, updateEvent, profile: { events } }) => {
   };
 
   return (
-    <div>
+    <div className="events">
       <h3>Events</h3>
       <p>
         Add events related to recruitment, meetings, and other public events!
       </p>
       <div className="formGroup">
         <div className="events-list">
-          {events.map((event) => (
-            <>
-              <div className="event">
-                <div className="event-content">
-                  <div className="event-content-header">
-                    <div className="event-title">{event.title}</div>
-                    <div className="event-date">{event.start}</div>
+          {events &&
+            events.map((event) => (
+              <>
+                <div className="event">
+                  <div className="event-content">
+                    <div className="event-content-header">
+                      <div className="event-title">{event.name}</div>
+                      <div className="event-date">
+                        {event.event_start} - {event.event_end}
+                      </div>
+                    </div>
+                    <div className="event-content-text">
+                      {event.description}
+                    </div>
                   </div>
-                  <div className="event-content-text">{event.text}</div>
+                  <div className="event-controls">
+                    <i
+                      className="fas fa-trash"
+                      onClick={() => openDeleteModal(event)}
+                    ></i>
+                    <i
+                      className="fas fa-edit"
+                      onClick={() => editEvent(event)}
+                    ></i>
+                  </div>
                 </div>
-                <div className="event-controls">
-                  <i
-                    className="fas fa-trash"
-                    onClick={() => openDeleteModal(event)}
-                  ></i>
-                  <i
-                    className="fas fa-edit"
-                    onClick={() => editEvent(event)}
-                  ></i>
-                </div>
-              </div>
-            </>
-          ))}
+              </>
+            ))}
         </div>
+        <img
+          className="add-button"
+          src={require('../assets/linkImages/addEvent.png')}
+          onClick={openAddEvent}
+          alt="add event"
+        />
       </div>
+
+      {/* Delete event modal */}
       <DeleteModal
         type="event"
         item={activeEvent}
         showModal={showDeleteModal}
         setShowModal={setShowDeleteModal}
       />
-      <button onClick={openAddEvent}>Add Event</button>
 
       <Modal showModal={showModal} setShowModal={setShowModal}>
-        <div className="add-resource">
+        <div className = "eventModal">
+        <h3 id="res-bold">Add New Event</h3>
+        <p id="res-desc">
+          Link an event for prospective or current members!
+        </p>
+        <div className="gray-modal">
           <div className="formElement">
             <p>Event Name</p>
             <input
               type="text"
-              onChange={(e) => setStart(e.target.value)}
+              onChange={(e) => setTitle(e.target.value)}
               value={title}
               placeholder="Enter the title of your event"
               className="userInput modal-input"
@@ -115,7 +145,6 @@ const Events = ({ addEvent, updateEvent, profile: { events } }) => {
               <input
                 className="modal-input"
                 type="date"
-                value="2014-10-31"
                 onChange={(e) => setStart(e.target.value)}
                 value={start}
               />
@@ -124,6 +153,23 @@ const Events = ({ addEvent, updateEvent, profile: { events } }) => {
                 type="time"
                 onChange={(e) => setEventTime(e.target.value)}
                 value={eventTime}
+              />
+            </div>
+          </div>
+          <div className="formElement">
+            <p>Event End</p>
+            <div className="input-time">
+              <input
+                className="modal-input"
+                type="date"
+                onChange={(e) => setEndDate(e.target.value)}
+                value={endDate}
+              />
+              <input
+                className="modal-input"
+                type="time"
+                onChange={(e) => setEventEndTime(e.target.value)}
+                value={eventEndTime}
               />
             </div>
           </div>
@@ -136,8 +182,11 @@ const Events = ({ addEvent, updateEvent, profile: { events } }) => {
               onChange={(e) => setText(e.target.value)}
             />
           </div>
-          <button type="submit">{activeEvent ? 'Update' : 'Add Event'}</button>
         </div>
+        <button type="submit" onClick={saveEvent}>
+            {activeEvent ? 'Update' : 'Add Event'}
+          </button>
+          </div>
       </Modal>
     </div>
   );
