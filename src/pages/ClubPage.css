@@ -251,10 +251,11 @@
   text-align: left;
   border-radius: 10px;
 }
-.accordion__heading {
+.accordion__heading-club {
   display: inline-block;
   width: 1%;
 }
+
 .event-flex-container {
   width: 87%;
   margin-left: 1.5vw;

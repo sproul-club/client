@@ -15,7 +15,7 @@ function EventAccord(props) {
                 <div className="event-flex-left">{event.name}</div>
                 <div className="event-flex-right">{event.time}</div>
             </div>
-            <AccordionItemHeading className="accordion__heading">
+            <AccordionItemHeading className="accordion__heading-club">
                     <AccordionItemButton className="accordion__button-club">   
                     </AccordionItemButton>
             </AccordionItemHeading>
