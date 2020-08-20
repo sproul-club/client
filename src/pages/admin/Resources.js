@@ -90,13 +90,8 @@ const Resources = ({
       entryChange={entryChange}
       removeRes={removeRes}
     />
-<<<<<<< HEAD
   )) : <></>;
 
-=======
-  ));
- 
->>>>>>> fb0689a61b9ff3287f61554f276044048eba71b7
   return (
     <div>
       <h3>Resources</h3>

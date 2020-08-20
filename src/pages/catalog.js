@@ -124,15 +124,9 @@ const Catalog = ({ searchClubs }) => {
               </AccordionItemPanel>
             </AccordionItem>
             <AccordionItem className="accordion-group" uuid="b">
-<<<<<<< HEAD
-                <AccordionItemHeading>
-                    <AccordionItemButton>Club Tags</AccordionItemButton>
-                </AccordionItemHeading>
-=======
                   <AccordionItemHeading>
                     <AccordionItemButton>Club Tags </AccordionItemButton>
                   </AccordionItemHeading>
->>>>>>> fb0689a61b9ff3287f61554f276044048eba71b7
               <AccordionItemPanel>
                 <Dropdown
                   options={tagOptions}
