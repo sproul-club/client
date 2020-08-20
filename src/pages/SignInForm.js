@@ -32,15 +32,13 @@ const SignInForm = ({ login, history, isAuthenticated }) => {
       <p>Password</p>
       <input
         className="userInput"
-        type="text"
+        type="password"
         onChange={(e) => setPassword(e.target.value)}
       />
       <Link to="/recover">Forgot password?</Link>
-      <div className="buttonWrapper">
-        <button className="submitButton" onClick={submitValue}>
-          Sign in
-        </button>
-      </div>
+      <button className="submitButton" onClick={submitValue}>
+        Sign in
+      </button>
     </div>
   );
 };

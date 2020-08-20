@@ -1,7 +1,9 @@
 import React from 'react';
 import './ClubPage.css';
 import EventAccord from './EventAccord';
- 
+import Navbar from '../layout/Navbar';
+import Footer from '../layout/Footer';
+
 function ClubPage(props) {
   const contactComps = props.data.socials.map((soc) => (
     (soc.link !== "") ? 
@@ -18,7 +20,6 @@ function ClubPage(props) {
       </a>)
       : null
   ))
- 
   const resComps = props.data.resources.map((res) => (
     <div className="desc-text" id="resources">
       {res.name}
@@ -31,7 +32,7 @@ function ClubPage(props) {
       </a>
     </div>
   ));
- 
+
   const tagList = props.data.tags.map((tag) => (
     <div className="tag"> {tag} </div>
   ));
@@ -42,7 +43,7 @@ function ClubPage(props) {
     </div>
   ) : (
     <div className="tag" id="app-not-req">
-      😊 No App Required
+      ☺︎ No App Required
     </div>
   );
  
@@ -58,54 +59,58 @@ function ClubPage(props) {
  
   return (
     <div>
-      <div className="header-img"></div>
- 
-      <div className="flex-container-left">
-        <div className="logo-box">
-          <img
-            className="club-logo"
-            src={require('./assets/ethicalLogo.jpg')}
-            alt="club"
-          />
-          <div className="club-info-flex">
-            <div className="club-title">{props.data.name}</div>
-            <div className="app-flex">
-              {appReq}
-              {clubOpen}
+      <Navbar />
+        <div className="header-img"></div>
+        <div className="flex-container-chungus">
+          <div className="flex-container-left">
+            <div className="logo-box">
+              <img
+                className="club-logo"
+                src={require('./assets/ethicalLogo.jpg')}
+                alt="club"
+              />
+              <div className="club-info-flex">
+                <div className="club-title">{props.data.name}</div>
+                <div className="app-flex">
+                  {appReq}
+                  {clubOpen}
+                </div>
+                <div className="tags-flex">{tagList}</div>    
+              </div>
             </div>
-            <div className="tags-flex">{tagList}</div>    
+    
+            <div className="desc-box">
+              <p>Description</p>
+              <body className="desc-text">{props.data.desc}</body>
+            </div>
+    
+            <div className="events-box">
+              <p>Events</p>
+              <EventAccord data={props.data} />
+            </div>
+          </div>
+    
+          <div className="flex-container-right">
+            <div className="contact-box">
+              <p>Contact Us</p>
+              <div className="link-flex">
+                {contactComps}
+              </div>
+            </div>
+    
+            <div className="resources-box">
+              <p>Resources</p>
+              <div className="resources-flex">
+                {resComps}
+              </div>
+            </div>
           </div>
         </div>
- 
-        <div className="desc-box">
-          <p>Description</p>
-          <body className="desc-text">{props.data.desc}</body>
-        </div>
- 
-        <div className="events-box">
-          <p>Events</p>
-          <EventAccord data={props.data} />
-        </div>
-      </div>
- 
-      <div className="flex-container-right">
-        <div className="contact-box">
-          <p>Contact Us</p>
-          <div className="link-flex">
-            {contactComps}
-          </div>
-        </div>
- 
-        <div className="resources-box">
-          <p>Resources</p>
-          <div className="resources-flex">
-            {resComps}
-          </div>
-        </div>
-      </div>
+      <Footer />
+
     </div>
   );
 }
- 
+
 export default ClubPage;
 

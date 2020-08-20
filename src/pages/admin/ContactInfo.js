@@ -46,7 +46,7 @@ const ContactInfo = ({ profile, updateProfile }) => {
       <div className="formGroup">
         <div className="formElement">
           <p>
-            Email Address <div>*</div>
+            Email Address <span>*</span>
           </p>
           <input
             className="userInput"

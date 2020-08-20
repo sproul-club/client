@@ -4,7 +4,6 @@
   background: #f8f8f8;
   align-items: center;
   margin-bottom: 10px;
-  border-radius: 5px;
   width: 90%;
 }
 
@@ -82,7 +81,6 @@
   flex-direction: column;
   background: #f8f8f8;
   margin-bottom: 10px;
-  border-radius: 5px;
   margin-left: 5%;
   width: 85%;
   padding-bottom: 40px;
@@ -143,19 +141,19 @@
 }
 
 /*DELETE RESOURCE MODAL STYLING*/
-#del-modal {
+.del-modal {
   width: 250px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-#del-text {
+.del-text {
   width: 75%;
   text-align: center;
 }
 
-#del-buttons-flex {
+.del-buttons-flex {
   display: flex;
   flex-direction: row;
 }
