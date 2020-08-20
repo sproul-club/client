@@ -163,20 +163,20 @@ const Catalog = ({ searchClubs }) => {
                       />
                   </label>
                 </form>
-//                 <CheckBox
-//                   label="Requires app"
-//                   isChecked={appReq}
-//                   onClick={() => setAppReq(true)}
-//                   name="appReq"
-//                   value="checkbox value"
-//                 />
-//                 <CheckBox
-//                   label="No app required"
-//                   isChecked={!appReq && appReq !== null}
-//                   onClick={() => setAppReq(false)}
-//                   name="noAppReq"
-//                   value="checkbox value"
-//                 />
+                 {/* <CheckBox
+                  label="Requires app"
+                  isChecked={appReq}
+                  onClick={() => setAppReq(true)}
+                  name="appReq"
+                  value="checkbox value"
+                /> */}
+                {/* <CheckBox
+                  label="No app required"
+                  isChecked={!appReq && appReq !== null}
+                  onClick={() => setAppReq(false)}
+                  name="noAppReq"
+                  value="checkbox value"
+                /> */}
               </AccordionItemPanel>
             </AccordionItem>
             <AccordionItem className="accordion-group" uuid="d">
@@ -204,20 +204,20 @@ const Catalog = ({ searchClubs }) => {
                       />
                   </label>
                 </form>
-//                 <CheckBox
-//                   label="Looking for members"
-//                   isChecked={status}
-//                   onClick={() => setStatus(true)}
-//                   name="checkbox"
-//                   value="checkbox value"
-//                 />
-//                 <CheckBox
-//                   label="Not looking for members"
-//                   isChecked={!status && appReq !== null}
-//                   onClick={() => setStatus(false)}
-//                   name="checkbox"
-//                   value="checkbox value"
-//                 />
+                 {/* <CheckBox
+                  label="Looking for members"
+                  isChecked={status}
+                  onClick={() => setStatus(true)}
+                  name="checkbox"
+                  value="checkbox value"
+                /> */}
+                {/* <CheckBox
+                  label="Not looking for members"
+                  isChecked={!status && appReq !== null}
+                  onClick={() => setStatus(false)}
+                  name="checkbox"
+                  value="checkbox value"
+                /> */}
               </AccordionItemPanel>
             </AccordionItem>
           </Accordion>
