@@ -1,3 +1,8 @@
+.club-card {
+  width: 375px;
+  width: 100%;
+}
+
 .info-flex {
   display: flex;
   flex-direction: column;    
@@ -16,7 +21,7 @@
 }
 
 .club-name {
-  font-size: 35px;
+  font-size: 22px;
   font-family: montserrat, sans-serif;
   font-weight: bold;
 
@@ -37,13 +42,14 @@
   border-radius: 6px;
   padding: 0.2vw 1vw 0.2vw 1vw;
   font-family: roboto, sans-serif;
-  font-size: 25px;
+  font-size: 17px;
 }
 
 .req-flex {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  margin-left: -13px;
 }
 
 #app-req {
@@ -80,7 +86,7 @@
   
     }
     .req-flex {
-      margin-left: 2px;
+      margin-left: -5px;
     }
   .grid-tag {
       font-size: 10px;
@@ -102,12 +108,16 @@
       font-weight: bold;
   
     }
+/* 
   .req-flex {
     margin-left: -2px;
-  }
+  } */
   .grid-tag {
       font-size: 13px;
       margin-top: 4px;
       margin-left: 8px;
+  }
+  .card-grid {
+    justify-content: center;
   }
 }

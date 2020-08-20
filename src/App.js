@@ -45,5 +45,4 @@ const App = () => {
     </Provider>
   );
 };
-
 export default withRouter(App);

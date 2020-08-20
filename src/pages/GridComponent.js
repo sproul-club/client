@@ -8,7 +8,11 @@ import {
   Grid,
 } from '@material-ui/core';
 
+// import Card from 'react-bootstrap/Card';
+
+ 
 import { connect } from 'react-redux';
+
 import { withRouter, Link } from 'react-router-dom';
 import { loadClubs, searchClubs } from '../actions/catalog';
 import './GridComponent.css';
@@ -19,8 +23,8 @@ function GridComponent(props) {
     props.loadClubs();
   }, []);
 
-  const GridList = props.clubs.map((club, i) => (
-    <Grid item xs={12} sm={6} md={4} key={i}>
+ const GridList = props.clubs.map((club, i) => (
+    <Grid item key={i} sm={12} md={6} lg={4} className="club-card">
       <Card className={props.classes.root}>
         <CardActionArea>
           <Link
@@ -51,11 +55,7 @@ function GridComponent(props) {
                   />
                   <div className="club-name">{club.name}</div>
                 </div>
-                <div className="grid-tags-flex">
-                  {club.tags.map((tag) => (
-                    <div className="grid-tag"> {tag} </div>
-                  ))}
-                </div>
+              </div>
                 <div className="req-flex">
                   {club.req_app ? (
                     <div className="grid-tag" id="app-req">
@@ -67,7 +67,7 @@ function GridComponent(props) {
                   ) : (
                     <div className="grid-tag" id="app-not-req">
                       <span role="img" aria-label="emoji">
-                        😊
+                        ☺︎
                       </span>{' '}
                       No App Required
                     </div>
@@ -87,6 +87,11 @@ function GridComponent(props) {
                       Not Taking New Members
                     </div>
                   )}
+                <div className="grid-tags-flex">
+                  { club.tags.map(tag => 
+                    <div className="grid-tag"> {tag} </div>
+                  )}
+                </div>
                 </div>
               </div>
             </CardContent>
@@ -96,12 +101,14 @@ function GridComponent(props) {
     </Grid>
   ));
   return (
-    <Grid container spacing={4}>
-      {GridList}
-    </Grid>
+    <div className="wrapper">
+      <Grid container spacing={3} className="card-grid">
+        {GridList}
+      </Grid>
+    </div>
   );
 }
-
+ 
 // This function gets a piece of the app state that is stored in redux store
 const mapStateToProps = (state) => ({
   clubs: state.catalog.clubs,

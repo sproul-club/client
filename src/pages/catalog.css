@@ -24,77 +24,9 @@
   /* -- width: 300px; */
   float: left;
   color: #2b2b2b;
-  padding: 30px;
+  padding: 15px;
   font-size: 14px;
   line-height: 14px;
-}
-
-/*GRID COMPONENT STYLYING*/
-.info-flex {
-  display: flex;
-  flex-direction: column;
-  
-}
-
-.icon-title-flex {
-  display: flex;
-  flex-direction: row;
-}
-
-.card-club-logo {
-  width: 1.8vw;
-  height: 1.8vw;
-  position: relative;
-  bottom: 0.3vw;
-  margin-right: 0.5vw;
-}
-
-.club-name {
-  font-size: 1.2vw;
-  font-family: montserrat, sans-serif;
-  font-weight: bold;
-}
-
-.tags-flex-test {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  position: relative;
-  left: -0.6vw;
-
-}
-
-.tag-test {
-  margin-top: 0.3vw;
-  margin-left: 0.5vw;
-  background-color: #E2E2E2;
-  border-radius: 6px;
-  padding: 0.2vw 1vw 0.2vw 1vw;
-  font-family: roboto, sans-serif;
-  font-size: 0.7vw;
-}
-
-.req-flex {
-  display: flex;
-  flex-direction: row;
-  position: relative;
-  left: -0.6vw;
-}
-
-#app-req {
-  background-color: #FFF1AE;
-}
-
-#app-not-req {
-  background-color: #CDEAFF;
-}
-
-#open-tag {
-  background-color: #C9F0C9;
-}
-
-#not-open-tag {
-  background-color: #FFD6D6
 }
 
 .accordion {
@@ -135,13 +67,24 @@
 
 .accordion__button {
   /* background-color: #f4f4f4; */
-  color: #444;
+  /* display: inline; */
+  /* color: #444; */
+  display: inline-flex;
+  flex-direction: row-reverse;
+  /* color: red; */
   cursor: pointer;
-  padding-top: 18px;
-  padding-bottom: 6px;
-  width: 100%;
+  padding-top: 6px;
+  padding-bottom: 12px;
   text-align: left;
   border: none;
+  margin-left: 7px;
+  justify-content: space-between;
+  width: 315px;
+}
+
+.accordion__heading {
+  display: inline-flex;
+  width: 100%;
 }
 
 /* .accordion__button:hover {
@@ -153,7 +96,7 @@
 }
 
 .accordion__button:before {
-  display: inline-block;
+  display: flex;
   content: '';
   height: 10px;
   width: 10px;
@@ -178,16 +121,18 @@
   /* padding: 18px; */
   text-align: left;
   border: none;
-  /* background-color: pink; */
+}
+
+.checkbox > label {
+  margin-left: 2px;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
 }
 
 .App .content {
   min-height: calc(100vh - 176px);
-  /* position: relative;
-  widows: 100%; */
   display: flex;
-  /* justify-content: space-between; */
-  /* align-items: center; */
 }
 
 
