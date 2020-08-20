@@ -51,9 +51,9 @@ class App extends Component {
             <Route exact path="/" component={Landing} />
             <Route exact path="/comingsoon" component={ComingSoon} />
             <Route path="/admin" component={ComingSoon} />
-            <Route path="/catalog" component={ComingSoon} />
-            <Route exact path="/signup" component={ComingSoon} />
-            <Route exact path="/signin" component={ComingSoon} />
+            <Route path="/catalog" component={Comingsoon} />
+            <Route exact path="/signup" component={Comingsoon} />
+            <Route exact path="/signin" component={Comingsoon} />
             <Route exact path="/recover" component={ComingSoon} />
             <Route exact path="/club/:id" component={ComingSoon} />
             <Route>{'404'}</Route>
