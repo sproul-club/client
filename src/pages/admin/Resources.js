@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Modal from '../../layout/Modal';
 import ResComp from './ResComp';
 import { connect } from 'react-redux';
@@ -9,24 +9,23 @@ import {
 } from '../../actions/profile';
 import './Resources.css';
 import { validURL, normalizeUrl } from '../../utils/normalizeUrl';
-
+ 
 const Resources = ({
   resources: resourceState,
   addResource,
   updateResource,
   deleteResource,
 }) => {
-  /*Holds all existing resources and keeps count*/
+  /*Holds all existing resources*/
   const [resources, setResources] = useState(resourceState);
-  const [resCount, setResCount] = useState(0);
-
+ 
   /*Determines if add resource shown*/
   const [showModal, setShowModal] = useState(false);
-
+ 
   /*Holds input values in add modal*/
   const [newName, setNewName] = useState('');
   const [newLink, setNewLink] = useState('');
-
+ 
   /*Passed down to resComp to allow editing of resources array above*/
   function entryChange(id, name, link) {
     let tempArr = [...resources];
@@ -36,17 +35,19 @@ const Resources = ({
       link: link,
     };
     tempArr[id] = tempObj;
+    //update resource action
+    updateResource(id, {name: name, link: link})
     setResources(tempArr);
   }
-
+ 
   function changeTitle(event) {
     setNewName(event.target.value);
   }
-
+ 
   function changeLink(event) {
     setNewLink(event.target.value);
   }
-
+ 
   /*Adds resource to array, count++, resets title and link state values */
   function addRes() {
     const emptyRes = {
@@ -55,38 +56,31 @@ const Resources = ({
     };
     if (!validURL(newLink)) return alert('Please enter a valid URL');
     setResources([...resources, emptyRes]);
-    setResCount((prevCount) => prevCount + 1);
-    console.log('resources: ', resCount);
     // call add resource action
     addResource(emptyRes);
     setNewName('');
     setNewLink('');
     setShowModal(false);
   }
-
+ 
   function cancelAdd() {
     setShowModal(false);
     setNewName('');
     setNewLink('');
   }
-
+ 
   /*Passed down to resComp to allow it to remove resource from state array, count--*/
   function removeRes(id) {
-    /*Split into left and right to decrement id's of listings to right of delete entry*/
-    const newResLeft = resources.filter((res) => res.id < id);
-    const newResRight = resources.filter((res) => res.id > id);
-    const renumberedRight = newResRight.map(function test(res) {
-      return {
-        id: res.id - 1,
-        name: res.name,
-        link: res.link,
-      };
-    });
-    const newResList = [...newResLeft, ...renumberedRight];
-    setResCount((prevCount) => prevCount - 1);
+    deleteResource(id)
+    const testResList = resources.filter((res) => res.id !== id);
+    const newResList = [...testResList];
     setResources(newResList);
   }
-
+ 
+  useEffect(() => {
+    setResources(resourceState)
+  }, [resourceState])
+ 
   /*Create all resource components based on content saved in array*/
   const resComps = resources.map((res, i) => (
     <ResComp
@@ -97,7 +91,7 @@ const Resources = ({
       removeRes={removeRes}
     />
   ));
-
+ 
   return (
     <div>
       <h3>Resources</h3>
@@ -113,7 +107,7 @@ const Resources = ({
           onClick={() => setShowModal(true)}
         />
       </div>
-
+ 
       {/*ADD RESOURCE MODAL*/}
       <Modal showModal={showModal} setShowModal={setShowModal}>
         <div className="res-modal">
@@ -155,7 +149,7 @@ const Resources = ({
     </div>
   );
 };
-
+ 
 export default connect(null, { addResource, updateResource, deleteResource })(
   Resources
 );

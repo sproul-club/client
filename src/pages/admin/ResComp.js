@@ -124,9 +124,9 @@ const ResComp = (props) => {
 
       {/*DELETE RESOURCE MODAL*/}
       <Modal showModal={showDelModal} setShowModal={setShowDelModal}>
-        <div id="del-modal">
-          <p id="del-text">Are you sure you want to delete this?</p>
-          <div id="del-buttons-flex">
+        <div className="del-modal">
+          <p className="del-text">Are you sure you want to delete this?</p>
+          <div className="del-buttons-flex">
             <button id="del-cancel" onClick={() => setShowDelModal(false)}>
               Cancel
             </button>
