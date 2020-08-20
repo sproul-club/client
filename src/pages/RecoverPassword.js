@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './RecoverPassword.css';
 import Navbar from '../layout/Navbar';
-import RecoverForm from './RecoverForm';
+import RecoverPasswordForm from './RecoverPasswordForm';
 
 const RecoverPassword = () => {
   return (
@@ -11,7 +11,7 @@ const RecoverPassword = () => {
       <Navbar />
       <div className="content">
         <div className="form">
-          <RecoverForm />
+          <RecoverPasswordForm />
         </div>
       </div>
     </div>

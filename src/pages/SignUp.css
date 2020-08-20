@@ -1,22 +1,25 @@
+/* Overall page content layout */
 .signup .content {
-  position: relative;
-  widows: 100%;
+  margin-top: 30px;
+  margin-bottom: 30px;
   min-height: 87vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.signup .content .text {
-  margin-right: 150px;
+/* Description styling */
+.signup .text {
+  margin-left: 5%;
+  margin-right: 10%;
 }
 
-.signup .content .text h3 {
+.signup .text h3 {
   padding-top: 10px;
   font-size: 40px;
 }
 
-.signup .content .text li {
+.signup li {
   display: flex;
   align-items: center;
   counter-increment: li;
@@ -28,13 +31,13 @@
   padding-top: 10px;
 }
 
-.signup .content .text ol {
+.signup ol {
   list-style: none;
   counter-reset: li;
   margin-left: -30px;
 }
 
-.signup .content .text li::before {
+.signup li::before {
   content: counter(li);
   color: white;
   display: inline-block;
@@ -43,7 +46,7 @@
   margin-right: 0.5em;
   text-align: center;
   direction: rtl;
-  background: #8acefd;
+  background: #54a0f1;
   border-radius: 1000px;
   padding: 12px;
   font-size: 25px;
@@ -51,98 +54,97 @@
   line-height: 0.8em;
 }
 
+/* Overall form layout */
 .signup .form {
   font-family: montserrat, sans-serif;
   font-weight: 700;
   font-style: normal;
   box-shadow: 3px 3px 1px rgb(0, 0, 0, 0.3);
-  text-align: center;
   width: 350px;
-  height: 460px;
+  height: 454px;
   border-radius: 15px;
   padding: 20px;
-  margin-top: 20px;
   border: solid 1px #949494;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-}
-
-.signup .form .inputs {
-  display: flex;
   justify-content: flex-start;
+  margin-right: 5%;
 }
 
-.signup .form .inputs .formGroup {
+.signup .form .formGroup {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  width: 328px;
-  height: 460px;
+  align-items: center;
+  width: 100%;
 }
 
-.signup .form .inputs .formGroup .formHeader {
-  float: top;
+/* Form header: image and "Register your club */
+.signup .formHeader {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 10px;
 }
 
-.signup .form h2 {
+.signup .formHeader h2 {
   font-size: 20px;
 }
 
-.signup .form img {
+.signup .form .imageContainer img {
   height: 125px;
   width: auto;
 }
 
-.signup .form .inputs .formGroup .drops {
-  display: flex;
-  flex-direction: column-reverse;
-  justify-content: flex-end;
-  align-items: flex-start;
-  height: 400px;
-}
-
-.signup .form .inputs .buttonWrapper {
-  margin-bottom: 12px;
-  justify-content: space-between;
-  display: flex;
-  flex-direction: row;
-}
-
-.signup .form .inputs .buttonWrapper .nextButton {
-  float: right;
-  margin-right: 9px;
-}
-
-.signup .form .inputs .buttonWrapper .prevButton {
-  float: left;
-  margin-left: 7.7px;
-}
-
-.signup .form .inputs .buttonWrapper .help {
-  display: flex;
-  align-items: flex-end;
-  flex-direction: row;
+/* Regular text input styling */
+.signup .form .formGroup .userInput {
+  width: 290px;
   padding: 10px;
-  padding-bottom: 5px;
-  width: 60%;
-}
-
-.signup .form .inputs .buttonWrapper .help a {
-  color: #949494;
-  transition: color 0.15s;
-}
-
-.signup .form .inputs .buttonWrapper .help a:hover {
+  margin: 8px;
+  font-family: montserrat, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 12px;
+  border-radius: 5px;
+  border: solid 1px #949494;
   color: #4e4e4e;
 }
 
-.signup .form .inputs .buttonWrapper p {
+/* Dropdown styling */
+.signup .drops {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+/* Button wrapper styling */
+.signup .buttonWrapper {
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 310px;
+}
+
+.signup .buttonWrapper .help {
+  display: flex;
+  align-items: flex-end;
+  flex-direction: row;
+  padding-bottom: 5px;
+}
+
+.signup .buttonWrapper .help a {
+  color: #4e4e4e;
+  transition: color 0.15s;
+}
+
+.signup .buttonWrapper .help a:hover {
+  color: #949494;
+}
+
+.signup .buttonWrapper p {
   font-family: roboto, sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -154,7 +156,7 @@
   letter-spacing: 0.05em;
 }
 
-.signup .form .inputs .buttonWrapper a {
+.signup .buttonWrapper a {
   text-decoration: none;
   font-size: 12px;
   margin: 0px;
@@ -162,12 +164,7 @@
   color: #2b2b2b;
 }
 
-.signup .form .inputs .buttonWrapper .submitButton {
-  float: right;
-  margin-right: 7.7px;
-}
-
-.signup .form button {
+.signup button {
   margin-top: 10px;
   font-family: montserrat, sans-serif;
   font-weight: 700;
@@ -185,29 +182,13 @@
   background-color: #6eaff5;
 }
 
-:focus {
-  outline: 0px;
-}
-
-.signup .form .inputs .formGroup .userInput {
+/* Invalid input notice styling */
+.signup .conInputInvalid, .emailInputInvalid {
   width: 290px;
   padding: 10px;
   margin: 8px;
   font-family: montserrat, sans-serif;
-  font-weight: 600;
-  font-style: normal;
-  font-size: 12px;
-  border-radius: 5px;
-  border: solid 1px #949494;
-  color: #4e4e4e;
-}
-
-.signup .form .inputs .formGroup .userInputInvalid {
-  width: 290px;
-  padding: 10px;
-  margin: 8px;
-  font-family: montserrat, sans-serif;
-  font-weight: 600;
+  font-weight: 400;
   font-style: normal;
   font-size: 12px;
   border-radius: 5px;
@@ -215,7 +196,7 @@
   color: #4e4e4e;
 }
 
-.signup .form .inputs .formGroup .conError {
+.signup .conError {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -230,13 +211,58 @@
   box-shadow: 3px 3px 5px rgb(0, 0, 0, 0.2);
 }
 
-.signup .form .inputs .formGroup .conError img {
+.signup .emailError {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  margin-left: 214px;
+  margin-top: 214px;
+  background: white;
+  border-radius: 6px;
+  padding-left: 8px;
+  padding-right: 8px;
+  box-shadow: 3px 3px 5px rgb(0, 0, 0, 0.2);
+}
+
+.signup .tagError, .tagErrorNone {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  margin-left: 160px;
+  margin-top: 163px;
+  background: white;
+  border-radius: 6px;
+  padding-left: 8px;
+  padding-right: 8px;
+  box-shadow: 3px 3px 5px rgb(0, 0, 0, 0.2);
+}
+
+.signup .conError, .emailError, .tagError {
+  /* transition to visible popup */
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.12s 0.1s ease-in;
+}
+
+.signup .tagErrorNone {
+  /* transition to invisible popup */
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 1s, opacity 0.60s cubic-bezier(.58,.05,.76,.89);
+}
+
+
+.signup .conError img, .emailError img, .tagError img, .tagErrorNone img {
   height: 14px;
   width: 14px;
   margin-right: 6px;
 }
 
-.signup .form .inputs .formGroup .conError p {
+.signup .conError p, .emailError p, .tagError p, .tagErrorNone p {
   color: #ff2d2d;
   font-family: montserrat, sans-serif;
   font-weight: 700;
@@ -245,11 +271,12 @@
   line-height: 8px;
 }
 
-.signup .form .inputs .formGroup .conErrorNone {
+.signup .conErrorNone, .emailErrorNone{
   display: none;
 }
 
-.signup .form .inputs .complete {
+/* Page Three styling */
+.signup .complete {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -257,28 +284,30 @@
   padding: 25px;
 }
 
-.signup .form .inputs .complete .imageContainer {
+.signup .complete .imageContainer {
   margin-bottom: 40px;
 }
 
-.signup .form .inputs .complete h3 {
+.signup .complete h3 {
+  text-align: center;
   margin: 0px;
   margin-bottom: 20px;
   font-family: montserrat, sans-serif;
   font-weight: 600;
   font-style: normal;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 24px;
+  width: 340px;
 }
 
-.signup .form .inputs .complete h2 {
+.signup .complete h2 {
   margin: 0px;
   margin-top: 80px;
   font-size: 12px;
   color: #757575;
 }
 
-.signup .form .inputs .complete a {
+.signup .complete a {
   text-decoration: none;
   font-size: 12px;
   margin: 4px;
@@ -286,11 +315,21 @@
   color: #2b2b2b;
 }
 
+.signup .complete a:hover {
+  color: #4e4e4e;
+}
+
+/* Miscellaneous */
 ::placeholder {
   color: #949494;
 }
 
-@media screen and (max-width: 800px) {
+:focus {
+  outline: 0px;
+}
+
+/* Media query for mobile */
+@media screen and (max-width: 850px) {
   .signup .content {
     align-items: unset;
   }
@@ -300,6 +339,143 @@
   .signup .content .form {
     border: none;
     box-shadow: none;
-    margin-top: 0px;
+    margin: 0px;
+  }
+}
+
+/* Media query for larger screens */
+@media screen and (min-width: 1700px) {
+  .signup .content {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  }
+
+  .signup .text h3 {
+    font-size: 50px;
+  }
+
+  .signup li {
+    font-size: 22px;
+    margin: 40px;
+  }
+
+  .signup li::before {
+    font-size: 32px;
+    padding: 16px;
+    margin-right: 20px;
+  }
+
+  .signup .form {
+    width: 480px;
+    height: 620px;
+    border-radius: 15px;
+    padding: 28px;
+  }
+
+  .signup .formHeader h2 {
+    font-size: 26px;
+  }
+  
+  .signup .form img {
+    height: 180px;
+  }
+
+  .signup .form .formGroup .userInput {
+    width: 400px;
+    padding: 12px;
+    margin: 12px;
+    font-size: 16px;
+    border-radius: 6px;
+  }
+
+  .signup .buttonWrapper {
+    width: 428px;
+  }
+
+  .signup .buttonWrapper p {
+    font-size: 16px;
+  }
+
+  .signup .buttonWrapper a {
+    font-size: 16px;
+  }
+
+  .signup button {
+    padding: 12px 24px 12px 24px;
+    font-size: 18px;
+  }
+
+  .signup .conInputInvalid, .emailInputInvalid {
+    width: 400px;
+    padding: 12px;
+    margin: 12px;
+    font-size: 16px;
+    border-radius: 6px;
+  }
+
+  .signup .emailError, .conError {
+    margin-left: 276px;
+    margin-top: 290px;
+    border-radius: 6px;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .signup .conError {
+    margin-left: 196px;
+    margin-top: 430px;
+    border-radius: 6px;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  
+  .signup .conError img{
+    height: 24px;
+    width: 24px;
+    margin-right: 10px;
+  }
+  
+  .signup .emailError img{
+    height: 24px;
+    width: 24px;
+    margin-right: 10px;
+  }
+  
+  .signup .conError p, .emailError p {
+    font-size: 16px;
+    line-height: 14px;
+  }
+
+  .signup .drop__control {
+    width: 418px;
+    padding: 4px;
+    margin: 12px;
+    font-size: 16px;
+    border-radius: 6px;
+  }
+
+  .signup .drop__menu {
+    width: 428px;
+    font-size: 16px;
+    margin-top: 4px;
+    margin: 12px;
+  }
+
+  .signup .complete h3 {
+    margin-bottom: 32px;
+    font-size: 24px;
+    line-height: 30px;
+    width: 428px;
+  }
+  
+  .signup .complete h2 {
+    margin: 0px;
+    margin-top: 120px;
+    font-size: 18px;
+  }
+  
+  .signup .complete a {
+    font-size: 16px;
+    margin: 10px;
   }
 }

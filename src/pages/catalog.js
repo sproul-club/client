@@ -3,10 +3,10 @@ import './catalog.css';
 import GridComponent from './GridComponent';
 import Navbar from '../layout/Navbar';
 import Footer from '../layout/Footer';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { searchClubs } from '../actions/catalog';
-import Dropdown from "./Dropdown.js";
+import Dropdown from './Dropdown.js';
 
 // import ethicalheader from './assets/ethicalheader.png';
 
@@ -59,15 +59,16 @@ const Catalog = ({ searchClubs }) => {
   const classes = useStyles();
 
   const [name, setName] = useState('');
-  const [appReq, setAppReq] = useState(true);
-  const [status, setStatus] = useState(true);
+  const [appReq, setAppReq] = useState(null);
+  const [status, setStatus] = useState(null);
   const [tags, setTags] = useState([]);
 
-  const multiselectRef = React.createRef();
+  // const multiselectRef = React.createRef();
 
   const searchAllClubs = () => {
     // const tags = multiselectRef.current.getSelectedItems();
-    const searchParams = { name, tags, appReq, status };
+    const tagValues = tags.map((tag) => tag.value);
+    const searchParams = { name, tags: tagValues, appReq, status };
 
     // Calls searchClubs redux action, which hits the backend API
     // then updates the apps state in redux to be the response
@@ -87,16 +88,33 @@ const Catalog = ({ searchClubs }) => {
           >
             <AccordionItem className="accordion-group" uuid="a">
               <AccordionItemPanel>
-                <Form className='search-bar' onSubmit={() => searchAllClubs()} name="submit">
+                <Form
+                  className="search-bar"
+                  onSubmit={() => searchAllClubs()}
+                  name="submit"
+                >
                   <TextBox
                     name="name"
                     label=""
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Search by name"
-                    style={{ width: '275px', height: '34px', borderRadius: '5px', border: 'transparent', marginLeft: '-10px', paddingLeft: '7px'}}
+                    style={{
+                      width: '275px',
+                      height: '34px',
+                      borderRadius: '5px',
+                      border: 'transparent',
+                      marginLeft: '-10px',
+                      paddingLeft: '7px',
+                    }}
                   />
-                  <button className="search-button" type="submit" style={{ marginLeft: '-5px'}}><i class="fa fa-search"></i></button>
+                  <button
+                    className="search-button"
+                    type="submit"
+                    style={{ marginLeft: '-5px' }}
+                  >
+                    <i class="fa fa-search"></i>
+                  </button>
                 </Form>
               </AccordionItemPanel>
             </AccordionItem>
@@ -105,15 +123,13 @@ const Catalog = ({ searchClubs }) => {
                 <AccordionItemButton>Club Tags</AccordionItemButton>
               </AccordionItemHeading>
               <AccordionItemPanel>
-
                 <Dropdown
                   options={tagOptions}
                   multi={true}
                   search={true}
-                  placeholder='Add up to 3 tags'
-                  set={setTags}/>
-                
-                
+                  placeholder="Add up to 3 tags"
+                  set={setTags}
+                />
               </AccordionItemPanel>
             </AccordionItem>
             <AccordionItem className="accordion-group" uuid="c">
@@ -132,7 +148,7 @@ const Catalog = ({ searchClubs }) => {
                 />
                 <CheckBox
                   label="No app required"
-                  isChecked={!appReq}
+                  isChecked={!appReq && appReq !== null}
                   onClick={() => setAppReq(false)}
                   name="noAppReq"
                   value="checkbox value"
@@ -153,7 +169,7 @@ const Catalog = ({ searchClubs }) => {
                 />
                 <CheckBox
                   label="Not looking for members"
-                  isChecked={!status}
+                  isChecked={!status && appReq !== null}
                   onClick={() => setStatus(false)}
                   name="checkbox"
                   value="checkbox value"

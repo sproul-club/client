@@ -2,6 +2,7 @@ import React from 'react';
 import './SignUp.css';
 import Navbar from '../layout/Navbar';
 import MultiStepForm from './SignUpForm.js';
+import Footer from "../layout/Footer";
 
 const SignUp = () => {
   return (
@@ -26,6 +27,7 @@ const SignUp = () => {
             <MultiStepForm />
           </div>
         </div>
+        <Footer />
       </div>
     </>
   );

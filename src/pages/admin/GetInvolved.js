@@ -1,40 +1,19 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import { updateProfile } from '../../actions/profile';
 import { connect } from 'react-redux';
 
-const GetInvolved = ({ profile }) => {
-  const [involvedDescr, setInvolvedDescr] = useState(profile.description);
-  /*const [involvedDesc, setInvolvedDesc] = useState(profile.description);*/
-  const [descrChars, setChars] = useState(250 - involvedDescr.length);
+const GetInvolved = ({ profile, updateProfile }) => {
+  const [involvedDesc, setInvolvedDesc] = useState(profile.get_involved);
+  const [descrChars, setChars] = useState(250 - involvedDesc.length);
 
   const descrChange = (e) => {
-    setInvolvedDescr(e.target.value);
+    setInvolvedDesc(e.target.value);
     setChars(250 - e.target.value.length);
   };
 
   const submitValue = (e) => {
-    const formDetails = {
-      'involved-desc': involvedDescr,
-    };
-
-    // axios({
-    //   method: 'POST',
-    //   url: 'https://sc-backend-v0.herokuapp.com/api/future-sign-up',
-    //   data: formDetails,
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //     'Access-Control-Allow-Origin': '*',
-    //   },
-    // })
-    //   .then(function (response) {
-    //     //handle success
-    //   })
-    //   .catch(function (error) {
-    //     //handle error
-    //     alert(error.response.data.reason);
-    //   });
+    updateProfile({ ...profile, get_involved: involvedDesc });
   };
-  
 
   return (
     <div>
@@ -54,7 +33,7 @@ const GetInvolved = ({ profile }) => {
             /*value={involvedDesc}
             onChange={(e) => setInvolvedDesc(e.target.value)}
             */
-           value={involvedDescr}
+            value={involvedDesc}
             onChange={descrChange}
           />
         </div>
@@ -67,4 +46,4 @@ const GetInvolved = ({ profile }) => {
   );
 };
 
-export default GetInvolved;
+export default connect(null, { updateProfile })(GetInvolved);
