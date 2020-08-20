@@ -49,7 +49,7 @@ const Catalog = ({ searchClubs }) => {
 
   const useStyles = makeStyles({
     root: {
-      width: 345,
+      // width: 345,
       alignItems: 'center',
       justifyContent: 'center',
     },

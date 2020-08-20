@@ -18,7 +18,7 @@ import './GridComponent.css';
 function GridComponent(props) {
  
   const GridList = props.clubs.map((club, i) => (
-    <Grid item key={i}>
+    <Grid item key={i} sm={12} md={6} lg={4} className="club-card">
       <Card className={props.classes.root}>
         <CardActionArea>
             <Link
@@ -69,7 +69,7 @@ function GridComponent(props) {
   ));
   return (
     <div className="wrapper">
-      <Grid container spacing={4} className="card-grid">
+      <Grid container spacing={3} className="card-grid">
         {GridList}
       </Grid>
     </div>

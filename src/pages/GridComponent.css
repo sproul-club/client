@@ -1,6 +1,7 @@
-.card-grid {
-  justify-content: center;
+.club-card {
+  width: 100%;
 }
+
 .info-flex {
   display: flex;
   flex-direction: column;    
@@ -110,5 +111,9 @@
       font-size: 13px;
       margin-top: 4px;
       margin-left: 8px;
+  }
+
+  .card-grid {
+    justify-content: center;
   }
 }

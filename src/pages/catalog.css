@@ -16,8 +16,6 @@
 }
 
 .cards {
-  flex: 1;
-  /* -- flex-direction: row; */
   text-align: left;
   align-self: start;
   margin-top: 20px;
