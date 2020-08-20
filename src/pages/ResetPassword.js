@@ -1,22 +1,23 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import './RecoverPassword.css';
+import './ResetPassword.css';
 import Navbar from '../layout/Navbar';
-import RecoverPasswordForm from './RecoverPasswordForm';
+import Footer from '../layout/Footer';
+import ResetPasswordForm from './ResetPasswordForm';
 
-const RecoverPassword = () => {
+const ResetPassword = () => {
   return (
   <>
     <div className="recover">
       <Navbar />
       <div className="content">
         <div className="form">
-          <RecoverPasswordForm />
+          <ResetPasswordForm />
         </div>
       </div>
+      <Footer />
     </div>
   </>
   );
 };
 
-export { RecoverPassword };
+export { ResetPassword };
