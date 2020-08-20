@@ -75,20 +75,12 @@ const MultiStepForm = ({ register }) => {
   };
 
   const _next = () => {
-    if (email != 'b') {
-      setEmailInvalid('emailInputInvalid');
-      setEmailError('emailError');
-    }
-
     if (pw != con || pw === '') {
       setConInvalid('conInputInvalid');
       setConError('conError');
     }
 
-    if (pw === con && email ==='b') {
-      setStep(currStep + 1);
-    }
-
+    setStep(currStep + 1);
   };
 
   const conChange = (event) => {
