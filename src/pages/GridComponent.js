@@ -54,7 +54,7 @@ function GridComponent(props) {
                 </div>
               </div>
                 <div className="req-flex">
-                  {club.req_app ? (
+                  {club.app_required ? (
                     <div className="grid-tag" id="app-req">
                       <span role="img" aria-label="emoji">
                         ✎
@@ -69,7 +69,7 @@ function GridComponent(props) {
                       No App Required
                     </div>
                   )}
-                  {club.status ? (
+                  {club.new_members ? (
                     <div className="grid-tag" id="open-tag">
                       <span role="img" aria-label="emoji">
                         ✓
