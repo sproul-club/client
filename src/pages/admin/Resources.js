@@ -85,12 +85,12 @@ const Resources = ({
   ));
 
   return (
-    <div>
+    <div className="resources">
       <h3>Resources</h3>
       <div className="admin-text">
         Link important resources for prospective or current members!
       </div>
-      <div className="gray-back">
+      <div className="formGroup">
         {resComps}
         <img
           className="add-button"

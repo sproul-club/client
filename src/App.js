@@ -40,7 +40,7 @@ const App = () => {
           <Route exact path="/recover" component={ComingSoon} />
           <Route exact path="/resetpassword" component={ComingSoon} />
           <Route exact path="/club/:id" component={ComingSoon} />
-          <Route exact path="/security" component={ComingSoon} />
+          <PrivateRoute exact path="/security" component={ComingSoon} />
           <Route>{'404'}</Route>
         </Switch>
       </Router>

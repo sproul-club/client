@@ -158,7 +158,7 @@ const Profile = ({ profile, updateProfile }) => {
         <div className="formElement">
           <p>Banner</p>
           <ImageUploader
-            label="16:9 ratio - e.g. Facebook cover image"
+            label="820 x 312 pixels - e.g. Facebook cover image"
             buttonStyles={{
               background: '#54a0f1',
             }}

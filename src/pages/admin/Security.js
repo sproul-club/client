@@ -15,7 +15,6 @@ const Security = () => {
                     <Link
                         to="/security"
                         className={
-                        window.location.pathname === '/security' ||
                         window.location.pathname === '/security'
                             ? 'selected page-link'
                             : 'page-link'

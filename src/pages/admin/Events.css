@@ -4,12 +4,17 @@
   justify-content: space-between;
 }
 
-.formGroup .event {
+.events .formGroup {
+  align-items: center;
+  justify-content: center;
+}
+
+.events .formGroup .event {
+  margin: 0px;
   display: flex;
   flex-direction: row;
   padding: 30px;
   margin-bottom: 20px;
-  height: 150px;
   background: white;
   border-radius: 5px;
   border: 1px solid #ccc;
@@ -19,28 +24,30 @@
 .event-content {
   display: flex;
   flex-direction: column;
-  width: 80%;
+  width: 100%;
 }
 
-.event-controls {
-  width: calc(20% - 40px);
-  padding-left: 50px;
-  position: relative;
+.events .event-content-header img {
+  width: 40px;
+  margin-left: 10px;
 }
 
-.event-controls .fas {
-  margin-left: 20px;
-  font-size: 24px;
-  color: #777;
+.events .event-content-header img:hover {
   cursor: pointer;
-  float: right;
 }
 
 .event-content-header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   font-size: 20px;
+  width: 100%;
+}
+
+.buttonsWrapper {
+  display: flex;
+  flex-direction: row;
 }
 
 .event-title {
@@ -58,10 +65,6 @@
 
 .formElement .textarea {
   width: 418px;
-}
-
-.events-list {
-  padding: 20px;
 }
 
 .add-resource {
@@ -117,7 +120,7 @@
   width: 900px;
 }
 
-button {
+.events button {
   margin-right: 5%;
 }
 
