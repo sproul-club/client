@@ -41,6 +41,7 @@ const Events = ({
       event_end: end,
       description: text,
     };
+
     if (!validURL(eventLink)) return alert('Please enter a valid URL');
     setEvents([...events, emptyEvent]);
     // call add event action
@@ -199,35 +200,36 @@ const Events = ({
       </div>
 
       <Modal showModal={showModal} setShowModal={setShowModal}>
-        <div className = "eventModal">
-        <h3 id="res-bold">Add New Event</h3>
-        <p id="res-desc">
-          Link an event for prospective or current members!
-        </p>
-        <div className="gray-modal">
-          <div className="formElement">
-            <p>Event Name</p>
-            <input
-              type="text"
-              onChange={changeTitle}
-              value={title}
-              placeholder="Enter the title of your event"
-              className="userInput modal-input"
-            />
-          </div>
-          <div className="formElement">
-            <p>Event Link</p>
-            <input
-              type="text"
-              onChange={changeLink}
-              value={eventLink}
-              placeholder="+ Add a link to your event (Zoom, FB, ZmURl, etc)"
-              className="userInput modal-input"
-            />
-          </div>
-          <div className="formElement">
-            <p>Event Start</p>
-            <div className="input-time">
+
+        <div className="eventModal">
+          <h3 id="res-bold">
+            {activeEvent ? 'Update Event' : 'Add New Event'}
+          </h3>
+          <p id="res-desc">Link an event for prospective or current members!</p>
+          <div className="gray-modal">
+            <div className="formElement">
+              <p>Event Name</p>
+              <input
+                type="text"
+                onChange={changeTitle}
+                value={title}
+                placeholder="Enter the title of your event"
+                className="userInput modal-input"
+              />
+            </div>
+            <div className="formElement">
+              <p>Event Link</p>
+              <input
+                type="text"
+                onChange={changeLink}
+                value={eventLink}
+                placeholder="+ Add a link to your event (Zoom, FB, ZmURl, etc)"
+                className="userInput modal-input"
+              />
+            </div>
+            <div className="formElement">
+              <p>Event Start</p>
+              <div className="input-time">
               <input
                 className="modal-input"
                 type="date"

@@ -42,21 +42,21 @@ const Profile = ({ profile, updateProfile }) => {
 
   const [orgName, setOrgName] = useState(profile.name);
   const [orgEmail, setOrgEmail] = useState(profile.owner);
-  const [descr, setDescr] = useState(profile['about-us']);
-  const [descrChars, setChars] = useState(500);
+  const [descr, setDescr] = useState(profile.about_us);
+  const [descrChars, setChars] = useState(500 - descr.length);
   const [tags, setTags] = useState(profile.tags.map((tag) => tagOptions[tag]));
   const [appReq, setAppReq] = useState(true);
   const [recruiting, setRecruit] = useState(false);
 
   const submit = () => {
     const newProfile = {
-      ...profile,
       name: orgName,
       tags: tags.map((tags) => tags.value),
       about_us: descr,
-      app_required: appReq,
-      new_members: recruiting,
+      app_required: !!appReq.value,
+      new_members: !!recruiting.value,
     };
+    console.log(newProfile);
     updateProfile(newProfile);
   };
 

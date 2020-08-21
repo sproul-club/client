@@ -24,7 +24,6 @@ import PrivateRoute from './utils/PrivateRoute';
 
 const App = () => {
   useEffect(() => {
-    console.log('reload app');
     store.dispatch(loadProfile());
   }, []);
 

@@ -10,7 +10,6 @@ import {
 
 // import Card from 'react-bootstrap/Card';
 
- 
 import { connect } from 'react-redux';
 
 import { withRouter, Link } from 'react-router-dom';
@@ -18,12 +17,14 @@ import { loadClubs, searchClubs } from '../actions/catalog';
 import './GridComponent.css';
 
 function GridComponent(props) {
+  const { tagOptions } = props;
+  
   useEffect(() => {
     // Return unfiltered clubs so there is some data there when first rendered
     props.loadClubs();
   }, []);
 
- const GridList = props.clubs.map((club, i) => (
+  const GridList = props.clubs.map((club, i) => (
     <Grid item key={i} sm={12} md={6} lg={4} className="club-card">
       <Card className={props.classes.root}>
         <CardActionArea>
@@ -53,44 +54,43 @@ function GridComponent(props) {
                   <div className="club-name">{club.name}</div>
                 </div>
               </div>
-                <div className="req-flex">
-                  {club.app_required ? (
-                    <div className="grid-tag" id="app-req">
-                      <span role="img" aria-label="emoji">
-                        ✎
-                      </span>{' '}
-                      Requires App
-                    </div>
-                  ) : (
-                    <div className="grid-tag" id="app-not-req">
-                      <span role="img" aria-label="emoji">
-                        ☺︎
-                      </span>{' '}
-                      No App Required
-                    </div>
-                  )}
-                  {club.new_members ? (
-                    <div className="grid-tag" id="open-tag">
-                      <span role="img" aria-label="emoji">
-                        ✓
-                      </span>{' '}
-                      Taking New Members
-                    </div>
-                  ) : (
-                    <div className="grid-tag" id="not-open-tag">
-                      <span role="img" aria-label="emoji">
-                        ✗
-                      </span>{' '}
-                      Not Taking New Members
-                    </div>
-                  )}
-                </div>
-                <div className="grid-tags-flex">
-                  { club.tags.map(tag => 
-                    <div className="grid-tag"> {tag} </div>
-                  )}
-                </div>
-              
+              <div className="req-flex">
+                {club.app_required ? (
+                  <div className="grid-tag" id="app-req">
+                    <span role="img" aria-label="emoji">
+                      ✎
+                    </span>{' '}
+                    Requires App
+                  </div>
+                ) : (
+                  <div className="grid-tag" id="app-not-req">
+                    <span role="img" aria-label="emoji">
+                      ☺︎
+                    </span>{' '}
+                    No App Required
+                  </div>
+                )}
+                {club.new_members ? (
+                  <div className="grid-tag" id="open-tag">
+                    <span role="img" aria-label="emoji">
+                      ✓
+                    </span>{' '}
+                    Taking New Members
+                  </div>
+                ) : (
+                  <div className="grid-tag" id="not-open-tag">
+                    <span role="img" aria-label="emoji">
+                      ✗
+                    </span>{' '}
+                    Not Taking New Members
+                  </div>
+                )}
+              </div>
+              <div className="grid-tags-flex">
+                {club.tags.map((tag) => (
+                  <div className="grid-tag"> {tagOptions[tag].label} </div>
+                ))}
+              </div>
             </CardContent>
           </Link>
         </CardActionArea>
@@ -105,7 +105,7 @@ function GridComponent(props) {
     </div>
   );
 }
- 
+
 // This function gets a piece of the app state that is stored in redux store
 const mapStateToProps = (state) => ({
   clubs: state.catalog.clubs,

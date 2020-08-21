@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Admin.css';
+import { loadProfile } from '../../actions/profile';
 import { Route, Switch, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Navbar from '../../layout/Navbar';
@@ -9,7 +10,10 @@ import GetInvolved from './GetInvolved';
 import Events from './Events';
 import Resources from './Resources';
 
-const Admin = ({ profile, events, resources }) => {
+const Admin = ({ profile, events, resources, loadProfile }) => {
+  useEffect(() => {
+    loadProfile();
+  }, []);
   return (
     <div className="clubEdit">
       <Navbar />
@@ -96,7 +100,7 @@ const Admin = ({ profile, events, resources }) => {
 const mapStateToProps = (state) => ({
   profile: state.profile.profile,
   events: state.profile.events,
-  resources: state.profile.resources
+  resources: state.profile.resources,
 });
 
-export default connect(mapStateToProps)(Admin);
+export default connect(mapStateToProps, { loadProfile })(Admin);
