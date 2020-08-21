@@ -19,7 +19,7 @@
 .event-content {
   display: flex;
   flex-direction: column;
-  width: 80%;
+  width: 100%;
 }
 
 .event-controls {
