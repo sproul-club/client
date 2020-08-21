@@ -120,7 +120,9 @@ const Events = ({ addEvent, updateEvent, events }) => {
 
       <Modal showModal={showModal} setShowModal={setShowModal}>
         <div className="eventModal">
-          <h3 id="res-bold">Add New Event</h3>
+          <h3 id="res-bold">
+            {activeEvent ? 'Update Event' : 'Add New Event'}
+          </h3>
           <p id="res-desc">Link an event for prospective or current members!</p>
           <div className="gray-modal">
             <div className="formElement">
@@ -188,7 +190,7 @@ const Events = ({ addEvent, updateEvent, events }) => {
             </div>
           </div>
           <button type="submit" onClick={saveEvent}>
-            {activeEvent ? 'Update' : 'Add Event'}
+            Save
           </button>
         </div>
       </Modal>
