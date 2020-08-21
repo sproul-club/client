@@ -81,7 +81,7 @@ const Events = ({
     };
     tempArr[id] = tempObj;
     //update event action
-    updateEvent(id, {title: title, link: eventLink, event_start: start, event_end: end, description: text})
+    updateEvent(id, {name: title, link: eventLink, event_start: start, event_end: end, description: text})
     setEvents(tempArr);
   }
 
