@@ -31,6 +31,7 @@ export const loadProfile = () => async (dispatch) => {
 
 // Update profile
 export const updateProfile = (formData) => async (dispatch) => {
+  console.log(formData);
   const justTheRightData = JSON.stringify({
     name: formData.name,
     tags: formData.tags,

@@ -223,7 +223,7 @@ const Catalog = ({ searchClubs }) => {
           </Accordion>
         </div>
         <div className="cards">
-          <GridComponent classes={classes} />
+          <GridComponent tagOptions={tagOptions} classes={classes} />
         </div>
       </div>
       <Footer />
