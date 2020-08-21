@@ -69,13 +69,14 @@ export const addEvent = (formData) => async (dispatch) => {
     };
 
     const event = JSON.stringify(formData);
+    console.log(event);
 
     const res = await axios.post('/api/admin/events', event, config);
 
     console.log(res);
     dispatch({ type: ADD_EVENT, payload: res.data });
   } catch (err) {
-    console.log(err);
+    console.log(err.response);
   }
 };
 
@@ -97,7 +98,7 @@ export const updateEvent = (eventId, eventInfo) => async (dispatch) => {
 
     dispatch({ type: UPDATE_EVENT, payload: res.data });
   } catch (err) {
-    console.log(err);
+    console.log(err.response);
   }
 };
 
