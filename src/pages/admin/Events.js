@@ -28,7 +28,7 @@ const Events = ({ addEvent, updateEvent, events }) => {
       event_end: eventTime,
       description: text,
     };
-    console.log('event id', event.id, event);
+    
     if (!validURL(eventLink)) return alert('Please enter a valid URL');
     if (activeEvent) {
       updateEvent(eventToSave.id, eventInfo);

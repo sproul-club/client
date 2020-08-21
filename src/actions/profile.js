@@ -21,8 +21,6 @@ export const loadProfile = () => async (dispatch) => {
   try {
     const res = await axios.get('/api/admin/profile');
 
-    console.log('load profile response data: ', res.data);
-
     dispatch({ type: LOAD_PROFILE, payload: res.data });
   } catch (err) {
     console.log(err);
@@ -31,7 +29,6 @@ export const loadProfile = () => async (dispatch) => {
 
 // Update profile
 export const updateProfile = (formData) => async (dispatch) => {
-  console.log(formData);
   const justTheRightData = JSON.stringify({
     name: formData.name,
     tags: formData.tags,
@@ -90,11 +87,8 @@ export const updateEvent = (eventId, eventInfo) => async (dispatch) => {
       },
     };
     const event = JSON.stringify(eventInfo);
-    // This will hit the api that will add the event, and return the new data with event added
-    // and then update the profile information in state to be correct
-    console.log('update event', event);
+    
     const res = await axios.put(`/api/admin/events/${eventId}`, event, config);
-    console.log(res);
 
     dispatch({ type: UPDATE_EVENT, payload: res.data });
   } catch (err) {
@@ -113,7 +107,7 @@ export const deleteEvent = (id) => async (dispatch) => {
     // This will hit the api that will add the event, and return the new data with event added
     // and then update the profile information in state to be correct
     const res = await axios.delete(`/api/admin/events/${id}`, config);
-    console.log('delete!', res);
+
     dispatch({ type: DELETE_EVENT, payload: res.data });
   } catch (err) {
     console.log(err);
@@ -161,7 +155,6 @@ export const updateResource = (resourceId, resourceInfo) => async (
       resource,
       config
     );
-    console.log('updateResource data response: ', res.data);
 
     dispatch({ type: UPDATE_RESOURCE, payload: res.data });
   } catch (err) {

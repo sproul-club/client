@@ -17,7 +17,6 @@ const Navbar = ({ isAuthenticated, logout, login, history }) => {
         setNavFixed(false);
       } else if (window.scrollY > 50) {
         setNavFixed(true);
-        console.log('PAST');
       }
     });
   });

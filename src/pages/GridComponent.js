@@ -18,7 +18,7 @@ import './GridComponent.css';
 
 function GridComponent(props) {
   const { tagOptions } = props;
-  console.log(tagOptions);
+  
   useEffect(() => {
     // Return unfiltered clubs so there is some data there when first rendered
     props.loadClubs();

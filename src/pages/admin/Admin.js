@@ -12,7 +12,6 @@ import Resources from './Resources';
 
 const Admin = ({ profile, events, resources, loadProfile }) => {
   useEffect(() => {
-    console.log('reload admin');
     loadProfile();
   }, []);
   return (

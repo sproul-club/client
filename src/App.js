@@ -24,7 +24,6 @@ import PrivateRoute from './utils/PrivateRoute';
 
 const App = () => {
   useEffect(() => {
-    console.log('reload app');
     store.dispatch(loadProfile());
   }, []);
 
@@ -34,10 +33,10 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={Landing} />
           <Route exact path="/comingsoon" component={ComingSoon} />
-          <PrivateRoute path="/admin" component={Admin} />
-          <Route path="/catalog" component={Catalog} />
-          <Route exact path="/signup" component={SignUp} />
-          <Route exact path="/signin" component={SignIn} />
+          <PrivateRoute path="/admin" component={ComingSoon} />
+          <Route path="/catalog" component={ComingSoon} />
+          <Route exact path="/signup" component={ComingSoon} />
+          <Route exact path="/signin" component={ComingSoon} />
           <Route exact path="/recover" component={ComingSoon} />
           <Route exact path="/resetpassword" component={ComingSoon} />
           <Route exact path="/club/:id" component={ComingSoon} />
