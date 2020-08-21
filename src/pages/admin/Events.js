@@ -17,6 +17,7 @@ const Events = ({ addEvent, updateEvent, events }) => {
   const [endDate, setEndDate] = useState('');
   const [eventEndTime, setEventEndTime] = useState('');
   const [text, setText] = useState('');
+  const [eventToSave, setEventToSave] = useState(null);
   const [activeEvent, setActiveEvent] = useState(null);
 
   const saveEvent = (event: null) => {
@@ -27,10 +28,14 @@ const Events = ({ addEvent, updateEvent, events }) => {
       event_end: eventTime,
       description: text,
     };
+    console.log('event id', event.id, event);
     if (!validURL(eventLink)) return alert('Please enter a valid URL');
-    activeEvent
-      ? updateEvent(event.id, eventInfo)
-      : addEvent(eventInfo, events);
+    if (activeEvent) {
+      updateEvent(eventToSave.id, eventInfo);
+      setEventToSave(null);
+    } else {
+      addEvent(eventInfo, events);
+    }
     setShowModal(false);
   };
 
@@ -41,6 +46,7 @@ const Events = ({ addEvent, updateEvent, events }) => {
     setStart(event.event_start);
     setEventTime(event.event_end);
     setText(event.description);
+    setEventToSave(event);
     setShowModal(true);
   };
 
@@ -113,80 +119,78 @@ const Events = ({ addEvent, updateEvent, events }) => {
       />
 
       <Modal showModal={showModal} setShowModal={setShowModal}>
-        <div className = "eventModal">
-        <h3 id="res-bold">Add New Event</h3>
-        <p id="res-desc">
-          Link an event for prospective or current members!
-        </p>
-        <div className="gray-modal">
-          <div className="formElement">
-            <p>Event Name</p>
-            <input
-              type="text"
-              onChange={(e) => setTitle(e.target.value)}
-              value={title}
-              placeholder="Enter the title of your event"
-              className="userInput modal-input"
-            />
-          </div>
-          <div className="formElement">
-            <p>Event Link</p>
-            <input
-              type="text"
-              onChange={(e) => setEventLink(e.target.value)}
-              value={eventLink}
-              placeholder="+ Add a link to your event (zoom, FB, zmurl, etc)"
-              className="userInput modal-input"
-            />
-          </div>
-          <div className="formElement">
-            <p>Event Start</p>
-            <div className="input-time">
+        <div className="eventModal">
+          <h3 id="res-bold">Add New Event</h3>
+          <p id="res-desc">Link an event for prospective or current members!</p>
+          <div className="gray-modal">
+            <div className="formElement">
+              <p>Event Name</p>
               <input
-                className="modal-input"
-                type="date"
-                onChange={(e) => setStart(e.target.value)}
-                value={start}
+                type="text"
+                onChange={(e) => setTitle(e.target.value)}
+                value={title}
+                placeholder="Enter the title of your event"
+                className="userInput modal-input"
               />
+            </div>
+            <div className="formElement">
+              <p>Event Link</p>
               <input
-                className="modal-input"
-                type="time"
-                onChange={(e) => setEventTime(e.target.value)}
-                value={eventTime}
+                type="text"
+                onChange={(e) => setEventLink(e.target.value)}
+                value={eventLink}
+                placeholder="+ Add a link to your event (zoom, FB, zmurl, etc)"
+                className="userInput modal-input"
+              />
+            </div>
+            <div className="formElement">
+              <p>Event Start</p>
+              <div className="input-time">
+                <input
+                  className="modal-input"
+                  type="date"
+                  onChange={(e) => setStart(e.target.value)}
+                  value={start}
+                />
+                <input
+                  className="modal-input"
+                  type="time"
+                  onChange={(e) => setEventTime(e.target.value)}
+                  value={eventTime}
+                />
+              </div>
+            </div>
+            <div className="formElement">
+              <p>Event End</p>
+              <div className="input-time">
+                <input
+                  className="modal-input"
+                  type="date"
+                  onChange={(e) => setEndDate(e.target.value)}
+                  value={endDate}
+                />
+                <input
+                  className="modal-input"
+                  type="time"
+                  onChange={(e) => setEventEndTime(e.target.value)}
+                  value={eventEndTime}
+                />
+              </div>
+            </div>
+            <div className="formElement formElementDescription">
+              <p>Description</p>
+              <textarea
+                className="descriptionInput"
+                value={text}
+                placeholder="Enter a short description about what your event is about and what attendees can expect!"
+                onChange={(e) => setText(e.target.value)}
               />
             </div>
           </div>
-          <div className="formElement">
-            <p>Event End</p>
-            <div className="input-time">
-              <input
-                className="modal-input"
-                type="date"
-                onChange={(e) => setEndDate(e.target.value)}
-                value={endDate}
-              />
-              <input
-                className="modal-input"
-                type="time"
-                onChange={(e) => setEventEndTime(e.target.value)}
-                value={eventEndTime}
-              />
-            </div>
-          </div>
-          <div className="formElement formElementDescription">
-            <p>Description</p>
-            <textarea
-              className="descriptionInput"
-              value={text}
-              placeholder="Enter a short description about what your event is about and what attendees can expect!"
-              onChange={(e) => setText(e.target.value)}
-            />
-          </div>
-        </div>
-        <button type="submit" onClick={saveEvent}>
+          <button type="submit" onClick={saveEvent}>
             {activeEvent ? 'Update' : 'Add Event'}
           </button>
-          </div>
+        </div>
       </Modal>
     </div>
   );
