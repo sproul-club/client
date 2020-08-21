@@ -40,13 +40,20 @@ const Profile = ({ profile, updateProfile }) => {
     { value: 0, label: 'Not accepting members' },
   ];
 
+  console.log(profile);
+
   const [orgName, setOrgName] = useState(profile.name);
   const [orgEmail, setOrgEmail] = useState(profile.owner);
   const [descr, setDescr] = useState(profile.about_us);
   const [descrChars, setChars] = useState(500 - descr.length);
   const [tags, setTags] = useState(profile.tags.map((tag) => tagOptions[tag]));
-  const [appReq, setAppReq] = useState(true);
-  const [recruiting, setRecruit] = useState(false);
+  const [appReq, setAppReq] = useState(
+    appOptions[profile.app_required === true ? 0 : 1]
+  );
+  const [recruiting, setRecruit] = useState(
+    recruitOptions[profile.new_members === true ? 0 : 1]
+  );
+  console.log(appReq, recruiting);
 
   const submit = () => {
     const newProfile = {
@@ -114,7 +121,7 @@ const Profile = ({ profile, updateProfile }) => {
             options={appOptions}
             multi={false}
             search={false}
-            defaultValue={appOptions[profile.appRequired === true ? 0 : 1]}
+            defaultValue={appOptions[profile.app_required === true ? 0 : 1]}
             placeholder="Select application requirement"
             set={setAppReq}
           />
@@ -125,7 +132,7 @@ const Profile = ({ profile, updateProfile }) => {
             options={recruitOptions}
             multi={false}
             search={false}
-            defaultValue={recruitOptions[profile.newMembers === true ? 0 : 1]}
+            defaultValue={recruitOptions[profile.new_members === true ? 0 : 1]}
             placeholder="Select recruitment status"
             set={setRecruit}
           />
