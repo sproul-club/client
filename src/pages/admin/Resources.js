@@ -71,7 +71,7 @@ const Resources = ({
  
   /*Passed down to resComp to allow it to remove resource from state array, count--*/
   function removeRes(id) {
-    deleteResource(id)
+    deleteResource(id);
     const testResList = resources.filter((res) => res.id !== id);
     const newResList = [...testResList];
     setResources(newResList);
@@ -93,12 +93,12 @@ const Resources = ({
   ));
  
   return (
-    <div>
+    <div className="resources">
       <h3>Resources</h3>
       <div className="admin-text">
         Link important resources for prospective or current members!
       </div>
-      <div className="gray-back">
+      <div className="formGroup">
         {resComps}
         <img
           className="add-button"

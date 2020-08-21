@@ -66,6 +66,7 @@ const Dropdown = (props) => (
     options={props.options}
     placeholder={props.placeholder}
     maxMenuHeight={200}
+    onChange={(e) => props.set(e)}
   />
 );
 
