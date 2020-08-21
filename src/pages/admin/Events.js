@@ -2,19 +2,11 @@ import React, { useState, useEffect } from 'react';
 import Modal from '../../layout/Modal';
 import { connect } from 'react-redux';
 import EventComp from './EventComp.js';
-import {
-  addEvent,
-  updateEvent,
-  deleteEvent } from '../../actions/profile';
+import { addEvent, updateEvent, deleteEvent } from '../../actions/profile';
 import { validURL, normalizeUrl } from '../../utils/normalizeUrl';
 import './Events.css';
 
-const Events = ({
-  addEvent,
-  updateEvent,
-  deleteEvent,
-  events: eventState,
- }) => {
+const Events = ({ addEvent, updateEvent, deleteEvent, events: eventState }) => {
   /*Holds all existing events*/
   const [events, setEvents] = useState(eventState);
 
@@ -56,7 +48,7 @@ const Events = ({
     setEndTime('');
     setText('');
   }
-  
+
   function cancelAdd() {
     setShowModal(false);
     setTitle('');
@@ -68,7 +60,16 @@ const Events = ({
   }
 
   /*Passed down to eventComp to allow editing of event array above*/
-  function entryChange(id, title, eventLink, startDate, startTime, endDate, endTime, text) {
+  function entryChange(
+    id,
+    title,
+    eventLink,
+    startDate,
+    startTime,
+    endDate,
+    endTime,
+    text
+  ) {
     let tempArr = [...events];
     const start = startDate.concat(' ' + startTime);
     const end = endDate.concat(' ' + endTime);
@@ -82,7 +83,13 @@ const Events = ({
     };
     tempArr[id] = tempObj;
     //update event action
-    updateEvent(id, {name: title, link: eventLink, event_start: start, event_end: end, description: text})
+    updateEvent(id, {
+      name: title,
+      link: eventLink,
+      event_start: start,
+      event_end: end,
+      description: text,
+    });
     setEvents(tempArr);
   }
 
@@ -90,7 +97,7 @@ const Events = ({
   function changeTitle(event) {
     setTitle(event.target.value);
   }
- 
+
   function changeLink(event) {
     setEventLink(event.target.value);
   }
@@ -122,10 +129,10 @@ const Events = ({
     const newEventList = [...testEventList];
     setEvents(newEventList);
   }
-  
+
   useEffect(() => {
-    setEvents(eventState)
-  }, [eventState])
+    setEvents(eventState);
+  }, [eventState]);
 
   const eventComps = events.map((ev, i) => (
     <EventComp
@@ -138,7 +145,7 @@ const Events = ({
   ));
 
   function convertTime(datetime) {
-    var dd = 'AM'
+    var dd = 'AM';
 
     var hour = datetime.getUTCHours();
     var h = hour;
@@ -151,32 +158,45 @@ const Events = ({
     }
 
     var minutes = datetime.getMinutes();
-    minutes = minutes < 10 ? "0" + minutes : minutes;
+    minutes = minutes < 10 ? '0' + minutes : minutes;
 
-    return hour + ':' + minutes + dd
+    return hour + ':' + minutes + dd;
   }
 
   function formatDate(datetime) {
-    const dayArr = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat']
-    
+    const dayArr = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'];
+
     var month = (1 + datetime.getMonth()).toString();
     var day = datetime.getDate().toString();
     var year = datetime.getFullYear();
     day = day.length > 1 ? day : '0' + day;
 
     var time = convertTime(datetime);
-    return dayArr[datetime.getDay()] + ' ' + month + '/' + day + '/' + year + ' ' + time;
+    return (
+      dayArr[datetime.getDay()] +
+      ' ' +
+      month +
+      '/' +
+      day +
+      '/' +
+      year +
+      ' ' +
+      time
+    );
   }
 
   function formatDates(start, end) {
     var startDate = new Date(start);
     var endDate = new Date(end);
 
-    if (startDate.getDay() == endDate.getDay() && startDate.getMonth() == endDate.getMonth() && 
-    startDate.getDay() == endDate.getDay() && startDate.getFullYear() == endDate.getFullYear()) {
+    if (
+      startDate.getDay() == endDate.getDay() &&
+      startDate.getMonth() == endDate.getMonth() &&
+      startDate.getDay() == endDate.getDay() &&
+      startDate.getFullYear() == endDate.getFullYear()
+    ) {
       return formatDate(startDate) + ' - ' + convertTime(endDate);
-    }
-    else {
+    } else {
       return formatDate(startDate) + ' - ' + formatDate(endDate);
     }
   }
@@ -188,9 +208,7 @@ const Events = ({
         Add events related to recruitment, meetings, and other public events!
       </div>
       <div className="formGroup">
-        <div className="events-list">
-            {eventComps}
-        </div>
+        <div className="events-list">{eventComps}</div>
         <img
           className="add-button"
           src={require('../assets/linkImages/addEvent.png')}
@@ -200,11 +218,8 @@ const Events = ({
       </div>
 
       <Modal showModal={showModal} setShowModal={setShowModal}>
-
         <div className="eventModal">
-          <h3 id="res-bold">
-            {activeEvent ? 'Update Event' : 'Add New Event'}
-          </h3>
+          <h3 id="res-bold">Update Event</h3>
           <p id="res-desc">Link an event for prospective or current members!</p>
           <div className="gray-modal">
             <div className="formElement">
@@ -230,52 +245,53 @@ const Events = ({
             <div className="formElement">
               <p>Event Start</p>
               <div className="input-time">
-              <input
-                className="modal-input"
-                type="date"
-                onChange={changeStartDate}
-                value={startDate}
-              />
-              <input
-                className="modal-input"
-                type="time"
-                onChange={changeStartTime}
-                value={startTime}
+                <input
+                  className="modal-input"
+                  type="date"
+                  onChange={changeStartDate}
+                  value={startDate}
+                />
+                <input
+                  className="modal-input"
+                  type="time"
+                  onChange={changeStartTime}
+                  value={startTime}
+                />
+              </div>
+            </div>
+            <div className="formElement">
+              <p>Event End</p>
+              <div className="input-time">
+                <input
+                  className="modal-input"
+                  type="date"
+                  onChange={changeEndDate}
+                  value={endDate}
+                />
+                <input
+                  className="modal-input"
+                  type="time"
+                  onChange={changeEndTime}
+                  value={endTime}
+                />
+              </div>
+            </div>
+            <div className="formElement formElementDescription">
+              <p>Description</p>
+              <textarea
+                className="descriptionInput"
+                value={text}
+                placeholder="Enter a short description about what your event is about and what attendees can expect!"
+                onChange={changeText}
               />
             </div>
           </div>
-          <div className="formElement">
-            <p>Event End</p>
-            <div className="input-time">
-              <input
-                className="modal-input"
-                type="date"
-                onChange={changeEndDate}
-                value={endDate}
-              />
-              <input
-                className="modal-input"
-                type="time"
-                onChange={changeEndTime}
-                value={endTime}
-              />
-            </div>
-          </div>
-          <div className="formElement formElementDescription">
-            <p>Description</p>
-            <textarea
-              className="descriptionInput"
-              value={text}
-              placeholder="Enter a short description about what your event is about and what attendees can expect!"
-              onChange={changeText}
-            />
-          </div>
-          </div>
-        <button type="submit" onClick={addEv}>
+          <button type="submit" onClick={addEv}>
             Save
-        </button>
-        <button id="cancel-button" onClick={cancelAdd}>
-            {' '}Cancel{' '}
+          </button>
+          <button id="cancel-button" onClick={cancelAdd}>
+            {' '}
+            Cancel{' '}
           </button>
         </div>
       </Modal>
