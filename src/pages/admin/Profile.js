@@ -53,8 +53,8 @@ const Profile = ({ profile, updateProfile }) => {
       name: orgName,
       tags: tags.map((tags) => tags.value),
       about_us: descr,
-      app_required: appReq,
-      new_members: recruiting,
+      app_required: !!appReq.value,
+      new_members: !!recruiting.value,
     };
     console.log(newProfile);
     updateProfile(newProfile);

@@ -48,25 +48,31 @@ const customStyles = {
   }),
 };
 
-const Dropdown = (props) => (
-  <Select
-    styles={customStyles}
-    theme={(theme) => ({
-      ...theme,
-      colors: {
-        ...theme.colors,
-        neutral50: '#949494',
-        danger: '#2b2b2b',
-        dangerLight: '#D1D3D4',
-      },
-    })}
-    defaultValue={props.defaultValue || null}
-    isSearchable={props.search}
-    isMulti={props.multi}
-    options={props.options}
-    placeholder={props.placeholder}
-    maxMenuHeight={200}
-  />
-);
+const Dropdown = (props) => {
+  return (
+    <Select
+      styles={customStyles}
+      theme={(theme) => ({
+        ...theme,
+        colors: {
+          ...theme.colors,
+          neutral50: '#949494',
+          danger: '#2b2b2b',
+          dangerLight: '#D1D3D4',
+        },
+      })}
+      defaultValue={props.defaultValue || null}
+      isSearchable={props.search}
+      isMulti={props.multi}
+      options={props.options}
+      placeholder={props.placeholder}
+      maxMenuHeight={200}
+      onChange={(e) => {
+        props.set(e);
+        console.log(e);
+      }}
+    />
+  );
+};
 
 export default Dropdown;
