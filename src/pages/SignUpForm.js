@@ -85,7 +85,7 @@ const MultiStepForm = ({ register }) => {
       setConError('conError');
     }
 
-    if (pw === con /*email ==='b'*/) {
+    else if (pw === con /*email ==='b'*/) {
       setStep(currStep + 1);
     }
 

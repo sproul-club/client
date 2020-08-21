@@ -21,6 +21,8 @@ export const loadProfile = () => async (dispatch) => {
   try {
     const res = await axios.get('/api/admin/profile');
 
+    console.log('load profile response data: ', res.data);
+
     dispatch({ type: LOAD_PROFILE, payload: res.data });
   } catch (err) {
     console.log(err);
@@ -90,7 +92,7 @@ export const updateEvent = (eventId, eventInfo) => async (dispatch) => {
     const event = JSON.stringify(eventInfo);
     // This will hit the api that will add the event, and return the new data with event added
     // and then update the profile information in state to be correct
-    console.log('update event');
+    console.log('update event', event);
     const res = await axios.put(`/api/admin/events/${eventId}`, event, config);
     console.log(res);
 
@@ -159,6 +161,7 @@ export const updateResource = (resourceId, resourceInfo) => async (
       resource,
       config
     );
+    console.log('updateResource data response: ', res.data);
 
     dispatch({ type: UPDATE_RESOURCE, payload: res.data });
   } catch (err) {

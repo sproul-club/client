@@ -19,11 +19,11 @@ const data = {name: "EthiCAL Apparel",
               {name:"Infosession Recording", link:"https://www.target.com/"}],
               socials:
               [
-                  {social: "web", link: "https://www.pokemon.com"},
-                  {social: "email", link: "https://www.pokemon.com"},
-                  {social: "ig", link: "https://www.pokemon.com"},
-                  {social: "fb", link: "https://www.pokemon.com"},
-                  {social: "twt", link: "https://www.pokemon.com"}
+                {social: "web", link: "https://www.pokemon.com"},
+                {social: "email", link: "https://www.pokemon.com"},
+                {social: "ig", link: "https://www.pokemon.com"},
+                {social: "fb", link: "https://www.pokemon.com"},
+                {social: "twt", link: "https://www.pokemon.com"}
               ]}
 
 const Modal = ({ match, history }) => {
@@ -34,13 +34,13 @@ const Modal = ({ match, history }) => {
   return (
     <div> 
 
-      <div onClick={back} className="modal-wrapper"/>
+      {/* <div onClick={back} className="modal-wrapper"/>
 
       <div className="modal">
-        <span class="modal-close" onClick={back}>&times;</span>
+        <span class="modal-close" onClick={back}>&times;</span> */}
         {/* <h1>{match.params.id}</h1> */}
         <ClubPage data={data} />
-      </div>
+      {/* </div> */}
 
       
     

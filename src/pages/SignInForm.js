@@ -36,11 +36,9 @@ const SignInForm = ({ login, history, isAuthenticated }) => {
         onChange={(e) => setPassword(e.target.value)}
       />
       <Link to="/recover">Forgot password?</Link>
-      <div className="buttonWrapper">
-        <button className="submitButton" onClick={submitValue}>
-          Sign in
-        </button>
-      </div>
+      <button className="submitButton" onClick={submitValue}>
+        Sign in
+      </button>
     </div>
   );
 };
