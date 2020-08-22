@@ -1,9 +1,15 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import { updatePassword } from '../../actions/profile';
 
 const ChangeLogin = () => {
     const [editing, setEditing] = useState(false);
     const [showSave, setSave] = useState("saveButtonHide");
     const [showCancel, setCancel] = useState("cancelButtonHide");
+
+    const [oldPW, setOldPW] = useState('');
+    const [newPW, setNewPW] = useState('');
+    const [conPW, setConPW] = useState('');
 
     const swapper = () => {
         setEditing(!editing);
@@ -19,6 +25,38 @@ const ChangeLogin = () => {
         }
     }
 
+    const cancelSave = () => {
+        setEditing(!editing);
+        setSave("saveButtonHide");
+        setCancel("cancelButtonHide");
+        setNewPW('');
+        setOldPW('');
+        setConPW('');
+    }
+
+    const save = () => {
+        if (newPW !== conPW) {
+            return;
+        }
+        if (newPW === '') {
+            return;
+        }
+        const data = {
+            "old_password": oldPW,
+            "new_password": newPW
+        }
+
+        updatePassword(data);
+        setEditing(!editing);
+        setSave("saveButtonHide");
+        setCancel("cancelButtonHide");
+        setNewPW('');
+        setOldPW('');
+        setConPW('');
+
+        console.log("success");
+    }
+
     const swap = (condition) => {
         switch(condition) {
             case true:
@@ -30,8 +68,8 @@ const ChangeLogin = () => {
                         </p>
                         <input
                             className="userInput"
-                            // value={email}
-                            // onChange={(e) => setEmail(e.target.value)}
+                            value={oldPW}
+                            onChange={e => setOldPW(e.target.value)}
                             type="password"
                         />
                         </div>
@@ -41,8 +79,8 @@ const ChangeLogin = () => {
                         </p>
                         <input
                             className="userInput"
-                            // value={email}
-                            // onChange={(e) => setEmail(e.target.value)}
+                            value={newPW}
+                            onChange={e => setNewPW(e.target.value)}
                             type="password"
                         />
                         </div>
@@ -52,8 +90,8 @@ const ChangeLogin = () => {
                         </p>
                         <input
                             className="userInput"
-                            // value={email}
-                            // onChange={(e) => setEmail(e.target.value)}
+                            value={conPW}
+                            onChange={e => setConPW(e.target.value)}
                             type="password"
                         />
                         </div>
@@ -89,13 +127,16 @@ const ChangeLogin = () => {
             <div className="formGroup">
                 {swap(editing)}
             </div>
-            <button className={showSave} onClick={swapper}>
+            <button className={showSave} onClick={save}>
                 Save changes
             </button>
-            <button className={showCancel} onClick={swapper}>
+            <button className={showCancel} onClick={cancelSave}>
                 Cancel
             </button>
         </div>
     )
 }
-export default ChangeLogin ;
+
+export default connect(null, { updatePassword })(
+    ChangeLogin
+  );
