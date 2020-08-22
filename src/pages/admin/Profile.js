@@ -54,6 +54,7 @@ const Profile = ({ profile, updateProfile, uploadImages, images }) => {
   const [logoImage, setLogoImage] = useState(null);
   const [bannerImage, setBannerImage] = useState(null);
 
+  if (!profile.id) return null;
   const submit = () => {
     const newProfile = {
       name: orgName,

@@ -7,18 +7,16 @@ import loginImage from './assets/login.png';
 
 const SignIn = () => {
   return (
-    <>
-      <div className="signin">
-        <Navbar />
-        <div className="content">
-          <img src={loginImage} className="loginImage" alt="bears" />
-          <div className="form">
-            <SignInForm />
-          </div>
+    <div className="signin">
+      <Navbar />
+      <div className="content">
+        <img src={loginImage} className="loginImage" alt="bears" />
+        <div className="form">
+          <SignInForm />
         </div>
-        <Footer />
       </div>
-    </>
+      <Footer />
+    </div>
   );
 };
 

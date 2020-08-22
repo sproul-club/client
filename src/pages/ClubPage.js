@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import './ClubPage.css';
 import EventAccord from './EventAccord';
-import Navbar from '../layout/Navbar';
 import Footer from '../layout/Footer';
 import { tagOptions } from '../data/tagOptions';
 import { getOrganization } from '../actions/catalog';
@@ -18,9 +17,9 @@ function ClubPage({ data, clubId, organization, getOrganization }) {
 
   const socLinks = organization.social_media_links;
 
-  const contactComps = Object.keys(socLinks).map((key) =>
+  const contactComps = Object.keys(socLinks).map((key, i) =>
     socLinks[key] !== null && socLinks[key] !== '' ? (
-      <a target="_blank" rel="noopener noreferrer" href={socLinks[key]}>
+      <a key={i} target="_blank" rel="noopener noreferrer" href={socLinks[key]}>
         <img
           className="link-image"
           src={require('./assets/linkImages/' + key + 'Link.png')}
@@ -29,10 +28,10 @@ function ClubPage({ data, clubId, organization, getOrganization }) {
       </a>
     ) : null
   );
-  const resComps = organization.resources.map((res) => (
+  const resComps = organization.resources.map((res, i) => (
     <div className="desc-text" id="resources">
       {res.name}
-      <a target="_blank" rel="noopener noreferrer" href={res.link}>
+      <a target="_blank" rel="noopener noreferrer" href={res.link} key={i}>
         <img
           className="res-img"
           src={require('./assets/linkImages/resLink.png')}
@@ -42,8 +41,11 @@ function ClubPage({ data, clubId, organization, getOrganization }) {
     </div>
   ));
 
-  const tagList = organization.tags.map((tag) => (
-    <div className="tag"> {tagOptions[tag].label} </div>
+  const tagList = organization.tags.map((tag, i) => (
+    <div className="tag" key={i}>
+      {' '}
+      {tagOptions[tag].label}{' '}
+    </div>
   ));
 
   const appReq = organization.app_required ? (
@@ -67,8 +69,7 @@ function ClubPage({ data, clubId, organization, getOrganization }) {
   );
 
   return (
-    <div>
-      <Navbar />
+    <div style={{ minHeight: '100vh' }}>
       <img
         className="header-img"
         src={organization.banner_url || require('./assets/ethicalheader.png')}
@@ -94,7 +95,7 @@ function ClubPage({ data, clubId, organization, getOrganization }) {
 
           <div className="desc-box">
             <p>Description</p>
-            <body className="desc-text">{organization.about_us}</body>
+            <div className="desc-text">{organization.about_us}</div>
           </div>
 
           <div className="events-box">
