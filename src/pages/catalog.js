@@ -24,33 +24,9 @@ import {
   FormHelperText,
   Checkbox,
 } from '@material-ui/core/';
+import { tagOptions } from '../data/tagOptions';
 
 const Catalog = ({ searchClubs }) => {
-  var tagOptions = [
-    { label: 'Advocacy', value: 0 },
-    { label: 'Business', value: 1 },
-    { label: 'CalGreek', value: 2 },
-    { label: 'Community Service', value: 3 },
-    { label: 'Computer Science', value: 4 },
-    { label: 'Consulting', value: 5 },
-    { label: 'Cultural', value: 6 },
-    { label: 'Design', value: 7 },
-    { label: 'Engineering', value: 8 },
-    { label: 'Environmental', value: 9 },
-    { label: 'Health', value: 10 },
-    { label: 'Media', value: 11 },
-    { label: 'Performing Arts', value: 12 },
-    { label: 'Political', value: 13 },
-    { label: 'Pre-professional', value: 14 },
-    { label: 'Religious & Spiritual', value: 15 },
-    { label: 'Research', value: 16 },
-    { label: 'Sciences', value: 17 },
-    { label: 'Social', value: 18 },
-    { label: 'Social Good', value: 19 },
-    { label: 'Sports & Rec.', value: 20 },
-    { label: 'Technology', value: 21 },
-  ];
-
   const useStyles = makeStyles({
     root: {
       minWidth: 200,
