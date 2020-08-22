@@ -19,12 +19,21 @@
   border-radius: 5px;
   border: 1px solid #ccc;
   box-shadow: 0 0.5px 1px rgba(0, 0, 0, 0.5);
+  width: 100%;
+}
+
+.events-list {
+  width: 90%;
 }
 
 .event-content {
   display: flex;
   flex-direction: column;
   width: 100%;
+}
+
+.event-date {
+  margin-bottom: 10px;
 }
 
 .events .event-content-header img {
