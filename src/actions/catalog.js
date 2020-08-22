@@ -1,4 +1,4 @@
-import { SEARCH_CLUBS, GET_ORGANIZATION } from './types';
+import { SEARCH_CLUBS, GET_ORGANIZATION, CLEAR_ORGANIZATION } from './types';
 import axios from 'axios';
 
 // Search Clubs
@@ -53,5 +53,13 @@ export const getOrganization = (orgId) => async (dispatch) => {
     dispatch({ type: GET_ORGANIZATION, payload: res.data });
   } catch (err) {
     console.log(err);
+  }
+};
+
+export const clearOrganization = () => (dispatch) => {
+  try {
+    dispatch({ type: CLEAR_ORGANIZATION });
+  } catch (err) {
+    console.log(err)
   }
 };

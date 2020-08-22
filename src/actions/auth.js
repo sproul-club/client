@@ -69,8 +69,8 @@ export const login = (email, password, history) => async (dispatch) => {
 
     // Calls redux reducer that puts the token into local storage
     // and token and isAuthenticated=true in app state
-    dispatch({ type: LOGIN_SUCCESS, payload: res.data });
     dispatch(loadProfile());
+    dispatch({ type: LOGIN_SUCCESS, payload: res.data });
 
     history.push('/admin');
   } catch (err) {
@@ -94,7 +94,7 @@ export const logout = (history) => async (dispatch) => {
 
     localStorage.removeItem('token');
     localStorage.removeItem('refreshToken');
-    
+
     history.push('/');
     dispatch({ type: LOGOUT });
   } catch (err) {

@@ -2,16 +2,26 @@ import React, { useEffect } from 'react';
 import './ClubPage.css';
 import EventAccord from './EventAccord';
 import Footer from '../layout/Footer';
+import Loading from '../layout/Loading';
 import { tagOptions } from '../data/tagOptions';
-import { getOrganization } from '../actions/catalog';
+import { getOrganization, clearOrganization } from '../actions/catalog';
 import { connect } from 'react-redux';
 
-function ClubPage({ data, clubId, organization, getOrganization }) {
+function ClubPage({
+  clubId,
+  organization,
+  getOrganization,
+  clearOrganization,
+}) {
   useEffect(() => {
     if (organization.id !== clubId) getOrganization(clubId);
-  });
+    // return function clears the loaded profile when component unmounts
+    return () => {
+      !organization.id && clearOrganization();
+    };
+  }, []);
 
-  if (!organization.resources) return null;
+  if (!organization.id) return <Loading />;
 
   const socLinks = organization.social_media_links;
 
@@ -123,4 +133,6 @@ const mapStateToProps = (state) => ({
   organization: state.catalog.organization,
 });
 
-export default connect(mapStateToProps, { getOrganization })(ClubPage);
+export default connect(mapStateToProps, { getOrganization, clearOrganization })(
+  ClubPage
+);

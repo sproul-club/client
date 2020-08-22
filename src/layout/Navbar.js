@@ -37,6 +37,11 @@ const Navbar = ({
     }
   });
 
+  const logoutSelect = () => {
+    setDropownVis(false);
+    logout(history);
+  };
+
   if (loading) return null;
 
   const loggedOutLinks = (
@@ -77,7 +82,7 @@ const Navbar = ({
             <Link to="/security" className="option mid-option">
               Account Security
             </Link>
-            <div className="option" onClick={() => logout(history)}>
+            <div className="option" onClick={logoutSelect}>
               Log Out
             </div>
           </div>
