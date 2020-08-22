@@ -2,6 +2,7 @@ import {
   LOAD_PROFILE,
   CLEAR_PROFILE,
   UPDATE_PROFILE,
+  UPLOAD_IMAGES,
   ADD_EVENT,
   UPDATE_EVENT,
   DELETE_EVENT,
@@ -43,6 +44,9 @@ export default function (state = initialState, action) {
       };
     case UPDATE_PROFILE:
       return { ...state, profile: payload };
+    case UPLOAD_IMAGES:
+      // return { ...state, images: payload };
+      return { ...state };
     case CLEAR_PROFILE:
       return { ...state, profile: null };
     case ADD_EVENT:

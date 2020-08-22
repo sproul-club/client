@@ -153,7 +153,7 @@ const Events = ({ addEvent, updateEvent, deleteEvent, events: eventState }) => {
       hour = h - 12;
       dd = 'PM';
     }
-    if (hour == 0) {
+    if (hour === 0) {
       hour = 12;
     }
 
@@ -190,10 +190,10 @@ const Events = ({ addEvent, updateEvent, deleteEvent, events: eventState }) => {
     var endDate = new Date(end);
 
     if (
-      startDate.getDay() == endDate.getDay() &&
-      startDate.getMonth() == endDate.getMonth() &&
-      startDate.getDay() == endDate.getDay() &&
-      startDate.getFullYear() == endDate.getFullYear()
+      startDate.getDay() === endDate.getDay() &&
+      startDate.getMonth() === endDate.getMonth() &&
+      startDate.getDay() === endDate.getDay() &&
+      startDate.getFullYear() === endDate.getFullYear()
     ) {
       return formatDate(startDate) + ' - ' + convertTime(endDate);
     } else {

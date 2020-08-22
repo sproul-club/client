@@ -18,7 +18,7 @@ import './GridComponent.css';
 
 function GridComponent(props) {
   const { tagOptions } = props;
-  
+
   useEffect(() => {
     // Return unfiltered clubs so there is some data there when first rendered
     props.loadClubs();
@@ -41,14 +41,14 @@ function GridComponent(props) {
             <CardMedia
               style={{ height: 0, paddingTop: '56%' }}
               className={props.classes.media}
-              image={require('./assets/ethicalheader.png')}
+              image={club.banner_url || require('./assets/ethicalheader.png')}
             />
             <CardContent>
               <div className="info-flex">
                 <div className="icon-title-flex">
                   <img
                     className="card-club-logo"
-                    src={require('./assets/ethicalLogo.jpg')}
+                    src={club.logo_url || require('./assets/ethicalLogo.jpg')}
                     alt="logo"
                   />
                   <div className="club-name">{club.name}</div>
@@ -87,8 +87,11 @@ function GridComponent(props) {
                 )}
               </div>
               <div className="grid-tags-flex">
-                {club.tags.map((tag) => (
-                  <div className="grid-tag"> {tagOptions[tag].label} </div>
+                {club.tags.map((tag, i) => (
+                  <div className="grid-tag" key={i}>
+                    {' '}
+                    {tagOptions[tag].label}{' '}
+                  </div>
                 ))}
               </div>
             </CardContent>

@@ -2,6 +2,7 @@ import {
   REGISTER_SUCCESS,
   LOGIN_SUCCESS,
   LOAD_PROFILE,
+  LOAD_PROFILE_ERROR,
   LOGOUT,
 } from '../actions/types';
 
@@ -10,7 +11,7 @@ const initialState = {
   isAuthenticated: false,
   loading: true,
 };
- 
+
 export default function (state = initialState, action) {
   const { type, payload } = action;
 
@@ -21,6 +22,8 @@ export default function (state = initialState, action) {
         isAuthenticated: true,
         loading: false,
       };
+    case LOAD_PROFILE_ERROR:
+      return { ...state, loading: false, isAuthenticated: false };
     case LOGIN_SUCCESS:
       // put token in localStorage
       localStorage.setItem('token', payload.access);

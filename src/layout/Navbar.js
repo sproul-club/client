@@ -6,7 +6,13 @@ import { logout, login } from '../actions/auth';
 import './Navbar.css';
 import useOnClickOutside from '../utils/useOnClickOutside';
 
-const Navbar = ({ isAuthenticated, logout, login, history }) => {
+const Navbar = ({
+  organizationEmail,
+  isAuthenticated,
+  logout,
+  login,
+  history,
+}) => {
   const [navbarVis, setNavbarVis] = useState(false);
   const [dropdownVis, setDropownVis] = useState(false);
   const [navFixed, setNavFixed] = useState(false);
@@ -20,6 +26,7 @@ const Navbar = ({ isAuthenticated, logout, login, history }) => {
       }
     });
   });
+  useEffect(() => {}, [organizationEmail]);
 
   const toggleNavbar = () => setNavbarVis((navbarVis) => !navbarVis);
   const toggleDropdown = () => setDropownVis((dropdownVis) => !dropdownVis);
@@ -41,13 +48,6 @@ const Navbar = ({ isAuthenticated, logout, login, history }) => {
       <Link to="/signin" className="nav-link signin">
         Club sign in
       </Link>
-      {/* <span
-        className="nav-link signin"
-        style={{ cursor: 'pointer' }}
-        onClick={()=>login('test','wow',history)}
-      >
-        Temp Login
-      </span> */}
       <Link to="/signup" className="nav-link active">
         Add a club
       </Link>
@@ -62,15 +62,13 @@ const Navbar = ({ isAuthenticated, logout, login, history }) => {
       <Link to="/comingsoon" className="nav-link hide-sm">
         View Profile
       </Link>
-      <div
-        className="org-menu"
-        href="/signup"
-        // onMouseEnter={() => setDropownVis(true)}
-        // onMouseLeave={() => setDropownVis(false)}
-      >
+      <div className="org-menu" href="/signup">
         <div className="org-email" onClick={toggleDropdown}>
-          organizationname@berkeley.edu
-          <i style={{ marginLeft: '5px' }} className="fas fa-caret-down"></i>
+          {organizationEmail}
+          <i
+            style={{ marginLeft: '5px' }}
+            className={`fas ${dropdownVis ? 'fa-caret-down' : 'fa-caret-up'}`}
+          ></i>
         </div>
         {dropdownVis && (
           <div className="dropdown">
@@ -110,6 +108,7 @@ const Navbar = ({ isAuthenticated, logout, login, history }) => {
 
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
+  organizationEmail: state.profile.profile.owner,
 });
 
 export default connect(mapStateToProps, { logout, login })(withRouter(Navbar));
