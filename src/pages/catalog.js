@@ -16,13 +16,13 @@ import {
 } from 'react-accessible-accordion';
 import { Form, TextBox, CheckBox } from 'react-form-elements';
 import { makeStyles } from '@material-ui/core/styles';
-import { 
+import {
   FormLabel,
   FormControl,
   FormGroup,
   FormControlLabel,
   FormHelperText,
-  Checkbox
+  Checkbox,
 } from '@material-ui/core/';
 import { tagOptions } from '../data/tagOptions';
 
@@ -58,8 +58,7 @@ const Catalog = ({ searchClubs }) => {
 
   return (
     <div className="App">
-      <Navbar />
-      <div className="content">
+      <div className="content catalog-content">
         <div className="sidebar">
           <Accordion
             allowMultipleExpanded
@@ -99,9 +98,9 @@ const Catalog = ({ searchClubs }) => {
               </AccordionItemPanel>
             </AccordionItem>
             <AccordionItem className="accordion-group" uuid="b">
-                  <AccordionItemHeading>
-                    <AccordionItemButton>Club Tags </AccordionItemButton>
-                  </AccordionItemHeading>
+              <AccordionItemHeading>
+                <AccordionItemButton>Club Tags </AccordionItemButton>
+              </AccordionItemHeading>
               <AccordionItemPanel>
                 <Dropdown
                   options={tagOptions}
@@ -121,25 +120,25 @@ const Catalog = ({ searchClubs }) => {
               <AccordionItemPanel>
                 <form className="checkbox">
                   <label>
-                    Requires app 
+                    Requires app
                     <input
                       name="appReq"
                       type="checkbox"
                       checked={appReq}
-                      onChange={() => setAppReq(true)} 
-                      />
+                      onChange={() => setAppReq(true)}
+                    />
                   </label>
                   <label>
-                  No app required
+                    No app required
                     <input
                       name="noAppReq"
                       type="checkbox"
                       checked={!appReq && appReq !== null}
-                      onChange={() => setAppReq(false)} 
-                      />
+                      onChange={() => setAppReq(false)}
+                    />
                   </label>
                 </form>
-                 {/* <CheckBox
+                {/* <CheckBox
                   label="Requires app"
                   isChecked={appReq}
                   onClick={() => setAppReq(true)}
@@ -162,25 +161,25 @@ const Catalog = ({ searchClubs }) => {
               <AccordionItemPanel>
                 <form className="checkbox">
                   <label>
-                    Looking for members 
+                    Looking for members
                     <input
                       name="appReq"
                       type="checkbox"
                       checked={status}
-                      onChange={() => setStatus(true)} 
-                      />
+                      onChange={() => setStatus(true)}
+                    />
                   </label>
                   <label>
-                  No app required
+                    No app required
                     <input
                       name="noAppReq"
                       type="checkbox"
                       checked={!status && status !== null}
-                      onChange={() => setStatus(false)} 
-                      />
+                      onChange={() => setStatus(false)}
+                    />
                   </label>
                 </form>
-                 {/* <CheckBox
+                {/* <CheckBox
                   label="Looking for members"
                   isChecked={status}
                   onClick={() => setStatus(true)}

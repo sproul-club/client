@@ -1,6 +1,7 @@
 .signin .content {
   position: relative;
-  /* window height - header - footer */  
+  padding-top: 87px;
+  /* window height - header - footer */
   height: calc(100vh - 87px - 61px);
   display: flex;
   flex-direction: row;
@@ -136,8 +137,6 @@
   .signin .form .formGroup {
     padding-bottom: 2px;
   }
-
 }
-
 
 /* WEBKIT FOR OLD SAFARI VERSIONS */

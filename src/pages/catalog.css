@@ -52,7 +52,7 @@
   width: 60px;
   border-radius: 3px;
   color: #949494;
-  align-self: center;  
+  align-self: center;
   margin-right: 5px;
   border: none;
   cursor: pointer;
@@ -131,10 +131,11 @@
 }
 
 .App .content {
-  min-height: calc(100vh - 176px);
+  /* total height - header - footer */
+  min-height: calc(100vh - 87px - 61px);
+  padding-top: 87px;
   display: flex;
 }
-
 
 /* -------------------------------------------------- */
 /* ---------------- Animation part ------------------ */
@@ -150,12 +151,11 @@
   }
 }
 
-
- @media screen and (max-width: 850px) {
+@media screen and (max-width: 850px) {
   .App .content {
     align-items: flex-start;
     align-content: flex-start;
     align-self: flex-start;
     flex-direction: column;
   }
-} 
+}
