@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { updatePassword } from '../../actions/profile';
+import { Link } from 'react-router-dom';
 
-const ChangeLogin = () => {
+const ChangeLogin = ({ updatePassword }) => {
     const [editing, setEditing] = useState(false);
     const [showSave, setSave] = useState("saveButtonHide");
     const [showCancel, setCancel] = useState("cancelButtonHide");
@@ -95,9 +96,7 @@ const ChangeLogin = () => {
                             type="password"
                         />
                         </div>
-                        <a href="/recovery" className="subtitle">
-                            Forgot your password?
-                        </a>
+                        <Link to="/recovery" className="subtitle">Forgot password?</Link>
                     </div>
                 );
 

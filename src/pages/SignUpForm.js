@@ -42,8 +42,6 @@ const MultiStepForm = ({ register }) => {
     { value: false, label: 'Not accepting members' },
   ];
 
-  var emails = ["ethicalapparel@gmail.com"];
-
   const [clubName, setClubName] = useState('');
   const [email, setEmail] = useState('');
   const [pw, setPassword] = useState('');
