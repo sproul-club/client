@@ -1,6 +1,7 @@
 import axios from 'axios';
 import {
   LOAD_PROFILE,
+  LOAD_PROFILE_ERROR,
   UPDATE_PROFILE,
   ADD_EVENT,
   UPDATE_EVENT,
@@ -23,7 +24,7 @@ export const loadProfile = () => async (dispatch) => {
 
     dispatch({ type: LOAD_PROFILE, payload: res.data });
   } catch (err) {
-    console.log(err);
+    dispatch({ type: LOAD_PROFILE_ERROR, payload: err });
   }
 };
 
@@ -88,7 +89,7 @@ export const updateEvent = (eventId, eventInfo) => async (dispatch) => {
       },
     };
     const event = JSON.stringify(eventInfo);
-    
+
     const res = await axios.put(`/api/admin/events/${eventId}`, event, config);
 
     dispatch({ type: UPDATE_EVENT, payload: res.data });
