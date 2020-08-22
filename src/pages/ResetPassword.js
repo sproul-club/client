@@ -6,9 +6,7 @@ import ResetPasswordForm from './ResetPasswordForm';
 
 const ResetPassword = () => {
   return (
-  <>
     <div className="recover">
-      <Navbar />
       <div className="content">
         <div className="form">
           <ResetPasswordForm />
@@ -16,7 +14,6 @@ const ResetPassword = () => {
       </div>
       <Footer />
     </div>
-  </>
   );
 };
 

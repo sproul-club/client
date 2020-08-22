@@ -13,6 +13,7 @@ const Navbar = ({
   logout,
   login,
   history,
+  loading,
 }) => {
   const [navbarVis, setNavbarVis] = useState(false);
   const [dropdownVis, setDropownVis] = useState(false);
@@ -33,6 +34,7 @@ const Navbar = ({
   const toggleDropdown = () => setDropownVis((dropdownVis) => !dropdownVis);
 
   const ref = useRef();
+  const authDropDownRef = useRef();
 
   // If it is on mobile, and the navbar is visible, if click outside, hide sidebar
   useOnClickOutside(ref, () => {
@@ -40,6 +42,13 @@ const Navbar = ({
       setNavbarVis(false);
     }
   });
+
+  useOnClickOutside(authDropDownRef, () => {
+    if (dropdownVis === true) {
+      setDropownVis(false);
+    }
+  });
+  if (loading) return null;
 
   const loggedOutLinks = (
     <>
@@ -63,7 +72,7 @@ const Navbar = ({
       <Link to={`/club/${orgId}`} className="nav-link hide-sm">
         View Profile
       </Link>
-      <div className="org-menu" href="/signup">
+      <div className="org-menu" href="/signup" ref={authDropDownRef}>
         <div className="org-email" onClick={toggleDropdown}>
           {organizationEmail}
           <i
@@ -90,7 +99,7 @@ const Navbar = ({
 
   return (
     <>
-      <div className={navFixed ? 'header fixed-nav' : 'header'} ref={ref}>
+      <div className="header" ref={ref}>
         <Link to="/" className="nav-link logo">
           sproul.club
         </Link>
@@ -111,6 +120,7 @@ const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
   organizationEmail: state.profile.profile.owner,
   orgId: state.profile.profile.id,
+  loading: state.auth.loading,
 });
 
 export default connect(mapStateToProps, { logout, login })(withRouter(Navbar));

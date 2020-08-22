@@ -21,7 +21,6 @@ import LandingForm from './LandingForm.js';
 const Landing = () => {
   return (
     <div className="landing">
-      <Navbar />
       <div className="content">
         <div className="imageContainer">
           <img src={bearshehe} className="bears" alt="bears" />
@@ -55,12 +54,12 @@ const Landing = () => {
               animateIn="animate__fadeInRight"
               animateOnce={true}
             >
-              <img src={mock1} className="screenshot" alt='mock1'/>
+              <img src={mock1} className="screenshot" alt="mock1" />
             </ScrollAnimation>
           </div>
           <div className="feature2">
             <ScrollAnimation animateIn="animate__fadeInLeft" animateOnce={true}>
-              <img src={mock2} className="screenshot" alt='mock2'/>
+              <img src={mock2} className="screenshot" alt="mock2" />
             </ScrollAnimation>
             <ScrollAnimation animateIn="animate__fadeIn" animateOnce={true}>
               <div className="description">
@@ -92,16 +91,16 @@ const Landing = () => {
               animateIn="animate__fadeInRight"
               animateOnce={true}
             >
-              <img src={mock3} className="screenshot" alt='mock3'/>
+              <img src={mock3} className="screenshot" alt="mock3" />
             </ScrollAnimation>
           </div>
         </div>
         <div className="interestForm" id="interestform">
-            <h2>Now accepting student clubs and organizations!</h2>
-            <div className="form">
-              <LandingForm />
-            </div>
+          <h2>Now accepting student clubs and organizations!</h2>
+          <div className="form">
+            <LandingForm />
           </div>
+        </div>
       </div>
       <Footer />
     </div>

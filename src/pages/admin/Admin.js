@@ -19,7 +19,6 @@ const Admin = ({ profile, events, resources, loadProfile }) => {
 
   return (
     <div className="clubEdit">
-      <Navbar />
       <div className="admin-page">
         <div className="admin-sidebar">
           <Link

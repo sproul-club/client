@@ -11,29 +11,26 @@ import blob2 from './assets/blobblue.png';
 
 const ComingSoon = () => {
   return (
-    <>
-      <div className="comingsoon">
-        <Navbar />
-        <div className="text">
-          <h3>We are almost there</h3>
-          <p>Stay tuned for something amazing.</p>
-          <div className="buttonContainer">
-            <a href="/">Return to home</a>
-          </div>
+    <div className="comingsoon">
+      <div className="text">
+        <h3>We are almost there</h3>
+        <p>Stay tuned for something amazing.</p>
+        <div className="buttonContainer">
+          <a href="/">Return to home</a>
         </div>
-        <div className="dotContainer">
-          <img src={ball1} className="ball1" alt="dot" />
-          <img src={ball2} className="ball2" alt="dot" />
-          <img src={ball3} className="ball3" alt="dot" />
-          <img src={ball4} className="ball4" alt="dot" />
-        </div>
-        <div className="blobContainer">
-          <img src={blob2} className="blob2" alt="blob" />
-          <img src={blob1} className="blob1" alt="blob" />
-        </div>
-        <Footer />
       </div>
-    </>
+      <div className="dotContainer">
+        <img src={ball1} className="ball1" alt="dot" />
+        <img src={ball2} className="ball2" alt="dot" />
+        <img src={ball3} className="ball3" alt="dot" />
+        <img src={ball4} className="ball4" alt="dot" />
+      </div>
+      <div className="blobContainer">
+        <img src={blob2} className="blob2" alt="blob" />
+        <img src={blob1} className="blob1" alt="blob" />
+      </div>
+      <Footer />
+    </div>
   );
 };
 
