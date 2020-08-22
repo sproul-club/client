@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Dropdown from './AdminDropdown.js';
 import { connect } from 'react-redux';
+import store from '../../store';
 import ImageUploader from '../../react-images-upload';
 import { updateProfile, uploadImages } from '../../actions/profile';
 import { tagOptions } from '../../data/tagOptions';
@@ -32,7 +33,6 @@ const Profile = ({ profile, updateProfile, uploadImages, images }) => {
   const [logoImage, setLogoImage] = useState(null);
   const [bannerImage, setBannerImage] = useState(null);
 
-  if (!profile.id) return null;
   const submit = () => {
     const newProfile = {
       name: orgName,

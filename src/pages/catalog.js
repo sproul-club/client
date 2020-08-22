@@ -58,7 +58,7 @@ const Catalog = ({ searchClubs }) => {
 
   return (
     <div className="App">
-      <div className="content catalog-content">
+      <div className="content">
         <div className="sidebar">
           <Accordion
             allowMultipleExpanded

@@ -1,4 +1,8 @@
-import { SEARCH_CLUBS, GET_ORGANIZATION } from '../actions/types';
+import {
+  SEARCH_CLUBS,
+  GET_ORGANIZATION,
+  CLEAR_ORGANIZATION,
+} from '../actions/types';
 
 // const allClubs = Object.keys(catalogData).map((club) => catalogData[club]);
 
@@ -15,6 +19,8 @@ export default function (state = initialState, action) {
       return { ...state, clubs: payload };
     case GET_ORGANIZATION:
       return { ...state, organization: payload };
+    case CLEAR_ORGANIZATION:
+      return { ...state, organization: {} };
     default:
       return state;
   }
