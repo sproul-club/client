@@ -5,6 +5,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 5%;
 }
 
 /* Description styling */
@@ -69,6 +70,7 @@
   align-items: center;
   justify-content: flex-start;
   margin-right: 5%;
+  margin-top: 5%;
 }
 
 .signup .form .formGroup {
@@ -182,12 +184,11 @@
 }
 
 /* Invalid input notice styling */
-.signup .conInputInvalid,
-.emailInputInvalid {
+.signup .conInputInvalid, .emailInputInvalid {
   width: 290px;
   padding: 10px;
   margin: 8px;
-  font-family: montserrat, sans-serif;
+  font-family: roboto, sans-serif;
   font-weight: 400;
   font-style: normal;
   font-size: 12px;
@@ -196,7 +197,7 @@
   color: #4e4e4e;
 }
 
-.signup .conError {
+.conError {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -259,7 +260,7 @@
     opacity 0.6s cubic-bezier(0.58, 0.05, 0.76, 0.89);
 }
 
-.signup .conError img,
+.conError img,
 .emailError img,
 .tagError img,
 .tagErrorNone img {
@@ -268,7 +269,7 @@
   margin-right: 6px;
 }
 
-.signup .conError p,
+.conError p,
 .emailError p,
 .tagError p,
 .tagErrorNone p {
@@ -280,7 +281,7 @@
   line-height: 8px;
 }
 
-.signup .conErrorNone,
+.conErrorNone,
 .emailErrorNone {
   display: none;
 }
@@ -355,11 +356,6 @@
 
 /* Media query for larger screens */
 @media screen and (min-width: 1700px) {
-  .signup .content {
-    margin-top: 40px;
-    margin-bottom: 40px;
-  }
-
   .signup .text h3 {
     font-size: 50px;
   }
@@ -386,8 +382,9 @@
     font-size: 26px;
   }
 
-  .signup .form img {
+  .signup .form .imageContainer img {
     height: 180px;
+    width: auto;
   }
 
   .signup .form .formGroup .userInput {

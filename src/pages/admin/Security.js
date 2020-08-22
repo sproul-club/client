@@ -4,6 +4,8 @@ import { Route, Switch, Link } from 'react-router-dom';
 import './Admin.css';
 import './Security.css';
 import ChangeLogin from './ChangeLogin.js';
+import { connect } from 'react-redux';
+import { updatePassword } from '../../actions/profile';
 
 const Security = () => {
     return (
@@ -33,4 +35,6 @@ const Security = () => {
 
 }
 
-export { Security };
+export default connect(null, { updatePassword })(
+    Security
+  );
