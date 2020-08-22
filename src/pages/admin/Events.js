@@ -151,7 +151,7 @@ const Events = ({ addEvent, updateEvent, deleteEvent, events: eventState }) => {
         Add events related to recruitment, meetings, and other public events!
       </div>
       <div className="formGroup">
-        <div className="events-list">{eventComps}</div>
+        {eventComps}
         <img
           className="add-button"
           src={require('../assets/linkImages/addEvent.png')}
