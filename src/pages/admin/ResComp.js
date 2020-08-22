@@ -61,15 +61,16 @@ const ResComp = (props) => {
       <div className="title-buttons-flex">
         <div className="res-num">Resource #{props.num + 1}</div>
         <div className="del-edit-flex">
-          <img
-            alt="remove"
-            onClick={() => setShowDelModal(true)}
-            src={require('../assets/linkImages/removeLink.png')}
-          />
+          
           <img
             alt="edit"
             onClick={() => setShowEditModal(true)}
             src={require('../assets/linkImages/editLink.png')}
+          />
+          <img
+            alt="remove"
+            onClick={() => setShowDelModal(true)}
+            src={require('../assets/linkImages/removeLink.png')}
           />
         </div>
       </div>
