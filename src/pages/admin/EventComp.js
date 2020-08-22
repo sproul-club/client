@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Modal from '../../layout/Modal';
 import { normalizeUrl } from '../../utils/normalizeUrl';
+import './Events.css';
 
 const EventComp = (props) => {
   /*Tracks input values for edit modal*/
@@ -106,6 +107,65 @@ const EventComp = (props) => {
         setText(propsText);
     }, [propsTitle, propsEventLink, propsStart, propsEnd, propsText]);
 
+    function convertTime(datetime) {
+      var dd = 'AM';
+  
+      var hour = datetime.getUTCHours();
+      var h = hour;
+      if (h >= 12) {
+        hour = h - 12;
+        dd = 'PM';
+      }
+      if (hour === 0) {
+        hour = 12;
+      }
+  
+      var minutes = datetime.getMinutes();
+      minutes = minutes < 10 ? '0' + minutes : minutes;
+      
+      if (minutes === '00') {
+        return hour + dd;
+      }
+  
+      return hour + ':' + minutes + dd;
+    }
+  
+    function formatDate(datetime) {
+      const dayArr = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'];
+  
+      var month = (1 + datetime.getMonth()).toString();
+      var day = datetime.getDate().toString();
+      day = day.length > 1 ? day : '0' + day;
+  
+      var time = convertTime(datetime);
+      
+      return (
+        dayArr[datetime.getDay()] +
+        ' ' +
+        month +
+        '/' +
+        day +
+        ' ' +
+        time
+      );
+    }
+  
+    function formatDates(start, end) {
+      var startDate = new Date(start);
+      var endDate = new Date(end);
+  
+      if (
+        startDate.getDay() === endDate.getDay() &&
+        startDate.getMonth() === endDate.getMonth() &&
+        startDate.getDay() === endDate.getDay() &&
+        startDate.getFullYear() === endDate.getFullYear()
+      ) {
+        return formatDate(startDate) + ' - ' + convertTime(endDate);
+      } else {
+        return formatDate(startDate) + ' - ' + formatDate(endDate);
+      }
+    }
+
   return (
     <div className="event">
         <div className="event-content">
@@ -124,14 +184,20 @@ const EventComp = (props) => {
                     />
                 </div>
             </div>
-            <div className="del-edit-flex">
             <div className="event-date">
-                    {propsStart} - {propsEnd}
+                    {formatDates(propsStart, propsEnd)}
                 </div>
-            </div>
             <div className="event-description">
                 {propsText}
             </div>
+            <a href={propsEventLink} className="event-link" target="_blank" without rel="noopener noreferrer">
+              Event Link
+              <img
+                alt="resources"
+                id="link"
+                src={require('../assets/linkImages/resLink.png')}
+              />
+            </a>
         </div>
 
       {/*EDIT EVENT MODAL*/}
