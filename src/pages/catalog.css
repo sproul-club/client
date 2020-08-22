@@ -123,11 +123,15 @@
   border: none;
 }
 
-.checkbox > label {
-  margin-left: 2px;
+.checkbox {
+  margin-left: 3px;
   display: flex;
   flex-direction: row-reverse;
   justify-content: flex-end;
+}
+
+.checkbox > label {
+  margin-top: 1px;
 }
 
 .App .content {

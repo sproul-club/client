@@ -39,10 +39,17 @@ const App = () => {
           <Route path="/catalog" component={ComingSoon} />
           <Route exact path="/signup" component={ComingSoon} />
           <Route exact path="/signin" component={ComingSoon} />
+<<<<<<< HEAD
           <Route exact path="/recover" component={ComingSoon} />          
           <Route exact path="/resetpassword" component={ComingSoon} />          
           <Route exact path="/club/:id" component={ComingSoon} />
           <Route exact path="/security" component={ComingSoon} />
+=======
+          <Route exact path="/recover" component={ComingSoon} />
+          <Route exact path="/resetpassword" component={ComingSoon} />
+          <Route exact path="/club/:id" component={ComingSoon} />
+          <PrivateRoute exact path="/security" component={ComingSoon} />
+>>>>>>> 4c95ec64a8a72e7119331509a63f70303622dac8
           <Route>{'404'}</Route>
         </Switch>
       </Router>
