@@ -3,7 +3,6 @@ import './Admin.css';
 import { loadProfile } from '../../actions/profile';
 import { Route, Switch, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import Navbar from '../../layout/Navbar';
 import Profile from './Profile';
 import ContactInfo from './ContactInfo';
 import GetInvolved from './GetInvolved';
@@ -14,8 +13,6 @@ const Admin = ({ profile, events, resources, loadProfile }) => {
   useEffect(() => {
     if (profile.id.length === 0) loadProfile();
   }, [loadProfile]);
-  // Reloads the component if profile id changes (fixes error profile not load on login)
-  useEffect(() => {}, [profile.id]);
 
   return (
     <div className="clubEdit">
@@ -91,7 +88,7 @@ const Admin = ({ profile, events, resources, loadProfile }) => {
               path="/admin/events"
               render={() => <Events events={events} />}
             />
-            <Route path="/admin" render={() => <Profile profile={profile} />} />
+            <Route path="/admin" render={() => <Profile />} />
           </Switch>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Dropdown from './AdminDropdown.js';
 import { connect } from 'react-redux';
 import ImageUploader from '../../react-images-upload';
@@ -6,7 +6,6 @@ import { updateProfile, uploadImages } from '../../actions/profile';
 import { tagOptions } from '../../data/tagOptions';
 
 const Profile = ({ profile, updateProfile, uploadImages, images }) => {
-
   var appOptions = [
     { value: 1, label: 'Application required' },
     { value: 0, label: 'No application required' },
@@ -17,6 +16,8 @@ const Profile = ({ profile, updateProfile, uploadImages, images }) => {
     { value: 0, label: 'Not accepting members' },
   ];
 
+
+  const [tagError, setTagError] = useState('tagErrorNone');
   const [orgName, setOrgName] = useState(profile.name);
   const [orgEmail, setOrgEmail] = useState(profile.owner);
   const [descr, setDescr] = useState(profile.about_us);
@@ -88,7 +89,7 @@ const Profile = ({ profile, updateProfile, uploadImages, images }) => {
         </div>
         <p className="subtitle">
           This setting cannot be changed. Please contact{' '}
-          <span style={{ color: '#54a0f1' }}>sproul.club@gmail.com</span> for
+          <a target="_blank" href="mailto:sproul.club@gmail.com"><span style={{ color: '#54a0f1' }}>sproul.club@gmail.com</span></a> for
           further assistance.
         </p>
         <div className="formElement">
@@ -195,6 +196,7 @@ const Profile = ({ profile, updateProfile, uploadImages, images }) => {
 };
 
 const mapStateToProps = (state) => ({
+  profile: state.profile.profile,
   images: state.profile.images,
 });
 

@@ -10,9 +10,11 @@ import {
   ADD_RESOURCE,
   UPDATE_RESOURCE,
   DELETE_RESOURCE,
+  UPDATE_PASSWORD,
 } from './types';
 import FormData from 'form-data';
 import setAuthToken from '../utils/setAuthToken';
+import { refreshToken } from './auth';
 
 // Load Profile
 export const loadProfile = () => async (dispatch) => {
@@ -23,7 +25,7 @@ export const loadProfile = () => async (dispatch) => {
 
   try {
     const res = await axios.get('/api/admin/profile');
-
+    dispatch(refreshToken());
     dispatch({ type: LOAD_PROFILE, payload: res.data });
   } catch (err) {
     dispatch({ type: LOAD_PROFILE_ERROR, payload: err });
@@ -60,7 +62,6 @@ export const updateProfile = (formData) => async (dispatch) => {
 // Upload Banner or Logo
 export const uploadImages = (images) => async (dispatch) => {
   try {
-
     let data = new FormData();
     images.logo && data.append('logo', images.logo);
     images.banner && data.append('banner', images.banner);
@@ -199,5 +200,22 @@ export const deleteResource = (id) => async (dispatch) => {
     dispatch({ type: DELETE_RESOURCE, payload: res.data });
   } catch (err) {
     console.log(err);
+  }
+};
+
+export const updatePassword = (formData) => async (dispatch) => {
+  try {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+      },
+    };
+    const event = JSON.stringify(formData);
+    console.log(event);
+    const res = await axios.post('/api/admin/change-password', event, config);
+    dispatch({ type: UPDATE_PASSWORD, payload: res.data });
+  } catch (err) {
+    console.log(err.response);
   }
 };

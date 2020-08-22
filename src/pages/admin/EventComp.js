@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Modal from '../../layout/Modal';
 import { normalizeUrl } from '../../utils/normalizeUrl';
-import './Events.css';
-
+ 
 const EventComp = (props) => {
   /*Tracks input values for edit modal*/
   const [title, setTitle] = useState('');
@@ -12,14 +11,14 @@ const EventComp = (props) => {
   const [endDate, setEndDate] = useState('');
   const [endTime, setEndTime] = useState('');
   const [text, setText] = useState('');
-
+ 
   /*Tracks current values in saved resources array*/
   const [propsTitle, setPropsTitle] = useState(props.data.name);
   const [propsEventLink, setPropsEventLink] = useState(props.data.link);
   const [propsStart, setPropsStart] = useState(props.data.event_start);
   const [propsEnd, setPropsEnd] = useState(props.data.event_end);
   const [propsText, setPropsText] = useState(props.data.description);
-
+ 
   /*Control displaying of each modal*/
   const [showEditModal, setShowEditModal] = useState(false);
   const [showDelModal, setShowDelModal] = useState(false);
@@ -34,13 +33,13 @@ const EventComp = (props) => {
         setPropsEnd(endDate.concat(' ' + endTime));
         setPropsText(text);
     }
-
+ 
     /*Removes selected resource from main resource array*/
     function singleDelete() {
         props.removeEvent(props.data.id);
         setShowDelModal(false);
     }
-
+ 
     function cancelEdit() {
         setShowEditModal(false);
         setTitle(propsTitle);
@@ -49,7 +48,7 @@ const EventComp = (props) => {
         // setEnd(propsEnd)
         setText(propsText);
     }
-
+ 
     /*onChange functions for edit modal*/
     function changeTitle(event) {
         setTitle(event.target.value);
@@ -78,7 +77,58 @@ const EventComp = (props) => {
       function changeText(event) {
         setText(event.target.value);
     }
-
+ 
+    function convertTime(datetime) {
+      var dd = ' AM'
+  
+      var hour = datetime.getUTCHours();
+      hour = hour - 7;
+      if (hour < 0) {
+        hour = hour + 24
+      }
+      var h = hour;
+      if (h >= 12) {
+        hour = h - 12;
+        dd = ' PM';
+      }
+      if (hour == 0) {
+        hour = 12;
+      }
+  
+      var minutes = datetime.getMinutes();
+      minutes = minutes < 10 ? "0" + minutes : minutes;
+  
+      return hour + ':' + minutes + dd
+    }
+  
+    function formatDate(datetime) {
+      const dayArr = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat']
+      const monthArr = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+      
+      var month = (monthArr[datetime.getMonth()])
+  
+      var day = datetime.getDate().toString();
+      var year = datetime.getFullYear();
+      day = day.length > 1 ? day : '0' + day;
+  
+      var time = convertTime(datetime);
+      return dayArr[datetime.getDay()] + ', ' + month + ' ' + day + ', ' + time;
+    }
+  
+    function formatDates(start, end) {
+      var startDate = new Date(start);
+      var endDate = new Date(end);
+  
+      if (startDate.getDay() == endDate.getDay() && startDate.getMonth() == endDate.getMonth() && 
+      startDate.getDay() == endDate.getDay() && startDate.getFullYear() == endDate.getFullYear()) {
+        return formatDate(startDate) + ' - ' + convertTime(endDate) + ' PT';
+      }
+      else {
+        return formatDate(startDate) + ' - ' + formatDate(endDate) + ' PT';
+      }
+    }
+  
+ 
     /*Update states to reflect current value in array*/
     if (propsTitle !== props.data.name) {
         setPropsTitle(props.data.name);
@@ -95,7 +145,7 @@ const EventComp = (props) => {
     if (propsText !== props.data.description) {
         setPropsText(props.data.description);
     }
-
+ 
     /*Updates entries in the edit modal to reflect saved resources*/
     useEffect(() => {
         setTitle(propsTitle);
@@ -106,100 +156,40 @@ const EventComp = (props) => {
         setEndTime(propsEnd.substring(11, 16));
         setText(propsText);
     }, [propsTitle, propsEventLink, propsStart, propsEnd, propsText]);
-
-    function convertTime(datetime) {
-      var dd = 'AM';
-  
-      var hour = datetime.getUTCHours();
-      var h = hour;
-      if (h >= 12) {
-        hour = h - 12;
-        dd = 'PM';
-      }
-      if (hour === 0) {
-        hour = 12;
-      }
-  
-      var minutes = datetime.getMinutes();
-      minutes = minutes < 10 ? '0' + minutes : minutes;
-      
-      if (minutes === '00') {
-        return hour + dd;
-      }
-  
-      return hour + ':' + minutes + dd;
-    }
-  
-    function formatDate(datetime) {
-      const dayArr = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'];
-  
-      var month = (1 + datetime.getMonth()).toString();
-      var day = datetime.getDate().toString();
-      day = day.length > 1 ? day : '0' + day;
-  
-      var time = convertTime(datetime);
-      
-      return (
-        dayArr[datetime.getDay()] +
-        ' ' +
-        month +
-        '/' +
-        day +
-        ' ' +
-        time
-      );
-    }
-  
-    function formatDates(start, end) {
-      var startDate = new Date(start);
-      var endDate = new Date(end);
-  
-      if (
-        startDate.getDay() === endDate.getDay() &&
-        startDate.getMonth() === endDate.getMonth() &&
-        startDate.getDay() === endDate.getDay() &&
-        startDate.getFullYear() === endDate.getFullYear()
-      ) {
-        return formatDate(startDate) + ' - ' + convertTime(endDate);
-      } else {
-        return formatDate(startDate) + ' - ' + formatDate(endDate);
-      }
-    }
-
+ 
   return (
     <div className="event">
         <div className="event-content">
             <div className="event-content-header">
-                <div className="event-title">{propsTitle}</div>
+              <div id="title-date">
+                <div id="title-link">
+                  <div className="event-title">{propsTitle}</div>
+                  <a href={propsEventLink} target="_blank">
+                    <img src={require('../assets/linkImages/resLink.png')}/>
+                  </a>
+                </div>
+                <div className="event-date">
+              {formatDates(propsStart, propsEnd)}
+                </div>
+              </div>
                 <div className="buttonsWrapper">
-                    <img
-                    alt="remove"
-                    onClick={() => setShowDelModal(true)}
-                    src={require('../assets/linkImages/removeLink.png')}
-                    />
                     <img
                         alt="edit"
                         onClick={() => setShowEditModal(true)}
                         src={require('../assets/linkImages/editLink.png')}
                     />
+                    <img
+                    alt="remove"
+                    onClick={() => setShowDelModal(true)}
+                    src={require('../assets/linkImages/removeLink.png')}
+                    />
                 </div>
             </div>
-            <div className="event-date">
-                    {formatDates(propsStart, propsEnd)}
-                </div>
             <div className="event-description">
                 {propsText}
             </div>
-            <a href={propsEventLink} className="event-link" target="_blank" without rel="noopener noreferrer">
-              Event Link
-              <img
-                alt="resources"
-                id="link"
-                src={require('../assets/linkImages/resLink.png')}
-              />
-            </a>
         </div>
-
+ 
       {/*EDIT EVENT MODAL*/}
       <Modal showModal={showEditModal} setShowModal={setShowEditModal}>
         <div className = "eventModal">
@@ -280,7 +270,7 @@ const EventComp = (props) => {
           </button>
         </div>
       </Modal>
-
+ 
       {/*DELETE RESOURCE MODAL*/}
       <Modal showModal={showDelModal} setShowModal={setShowDelModal}>
         <div className="del-modal">
@@ -298,5 +288,5 @@ const EventComp = (props) => {
     </div>
   );
 }
-
+ 
 export default EventComp;

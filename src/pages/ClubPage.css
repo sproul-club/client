@@ -278,12 +278,12 @@
   margin-right: 10px;
   border-bottom: 2px solid currentColor;
   border-right: 2px solid currentColor;
-  transform: rotate(-135deg);
+  transform: rotate(45deg);
 }
 
 .accordion__button-club[aria-expanded='true']::before,
 .accordion__button-club[aria-selected='true']::before {
-  transform: rotate(45deg);
+  transform: rotate(-135deg);
 }
 
 [hidden] {

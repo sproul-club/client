@@ -1,28 +1,73 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import { updatePassword } from '../../actions/profile';
+import { Link } from 'react-router-dom';
+import 'react-notifications/lib/notifications.css';
+import {NotificationManager, NotificationContainer} from 'react-notifications';
 
-const ChangeLogin = () => {
+const ChangeLogin = ({ updatePassword }) => {
     const [editing, setEditing] = useState(false);
     const [showSave, setSave] = useState("saveButtonHide");
     const [showCancel, setCancel] = useState("cancelButtonHide");
 
-    const swapper = () => {
+    const [conError, setConError] = useState('conErrorNone');
+    const [conInvalid, setConInvalid] = useState('userInput');
+
+    const [oldPW, setOldPW] = useState('');
+    const [newPW, setNewPW] = useState('');
+    const [conPW, setConPW] = useState('');
+
+    const openEdit = () => {
         setEditing(!editing);
-        if (showSave === "saveButtonHide") {
-            setSave("saveButton");
-        } else {
-            setSave("saveButtonHide");
+        setSave("saveButton");
+        setCancel("cancelButton");
+    }
+
+    const conChange = (event) => {
+        setConPW(event.target.value);
+        setConInvalid('userInput');
+        setConError('conErrorNone');
+      };
+
+    const cancelSave = () => {
+        setEditing(!editing);
+        setSave("saveButtonHide");
+        setCancel("cancelButtonHide");
+        setConInvalid('userInput');
+        setConError('conErrorNone');
+        setNewPW('');
+        setOldPW('');
+        setConPW('');
+    }
+
+    const save = () => {
+        if (newPW !== conPW || newPW ==='') {
+            setConInvalid('conInputInvalid');
+            setConError('conError');
+            return;
         }
-        if (showCancel === "cancelButtonHide") {
-            setCancel("cancelButton");
-        } else {
-            setCancel("cancelButtonHide");
+
+        const data = {
+            "old_password": oldPW,
+            "new_password": newPW
         }
+
+        updatePassword(data);
+        setEditing(!editing);
+        setSave("saveButtonHide");
+        setCancel("cancelButtonHide");
+        setNewPW('');
+        setOldPW('');
+        setConPW('');
+
+        NotificationManager.success("Password successfully changed!", '', 1500);
     }
 
     const swap = (condition) => {
         switch(condition) {
             case true:
                 return (
+                    <div>
                     <div className="formGroup">
                         <div className="formElement">
                         <p>
@@ -30,19 +75,20 @@ const ChangeLogin = () => {
                         </p>
                         <input
                             className="userInput"
-                            // value={email}
-                            // onChange={(e) => setEmail(e.target.value)}
+                            value={oldPW}
+                            onChange={e => setOldPW(e.target.value)}
                             type="password"
                         />
                         </div>
+                        <Link to="/recovery" className="subtitle">Forgot password?</Link>
                         <div className="formElement">
                         <p>
                             New password
                         </p>
                         <input
                             className="userInput"
-                            // value={email}
-                            // onChange={(e) => setEmail(e.target.value)}
+                            value={newPW}
+                            onChange={e => setNewPW(e.target.value)}
                             type="password"
                         />
                         </div>
@@ -51,15 +97,16 @@ const ChangeLogin = () => {
                             Confirm new password
                         </p>
                         <input
-                            className="userInput"
-                            // value={email}
-                            // onChange={(e) => setEmail(e.target.value)}
+                            className={conInvalid}
+                            value={conPW}
+                            onChange={conChange}
                             type="password"
                         />
                         </div>
-                        <a href="/recovery" className="subtitle">
-                            Forgot your password?
-                        </a>
+                        <div className={conError}>
+                            Passwords don't match or left blank.
+                        </div>
+                    </div>
                     </div>
                 );
 
@@ -69,7 +116,7 @@ const ChangeLogin = () => {
                         <div className="changePasswordHeader">
                             <h3>Change Password</h3>
                             <button
-                            onClick={swapper}
+                            onClick={openEdit}
                             >
                                 Edit
                             </button>
@@ -89,13 +136,17 @@ const ChangeLogin = () => {
             <div className="formGroup">
                 {swap(editing)}
             </div>
-            <button className={showSave} onClick={swapper}>
+            <button className={showSave} onClick={save}>
                 Save changes
             </button>
-            <button className={showCancel} onClick={swapper}>
+            <button className={showCancel} onClick={cancelSave}>
                 Cancel
             </button>
+            <NotificationContainer />
         </div>
     )
 }
-export default ChangeLogin ;
+
+export default connect(null, { updatePassword })(
+    ChangeLogin
+  );

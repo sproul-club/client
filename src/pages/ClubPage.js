@@ -7,8 +7,6 @@ import { getOrganization } from '../actions/catalog';
 import { connect } from 'react-redux';
 
 function ClubPage({ data, clubId, organization, getOrganization }) {
-  console.log(organization);
-
   useEffect(() => {
     if (organization.id !== clubId) getOrganization(clubId);
   });
