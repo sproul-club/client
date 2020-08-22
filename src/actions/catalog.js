@@ -40,7 +40,6 @@ export const searchClubs = ({
     const params = JSON.stringify({ search, tags, app_required, new_members });
 
     const res = await axios.post('/api/catalog/search', params, config);
-
     dispatch({ type: SEARCH_CLUBS, payload: res.data });
   } catch (err) {
     console.log(err);
@@ -51,7 +50,6 @@ export const getOrganization = (orgId) => async (dispatch) => {
   try {
     const res = await axios.get(`/api/catalog/organizations/${orgId}`);
 
-    console.log('res:', res);
     dispatch({ type: GET_ORGANIZATION, payload: res.data });
   } catch (err) {
     console.log(err);
