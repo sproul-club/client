@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import './ResetPassword.css';
 import image from './assets/register.png';
 
@@ -37,15 +36,16 @@ const StepOne = (props) => {
         <div className="imgContainer one">
             <img src={image} alt="forgot password" />
         </div>
-        <div className="text">
+        <div className="close text">
             <h2>Reset your password</h2>
+            <p>Enter your club's Callink email.</p>
         </div>
         <input
             className="userInput"
             type="text"
+            placeholder="e.g. organizationname@gmail.com"
             onChange={(e) => props.setEmail(e.target.value)}
         />
-        <Link to="/recover" className="forgotEmail">Forgot email?</Link>
         <button onClick={props.submitEmail} className="button submitEmail">
           Submit
         </button>
