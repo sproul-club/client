@@ -39,10 +39,10 @@ const App = () => {
           <Route path="/catalog" component={Catalog} />
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/signin" component={SignIn} />
-          <Route exact path="/recover" component={ComingSoon} />
-          <Route exact path="/resetpassword" component={ComingSoon} />
+          <Route exact path="/recover" component={ResetPassword} />          
+          <Route exact path="/resetpassword" component={ResetPassword2} />          
           <Route exact path="/club/:id" component={ComingSoon} />
-          <PrivateRoute exact path="/security" component={Security} />
+          <Route exact path="/security" component={Security} />
           <Route>{'404'}</Route>
         </Switch>
       </Router>

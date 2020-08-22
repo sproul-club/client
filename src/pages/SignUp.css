@@ -1,7 +1,7 @@
 /* Overall page content layout */
 .signup .content {
-  padding-top: 87px;
-  min-height: calc(100vh - 87px - 61px);
+  padding-top: 86.6px;
+  min-height: calc(100vh - 86.6px - 82.6px);
   display: flex;
   justify-content: center;
   align-items: center;
