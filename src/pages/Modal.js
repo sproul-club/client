@@ -31,7 +31,7 @@ const data = {
 };
 
 const Modal = ({ match, history }) => {
-  console.log(history);
+  
   const back = (e) => {
     e.stopPropagation();
     history.push(`/catalog`);

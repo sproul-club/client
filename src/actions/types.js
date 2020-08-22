@@ -6,7 +6,9 @@ export const LOAD_PROFILE_ERROR = 'LOAD_PROFILE_ERROR';
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const CLEAR_PROFILE = 'CLEAR_PROFILE';
+export const REFRESH_TOKEN = 'REFRESH_TOKEN';
 export const LOGOUT = 'LOGOUT';
+export const AUTH_ERROR = 'AUTH_ERROR';
 
 export const UPDATE_PROFILE = 'UPDATE_PROFILE';
 export const UPDATE_EVENT = 'UPDATE_EVENT';

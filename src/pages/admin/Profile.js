@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Dropdown from './AdminDropdown.js';
 import { connect } from 'react-redux';
 import ImageUploader from '../../react-images-upload';
@@ -218,6 +218,7 @@ const Profile = ({ profile, updateProfile, uploadImages, images }) => {
 };
 
 const mapStateToProps = (state) => ({
+  profile: state.profile.profile,
   images: state.profile.images,
 });
 
