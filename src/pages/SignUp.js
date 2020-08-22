@@ -6,8 +6,6 @@ import Footer from '../layout/Footer';
 
 const SignUp = () => {
   return (
-    <>
-      <Navbar />
       <div className="signup">
         <div className="content">
           <div className="text">
