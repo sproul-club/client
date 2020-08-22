@@ -9,6 +9,7 @@ export const LOGOUT = 'LOGOUT';
 
 export const UPDATE_PROFILE = 'UPDATE_PROFILE';
 export const UPDATE_EVENT = 'UPDATE_EVENT';
+export const UPLOAD_IMAGES = 'UPLOAD_IMAGES';
 export const DELETE_EVENT = 'DELETE_EVENT';
 export const ADD_EVENT = 'ADD_EVENT';
 export const ADD_RESOURCE = 'ADD_RESOURCE';

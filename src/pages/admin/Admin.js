@@ -12,7 +12,7 @@ import Resources from './Resources';
 
 const Admin = ({ profile, events, resources, loadProfile }) => {
   useEffect(() => {
-    loadProfile();
+    if (profile.id.length === 0) loadProfile();
   }, [loadProfile]);
   return (
     <div className="clubEdit">

@@ -3,6 +3,7 @@ import {
   LOAD_PROFILE,
   LOAD_PROFILE_ERROR,
   UPDATE_PROFILE,
+  UPLOAD_IMAGES,
   ADD_EVENT,
   UPDATE_EVENT,
   DELETE_EVENT,
@@ -10,6 +11,7 @@ import {
   UPDATE_RESOURCE,
   DELETE_RESOURCE,
 } from './types';
+import FormData from 'form-data';
 import setAuthToken from '../utils/setAuthToken';
 
 // Load Profile
@@ -55,7 +57,33 @@ export const updateProfile = (formData) => async (dispatch) => {
   }
 };
 
-// TODO
+// Upload Banner or Logo
+export const uploadImages = (images) => async (dispatch) => {
+  try {
+    console.log('imags', images);
+
+    let data = new FormData();
+    images.logo && data.append('logo', images.logo);
+    images.banner && data.append('banner', images.banner);
+    console.log('data', data);
+    const config = {
+      headers: {
+        accept: 'application/json',
+        'Accept-Language': 'en-US,en;q=0.8',
+        'Content-Type': `multipart/form-data; boundary=${data._boundary}`,
+      },
+    };
+    console.log('images', images);
+
+    const res = await axios.post('/api/admin/upload-images', data, config);
+
+    console.log('image upload response', res);
+    dispatch({ type: UPLOAD_IMAGES, payload: res.data });
+  } catch (err) {
+    console.log(err.response);
+  }
+};
+
 // Add Event
 // This does not work if they do not enter the right type of link?
 export const addEvent = (formData) => async (dispatch) => {
@@ -68,11 +96,9 @@ export const addEvent = (formData) => async (dispatch) => {
     };
 
     const event = JSON.stringify(formData);
-    console.log(event);
 
     const res = await axios.post('/api/admin/events', event, config);
 
-    console.log(res);
     dispatch({ type: ADD_EVENT, payload: res.data });
   } catch (err) {
     console.log(err.response);
@@ -116,7 +142,6 @@ export const deleteEvent = (id) => async (dispatch) => {
   }
 };
 
-// TODO
 // Add Resource
 export const addResource = (formData, resources) => async (dispatch) => {
   try {
@@ -130,8 +155,6 @@ export const addResource = (formData, resources) => async (dispatch) => {
     const resource = JSON.stringify(formData);
 
     const res = await axios.post('/api/admin/resources', resource, config);
-
-    console.log(res);
     dispatch({ type: ADD_RESOURCE, payload: res.data });
   } catch (err) {
     console.log(err);
@@ -150,8 +173,8 @@ export const updateResource = (resourceId, resourceInfo) => async (
       },
     };
     const resource = JSON.stringify(resourceInfo);
-    // This will hit the api that will add the event, and return the new data with event added
-    // and then update the profile information in state to be correct
+    // Hits API to update resource, returns new data with resource added
+    //  then update the profile information in state to be correct
     const res = await axios.put(
       `/api/admin/resources/${resourceId}`,
       resource,
@@ -172,8 +195,8 @@ export const deleteResource = (id) => async (dispatch) => {
         'Access-Control-Allow-Origin': '*',
       },
     };
-    // This will hit the api that will add the event, and return the new data with event added
-    // and then update the profile information in state to be correct
+    // Hits API to delete resource, returns new data with resource added
+    //  then update the profile information in state to be correct
     const res = await axios.delete(`/api/admin/resources/${id}`, config);
 
     dispatch({ type: DELETE_RESOURCE, payload: res.data });

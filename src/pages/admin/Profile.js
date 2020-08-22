@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import Dropdown from './AdminDropdown.js';
 import { connect } from 'react-redux';
 import ImageUploader from '../../react-images-upload';
-import { updateProfile } from '../../actions/profile';
+import { updateProfile, uploadImages } from '../../actions/profile';
 
-const Profile = ({ profile, updateProfile }) => {
+const Profile = ({ profile, updateProfile, uploadImages, images }) => {
   var tagOptions = [
     { label: 'Advocacy', value: 0 },
     { label: 'Business', value: 1 },
@@ -51,6 +51,8 @@ const Profile = ({ profile, updateProfile }) => {
   const [recruiting, setRecruit] = useState(
     recruitOptions[profile.new_members === true ? 0 : 1]
   );
+  const [logoImage, setLogoImage] = useState(null);
+  const [bannerImage, setBannerImage] = useState(null);
 
   const submit = () => {
     const newProfile = {
@@ -61,6 +63,19 @@ const Profile = ({ profile, updateProfile }) => {
       new_members: !!recruiting.value,
     };
     updateProfile(newProfile);
+    let newImages;
+    console.log('raw images', bannerImage, logoImage);
+    if (logoImage && bannerImage) {
+      newImages = { logo: logoImage[0], banner: bannerImage[0] };
+    } else if (logoImage) {
+      newImages = { logo: logoImage[0] };
+    } else if (bannerImage) {
+      newImages = { banner: bannerImage[0] };
+    } else {
+      return;
+    }
+    console.log('new images', newImages);
+    uploadImages(newImages);
   };
 
   const descrChange = (e) => {
@@ -153,7 +168,10 @@ const Profile = ({ profile, updateProfile }) => {
             singleImage={true}
             withPreview={true}
             buttonText="Choose image"
-            onChange={(e) => console.log(e)}
+            onChange={(e) => {
+              console.log(e);
+              setLogoImage(e);
+            }}
             imgExtension={['.jpg', '.gif', '.png', '.gif']}
             maxFileSize={5242880}
           />
@@ -203,4 +221,10 @@ const Profile = ({ profile, updateProfile }) => {
   );
 };
 
-export default connect(null, { updateProfile })(Profile);
+const mapStateToProps = (state) => ({
+  images: state.profile.images,
+});
+
+export default connect(mapStateToProps, { updateProfile, uploadImages })(
+  Profile
+);
