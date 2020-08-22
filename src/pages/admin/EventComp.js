@@ -185,6 +185,14 @@ const EventComp = (props) => {
             <div className="event-description">
                 {propsText}
             </div>
+            <a href={propsEventLink} className="event-link" target="_blank" without rel="noopener noreferrer">
+              Event Link
+              <img
+                alt="resources"
+                id="link"
+                src={require('../assets/linkImages/resLink.png')}
+              />
+            </a>
         </div>
 
       {/*EDIT EVENT MODAL*/}
