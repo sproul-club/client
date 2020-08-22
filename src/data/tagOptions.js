@@ -7,7 +7,7 @@ export const tagOptions = [
   { label: 'Computer Science', value: 5 },
   { label: 'Consulting', value: 6 },
   { label: 'Cultural', value: 7 },
-  { label: 'Design', value: 7 },
+  { label: 'Design', value: 8 },
   { label: 'Engineering', value: 9 },
   { label: 'Environmental', value: 10 },
   { label: 'Health', value: 11 },
