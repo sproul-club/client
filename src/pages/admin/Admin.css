@@ -1,5 +1,5 @@
 .clubEdit {
-  height: 100vh;
+  height: calc(100vh - 87px);
   overflow-y: hidden;
   padding-top: 87px;
 }

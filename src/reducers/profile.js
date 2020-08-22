@@ -12,6 +12,7 @@ import {
 } from '../actions/types';
 
 const initialState = {
+  owner: '',
   profile: {
     id: '',
     name: '',
@@ -36,11 +37,14 @@ export default function (state = initialState, action) {
 
   switch (type) {
     case LOAD_PROFILE:
+      const { logo_url, banner_url } = payload;
       return {
         ...state,
         profile: payload,
+        owner: payload.owner,
         resources: payload.resources,
         events: payload.events,
+        images: { logo_url, banner_url },
       };
     case UPDATE_PROFILE:
       return { ...state, profile: payload };

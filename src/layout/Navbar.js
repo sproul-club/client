@@ -17,18 +17,6 @@ const Navbar = ({
 }) => {
   const [navbarVis, setNavbarVis] = useState(false);
   const [dropdownVis, setDropownVis] = useState(false);
-  const [navFixed, setNavFixed] = useState(false);
-
-  useEffect(() => {
-    window.addEventListener('scroll', () => {
-      if (window.scrollY === 0) {
-        setNavFixed(false);
-      } else if (window.scrollY > 50) {
-        setNavFixed(true);
-      }
-    });
-  });
-  useEffect(() => {}, [organizationEmail]);
 
   const toggleNavbar = () => setNavbarVis((navbarVis) => !navbarVis);
   const toggleDropdown = () => setDropownVis((dropdownVis) => !dropdownVis);
@@ -48,6 +36,7 @@ const Navbar = ({
       setDropownVis(false);
     }
   });
+
   if (loading) return null;
 
   const loggedOutLinks = (
@@ -118,7 +107,7 @@ const Navbar = ({
 
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
-  organizationEmail: state.profile.profile.owner,
+  organizationEmail: state.profile.owner,
   orgId: state.profile.profile.id,
   loading: state.auth.loading,
 });
