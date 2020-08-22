@@ -4,8 +4,11 @@ import MultiStepForm from './SignUpForm.js';
 import Footer from '../layout/Footer';
 
 const SignUp = () => {
+  // const isHeaderOpen = props.active ? 'active' : 'muted';
+
   return (
       <div className="signup">
+      {/* <div className={`signup ${isHeaderOpen}`}> */}
         <div className="content">
           <div className="text">
             <h3>Let's get started.</h3>

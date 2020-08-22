@@ -10,7 +10,8 @@
 /* Description styling */
 .signup .text {
   margin-left: 5%;
-  margin-right: 10%;
+  margin-right: 9%;
+  max-width: 550px;
 }
 
 .signup .text h3 {
@@ -68,7 +69,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  margin-right: 5%;
+  margin-right: 6%;
 }
 
 .signup .form .formGroup {
@@ -187,7 +188,7 @@
   width: 290px;
   padding: 10px;
   margin: 8px;
-  font-family: montserrat, sans-serif;
+  font-family: roboto, sans-serif;
   font-weight: 400;
   font-style: normal;
   font-size: 12px;
@@ -196,55 +197,58 @@
   color: #4e4e4e;
 }
 
-.signup .conError {
+.signup .error {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   position: absolute;
+  background: #faf5cc;
+  z-index: 1;
+  opacity: 0.9;
+  border-radius: 6px;
+  padding-left: 8px;
+  padding-right: 8px;
+  box-shadow: 3px 3px 5px rgb(0, 0, 0, 0.2);
+}
+
+.signup .error.conError {
   margin-left: 150px;
   margin-top: 320px;
-  background: white;
-  border-radius: 6px;
-  padding-left: 8px;
-  padding-right: 8px;
-  box-shadow: 3px 3px 5px rgb(0, 0, 0, 0.2);
 }
 
-.signup .emailError {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
+.signup .error.emailError {
   margin-left: 214px;
   margin-top: 214px;
-  background: white;
-  border-radius: 6px;
-  padding-left: 8px;
-  padding-right: 8px;
-  box-shadow: 3px 3px 5px rgb(0, 0, 0, 0.2);
 }
 
-.signup .tagError,
-.tagErrorNone {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
+.signup .error.tagError,
+.error.tagErrorNone {
   margin-left: 160px;
   margin-top: 163px;
-  background: white;
-  border-radius: 6px;
-  padding-left: 8px;
-  padding-right: 8px;
-  box-shadow: 3px 3px 5px rgb(0, 0, 0, 0.2);
+}
+
+.signup .error.emptyError1 {
+  margin-left: 195px;
+  margin-top: 189px;
+}
+
+.signup .error.emptyError2 {
+  margin-left: 195px;
+  margin-top: 243px;
+}
+
+.signup .error.emptyError3 {
+  margin-left: 195px;
+  margin-top: 296px;
 }
 
 .signup .conError,
 .emailError,
-.tagError {
+.tagError, 
+.emptyError1,
+.emptyError2,
+.emptyError3 {
   /* transition to visible popup */
   visibility: visible;
   opacity: 1;
@@ -262,7 +266,10 @@
 .signup .conError img,
 .emailError img,
 .tagError img,
-.tagErrorNone img {
+.tagErrorNone img,
+.emptyError1 img,
+.emptyError2 img,
+.emptyError3 img {
   height: 14px;
   width: 14px;
   margin-right: 6px;
@@ -271,7 +278,10 @@
 .signup .conError p,
 .emailError p,
 .tagError p,
-.tagErrorNone p {
+.tagErrorNone p,
+.emptyError1 p,
+.emptyError2 p,
+.emptyError3 p {
   color: #ff2d2d;
   font-family: montserrat, sans-serif;
   font-weight: 700;
@@ -280,8 +290,10 @@
   line-height: 8px;
 }
 
-.signup .conErrorNone,
-.emailErrorNone {
+.signup .error.conErrorNone,
+.error.emailErrorNone,
+.error.emptyErrorNone,
+.error.unset {
   display: none;
 }
 
