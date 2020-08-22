@@ -19,7 +19,7 @@ const GetInvolved = ({ profile, updateProfile }) => {
     <div>
       <h3>How to get involved</h3>
       <div className="admin-text">
-        Let propspective members know how to join or be part of your
+        Let prospective members know how to join or be part of your
         organization!
       </div>
       <div className="formGroup">

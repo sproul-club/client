@@ -102,7 +102,7 @@ function GridComponent(props) {
   ));
   return (
     <div className="wrapper">
-      <Grid container spacing={3} className="card-grid">
+      <Grid container spacing={2} className="card-grid">
         {GridList}
       </Grid>
     </div>

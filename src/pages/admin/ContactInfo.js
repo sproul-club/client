@@ -52,7 +52,7 @@ const ContactInfo = ({ profile, updateProfile }) => {
             className="userInput"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="+  Add a link"
+            placeholder="+  Add your organization's email"
             type="text"
           />
         </div>

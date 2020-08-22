@@ -19,7 +19,7 @@ function ClubPage({ data, clubId, organization, getOrganization }) {
 
   const contactComps = Object.keys(socLinks).map((key, i) =>
     socLinks[key] !== null && socLinks[key] !== '' ? (
-      <a key={i} target="_blank" rel="noopener noreferrer" href={socLinks[key]}>
+      <a key={i} target="_blank" rel="noopener noreferrer" href={key == "contact_email" ? "mailto:"+socLinks[key] : socLinks[key]}>
         <img
           className="link-image"
           src={require('./assets/linkImages/' + key + 'Link.png')}
