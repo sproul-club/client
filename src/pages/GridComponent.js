@@ -21,7 +21,7 @@ function GridComponent(props) {
 
   useEffect(() => {
     // Return unfiltered clubs so there is some data there when first rendered
-    props.loadClubs();
+    if (props.clubs.length === 0) props.loadClubs();
   }, []);
 
   const GridList = props.clubs.map((club, i) => (
