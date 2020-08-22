@@ -26,7 +26,7 @@ const customStyles = {
     width: '430px',
     fontSize: 16,
     textAlign: 'left',
-    color: '#2b2b2b',
+    color: (state.selectProps.value && state.selectProps.value.length >= 3) ? '#cccccc' : '#2b2b2b'
   }),
   multiValueRemove: (provided, state) => ({
     ...provided,
@@ -48,6 +48,18 @@ const customStyles = {
   }),
 };
 
+const handleChange = (value, props) => {
+  if (props.multi) {
+    if (value && value.length >= 3) {
+      // recolor option text to light grey, to look unclickable :'(
+      if (value.length > 3) {
+        value.pop();                // remove 4th tag
+      }
+    }
+  }
+  props.set(value);
+}
+
 const Dropdown = (props) => (
   <Select
     styles={customStyles}
@@ -66,7 +78,8 @@ const Dropdown = (props) => (
     options={props.options}
     placeholder={props.placeholder}
     maxMenuHeight={200}
-    onChange={(e) => props.set(e)}
+    onChange={(e) => handleChange(e, props)}
+    closeMenuOnSelect={!props.multi}
   />
 );
 

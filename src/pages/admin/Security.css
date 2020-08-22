@@ -69,10 +69,38 @@
 }
 
 .security .subtitle {
-    margin-top: -16px;
+    margin-top: -20px;
     font-size: 12px;
-    margin-left: 210px;
-    margin-bottom: 20px;
+    margin-left: 211px;
+    margin-bottom: 10px;
     color: #54a0f1;
     text-decoration: none;
+    width: 110px;
+  }
+
+  .security .conInputInvalid {
+    border: solid 1px #ff2d2d;
+    font-size: 16px;
+    width: 400px;
+    height: 34px;
+    padding-left: 12px;
+    border-radius: 5px;
+  }
+
+  .security .conError {
+    font-size: 12px;
+    color: #ff2d2d;
+    display: inline;
+    position: static;
+    background: none;
+    border-radius: 0px;
+    padding: 0px;
+    box-shadow: none;
+    margin-bottom: 20px;
+    margin-left: 210px;
+    margin-top: -20px;
+  }
+
+  .security .conErrorNone {
+      display: none;
   }
