@@ -10,8 +10,6 @@ import { loadProfile } from './profile';
 
 axios.defaults.baseURL = 'https://sc-backend-v0.herokuapp.com';
 
-// Load User
-
 // Register User
 export const register = (
   name,
@@ -21,7 +19,7 @@ export const register = (
   app_required,
   new_members
 ) => async (dispatch) => {
-  // Set headers
+  
   const config = {
     headers: {
       'Content-Type': 'application/json',
@@ -59,16 +57,12 @@ export const login = (email, password, history) => async (dispatch) => {
   const body = JSON.stringify({ email, password });
 
   try {
-    // Once we have routes, it will create a new user on backend
-    // and will return signed jwt
     let res = await axios.post('/api/user/login', body, config);
 
     localStorage.setItem('token', res.data.access);
     localStorage.setItem('expiresAt', new Date().getTime() + 300000);
     localStorage.setItem('refreshToken', res.data.refresh);
 
-    // Calls redux reducer that puts the token into local storage
-    // and token and isAuthenticated=true in app state
     dispatch(loadProfile());
     dispatch({ type: LOGIN_SUCCESS, payload: res.data });
 

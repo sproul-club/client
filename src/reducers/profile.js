@@ -12,7 +12,9 @@ import {
 } from '../actions/types';
 
 const initialState = {
+  // yes I am currently storing state in multiple places, ugly but ill fix it
   owner: '',
+  id: '',
   profile: {
     id: '',
     name: '',
@@ -42,6 +44,7 @@ export default function (state = initialState, action) {
         ...state,
         profile: payload,
         owner: payload.owner,
+        id: payload.id,
         resources: payload.resources,
         events: payload.events,
         images: { logo_url, banner_url },
