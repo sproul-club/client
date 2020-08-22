@@ -8,6 +8,7 @@ import useOnClickOutside from '../utils/useOnClickOutside';
 
 const Navbar = ({
   organizationEmail,
+  orgId,
   isAuthenticated,
   logout,
   login,
@@ -59,7 +60,7 @@ const Navbar = ({
       <Link to="/catalog" className="nav-link hide-sm">
         Discover
       </Link>
-      <Link to="/comingsoon" className="nav-link hide-sm">
+      <Link to={`/club/${orgId}`} className="nav-link hide-sm">
         View Profile
       </Link>
       <div className="org-menu" href="/signup">
@@ -109,6 +110,7 @@ const Navbar = ({
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
   organizationEmail: state.profile.profile.owner,
+  orgId: state.profile.profile.id,
 });
 
 export default connect(mapStateToProps, { logout, login })(withRouter(Navbar));

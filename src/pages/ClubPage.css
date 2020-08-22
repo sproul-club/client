@@ -5,7 +5,6 @@
   height: 28.539vw;
   left: 12.5vw;
   top: 1vw;
-  background-image: url('./assets/ethicalheader.png');
   background-size: cover;
   background-position: 50% 10%;
   border-radius: 10px;
@@ -21,7 +20,7 @@
   flex-direction: row;
   justify-content: space-between;
 }
- 
+
 /*====================================*/
 /*LEFT FLEXBOX*/
 .flex-container-left {
@@ -33,7 +32,7 @@
   top: 30.539vw;
   margin-bottom: 3vw;
 }
- 
+
 .logo-box {
   display: flex;
   flex-direction: row;
@@ -46,7 +45,7 @@
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
 }
- 
+
 .club-logo {
   margin-top: 2%;
   margin-bottom: 2%;
@@ -55,7 +54,7 @@
   width: 17%;
   height: auto;
 }
- 
+
 /*THIS FLEXBOX HOLDS TITLE AND TAGS*/
 .club-info-flex {
   display: flex;
@@ -63,7 +62,7 @@
   align-items: flex-start;
   width: 80%;
 }
- 
+
 .club-title {
   margin-left: 3%;
   margin-top: 1%;
@@ -74,14 +73,14 @@
   letter-spacing: 0.02em;
   color: #000000;
 }
- 
+
 .tags-flex {
   margin-top: 0.5vw;
   margin-left: 2%;
   display: flex;
   flex-direction: row;
 }
- 
+
 .tag {
   margin-left: 0.5vw;
   background-color: #e2e2e2;
@@ -91,43 +90,43 @@
   font-size: 1.1vw;
   flex-direction: row;
 }
- 
+
 .app-flex {
   margin-top: 0.3vw;
   margin-left: 2%;
   display: flex;
   flex-direction: row;
 }
- 
+
 #app-req {
   background-color: #fff1ae;
 }
- 
+
 #app-not-req {
   background-color: #cdeaff;
 }
- 
+
 #open-tag {
   background-color: #c9f0c9;
 }
- 
+
 #not-open-tag {
   background-color: #ffd6d6;
 }
- 
+
 .desc-box {
   margin-top: 1.5%;
   width: 100%;
   left: 0%;
   top: 165px;
- 
+
   background: #ffffff;
   border: 1px solid #c4c4c4;
   box-sizing: border-box;
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
 }
- 
+
 .desc-text {
   margin-left: 4%;
   margin-right: 3%;
@@ -138,7 +137,7 @@
   line-height: 150%;
   letter-spacing: 0.02em;
 }
- 
+
 .events-box {
   margin-top: 1.5%;
   width: 100%;
@@ -149,7 +148,7 @@
   border-radius: 10px;
   padding-bottom: 10px;
 }
- 
+
 /*====================================*/
 /*RIGHT FLEXBOX*/
 .flex-container-right {
@@ -160,7 +159,7 @@
   top: 30.539vw;
   left: 57.49vw;
 }
- 
+
 .contact-box {
   width: 100%;
   background: #ffffff;
@@ -169,7 +168,7 @@
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
 }
- 
+
 .resources-box {
   width: 100%;
   margin-top: 2%;
@@ -179,16 +178,16 @@
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
 }
- 
+
 .resources-flex {
   display: flex;
   flex-direction: column;
 }
- 
+
 #resources {
   margin-left: 1.65vw;
 }
- 
+
 .res-img {
   position: relative;
   margin-left: 0.7vw;
@@ -205,7 +204,7 @@
   flex-wrap: wrap;
   justify-content: flex-start;
 }
- 
+
 .link-image {
   width: 2.5vw;
   margin-left: 1vw;
@@ -227,7 +226,7 @@
   font-size: 1.3vw;
   color: #3d3d3d;
 }
- 
+
 /*====================================*/
 /*ACCORDION TAGS*/
 .accordion-club {
@@ -235,7 +234,7 @@
   text-align: left;
   margin-left: 1%;
 }
- 
+
 .accordion__button-club {
   /* background-color: #f4f4f4; */
   display: inline;
@@ -262,14 +261,14 @@
   font-size: 1.2vw;
   justify-content: space-between;
 }
- 
+
 .event-flex-left {
   font-weight: bold;
 }
 .accordion__button-club:focus {
   outline: 0;
 }
- 
+
 .accordion__button-club:before {
   display: inline-block;
   content: '';
@@ -280,16 +279,16 @@
   border-right: 2px solid currentColor;
   transform: rotate(-135deg);
 }
- 
+
 .accordion__button-club[aria-expanded='true']::before,
 .accordion__button-club[aria-selected='true']::before {
   transform: rotate(45deg);
 }
- 
+
 [hidden] {
   display: none;
 }
- 
+
 .accordion__panel-event {
   animation: fadein 0.35s ease-in;
   text-align: left;
@@ -331,7 +330,7 @@
     letter-spacing: 0.02em;
     color: #000000;
   }
-  
+
   .tag {
     margin-left: 0.5vw;
     background-color: #e2e2e2;
@@ -341,7 +340,7 @@
     font-size: 7pt;
     flex-direction: row;
   }
-  
+
   .desc-text {
     margin-left: 4%;
     margin-right: 3%;
@@ -352,7 +351,7 @@
     line-height: 150%;
     letter-spacing: 0.02em;
   }
-  
+
   .desc-box p,
   .events-box p,
   .contact-box p,
@@ -366,7 +365,7 @@
     font-size: 8pt;
     color: #3d3d3d;
   }
-  
+
   .event-flex-container {
     width: 90%;
     display: inline-flex;
@@ -375,7 +374,7 @@
     margin-left: 3%;
     justify-content: space-between;
   }
-  
+
   .accordion__panel-event {
     animation: fadein 0.35s ease-in;
     text-align: left;
@@ -407,7 +406,7 @@
     top: 0.3vw;
     width: 12pt;
   }
-  
+
   .link-flex {
     position: relative;
     width: 75%;
