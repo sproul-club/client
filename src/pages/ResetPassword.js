@@ -1,6 +1,5 @@
 import React from 'react';
 import './ResetPassword.css';
-import Navbar from '../layout/Navbar';
 import Footer from '../layout/Footer';
 import ResetPasswordForm from './ResetPasswordForm';
 

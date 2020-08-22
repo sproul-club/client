@@ -1,8 +1,8 @@
 .signin .content {
   position: relative;
-  padding-top: 87px;
+  padding-top: 86.6px;
   /* window height - header - footer */
-  height: calc(100vh - 87px - 61px);
+  height: calc(100vh - 86.6px - 82.6px);
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -102,7 +102,7 @@
   }
 }
 
-@media screen and (max-height: 625px) {
+@media screen and (max-height: 635px) {
   .signin .loginImage {
     width: 33%;
   }
@@ -110,7 +110,7 @@
 
 @media screen and (max-height: 597px) {
   .signin .content {
-    height: 450px;
+    height: 428px;
   }
 }
 

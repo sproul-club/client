@@ -7,7 +7,7 @@ const Footer = () => {
         <div>
           Made with <i className="fas fa-heart" style={{ color: 'red' }}></i> by <a href="/">sproul.club</a>! 
         </div>
-        <div style={{paddingTop:"10px"}}>
+        <div className="links">
           <a target="_blank" href="mailto:sproul.club@gmail.com">
             <img
               className="footer-link-image"
