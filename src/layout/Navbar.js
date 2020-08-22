@@ -26,6 +26,7 @@ const Navbar = ({
       }
     });
   });
+  useEffect(() => {}, [organizationEmail]);
 
   const toggleNavbar = () => setNavbarVis((navbarVis) => !navbarVis);
   const toggleDropdown = () => setDropownVis((dropdownVis) => !dropdownVis);
@@ -64,7 +65,10 @@ const Navbar = ({
       <div className="org-menu" href="/signup">
         <div className="org-email" onClick={toggleDropdown}>
           {organizationEmail}
-          <i style={{ marginLeft: '5px' }} className="fas fa-caret-down"></i>
+          <i
+            style={{ marginLeft: '5px' }}
+            className={`fas ${dropdownVis ? 'fa-caret-down' : 'fa-caret-up'}`}
+          ></i>
         </div>
         {dropdownVis && (
           <div className="dropdown">

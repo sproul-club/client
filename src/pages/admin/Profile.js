@@ -64,7 +64,6 @@ const Profile = ({ profile, updateProfile, uploadImages, images }) => {
     };
     updateProfile(newProfile);
     let newImages;
-    console.log('raw images', bannerImage, logoImage);
     if (logoImage && bannerImage) {
       newImages = { logo: logoImage[0], banner: bannerImage[0] };
     } else if (logoImage) {
@@ -74,7 +73,6 @@ const Profile = ({ profile, updateProfile, uploadImages, images }) => {
     } else {
       return;
     }
-    console.log('new images', newImages);
     uploadImages(newImages);
   };
 
@@ -168,10 +166,7 @@ const Profile = ({ profile, updateProfile, uploadImages, images }) => {
             singleImage={true}
             withPreview={true}
             buttonText="Choose image"
-            onChange={(e) => {
-              console.log(e);
-              setLogoImage(e);
-            }}
+            onChange={(e) => setLogoImage(e)}
             imgExtension={['.jpg', '.gif', '.png', '.gif']}
             maxFileSize={5242880}
           />
@@ -196,7 +191,7 @@ const Profile = ({ profile, updateProfile, uploadImages, images }) => {
             singleImage={true}
             withPreview={true}
             buttonText="Choose image"
-            onChange={(e) => console.log(e)}
+            onChange={(e) => setBannerImage(e)}
             imgExtension={['.jpg', '.gif', '.png', '.gif']}
             maxFileSize={5242880}
           />

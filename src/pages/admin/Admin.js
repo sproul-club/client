@@ -14,6 +14,9 @@ const Admin = ({ profile, events, resources, loadProfile }) => {
   useEffect(() => {
     if (profile.id.length === 0) loadProfile();
   }, [loadProfile]);
+  // Reloads the component if profile id changes (fixes error profile not load on login)
+  useEffect(() => {}, [profile.id]);
+
   return (
     <div className="clubEdit">
       <Navbar />

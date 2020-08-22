@@ -60,12 +60,11 @@ export const updateProfile = (formData) => async (dispatch) => {
 // Upload Banner or Logo
 export const uploadImages = (images) => async (dispatch) => {
   try {
-    console.log('imags', images);
 
     let data = new FormData();
     images.logo && data.append('logo', images.logo);
     images.banner && data.append('banner', images.banner);
-    console.log('data', data);
+
     const config = {
       headers: {
         accept: 'application/json',
@@ -73,11 +72,9 @@ export const uploadImages = (images) => async (dispatch) => {
         'Content-Type': `multipart/form-data; boundary=${data._boundary}`,
       },
     };
-    console.log('images', images);
 
     const res = await axios.post('/api/admin/upload-images', data, config);
 
-    console.log('image upload response', res);
     dispatch({ type: UPLOAD_IMAGES, payload: res.data });
   } catch (err) {
     console.log(err.response);
