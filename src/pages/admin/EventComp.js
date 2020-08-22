@@ -122,6 +122,10 @@ const EventComp = (props) => {
   
       var minutes = datetime.getMinutes();
       minutes = minutes < 10 ? '0' + minutes : minutes;
+      
+      if (minutes === '00') {
+        return hour + dd;
+      }
   
       return hour + ':' + minutes + dd;
     }
@@ -134,6 +138,7 @@ const EventComp = (props) => {
       day = day.length > 1 ? day : '0' + day;
   
       var time = convertTime(datetime);
+      
       return (
         dayArr[datetime.getDay()] +
         ' ' +
