@@ -40,8 +40,6 @@ const Profile = ({ profile, updateProfile }) => {
     { value: 0, label: 'Not accepting members' },
   ];
 
-  console.log(profile);
-
   const [orgName, setOrgName] = useState(profile.name);
   const [orgEmail, setOrgEmail] = useState(profile.owner);
   const [descr, setDescr] = useState(profile.about_us);
@@ -53,7 +51,6 @@ const Profile = ({ profile, updateProfile }) => {
   const [recruiting, setRecruit] = useState(
     recruitOptions[profile.new_members === true ? 0 : 1]
   );
-  console.log(appReq, recruiting);
 
   const submit = () => {
     const newProfile = {
@@ -63,7 +60,6 @@ const Profile = ({ profile, updateProfile }) => {
       app_required: !!appReq.value,
       new_members: !!recruiting.value,
     };
-    console.log(newProfile);
     updateProfile(newProfile);
   };
 

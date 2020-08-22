@@ -13,7 +13,7 @@ import Resources from './Resources';
 const Admin = ({ profile, events, resources, loadProfile }) => {
   useEffect(() => {
     loadProfile();
-  }, []);
+  }, [loadProfile]);
   return (
     <div className="clubEdit">
       <Navbar />
