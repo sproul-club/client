@@ -122,24 +122,21 @@ export const refreshToken = () => async (dispatch, getState) => {
 };
 
 
-
-
 // Verify email as Callink email
-export const isCallinkEmail = (email) => async () => {
+export const isCallinkEmail = (email) => {
   // Set headers
   const config = {
     headers: {
       'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
     },
   };
-
   const body = JSON.stringify({ email });
 
-  try {
-    let res = await axios.get('/api/user/email-exists', body, config);
-    return res.data.exists;
-  } catch (err) {
-    return err;
-  }
+  return axios.post('/api/user/email-exists', body, config)
+              .then((response) => {
+                return response.data.exists;
+              })
+              .catch((error) => {
+                console.log( error.response );
+              });
 };

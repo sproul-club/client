@@ -54,23 +54,24 @@ const MultiStepForm = ({ register }) => {
   const _next = () => {
     let haveError = false;
     /* step 1 errors */
-    if (currStep === 1) {
-      /* check if email is verified */
-      let result = isCallinkEmail(email);
-      console.log(result);
-
+    if (currStep === 1) {      
       if (clubName === '') {
         setEmptyName('emptyName');
         haveError = true;
       }
       if (email === '') {
-        setEmptyEmail('emptyEmail');
+        setEmptyEmail('emptyEmail')
         haveError = true;
+      } else {        // check if email is verified
+        let isVerified = false;
+        isCallinkEmail(email).then((response) => {
+          isVerified = response;
+        })
+        if (!isVerified) {
+          setEmailUnverified('emailUnverified');
+          haveError = true;
+        }
       }
-      // if (/* email is unverified */) {
-      //   setEmailUnverified('emailUnverified');
-      //   haveError = true;
-      // }
       if (pwd === '' && con === '') {
         setEmptyPwd('emptyPwd');
         haveError = true;
