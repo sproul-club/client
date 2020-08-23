@@ -130,7 +130,7 @@ const EventComp = (props) => {
     var month = monthArr[datetime.getMonth()];
 
     var day = datetime.getDate().toString();
-    var year = datetime.getFullYear();
+    // var year = datetime.getFullYear();
     day = day.length > 1 ? day : '0' + day;
 
     var time = convertTime(datetime);
@@ -142,7 +142,7 @@ const EventComp = (props) => {
     var endDate = new Date(end);
 
     if (
-      startDate.getDay() == endDate.getDay() &&
+      startDate.getDay() === endDate.getDay() &&
       startDate.getMonth() === endDate.getMonth() &&
       startDate.getDay() === endDate.getDay() &&
       startDate.getFullYear() === endDate.getFullYear()
@@ -188,8 +188,15 @@ const EventComp = (props) => {
           <div id="title-date">
             <div id="title-link">
               <div className="event-title">{propsTitle}</div>
-              <a href={propsEventLink} target="_blank">
-                <img src={require('../assets/linkImages/resLink.png')} />
+              <a
+                href={propsEventLink}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src={require('../assets/linkImages/resLink.png')}
+                  alt="event"
+                />
               </a>
             </div>
             <div className="event-date">

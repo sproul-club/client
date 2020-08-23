@@ -6,9 +6,7 @@ import { connect } from 'react-redux';
 import { register } from '../actions/auth';
 import { tagOptions } from '../data/tagOptions';
 
-
-const MultiStepForm = ({ register }) => {  
-
+const MultiStepForm = ({ register }) => {
   var appOptions = [
     { value: true, label: 'Application required' },
     { value: false, label: 'No application required' },
@@ -33,7 +31,7 @@ const MultiStepForm = ({ register }) => {
   const [emailError, setEmailError] = useState('emailErrorNone');
   const [tagError, setTagError] = useState('tagErrorNone');
 
-  const [noNameError, setNoNameError] = useState('unset');
+  // const [noNameError, setNoNameError] = useState('unset');
 
   const [emptyError1, setEmptyError1] = useState('unset');
   const [emptyError2, setEmptyError2] = useState('unset');
@@ -55,29 +53,28 @@ const MultiStepForm = ({ register }) => {
   const _next = () => {
     let haveError = false;
     /* step 1 errors */
-    if (currStep == 1) {
+    if (currStep === 1) {
       // if (email != 'b') {
       //   setEmailInvalid('emailInputInvalid');
       //   setEmailError('emailError');
       //   haveError = true;
       // }
-      if (pw != con || pw === '') {
+      if (pw !== con || pw === '') {
         setConInvalid('conInputInvalid');
         setConError('conError');
         haveError = true;
       }
-    }
-    /* step 2 errors */
-    else if (currStep == 2) {
-      if (tags === null || tags.length == 0) {
+    } else if (currStep === 2) {
+      /* step 2 errors */
+      if (tags === null || tags.length === 0) {
         setEmptyError1('emptyError1');
         haveError = true;
       }
-      if (emptyError2 == 'unset') {
+      if (emptyError2 === 'unset') {
         setEmptyError2('emptyError2');
         haveError = true;
       }
-      if (emptyError3 == 'unset') {
+      if (emptyError3 === 'unset') {
         setEmptyError3('emptyError3');
         haveError = true;
       }
@@ -85,7 +82,7 @@ const MultiStepForm = ({ register }) => {
     /* if no errors, go to next step / submit */
     if (!haveError) {
       setStep(currStep + 1);
-      if (currStep == 3) {
+      if (currStep === 3) {
         submitValue();
       }
     }
@@ -116,19 +113,19 @@ const MultiStepForm = ({ register }) => {
     if (emptyError1 !== 'emptyErrorNone') {
       setEmptyError1('emptyErrorNone');
     }
-  }
+  };
   const appReqOnChange = (event) => {
     setAppReq(event);
     if (emptyError2 !== 'emptyErrorNone') {
       setEmptyError2('emptyErrorNone');
     }
-  }
+  };
   const recruitOnChange = (event) => {
     setRecruit(event);
     if (emptyError3 !== 'emptyErrorNone') {
       setEmptyError3('emptyErrorNone');
     }
-  }
+  };
 
   return (
     <>
@@ -183,13 +180,12 @@ const StepOne = (props) => {
   let emailForm = props.emailInvalid;
   return (
     <div className="formGroup">
-      
       <div className={`error ${props.emailError}`}>
-        <img src={error} className="errorIcon" />
+        <img src={error} alt="error" className="errorIcon" />
         <p>this field is required</p>
       </div>
       <div className={`error ${props.emailError}`}>
-        <img src={error} className="errorIcon" />
+        <img src={error} alt="error" className="errorIcon" />
         <p>email is invalid</p>
       </div>
       <div className={`error ${props.conError}`}>
@@ -248,7 +244,7 @@ const StepTwo = (props) => {
   if (props.currStep !== 2) {
     return null;
   }
-  let haveError3 = props.emptyError3=='emptyError3';
+  let haveError3 = props.emptyError3 === 'emptyError3';
   // console.log("haveError3=" + haveError3);
   return (
     <div className="formGroup">

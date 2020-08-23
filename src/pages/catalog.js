@@ -84,7 +84,7 @@ const Catalog = ({ searchClubs }) => {
                     type="submit"
                     style={{ marginLeft: '-5px' }}
                   >
-                    <i class="fa fa-search"></i>
+                    <i className="fa fa-search"></i>
                   </button>
                 </Form>
               </AccordionItemPanel>

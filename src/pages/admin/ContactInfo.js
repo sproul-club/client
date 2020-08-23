@@ -50,7 +50,7 @@ const ContactInfo = ({ profile, updateProfile }) => {
           </p>
           <input
             className="userInput"
-            value={email}
+            value={email || ''}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="+  Add your organization's email"
             type="text"
@@ -60,7 +60,7 @@ const ContactInfo = ({ profile, updateProfile }) => {
           <p>Website</p>
           <input
             className="userInput"
-            value={website}
+            value={website || ''}
             onChange={(e) => setWebsite(e.target.value)}
             type="text"
             placeholder="+  Add a link"
@@ -70,7 +70,7 @@ const ContactInfo = ({ profile, updateProfile }) => {
           <p>Linkedin</p>
           <input
             className="userInput"
-            value={linkedin}
+            value={linkedin || ''}
             onChange={(e) => setLinkedin(e.target.value)}
             type="text"
             placeholder="+  Add a link"
@@ -80,7 +80,7 @@ const ContactInfo = ({ profile, updateProfile }) => {
           <p>Facebook</p>
           <input
             className="userInput"
-            value={facebook}
+            value={facebook || ''}
             onChange={(e) => setFacebook(e.target.value)}
             type="text"
             placeholder="+  Add a link"
@@ -90,7 +90,7 @@ const ContactInfo = ({ profile, updateProfile }) => {
           <p>Instagram</p>
           <input
             className="userInput"
-            value={instagram}
+            value={instagram || ''}
             onChange={(e) => setInstagram(e.target.value)}
             type="text"
             placeholder="+  Add a link"
@@ -100,7 +100,7 @@ const ContactInfo = ({ profile, updateProfile }) => {
           <p>Twitter</p>
           <input
             className="userInput"
-            value={twitter}
+            value={twitter || ''}
             onChange={(e) => setTwitter(e.target.value)}
             placeholder="+  Add a link"
             type="text"
@@ -110,7 +110,7 @@ const ContactInfo = ({ profile, updateProfile }) => {
           <p>Github</p>
           <input
             className="userInput"
-            value={github}
+            value={github || ''}
             onChange={(e) => setGithub(e.target.value)}
             placeholder="+  Add a link"
             type="text"
@@ -120,7 +120,7 @@ const ContactInfo = ({ profile, updateProfile }) => {
           <p>Behance</p>
           <input
             className="userInput"
-            value={behance}
+            value={behance || ''}
             onChange={(e) => setBehance(e.target.value)}
             placeholder="+  Add a link"
             type="text"
@@ -130,7 +130,7 @@ const ContactInfo = ({ profile, updateProfile }) => {
           <p>Medium</p>
           <input
             className="userInput"
-            value={medium}
+            value={medium || ''}
             onChange={(e) => setMedium(e.target.value)}
             type="text"
             placeholder="+  Add a link"
@@ -140,7 +140,7 @@ const ContactInfo = ({ profile, updateProfile }) => {
           <p>Youtube</p>
           <input
             className="userInput"
-            value={youtube}
+            value={youtube || ''}
             onChange={(e) => setYoutube(e.target.value)}
             type="text"
             placeholder="+  Add a link"
@@ -150,7 +150,7 @@ const ContactInfo = ({ profile, updateProfile }) => {
           <p>Google Calendar</p>
           <input
             className="userInput"
-            value={gcalendar}
+            value={gcalendar || ''}
             onChange={(e) => setGcalendar(e.target.value)}
             type="text"
             placeholder="+  Add a link"

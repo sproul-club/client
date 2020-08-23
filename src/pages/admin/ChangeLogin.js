@@ -124,6 +124,8 @@ const ChangeLogin = ({ updatePassword }) => {
                         It’s a good idea to use a strong one that you aren’t using elsewhere!
                     </div>
                 );
+            default:
+                return;
         }
     }
 
