@@ -72,10 +72,7 @@ const Admin = ({ profile, events, resources, loadProfile }) => {
         </div>
         <div className="admin-content">
           <Switch>
-            <Route
-              path="/admin/contact"
-              render={() => <ContactInfo profile={profile} />}
-            />
+            <Route path="/admin/contact" render={() => <ContactInfo />} />
             <Route
               path="/admin/getinvolved"
               render={() => <GetInvolved profile={profile} />}

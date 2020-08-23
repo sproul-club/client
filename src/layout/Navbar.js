@@ -113,7 +113,7 @@ const Navbar = ({
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
   organizationEmail: state.profile.owner,
-  orgId: state.profile.profile.id,
+  orgId: state.profile.id,
   loading: state.auth.loading,
 });
 

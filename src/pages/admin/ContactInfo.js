@@ -164,4 +164,8 @@ const ContactInfo = ({ profile, updateProfile }) => {
   );
 };
 
-export default connect(null, { updateProfile })(ContactInfo);
+const mapStateToProps = (state) => ({
+  profile: state.profile,
+});
+
+export default connect(mapStateToProps, { updateProfile })(ContactInfo);
