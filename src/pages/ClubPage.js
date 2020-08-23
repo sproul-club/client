@@ -4,22 +4,26 @@ import EventAccord from './EventAccord';
 import Footer from '../layout/Footer';
 import Loading from '../layout/Loading';
 import { tagOptions } from '../data/tagOptions';
+import { withRouter } from 'react-router-dom';
 import { getOrganization, clearOrganization } from '../actions/catalog';
 import { connect } from 'react-redux';
 
 function ClubPage({
-  clubId,
   organization,
   getOrganization,
   clearOrganization,
+  history,
 }) {
+  console.log('history', history);
+
+  const clubId = history.location.pathname.slice(6);
   useEffect(() => {
     if (organization.id !== clubId) getOrganization(clubId);
     // return function clears the loaded profile when component unmounts
     return () => {
       !organization.id && clearOrganization();
     };
-  }, []);
+  }, [clubId]);
 
   if (!organization.id) return <Loading />;
 
@@ -27,7 +31,14 @@ function ClubPage({
 
   const contactComps = Object.keys(socLinks).map((key, i) =>
     socLinks[key] !== null && socLinks[key] !== '' ? (
-      <a key={i} target="_blank" rel="noopener noreferrer" href={key == "contact_email" ? "mailto:"+socLinks[key] : socLinks[key]}>
+      <a
+        key={i}
+        target="_blank"
+        rel="noopener noreferrer"
+        href={
+          key === 'contact_email' ? 'mailto:' + socLinks[key] : socLinks[key]
+        }
+      >
         <img
           className="link-image"
           src={require('./assets/linkImages/' + key + 'Link.png')}
@@ -37,7 +48,7 @@ function ClubPage({
     ) : null
   );
   const resComps = organization.resources.map((res, i) => (
-    <div className="desc-text" id="resources">
+    <div className="desc-text" id="resources" key={i}>
       {res.name}
       <a target="_blank" rel="noopener noreferrer" href={res.link} key={i}>
         <img
@@ -134,5 +145,5 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, { getOrganization, clearOrganization })(
-  ClubPage
+  withRouter(ClubPage)
 );

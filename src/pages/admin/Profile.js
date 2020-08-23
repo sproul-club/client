@@ -16,7 +16,7 @@ const Profile = ({ profile, updateProfile, uploadImages, images }) => {
     { value: 0, label: 'Not accepting members' },
   ];
 
-  const [tagError, setTagError] = useState('tagErrorNone');
+  // const [tagError, setTagError] = useState('tagErrorNone');
   const [orgName, setOrgName] = useState(profile.name);
   const [orgEmail, setOrgEmail] = useState(profile.owner);
   const [descr, setDescr] = useState(profile.about_us);

@@ -21,11 +21,11 @@ const Navbar = ({
   const toggleNavbar = () => setNavbarVis((navbarVis) => !navbarVis);
   const toggleDropdown = () => setDropownVis((dropdownVis) => !dropdownVis);
 
-  const ref = useRef();
+  const navbarRef = useRef();
   const authDropDownRef = useRef();
 
   // If it is on mobile, and the navbar is visible, if click outside, hide sidebar
-  useOnClickOutside(ref, () => {
+  useOnClickOutside(navbarRef, () => {
     if (window.innerWidth <= 800 && navbarVis === true) {
       setNavbarVis(false);
     }
@@ -76,10 +76,14 @@ const Navbar = ({
         </div>
         {dropdownVis && (
           <div className="dropdown">
-            <Link className="option" to="/admin">
+            <Link className="option" to="/admin" onClick={toggleDropdown}>
               Edit Club Page
             </Link>
-            <Link to="/security" className="option mid-option">
+            <Link
+              to="/security"
+              className="option mid-option"
+              onClick={toggleDropdown}
+            >
               Account Security
             </Link>
             <div className="option" onClick={logoutSelect}>
@@ -93,7 +97,7 @@ const Navbar = ({
 
   return (
     <>
-      <div className="header" ref={ref}>
+      <div className="header" ref={navbarRef}>
         <Link to="/" className="nav-link logo">
           sproul.club
         </Link>

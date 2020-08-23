@@ -6,9 +6,7 @@ import { connect } from 'react-redux';
 import { register, isCallinkEmail } from '../actions/auth';
 import { tagOptions } from '../data/tagOptions';
 
-
-const MultiStepForm = ({ register }) => {  
-
+const MultiStepForm = ({ register }) => {
   var appOptions = [
     { value: true, label: 'Application required' },
     { value: false, label: 'No application required' },
@@ -98,7 +96,7 @@ const MultiStepForm = ({ register }) => {
     /* if no errors, go to next step / submit */
     if (!haveError) {
       setStep(currStep + 1);
-      if (currStep == 3) {
+      if (currStep === 3) {
         submitValue();
       }
     }
@@ -262,7 +260,9 @@ const StepTwo = (props) => {
   if (props.currStep !== 2) {
     return null;
   }
+
   let haveError = props.emptyRecruit=='emptyRecruit';
+
   // console.log("haveError3=" + haveError3);
   return (
     <div className="formGroup">
