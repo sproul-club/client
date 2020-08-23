@@ -12,16 +12,15 @@ import {
 } from '../actions/types';
 
 const initialState = {
+  // yes I am currently storing state in multiple places, ugly but ill fix it
+  owner: '',
+  id: '',
   profile: {
-    id: '',
     name: '',
-    owner: '',
     tags: [],
     app_required: false,
     new_members: false,
     about_us: '',
-    get_involved: '',
-    social_media_links: {},
   },
   resources: [],
   events: [],
@@ -29,6 +28,8 @@ const initialState = {
     logo_url: '',
     banner_url: '',
   },
+  social_media_links: {},
+  get_involved: '',
 };
 
 export default function (state = initialState, action) {
@@ -36,14 +37,28 @@ export default function (state = initialState, action) {
 
   switch (type) {
     case LOAD_PROFILE:
+      const { logo_url, banner_url } = payload;
       return {
         ...state,
         profile: payload,
+        owner: payload.owner,
+        id: payload.id,
         resources: payload.resources,
         events: payload.events,
+        images: { logo_url, banner_url },
+        social_media_links: payload.social_media_links,
+        get_involved: payload.get_involved
       };
     case UPDATE_PROFILE:
-      return { ...state, profile: payload };
+      const updateSocial = payload.social_media_links
+        ? payload.social_media_links
+        : state.social_media_links;
+      console.log('payload: ', payload);
+      return {
+        ...state,
+        profile: payload,
+        social_media_links: updateSocial,
+      };
     case UPLOAD_IMAGES:
       // return { ...state, images: payload };
       return { ...state };

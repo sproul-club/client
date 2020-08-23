@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout, login } from '../actions/auth';
@@ -17,18 +17,6 @@ const Navbar = ({
 }) => {
   const [navbarVis, setNavbarVis] = useState(false);
   const [dropdownVis, setDropownVis] = useState(false);
-  const [navFixed, setNavFixed] = useState(false);
-
-  useEffect(() => {
-    window.addEventListener('scroll', () => {
-      if (window.scrollY === 0) {
-        setNavFixed(false);
-      } else if (window.scrollY > 50) {
-        setNavFixed(true);
-      }
-    });
-  });
-  useEffect(() => {}, [organizationEmail]);
 
   const toggleNavbar = () => setNavbarVis((navbarVis) => !navbarVis);
   const toggleDropdown = () => setDropownVis((dropdownVis) => !dropdownVis);
@@ -48,6 +36,12 @@ const Navbar = ({
       setDropownVis(false);
     }
   });
+
+  const logoutSelect = () => {
+    setDropownVis(false);
+    logout(history);
+  };
+
   if (loading) return null;
 
   const loggedOutLinks = (
@@ -88,7 +82,7 @@ const Navbar = ({
             <Link to="/security" className="option mid-option">
               Account Security
             </Link>
-            <div className="option" onClick={() => logout(history)}>
+            <div className="option" onClick={logoutSelect}>
               Log Out
             </div>
           </div>
@@ -118,8 +112,8 @@ const Navbar = ({
 
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
-  organizationEmail: state.profile.profile.owner,
-  orgId: state.profile.profile.id,
+  organizationEmail: state.profile.owner,
+  orgId: state.profile.id,
   loading: state.auth.loading,
 });
 
