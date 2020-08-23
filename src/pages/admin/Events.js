@@ -83,7 +83,7 @@ const Events = ({
     tempArr[id] = tempObj;
     //update event action
     updateEvent(id, {name: title, link: eventLink, event_start: start, event_end: end, description: text})
-    setEvents(tempArr);
+    //setEvents(tempArr);
   }
 
   /*onChange functions for add modal*/
