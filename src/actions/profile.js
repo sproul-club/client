@@ -43,6 +43,7 @@ export const updateProfile = (formData) => async (dispatch) => {
     get_involved: formData.get_involved,
     social_media_links: formData.social_media_links,
   });
+  console.log(formData);
 
   try {
     const config = {

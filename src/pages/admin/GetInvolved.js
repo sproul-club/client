@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { updateProfile } from '../../actions/profile';
 import { connect } from 'react-redux';
 
-const GetInvolved = ({ profile, updateProfile }) => {
-  const [involvedDesc, setInvolvedDesc] = useState(profile.get_involved);
+const GetInvolved = ({ profile, get_involved, updateProfile }) => {
+  const [involvedDesc, setInvolvedDesc] = useState(get_involved);
   const [descrChars, setChars] = useState(250 - involvedDesc.length);
 
   const descrChange = (e) => {
@@ -45,5 +45,8 @@ const GetInvolved = ({ profile, updateProfile }) => {
     </div>
   );
 };
+const mapStateToProps = (state) => ({
+  get_involved: state.profile.get_involved,
+});
 
-export default connect(null, { updateProfile })(GetInvolved);
+export default connect(mapStateToProps, { updateProfile })(GetInvolved);
