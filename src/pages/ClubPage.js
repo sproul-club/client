@@ -15,15 +15,15 @@ function ClubPage({
   history,
 }) {
   console.log('history', history);
-  const clubId = history.location.pathname.slice(6);
 
+  const clubId = history.location.pathname.slice(6);
   useEffect(() => {
     if (organization.id !== clubId) getOrganization(clubId);
     // return function clears the loaded profile when component unmounts
     return () => {
       !organization.id && clearOrganization();
     };
-  }, [clubId, clearOrganization, getOrganization, organization.id]);
+  }, [clubId]);
 
   if (!organization.id) return <Loading />;
 
@@ -48,7 +48,7 @@ function ClubPage({
     ) : null
   );
   const resComps = organization.resources.map((res, i) => (
-    <div className="desc-text" id="resources">
+    <div className="desc-text" id="resources" key={i}>
       {res.name}
       <a target="_blank" rel="noopener noreferrer" href={res.link} key={i}>
         <img

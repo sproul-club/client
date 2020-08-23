@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './catalog.css';
 import GridComponent from './GridComponent';
 import Footer from '../layout/Footer';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { searchClubs } from '../actions/catalog';
+import { searchClubs, clearOrganization } from '../actions/catalog';
 import Dropdown from './Dropdown.js';
 import {
   Accordion,
@@ -17,7 +17,7 @@ import { Form, TextBox, CheckBox } from 'react-form-elements';
 import { makeStyles } from '@material-ui/core/styles';
 import { tagOptions } from '../data/tagOptions';
 
-const Catalog = ({ searchClubs }) => {
+const Catalog = ({ searchClubs, clearOrganization }) => {
   const useStyles = makeStyles({
     root: {
       minWidth: 200,
@@ -34,7 +34,10 @@ const Catalog = ({ searchClubs }) => {
   const [status, setStatus] = useState(null);
   const [tags, setTags] = useState([]);
 
-  // const multiselectRef = React.createRef();
+  // clearing organization to be viewed every time navigate back to club page
+  useEffect(() => {
+    clearOrganization();
+  }, [clearOrganization]);
 
   const searchAllClubs = () => {
     // const tags = multiselectRef.current.getSelectedItems();
@@ -162,4 +165,6 @@ const Catalog = ({ searchClubs }) => {
   );
 };
 
-export default withRouter(connect(null, { searchClubs })(Catalog));
+export default withRouter(
+  connect(null, { searchClubs, clearOrganization })(Catalog)
+);

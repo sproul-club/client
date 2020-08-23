@@ -76,10 +76,14 @@ const Navbar = ({
         </div>
         {dropdownVis && (
           <div className="dropdown">
-            <Link className="option" to="/admin">
+            <Link className="option" to="/admin" onClick={toggleDropdown}>
               Edit Club Page
             </Link>
-            <Link to="/security" className="option mid-option">
+            <Link
+              to="/security"
+              className="option mid-option"
+              onClick={toggleDropdown}
+            >
               Account Security
             </Link>
             <div className="option" onClick={logoutSelect}>
