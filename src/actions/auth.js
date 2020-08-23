@@ -69,6 +69,7 @@ export const login = (email, password, history) => async (dispatch) => {
     history.push('/admin');
   } catch (err) {
     dispatch({ type: AUTH_ERROR, payload: err });
+    throw "login failed";
   }
 };
 

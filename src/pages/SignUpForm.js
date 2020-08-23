@@ -33,8 +33,6 @@ const MultiStepForm = ({ register }) => {
   const [emailError, setEmailError] = useState('emailErrorNone');
   const [tagError, setTagError] = useState('tagErrorNone');
 
-  const [noNameError, setNoNameError] = useState('unset');
-
   const [emptyError1, setEmptyError1] = useState('unset');
   const [emptyError2, setEmptyError2] = useState('unset');
   const [emptyError3, setEmptyError3] = useState('unset');
