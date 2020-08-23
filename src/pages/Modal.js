@@ -4,10 +4,10 @@ import './modal.css';
 import ClubPage from './ClubPage.js';
 
 const Modal = ({ match, history }) => {
-  const back = (e) => {
-    e.stopPropagation();
-    history.push(`/catalog`);
-  };
+  // const back = (e) => {
+  //   e.stopPropagation();
+  //   history.push(`/catalog`);
+  // };
   return (
     <div>
       {/* <div onClick={back} className="modal-wrapper"/>
@@ -21,7 +21,6 @@ const Modal = ({ match, history }) => {
   );
 };
 export default withRouter(Modal);
-
 
 // const data = {
 //   name: 'EthiCAL Apparel',

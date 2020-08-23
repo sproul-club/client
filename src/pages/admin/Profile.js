@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Dropdown from './AdminDropdown.js';
 import { connect } from 'react-redux';
-import store from '../../store';
 import ImageUploader from '../../react-images-upload';
 import { updateProfile, uploadImages } from '../../actions/profile';
 import { tagOptions } from '../../data/tagOptions';
@@ -16,7 +15,6 @@ const Profile = ({ profile, updateProfile, uploadImages, images }) => {
     { value: 1, label: 'Accepting members' },
     { value: 0, label: 'Not accepting members' },
   ];
-
 
   const [tagError, setTagError] = useState('tagErrorNone');
   const [orgName, setOrgName] = useState(profile.name);
@@ -89,8 +87,14 @@ const Profile = ({ profile, updateProfile, uploadImages, images }) => {
         </div>
         <p className="subtitle">
           This setting cannot be changed. Please contact{' '}
-          <a target="_blank" href="mailto:sproul.club@gmail.com"><span style={{ color: '#54a0f1' }}>sproul.club@gmail.com</span></a> for
-          further assistance.
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="mailto:sproul.club@gmail.com"
+          >
+            <span style={{ color: '#54a0f1' }}>sproul.club@gmail.com</span>
+          </a>{' '}
+          for further assistance.
         </p>
         <div className="formElement">
           <p>Tags</p>

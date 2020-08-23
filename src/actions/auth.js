@@ -84,7 +84,7 @@ export const logout = (history) => async (dispatch) => {
   };
   try {
     // revoke refresh token
-    const res = await axios.delete('/api/user/revoke-refresh', config);
+    await axios.delete('/api/user/revoke-refresh', config);
 
     localStorage.removeItem('token');
     localStorage.removeItem('refreshToken');

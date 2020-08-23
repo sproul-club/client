@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './catalog.css';
 import GridComponent from './GridComponent';
-import Navbar from '../layout/Navbar';
 import Footer from '../layout/Footer';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -16,14 +15,6 @@ import {
 } from 'react-accessible-accordion';
 import { Form, TextBox, CheckBox } from 'react-form-elements';
 import { makeStyles } from '@material-ui/core/styles';
-import {
-  FormLabel,
-  FormControl,
-  FormGroup,
-  FormControlLabel,
-  FormHelperText,
-  Checkbox,
-} from '@material-ui/core/';
 import { tagOptions } from '../data/tagOptions';
 
 const Catalog = ({ searchClubs }) => {
@@ -53,6 +44,7 @@ const Catalog = ({ searchClubs }) => {
     // Calls searchClubs redux action, which hits the backend API
     // then updates the apps state in redux to be the response
     // This data is then read in the GridComponent through mapStateToProps
+    console.log(searchParams);
     searchClubs(searchParams);
   };
 
@@ -119,7 +111,7 @@ const Catalog = ({ searchClubs }) => {
               </AccordionItemHeading>
               <AccordionItemPanel>
                 <CheckBox
-                  className = "checkbox"
+                  className="checkbox"
                   label="Requires app"
                   isChecked={appReq}
                   onClick={() => setAppReq(true)}
@@ -127,7 +119,7 @@ const Catalog = ({ searchClubs }) => {
                   value="checkbox value"
                 />
                 <CheckBox
-                  className = "checkbox"
+                  className="checkbox"
                   label="No app required"
                   isChecked={!appReq && appReq !== null}
                   onClick={() => setAppReq(false)}
@@ -141,9 +133,8 @@ const Catalog = ({ searchClubs }) => {
                 <AccordionItemButton>Member Status</AccordionItemButton>
               </AccordionItemHeading>
               <AccordionItemPanel>
-                
-                <CheckBox 
-                  className = "checkbox"
+                <CheckBox
+                  className="checkbox"
                   label="Looking for members"
                   isChecked={status}
                   onClick={() => setStatus(true)}
@@ -151,7 +142,7 @@ const Catalog = ({ searchClubs }) => {
                   value="checkbox value"
                 />
                 <CheckBox
-                  className = "checkbox"
+                  className="checkbox"
                   label="Not looking for members"
                   isChecked={!status && appReq !== null}
                   onClick={() => setStatus(false)}

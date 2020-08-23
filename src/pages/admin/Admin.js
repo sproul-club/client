@@ -11,7 +11,7 @@ import Resources from './Resources';
 
 const Admin = ({ profile, events, resources, loadProfile }) => {
   useEffect(() => {
-    if (profile.id.length === 0) loadProfile();
+    if (profile && profile.id && profile.id.length === 0) loadProfile();
   }, [loadProfile]);
 
   return (
