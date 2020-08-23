@@ -100,6 +100,7 @@ export const logout = (history) => async (dispatch) => {
   }
 };
 
+// Refresh token
 export const refreshToken = () => async (dispatch) => {
   const refreshToken = localStorage.getItem('refreshToken');
 
@@ -117,5 +118,28 @@ export const refreshToken = () => async (dispatch) => {
     dispatch({ type: REFRESH_TOKEN, payload: res.data });
   } catch (err) {
     dispatch({ type: AUTH_ERROR, payload: err });
+  }
+};
+
+
+
+
+// Verify email as Callink email
+export const isCallinkEmail = (email) => async () => {
+  // Set headers
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+    },
+  };
+
+  const body = JSON.stringify({ email });
+
+  try {
+    let res = await axios.get('/api/user/email-exists', body, config);
+    return res.data.exists;
+  } catch (err) {
+    return err;
   }
 };
