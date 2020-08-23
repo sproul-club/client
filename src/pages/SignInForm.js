@@ -53,7 +53,7 @@ const SignInForm = ({ login, history, isAuthenticated }) => {
         type="text"
         onChange={(e) => setEmail(e.target.value)}
       />
-       <div className={`error emptyError1`}>
+       <div className={`error ${emailEmpty}`}>
         {emailEmpty === 'emptyError1' ? <p><img alt="error" src={error} className="errorIcon" />this field is required</p> : <></>}
       </div>
       <p>Password</p>
