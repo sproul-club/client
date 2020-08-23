@@ -15,7 +15,7 @@ const Modal = ({ match, history }) => {
       <div className="modal">
         <span class="modal-close" onClick={back}>&times;</span> */}
       {/* <h1>{match.params.id}</h1> */}
-      <ClubPage clubId={history.location.pathname.slice(6)} />
+      <ClubPage />
       {/* </div> */}
     </div>
   );

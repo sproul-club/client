@@ -148,7 +148,6 @@ const Profile = ({ profile, updateProfile, uploadImages, images }) => {
             withIcon={true}
             singleImage={true}
             withPreview={true}
-            defaultImages={[images.logo_url]}
             buttonText="Choose image"
             onChange={(e) => setLogoImage(e)}
             imgExtension={['.jpg', '.gif', '.png', '.gif']}
@@ -174,7 +173,6 @@ const Profile = ({ profile, updateProfile, uploadImages, images }) => {
             withIcon={true}
             singleImage={true}
             withPreview={true}
-            defaultImages={[images.banner_url]}
             buttonText="Choose image"
             onChange={(e) => setBannerImage(e)}
             imgExtension={['.jpg', '.gif', '.png', '.gif']}
