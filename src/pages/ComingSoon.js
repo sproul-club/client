@@ -1,6 +1,5 @@
 import React from 'react';
 import './ComingSoon.css';
-import Navbar from '../layout/Navbar';
 import Footer from '../layout/Footer';
 import ball1 from './assets/ball1cropped.svg';
 import ball2 from './assets/ball2cropped.svg';

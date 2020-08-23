@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Modal from '../../layout/Modal';
 import ResComp from './ResComp';
 import { connect } from 'react-redux';
@@ -69,8 +69,6 @@ const Resources = ({
   /*Passed down to resComp to allow it to remove resource from state array, count--*/
   function removeRes(id) {
     deleteResource(id);
-    const testResList = resources.filter((res) => res.id !== id);
-    const newResList = [...testResList];
   }
 
   /*Create all resource components based on content saved in array*/

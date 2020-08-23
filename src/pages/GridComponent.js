@@ -17,16 +17,16 @@ import { loadClubs, searchClubs } from '../actions/catalog';
 import './GridComponent.css';
 
 function GridComponent(props) {
-  const { tagOptions } = props;
+  const { tagOptions, clubs, classes, loadClubs } = props;
 
   useEffect(() => {
     // Return unfiltered clubs so there is some data there when first rendered
-    props.loadClubs();
-  }, []);
+    if (clubs.length === 0) loadClubs();
+  }, [clubs, loadClubs]);
 
-  const GridList = props.clubs.map((club, i) => (
+  const GridList = clubs.map((club, i) => (
     <Grid item key={i} sm={12} md={6} lg={4} className="club-card">
-      <Card className={props.classes.root}>
+      <Card className={classes.root}>
         <CardActionArea>
           <Link
             to={{
@@ -40,7 +40,7 @@ function GridComponent(props) {
           >
             <CardMedia
               style={{ height: 0, paddingTop: '56%' }}
-              className={props.classes.media}
+              className={classes.media}
               image={club.banner_url || require('./assets/ethicalheader.png')}
             />
             <CardContent>
