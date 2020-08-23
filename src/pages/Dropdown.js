@@ -77,9 +77,9 @@ const handleChange = (value, props) => {
     if (value && value.length >= 3) {
       // recolor option text to light grey, to look unclickable :'(
       if (value.length > 3) {
-        value.pop();                     // remove 4th tag
-        props.errorPopup('tagError');    // make popup visible for ~2s
-        setTimeout(function() {props.errorPopup('tagErrorNone');}, 1000);
+        value.pop();                        // remove 4th tag
+        props.errorPopup('tagOverflow');    // make popup visible for ~2s
+        setTimeout(function() {props.errorPopup('tagOverflowNone');}, 1000);
       }
     }
   }
