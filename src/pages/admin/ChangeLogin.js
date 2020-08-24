@@ -135,7 +135,7 @@ const ChangeLogin = ({ updatePassword }) => {
         <div className="changeLogin">
             <h3>Password</h3>
             <div className="admin-text">
-                Change your password - we recommend using 8 or more characters with a mix of letters, numbers, and symbols!
+                Change your password - password must be at least 8 characters, include 1 number, and include 1 symbol!
             </div>
             <div className="formGroup">
                 {swap(editing)}
