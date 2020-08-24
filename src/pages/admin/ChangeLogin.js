@@ -71,7 +71,7 @@ const ChangeLogin = ({ updatePassword }) => {
         switch(condition) {
             case true:
                 return (
-                    <div className="ugh">
+                    <div>
                         <div className="formElement">
                         <p>
                             Current password

@@ -266,6 +266,11 @@
   width: 1%;
 }
 
+hr {
+  margin-left: 3.9%;
+  border-top: 1px;
+}
+
 .event-flex-container {
   width: 87%;
   margin-left: 1.5vw;
@@ -278,10 +283,12 @@
 
 .event-flex-left {
   font-weight: bold;
+  font-size: 1.1vw;
+  color: #444;
 }
 
 .event-flex-right {
-  font-size: 13px;
+  font-size: 1.1vw;
 }
 .accordion__button-club:focus {
   outline: 0;
@@ -321,6 +328,7 @@
   margin-bottom: 0vw;
   background-color: #e2e2e2;
   border-radius: 6px;
+  word-wrap: break-word;
 }
 
 @media screen and (max-width: 850px) {

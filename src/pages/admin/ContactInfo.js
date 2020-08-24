@@ -22,6 +22,8 @@ const ContactInfo = ({ profile, updateProfile }) => {
     setEmail(profile.owner);
   }
 
+  console.log(email);
+
   const saveContactInfo = () => {
     updateProfile({
       ...profile.profile,
