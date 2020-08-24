@@ -1,5 +1,8 @@
 export const normalizeUrl = (url) => {
-  if (!url.match(/^[a-zA-Z]+:\/\//)) {
+  //check for empty string
+  if (!url.match(/[\w]+/)) { 
+    return '';
+  } else if (!url.match(/^[a-zA-Z]+:\/\//)) {
     url = 'http://' + url;
   }
   return url;
