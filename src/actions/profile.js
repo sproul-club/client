@@ -16,7 +16,7 @@ import FormData, { errorMonitor } from 'form-data';
 import setAuthToken from '../utils/setAuthToken';
 import { refreshToken } from './auth';
 
-axios.defaults.baseURL = 'https://sc-backend-v0.herokuapp.com';
+axios.defaults.baseURL = 'https://sc-backend-dev.herokuapp.com';
 
 // Load Profile
 export const loadProfile = () => async (dispatch) => {
