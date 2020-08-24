@@ -60,6 +60,6 @@ export const clearOrganization = () => (dispatch) => {
   try {
     dispatch({ type: CLEAR_ORGANIZATION });
   } catch (err) {
-    console.log(err)
+    console.log(err);
   }
 };

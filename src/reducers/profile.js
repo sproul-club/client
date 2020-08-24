@@ -47,13 +47,12 @@ export default function (state = initialState, action) {
         events: payload.events,
         images: { logo_url, banner_url },
         social_media_links: payload.social_media_links,
-        get_involved: payload.get_involved
+        get_involved: payload.get_involved,
       };
     case UPDATE_PROFILE:
       const updateSocial = payload.social_media_links
         ? payload.social_media_links
         : state.social_media_links;
-      console.log('payload: ', payload);
       return {
         ...state,
         profile: payload,

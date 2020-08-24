@@ -19,7 +19,7 @@ const ContactInfo = ({ profile, updateProfile }) => {
 
   const saveContactInfo = () => {
     updateProfile({
-      ...profile,
+      ...profile.profile,
       social_media_links: {
         contact_email: email,
         website,

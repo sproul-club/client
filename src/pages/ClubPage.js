@@ -14,8 +14,6 @@ function ClubPage({
   clearOrganization,
   history,
 }) {
-  console.log('history', history);
-
   const clubId = history.location.pathname.slice(6);
   useEffect(() => {
     if (organization.id !== clubId) getOrganization(clubId);
@@ -91,7 +89,7 @@ function ClubPage({
     <div style={{ minHeight: '100vh' }}>
       <img
         className="header-img"
-        src={organization.banner_url || require('./assets/ethicalheader.png')}
+        src={organization.banner_url || require('./assets/default_banner.jpg')}
         alt=""
       />
       <div className="flex-container-chungus">
@@ -99,7 +97,9 @@ function ClubPage({
           <div className="logo-box">
             <img
               className="club-logo"
-              src={organization.logo_url || require('./assets/ethicalLogo.jpg')}
+              src={
+                organization.logo_url || require('./assets/default_logo.jpg')
+              }
               alt="club"
             />
             <div className="club-info-flex">

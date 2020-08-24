@@ -41,14 +41,14 @@ function GridComponent(props) {
             <CardMedia
               style={{ height: 0, paddingTop: '56%' }}
               className={classes.media}
-              image={club.banner_url || require('./assets/ethicalheader.png')}
+              image={club.banner_url || require('./assets/default_banner.jpg')}
             />
             <CardContent>
               <div className="info-flex">
                 <div className="icon-title-flex">
                   <img
                     className="card-club-logo"
-                    src={club.logo_url || require('./assets/ethicalLogo.jpg')}
+                    src={club.logo_url || require('./assets/default_logo.jpg')}
                     alt="logo"
                   />
                   <div className="club-name">{club.name}</div>

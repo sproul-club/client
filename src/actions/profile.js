@@ -16,6 +16,8 @@ import FormData from 'form-data';
 import setAuthToken from '../utils/setAuthToken';
 import { refreshToken } from './auth';
 
+axios.defaults.baseURL = 'https://sc-backend-v0.herokuapp.com';
+
 // Load Profile
 export const loadProfile = () => async (dispatch) => {
   if (localStorage.token) {
@@ -34,7 +36,7 @@ export const loadProfile = () => async (dispatch) => {
 
 // Update profile
 export const updateProfile = (formData) => async (dispatch) => {
-  const justTheRightData = JSON.stringify({
+  const justTheRightData = {
     name: formData.name,
     tags: formData.tags,
     app_required: formData.app_required,
@@ -42,8 +44,7 @@ export const updateProfile = (formData) => async (dispatch) => {
     about_us: formData.about_us,
     get_involved: formData.get_involved,
     social_media_links: formData.social_media_links,
-  });
-  console.log(formData);
+  };
 
   try {
     const config = {
@@ -66,6 +67,9 @@ export const uploadImages = (images) => async (dispatch) => {
     let data = new FormData();
     images.logo && data.append('logo', images.logo);
     images.banner && data.append('banner', images.banner);
+    for (var value of data.values()) {
+      console.log(value);
+    }
 
     const config = {
       headers: {
@@ -76,10 +80,11 @@ export const uploadImages = (images) => async (dispatch) => {
     };
 
     const res = await axios.post('/api/admin/upload-images', data, config);
+    console.log('upload success!');
 
     dispatch({ type: UPLOAD_IMAGES, payload: res.data });
   } catch (err) {
-    console.log(err.response);
+    console.log(err);
   }
 };
 
