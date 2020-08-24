@@ -129,7 +129,7 @@ function ClubPage({
             <div className="link-flex">{contactComps}</div>
           </div>
 
-          <div className="resources-box">
+          <div className="right-box">
             <p>Resources</p>
             <div className="resources-flex">{resComps}</div>
           </div>

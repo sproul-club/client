@@ -30,6 +30,7 @@
   flex-direction: column;
   width: 43.99vw;
   left: 12.5vw;
+  margin-top: 0.5vw;
   top: 30.539vw;
   margin-bottom: 3vw;
 }
@@ -117,7 +118,7 @@
 }
 
 .left-box {
-  margin-top: 1.5%;
+  margin-top: 2.5%;
   width: 100%;
   left: 0%;
 
@@ -148,7 +149,8 @@
   /* position: relative; */
   display: flex;
   flex-direction: column;
-  width: 30.008vw;
+  width: 29.808vw;
+  margin-top: 0.5vw;
   top: 30.539vw;
   left: 57.49vw;
 }
@@ -175,7 +177,7 @@
 .right-box {
   width: 100%;
   background: #ffffff;
-  margin-top: 2%;
+  margin-top: 3.5%;
   border: 1px solid #c4c4c4;
   box-sizing: border-box;
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
@@ -193,6 +195,10 @@
 }
 
 #resources {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   margin-bottom: 0.4vw;
 }
 
@@ -269,6 +275,10 @@
 hr {
   margin-left: 3.9%;
   border-top: 1px;
+}
+
+#gray-ev-link {
+  color: #8D8D8D;
 }
 
 .event-flex-container {
