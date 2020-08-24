@@ -4,22 +4,24 @@ import EventAccord from './EventAccord';
 import Footer from '../layout/Footer';
 import Loading from '../layout/Loading';
 import { tagOptions } from '../data/tagOptions';
+import { withRouter } from 'react-router-dom';
 import { getOrganization, clearOrganization } from '../actions/catalog';
 import { connect } from 'react-redux';
 
 function ClubPage({
-  clubId,
   organization,
   getOrganization,
   clearOrganization,
+  history,
 }) {
+  const clubId = history.location.pathname.slice(6);
   useEffect(() => {
     if (organization.id !== clubId) getOrganization(clubId);
     // return function clears the loaded profile when component unmounts
     return () => {
       !organization.id && clearOrganization();
     };
-  }, []);
+  }, [clubId]);
 
   if (!organization.id) return <Loading />;
 
@@ -27,17 +29,24 @@ function ClubPage({
 
   const contactComps = Object.keys(socLinks).map((key, i) =>
     socLinks[key] !== null && socLinks[key] !== '' ? (
-      <a key={i} target="_blank" rel="noopener noreferrer" href={key == "contact_email" ? "mailto:"+socLinks[key] : socLinks[key]}>
+      <a
+        key={i}
+        target="_blank"
+        rel="noopener noreferrer"
+        href={
+          key === 'contact_email' ? 'mailto:' + socLinks[key] : socLinks[key]
+        }
+      >
         <img
           className="link-image"
-          src={require('./assets/linkImages/' + key + 'Link.png')}
+          src={require('./assets/linkImages/' + key + '.png')}
           alt="web link"
         />
       </a>
     ) : null
   );
   const resComps = organization.resources.map((res, i) => (
-    <div className="desc-text" id="resources">
+    <div className="desc-text" id="resources" key={i}>
       {res.name}
       <a target="_blank" rel="noopener noreferrer" href={res.link} key={i}>
         <img
@@ -80,7 +89,7 @@ function ClubPage({
     <div style={{ minHeight: '100vh' }}>
       <img
         className="header-img"
-        src={organization.banner_url || require('./assets/ethicalheader.png')}
+        src={organization.banner_url || require('./assets/default_banner.jpg')}
         alt=""
       />
       <div className="flex-container-chungus">
@@ -88,7 +97,9 @@ function ClubPage({
           <div className="logo-box">
             <img
               className="club-logo"
-              src={organization.logo_url || require('./assets/ethicalLogo.jpg')}
+              src={
+                organization.logo_url || require('./assets/default_logo.jpg')
+              }
               alt="club"
             />
             <div className="club-info-flex">
@@ -101,12 +112,12 @@ function ClubPage({
             </div>
           </div>
 
-          <div className="desc-box">
+          <div className="left-box">
             <p>Description</p>
             <div className="desc-text">{organization.about_us}</div>
           </div>
 
-          <div className="events-box">
+          <div className="left-box">
             <p>Events</p>
             <EventAccord data={organization} />
           </div>
@@ -122,6 +133,14 @@ function ClubPage({
             <p>Resources</p>
             <div className="resources-flex">{resComps}</div>
           </div>
+
+          <div className="right-box">
+            <p>How to Get Involved</p>
+            <div className="desc-text" id="right-text">
+              {organization.get_involved}
+            </div>
+          </div>
+          
         </div>
       </div>
       <Footer />
@@ -134,5 +153,5 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, { getOrganization, clearOrganization })(
-  ClubPage
+  withRouter(ClubPage)
 );

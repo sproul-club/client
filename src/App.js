@@ -13,7 +13,7 @@ import Catalog from './pages/catalog.js';
 import { SignUp } from './pages/SignUp.js';
 import { SignIn } from './pages/SignIn.js';
 import { ResetPassword } from './pages/ResetPassword.js';
-import { ResetPassword2 } from './pages/ResetPassword2.js';
+// import { ResetPassword2 } from './pages/ResetPassword2.js';
 import Security from './pages/admin/Security.js';
 import Admin from './pages/admin/Admin.js';
 import Modal from './pages/Modal.js';

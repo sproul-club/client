@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Dropdown from './AdminDropdown.js';
 import { connect } from 'react-redux';
-import store from '../../store';
 import ImageUploader from '../../react-images-upload';
 import { updateProfile, uploadImages } from '../../actions/profile';
 import { tagOptions } from '../../data/tagOptions';
+import 'react-notifications/lib/notifications.css';
+import {NotificationManager, NotificationContainer} from 'react-notifications';
 
 const Profile = ({ profile, updateProfile, uploadImages, images }) => {
   var appOptions = [
@@ -17,8 +18,7 @@ const Profile = ({ profile, updateProfile, uploadImages, images }) => {
     { value: 0, label: 'Not accepting members' },
   ];
 
-
-  const [tagError, setTagError] = useState('tagErrorNone');
+  // const [tagError, setTagError] = useState('tagErrorNone');
   const [orgName, setOrgName] = useState(profile.name);
   const [orgEmail, setOrgEmail] = useState(profile.owner);
   const [descr, setDescr] = useState(profile.about_us);
@@ -36,12 +36,14 @@ const Profile = ({ profile, updateProfile, uploadImages, images }) => {
   const submit = () => {
     const newProfile = {
       name: orgName,
+      owner: orgEmail,
       tags: tags.map((tags) => tags.value),
       about_us: descr,
       app_required: !!appReq.value,
       new_members: !!recruiting.value,
     };
     updateProfile(newProfile);
+    NotificationManager.success("Profile changes saved successfully!", '', 3000);
     let newImages;
     if (logoImage && bannerImage) {
       newImages = { logo: logoImage[0], banner: bannerImage[0] };
@@ -53,12 +55,22 @@ const Profile = ({ profile, updateProfile, uploadImages, images }) => {
       return;
     }
     uploadImages(newImages);
+  
   };
 
   const descrChange = (e) => {
     setDescr(e.target.value);
     setChars(500 - e.target.value.length);
   };
+
+  const reqFieldsCheck = () => {
+    if (tags === null) {
+      NotificationManager.error("Please have at least one tag", 'Changes not saved', 3000);
+    } else {
+      NotificationManager.error("Please enter an organization name", 'Changes not saved', 3000);
+    }
+    
+  }
 
   return (
     <div>
@@ -89,8 +101,14 @@ const Profile = ({ profile, updateProfile, uploadImages, images }) => {
         </div>
         <p className="subtitle">
           This setting cannot be changed. Please contact{' '}
-          <a target="_blank" href="mailto:sproul.club@gmail.com"><span style={{ color: '#54a0f1' }}>sproul.club@gmail.com</span></a> for
-          further assistance.
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="mailto:sproul.club@gmail.com"
+          >
+            <span style={{ color: '#54a0f1' }}>sproul.club@gmail.com</span>
+          </a>{' '}
+          for further assistance.
         </p>
         <div className="formElement">
           <p>Tags</p>
@@ -188,9 +206,10 @@ const Profile = ({ profile, updateProfile, uploadImages, images }) => {
         </div>
         <p className="subtitle">{descrChars} characters remaining</p>
       </div>
-      <button className="saveButton" onClick={submit}>
+      <button className="saveButton" onClick={ (tags === null || orgName.match(/^ *$/) !== null) ? reqFieldsCheck : submit}>
         Save changes
       </button>
+      <NotificationContainer/>
     </div>
   );
 };

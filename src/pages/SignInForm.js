@@ -19,7 +19,7 @@ const SignInForm = ({ login, history, isAuthenticated }) => {
   };
 
   return (
-    <div className="formGroup">
+    <form className="formGroup">
       <div className="formHeader">
         <h2>Sign into sproul.club</h2>
       </div>
@@ -36,10 +36,10 @@ const SignInForm = ({ login, history, isAuthenticated }) => {
         onChange={(e) => setPassword(e.target.value)}
       />
       <Link to="/recover">Forgot password?</Link>
-      <button className="submitButton" onClick={submitValue}>
+      <button type="submit" className="submitButton" onClick={submitValue}>
         Sign in
       </button>
-    </div>
+    </form>
   );
 };
 

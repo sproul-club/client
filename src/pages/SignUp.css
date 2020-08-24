@@ -185,7 +185,7 @@
 }
 
 /* Invalid input notice styling */
-.signup .conInputInvalid, .emailInputInvalid {
+.signup .inputInvalid {
   width: 290px;
   padding: 10px;
   margin: 8px;
@@ -198,7 +198,11 @@
   color: #4e4e4e;
 }
 
-.signup .error {
+.signup .errorWrapper {
+  width: 100%;
+}
+
+.signup .errorWrapper .error {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -206,57 +210,43 @@
   position: absolute;
   background: #faf5cc;
   z-index: 1;
-  opacity: 0.9;
   border-radius: 6px;
   padding-left: 8px;
   padding-right: 8px;
   box-shadow: 3px 3px 5px rgb(0, 0, 0, 0.2);
 }
 
-.signup .error.conError {
-  margin-left: 150px;
-  margin-top: 320px;
+.signup .errorWrapper img {
+  height: 14px;
+  width: 14px;
+  margin-right: 6px;
 }
 
-.signup .error.emailError {
-  margin-left: 214px;
-  margin-top: 214px;
+.signup .errorWrapper p {
+  color: #ff2d2d;
+  font-family: montserrat, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 11.5px;
+  line-height: 3px;
 }
 
-.signup .error.tagError,
-.error.tagErrorNone {
-  margin-left: 160px;
-  margin-top: 163px;
-}
-
-.signup .error.emptyError1 {
-  margin-left: 195px;
-  margin-top: 189px;
-}
-
-.signup .error.emptyError2 {
-  margin-left: 195px;
-  margin-top: 243px;
-}
-
-.signup .error.emptyError3 {
-  margin-left: 195px;
-  margin-top: 296px;
-}
-
-.signup .conError,
-.emailError,
-.tagError, 
-.emptyError1,
-.emptyError2,
-.emptyError3 {
+.signup .emailUnverified,
+.pwdConMismatch,
+.tagOverflow,
+.emptyName,
+.emptyEmail,
+.emptyPwd, 
+.emptyTags,
+.emptyAppReq,
+.emptyRecruit {
   /* transition to visible popup */
   visibility: visible;
-  opacity: 1;
+  opacity: 0.85;
   transition: opacity 0.12s 0.1s ease-in;
 }
 
-.signup .tagErrorNone {
+.signup .tagOverflowNone {
   /* transition to invisible popup */
   visibility: hidden;
   opacity: 0;
@@ -264,38 +254,47 @@
     opacity 0.6s cubic-bezier(0.58, 0.05, 0.76, 0.89);
 }
 
-.conError img,
-.emailError img,
-.tagError img,
-.tagErrorNone img,
-.emptyError1 img,
-.emptyError2 img,
-.emptyError3 img {
-  height: 14px;
-  width: 14px;
-  margin-right: 6px;
-}
-
-.conError p,
-.emailError p,
-.tagError p,
-.tagErrorNone p,
-.emptyError1 p,
-.emptyError2 p,
-.emptyError3 p {
-  color: #ff2d2d;
-  font-family: montserrat, sans-serif;
-  font-weight: 700;
-  font-style: normal;
-  font-size: 12px;
-  line-height: 8px;
-}
-
-.signup .error.conErrorNone,
-.error.emailErrorNone,
-.error.emptyErrorNone,
+.signup .error.noError,
 .error.unset {
-  display: none;
+  display: none !important;
+}
+
+.signup .error.emptyName {
+  margin-left: 187px;
+  margin-top: 201px;
+}
+.signup .error.emptyEmail {
+  margin-left: 187px;
+  margin-top: 255px;
+}
+.signup .error.emptyPwd {
+  margin-left: 187px;
+  margin-top: 329px;
+}
+.signup .error.emailUnverified {
+  margin-left: 187px;
+  margin-top: 255px;
+}
+.signup .error.pwdConMismatch {
+  margin-left: 187px;
+  margin-top: 329px;
+}
+.signup .error.tagOverflow,
+.error.tagOverflowNone {
+  margin-left: 160px;
+  margin-top: 163px;
+}
+.signup .error.emptyTags {
+  margin-left: 187px;
+  margin-top: 198px;
+}
+.signup .error.emptyAppReq {
+  margin-left: 187px;
+  margin-top: 252px;
+}
+.signup .error.emptyRecruit {
+  margin-left: 187px;
+  margin-top: 305px;
 }
 
 /* Page Three styling */
@@ -424,8 +423,7 @@
     font-size: 18px;
   }
 
-  .signup .conInputInvalid,
-  .emailInputInvalid {
+  .signup .inputInvalid {
     width: 400px;
     padding: 12px;
     margin: 12px;
