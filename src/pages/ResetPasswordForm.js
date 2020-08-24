@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './ResetPassword.css';
-import image from './assets/register.png';
+import image from './assets/resetpwd1.png';
 
 const ResetPasswordForm = () => {
   const [currStep, setStep] = useState(1);

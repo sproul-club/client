@@ -2,7 +2,7 @@
   position: relative;
   padding-top: 86.6px;
   /* window height - header - footer */
-  height: calc(100vh - 86.6px - 82.6px);
+  height: calc(100vh - 86.6px - 71.6px);
   display: flex;
   flex-direction: row;
   justify-content: center;
