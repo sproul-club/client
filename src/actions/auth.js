@@ -69,6 +69,8 @@ export const login = (email, password, history) => async (dispatch) => {
     history.push('/admin');
   } catch (err) {
     dispatch({ type: AUTH_ERROR, payload: err });
+    alert(err.response.data.reason);
+    console.log(err.response);
   }
 };
 
