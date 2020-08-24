@@ -96,6 +96,73 @@
   cursor: pointer;
 }
 
+/* styling for sign in errors */
+.signin .form .inputInvalid {
+  width: calc(100vw - 100px - 2px - 1.5px - 18px);
+  /* formGroup max-width - the rest */
+  max-width: calc(325px - 2px - 1.5px - 18px);
+  padding: 9px;
+  border-radius: 5px;
+  box-shadow: 1.5px 2px 3px #888888b5;
+  font-family: montserrat, sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 14px;
+  color: #4e4e4e;
+  border: solid 1px #ff2d2d;
+}
+
+.signin .errorWrapper {
+  width: 100%;
+}
+
+.signin .errorWrapper .error {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  background: #faf5cc;
+  z-index: 1;
+  border-radius: 6px;
+  padding-left: 8px;
+  padding-right: 8px;
+  box-shadow: 3px 3px 5px rgb(0, 0, 0, 0.2);
+}
+
+.signin .errorWrapper img {
+  height: 14px;
+  width: 14px;
+  margin-right: 6px;
+}
+
+.signin .errorWrapper p {
+  color: #ff2d2d;
+  font-family: montserrat, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 11.5px;
+}
+
+.signin .emailUnverified, 
+.emptyEmail {
+  /* transition to visible popup */
+  visibility: visible;
+  opacity: 0.85;
+  transition: opacity 0.12s 0.1s ease-in;
+}
+
+.signin .error.noError,
+.error.unset {
+  display: none !important;
+}
+
+.signin .error.emptyEmail, 
+.error.emailUnverified {
+  margin-left: 150px;
+  margin-top: 75px;
+}
+
 @media screen and (max-height: 700px) {
   .signin .loginImage {
     width: 38%;
@@ -140,3 +207,5 @@
 }
 
 /* WEBKIT FOR OLD SAFARI VERSIONS */
+
+

@@ -8,7 +8,7 @@ import {
 import axios from 'axios';
 import { loadProfile } from './profile';
 
-axios.defaults.baseURL = 'https://sc-backend-v0.herokuapp.com';
+axios.defaults.baseURL = 'https://sc-backend-dev.herokuapp.com';
 
 // Register User
 export const register = (
@@ -69,6 +69,10 @@ export const login = (email, password, history) => async (dispatch) => {
     history.push('/admin');
   } catch (err) {
     dispatch({ type: AUTH_ERROR, payload: err });
+    if (err.response.data.reason == "The password is incorrect!") {
+      alert(err.response.data.reason);
+    }
+    console.log(err.response);
   }
 };
 
