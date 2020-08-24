@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Landing.css';
 import ScrollAnimation from 'react-animate-on-scroll';
 import Footer from '../layout/Footer';
@@ -30,7 +31,7 @@ const Landing = () => {
             sproul.club helps you discover student clubs, organizations, and
             communities on campus - built by students, for students!
           </p>
-          <a href="#interestform">Sign up for early access</a>
+          <Link to="/signup">Register Your Club</Link>
         </div>
       </div>
       <div className="moreContent">
@@ -94,12 +95,12 @@ const Landing = () => {
             </ScrollAnimation>
           </div>
         </div>
-        <div className="interestForm" id="interestform">
+        {/* <div className="interestForm" id="interestform">
           <h2>Now accepting student clubs and organizations!</h2>
           <div className="form">
             <LandingForm />
           </div>
-        </div>
+        </div> */}
       </div>
       <Footer />
     </div>
