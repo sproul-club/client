@@ -157,7 +157,7 @@
   display: none !important;
 }
 
-.signin .error.emptyEmail, 
+.signin .error.emptyEmail, .signin
 .error.emailUnverified {
   margin-left: 150px;
   margin-top: 75px;
