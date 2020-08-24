@@ -6,7 +6,6 @@ const customStyles = {
     ...provided,
     background: '#D1D3D4',
     color: '#2b2b2b',
-    'border-radius': 4,
   }),
   control: () => ({
     display: 'flex',
@@ -15,7 +14,6 @@ const customStyles = {
     fontSize: 14,
     border: 'solid 1px #2b2b2b',
     borderRadius: 5,
-    'line-height': 16,
     padding: 0,
     background: 'white',
   }),
@@ -26,7 +24,10 @@ const customStyles = {
     width: '430px',
     fontSize: 16,
     textAlign: 'left',
-    color: (state.selectProps.value && state.selectProps.value.length >= 3) ? '#cccccc' : '#2b2b2b'
+    color:
+      state.selectProps.value && state.selectProps.value.length >= 3
+        ? '#cccccc'
+        : '#2b2b2b',
   }),
   multiValueRemove: (provided, state) => ({
     ...provided,
@@ -36,7 +37,6 @@ const customStyles = {
   }),
   multiValueLabel: (provided, state) => ({
     ...provided,
-    'margin-left': '4px',
   }),
   singleValue: (provided, state) => ({
     ...provided,
@@ -53,12 +53,12 @@ const handleChange = (value, props) => {
     if (value && value.length >= 3) {
       // recolor option text to light grey, to look unclickable :'(
       if (value.length > 3) {
-        value.pop();                // remove 4th tag
+        value.pop(); // remove 4th tag
       }
     }
   }
   props.set(value);
-}
+};
 
 const Dropdown = (props) => (
   <Select
@@ -72,6 +72,9 @@ const Dropdown = (props) => (
         dangerLight: '#D1D3D4',
       },
     })}
+    lineHeight="16px"
+    borderRadius="4"
+    marginLeft="4px"
     defaultValue={props.defaultValue || null}
     isSearchable={props.search}
     isMulti={props.multi}

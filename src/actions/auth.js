@@ -19,7 +19,6 @@ export const register = (
   app_required,
   new_members
 ) => async (dispatch) => {
-  
   const config = {
     headers: {
       'Content-Type': 'application/json',
@@ -63,7 +62,7 @@ export const login = (email, password, history) => async (dispatch) => {
     localStorage.setItem('expiresAt', new Date().getTime() + 300000);
     localStorage.setItem('refreshToken', res.data.refresh);
 
-    dispatch(loadProfile());
+    await dispatch(loadProfile());
     dispatch({ type: LOGIN_SUCCESS, payload: res.data });
 
     history.push('/admin');
@@ -111,6 +110,7 @@ export const refreshToken = () => async (dispatch, getState) => {
   try {
     if (expiresAt < new Date().getTime()) {
       const res = await axios.post('/api/user/refresh', {}, config);
+      console.log(res);
 
       localStorage.setItem('token', res.data.access);
 
@@ -120,7 +120,6 @@ export const refreshToken = () => async (dispatch, getState) => {
     dispatch({ type: AUTH_ERROR, payload: err });
   }
 };
-
 
 // Verify email as Callink email
 export const isCallinkEmail = (email) => {
@@ -132,11 +131,12 @@ export const isCallinkEmail = (email) => {
   };
   const body = JSON.stringify({ email });
 
-  return axios.post('/api/user/email-exists', body, config)
-              .then((response) => {
-                return response.data.exists;
-              })
-              .catch((error) => {
-                console.log( error.response );
-              });
+  return axios
+    .post('/api/user/email-exists', body, config)
+    .then((response) => {
+      return response.data.exists;
+    })
+    .catch((error) => {
+      console.log(error.response);
+    });
 };
