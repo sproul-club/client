@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { updateProfile } from '../../actions/profile';
+import {NotificationManager, NotificationContainer} from 'react-notifications';
 
 const ContactInfo = ({ profile, updateProfile }) => {
   const contactInfo = profile.social_media_links;
@@ -17,6 +18,12 @@ const ContactInfo = ({ profile, updateProfile }) => {
   const [gcalendar, setGcalendar] = useState(contactInfo.gcalendar);
   const [youtube, setYoutube] = useState(contactInfo.youtube);
 
+  if (email === null) {
+    setEmail(profile.owner);
+  }
+
+  console.log(email);
+
   const saveContactInfo = () => {
     updateProfile({
       ...profile.profile,
@@ -32,8 +39,11 @@ const ContactInfo = ({ profile, updateProfile }) => {
         twitter,
         youtube,
         gcalendar,
-      },
-    });
+      }}, function() {
+        NotificationManager.success("Contact information changes saved successfully!", '', 3000);
+      }, function() {
+        NotificationManager.error("Contact information changes unsuccessful!", '', 3000);
+      });
   };
 
   return (
@@ -160,6 +170,7 @@ const ContactInfo = ({ profile, updateProfile }) => {
       <button className="saveButton" onClick={saveContactInfo}>
         Save changes
       </button>
+      <NotificationContainer/>
     </div>
   );
 };

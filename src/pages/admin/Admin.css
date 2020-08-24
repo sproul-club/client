@@ -135,6 +135,7 @@
   font-size: 10px;
   margin-left: 210px;
   margin-bottom: 20px;
+  text-decoration: none;
 }
 
 .delete-modal {
@@ -145,4 +146,12 @@
   width: 300px;
   text-align: center;
   align-items: center;
+}
+
+.admin-page span {
+  color: #ff2d2d;
+}
+
+a{
+  text-decoration: none;
 }

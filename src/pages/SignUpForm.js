@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import Dropdown from './Dropdown.js';
-import registerImage from './assets/register.png';
 import error from './assets/error.svg';
 import { connect } from 'react-redux';
 import { register, isCallinkEmail } from '../actions/auth';
 import { tagOptions } from '../data/tagOptions';
+import signup from './assets/signup.png'
 
 const MultiStepForm = ({ register }) => {
   var appOptions = [
@@ -50,57 +50,66 @@ const MultiStepForm = ({ register }) => {
   };
 
   const _next = () => {
-    let haveError = false;
     /* step 1 errors */
-    if (currStep === 1) {      
-      if (clubName === '') {
-        setEmptyName('emptyName');
-        haveError = true;
-      }
-      if (email === '') {
-        setEmptyEmail('emptyEmail')
-        haveError = true;
-      } else {        // check if email is verified
-        let isVerified = false;
-        isCallinkEmail(email).then((response) => {
-          isVerified = response;
-        })
-        if (!isVerified) {
-          setEmailUnverified('emailUnverified');
-          haveError = true;
+    if (currStep === 1) {
+      checkStep1Errors().then((errorExists) => {
+        if(!errorExists) {
+          setStep(currStep + 1);
         }
-      }
-      if (pwd === '' && con === '') {
-        setEmptyPwd('emptyPwd');
-        haveError = true;
-      } else if (pwd !== con) {
-        setPwdConMismatch('pwdConMismatch');
-        haveError = true;        
-      }
-    }
+      })
+    } 
     /* step 2 errors */
     else if (currStep === 2) {
-      if (tags === null || tags.length === 0) {
-        setEmptyTags('emptyTags');
-        haveError = true;
-      }
-      if (emptyAppReq === 'unset') {
-        setEmptyAppReq('emptyAppReq');
-        haveError = true;
-      }
-      if (emptyRecruit === 'unset') {
-        setEmptyRecruit('emptyRecruit');
-        haveError = true;
-      }
-    }
-    /* if no errors, go to next step / submit */
-    if (!haveError) {
-      setStep(currStep + 1);
-      if (currStep === 3) {
+      var errorExists = checkStep2Errors();
+      if(!errorExists) {
+        setStep(currStep + 1);
         submitValue();
       }
     }
   };
+
+  async function checkStep1Errors() {
+    var errorExists = false;
+    if (clubName === '') {
+      setEmptyName('emptyName');
+      errorExists = true;
+    }
+    if (email === '') {
+      setEmptyEmail('emptyEmail');
+      errorExists = true;
+    } else {        // check if email is verified
+      var isVerified = await isCallinkEmail(email);
+      if (!isVerified) {
+        setEmailUnverified('emailUnverified');
+        errorExists = true;
+      }
+    }
+    if (pwd === '' && con === '') {
+      setEmptyPwd('emptyPwd');
+      errorExists = true;
+    } else if (pwd !== con) {
+      setPwdConMismatch('pwdConMismatch');
+      errorExists = true;
+    }
+    return errorExists;
+  };
+
+  function checkStep2Errors() {
+    var errorExists = false;
+    if (tags === null || tags.length === 0) {
+      setEmptyTags('emptyTags');
+      errorExists = true;
+    }
+    if (emptyAppReq !== 'noError') {
+      setEmptyAppReq('emptyAppReq');
+      errorExists = true;
+    }
+    if (emptyRecruit !== 'noError') {
+      setEmptyRecruit('emptyRecruit');
+      errorExists = true;
+    }
+    return errorExists;
+  }
 
   const nameOnChange = (event) => {
     setClubName(event);
@@ -211,7 +220,7 @@ const StepOne = (props) => {
       </div>
       <div className="formHeader">
         <div className="imageContainer">
-          <img src={registerImage} alt="register" />
+          <img src={signup} alt="register" />
         </div>
         <h2>Register your club</h2>
       </div>
@@ -286,7 +295,7 @@ const StepTwo = (props) => {
       </div>
       <div className="formHeader">
         <div className="imageContainer">
-          <img src={registerImage} alt="" />
+          <img src={signup} alt="" />
         </div>
         <h2>Register your club</h2>
       </div>
@@ -338,7 +347,7 @@ const StepThree = (props) => {
     <div className="formGroup">
       <div className="complete">
         <div className="imageContainer">
-          <img src={registerImage} alt="" />
+          <img src={signup} alt="" />
         </div>
         <h3>You're all set!</h3>
         <h3>Please check your organization's email for a confirmation link.</h3>

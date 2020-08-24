@@ -42,6 +42,10 @@
     background: #C4C4C4;
     color: #2e2e2e;
 }
+.security .formElement{
+    margin: 0px;
+    margin-top: 20px;
+}
 
 .security .formGroup button:hover {
     background: #c9c9c9;
@@ -69,10 +73,8 @@
 }
 
 .security .subtitle {
-    margin-top: -20px;
     font-size: 12px;
-    margin-left: 211px;
-    margin-bottom: 10px;
+    margin-left: 214px;
     color: #54a0f1;
     text-decoration: none;
     width: 110px;

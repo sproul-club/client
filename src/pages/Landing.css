@@ -27,6 +27,7 @@
   align-items: center;
   flex-direction: column;
   margin-bottom: 40px;
+  margin-top: 80px;
 }
 
 .landing .text {
@@ -101,7 +102,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 2700px;
+  /* height: 2700px; */
   align-items: center;
   justify-content: flex-start;
 }
@@ -112,7 +113,9 @@
   flex-direction: column;
 }
 
-.landing .moreContent .feature1, .feature2, .feature3 {
+.landing .moreContent .feature1,
+.feature2,
+.feature3 {
   justify-content: flex-end;
   display: flex;
   flex-direction: row;
@@ -127,7 +130,8 @@
   padding-left: 30px;
 }
 
-.landing .moreContent .feature1 .description, .feature3 .description {
+.landing .moreContent .feature1 .description,
+.feature3 .description {
   display: flex;
   flex-direction: column;
   position: relative;
@@ -142,7 +146,8 @@
   margin-left: 50px;
 }
 
-.landing .moreContent .feature1 img, .feature3 img {
+.landing .moreContent .feature1 img,
+.feature3 img {
   width: 542px;
   position: relative;
   margin-right: 74px;
@@ -209,7 +214,9 @@
 }
 
 @media screen and (max-width: 1235px) and (min-width: 980px) {
-  .landing .moreContent .feature1 img, .feature2 img, .feature3 img {
+  .landing .moreContent .feature1 img,
+  .feature2 img,
+  .feature3 img {
     width: 42vw !important;
     max-width: 542px;
   }
@@ -305,7 +312,8 @@
     width: 98%;
   }
 
-  .landing .moreContent .featureWrapper .feature1, .feature3 {
+  .landing .moreContent .featureWrapper .feature1,
+  .feature3 {
     flex-direction: column-reverse;
     justify-content: center;
     align-items: center;
@@ -332,7 +340,7 @@
 
   .landing .moreContent {
     flex-direction: column;
-    height: 2450px;
+    /* height: 2450px; */
     text-align: center;
     margin-top: 0px;
   }
@@ -395,10 +403,6 @@
     width: 600px;
   }
 
-  .landing .moreContent {
-    height: 3400px;
-  }
-
   .landing .moreContent img {
     min-height: 600px;
   }
@@ -417,7 +421,9 @@
     width: 550px;
   }
 
-  .landing .moreContent .feature1, .feature2, .feature3 {
+  .landing .moreContent .feature1,
+  .feature2,
+  .feature3 {
     margin-bottom: 150px;
   }
 
