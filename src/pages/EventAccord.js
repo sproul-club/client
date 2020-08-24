@@ -79,13 +79,6 @@ function EventAccord(props) {
             <div className="event-flex-container">
                 <div className="event-flex-left">
                     {event.name}
-                    <a target="_blank" rel="noopener noreferrer" href={event.link} key={i}>
-                        <img
-                        className="res-img"
-                        src={require('./assets/linkImages/resLink.png')}
-                        alt="resource"
-                        />
-                    </a>
                 </div>
                 <div className="event-flex-right">{formatDates(event.event_start, event.event_end)}</div>
             </div>
@@ -96,6 +89,17 @@ function EventAccord(props) {
             </AccordionItemHeading>
             <AccordionItemPanel className="accordion__panel-event">
                 {event.description}
+                <br></br>
+                <div id="gray-ev-link">
+                    event link
+                    <a target="_blank" rel="noopener noreferrer" href={event.link} key={i}>
+                        <img
+                        className="res-img"
+                        src={require('./assets/linkImages/resLink.png')}
+                        alt="resource"
+                        />
+                    </a>
+                </div>
             </AccordionItemPanel>
         </AccordionItem>
         <hr width="90%"></hr>

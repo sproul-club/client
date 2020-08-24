@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { updateProfile } from '../../actions/profile';
 import {NotificationManager, NotificationContainer} from 'react-notifications';
+import {normalizeUrl} from '../../utils/normalizeUrl'
 
 const ContactInfo = ({ profile, updateProfile }) => {
   const contactInfo = profile.social_media_links;
+  const [normalized, setNormalized] = useState(false);
 
   const [email, setEmail] = useState(contactInfo.contact_email);
   const [website, setWebsite] = useState(contactInfo.website);
@@ -23,8 +25,23 @@ const ContactInfo = ({ profile, updateProfile }) => {
   }
 
   console.log(email);
+  
+  const normalizeUrls = () => {
+    setWebsite(normalizeUrl(website));
+    setFacebook(normalizeUrl(facebook));
+    setInstagram(normalizeUrl(instagram));
+    setLinkedin(normalizeUrl(linkedin));
+    setGithub(normalizeUrl(github));
+    setBehance(normalizeUrl(behance));
+    setMedium(normalizeUrl(medium));
+    setTwitter(normalizeUrl(twitter));
+    setGcalendar(normalizeUrl(gcalendar));
+    setYoutube(normalizeUrl(youtube));
+    setNormalized(true)
+  }
 
-  const saveContactInfo = () => {
+  if (normalized === true) {
+    setNormalized(false)
     updateProfile({
       ...profile.profile,
       social_media_links: {
@@ -44,7 +61,7 @@ const ContactInfo = ({ profile, updateProfile }) => {
       }, function() {
         NotificationManager.error("Contact information changes unsuccessful!", '', 3000);
       });
-  };
+  }
 
   return (
     <div>
@@ -167,7 +184,7 @@ const ContactInfo = ({ profile, updateProfile }) => {
           />
         </div>
       </div>
-      <button className="saveButton" onClick={saveContactInfo}>
+      <button className="saveButton" onClick={normalizeUrls}>
         Save changes
       </button>
       <NotificationContainer/>
