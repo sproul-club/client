@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Modal from '../../layout/Modal';
+import {normalizeUrl} from '../../utils/normalizeUrl'
+
 const ResComp = (props) => {
   /*Tracks input values for edit modal*/
   const [name, setName] = useState('');
@@ -16,7 +18,7 @@ const ResComp = (props) => {
   /*Updates main resource array with entries in the edit modal*/
   function singleSave() {
     setShowEditModal(false);
-    props.entryChange(props.data.id, name, link);
+    props.entryChange(props.data.id, name, normalizeUrl(link));
     setPropsName(name);
   }
 
