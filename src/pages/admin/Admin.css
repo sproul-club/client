@@ -146,3 +146,7 @@
   text-align: center;
   align-items: center;
 }
+
+.admin-page span {
+  color: #ff2d2d;
+}

@@ -60,15 +60,6 @@
   font-weight: 700;
 }
  
-.event-content-text {
-  height: 100px;
-  margin-top: 15px;
-  font-size: 18px;
-  white-space: wrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
- 
 .formElement .textarea {
   width: 418px;
 }
@@ -167,4 +158,9 @@
  
 .event-description{
   width: 75%;
+  word-wrap: break-word;
+}
+
+.events img:hover {
+  cursor: pointer;
 }

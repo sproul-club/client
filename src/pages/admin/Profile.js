@@ -18,7 +18,6 @@ const Profile = ({ profile, updateProfile, uploadImages, images }) => {
     { value: 0, label: 'Not accepting members' },
   ];
 
-  // const [tagError, setTagError] = useState('tagErrorNone');
   const [orgName, setOrgName] = useState(profile.name);
   const [orgEmail, setOrgEmail] = useState(profile.owner);
   const [descr, setDescr] = useState(profile.about_us);
@@ -42,8 +41,11 @@ const Profile = ({ profile, updateProfile, uploadImages, images }) => {
       app_required: !!appReq.value,
       new_members: !!recruiting.value,
     };
-    updateProfile(newProfile);
-    NotificationManager.success("Profile changes saved successfully!", '', 3000);
+    updateProfile(newProfile, function() {
+      NotificationManager.success("Profile changes saved successfully!", '', 3000);
+    }, function() {
+      NotificationManager.error("Profile changes unsuccessful!", '', 3000);
+    });
     let newImages;
     if (logoImage && bannerImage) {
       newImages = { logo: logoImage[0], banner: bannerImage[0] };
@@ -54,8 +56,16 @@ const Profile = ({ profile, updateProfile, uploadImages, images }) => {
     } else {
       return;
     }
-    uploadImages(newImages);
-  
+    uploadImages(newImages, function() {
+      NotificationManager.success("Images uploaded successfully!", '', 3000);
+    }, function(type) {
+      switch (type) {
+        case ("logo"):
+          NotificationManager.error("For best results, please upload a logo that has an aspect ratio of 1:1", "Logo image upload unsuccessful", 5000);
+        case ("banner"):
+          NotificationManager.error("For best results, please upload a banner that has an aspect ratio of 16:6", "Banner image upload unsuccessful", 5000);
+      }
+    });
   };
 
   const descrChange = (e) => {
@@ -69,7 +79,6 @@ const Profile = ({ profile, updateProfile, uploadImages, images }) => {
     } else {
       NotificationManager.error("Please enter an organization name", 'Changes not saved', 3000);
     }
-    
   }
 
   return (
@@ -171,7 +180,7 @@ const Profile = ({ profile, updateProfile, uploadImages, images }) => {
         <div className="formElement">
           <p>Banner</p>
           <ImageUploader
-            label="820 x 312 pixels - e.g. Facebook cover image"
+            label="16:6 ratio - e.g. Facebook cover image"
             buttonStyles={{
               background: '#54a0f1',
             }}

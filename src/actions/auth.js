@@ -50,6 +50,7 @@ export const login = (email, password, history) => async (dispatch) => {
   const config = {
     headers: {
       'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
     },
   };
 

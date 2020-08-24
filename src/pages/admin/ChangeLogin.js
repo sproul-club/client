@@ -52,7 +52,12 @@ const ChangeLogin = ({ updatePassword }) => {
             "new_password": newPW
         }
 
-        updatePassword(data);
+        updatePassword(data, function(){
+            NotificationManager.success("Password successfully changed!", '', 3000);
+        },
+        function(){
+            NotificationManager.success("Password change unsuccessful!", '', 3000);
+        });
         setEditing(!editing);
         setSave("saveButtonHide");
         setCancel("cancelButtonHide");
@@ -60,15 +65,13 @@ const ChangeLogin = ({ updatePassword }) => {
         setOldPW('');
         setConPW('');
 
-        NotificationManager.success("Password successfully changed!", '', 1500);
     }
 
     const swap = (condition) => {
         switch(condition) {
             case true:
                 return (
-                    <div>
-                    <div className="formGroup">
+                    <div className="ugh">
                         <div className="formElement">
                         <p>
                             Current password
@@ -80,7 +83,7 @@ const ChangeLogin = ({ updatePassword }) => {
                             type="password"
                         />
                         </div>
-                        <Link to="/recovery" className="subtitle">Forgot password?</Link>
+                        <Link to="/recover" className="subtitle">Forgot password?</Link>
                         <div className="formElement">
                         <p>
                             New password
@@ -106,7 +109,6 @@ const ChangeLogin = ({ updatePassword }) => {
                         <div className={conError}>
                             Passwords don't match or left blank.
                         </div>
-                    </div>
                     </div>
                 );
 
