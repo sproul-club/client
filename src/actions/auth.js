@@ -129,6 +129,7 @@ export const isCallinkEmail = (email) => {
   const config = {
     headers: {
       'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
     },
   };
   const body = JSON.stringify({ email });
@@ -139,6 +140,6 @@ export const isCallinkEmail = (email) => {
       return response.data.exists;
     })
     .catch((error) => {
-      console.log(error.response);
+      console.log(error);
     });
 };
