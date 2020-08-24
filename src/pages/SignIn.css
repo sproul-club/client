@@ -137,6 +137,7 @@
 }
 
 .signin .errorWrapper p {
+  margin-top: 8px;
   color: #ff2d2d;
   font-family: montserrat, sans-serif;
   font-weight: 700;
