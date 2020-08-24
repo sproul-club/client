@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import ImageUploader from '../../react-images-upload';
 import { updateProfile, uploadImages } from '../../actions/profile';
 import { tagOptions } from '../../data/tagOptions';
+import 'react-notifications/lib/notifications.css';
+import {NotificationManager, NotificationContainer} from 'react-notifications';
 
 const Profile = ({ profile, updateProfile, uploadImages, images }) => {
   var appOptions = [
@@ -34,12 +36,14 @@ const Profile = ({ profile, updateProfile, uploadImages, images }) => {
   const submit = () => {
     const newProfile = {
       name: orgName,
+      owner: orgEmail,
       tags: tags.map((tags) => tags.value),
       about_us: descr,
       app_required: !!appReq.value,
       new_members: !!recruiting.value,
     };
     updateProfile(newProfile);
+    NotificationManager.success("Profile changes saved successfully!", '', 3000);
     let newImages;
     if (logoImage && bannerImage) {
       newImages = { logo: logoImage[0], banner: bannerImage[0] };
@@ -51,12 +55,22 @@ const Profile = ({ profile, updateProfile, uploadImages, images }) => {
       return;
     }
     uploadImages(newImages);
+  
   };
 
   const descrChange = (e) => {
     setDescr(e.target.value);
     setChars(500 - e.target.value.length);
   };
+
+  const reqFieldsCheck = () => {
+    if (tags === null) {
+      NotificationManager.error("Please have at least one tag", 'Changes not saved', 3000);
+    } else {
+      NotificationManager.error("Please enter an organization name", 'Changes not saved', 3000);
+    }
+    
+  }
 
   return (
     <div>
@@ -192,9 +206,10 @@ const Profile = ({ profile, updateProfile, uploadImages, images }) => {
         </div>
         <p className="subtitle">{descrChars} characters remaining</p>
       </div>
-      <button className="saveButton" onClick={submit}>
+      <button className="saveButton" onClick={ (tags === null || orgName.match(/^ *$/) !== null) ? reqFieldsCheck : submit}>
         Save changes
       </button>
+      <NotificationContainer/>
     </div>
   );
 };
