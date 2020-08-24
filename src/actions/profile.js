@@ -26,7 +26,7 @@ export const loadProfile = () => async (dispatch) => {
   }
 
   try {
-    dispatch(refreshToken());
+    await dispatch(refreshToken());
     const res = await axios.get('/api/admin/profile');
     dispatch({ type: LOAD_PROFILE, payload: res.data });
   } catch (err) {
