@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import Dropdown from './Dropdown.js';
-import registerImage from './assets/register.png';
 import error from './assets/error.svg';
 import { connect } from 'react-redux';
 import { register, isCallinkEmail } from '../actions/auth';
 import { tagOptions } from '../data/tagOptions';
+import signup from './assets/signup.png'
 
 const MultiStepForm = ({ register }) => {
   var appOptions = [
@@ -211,7 +211,7 @@ const StepOne = (props) => {
       </div>
       <div className="formHeader">
         <div className="imageContainer">
-          <img src={registerImage} alt="register" />
+          <img src={signup} alt="register" />
         </div>
         <h2>Register your club</h2>
       </div>
@@ -286,7 +286,7 @@ const StepTwo = (props) => {
       </div>
       <div className="formHeader">
         <div className="imageContainer">
-          <img src={registerImage} alt="" />
+          <img src={signup} alt="" />
         </div>
         <h2>Register your club</h2>
       </div>
@@ -338,7 +338,7 @@ const StepThree = (props) => {
     <div className="formGroup">
       <div className="complete">
         <div className="imageContainer">
-          <img src={registerImage} alt="" />
+          <img src={signup} alt="" />
         </div>
         <h3>You're all set!</h3>
         <h3>Please check your organization's email for a confirmation link.</h3>

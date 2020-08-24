@@ -86,6 +86,7 @@ export const logout = (history) => async (dispatch) => {
     // revoke refresh token
     await axios.delete('/api/user/revoke-refresh', config);
 
+    // remove tokens from local storage
     localStorage.removeItem('token');
     localStorage.removeItem('refreshToken');
 
@@ -111,9 +112,9 @@ export const refreshToken = () => async (dispatch, getState) => {
   try {
     if (expiresAt < new Date().getTime()) {
       const res = await axios.post('/api/user/refresh', {}, config);
-      console.log(res);
 
       localStorage.setItem('token', res.data.access);
+      localStorage.setItem('expiresAt', new Date().getTime() + 300000);
 
       dispatch({ type: REFRESH_TOKEN, payload: res.data });
     }

@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Loading.css';
 
 const Loading = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="loading">
       <div className="lds-ring">
@@ -10,9 +14,7 @@ const Loading = () => {
         <div></div>
         <div></div>
       </div>
-      <div className='loading-text'>
-      Loading
-      </div>
+      <div className="loading-text">Loading...</div>
     </div>
   );
 };

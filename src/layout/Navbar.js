@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout, login } from '../actions/auth';
@@ -37,6 +37,8 @@ const Navbar = ({
     }
   });
 
+  useEffect(() => {}, [isAuthenticated]);
+
   const logoutSelect = () => {
     setDropownVis(false);
     logout(history);
@@ -66,8 +68,13 @@ const Navbar = ({
       <Link to={`/club/${orgId}`} className="nav-link hide-sm">
         View Profile
       </Link>
-      <div className="org-menu" href="/signup" ref={authDropDownRef}>
-        <div className="org-email" onClick={toggleDropdown}>
+      <div
+        className="org-menu"
+        href="/signup"
+        ref={authDropDownRef}
+        onClick={toggleDropdown}
+      >
+        <div className="org-email">
           {organizationEmail}
           <i
             style={{ marginLeft: '5px' }}
