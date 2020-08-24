@@ -233,6 +233,7 @@ const EventComp = (props) => {
                 value={title}
                 placeholder="Enter the title of your event"
                 className="userInput modal-input"
+                maxLength={60}
               />
             </div>
             <div className="formElement">
@@ -286,6 +287,7 @@ const EventComp = (props) => {
                 value={text}
                 placeholder="Enter a short description about what your event is about and what attendees can expect!"
                 onChange={changeText}
+                maxLength={250}
               />
             </div>
           </div>

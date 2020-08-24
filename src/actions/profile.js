@@ -12,7 +12,7 @@ import {
   DELETE_RESOURCE,
   UPDATE_PASSWORD,
 } from './types';
-import FormData from 'form-data';
+import FormData, { errorMonitor } from 'form-data';
 import setAuthToken from '../utils/setAuthToken';
 import { refreshToken } from './auth';
 
@@ -35,7 +35,7 @@ export const loadProfile = () => async (dispatch) => {
 };
 
 // Update profile
-export const updateProfile = (formData) => async (dispatch) => {
+export const updateProfile = (formData, success, error) => async (dispatch) => {
   const justTheRightData = {
     name: formData.name,
     tags: formData.tags,
@@ -45,7 +45,6 @@ export const updateProfile = (formData) => async (dispatch) => {
     get_involved: formData.get_involved,
     social_media_links: formData.social_media_links,
   };
-
   try {
     const config = {
       headers: {
@@ -54,15 +53,16 @@ export const updateProfile = (formData) => async (dispatch) => {
       },
     };
     await axios.post('/api/admin/profile', justTheRightData, config);
-
+    success();
     dispatch({ type: UPDATE_PROFILE, payload: formData });
   } catch (err) {
+    error();
     console.log(err);
   }
 };
 
 // Upload Banner or Logo
-export const uploadImages = (images) => async (dispatch) => {
+export const uploadImages = (images, success, error) => async (dispatch) => {
   try {
     let data = new FormData();
     images.logo && data.append('logo', images.logo);
@@ -80,11 +80,13 @@ export const uploadImages = (images) => async (dispatch) => {
     };
 
     const res = await axios.post('/api/admin/upload-images', data, config);
+    success();
     console.log('upload success!');
 
     dispatch({ type: UPLOAD_IMAGES, payload: res.data });
   } catch (err) {
-    console.log(err);
+    error(err.response.data.data["image_type"])
+    console.log(err.response);
   }
 };
 
@@ -209,7 +211,7 @@ export const deleteResource = (id) => async (dispatch) => {
   }
 };
 
-export const updatePassword = (formData) => async (dispatch) => {
+export const updatePassword = (formData, success, error) => async (dispatch) => {
   try {
     const config = {
       headers: {
@@ -220,8 +222,10 @@ export const updatePassword = (formData) => async (dispatch) => {
     const event = JSON.stringify(formData);
     console.log(event);
     const res = await axios.post('/api/admin/change-password', event, config);
+    success();
     dispatch({ type: UPDATE_PASSWORD, payload: res.data });
   } catch (err) {
+    error();
     console.log(err.response);
   }
 };
