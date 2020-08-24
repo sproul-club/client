@@ -56,7 +56,7 @@ const ChangeLogin = ({ updatePassword }) => {
             NotificationManager.success("Password successfully changed!", '', 3000);
         },
         function(){
-            NotificationManager.success("Password change unsuccessful!", '', 3000);
+            NotificationManager.error("Old password incorrect", 'Password change unsuccessful!', 3000);
         });
         setEditing(!editing);
         setSave("saveButtonHide");
