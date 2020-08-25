@@ -52,7 +52,7 @@ export default function (state = initialState, action) {
     case AUTH_ERROR:
       return {
         ...state,
-        errors: payload,
+        errors: payload.response,
       };
     default:
       return state;

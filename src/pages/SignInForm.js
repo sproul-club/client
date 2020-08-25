@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { login } from '../actions/auth';
 import error from './assets/error.svg';
 import { isCallinkEmail } from '../actions/auth';
+import {NotificationManager, NotificationContainer} from 'react-notifications';
 
 
 const SignInForm = ({ login, history, isAuthenticated }) => {
@@ -15,23 +16,35 @@ const SignInForm = ({ login, history, isAuthenticated }) => {
    /* error indicators */
    const [emailUnverified, setEmailUnverified] = useState('noError');
    const [emptyEmail, setEmptyEmail] = useState('noError');
+   const [emptyPassword, setEmptyPassword] = useState('noError');
 
   if (isAuthenticated) {
     return <Redirect to="/admin" />;
   }
 
-  const submitValue = (e) => {
-    checkErrors();
+  const submitValue = async (e) => {
     e.preventDefault();
-    // passes the history object (from react-router-dom's withRouter) to redirect after login
-    login(email, pw, history);
+
+    let hasErrors = await checkErrors();
+    if (!hasErrors) {
+      // passes the history object (from react-router-dom's withRouter) to redirect after login
+      login(email, pw, history,
+        () => history.push('/admin'),
+        (errMessage) => NotificationManager.error(errMessage, "Unable to sign in!", 3000)
+      );
+    }
   };
 
-  const emailOnChange = (event) => {
-    setEmail(event);
+  const emailOnChange = (newEmail) => {
+    setEmail(newEmail);
     if (emptyEmail === 'emptyEmail') { setEmptyEmail('noError'); }
     if (emailUnverified === 'emailUnverified') { setEmailUnverified('noError'); }
   };
+
+  const passwordOnChange = (newPassword) => {
+    setPassword(newPassword);
+    if (emptyPassword === 'emptyPassword') { setEmptyPassword('noError'); }
+  }
 
   async function checkErrors() {
     var errorExists = false;
@@ -44,6 +57,11 @@ const SignInForm = ({ login, history, isAuthenticated }) => {
         setEmailUnverified('emailUnverified');
         errorExists = true;
       }
+    }
+
+    if (pw === '') {
+      setEmptyPassword('emptyPassword');
+      errorExists = true;
     }
     return errorExists;
   };
@@ -59,6 +77,10 @@ const SignInForm = ({ login, history, isAuthenticated }) => {
         <div className={`error ${emailUnverified}`}>
           <img src={error} className="errorIcon" />
           <p>email address is not RSO registered</p>
+        </div>
+        <div className={`error ${emptyPassword}`}>
+          <img src={error} className="errorIcon" />
+          <p>this field is required</p>
         </div>
       </div>
 
@@ -77,14 +99,15 @@ const SignInForm = ({ login, history, isAuthenticated }) => {
       
       <p>Password</p>
       <input
-        className="userInput"
+        className={`${((emptyPassword==='emptyPassword')) ? 'inputInvalid' : 'userInput'}`}
         type="password"
-        onChange={(e) => setPassword(e.target.value)}
+        onChange={(e) => passwordOnChange(e.target.value)}
       />
       <Link to="/recover">Forgot password?</Link>
       <button type="submit" className="submitButton" onClick={submitValue}>
         Sign in
       </button>
+      <NotificationContainer/>
     </form>
   );
 };

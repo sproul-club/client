@@ -41,29 +41,28 @@ const Profile = ({ profile, updateProfile, uploadImages, images }) => {
       app_required: !!appReq.value,
       new_members: !!recruiting.value,
     };
+
     updateProfile(newProfile, function() {
       NotificationManager.success("Profile changes saved successfully!", '', 3000);
     }, function() {
       NotificationManager.error("Profile changes unsuccessful!", '', 3000);
     });
-    let newImages;
-    if (logoImage && bannerImage) {
-      newImages = { logo: logoImage[0], banner: bannerImage[0] };
-    } else if (logoImage) {
-      newImages = { logo: logoImage[0] };
-    } else if (bannerImage) {
-      newImages = { banner: bannerImage[0] };
-    } else {
-      return;
-    }
+
+    var newImages = {};
+    if (logoImage) newImages.logo = logoImage[0];
+    if (bannerImage) newImages.banner = bannerImage[0];
+    if (Object.values(newImages).length == 0) return;
+
     uploadImages(newImages, function() {
       NotificationManager.success("Images uploaded successfully!", '', 3000);
     }, function(type) {
       switch (type) {
-        case ("logo"):
+        case 'logo':
           NotificationManager.error("For best results, please upload a logo that has an aspect ratio of 1:1", "Logo image upload unsuccessful", 5000);
-        case ("banner"):
+          break;
+        case 'banner':
           NotificationManager.error("For best results, please upload a banner that has an aspect ratio of 16:6", "Banner image upload unsuccessful", 5000);
+          break;
       }
     });
   };

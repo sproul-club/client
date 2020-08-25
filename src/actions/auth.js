@@ -41,11 +41,12 @@ export const register = (
     dispatch({ type: REGISTER_SUCCESS, payload: res.data });
   } catch (err) {
     dispatch({ type: AUTH_ERROR, payload: err });
+    console.log('error response', err.response);
   }
 };
 
 // Login User
-export const login = (email, password, history) => async (dispatch) => {
+export const login = (email, password, history, success, error) => async (dispatch) => {
   // Set headers
   const config = {
     headers: {
@@ -64,15 +65,11 @@ export const login = (email, password, history) => async (dispatch) => {
     localStorage.setItem('refreshToken', res.data.refresh);
 
     await dispatch(loadProfile());
-    dispatch({ type: LOGIN_SUCCESS, payload: res.data });
-
-    history.push('/admin');
+    await dispatch({ type: LOGIN_SUCCESS, payload: res.data });
+    await success();
   } catch (err) {
-    dispatch({ type: AUTH_ERROR, payload: err });
-    if (err.response.data.reason == 'The password is incorrect!') {
-      alert(err.response.data.reason);
-    }
-    console.log(err.response);
+    await dispatch({ type: AUTH_ERROR, payload: err });
+    await error(err.response.data.reason);
   }
 };
 
@@ -143,10 +140,34 @@ export const isCallinkEmail = (email) => {
     .then((response) => {
       return response.data.exists;
     })
+    .catch((err) => {
+      console.log(err);
+      // dispatch({ type: AUTH_ERROR, payload: err });
+    });
+};
+
+// Verify if password is strong enough
+export const isPasswordStrong = (password) => {
+  // Set headers
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+    },
+  };
+  const body = JSON.stringify({ password });
+
+  return axios
+    .post('/api/user/password-strength', body, config)
+    .then((response) => {
+      return response.data.strong;
+    })
     .catch((error) => {
       console.log(error);
     });
 };
+
+
 
 // Login User
 export const resendConfirmationEmail = (email, setResentEmail) => async (
@@ -173,3 +194,53 @@ export const resendConfirmationEmail = (email, setResentEmail) => async (
     dispatch({ type: AUTH_ERROR, payload: err });
   }
 };
+
+// Send a password confirmation email to the user
+export const sendResetPasswordEmail = (email) => {
+  // Set headers
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+    },
+  };
+  const body = JSON.stringify({ email });
+
+  return axios
+    .post('/api/user/request-reset', body, config)
+    .then((response) => {
+      return response.data.status;
+    })
+    .catch((err) => {
+      console.log(err);
+      // dispatch({ type: AUTH_ERROR, payload: err });
+    });
+};
+
+
+// Reset password
+export const resetPassword = (password) => {
+  // const token = localStorage.getItem('token');
+  const token = new URLSearchParams(window.location.search).get('token');
+  console.log(token);
+  // Set headers
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+    },
+  };
+  const body = JSON.stringify({ token, password });
+
+  return axios
+    .post('/api/user/confirm-reset', body, config)
+    .then((response) => {
+      console.log(response.data.status);
+      return response.data.status;
+    })
+    .catch((err) => {
+      console.log(err);
+      // dispatch({ type: AUTH_ERROR, payload: err });
+    });
+};
+
