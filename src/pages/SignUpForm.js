@@ -2,11 +2,15 @@ import React, { useState } from 'react';
 import Dropdown from './Dropdown.js';
 import error from './assets/error.svg';
 import { connect } from 'react-redux';
-import { register, isCallinkEmail } from '../actions/auth';
+import {
+  register,
+  isCallinkEmail,
+  resendConfirmationEmail,
+} from '../actions/auth';
 import { tagOptions } from '../data/tagOptions';
-import signup from './assets/signup.png'
+import signup from './assets/signup.png';
 
-const MultiStepForm = ({ register }) => {
+const MultiStepForm = ({ register, resendConfirmationEmail }) => {
   var appOptions = [
     { value: true, label: 'Application required' },
     { value: false, label: 'No application required' },
@@ -26,6 +30,7 @@ const MultiStepForm = ({ register }) => {
   const [tags, setTags] = useState([]);
   const [appReq, setAppReq] = useState(true);
   const [recruiting, setRecruit] = useState(true);
+  const [resentEmail, setResentEmail] = useState(true);
   /* error indicators */
   const [emailUnverified, setEmailUnverified] = useState('noError');
   const [pwdConMismatch, setPwdConMismatch] = useState('noError');
@@ -42,7 +47,14 @@ const MultiStepForm = ({ register }) => {
     for (var i = 0; i < tags.length; i++) {
       tagsList.push(tags[i].value);
     }
-    register(clubName, email, pwd, tagsList, !!appReq.value, !!recruiting.value);
+    register(
+      clubName,
+      email,
+      pwd,
+      tagsList,
+      !!appReq.value,
+      !!recruiting.value
+    );
   };
 
   const _prev = () => {
@@ -53,15 +65,14 @@ const MultiStepForm = ({ register }) => {
     /* step 1 errors */
     if (currStep === 1) {
       checkStep1Errors().then((errorExists) => {
-        if(!errorExists) {
+        if (!errorExists) {
           setStep(currStep + 1);
         }
-      })
-    } 
-    /* step 2 errors */
-    else if (currStep === 2) {
+      });
+    } else if (currStep === 2) {
+      /* step 2 errors */
       var errorExists = checkStep2Errors();
-      if(!errorExists) {
+      if (!errorExists) {
         setStep(currStep + 1);
         submitValue();
       }
@@ -77,7 +88,8 @@ const MultiStepForm = ({ register }) => {
     if (email === '') {
       setEmptyEmail('emptyEmail');
       errorExists = true;
-    } else {        // check if email is verified
+    } else {
+      // check if email is verified
       var isVerified = await isCallinkEmail(email);
       if (!isVerified) {
         setEmailUnverified('emailUnverified');
@@ -92,7 +104,7 @@ const MultiStepForm = ({ register }) => {
       errorExists = true;
     }
     return errorExists;
-  };
+  }
 
   function checkStep2Errors() {
     var errorExists = false;
@@ -113,35 +125,55 @@ const MultiStepForm = ({ register }) => {
 
   const nameOnChange = (event) => {
     setClubName(event);
-    if (emptyName === 'emptyName') { setEmptyName('noError'); }
+    if (emptyName === 'emptyName') {
+      setEmptyName('noError');
+    }
   };
   const emailOnChange = (event) => {
     setEmail(event);
-    if (emptyEmail === 'emptyEmail') { setEmptyEmail('noError'); }
-    if (emailUnverified === 'emailUnverified') { setEmailUnverified('noError'); }
+    if (emptyEmail === 'emptyEmail') {
+      setEmptyEmail('noError');
+    }
+    if (emailUnverified === 'emailUnverified') {
+      setEmailUnverified('noError');
+    }
   };
   const pwdOnChange = (event) => {
     setPassword(event);
-    if (emptyPwd === 'emptyPwd') { setEmptyPwd('noError'); }
-    if (pwdConMismatch === 'pwdConMismatch') { setPwdConMismatch('noError'); }
+    if (emptyPwd === 'emptyPwd') {
+      setEmptyPwd('noError');
+    }
+    if (pwdConMismatch === 'pwdConMismatch') {
+      setPwdConMismatch('noError');
+    }
   };
   const conOnChange = (event) => {
     setConfirm(event);
-    if (emptyPwd === 'emptyPwd') { setEmptyPwd('noError'); }
-    if (pwdConMismatch === 'pwdConMismatch') { setPwdConMismatch('noError'); }
+    if (emptyPwd === 'emptyPwd') {
+      setEmptyPwd('noError');
+    }
+    if (pwdConMismatch === 'pwdConMismatch') {
+      setPwdConMismatch('noError');
+    }
   };
 
   const tagsOnChange = (event) => {
     setTags(event);
-    if (emptyTags === 'emptyTags') { setEmptyTags('noError'); }
+    if (emptyTags === 'emptyTags') {
+      setEmptyTags('noError');
+    }
   };
   const appReqOnChange = (event) => {
     setAppReq(event);
-    if (emptyAppReq !== 'noError') { setEmptyAppReq('noError'); }
+    if (emptyAppReq !== 'noError') {
+      setEmptyAppReq('noError');
+    }
   };
   const recruitOnChange = (event) => {
     setRecruit(event);
-    if (emptyRecruit !== 'noError') { setEmptyRecruit('noError'); }
+    if (emptyRecruit !== 'noError') {
+      setEmptyRecruit('noError');
+    }
   };
 
   return (
@@ -185,7 +217,12 @@ const MultiStepForm = ({ register }) => {
         tagError={tagOverflow}
         setTagError={setTagOverflow}
       />
-      <StepThree currStep={currStep} />
+      <StepThree
+        currStep={currStep}
+        resentEmail={resentEmail}
+        setResentEmail={setResentEmail}
+        resendConfirmationEmail={resendConfirmationEmail}
+      />
     </>
   );
 };
@@ -225,28 +262,43 @@ const StepOne = (props) => {
         <h2>Register your club</h2>
       </div>
       <input
-        className={`${(props.emptyName==='emptyName') ? 'inputInvalid' : 'userInput'}`}
+        className={`${
+          props.emptyName === 'emptyName' ? 'inputInvalid' : 'userInput'
+        }`}
         type="text"
         placeholder="Club name"
         value={props.clubName}
         onChange={(e) => props.setClubName(e.target.value)}
       />
       <input
-        className={`${((props.emptyEmail==='emptyEmail')||(props.emailError==='emailUnverified')) ? 'inputInvalid' : 'userInput'}`}
+        className={`${
+          props.emptyEmail === 'emptyEmail' ||
+          props.emailError === 'emailUnverified'
+            ? 'inputInvalid'
+            : 'userInput'
+        }`}
         type="email"
         placeholder="Email address - use your org's CalLink email"
         value={props.email}
         onChange={(e) => props.setEmail(e.target.value)}
       />
       <input
-        className={`${((props.emptyPwd==='emptyPwd')||(props.conError==='pwdConMismatch')) ? 'inputInvalid' : 'userInput'}`}
+        className={`${
+          props.emptyPwd === 'emptyPwd' || props.conError === 'pwdConMismatch'
+            ? 'inputInvalid'
+            : 'userInput'
+        }`}
         type="password"
         placeholder="Password"
         value={props.pwd}
         onChange={(e) => props.setPassword(e.target.value)}
       />
       <input
-        className={`${((props.emptyPwd==='emptyPwd')||(props.conError==='pwdConMismatch')) ? 'inputInvalid' : 'userInput'}`}
+        className={`${
+          props.emptyPwd === 'emptyPwd' || props.conError === 'pwdConMismatch'
+            ? 'inputInvalid'
+            : 'userInput'
+        }`}
         type="password"
         placeholder="Confirm password"
         value={props.con}
@@ -270,7 +322,7 @@ const StepTwo = (props) => {
     return null;
   }
 
-  let haveError = props.emptyRecruit=='emptyRecruit';
+  let haveError = props.emptyRecruit == 'emptyRecruit';
 
   // console.log("haveError3=" + haveError3);
   return (
@@ -352,10 +404,21 @@ const StepThree = (props) => {
         <h3>You're all set!</h3>
         <h3>Please check your organization's email for a confirmation link.</h3>
         <h2>Didn't receive an email?</h2>
-        <a href="/signup">Click here</a>
+        <a
+          onClick={() =>
+            props.resendConfirmationEmail(props.email, props.setResentEmail)
+          }
+        >
+          Resend email
+        </a>
+        <div className={`email-sent ${props.resentEmail && 'sent'}`}>
+          email sent
+        </div>
       </div>
     </div>
   );
 };
 
-export default connect(null, { register })(MultiStepForm);
+export default connect(null, { register, resendConfirmationEmail })(
+  MultiStepForm
+);

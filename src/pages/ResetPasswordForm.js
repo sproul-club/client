@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import './ResetPassword.css';
 import image from './assets/resetpwd1.png';
 import error from './assets/error.svg';
-// import image from './assets/register.png';
+import register from './assets/register.png';
 import { isCallinkEmail } from '../actions/auth';
 
 const ResetPasswordForm = () => {
   const [currStep, setStep] = useState(1);
-  
+
   /* user inputs */
   const [email, setEmail] = useState('');
 
@@ -24,11 +24,11 @@ const ResetPasswordForm = () => {
     // check step 1 errors
     if (currStep === 1) {
       checkStep1Errors().then((errorExists) => {
-        if(!errorExists) {
+        if (!errorExists) {
           setStep(currStep + 1);
         }
-      })
-    } 
+      });
+    }
     // setStep(currStep + 1);
   };
 
@@ -37,7 +37,8 @@ const ResetPasswordForm = () => {
     if (email === '') {
       setEmptyEmail('emptyEmail');
       errorExists = true;
-    } else {        // check if email is verified
+    } else {
+      // check if email is verified
       var isVerified = await isCallinkEmail(email);
       if (!isVerified) {
         setEmailUnverified('emailUnverified');
@@ -45,12 +46,16 @@ const ResetPasswordForm = () => {
       }
     }
     return errorExists;
-  };
+  }
 
   const emailOnChange = (event) => {
     setEmail(event);
-    if (emptyEmail === 'emptyEmail') { setEmptyEmail('noError'); }
-    if (emailUnverified === 'emailUnverified') { setEmailUnverified('noError'); }
+    if (emptyEmail === 'emptyEmail') {
+      setEmptyEmail('noError');
+    }
+    if (emailUnverified === 'emailUnverified') {
+      setEmailUnverified('noError');
+    }
   };
 
   return (
@@ -93,7 +98,12 @@ const StepOne = (props) => {
       </div>
 
       <input
-        className={`${((props.emptyEmail==='emptyEmail')||(props.emailError==='emailUnverified')) ? 'inputInvalid' : 'userInput'}`}
+        className={`${
+          props.emptyEmail === 'emptyEmail' ||
+          props.emailError === 'emailUnverified'
+            ? 'inputInvalid'
+            : 'userInput'
+        }`}
         type="email"
         // type="text"
         placeholder="e.g. organizationname@gmail.com"
