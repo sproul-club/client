@@ -55,11 +55,11 @@ const StepOne = (props) => {
         return null;
     }
     return (
-    <>
-        <div className={props.conError}>
+    <form>
+        {/* <div className={props.conError}>
             <img alt="error" src={error} className="errorIcon" />
             <p>passwords do not match</p>
-        </div>
+        </div> */}
         <div className="imgContainer two">
             <img src={image} alt="forgot password" />
         </div>
@@ -72,17 +72,19 @@ const StepOne = (props) => {
             type="password"
             placeholder="new password"
             onChange={(e) => props.setPassword(e.target.value)}
+            required
         />
         <input
             className={props.conInvalid}
             type="password"
             placeholder="re-type new password"
             onChange={(e) => props.setConfirm(e.target.value)}
+            required
         />
-        <button onClick={props.submitPassword} className="button submitPassword">
+        <button type='submit' onClick={props.submitPassword} className="button submitPassword">
           Submit
         </button>
-    </>
+    </form>
     )
 }
 

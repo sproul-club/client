@@ -30,7 +30,7 @@ const MultiStepForm = ({ register, resendConfirmationEmail }) => {
   const [tags, setTags] = useState([]);
   const [appReq, setAppReq] = useState(true);
   const [recruiting, setRecruit] = useState(true);
-  const [resentEmail, setResentEmail] = useState(true);
+  const [resentEmail, setResentEmail] = useState(false);
   /* error indicators */
   const [emailUnverified, setEmailUnverified] = useState('noError');
   const [pwdConMismatch, setPwdConMismatch] = useState('noError');
