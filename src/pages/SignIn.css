@@ -24,7 +24,7 @@
 
 .signin .form .formGroup {
   width: calc(100vw - 100px);
-  max-width: 325px;
+  max-width: 330px;
   padding-bottom: 100px;
   display: flex;
   flex-direction: column;
