@@ -69,7 +69,7 @@ export const login = (email, password, history) => async (dispatch) => {
     history.push('/admin');
   } catch (err) {
     dispatch({ type: AUTH_ERROR, payload: err });
-    if (err.response.data.reason == "The password is incorrect!") {
+    if (err.response.data.reason == 'The password is incorrect!') {
       alert(err.response.data.reason);
     }
     console.log(err.response);
@@ -146,4 +146,30 @@ export const isCallinkEmail = (email) => {
     .catch((error) => {
       console.log(error);
     });
+};
+
+// Login User
+export const resendConfirmationEmail = (email, setResentEmail) => async (
+  dispatch
+) => {
+  // Set headers
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+    },
+  };
+
+  const body = JSON.stringify({ email });
+
+  try {
+    setResentEmail(false);
+    let res = await axios.post('/api/user/resend-confirm', body, config);
+    setResentEmail(true);
+    console.log('confirmation email resent');
+
+    // dispatch({ type: RESEND_EMAIL , payload: res.data });
+  } catch (err) {
+    dispatch({ type: AUTH_ERROR, payload: err });
+  }
 };
