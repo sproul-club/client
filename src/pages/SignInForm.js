@@ -15,6 +15,7 @@ const SignInForm = ({ login, history, isAuthenticated }) => {
    /* error indicators */
    const [emailUnverified, setEmailUnverified] = useState('noError');
    const [emptyEmail, setEmptyEmail] = useState('noError');
+   const [emptyPassword, setEmptyPassword] = useState('noError');
 
   if (isAuthenticated) {
     return <Redirect to="/admin" />;
@@ -27,11 +28,16 @@ const SignInForm = ({ login, history, isAuthenticated }) => {
     login(email, pw, history);
   };
 
-  const emailOnChange = (event) => {
-    setEmail(event);
+  const emailOnChange = (newEmail) => {
+    setEmail(newEmail);
     if (emptyEmail === 'emptyEmail') { setEmptyEmail('noError'); }
     if (emailUnverified === 'emailUnverified') { setEmailUnverified('noError'); }
   };
+
+  const passwordOnChange = (newPassword) => {
+    setPassword(newPassword);
+    if (emptyPassword === 'emptyPassword') { setEmptyPassword('noError'); }
+  }
 
   async function checkErrors() {
     var errorExists = false;
@@ -44,6 +50,11 @@ const SignInForm = ({ login, history, isAuthenticated }) => {
         setEmailUnverified('emailUnverified');
         errorExists = true;
       }
+    }
+
+    if (pw === '') {
+      setEmptyPassword('emptyPassword');
+      errorExists = true;
     }
     return errorExists;
   };
@@ -59,6 +70,10 @@ const SignInForm = ({ login, history, isAuthenticated }) => {
         <div className={`error ${emailUnverified}`}>
           <img src={error} className="errorIcon" />
           <p>email address is not RSO registered</p>
+        </div>
+        <div className={`error ${emptyPassword}`}>
+          <img src={error} className="errorIcon" />
+          <p>this field is required</p>
         </div>
       </div>
 
@@ -77,9 +92,9 @@ const SignInForm = ({ login, history, isAuthenticated }) => {
       
       <p>Password</p>
       <input
-        className="userInput"
+        className={`${((emptyPassword==='emptyPassword')) ? 'inputInvalid' : 'userInput'}`}
         type="password"
-        onChange={(e) => setPassword(e.target.value)}
+        onChange={(e) => passwordOnChange(e.target.value)}
       />
       <Link to="/recover">Forgot password?</Link>
       <button type="submit" className="submitButton" onClick={submitValue}>

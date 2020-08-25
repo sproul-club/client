@@ -147,7 +147,7 @@
 }
 
 .signin .emailUnverified, 
-.emptyEmail {
+.emptyEmail, .emptyPassword {
   /* transition to visible popup */
   visibility: visible;
   opacity: 0.85;
@@ -163,6 +163,11 @@
 .error.emailUnverified {
   margin-left: 150px;
   margin-top: 75px;
+}
+
+.signin .error.emptyPassword {
+  margin-left: 150px;
+  margin-top: 155px;
 }
 
 @media screen and (max-height: 700px) {
