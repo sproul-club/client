@@ -45,7 +45,7 @@ export const register = (
 };
 
 // Login User
-export const login = (email, password, history) => async (dispatch) => {
+export const login = (email, password, history, success, error) => async (dispatch) => {
   // Set headers
   const config = {
     headers: {
@@ -64,15 +64,11 @@ export const login = (email, password, history) => async (dispatch) => {
     localStorage.setItem('refreshToken', res.data.refresh);
 
     await dispatch(loadProfile());
-    dispatch({ type: LOGIN_SUCCESS, payload: res.data });
-
-    history.push('/admin');
+    await dispatch({ type: LOGIN_SUCCESS, payload: res.data });
+    await success();
   } catch (err) {
-    dispatch({ type: AUTH_ERROR, payload: err });
-    if (err.response.data.reason == 'The password is incorrect!') {
-      alert(err.response.data.reason);
-    }
-    console.log(err.response);
+    await dispatch({ type: AUTH_ERROR, payload: err });
+    await error(err.response.data.reason);
   }
 };
 

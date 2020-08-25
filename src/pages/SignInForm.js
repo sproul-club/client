@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { login } from '../actions/auth';
 import error from './assets/error.svg';
 import { isCallinkEmail } from '../actions/auth';
+import {NotificationManager, NotificationContainer} from 'react-notifications';
 
 
 const SignInForm = ({ login, history, isAuthenticated }) => {
@@ -21,11 +22,17 @@ const SignInForm = ({ login, history, isAuthenticated }) => {
     return <Redirect to="/admin" />;
   }
 
-  const submitValue = (e) => {
-    checkErrors();
+  const submitValue = async (e) => {
     e.preventDefault();
-    // passes the history object (from react-router-dom's withRouter) to redirect after login
-    login(email, pw, history);
+
+    let hasErrors = await checkErrors();
+    if (!hasErrors) {
+      // passes the history object (from react-router-dom's withRouter) to redirect after login
+      login(email, pw, history,
+        () => history.push('/admin'),
+        (errMessage) => NotificationManager.error(errMessage, "Unable to sign in!", 3000)
+      );
+    }
   };
 
   const emailOnChange = (newEmail) => {
@@ -100,6 +107,7 @@ const SignInForm = ({ login, history, isAuthenticated }) => {
       <button type="submit" className="submitButton" onClick={submitValue}>
         Sign in
       </button>
+      <NotificationContainer/>
     </form>
   );
 };
