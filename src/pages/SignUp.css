@@ -10,9 +10,10 @@
 
 /* Description styling */
 .signup .text {
-  /* margin-left: 7%; */
-  /* margin-right: 7%; */
-  max-width: 550px;
+  margin-left: 7%;
+  margin-right: 7%;
+  max-width: 40%;
+  margin-top: 3%;
 }
 
 .signup .text h3 {
@@ -262,22 +263,22 @@
 
 .signup .error.emptyName {
   margin-left: 187px;
-  margin-top: 201px;
+  margin-top: 168px;
 }
 .signup .error.emptyEmail {
   margin-left: 187px;
-  margin-top: 255px;
+  margin-top: 224px;
 }
 .signup .error.emptyPwd {
   margin-left: 187px;
   margin-top: 329px;
 }
 .signup .error.emailUnverified {
-  margin-left: 187px;
-  margin-top: 255px;
+  margin-left: 42px;
+  margin-top: 222px;
 }
 .signup .error.pwdConMismatch {
-  margin-left: 187px;
+  margin-left: 158px;
   margin-top: 329px;
 }
 .signup .error.tagOverflow,
@@ -287,15 +288,15 @@
 }
 .signup .error.emptyTags {
   margin-left: 187px;
-  margin-top: 198px;
+  margin-top: 163px;
 }
 .signup .error.emptyAppReq {
   margin-left: 187px;
-  margin-top: 252px;
+  margin-top: 217px;
 }
 .signup .error.emptyRecruit {
   margin-left: 187px;
-  margin-top: 305px;
+  margin-top: 270px;
 }
 
 /* Page Three styling */
@@ -434,37 +435,76 @@
     border-radius: 6px;
   }
 
-  .signup .emailError,
-  .conError {
-    margin-left: 276px;
-    margin-top: 290px;
+  .signup .error.pwdConMismatch,
+  .signup .error.emptyName,
+  .signup .error.emptyEmail,
+  .signup .error.emptyPwd,
+  .signup .emailUnverified,
+  .signup .emptyTags,
+  .signup .emptyAppReq,
+  .signup .emptyRecruit {
+    margin-left: 210px;
+    margin-top: 436px;
     border-radius: 6px;
     padding-left: 12px;
     padding-right: 12px;
   }
 
-  .signup .conError {
-    margin-left: 196px;
-    margin-top: 430px;
-    border-radius: 6px;
-    padding-left: 12px;
-    padding-right: 12px;
+  .signup .error.emptyName, .signup .error.emptyTags{
+    margin-left: 250px;
+    margin-top: 220px;
   }
 
-  .signup .conError img {
+  .signup .error.tagOverflow, .signup .tagOverflowNone {
+    margin-left: 206px;
+    margin-top: 220px;
+  }
+
+  .signup .error.emptyEmail, .signup .error.emptyAppReq {
+    margin-left: 250px;
+    margin-top: 292px;
+  }
+
+  .signup .error.emptyRecruit {
+    margin-left: 250px;
+    margin-top: 362px;
+  }
+
+  .signup .error.emptyPwd {
+    margin-left: 250px;
+    margin-top: 436px;
+  }
+
+  .signup .error.emailUnverified {
+    margin-left: 56px;
+    margin-top: 294px;
+  }
+
+  .signup .pwdConMismatch img,
+  .signup .emailUnverified img,
+  .signup .emptyName img,
+  .signup .emptyEmail img,
+  .signup .emptyPwd img,
+  .signup .emptyTags img,
+  .signup .emptyAppReq img,
+  .signup .emptyRecruit img,
+  .signup .tagOverflow img,
+  .signup .tagOverflowNone img {
     height: 24px;
     width: 24px;
     margin-right: 10px;
   }
 
-  .signup .emailError img {
-    height: 24px;
-    width: 24px;
-    margin-right: 10px;
-  }
-
-  .signup .conError p,
-  .emailError p {
+  .signup .pwdConMismatch p,
+  .signup .emailUnverified p,
+  .signup .emptyName p,
+  .signup .emptyEmail p,
+  .signup .emptyPwd p,
+  .signup .emptyTags p,
+  .signup .emptyAppReq p,
+  .signup .emptyRecruit p,
+  .signup .tagOverflow p,
+  .signup .tagOverflowNone p {
     font-size: 16px;
     line-height: 14px;
   }
