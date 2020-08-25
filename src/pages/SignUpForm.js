@@ -211,7 +211,7 @@ const StepOne = (props) => {
         </div>
         <div className={`error ${props.emailError}`}>
           <img src={error} className="errorIcon" />
-          <p>email address is not RSO registered</p>
+          <p>email address is not associated with an RSO</p>
         </div>
         <div className={`error ${props.conError}`}>
           <img alt="error" src={error} className="errorIcon" />
@@ -234,7 +234,7 @@ const StepOne = (props) => {
       <input
         className={`${((props.emptyEmail==='emptyEmail')||(props.emailError==='emailUnverified')) ? 'inputInvalid' : 'userInput'}`}
         type="email"
-        placeholder="Email address - use your organization's email"
+        placeholder="Email address - use your org's CalLink email"
         value={props.email}
         onChange={(e) => props.setEmail(e.target.value)}
       />

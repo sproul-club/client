@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './ResetPassword.css';
 import image from './assets/resetpwd1.png';
 import error from './assets/error.svg';
-import image from './assets/register.png';
+// import image from './assets/register.png';
 import { isCallinkEmail } from '../actions/auth';
 
 const ResetPasswordForm = () => {
