@@ -199,9 +199,6 @@ const EventComp = (props) => {
                 />
               </a>
             </div>
-            <div className="event-date">
-              {formatDates(propsStart, propsEnd)}
-            </div>
           </div>
           <div className="buttonsWrapper">
             <img
@@ -216,6 +213,9 @@ const EventComp = (props) => {
             />
           </div>
         </div>
+        <div className="event-date">
+              {formatDates(propsStart, propsEnd)}
+            </div>
         <div className="event-description">{propsText}</div>
       </div>
 

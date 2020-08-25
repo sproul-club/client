@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import {
   register,
   isCallinkEmail,
+  isPasswordStrong,
   resendConfirmationEmail,
 } from '../actions/auth';
 import { tagOptions } from '../data/tagOptions';
@@ -34,6 +35,7 @@ const MultiStepForm = ({ register, resendConfirmationEmail }) => {
   /* error indicators */
   const [emailUnverified, setEmailUnverified] = useState('noError');
   const [pwdConMismatch, setPwdConMismatch] = useState('noError');
+  const [pwdWeak, setPwdWeak] = useState('noError');
   const [tagOverflow, setTagOverflow] = useState('tagOverflowNone');
   const [emptyName, setEmptyName] = useState('noError');
   const [emptyEmail, setEmptyEmail] = useState('noError');
@@ -96,13 +98,22 @@ const MultiStepForm = ({ register, resendConfirmationEmail }) => {
         errorExists = true;
       }
     }
+
     if (pwd === '' && con === '') {
       setEmptyPwd('emptyPwd');
       errorExists = true;
     } else if (pwd !== con) {
       setPwdConMismatch('pwdConMismatch');
       errorExists = true;
+    } else {
+      // check if the password  is strong
+      var isStrong = await isPasswordStrong(pwd);
+      if (!isStrong) {
+        setPwdWeak('pwdWeak');
+        errorExists = true;
+      }
     }
+
     return errorExists;
   }
 
@@ -146,6 +157,9 @@ const MultiStepForm = ({ register, resendConfirmationEmail }) => {
     if (pwdConMismatch === 'pwdConMismatch') {
       setPwdConMismatch('noError');
     }
+    if (pwdWeak == 'pwdWeak') {
+      setPwdWeak('noError');
+    }
   };
   const conOnChange = (event) => {
     setConfirm(event);
@@ -154,6 +168,9 @@ const MultiStepForm = ({ register, resendConfirmationEmail }) => {
     }
     if (pwdConMismatch === 'pwdConMismatch') {
       setPwdConMismatch('noError');
+    }
+    if (pwdWeak == 'pwdWeak') {
+      setPwdWeak('noError');
     }
   };
 
@@ -196,6 +213,7 @@ const MultiStepForm = ({ register, resendConfirmationEmail }) => {
         emptyPwd={emptyPwd}
         emailError={emailUnverified}
         conError={pwdConMismatch}
+        pwdWeakError={pwdWeak}
       />
       <StepTwo
         currStep={currStep}
@@ -248,11 +266,15 @@ const StepOne = (props) => {
         </div>
         <div className={`error ${props.emailError}`}>
           <img src={error} className="errorIcon" />
-          <p>email address is not RSO registered</p>
+          <p>email address is not associated with an RSO</p>
         </div>
         <div className={`error ${props.conError}`}>
           <img alt="error" src={error} className="errorIcon" />
           <p>passwords do not match</p>
+        </div>
+        <div className={`error ${props.pwdWeakError}`}>
+          <img alt="error" src={error} className="errorIcon" />
+          <p>password is not strong enough</p>
         </div>
       </div>
       <div className="formHeader">
@@ -278,13 +300,13 @@ const StepOne = (props) => {
             : 'userInput'
         }`}
         type="email"
-        placeholder="Email address - use your organization's email"
+        placeholder="Email address - use your org's CalLink email"
         value={props.email}
         onChange={(e) => props.setEmail(e.target.value)}
       />
       <input
         className={`${
-          props.emptyPwd === 'emptyPwd' || props.conError === 'pwdConMismatch'
+          props.emptyPwd === 'emptyPwd' || props.conError === 'pwdConMismatch' || props.pwdWeakError === 'pwdWeak'
             ? 'inputInvalid'
             : 'userInput'
         }`}
@@ -295,7 +317,7 @@ const StepOne = (props) => {
       />
       <input
         className={`${
-          props.emptyPwd === 'emptyPwd' || props.conError === 'pwdConMismatch'
+          props.emptyPwd === 'emptyPwd' || props.conError === 'pwdConMismatch' || props.pwdWeakError === 'pwdWeak'
             ? 'inputInvalid'
             : 'userInput'
         }`}

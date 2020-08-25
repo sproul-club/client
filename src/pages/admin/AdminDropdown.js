@@ -12,6 +12,7 @@ const customStyles = {
     width: '430px',
     margin: 0,
     fontSize: 14,
+    lineHeight: '16px',
     border: 'solid 1px #2b2b2b',
     borderRadius: 5,
     padding: 0,
@@ -22,7 +23,7 @@ const customStyles = {
     margin: 0,
     marginTop: 2,
     width: '430px',
-    fontSize: 16,
+    fontSize: 14,
     textAlign: 'left',
     color:
       state.selectProps.value && state.selectProps.value.length >= 3
@@ -72,7 +73,6 @@ const Dropdown = (props) => (
         dangerLight: '#D1D3D4',
       },
     })}
-    lineHeight="16px"
     borderRadius="4"
     marginLeft="4px"
     defaultValue={props.defaultValue || null}

@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import './ResetPassword.css';
 import image from './assets/resetpwd1.png';
 import error from './assets/error.svg';
-import register from './assets/register.png';
-import { isCallinkEmail } from '../actions/auth';
+import { isCallinkEmail, sendResetPasswordEmail } from '../actions/auth';
 
 const ResetPasswordForm = () => {
   const [currStep, setStep] = useState(1);
@@ -16,23 +15,20 @@ const ResetPasswordForm = () => {
   const [emptyEmail, setEmptyEmail] = useState('noError');
 
   const submitEmail = () => {
-    const fromdetails = {
-      Email: email,
-    };
-    console.log(fromdetails);
-
-    // check step 1 errors
-    if (currStep === 1) {
-      checkStep1Errors().then((errorExists) => {
-        if (!errorExists) {
-          setStep(currStep + 1);
-        }
-      });
-    }
-    // setStep(currStep + 1);
+    checkErrors().then((errorExists) => {
+      if (!errorExists) {
+        sendResetPasswordEmail(email).then((status) => {
+          if (status === "success") {
+            setStep(currStep + 1);
+          } else {
+            console.log("An error occurred. Please try again later.");
+          }
+        });
+      }
+    });
   };
 
-  async function checkStep1Errors() {
+  async function checkErrors() {
     var errorExists = false;
     if (email === '') {
       setEmptyEmail('emptyEmail');
@@ -132,7 +128,7 @@ const StepTwo = (props) => {
           Please check your organization's inbox for a password recovery email.
         </p>
       </div>
-      <a href="/" class="button redirect">
+      <a href="/" className="button redirect">
         Back to homepage
       </a>
     </>
