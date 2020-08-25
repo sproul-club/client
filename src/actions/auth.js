@@ -143,8 +143,9 @@ export const isCallinkEmail = (email) => {
     .then((response) => {
       return response.data.exists;
     })
-    .catch((error) => {
-      console.log(error);
+    .catch((err) => {
+      console.log(err);
+      // dispatch({ type: AUTH_ERROR, payload: err });
     });
 };
 
@@ -173,3 +174,53 @@ export const resendConfirmationEmail = (email, setResentEmail) => async (
     dispatch({ type: AUTH_ERROR, payload: err });
   }
 };
+
+// Send a password confirmation email to the user
+export const sendResetPasswordEmail = (email) => {
+  // Set headers
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+    },
+  };
+  const body = JSON.stringify({ email });
+
+  return axios
+    .post('/api/user/request-reset', body, config)
+    .then((response) => {
+      return response.data.status;
+    })
+    .catch((err) => {
+      console.log(err);
+      // dispatch({ type: AUTH_ERROR, payload: err });
+    });
+};
+
+
+// Reset password
+export const resetPassword = (password) => {
+  // const token = localStorage.getItem('token');
+  const token = new URLSearchParams(window.location.search).get('token');
+  console.log(token);
+  // Set headers
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+    },
+  };
+  const body = JSON.stringify({ token, password });
+
+  return axios
+    .post('/api/user/confirm-reset', body, config)
+    .then((response) => {
+      console.log(response.data.status);
+      return response.data.status;
+    })
+    .catch((err) => {
+      console.log(err);
+      // dispatch({ type: AUTH_ERROR, payload: err });
+    });
+};
+
