@@ -55,8 +55,8 @@ const ChangeLogin = ({ updatePassword }) => {
         updatePassword(data, function(){
             NotificationManager.success("Password successfully changed!", '', 3000);
         },
-        function(){
-            NotificationManager.error("Old password incorrect", 'Password change unsuccessful!', 3000);
+        function(msg){
+            NotificationManager.error(msg, 'Password change unsuccessful!', 3000);
         });
         setEditing(!editing);
         setSave("saveButtonHide");
@@ -83,7 +83,7 @@ const ChangeLogin = ({ updatePassword }) => {
                             type="password"
                         />
                         </div>
-                        <Link to="/recover" className="subtitle">Forgot password?</Link>
+                        {/* <Link to="/recover" className="subtitle">Forgot password?</Link> */}
                         <div className="formElement">
                         <p>
                             New password
