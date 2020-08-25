@@ -67,9 +67,6 @@ export const uploadImages = (images, success, error) => async (dispatch) => {
     let data = new FormData();
     images.logo && data.append('logo', images.logo);
     images.banner && data.append('banner', images.banner);
-    for (var value of data.values()) {
-      console.log(value);
-    }
 
     const config = {
       headers: {
@@ -81,7 +78,6 @@ export const uploadImages = (images, success, error) => async (dispatch) => {
 
     const res = await axios.post('/api/admin/upload-images', data, config);
     success();
-    console.log('upload success!');
 
     dispatch({ type: UPLOAD_IMAGES, payload: res.data });
   } catch (err) {
