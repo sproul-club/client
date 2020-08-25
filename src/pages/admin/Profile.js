@@ -43,9 +43,9 @@ const Profile = ({ profile, updateProfile, uploadImages, images }) => {
     };
 
     updateProfile(newProfile, function() {
-      NotificationManager.success("Profile changes saved successfully!", '', 3000);
+      NotificationManager.success("Profile changes saved successfully!", '', 1500);
     }, function() {
-      NotificationManager.error("Profile changes unsuccessful!", '', 3000);
+      NotificationManager.error("Profile changes unsuccessful!", '', 1500);
     });
 
     var newImages = {};
@@ -54,7 +54,7 @@ const Profile = ({ profile, updateProfile, uploadImages, images }) => {
     if (Object.values(newImages).length == 0) return;
 
     uploadImages(newImages, function() {
-      NotificationManager.success("Images uploaded successfully!", '', 3000);
+      NotificationManager.success("Images uploaded successfully!", '', 1500);
     }, function(type) {
       switch (type) {
         case 'logo':
@@ -74,9 +74,9 @@ const Profile = ({ profile, updateProfile, uploadImages, images }) => {
 
   const reqFieldsCheck = () => {
     if (tags === null) {
-      NotificationManager.error("Please have at least one tag", 'Changes not saved', 3000);
+      NotificationManager.error("Please have at least one tag", 'Changes not saved', 1500);
     } else {
-      NotificationManager.error("Please enter an organization name", 'Changes not saved', 3000);
+      NotificationManager.error("Please enter an organization name", 'Changes not saved', 1500);
     }
   }
 
