@@ -35,14 +35,14 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={Landing} />
           <Route exact path="/comingsoon" component={ComingSoon} />
-          <PrivateRoute path="/admin" component={ComingSoon} />
+          <PrivateRoute path="/admin" component={Admin} />
           <Route path="/catalog" component={Catalog} />
           <Route exact path="/signup" component={ComingSoon} />
-          <Route exact path="/signin" component={ComingSoon} />
+          <Route exact path="/signin" component={SignIn} />
           <Route exact path="/recover" component={ComingSoon} />
           <Route exact path="/resetpassword" component={ComingSoon} />
           <Route exact path="/club/:id" component={Modal} />
-          <PrivateRoute exact path="/security" component={ComingSoon} />
+          <PrivateRoute exact path="/security" component={Security} />
           <Route>{'404'}</Route>
         </Switch>
       </Router>
