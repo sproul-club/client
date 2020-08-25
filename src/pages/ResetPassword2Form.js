@@ -8,7 +8,7 @@ const ResetPassword2Form = () => {
     const [pw, setPassword] = useState('');
     const [con, setConfirm] = useState('');
     const [conInvalid, setConInvalid] = useState('userInput');
-    const [conError, setConError] = useState('conErrorNone');
+    const [conError, setConError] = useState('noError');
 
     const submitPassword = () => {
         const fromdetails = {
@@ -17,7 +17,7 @@ const ResetPassword2Form = () => {
         };
         
         if (pw != con || pw === '') {
-            setConInvalid('conInputInvalid');
+            setConInvalid('inputInvalid');
             setConError('conError');
         } else {
             setStep(currStep + 1);
@@ -26,11 +26,11 @@ const ResetPassword2Form = () => {
 
     const conChange = (event) => {
         setConfirm(event);
-        if (conInvalid === 'conInputInvalid') {
+        if (conInvalid === 'inputInvalid') {
           setConInvalid('userInput');
         }
         if (conError === 'conError') {
-          setConError('conErrorNone');
+          setConError('noError');
         }
       };
     
@@ -56,9 +56,11 @@ const StepOne = (props) => {
     }
     return (
     <>
-        <div className={props.conError}>
-            <img alt="error" src={error} className="errorIcon" />
-            <p>passwords do not match</p>
+        <div className="errorWrapper">
+            <div className={`error ${props.conError}`}>
+                <img alt="error" src={error} className="errorIcon" />
+                <p>passwords do not match</p>
+            </div>
         </div>
         <div className="imgContainer two">
             <img src={image} alt="forgot password" />
