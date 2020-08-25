@@ -149,6 +149,29 @@ export const isCallinkEmail = (email) => {
     });
 };
 
+// Verify if password is strong enough
+export const isPasswordStrong = (password) => {
+  // Set headers
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+    },
+  };
+  const body = JSON.stringify({ password });
+
+  return axios
+    .post('/api/user/password-strength', body, config)
+    .then((response) => {
+      return response.data.strong;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
+
+
 // Login User
 export const resendConfirmationEmail = (email, setResentEmail) => async (
   dispatch
