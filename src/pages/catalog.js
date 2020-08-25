@@ -5,7 +5,7 @@ import Footer from '../layout/Footer';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { searchClubs, clearOrganization } from '../actions/catalog';
-import Dropdown from './Dropdown.js';
+import Dropdown from './CatalogDropdown.js';
 import {
   Accordion,
   AccordionItem,
@@ -74,7 +74,7 @@ const Catalog = ({ searchClubs, clearOrganization }) => {
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Search by name"
                     style={{
-                      width: '275px',
+                      width: '200px',
                       height: '34px',
                       borderRadius: '5px',
                       border: 'transparent',
@@ -168,3 +168,4 @@ const Catalog = ({ searchClubs, clearOrganization }) => {
 export default withRouter(
   connect(null, { searchClubs, clearOrganization })(Catalog)
 );
+
