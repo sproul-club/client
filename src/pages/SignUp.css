@@ -235,6 +235,7 @@
 
 .signup .emailUnverified,
 .pwdConMismatch,
+.pwdWeak,
 .tagOverflow,
 .emptyName,
 .emptyEmail,
@@ -279,6 +280,10 @@
 }
 .signup .error.pwdConMismatch {
   margin-left: 158px;
+  margin-top: 329px;
+}
+.signup .error.pwdWeak {
+  margin-left: 121px;
   margin-top: 329px;
 }
 .signup .error.tagOverflow,
@@ -481,6 +486,7 @@
   }
 
   .signup .pwdConMismatch img,
+  .signup .pwdWeak img,
   .signup .emailUnverified img,
   .signup .emptyName img,
   .signup .emptyEmail img,
@@ -496,6 +502,7 @@
   }
 
   .signup .pwdConMismatch p,
+  .signup .pwdWeak p,
   .signup .emailUnverified p,
   .signup .emptyName p,
   .signup .emptyEmail p,
