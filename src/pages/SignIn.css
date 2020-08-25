@@ -24,7 +24,7 @@
 
 .signin .form .formGroup {
   width: calc(100vw - 100px);
-  max-width: 325px;
+  max-width: 330px;
   padding-bottom: 100px;
   display: flex;
   flex-direction: column;
@@ -147,7 +147,7 @@
 }
 
 .signin .emailUnverified, 
-.emptyEmail {
+.emptyEmail, .emptyPassword {
   /* transition to visible popup */
   visibility: visible;
   opacity: 0.85;
@@ -163,6 +163,11 @@
 .error.emailUnverified {
   margin-left: 150px;
   margin-top: 75px;
+}
+
+.signin .error.emptyPassword {
+  margin-left: 150px;
+  margin-top: 155px;
 }
 
 @media screen and (max-height: 700px) {

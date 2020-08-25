@@ -43,7 +43,7 @@ const App = () => {
           <Route exact path="/recover" component={ResetPassword} />          
           <Route exact path="/resetpassword" component={ResetPassword2} />          
           <Route exact path="/club/:id" component={Modal} />
-          <Route exact path="/security" component={Security} />
+          <PrivateRoute exact path="/security" component={Security} />
           <Route>{'404'}</Route>
         </Switch>
       </Router>
