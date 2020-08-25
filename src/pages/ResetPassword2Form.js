@@ -2,47 +2,58 @@ import React, { useState } from 'react';
 import './ResetPassword.css';
 import image from './assets/resetpwd2.png';
 import error from './assets/error.svg';
+import { resetPassword } from '../actions/auth';
 
 const ResetPassword2Form = () => {
     const [currStep, setStep] = useState(1);
-    const [pw, setPassword] = useState('');
+    const [pwd, setPassword] = useState('');
     const [con, setConfirm] = useState('');
-    const [conInvalid, setConInvalid] = useState('userInput');
+    const [emptyPwd, setEmptyPwd] = useState('noError');
     const [conError, setConError] = useState('noError');
 
     const submitPassword = () => {
-        const fromdetails = {
-            "password": pw,
-            "confirm_password": con,
-        };
-        
-        if (pw != con || pw === '') {
-            setConInvalid('inputInvalid');
+        if (pwd === '' && con === '') {
+            setEmptyPwd('emptyPwd');
+        } else if (pwd !== con) {
             setConError('conError');
         } else {
-            setStep(currStep + 1);
+            resetPassword(pwd).then((status) => {
+                if (status === "success") {
+                    setStep(currStep + 1);
+                } else {
+                    console.log("An error occurred. Please try again later.");
+                }
+            });
         }
     };
 
-    const conChange = (event) => {
-        setConfirm(event);
-        if (conInvalid === 'inputInvalid') {
-          setConInvalid('userInput');
+    const pwdOnChange = (event) => {
+        setPassword(event);
+        if (emptyPwd === 'emptyPwd') {
+            setEmptyPwd('noError');
         }
         if (conError === 'conError') {
-          setConError('noError');
+            setConError('noError');
         }
-      };
+    };
+    const conOnChange = (event) => {
+        setConfirm(event);
+        if (emptyPwd === 'emptyPwd') {
+            setEmptyPwd('noError');
+        }
+        if (conError === 'conError') {
+            setConError('noError');
+        }
+    };
     
-
     return (
     <>
         <StepOne
         currStep={currStep}
-        conInvalid={conInvalid}
+        emptyPwd={emptyPwd}
         conError={conError}
-        setPassword={setPassword}
-        setConfirm={conChange}
+        setPassword={pwdOnChange}
+        setConfirm={conOnChange}
         submitPassword={submitPassword}
         />
         <StepTwo currStep={currStep} />
@@ -57,6 +68,10 @@ const StepOne = (props) => {
     return (
     <>
         <div className="errorWrapper">
+            <div className={`error ${props.emptyPwd}`}>
+                <img alt="error" src={error} className="errorIcon" />
+                <p>this field is required</p>
+            </div>
             <div className={`error ${props.conError}`}>
                 <img alt="error" src={error} className="errorIcon" />
                 <p>passwords do not match</p>
@@ -70,13 +85,21 @@ const StepOne = (props) => {
             <p>Use 8 or more characters with a mix of letters, numbers and symbols!</p>
         </div>
         <input
-            className="userInput"
+            className={`${
+                props.emptyPwd === 'emptyPwd' || props.conError === 'conError'
+                ? 'inputInvalid'
+                : 'userInput'
+            }`}
             type="password"
             placeholder="new password"
             onChange={(e) => props.setPassword(e.target.value)}
         />
         <input
-            className={props.conInvalid}
+            className={`${
+                props.emptyPwd === 'emptyPwd' || props.conError === 'conError'
+                ? 'inputInvalid'
+                : 'userInput'
+            }`}
             type="password"
             placeholder="re-type new password"
             onChange={(e) => props.setConfirm(e.target.value)}
