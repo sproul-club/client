@@ -304,6 +304,9 @@ const StepOne = (props) => {
         value={props.email}
         onChange={(e) => props.setEmail(e.target.value)}
       />
+      <p className="subtitle">
+      *Password must be at least 8 characters, include 1 number, and 1 symbol!
+      </p>
       <input
         className={`${
           props.emptyPwd === 'emptyPwd' || props.conError === 'pwdConMismatch' || props.pwdWeakError === 'pwdWeak'
@@ -329,7 +332,7 @@ const StepOne = (props) => {
       <div className="buttonWrapper">
         <div className="help">
           <p>Invalid email?</p>
-          <a href="/">Click here</a>
+          <a href="https://airtable.com/shr4wECf5beHGLgfV">Click here</a>
         </div>
         <button onClick={props._next} className="nextButton">
           Next →

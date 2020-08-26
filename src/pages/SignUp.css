@@ -135,7 +135,7 @@
   display: flex;
   align-items: flex-end;
   flex-direction: row;
-  padding-bottom: 5px;
+  padding-bottom: 10px;
 }
 
 .signup .buttonWrapper .help a {
@@ -168,7 +168,7 @@
 }
 
 .signup button {
-  margin-top: 10px;
+  margin-top: 5px;
   font-family: montserrat, sans-serif;
   font-weight: 700;
   font-style: normal;
@@ -558,4 +558,13 @@
 }
 .sent {
   display: unset;
+}
+
+.signup .subtitle {
+  margin-top: 0px;
+  font-family: roboto, sans-serif;
+  font-size: 9px;
+  margin-left: 0px;
+  margin-bottom: 0px;
+  text-decoration: none;
 }
