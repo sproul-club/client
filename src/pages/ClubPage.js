@@ -111,16 +111,20 @@ function ClubPage({
               <div className="tags-flex">{tagList}</div>
             </div>
           </div>
-
+          
+          {(organization.about_us) ? 
           <div className="left-box">
             <p>Description</p>
             <div className="desc-text">{organization.about_us}</div>
-          </div>
+          </div> : 
+          null}
 
+          {(organization.events.length > 0) ?
           <div className="left-box">
             <p>Events</p>
             <EventAccord data={organization} />
-          </div>
+          </div> : 
+          null}
         </div>
 
         <div className="flex-container-right">
@@ -129,17 +133,21 @@ function ClubPage({
             <div className="link-flex">{contactComps}</div>
           </div>
 
+          {(organization.resources.length > 0) ? 
           <div className="right-box">
             <p>Resources</p>
             <div className="resources-flex">{resComps}</div>
-          </div>
+          </div>:
+          null}
 
+          {(organization.get_involved) ?
           <div className="right-box">
             <p>How to Get Involved</p>
             <div className="desc-text" id="right-text">
               {organization.get_involved}
             </div>
-          </div>
+          </div>:
+          null}
           
         </div>
       </div>

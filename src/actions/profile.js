@@ -221,7 +221,7 @@ export const updatePassword = (formData, success, error) => async (dispatch) => 
     success();
     dispatch({ type: UPDATE_PASSWORD, payload: res.data });
   } catch (err) {
-    error();
+    error(err.response.data.reason);
     console.log(err.response);
   }
 };
