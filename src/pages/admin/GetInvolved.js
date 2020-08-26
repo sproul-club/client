@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import {NotificationManager, NotificationContainer} from 'react-notifications';
 
 const GetInvolved = ({ profile, get_involved, updateProfile }) => {
-  const [involvedDesc, setInvolvedDesc] = useState(get_involved);
+  const [involvedDesc, setInvolvedDesc] = useState(profile.get_involved);
   const [descrChars, setChars] = useState(250 - involvedDesc.length);
 
   const descrChange = (e) => {
