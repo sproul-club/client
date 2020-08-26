@@ -62,11 +62,34 @@ export const updateProfile = (formData, success, error) => async (dispatch) => {
   }
 };
 
-// Upload Banner or Logo
-export const uploadImages = (images, success, error) => async (dispatch) => {
+// Upload Logo
+export const uploadLogo = (images, success, error) => async (dispatch) => {
   try {
     let data = new FormData();
     images.logo && data.append('logo', images.logo);
+
+    const config = {
+      headers: {
+        accept: 'application/json',
+        'Accept-Language': 'en-US,en;q=0.8',
+        'Content-Type': `multipart/form-data; boundary=${data._boundary}`,
+      },
+    };
+
+    const res = await axios.post('/api/admin/upload-logo', data, config);
+    success();
+
+    dispatch({ type: UPLOAD_IMAGES, payload: res.data });
+  } catch (err) {
+    error();
+    console.log(err.response);
+  }
+};
+
+// Upload Banner
+export const uploadBanner = (images, success, error) => async (dispatch) => {
+  try {
+    let data = new FormData();
     images.banner && data.append('banner', images.banner);
 
     const config = {
@@ -77,12 +100,12 @@ export const uploadImages = (images, success, error) => async (dispatch) => {
       },
     };
 
-    const res = await axios.post('/api/admin/upload-images', data, config);
+    const res = await axios.post('/api/admin/upload-banner', data, config);
     success();
 
     dispatch({ type: UPLOAD_IMAGES, payload: res.data });
   } catch (err) {
-    error(err.response.data.data['image_type']);
+    error();
     console.log(err.response);
   }
 };
@@ -218,9 +241,8 @@ export const updatePassword = (formData, success, error) => async (
         'Access-Control-Allow-Origin': '*',
       },
     };
-    const event = JSON.stringify(formData);
-    console.log(event);
-    const res = await axios.post('/api/admin/change-password', event, config);
+    const data = JSON.stringify(formData);
+    const res = await axios.post('/api/admin/change-password', data, config);
     success();
     dispatch({ type: UPDATE_PASSWORD, payload: res.data });
   } catch (err) {
