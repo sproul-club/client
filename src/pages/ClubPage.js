@@ -14,14 +14,15 @@ function ClubPage({
   tagOptions,
   history,
 }) {
-  const clubId = history.location.pathname.slice(6);
+  const routeId = history.location.pathname.slice(6);
   useEffect(() => {
-    if (organization.id !== clubId) getOrganization(clubId);
+    if (organization.id !== routeId) getOrganization(routeId);
     // return function clears the loaded profile when component unmounts
     return () => {
       !organization.id && clearOrganization();
     };
-  }, [clubId]);
+    // recall useEffect when the id in url changes
+  }, [routeId]);
 
   if (!organization.id) return <Loading />;
 

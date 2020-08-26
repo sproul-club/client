@@ -213,9 +213,7 @@ const EventComp = (props) => {
             />
           </div>
         </div>
-        <div className="event-date">
-              {formatDates(propsStart, propsEnd)}
-            </div>
+        <div className="event-date">{formatDates(propsStart, propsEnd)}</div>
         <div className="event-description">{propsText}</div>
       </div>
 
@@ -234,6 +232,7 @@ const EventComp = (props) => {
                 placeholder="Enter the title of your event"
                 className="userInput modal-input"
                 maxLength={100}
+                required
               />
             </div>
             <div className="formElement">
@@ -254,12 +253,14 @@ const EventComp = (props) => {
                   type="date"
                   onChange={changeStartDate}
                   value={startDate}
+                  required
                 />
                 <input
                   className="modal-input"
                   type="time"
                   onChange={changeStartTime}
                   value={startTime}
+                  required
                 />
               </div>
             </div>
@@ -271,12 +272,14 @@ const EventComp = (props) => {
                   type="date"
                   onChange={changeEndDate}
                   value={endDate}
+                  required
                 />
                 <input
                   className="modal-input"
                   type="time"
                   onChange={changeEndTime}
                   value={endTime}
+                  required
                 />
               </div>
             </div>

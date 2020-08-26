@@ -88,7 +88,7 @@ function GridComponent({ tagOptions, clubs, classes, loadClubs }) {
                 {club.tags.map((tag, i) => (
                   <div className="grid-tag" key={i}>
                     {' '}
-                    {tagOptions[tag].label}{' '}
+                    {tagOptions && tagOptions[tag].label}{' '}
                   </div>
                 ))}
               </div>
