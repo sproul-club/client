@@ -298,6 +298,7 @@ const StepOne = (props) => {
         placeholder="Club name"
         value={props.clubName}
         onChange={(e) => props.setClubName(e.target.value)}
+        maxLength={100}
       />
       <input
         className={`${
