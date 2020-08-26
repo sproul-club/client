@@ -21,7 +21,7 @@ function ClubPage({
     return () => {
       !organization.id && clearOrganization();
     };
-  }, [clubId, organization.id, getOrganization, clearOrganization]);
+  }, [clubId]);
 
   if (!organization.id) return <Loading />;
 
