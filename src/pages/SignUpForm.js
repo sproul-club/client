@@ -8,10 +8,9 @@ import {
   isPasswordStrong,
   resendConfirmationEmail,
 } from '../actions/auth';
-import { tagOptions } from '../data/tagOptions';
 import signup from './assets/signup.png';
 
-const MultiStepForm = ({ register, resendConfirmationEmail }) => {
+const MultiStepForm = ({ register, resendConfirmationEmail, tagOptions }) => {
   var appOptions = [
     { value: true, label: 'Application required' },
     { value: false, label: 'No application required' },
@@ -157,7 +156,7 @@ const MultiStepForm = ({ register, resendConfirmationEmail }) => {
     if (pwdConMismatch === 'pwdConMismatch') {
       setPwdConMismatch('noError');
     }
-    if (pwdWeak == 'pwdWeak') {
+    if (pwdWeak === 'pwdWeak') {
       setPwdWeak('noError');
     }
   };
@@ -169,7 +168,7 @@ const MultiStepForm = ({ register, resendConfirmationEmail }) => {
     if (pwdConMismatch === 'pwdConMismatch') {
       setPwdConMismatch('noError');
     }
-    if (pwdWeak == 'pwdWeak') {
+    if (pwdWeak === 'pwdWeak') {
       setPwdWeak('noError');
     }
   };
@@ -253,19 +252,19 @@ const StepOne = (props) => {
     <div className="formGroup">
       <div className="errorWrapper">
         <div className={`error ${props.emptyName}`}>
-          <img src={error} className="errorIcon" />
+          <img src={error} className="errorIcon" alt="error" />
           <p>this field is required</p>
         </div>
         <div className={`error ${props.emptyEmail}`}>
-          <img src={error} className="errorIcon" />
+          <img src={error} className="errorIcon" alt="error" />
           <p>this field is required</p>
         </div>
         <div className={`error ${props.emptyPwd}`}>
-          <img src={error} className="errorIcon" />
+          <img src={error} className="errorIcon" alt="error" />
           <p>this field is required</p>
         </div>
         <div className={`error ${props.emailError}`}>
-          <img src={error} className="errorIcon" />
+          <img src={error} className="errorIcon" alt="error" />
           <p>email address is not associated with an RSO</p>
         </div>
         <div className={`error ${props.conError}`}>
@@ -305,11 +304,13 @@ const StepOne = (props) => {
         onChange={(e) => props.setEmail(e.target.value)}
       />
       <p className="subtitle">
-      *Password must be at least 8 characters, include 1 number, and 1 symbol!
+        *Password must be at least 8 characters, include 1 number, and 1 symbol!
       </p>
       <input
         className={`${
-          props.emptyPwd === 'emptyPwd' || props.conError === 'pwdConMismatch' || props.pwdWeakError === 'pwdWeak'
+          props.emptyPwd === 'emptyPwd' ||
+          props.conError === 'pwdConMismatch' ||
+          props.pwdWeakError === 'pwdWeak'
             ? 'inputInvalid'
             : 'userInput'
         }`}
@@ -320,7 +321,9 @@ const StepOne = (props) => {
       />
       <input
         className={`${
-          props.emptyPwd === 'emptyPwd' || props.conError === 'pwdConMismatch' || props.pwdWeakError === 'pwdWeak'
+          props.emptyPwd === 'emptyPwd' ||
+          props.conError === 'pwdConMismatch' ||
+          props.pwdWeakError === 'pwdWeak'
             ? 'inputInvalid'
             : 'userInput'
         }`}
@@ -347,7 +350,7 @@ const StepTwo = (props) => {
     return null;
   }
 
-  let haveError = props.emptyRecruit == 'emptyRecruit';
+  let haveError = props.emptyRecruit === 'emptyRecruit';
 
   // console.log("haveError3=" + haveError3);
   return (
@@ -394,7 +397,7 @@ const StepTwo = (props) => {
           // error={haveError}
         />
         <Dropdown
-          options={tagOptions}
+          options={props.tagOptions}
           multi={true}
           search={false}
           placeholder="Add up to 3 tags"
@@ -430,6 +433,7 @@ const StepThree = (props) => {
         <h3>Please check your organization's email for a confirmation link.</h3>
         <h2>Didn't receive an email?</h2>
         <a
+          href="/#"
           onClick={() =>
             props.resendConfirmationEmail(props.email, props.setResentEmail)
           }
@@ -444,6 +448,10 @@ const StepThree = (props) => {
   );
 };
 
-export default connect(null, { register, resendConfirmationEmail })(
+const mapStateToProps = (state) => ({
+  tagOptions: state.profile.tagOptions,
+});
+
+export default connect(mapStateToProps, { register, resendConfirmationEmail })(
   MultiStepForm
 );

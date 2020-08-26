@@ -3,11 +3,10 @@ import Dropdown from './AdminDropdown.js';
 import { connect } from 'react-redux';
 import ImageUploader from '../../react-images-upload';
 import { updateProfile, uploadImages } from '../../actions/profile';
-import { tagOptions } from '../../data/tagOptions';
 import 'react-notifications/lib/notifications.css';
 import {NotificationManager, NotificationContainer} from 'react-notifications';
 
-const Profile = ({ profile, updateProfile, uploadImages, images }) => {
+const Profile = ({ profile, updateProfile, uploadImages, images, tagOptions }) => {
   var appOptions = [
     { value: 1, label: 'Application required' },
     { value: 0, label: 'No application required' },
@@ -51,7 +50,7 @@ const Profile = ({ profile, updateProfile, uploadImages, images }) => {
     var newImages = {};
     if (logoImage) newImages.logo = logoImage[0];
     if (bannerImage) newImages.banner = bannerImage[0];
-    if (Object.values(newImages).length == 0) return;
+    if (Object.values(newImages).length === 0) return;
 
     uploadImages(newImages, function() {
       NotificationManager.success("Images uploaded successfully!", '', 1500);
@@ -63,6 +62,8 @@ const Profile = ({ profile, updateProfile, uploadImages, images }) => {
         case 'banner':
           NotificationManager.error("For best results, please upload a banner that has an aspect ratio of 16:6", "Banner image upload unsuccessful", 5000);
           break;
+        default:
+          break
       }
     });
   };
@@ -225,6 +226,7 @@ const Profile = ({ profile, updateProfile, uploadImages, images }) => {
 const mapStateToProps = (state) => ({
   profile: state.profile.profile,
   images: state.profile.images,
+  tagOptions: state.profile.tagOptions
 });
 
 export default connect(mapStateToProps, { updateProfile, uploadImages })(

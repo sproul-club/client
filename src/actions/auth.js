@@ -185,9 +185,8 @@ export const resendConfirmationEmail = (email, setResentEmail) => async (
 
   try {
     setResentEmail(false);
-    let res = await axios.post('/api/user/resend-confirm', body, config);
+    await axios.post('/api/user/resend-confirm', body, config);
     setResentEmail(true);
-    console.log('confirmation email resent');
 
     // dispatch({ type: RESEND_EMAIL , payload: res.data });
   } catch (err) {
@@ -235,7 +234,6 @@ export const resetPassword = (password) => {
   return axios
     .post('/api/user/confirm-reset', body, config)
     .then((response) => {
-      console.log(response.data.status);
       return response.data.status;
     })
     .catch((err) => {

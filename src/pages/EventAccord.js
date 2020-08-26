@@ -35,7 +35,7 @@ function formatDates(start, end) {
     var endDate = new Date(end);
 
     if (
-        startDate.getDay() == endDate.getDay() &&
+        startDate.getDay() === endDate.getDay() &&
         startDate.getMonth() === endDate.getMonth() &&
         startDate.getDay() === endDate.getDay() &&
         startDate.getFullYear() === endDate.getFullYear()

@@ -18,10 +18,10 @@ const ResetPasswordForm = () => {
     checkErrors().then((errorExists) => {
       if (!errorExists) {
         sendResetPasswordEmail(email).then((status) => {
-          if (status === "success") {
+          if (status === 'success') {
             setStep(currStep + 1);
           } else {
-            console.log("An error occurred. Please try again later.");
+            console.log('An error occurred. Please try again later.');
           }
         });
       }
@@ -76,11 +76,11 @@ const StepOne = (props) => {
     <>
       <div className="errorWrapper">
         <div className={`error ${props.emptyEmail}`}>
-          <img src={error} className="errorIcon" />
+          <img src={error} className="errorIcon" alt="required" />
           <p>this field is required</p>
         </div>
         <div className={`error ${props.emailError}`}>
-          <img src={error} className="errorIcon" />
+          <img src={error} className="errorIcon" alt="email invalid" />
           <p>email address is not RSO registered</p>
         </div>
       </div>
