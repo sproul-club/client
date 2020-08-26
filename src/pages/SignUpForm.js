@@ -237,6 +237,7 @@ const MultiStepForm = ({ register, resendConfirmationEmail, tagOptions }) => {
       <StepThree
         currStep={currStep}
         resentEmail={resentEmail}
+        email={email}
         setResentEmail={setResentEmail}
         resendConfirmationEmail={resendConfirmationEmail}
       />
@@ -432,14 +433,14 @@ const StepThree = (props) => {
         <h3>You're all set!</h3>
         <h3>Please check your organization's email for a confirmation link.</h3>
         <h2>Didn't receive an email?</h2>
-        <a
-          href="/#"
+        <div
+          style={{ fontSize: '12px', cursor: 'pointer' }}
           onClick={() =>
             props.resendConfirmationEmail(props.email, props.setResentEmail)
           }
         >
           Resend email
-        </a>
+        </div>
         <div className={`email-sent ${props.resentEmail && 'sent'}`}>
           email sent
         </div>

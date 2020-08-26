@@ -46,7 +46,9 @@ export const register = (
 };
 
 // Login User
-export const login = (email, password, history, success, error) => async (dispatch) => {
+export const login = (email, password, history, success, error) => async (
+  dispatch
+) => {
   // Set headers
   const config = {
     headers: {
@@ -167,8 +169,6 @@ export const isPasswordStrong = (password) => {
     });
 };
 
-
-
 // Login User
 export const resendConfirmationEmail = (email, setResentEmail) => async (
   dispatch
@@ -216,7 +216,6 @@ export const sendResetPasswordEmail = (email) => {
     });
 };
 
-
 // Reset password
 export const resetPassword = (password) => {
   // const token = localStorage.getItem('token');
@@ -241,4 +240,3 @@ export const resetPassword = (password) => {
       // dispatch({ type: AUTH_ERROR, payload: err });
     });
 };
-
