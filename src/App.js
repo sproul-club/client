@@ -18,6 +18,7 @@ import Security from './pages/admin/Security.js';
 import Admin from './pages/admin/Admin.js';
 import Modal from './pages/Modal.js';
 import store from './store';
+import ContactUs from './layout/ContactUs.js';
 import { loadProfile, getTags } from './actions/profile';
 import { Provider } from 'react-redux';
 import PrivateRoute from './utils/PrivateRoute';
@@ -46,6 +47,7 @@ const App = () => {
           <PrivateRoute exact path="/security" component={ComingSoon} />
           <Route>{'404'}</Route>
         </Switch>
+        <ContactUs />
       </Router>
     </Provider>
   );

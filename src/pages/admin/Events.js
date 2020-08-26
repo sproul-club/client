@@ -5,6 +5,10 @@ import EventComp from './EventComp.js';
 import { addEvent, updateEvent, deleteEvent } from '../../actions/profile';
 import { validURL, normalizeUrl } from '../../utils/normalizeUrl';
 import './Events.css';
+import {
+  NotificationManager,
+  NotificationContainer,
+} from 'react-notifications';
 
 const Events = ({ addEvent, updateEvent, deleteEvent, events: eventState }) => {
   /*Holds all existing events*/
@@ -23,7 +27,8 @@ const Events = ({ addEvent, updateEvent, deleteEvent, events: eventState }) => {
   const [text, setText] = useState('');
 
   /*Adds event to array, count++, resets title and link state values */
-  function addEv() {
+  function addEv(e) {
+    e.preventDefault();
     const start = startDate.concat(' ' + startTime);
     const end = endDate.concat(' ' + endTime);
     const emptyEvent = {
@@ -33,7 +38,11 @@ const Events = ({ addEvent, updateEvent, deleteEvent, events: eventState }) => {
       event_end: end,
       description: text,
     };
-    if (!validURL(eventLink)) return alert('Please enter a valid URL');
+    // if (!validURL(eventLink)) return alert('Please enter a valid URL');
+    if (!validURL(eventLink)) {
+      NotificationManager.error('Please enter a valid URL', '', 1500);
+      return;
+    }
     setEvents([...events, emptyEvent]);
     // call add event action
     addEvent(emptyEvent);
@@ -93,35 +102,6 @@ const Events = ({ addEvent, updateEvent, deleteEvent, events: eventState }) => {
     setEvents(tempArr);
   }
 
-  /*onChange functions for add modal*/
-  function changeTitle(event) {
-    setTitle(event.target.value);
-  }
-
-  function changeLink(event) {
-    setEventLink(event.target.value);
-  }
-
-  function changeStartDate(event) {
-    setStartDate(event.target.value);
-  }
-
-  function changeStartTime(event) {
-    setStartTime(event.target.value);
-  }
-
-  function changeEndDate(event) {
-    setEndDate(event.target.value);
-  }
-
-  function changeEndTime(event) {
-    setEndTime(event.target.value);
-  }
-
-  function changeText(event) {
-    setText(event.target.value);
-  }
-
   /*Passed down to eventComp to allow it to remove event from state array, count--*/
   function removeEvent(id) {
     deleteEvent(id);
@@ -144,63 +124,6 @@ const Events = ({ addEvent, updateEvent, deleteEvent, events: eventState }) => {
     />
   ));
 
-  // function convertTime(datetime) {
-  //   var dd = 'AM';
-
-  //   var hour = datetime.getUTCHours();
-  //   var h = hour;
-  //   if (h >= 12) {
-  //     hour = h - 12;
-  //     dd = 'PM';
-  //   }
-  //   if (hour === 0) {
-  //     hour = 12;
-  //   }
-
-  //   var minutes = datetime.getMinutes();
-  //   minutes = minutes < 10 ? '0' + minutes : minutes;
-
-  //   return hour + ':' + minutes + dd;
-  // }
-
-  // function formatDate(datetime) {
-  //   const dayArr = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'];
-
-  //   var month = (1 + datetime.getMonth()).toString();
-  //   var day = datetime.getDate().toString();
-  //   var year = datetime.getFullYear();
-  //   day = day.length > 1 ? day : '0' + day;
-
-  //   var time = convertTime(datetime);
-  //   return (
-  //     dayArr[datetime.getDay()] +
-  //     ' ' +
-  //     month +
-  //     '/' +
-  //     day +
-  //     '/' +
-  //     year +
-  //     ' ' +
-  //     time
-  //   );
-  // }
-
-  // function formatDates(start, end) {
-  //   var startDate = new Date(start);
-  //   var endDate = new Date(end);
-
-  //   if (
-  //     startDate.getDay() === endDate.getDay() &&
-  //     startDate.getMonth() === endDate.getMonth() &&
-  //     startDate.getDay() === endDate.getDay() &&
-  //     startDate.getFullYear() === endDate.getFullYear()
-  //   ) {
-  //     return formatDate(startDate) + ' - ' + convertTime(endDate);
-  //   } else {
-  //     return formatDate(startDate) + ' - ' + formatDate(endDate);
-  //   }
-  // }
-
   return (
     <div className="events">
       <h3>Events</h3>
@@ -218,7 +141,7 @@ const Events = ({ addEvent, updateEvent, deleteEvent, events: eventState }) => {
       </div>
 
       <Modal showModal={showModal} setShowModal={setShowModal}>
-        <div className="eventModal">
+        <form className="eventModal" onSubmit={(e) => addEv(e)}>
           <h3 id="res-bold">Add New Event</h3>
           <p id="res-desc">Link an event for prospective or current members!</p>
           <div className="gray-modal">
@@ -226,18 +149,19 @@ const Events = ({ addEvent, updateEvent, deleteEvent, events: eventState }) => {
               <p>Event Name</p>
               <input
                 type="text"
-                onChange={changeTitle}
+                onChange={(e) => setTitle(e.target.value)}
                 value={title}
                 placeholder="Enter the title of your event"
                 className="userInput modal-input"
                 maxLength={100}
+                required
               />
             </div>
             <div className="formElement">
               <p>Event Link</p>
               <input
                 type="text"
-                onChange={changeLink}
+                onChange={(e) => setEventLink(e.target.value)}
                 value={eventLink}
                 placeholder="+ Add a link to your event (Zoom, FB, ZmURl, etc)"
                 className="userInput modal-input"
@@ -249,14 +173,16 @@ const Events = ({ addEvent, updateEvent, deleteEvent, events: eventState }) => {
                 <input
                   className="modal-input"
                   type="date"
-                  onChange={changeStartDate}
+                  onChange={(e) => setStartDate(e.target.value)}
                   value={startDate}
+                  required
                 />
                 <input
                   className="modal-input"
                   type="time"
-                  onChange={changeStartTime}
+                  onChange={(e) => setStartTime(e.target.value)}
                   value={startTime}
+                  required
                 />
               </div>
             </div>
@@ -266,14 +192,16 @@ const Events = ({ addEvent, updateEvent, deleteEvent, events: eventState }) => {
                 <input
                   className="modal-input"
                   type="date"
-                  onChange={changeEndDate}
+                  onChange={(e) => setEndDate(e.target.value)}
                   value={endDate}
+                  required
                 />
                 <input
                   className="modal-input"
                   type="time"
-                  onChange={changeEndTime}
+                  onChange={(e) => setEndTime(e.target.value)}
                   value={endTime}
+                  required
                 />
               </div>
             </div>
@@ -283,20 +211,19 @@ const Events = ({ addEvent, updateEvent, deleteEvent, events: eventState }) => {
                 className="descriptionInput"
                 value={text}
                 placeholder="Enter a short description about what your event is about and what attendees can expect!"
-                onChange={changeText}
+                onChange={(e) => setText(e.target.value)}
                 maxLength={1000}
               />
             </div>
           </div>
-          <button type="submit" onClick={addEv}>
-            Save
-          </button>
+          <button type="submit">Save</button>
           <button id="cancel-button" onClick={cancelAdd}>
             {' '}
             Cancel{' '}
           </button>
-        </div>
+        </form>
       </Modal>
+      <NotificationContainer />
     </div>
   );
 };
