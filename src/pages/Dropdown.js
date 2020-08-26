@@ -103,6 +103,7 @@ const Dropdown = (props) => (
     isMulti={props.multi}
     options={props.options}
     placeholder={props.placeholder}
+    defaultValue={props.defaultValue}
     onChange={(e) => handleChange(e, props)}
     closeMenuOnSelect={!props.multi}
     maxMenuHeight={200}

@@ -231,6 +231,7 @@ export const resetPassword = (password) => {
     },
   };
   const body = JSON.stringify({ token, password });
+  console.log(body);
 
   return axios
     .post('/api/user/confirm-reset', body, config)
