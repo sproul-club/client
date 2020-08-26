@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { login } from '../actions/auth';
 import error from './assets/error.svg';
 import { isCallinkEmail } from '../actions/auth';
+import 'react-notifications/lib/notifications.css';
 import {NotificationManager, NotificationContainer} from 'react-notifications';
 
 
@@ -67,7 +68,7 @@ const SignInForm = ({ login, history, isAuthenticated }) => {
   };
 
   return (
-    
+
     <form className="formGroup">
       <div className="errorWrapper">
         <div className={`error ${emptyEmail}`}>
@@ -96,7 +97,7 @@ const SignInForm = ({ login, history, isAuthenticated }) => {
         placeholder="e.g. organizationname@gmail.com"
         onChange={(e) => emailOnChange(e.target.value)}
       />
-      
+
       <p>Password</p>
       <input
         className={`${((emptyPassword==='emptyPassword')) ? 'inputInvalid' : 'userInput'}`}
