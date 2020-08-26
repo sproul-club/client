@@ -152,7 +152,7 @@ const Profile = ({
           />
         </div>
         <p className="subtitle">
-          This setting cannot be changed. Please contact{' '}
+        <span style={{ color: '#FF0000' }}>*</span> This setting cannot be changed. Please contact{' '}
           <a
             target="_blank"
             rel="noopener noreferrer"
@@ -220,6 +220,14 @@ const Profile = ({
             maxFileSize={5242880}
           />
         </div>
+        <p className="subtitle">
+        <span style={{ color: '#FF0000' }}>*</span> Please make sure your logo is ~ 360 x 360 pixels. {' '}
+          <a href="https://www.photoresizer.com/"
+            target="_blank">
+            <span style={{ color: '#54a0f1' }}>Click here</span>
+          </a>{' '}
+          for a resource that helps you resize your images. 
+        </p>
         <div className="formElement">
           <p>Banner</p>
           <ImageUploader
@@ -245,6 +253,14 @@ const Profile = ({
             maxFileSize={5242880}
           />
         </div>
+        <p className="subtitle">
+        <span style={{ color: '#FF0000' }}>*</span> Please make sure your banner is ~ 820 x 312 pixels. {' '}
+          <a href="https://www.photoresizer.com/"
+            target="_blank">
+            <span style={{ color: '#54a0f1' }}>Click here</span>
+          </a>{' '}
+          for a resource that helps you resize your images. 
+        </p>
         <div className="formElement">
           <p>Description</p>
           <textarea
