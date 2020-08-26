@@ -5,11 +5,11 @@ import {NotificationManager, NotificationContainer} from 'react-notifications';
 
 const GetInvolved = ({ profile, get_involved, updateProfile }) => {
   const [involvedDesc, setInvolvedDesc] = useState(profile.get_involved);
-  const [descrChars, setChars] = useState(1000 - involvedDesc.length);
+  const [descrChars, setChars] = useState(500 - involvedDesc.length);
 
   const descrChange = (e) => {
     setInvolvedDesc(e.target.value);
-    setChars(1000 - e.target.value.length);
+    setChars(500 - e.target.value.length);
   };
 
   const submitValue = (e) => {
@@ -35,7 +35,7 @@ const GetInvolved = ({ profile, get_involved, updateProfile }) => {
             className="descriptionInput"
             placeholder="Enter a short description about how to get involved!"
             type="text"
-            maxLength={1000}
+            maxLength={500}
             /*value={involvedDesc}
             onChange={(e) => setInvolvedDesc(e.target.value)}
             */

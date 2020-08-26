@@ -30,7 +30,7 @@ const Profile = ({
   const [orgName, setOrgName] = useState(profile.name);
   const [orgEmail, setOrgEmail] = useState(profile.owner);
   const [descr, setDescr] = useState(profile.about_us);
-  const [descrChars, setChars] = useState(1500 - descr.length);
+  const [descrChars, setChars] = useState(750 - descr.length);
   const [tags, setTags] = useState(profile.tags.map((tag) => tagOptions[tag]));
   const [appReq, setAppReq] = useState(
     appOptions[profile.app_required === true ? 0 : 1]
@@ -104,7 +104,7 @@ const Profile = ({
 
   const descrChange = (e) => {
     setDescr(e.target.value);
-    setChars(1500 - e.target.value.length);
+    setChars(750 - e.target.value.length);
   };
 
   const reqFieldsCheck = () => {
@@ -267,7 +267,7 @@ const Profile = ({
             className="descriptionInput"
             placeholder="Enter a short description about your organization."
             type="text"
-            maxLength={1500}
+            maxLength={750}
             value={descr}
             onChange={descrChange}
           />
