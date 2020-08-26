@@ -96,6 +96,7 @@ const Profile = ({ profile, updateProfile, uploadImages, images, tagOptions }) =
             type="text"
             value={orgName}
             onChange={(e) => setOrgName(e.target.value)}
+            maxLength={100}
           />
         </div>
         <div className="formElement">

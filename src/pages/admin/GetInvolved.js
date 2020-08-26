@@ -35,7 +35,7 @@ const GetInvolved = ({ profile, get_involved, updateProfile }) => {
             className="descriptionInput"
             placeholder="Enter a short description about how to get involved!"
             type="text"
-            maxLength={250}
+            maxLength={500}
             /*value={involvedDesc}
             onChange={(e) => setInvolvedDesc(e.target.value)}
             */
