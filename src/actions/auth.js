@@ -46,7 +46,9 @@ export const register = (
 };
 
 // Login User
-export const login = (email, password, history, success, error) => async (dispatch) => {
+export const login = (email, password, history, success, error) => async (
+  dispatch
+) => {
   // Set headers
   const config = {
     headers: {
@@ -167,8 +169,6 @@ export const isPasswordStrong = (password) => {
     });
 };
 
-
-
 // Login User
 export const resendConfirmationEmail = (email, setResentEmail) => async (
   dispatch
@@ -185,9 +185,8 @@ export const resendConfirmationEmail = (email, setResentEmail) => async (
 
   try {
     setResentEmail(false);
-    let res = await axios.post('/api/user/resend-confirm', body, config);
+    await axios.post('/api/user/resend-confirm', body, config);
     setResentEmail(true);
-    console.log('confirmation email resent');
 
     // dispatch({ type: RESEND_EMAIL , payload: res.data });
   } catch (err) {
@@ -217,7 +216,6 @@ export const sendResetPasswordEmail = (email) => {
     });
 };
 
-
 // Reset password
 export const resetPassword = (password) => {
   // const token = localStorage.getItem('token');
@@ -236,7 +234,6 @@ export const resetPassword = (password) => {
   return axios
     .post('/api/user/confirm-reset', body, config)
     .then((response) => {
-      console.log(response.data.status);
       return response.data.status;
     })
     .catch((err) => {
@@ -244,4 +241,3 @@ export const resetPassword = (password) => {
       // dispatch({ type: AUTH_ERROR, payload: err });
     });
 };
-

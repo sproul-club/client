@@ -29,7 +29,6 @@ export default function (state = initialState, action) {
     case LOAD_PROFILE_ERROR:
       return { ...state, loading: false, isAuthenticated: false };
     case LOGIN_SUCCESS:
-      console.log('state before logging in reducer', state);
       return {
         ...state,
         token: payload.access,

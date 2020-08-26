@@ -11,8 +11,9 @@ import {
   UPDATE_RESOURCE,
   DELETE_RESOURCE,
   UPDATE_PASSWORD,
+  GET_TAGS,
 } from './types';
-import FormData, { errorMonitor } from 'form-data';
+import FormData from 'form-data';
 import setAuthToken from '../utils/setAuthToken';
 import { refreshToken } from './auth';
 
@@ -81,7 +82,7 @@ export const uploadImages = (images, success, error) => async (dispatch) => {
 
     dispatch({ type: UPLOAD_IMAGES, payload: res.data });
   } catch (err) {
-    error(err.response.data.data["image_type"])
+    error(err.response.data.data['image_type']);
     console.log(err.response);
   }
 };
@@ -207,7 +208,9 @@ export const deleteResource = (id) => async (dispatch) => {
   }
 };
 
-export const updatePassword = (formData, success, error) => async (dispatch) => {
+export const updatePassword = (formData, success, error) => async (
+  dispatch
+) => {
   try {
     const config = {
       headers: {
@@ -222,6 +225,18 @@ export const updatePassword = (formData, success, error) => async (dispatch) => 
     dispatch({ type: UPDATE_PASSWORD, payload: res.data });
   } catch (err) {
     error(err.response.data.reason);
+    console.log(err.response);
+  }
+};
+
+export const getTags = () => async (dispatch) => {
+  try {
+    const res = await axios.get('/api/catalog/tags');
+
+    const tags = res.data.map((tag) => ({ label: tag.name, value: tag.id }));
+
+    dispatch({ type: GET_TAGS, payload: tags });
+  } catch (err) {
     console.log(err.response);
   }
 };
