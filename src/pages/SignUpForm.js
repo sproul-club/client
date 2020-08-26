@@ -9,6 +9,8 @@ import {
   resendConfirmationEmail,
 } from '../actions/auth';
 import signup from './assets/signup.png';
+import 'react-notifications/lib/notifications.css';
+import {NotificationManager, NotificationContainer} from 'react-notifications';
 
 const MultiStepForm = ({ register, resendConfirmationEmail, tagOptions }) => {
   var appOptions = [
@@ -48,6 +50,7 @@ const MultiStepForm = ({ register, resendConfirmationEmail, tagOptions }) => {
     for (var i = 0; i < tags.length; i++) {
       tagsList.push(tags[i].value);
     }
+
     register(
       clubName,
       email,
@@ -55,7 +58,11 @@ const MultiStepForm = ({ register, resendConfirmationEmail, tagOptions }) => {
       tagsList,
       !!appReq.value,
       !!recruiting.value
-    );
+    ).then(() => setStep(currStep + 1))
+    .catch(err => {
+      var errMessage = err.response.data.reason;
+      NotificationManager.error(errMessage, "Unable to register!", 3000);
+    });
   };
 
   const _prev = () => {
@@ -74,7 +81,6 @@ const MultiStepForm = ({ register, resendConfirmationEmail, tagOptions }) => {
       /* step 2 errors */
       var errorExists = checkStep2Errors();
       if (!errorExists) {
-        setStep(currStep + 1);
         submitValue();
       }
     }
@@ -241,6 +247,7 @@ const MultiStepForm = ({ register, resendConfirmationEmail, tagOptions }) => {
         setResentEmail={setResentEmail}
         resendConfirmationEmail={resendConfirmationEmail}
       />
+      <NotificationContainer/>
     </>
   );
 };

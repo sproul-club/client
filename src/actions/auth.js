@@ -38,10 +38,10 @@ export const register = (
   try {
     let res = await axios.post('/api/user/register', body, config);
 
-    dispatch({ type: REGISTER_SUCCESS, payload: res.data });
+    await dispatch({ type: REGISTER_SUCCESS, payload: res.data });
   } catch (err) {
-    dispatch({ type: AUTH_ERROR, payload: err });
-    console.log('error response', err.response);
+    await dispatch({ type: AUTH_ERROR, payload: err });
+    throw err;
   }
 };
 

@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { login } from '../actions/auth';
 import error from './assets/error.svg';
 import { isCallinkEmail } from '../actions/auth';
-import {
+import 'react-notifications/lib/notifications.css';
   NotificationManager,
   NotificationContainer,
 } from 'react-notifications';
