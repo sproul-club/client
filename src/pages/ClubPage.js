@@ -3,7 +3,6 @@ import './ClubPage.css';
 import EventAccord from './EventAccord';
 import Footer from '../layout/Footer';
 import Loading from '../layout/Loading';
-import { tagOptions } from '../data/tagOptions';
 import { withRouter } from 'react-router-dom';
 import { getOrganization, clearOrganization } from '../actions/catalog';
 import { connect } from 'react-redux';
@@ -12,6 +11,7 @@ function ClubPage({
   organization,
   getOrganization,
   clearOrganization,
+  tagOptions,
   history,
 }) {
   const clubId = history.location.pathname.slice(6);
@@ -61,7 +61,7 @@ function ClubPage({
   const tagList = organization.tags.map((tag, i) => (
     <div className="tag" key={i}>
       {' '}
-      {tagOptions[tag].label}{' '}
+      {tagOptions[tag] && tagOptions[tag].label}{' '}
     </div>
   ));
 
@@ -112,15 +112,19 @@ function ClubPage({
             </div>
           </div>
 
-          <div className="left-box">
-            <p>Description</p>
-            <div className="desc-text">{organization.about_us}</div>
-          </div>
+          {organization.about_us ? (
+            <div className="left-box">
+              <p>Description</p>
+              <div className="desc-text">{organization.about_us}</div>
+            </div>
+          ) : null}
 
-          <div className="left-box">
-            <p>Events</p>
-            <EventAccord data={organization} />
-          </div>
+          {organization.events.length > 0 ? (
+            <div className="left-box">
+              <p>Events</p>
+              <EventAccord data={organization} />
+            </div>
+          ) : null}
         </div>
 
         <div className="flex-container-right">
@@ -129,18 +133,21 @@ function ClubPage({
             <div className="link-flex">{contactComps}</div>
           </div>
 
-          <div className="right-box">
-            <p>Resources</p>
-            <div className="resources-flex">{resComps}</div>
-          </div>
-
-          <div className="right-box">
-            <p>How to Get Involved</p>
-            <div className="desc-text" id="right-text">
-              {organization.get_involved}
+          {organization.resources.length > 0 ? (
+            <div className="right-box">
+              <p>Resources</p>
+              <div className="resources-flex">{resComps}</div>
             </div>
-          </div>
-          
+          ) : null}
+
+          {organization.get_involved ? (
+            <div className="right-box">
+              <p>How to Get Involved</p>
+              <div className="desc-text" id="right-text">
+                {organization.get_involved}
+              </div>
+            </div>
+          ) : null}
         </div>
       </div>
       <Footer />
@@ -150,6 +157,7 @@ function ClubPage({
 
 const mapStateToProps = (state) => ({
   organization: state.catalog.organization,
+  tagOptions: state.profile.tagOptions,
 });
 
 export default connect(mapStateToProps, { getOrganization, clearOrganization })(

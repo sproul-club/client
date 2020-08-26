@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { updatePassword } from '../../actions/profile';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import 'react-notifications/lib/notifications.css';
 import {NotificationManager, NotificationContainer} from 'react-notifications';
 

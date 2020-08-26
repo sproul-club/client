@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { updateProfile } from '../../actions/profile';
 import {NotificationManager, NotificationContainer} from 'react-notifications';
@@ -23,8 +23,6 @@ const ContactInfo = ({ profile, updateProfile }) => {
   if (email === null) {
     setEmail(profile.owner);
   }
-
-  console.log(email);
   
   const normalizeUrls = () => {
     setWebsite(normalizeUrl(website));

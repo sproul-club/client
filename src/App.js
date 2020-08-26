@@ -13,12 +13,12 @@ import Catalog from './pages/catalog.js';
 import { SignUp } from './pages/SignUp.js';
 import { SignIn } from './pages/SignIn.js';
 import { ResetPassword } from './pages/ResetPassword.js';
-// import { ResetPassword2 } from './pages/ResetPassword2.js';
+import { ResetPassword2 } from './pages/ResetPassword2.js';
 import Security from './pages/admin/Security.js';
 import Admin from './pages/admin/Admin.js';
 import Modal from './pages/Modal.js';
 import store from './store';
-import { loadProfile } from './actions/profile';
+import { loadProfile, getTags } from './actions/profile';
 import { Provider } from 'react-redux';
 import PrivateRoute from './utils/PrivateRoute';
 import Navbar from './layout/Navbar';
@@ -26,6 +26,7 @@ import Navbar from './layout/Navbar';
 const App = () => {
   useEffect(() => {
     store.dispatch(loadProfile());
+    store.dispatch(getTags());
   }, []);
 
   return (
@@ -38,7 +39,7 @@ const App = () => {
           <PrivateRoute path="/admin" component={Admin} />
           <Route path="/catalog" component={ComingSoon} />
           <Route exact path="/signup" component={ComingSoon} />
-          <Route exact path="/signin" component={SignIn} />
+          <Route exact path="/signin" component={ComingSoon} />
           <Route exact path="/recover" component={ComingSoon} />
           <Route exact path="/resetpassword" component={ComingSoon} />
           <Route exact path="/club/:id" component={ComingSoon} />
