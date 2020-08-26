@@ -351,8 +351,8 @@ const StepTwo = (props) => {
     return null;
   }
 
-  let haveError = props.emptyRecruit === 'emptyRecruit';
-
+  // ideally this var will set the dropdowns to red-border css as well...
+  let haveError = props.emptyRecruit == 'emptyRecruit';
   // console.log("haveError3=" + haveError3);
   return (
     <div className="formGroup">
@@ -386,6 +386,7 @@ const StepTwo = (props) => {
           multi={false}
           search={false}
           placeholder="Select recruitment status"
+          defaultValue={props.recruiting}
           set={props.setRecruit}
           error={haveError}
         />
@@ -394,6 +395,7 @@ const StepTwo = (props) => {
           multi={false}
           search={false}
           placeholder="Select application requirement"
+          defaultValue={props.appReq}
           set={props.setAppReq}
           // error={haveError}
         />
@@ -402,6 +404,7 @@ const StepTwo = (props) => {
           multi={true}
           search={false}
           placeholder="Add up to 3 tags"
+          defaultValue={props.tags}
           set={props.setTags}
           errorPopup={props.setTagError}
           // error={haveError}
