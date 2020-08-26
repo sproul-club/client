@@ -30,7 +30,7 @@ const Profile = ({
   const [orgName, setOrgName] = useState(profile.name);
   const [orgEmail, setOrgEmail] = useState(profile.owner);
   const [descr, setDescr] = useState(profile.about_us);
-  const [descrChars, setChars] = useState(500 - descr.length);
+  const [descrChars, setChars] = useState(1500 - descr.length);
   const [tags, setTags] = useState(profile.tags.map((tag) => tagOptions[tag]));
   const [appReq, setAppReq] = useState(
     appOptions[profile.app_required === true ? 0 : 1]
@@ -65,7 +65,7 @@ const Profile = ({
       }
     );
 
-    if (logoImage) {
+    if (logoImage && logoImage.length > 0) {
       uploadLogo(
         { logo: logoImage[0] },
         () => {
@@ -81,9 +81,9 @@ const Profile = ({
       );
     }
 
-    if (bannerImage) {
+    if (bannerImage && bannerImage.length > 0) {
       uploadBanner(
-        { logo: bannerImage[0] },
+        { banner: bannerImage[0] },
         () => {
           NotificationManager.success(
             'Banner uploaded successfully!',
@@ -104,7 +104,7 @@ const Profile = ({
 
   const descrChange = (e) => {
     setDescr(e.target.value);
-    setChars(500 - e.target.value.length);
+    setChars(1500 - e.target.value.length);
   };
 
   const reqFieldsCheck = () => {
@@ -138,6 +138,7 @@ const Profile = ({
             type="text"
             value={orgName}
             onChange={(e) => setOrgName(e.target.value)}
+            maxLength={100}
           />
         </div>
         <div className="formElement">
@@ -250,7 +251,7 @@ const Profile = ({
             className="descriptionInput"
             placeholder="Enter a short description about your organization."
             type="text"
-            maxLength={500}
+            maxLength={1500}
             value={descr}
             onChange={descrChange}
           />

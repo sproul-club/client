@@ -298,6 +298,7 @@ const StepOne = (props) => {
         placeholder="Club name"
         value={props.clubName}
         onChange={(e) => props.setClubName(e.target.value)}
+        maxLength={100}
       />
       <input
         className={`${
@@ -359,7 +360,7 @@ const StepTwo = (props) => {
   }
 
   // ideally this var will set the dropdowns to red-border css as well...
-  let haveError = props.emptyRecruit == 'emptyRecruit';
+  let haveError = props.emptyRecruit === 'emptyRecruit';
   // console.log("haveError3=" + haveError3);
   return (
     <div className="formGroup">

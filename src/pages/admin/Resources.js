@@ -114,6 +114,7 @@ const Resources = ({
                 className="resourcesInput"
                 type="text"
                 onChange={changeTitle}
+                maxLength={100}
               ></input>
               <div className="input-title">URL Link</div>
               <input

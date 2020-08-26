@@ -1,40 +1,24 @@
 import React, { useState } from 'react';
 import { updateProfile } from '../../actions/profile';
 import { connect } from 'react-redux';
-import {
-  NotificationManager,
-  NotificationContainer,
-} from 'react-notifications';
+import {NotificationManager, NotificationContainer} from 'react-notifications';
 
 const GetInvolved = ({ profile, get_involved, updateProfile }) => {
   const [involvedDesc, setInvolvedDesc] = useState(profile.get_involved);
-  const [descrChars, setChars] = useState(250 - involvedDesc.length);
+  const [descrChars, setChars] = useState(1000 - involvedDesc.length);
 
-  console.log('get involved', get_involved);
-  console.log('involved descr', involvedDesc);
   const descrChange = (e) => {
     setInvolvedDesc(e.target.value);
-    setChars(250 - e.target.value.length);
+    setChars(1000 - e.target.value.length);
   };
 
   const submitValue = (e) => {
-    updateProfile(
-      { ...profile, get_involved: involvedDesc },
-      function () {
-        NotificationManager.success(
-          'Description changes saved successfully!',
-          '',
-          3000
-        );
-      },
-      function () {
-        NotificationManager.error(
-          'Description changes unsuccessful!',
-          '',
-          3000
-        );
-      }
-    );
+    updateProfile({ ...profile, get_involved: involvedDesc },
+      function() {
+        NotificationManager.success("Description changes saved successfully!", '', 3000);
+      }, function() {
+        NotificationManager.error("Description changes unsuccessful!", '', 3000);
+      });
   };
 
   return (
@@ -51,7 +35,10 @@ const GetInvolved = ({ profile, get_involved, updateProfile }) => {
             className="descriptionInput"
             placeholder="Enter a short description about how to get involved!"
             type="text"
-            maxLength={250}
+            maxLength={1000}
+            /*value={involvedDesc}
+            onChange={(e) => setInvolvedDesc(e.target.value)}
+            */
             value={involvedDesc}
             onChange={descrChange}
           />
@@ -61,7 +48,7 @@ const GetInvolved = ({ profile, get_involved, updateProfile }) => {
       <button className="saveButton" onClick={submitValue}>
         Save changes{' '}
       </button>
-      <NotificationContainer />
+      <NotificationContainer/>
     </div>
   );
 };

@@ -230,6 +230,7 @@ const Events = ({ addEvent, updateEvent, deleteEvent, events: eventState }) => {
                 value={title}
                 placeholder="Enter the title of your event"
                 className="userInput modal-input"
+                maxLength={100}
               />
             </div>
             <div className="formElement">
@@ -283,6 +284,7 @@ const Events = ({ addEvent, updateEvent, deleteEvent, events: eventState }) => {
                 value={text}
                 placeholder="Enter a short description about what your event is about and what attendees can expect!"
                 onChange={changeText}
+                maxLength={1000}
               />
             </div>
           </div>
