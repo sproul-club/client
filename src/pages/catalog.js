@@ -15,9 +15,8 @@ import {
 } from 'react-accessible-accordion';
 import { Form, TextBox, CheckBox } from 'react-form-elements';
 import { makeStyles } from '@material-ui/core/styles';
-import { tagOptions } from '../data/tagOptions';
 
-const Catalog = ({ searchClubs, clearOrganization }) => {
+const Catalog = ({ searchClubs, clearOrganization, tagOptions }) => {
   const useStyles = makeStyles({
     root: {
       minWidth: 200,
@@ -47,7 +46,6 @@ const Catalog = ({ searchClubs, clearOrganization }) => {
     // Calls searchClubs redux action, which hits the backend API
     // then updates the apps state in redux to be the response
     // This data is then read in the GridComponent through mapStateToProps
-    console.log(searchParams);
     searchClubs(searchParams);
   };
 
@@ -165,7 +163,11 @@ const Catalog = ({ searchClubs, clearOrganization }) => {
   );
 };
 
+const mapStateToProps = (state) => ({
+  tagOptions: state.profile.tagOptions
+})
+
 export default withRouter(
-  connect(null, { searchClubs, clearOrganization })(Catalog)
+  connect(mapStateToProps, { searchClubs, clearOrganization })(Catalog)
 );
 

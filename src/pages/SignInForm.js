@@ -6,18 +6,19 @@ import { login } from '../actions/auth';
 import error from './assets/error.svg';
 import { isCallinkEmail } from '../actions/auth';
 import 'react-notifications/lib/notifications.css';
-import {NotificationManager, NotificationContainer} from 'react-notifications';
-
+  NotificationManager,
+  NotificationContainer,
+} from 'react-notifications';
 
 const SignInForm = ({ login, history, isAuthenticated }) => {
   // user inputs
   const [email, setEmail] = useState('');
   const [pw, setPassword] = useState('');
 
-   /* error indicators */
-   const [emailUnverified, setEmailUnverified] = useState('noError');
-   const [emptyEmail, setEmptyEmail] = useState('noError');
-   const [emptyPassword, setEmptyPassword] = useState('noError');
+  /* error indicators */
+  const [emailUnverified, setEmailUnverified] = useState('noError');
+  const [emptyEmail, setEmptyEmail] = useState('noError');
+  const [emptyPassword, setEmptyPassword] = useState('noError');
 
   if (isAuthenticated) {
     return <Redirect to="/admin" />;
@@ -29,30 +30,41 @@ const SignInForm = ({ login, history, isAuthenticated }) => {
     let hasErrors = await checkErrors();
     if (!hasErrors) {
       // passes the history object (from react-router-dom's withRouter) to redirect after login
-      login(email, pw, history,
+      login(
+        email,
+        pw,
+        history,
         () => history.push('/admin'),
-        (errMessage) => NotificationManager.error(errMessage, "Unable to sign in!", 3000)
+        (errMessage) =>
+          NotificationManager.error(errMessage, 'Unable to sign in!', 3000)
       );
     }
   };
 
   const emailOnChange = (newEmail) => {
     setEmail(newEmail);
-    if (emptyEmail === 'emptyEmail') { setEmptyEmail('noError'); }
-    if (emailUnverified === 'emailUnverified') { setEmailUnverified('noError'); }
+    if (emptyEmail === 'emptyEmail') {
+      setEmptyEmail('noError');
+    }
+    if (emailUnverified === 'emailUnverified') {
+      setEmailUnverified('noError');
+    }
   };
 
   const passwordOnChange = (newPassword) => {
     setPassword(newPassword);
-    if (emptyPassword === 'emptyPassword') { setEmptyPassword('noError'); }
-  }
+    if (emptyPassword === 'emptyPassword') {
+      setEmptyPassword('noError');
+    }
+  };
 
   async function checkErrors() {
     var errorExists = false;
     if (email === '') {
       setEmptyEmail('emptyEmail');
       errorExists = true;
-    } else {        // check if email is verified
+    } else {
+      // check if email is verified
       var isVerified = await isCallinkEmail(email);
       if (!isVerified) {
         setEmailUnverified('emailUnverified');
@@ -65,22 +77,21 @@ const SignInForm = ({ login, history, isAuthenticated }) => {
       errorExists = true;
     }
     return errorExists;
-  };
+  }
 
   return (
-
     <form className="formGroup">
       <div className="errorWrapper">
         <div className={`error ${emptyEmail}`}>
-          <img src={error} className="errorIcon" />
+          <img src={error} className="errorIcon" alt="error" />
           <p>this field is required</p>
         </div>
         <div className={`error ${emailUnverified}`}>
-          <img src={error} className="errorIcon" />
+          <img src={error} className="errorIcon" alt="error" />
           <p>email address is not RSO registered</p>
         </div>
         <div className={`error ${emptyPassword}`}>
-          <img src={error} className="errorIcon" />
+          <img src={error} className="errorIcon" alt="error" />
           <p>this field is required</p>
         </div>
       </div>
@@ -91,7 +102,11 @@ const SignInForm = ({ login, history, isAuthenticated }) => {
       <p>Email</p>
 
       <input
-        className={`${((emptyEmail==='emptyEmail')||(emailUnverified==='emailUnverified')) ? 'inputInvalid' : 'userInput'}`}
+        className={`${
+          emptyEmail === 'emptyEmail' || emailUnverified === 'emailUnverified'
+            ? 'inputInvalid'
+            : 'userInput'
+        }`}
         type="email"
         // type="text"
         placeholder="e.g. organizationname@gmail.com"
@@ -100,7 +115,9 @@ const SignInForm = ({ login, history, isAuthenticated }) => {
 
       <p>Password</p>
       <input
-        className={`${((emptyPassword==='emptyPassword')) ? 'inputInvalid' : 'userInput'}`}
+        className={`${
+          emptyPassword === 'emptyPassword' ? 'inputInvalid' : 'userInput'
+        }`}
         type="password"
         onChange={(e) => passwordOnChange(e.target.value)}
       />
@@ -108,7 +125,7 @@ const SignInForm = ({ login, history, isAuthenticated }) => {
       <button type="submit" className="submitButton" onClick={submitValue}>
         Sign in
       </button>
-      <NotificationContainer/>
+      <NotificationContainer />
     </form>
   );
 };
