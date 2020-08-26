@@ -6,6 +6,7 @@ import { login } from '../actions/auth';
 import error from './assets/error.svg';
 import { isCallinkEmail } from '../actions/auth';
 import 'react-notifications/lib/notifications.css';
+import {
   NotificationManager,
   NotificationContainer,
 } from 'react-notifications';
