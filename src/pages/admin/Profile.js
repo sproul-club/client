@@ -2,11 +2,21 @@ import React, { useState } from 'react';
 import Dropdown from './AdminDropdown.js';
 import { connect } from 'react-redux';
 import ImageUploader from '../../react-images-upload';
-import { updateProfile, uploadImages } from '../../actions/profile';
+import { updateProfile, uploadLogo, uploadBanner } from '../../actions/profile';
 import 'react-notifications/lib/notifications.css';
-import {NotificationManager, NotificationContainer} from 'react-notifications';
+import {
+  NotificationManager,
+  NotificationContainer,
+} from 'react-notifications';
 
-const Profile = ({ profile, updateProfile, uploadImages, images, tagOptions }) => {
+const Profile = ({
+  profile,
+  updateProfile,
+  uploadLogo,
+  uploadBanner,
+  images,
+  tagOptions,
+}) => {
   var appOptions = [
     { value: 1, label: 'Application required' },
     { value: 0, label: 'No application required' },
@@ -41,31 +51,55 @@ const Profile = ({ profile, updateProfile, uploadImages, images, tagOptions }) =
       new_members: !!recruiting.value,
     };
 
-    updateProfile(newProfile, function() {
-      NotificationManager.success("Profile changes saved successfully!", '', 1500);
-    }, function() {
-      NotificationManager.error("Profile changes unsuccessful!", '', 1500);
-    });
-
-    var newImages = {};
-    if (logoImage) newImages.logo = logoImage[0];
-    if (bannerImage) newImages.banner = bannerImage[0];
-    if (Object.values(newImages).length === 0) return;
-
-    uploadImages(newImages, function() {
-      NotificationManager.success("Images uploaded successfully!", '', 1500);
-    }, function(type) {
-      switch (type) {
-        case 'logo':
-          NotificationManager.error("For best results, please upload a logo that has an aspect ratio of 1:1", "Logo image upload unsuccessful", 5000);
-          break;
-        case 'banner':
-          NotificationManager.error("For best results, please upload a banner that has an aspect ratio of 16:6", "Banner image upload unsuccessful", 5000);
-          break;
-        default:
-          break
+    updateProfile(
+      newProfile,
+      function () {
+        NotificationManager.success(
+          'Profile changes saved successfully!',
+          '',
+          1500
+        );
+      },
+      function () {
+        NotificationManager.error('Profile changes unsuccessful!', '', 1500);
       }
-    });
+    );
+
+    if (logoImage) {
+      uploadLogo(
+        { logo: logoImage[0] },
+        () => {
+          NotificationManager.success('Logo uploaded successfully!', '', 1500);
+        },
+        () => {
+          NotificationManager.error(
+            'For best results, please upload a logo that has an aspect ratio of 1:1',
+            'Logo image upload unsuccessful',
+            5000
+          );
+        }
+      );
+    }
+
+    if (bannerImage) {
+      uploadBanner(
+        { logo: bannerImage[0] },
+        () => {
+          NotificationManager.success(
+            'Banner uploaded successfully!',
+            '',
+            1500
+          );
+        },
+        () => {
+          NotificationManager.error(
+            'For best results, please upload a banner that has an aspect ratio of 16:6',
+            'Banner image upload unsuccessful',
+            5000
+          );
+        }
+      );
+    }
   };
 
   const descrChange = (e) => {
@@ -75,11 +109,19 @@ const Profile = ({ profile, updateProfile, uploadImages, images, tagOptions }) =
 
   const reqFieldsCheck = () => {
     if (tags === null) {
-      NotificationManager.error("Please have at least one tag", 'Changes not saved', 1500);
+      NotificationManager.error(
+        'Please have at least one tag',
+        'Changes not saved',
+        1500
+      );
     } else {
-      NotificationManager.error("Please enter an organization name", 'Changes not saved', 1500);
+      NotificationManager.error(
+        'Please enter an organization name',
+        'Changes not saved',
+        1500
+      );
     }
-  }
+  };
 
   return (
     <div>
@@ -215,10 +257,17 @@ const Profile = ({ profile, updateProfile, uploadImages, images, tagOptions }) =
         </div>
         <p className="subtitle">{descrChars} characters remaining</p>
       </div>
-      <button className="saveButton" onClick={ (tags === null || orgName.match(/^ *$/) !== null) ? reqFieldsCheck : submit}>
+      <button
+        className="saveButton"
+        onClick={
+          tags === null || orgName.match(/^ *$/) !== null
+            ? reqFieldsCheck
+            : submit
+        }
+      >
         Save changes
       </button>
-      <NotificationContainer/>
+      <NotificationContainer />
     </div>
   );
 };
@@ -226,9 +275,11 @@ const Profile = ({ profile, updateProfile, uploadImages, images, tagOptions }) =
 const mapStateToProps = (state) => ({
   profile: state.profile.profile,
   images: state.profile.images,
-  tagOptions: state.profile.tagOptions
+  tagOptions: state.profile.tagOptions,
 });
 
-export default connect(mapStateToProps, { updateProfile, uploadImages })(
-  Profile
-);
+export default connect(mapStateToProps, {
+  updateProfile,
+  uploadLogo,
+  uploadBanner,
+})(Profile);
