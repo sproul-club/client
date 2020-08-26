@@ -65,7 +65,7 @@ const Profile = ({
       }
     );
 
-    if (logoImage) {
+    if (logoImage && logoImage.length > 0) {
       uploadLogo(
         { logo: logoImage[0] },
         () => {
@@ -81,9 +81,9 @@ const Profile = ({
       );
     }
 
-    if (bannerImage) {
+    if (bannerImage && bannerImage.length > 0) {
       uploadBanner(
-        { logo: bannerImage[0] },
+        { banner: bannerImage[0] },
         () => {
           NotificationManager.success(
             'Banner uploaded successfully!',
@@ -104,7 +104,7 @@ const Profile = ({
 
   const descrChange = (e) => {
     setDescr(e.target.value);
-    setChars(500 - e.target.value.length);
+    setChars(1500 - e.target.value.length);
   };
 
   const reqFieldsCheck = () => {
