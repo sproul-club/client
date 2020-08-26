@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Modal from '../../layout/Modal';
 import { normalizeUrl } from '../../utils/normalizeUrl';
+import {NotificationManager, NotificationContainer} from 'react-notifications';
 
 const EventComp = (props) => {
   /*Tracks input values for edit modal*/
@@ -25,6 +26,12 @@ const EventComp = (props) => {
 
   /*Updates main resource array with entries in the edit modal*/
   function singleSave() {
+    const start = Date.parse(startDate + ' ' + startTime);
+    const end = Date.parse(endDate + ' ' + endTime);
+    if (end < start) {
+      NotificationManager.error("Event end must come before start", "", 3000);
+      return;
+    }
     setShowEditModal(false);
     props.entryChange(
       props.data.id,
@@ -315,6 +322,7 @@ const EventComp = (props) => {
           </div>
         </div>
       </Modal>
+      <NotificationContainer />
     </div>
   );
 };
