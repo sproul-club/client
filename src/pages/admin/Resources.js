@@ -56,7 +56,14 @@ const Resources = ({
       name: newName,
       link: normalizeUrl(newLink),
     };
-    if (!validURL(newLink)) return alert('Please enter a valid URL');
+    if (newLink.length > 0 && !validURL(newLink)) {
+      NotificationManager.error('Please enter a valid URL', '', 1500);
+      return;
+    }
+    if (newName.length === 0) {
+      NotificationManager.error('Please enter a resource name', '', 1500);
+      return;
+    }
     // call add resource action
     addResource(emptyRes);
     setNewName('');
