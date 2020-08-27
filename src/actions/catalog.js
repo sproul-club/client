@@ -2,7 +2,7 @@ import { SEARCH_CLUBS, GET_ORGANIZATION, CLEAR_ORGANIZATION } from './types';
 import axios from 'axios';
 
 // Search Clubs
-axios.defaults.baseURL = 'https://sc-backend-prod.herokuapp.com';
+axios.defaults.baseURL = 'https://sc-backend-dev.herokuapp.com';
 
 export const loadClubs = () => async (dispatch) => {
   try {
