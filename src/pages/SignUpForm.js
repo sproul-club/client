@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Dropdown from './Dropdown.js';
 import error from './assets/error.svg';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import {
   register,
   isCallinkEmail,
@@ -15,7 +16,12 @@ import {
   NotificationContainer,
 } from 'react-notifications';
 
-const MultiStepForm = ({ register, resendConfirmationEmail, tagOptions }) => {
+const MultiStepForm = ({
+  register,
+  isAuthenticated,
+  resendConfirmationEmail,
+  tagOptions,
+}) => {
   var appOptions = [
     { value: true, label: 'Application required' },
     { value: false, label: 'No application required' },
@@ -47,6 +53,10 @@ const MultiStepForm = ({ register, resendConfirmationEmail, tagOptions }) => {
   const [emptyTags, setEmptyTags] = useState('noError');
   const [emptyAppReq, setEmptyAppReq] = useState('unset');
   const [emptyRecruit, setEmptyRecruit] = useState('unset');
+
+  if (isAuthenticated) {
+    return <Redirect to="/admin" />;
+  }
 
   const submitValue = () => {
     const tagsList = [];
@@ -465,6 +475,7 @@ const StepThree = (props) => {
 
 const mapStateToProps = (state) => ({
   tagOptions: state.profile.tagOptions,
+  isAuthenticated: state.auth.isAuthenticated,
 });
 
 export default connect(mapStateToProps, { register, resendConfirmationEmail })(
