@@ -39,7 +39,7 @@ const Events = ({ addEvent, updateEvent, deleteEvent, events: eventState }) => {
       description: text,
     };
     // if (!validURL(eventLink)) return alert('Please enter a valid URL');
-    if (!validURL(eventLink)) {
+    if (eventLink.length > 0 && !validURL(eventLink)) {
       NotificationManager.error('Please enter a valid URL', '', 1500);
       return;
     }
@@ -61,6 +61,7 @@ const Events = ({ addEvent, updateEvent, deleteEvent, events: eventState }) => {
   function cancelAdd() {
     setShowModal(false);
     setTitle('');
+    setEventLink('');
     setStartDate('');
     setStartTime('');
     setEndDate('');
@@ -140,7 +141,7 @@ const Events = ({ addEvent, updateEvent, deleteEvent, events: eventState }) => {
         />
       </div>
 
-      <Modal showModal={showModal} setShowModal={setShowModal}>
+      <Modal showModal={showModal} setShowModal={setShowModal} close={cancelAdd}>
         <form className="eventModal" onSubmit={(e) => addEv(e)}>
           <h3 id="res-bold">Add New Event</h3>
           <p id="res-desc">Link an event for prospective or current members!</p>

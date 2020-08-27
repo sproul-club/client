@@ -9,6 +9,10 @@ import {
 } from '../../actions/profile';
 import './Resources.css';
 import { validURL, normalizeUrl } from '../../utils/normalizeUrl';
+import {
+  NotificationManager,
+  NotificationContainer,
+} from 'react-notifications';
 
 const Resources = ({
   resources,
@@ -52,7 +56,14 @@ const Resources = ({
       name: newName,
       link: normalizeUrl(newLink),
     };
-    if (!validURL(newLink)) return alert('Please enter a valid URL');
+    if (newLink.length > 0 && !validURL(newLink)) {
+      NotificationManager.error('Please enter a valid URL', '', 1500);
+      return;
+    }
+    if (newName.length === 0) {
+      NotificationManager.error('Please enter a resource name', '', 1500);
+      return;
+    }
     // call add resource action
     addResource(emptyRes);
     setNewName('');
@@ -99,7 +110,11 @@ const Resources = ({
       </div>
 
       {/*ADD RESOURCE MODAL*/}
-      <Modal showModal={showModal} setShowModal={setShowModal}>
+      <Modal
+        showModal={showModal}
+        setShowModal={setShowModal}
+        close={cancelAdd}
+      >
         <div className="res-modal">
           <h3 id="res-bold">Add New Resource</h3>
           <p id="res-desc">
@@ -137,6 +152,7 @@ const Resources = ({
           </div>
         </div>
       </Modal>
+      <NotificationContainer />
     </div>
   );
 };

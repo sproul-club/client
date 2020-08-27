@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import Modal from '../../layout/Modal';
-import {normalizeUrl} from '../../utils/normalizeUrl'
+import { normalizeUrl, validURL } from '../../utils/normalizeUrl';
+import {
+  NotificationManager,
+  NotificationContainer,
+} from 'react-notifications';
 
 const ResComp = (props) => {
   /*Tracks input values for edit modal*/
@@ -17,6 +21,14 @@ const ResComp = (props) => {
 
   /*Updates main resource array with entries in the edit modal*/
   function singleSave() {
+    if (link.length > 0 && !validURL(link)) {
+      NotificationManager.error('Please enter a valid URL', '', 1500);
+      return;
+    }
+    if (name.length === 0) {
+      NotificationManager.error('Please enter a resource name', '', 1500);
+      return;
+    }
     setShowEditModal(false);
     props.entryChange(props.data.id, name, normalizeUrl(link));
     setPropsName(name);
@@ -63,7 +75,6 @@ const ResComp = (props) => {
       <div className="title-buttons-flex">
         <div className="res-num">Resource #{props.num + 1}</div>
         <div className="del-edit-flex">
-          
           <img
             alt="edit"
             onClick={() => setShowEditModal(true)}
@@ -88,7 +99,11 @@ const ResComp = (props) => {
       </div>
 
       {/*EDIT RESOURCE MODAL*/}
-      <Modal showModal={showEditModal} setShowModal={setShowEditModal}>
+      <Modal
+        showModal={showEditModal}
+        setShowModal={setShowEditModal}
+        close={cancelEdit}
+      >
         <div className="res-modal">
           <h3 id="res-bold">Edit Resource</h3>
           <p id="res-desc">Update the information for this resource!</p>
@@ -139,6 +154,7 @@ const ResComp = (props) => {
           </div>
         </div>
       </Modal>
+      <NotificationContainer />
     </div>
   );
 };
