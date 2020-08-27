@@ -81,6 +81,9 @@ const ContactInfo = ({ profile, updateProfile }) => {
             type="text"
           />
         </div>
+        <p className="subtitle">
+        Please enter a contact email. This field is required. <span style={{ color: '#FF0000' }}>*</span>
+        </p>
         <div className="formElement">
           <p>Website</p>
           <input
