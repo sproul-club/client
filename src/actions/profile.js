@@ -132,7 +132,7 @@ export const addEvent = (formData) => async (dispatch) => {
 
     const res = await axios.post('/api/admin/events', event, config);
 
-    dispatch({ type: ADD_EVENT, payload: res.data });
+    await dispatch({ type: ADD_EVENT, payload: res.data });
   } catch (err) {
     console.log(err.response);
   }
