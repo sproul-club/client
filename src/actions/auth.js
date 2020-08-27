@@ -8,7 +8,7 @@ import {
 import axios from 'axios';
 import { loadProfile } from './profile';
 
-axios.defaults.baseURL = 'https://sc-backend-prod.herokuapp.com';
+axios.defaults.baseURL = 'https://sc-backend-dev.herokuapp.com';
 
 // Register User
 export const register = (

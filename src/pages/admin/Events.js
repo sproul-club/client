@@ -38,7 +38,7 @@ const Events = ({ addEvent, updateEvent, deleteEvent, events: eventState }) => {
       event_end: end,
       description: text,
     };
-    // if (!validURL(eventLink)) return alert('Please enter a valid URL');
+    
     if (eventLink.length > 0 && !validURL(eventLink)) {
       NotificationManager.error('Please enter a valid URL', '', 1500);
       return;

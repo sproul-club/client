@@ -39,13 +39,8 @@ const Catalog = ({ searchClubs, clearOrganization, tagOptions }) => {
   }, [clearOrganization]);
 
   const searchAllClubs = () => {
-    // const tags = multiselectRef.current.getSelectedItems();
     const tagValues = tags.map((tag) => tag.value);
     const searchParams = { name, tags: tagValues, appReq, status };
-
-    // Calls searchClubs redux action, which hits the backend API
-    // then updates the apps state in redux to be the response
-    // This data is then read in the GridComponent through mapStateToProps
     searchClubs(searchParams);
   };
 
