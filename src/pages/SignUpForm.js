@@ -313,7 +313,7 @@ const StepOne = (props) => {
         onChange={(e) => props.setEmail(e.target.value)}
       />
       <p className="subtitle">
-      <span style={{ color: '#FF0000' }}>*</span> Password must be at least 8 characters, include 1 number, and 1 symbol!
+      {/* <span style={{ color: '#FF0000' }}>*</span> Password must be at least 8 characters, include 1 number, and 1 symbol! */}
       </p>
       <input
         className={`${
@@ -324,7 +324,7 @@ const StepOne = (props) => {
             : 'userInput'
         }`}
         type="password"
-        placeholder="Password"
+        placeholder="Password (at least 8 characters, 1 number, 1 symbol)"
         value={props.pwd}
         onChange={(e) => props.setPassword(e.target.value)}
       />
