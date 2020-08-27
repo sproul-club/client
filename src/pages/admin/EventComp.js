@@ -103,50 +103,23 @@ const EventComp = (props) => {
   }
 
   function convertTime(datetime) {
-    var dd = ' AM';
-
-    var hour = datetime.getUTCHours();
-    hour = hour - 7;
-    if (hour < 0) {
-      hour = hour + 24;
-    }
-    var h = hour;
-    if (h >= 12) {
-      hour = h - 12;
-      dd = ' PM';
-    }
-    if (hour === 0) {
-      hour = 12;
-    }
-
+    var hour = datetime.getUTCHours() - 7;
     var minutes = datetime.getMinutes();
-    minutes = minutes < 10 ? '0' + minutes : minutes;
+    var dd = hour > 12 ? 'PM' : 'AM';
+    hour = hour > 12 ? hour - 12 : hour;
 
-    return hour + ':' + minutes + dd;
+    minutes = minutes < 10 ? ('0' + minutes) : minutes;
+    return `${hour}:${minutes} ${dd}`;
   }
 
   function formatDate(datetime) {
     const dayArr = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'];
-    const monthArr = [
-      'Jan',
-      'Feb',
-      'Mar',
-      'Apr',
-      'May',
-      'Jun',
-      'Jul',
-      'Aug',
-      'Sep',
-      'Oct',
-      'Nov',
-      'Dec',
-    ];
+    const monthArr = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
     var month = monthArr[datetime.getMonth()];
 
     var day = datetime.getDate().toString();
-    // var year = datetime.getFullYear();
-    day = day.length > 1 ? day : '0' + day;
+    day = day.length > 1 ? day : ('0' + day);
 
     var time = convertTime(datetime);
     return dayArr[datetime.getDay()] + ', ' + month + ' ' + day + ', ' + time;
