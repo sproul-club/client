@@ -84,7 +84,6 @@ export const uploadLogo = (images, success, error) => async (dispatch) => {
 
     await dispatch({ type: UPLOAD_IMAGES, payload: res.data });
   } catch (err) {
-    err.response.status = 503;
     await error(err);
     console.log(err.response);
   }
@@ -112,7 +111,6 @@ export const uploadBanner = (images, success, error) => async (dispatch) => {
 
     await dispatch({ type: UPLOAD_IMAGES, payload: res.data });
   } catch (err) {
-    err.response.status = 503;
     await error(err);
     console.log(err.response);
   }
