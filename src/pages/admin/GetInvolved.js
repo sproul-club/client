@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { updateProfile } from '../../actions/profile';
 import { connect } from 'react-redux';
+import Loading from '../../layout/Loading';
 import {
   NotificationManager,
   NotificationContainer,
@@ -9,6 +10,10 @@ import {
 const GetInvolved = ({ profile, get_involved, updateProfile }) => {
   const [involvedDesc, setInvolvedDesc] = useState(get_involved);
   const [descrChars, setChars] = useState(500 - involvedDesc.length);
+
+  useEffect(() => {
+    if (!get_involved) return <Loading />;
+  }, [get_involved]);
 
   const descrChange = (e) => {
     setInvolvedDesc(e.target.value);
