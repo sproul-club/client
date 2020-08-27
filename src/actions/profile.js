@@ -241,13 +241,14 @@ export const updatePassword = (formData, success, error) => async (
         'Access-Control-Allow-Origin': '*',
       },
     };
+
     const data = JSON.stringify(formData);
     const res = await axios.post('/api/admin/change-password', data, config);
-    success();
-    dispatch({ type: UPDATE_PASSWORD, payload: res.data });
+
+    await dispatch({ type: UPDATE_PASSWORD, payload: res.data });
+    await success();
   } catch (err) {
-    error(err.response.data.reason);
-    console.log(err.response);
+    await error(err.response.data.reason);
   }
 };
 
