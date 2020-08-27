@@ -276,7 +276,7 @@ const Profile = ({
         </div>
         <p className="subtitle">
           <span style={{ color: '#FF0000' }}>*</span> Please make sure your
-          banner is ~ 820 x 312 pixels.{' '}
+          banner is at least 820 x 312 pixels.{' '}
           <a
             href="https://www.photoresizer.com/"
             target="_blank"
