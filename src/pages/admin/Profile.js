@@ -72,7 +72,7 @@ const Profile = ({
           NotificationManager.success('Logo uploaded successfully!', '', 1500);
         },
         (err) => {
-          if (err.response.status == 503) {
+          if (err.response.status === 503) {
             NotificationManager.error(
               'Something went wrong on our end. Please try again later',
               'Logo image upload unsuccessful',
@@ -100,7 +100,7 @@ const Profile = ({
           );
         },
         (err) => {
-          if (err.response.status == 503) {
+          if (err.response.status === 503) {
             NotificationManager.error(
               'Something went wrong on our end. Please try again later',
               'Banner image upload unsuccessful',

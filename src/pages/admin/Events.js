@@ -35,7 +35,7 @@ const Events = ({ addEvent, updateEvent, deleteEvent, events }) => {
       event_end: end,
       description: text,
     };
-    
+
     if (eventLink.length > 0 && !validURL(eventLink)) {
       NotificationManager.error('Please enter a valid URL', '', 1500);
       return;
@@ -78,14 +78,6 @@ const Events = ({ addEvent, updateEvent, deleteEvent, events }) => {
   ) {
     const start = startDate.concat(' ' + startTime);
     const end = endDate.concat(' ' + endTime);
-    const tempObj = {
-      id: id,
-      name: title,
-      link: eventLink,
-      event_start: start,
-      event_end: end,
-      description: text,
-    };
 
     //update event action
     updateEvent(id, {

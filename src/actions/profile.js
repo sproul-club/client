@@ -66,10 +66,7 @@ export const updateProfile = (formData, success, error) => async (dispatch) => {
 export const uploadLogo = (images, success, error) => async (dispatch) => {
   try {
     let data = new FormData();
-    if (!images.logo)
-      return;
-
-    data.append('logo', images.logo);
+    images.logo && data.append('logo', images.logo);
 
     const config = {
       headers: {
@@ -80,11 +77,11 @@ export const uploadLogo = (images, success, error) => async (dispatch) => {
     };
 
     const res = await axios.post('/api/admin/upload-logo', data, config);
-    await success();
+    success();
 
-    await dispatch({ type: UPLOAD_IMAGES, payload: res.data });
+    dispatch({ type: UPLOAD_IMAGES, payload: res.data });
   } catch (err) {
-    await error(err);
+    error();
     console.log(err.response);
   }
 };
@@ -93,10 +90,7 @@ export const uploadLogo = (images, success, error) => async (dispatch) => {
 export const uploadBanner = (images, success, error) => async (dispatch) => {
   try {
     let data = new FormData();
-    if (!images.banner)
-      return;
-
-    data.append('banner', images.banner);
+    images.banner && data.append('banner', images.banner);
 
     const config = {
       headers: {
@@ -107,11 +101,11 @@ export const uploadBanner = (images, success, error) => async (dispatch) => {
     };
 
     const res = await axios.post('/api/admin/upload-banner', data, config);
-    await success();
+    success();
 
-    await dispatch({ type: UPLOAD_IMAGES, payload: res.data });
+    dispatch({ type: UPLOAD_IMAGES, payload: res.data });
   } catch (err) {
-    await error(err);
+    error();
     console.log(err.response);
   }
 };
@@ -132,7 +126,7 @@ export const addEvent = (formData) => async (dispatch) => {
 
     const res = await axios.post('/api/admin/events', event, config);
 
-    await dispatch({ type: ADD_EVENT, payload: res.data });
+    dispatch({ type: ADD_EVENT, payload: res.data });
   } catch (err) {
     console.log(err.response);
   }
