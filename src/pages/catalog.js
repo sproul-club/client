@@ -29,9 +29,15 @@ const Catalog = ({ searchClubs, clearOrganization, tagOptions }) => {
   const classes = useStyles();
 
   const [name, setName] = useState('');
-  const [appReq, setAppReq] = useState(null);
-  const [status, setStatus] = useState(null);
+  // const [appReq, setAppReq] = useState(null);
+  // const [status, setStatus] = useState(null);
   const [tags, setTags] = useState([]);
+
+  //checkbox logic jankness
+  const [appReqChecked, setAppReqChecked] = useState(false);
+  const [noAppReqChecked, setNoAppReqChecked] = useState(false);
+  const [recruitingChecked, setRecruitingChecked] = useState(false);
+  const [notRecruitingChecked, setNotRecruitingChecked] = useState(false);
 
   // clearing organization to be viewed every time navigate back to club page
   useEffect(() => {
@@ -39,6 +45,25 @@ const Catalog = ({ searchClubs, clearOrganization, tagOptions }) => {
   }, [clearOrganization]);
 
   const searchAllClubs = () => {
+
+    //checkbox logic jankness
+    var appReq;
+    if (appReqChecked && !(noAppReqChecked)){
+      appReq = true;
+    } else if (!appReqChecked && noAppReqChecked){
+      appReq = false;
+    } else {
+      appReq = null;
+    }
+    var status = null;
+    if (recruitingChecked && !(notRecruitingChecked)){
+      status = true;
+    } else if (!recruitingChecked && notRecruitingChecked){
+      status = false;
+    } else {
+      status = null;
+    }
+
     const tagValues = tags.map((tag) => tag.value);
     const searchParams = { name, tags: tagValues, appReq, status };
     searchClubs(searchParams);
@@ -51,7 +76,7 @@ const Catalog = ({ searchClubs, clearOrganization, tagOptions }) => {
           <Accordion
             allowMultipleExpanded
             allowZeroExpanded
-            preExpanded={['a', 'b', 'c', 'd']}
+            preExpanded={['a', 'b', 'c', 'd', 'e']}
           >
             <AccordionItem className="accordion-group" uuid="a">
               <AccordionItemPanel>
@@ -109,16 +134,14 @@ const Catalog = ({ searchClubs, clearOrganization, tagOptions }) => {
                 <CheckBox
                   className="checkbox"
                   label="Requires app"
-                  isChecked={appReq}
-                  onClick={() => setAppReq(true)}
+                  onClick={() => {setAppReqChecked(!appReqChecked)}}
                   name="appReq"
                   value="checkbox value"
                 />
                 <CheckBox
                   className="checkbox"
                   label="No app required"
-                  isChecked={!appReq && appReq !== null}
-                  onClick={() => setAppReq(false)}
+                  onClick={() => setNoAppReqChecked(!noAppReqChecked)}
                   name="noAppReq"
                   value="checkbox value"
                 />
@@ -132,19 +155,28 @@ const Catalog = ({ searchClubs, clearOrganization, tagOptions }) => {
                 <CheckBox
                   className="checkbox"
                   label="Looking for members"
-                  isChecked={status}
-                  onClick={() => setStatus(true)}
+                  onClick={() => setRecruitingChecked(!recruitingChecked)}
                   name="checkbox"
                   value="checkbox value"
                 />
                 <CheckBox
                   className="checkbox"
                   label="Not looking for members"
-                  isChecked={!status && appReq !== null}
-                  onClick={() => setStatus(false)}
+                  onClick={() => setNotRecruitingChecked(!notRecruitingChecked)}
                   name="checkbox"
                   value="checkbox value"
                 />
+              </AccordionItemPanel>
+            </AccordionItem>
+            <AccordionItem className="accordion-group" uuid="e">
+              <AccordionItemPanel>
+                  <button
+                    className="search-all"
+                    type="submit"
+                    onClick={() => searchAllClubs()}
+                  >
+                    Filter results
+                  </button>
               </AccordionItemPanel>
             </AccordionItem>
           </Accordion>

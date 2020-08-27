@@ -404,7 +404,8 @@
   }
 
   .landing .moreContent img {
-    min-height: 600px;
+    min-height: 50s0px;
+    min-width: 750px;
   }
 
   .landing .moreContent .description {
