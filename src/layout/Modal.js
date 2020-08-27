@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import useOnClickOutside from '../utils/useOnClickOutside';
 import './Modal.css';
 
-const Modal = ({ showModal, setShowModal, children }) => {
+const Modal = ({ showModal, setShowModal, close, children }) => {
   const ref = useRef();
 
   useOnClickOutside(ref, () => {
@@ -11,12 +11,14 @@ const Modal = ({ showModal, setShowModal, children }) => {
     }
   });
 
+  const closeFunction = close || setShowModal(false);
+
   return (
     <div>
       {showModal && (
         <div className="popup">
           <div className="popup_inner" ref={ref}>
-            <div className="exit" onClick={() => setShowModal(false)}>
+            <div className="exit" onClick={closeFunction}>
               <i className="fas fa-times"></i>
             </div>
             {children}

@@ -29,7 +29,7 @@ const EventComp = (props) => {
 
   /*Updates main resource array with entries in the edit modal*/
   function singleSave() {
-    if (!validURL(eventLink)) {
+    if (eventLink.length > 0 && !validURL(eventLink)) {
       NotificationManager.error('Please enter a valid URL', '', 1500);
       return;
     }
@@ -226,7 +226,7 @@ const EventComp = (props) => {
       </div>
 
       {/*EDIT EVENT MODAL*/}
-      <Modal showModal={showEditModal} setShowModal={setShowEditModal}>
+      <Modal showModal={showEditModal} setShowModal={setShowEditModal} close={cancelEdit}>
         <div className="eventModal">
           <h3 id="res-bold">Add New Event</h3>
           <p id="res-desc">Link an event for prospective or current members!</p>

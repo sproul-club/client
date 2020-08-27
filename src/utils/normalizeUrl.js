@@ -3,10 +3,10 @@ export const normalizeUrl = (url) => {
   if (url === null) {
     return '';
   }
-  if (!url.match(/[\w]+/)) { 
+  if (!url.match(/[\w]+/)) {
     return '';
   } else if (!url.match(/^[a-zA-Z]+:\/\//)) {
-    url = 'http://' + url;
+    url = 'https://' + url;
   }
   return url;
 };
