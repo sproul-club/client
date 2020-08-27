@@ -149,7 +149,7 @@ const Catalog = ({ searchClubs, clearOrganization, tagOptions }) => {
             </AccordionItem>
             <AccordionItem className="accordion-group" uuid="d">
               <AccordionItemHeading>
-                <AccordionItemButton>Member Status</AccordionItemButton>
+                <AccordionItemButton>Membership Status</AccordionItemButton>
               </AccordionItemHeading>
               <AccordionItemPanel>
                 <CheckBox

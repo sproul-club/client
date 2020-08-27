@@ -42,7 +42,7 @@ export function formatDate(datetime) {
 
     var day = datetime.getDate().toString();
     // var year = datetime.getFullYear();
-    day = day.length > 1 ? day : '0' + day;
+    //day = day.length > 1 ? day : '0' + day;
 
     var time = convertTime(datetime);
     return dayArr[datetime.getDay()] + ', ' + month + ' ' + day + ', ' + time;

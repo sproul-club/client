@@ -150,7 +150,8 @@
 }
 
 .checkbox > label {
-  margin-top: 1px;
+  margin-top: 1.5px;
+  margin-left: 7px;
 }
 
 .App .content {
