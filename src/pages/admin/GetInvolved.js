@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { updateProfile } from '../../actions/profile';
 import { connect } from 'react-redux';
-import {NotificationManager, NotificationContainer} from 'react-notifications';
+import {
+  NotificationManager,
+  NotificationContainer,
+} from 'react-notifications';
 
 const GetInvolved = ({ profile, get_involved, updateProfile }) => {
-  const [involvedDesc, setInvolvedDesc] = useState(profile.get_involved);
+  const [involvedDesc, setInvolvedDesc] = useState(get_involved);
   const [descrChars, setChars] = useState(500 - involvedDesc.length);
 
   const descrChange = (e) => {
@@ -13,12 +16,23 @@ const GetInvolved = ({ profile, get_involved, updateProfile }) => {
   };
 
   const submitValue = (e) => {
-    updateProfile({ ...profile, get_involved: involvedDesc },
-      function() {
-        NotificationManager.success("Description changes saved successfully!", '', 3000);
-      }, function() {
-        NotificationManager.error("Description changes unsuccessful!", '', 3000);
-      });
+    updateProfile(
+      { ...profile, get_involved: involvedDesc },
+      function () {
+        NotificationManager.success(
+          'Description changes saved successfully!',
+          '',
+          3000
+        );
+      },
+      function () {
+        NotificationManager.error(
+          'Description changes unsuccessful!',
+          '',
+          3000
+        );
+      }
+    );
   };
 
   return (
@@ -48,7 +62,7 @@ const GetInvolved = ({ profile, get_involved, updateProfile }) => {
       <button className="saveButton" onClick={submitValue}>
         Save changes{' '}
       </button>
-      <NotificationContainer/>
+      <NotificationContainer />
     </div>
   );
 };

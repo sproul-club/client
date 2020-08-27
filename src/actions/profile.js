@@ -122,6 +122,7 @@ export const addEvent = (formData) => async (dispatch) => {
     };
 
     const event = JSON.stringify(formData);
+    console.log(event);
 
     const res = await axios.post('/api/admin/events', event, config);
 
