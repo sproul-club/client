@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import Modal from '../../layout/Modal';
-import { normalizeUrl } from '../../utils/normalizeUrl';
-import {NotificationManager, NotificationContainer} from 'react-notifications';
+import { normalizeUrl, validURL } from '../../utils/normalizeUrl';
+import {
+  NotificationManager,
+  NotificationContainer,
+} from 'react-notifications';
+
 
 const EventComp = (props) => {
   /*Tracks input values for edit modal*/
@@ -26,6 +30,10 @@ const EventComp = (props) => {
 
   /*Updates main resource array with entries in the edit modal*/
   function singleSave() {
+    if (!validURL(eventLink)) {
+      NotificationManager.error('Please enter a valid URL', '', 1500);
+      return
+    }
     const start = Date.parse(startDate + ' ' + startTime);
     const end = Date.parse(endDate + ' ' + endTime);
     if (end < start) {
