@@ -55,10 +55,13 @@ export default function (state = initialState, action) {
       const updateSocial = payload.social_media_links
         ? payload.social_media_links
         : state.social_media_links;
+      const updateGetInvolved = payload.get_involved
+        ? payload.get_involved
+        : state.get_involved;
       return {
         ...state,
         profile: payload,
-        get_involved: payload.get_involved,
+        get_involved: updateGetInvolved,
         social_media_links: updateSocial,
       };
     case UPLOAD_IMAGES:
