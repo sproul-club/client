@@ -7,7 +7,7 @@
   right: 0;
   bottom: 0;
   margin: auto;
-  z-index: 500;
+  z-index: 999;
   background-color: rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: center;

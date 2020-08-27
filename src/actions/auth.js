@@ -113,12 +113,14 @@ export const refreshToken = () => async (dispatch, getState) => {
   };
 
   try {
-    const res = await axios.post('/api/user/refresh', {}, config);
+    if (expiresAt < new Date().getTime()) {
+      const res = await axios.post('/api/user/refresh', {}, config);
 
-    localStorage.setItem('token', res.data.access);
-    localStorage.setItem('expiresAt', new Date().getTime() + 300000);
+      localStorage.setItem('token', res.data.access);
+      localStorage.setItem('expiresAt', new Date().getTime() + 300000);
 
-    dispatch({ type: REFRESH_TOKEN, payload: res.data });
+      dispatch({ type: REFRESH_TOKEN, payload: res.data });
+    }
   } catch (err) {
     dispatch({ type: AUTH_ERROR, payload: err });
   }
