@@ -58,6 +58,7 @@ export default function (state = initialState, action) {
       return {
         ...state,
         profile: payload,
+        get_involved: payload.get_involved,
         social_media_links: updateSocial,
       };
     case UPLOAD_IMAGES:
