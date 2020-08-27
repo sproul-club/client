@@ -71,12 +71,20 @@ const Profile = ({
         () => {
           NotificationManager.success('Logo uploaded successfully!', '', 1500);
         },
-        () => {
-          NotificationManager.error(
-            'For best results, please upload a logo that has an aspect ratio of 1:1',
-            'Logo image upload unsuccessful',
-            5000
-          );
+        (err) => {
+          if (err.response.status == 503) {
+            NotificationManager.error(
+              'Something went wrong on our end. Please try again later',
+              'Logo image upload unsuccessful',
+              5000
+            );
+          } else {
+            NotificationManager.error(
+              'For best results, please upload a logo that has an aspect ratio of 1:1',
+              'Logo image upload unsuccessful',
+              5000
+            );
+          }
         }
       );
     }
@@ -91,12 +99,20 @@ const Profile = ({
             1500
           );
         },
-        () => {
-          NotificationManager.error(
-            'For best results, please upload a banner that has an aspect ratio of 16:6',
-            'Banner image upload unsuccessful',
-            5000
-          );
+        (err) => {
+          if (err.response.status == 503) {
+            NotificationManager.error(
+              'Something went wrong on our end. Please try again later',
+              'Banner image upload unsuccessful',
+              5000
+            );
+          } else {
+            NotificationManager.error(
+              'For best results, please upload a banner that has an aspect ratio of 16:6',
+              'Banner image upload unsuccessful',
+              5000
+            );
+          }
         }
       );
     }
@@ -218,7 +234,7 @@ const Profile = ({
             buttonText="Choose image"
             onChange={(e) => setLogoImage(e)}
             imgExtension={['.jpg', '.gif', '.png', '.gif']}
-            maxFileSize={5242880}
+            maxFileSize={16777216}
           />
         </div>
         <p className="subtitle">
@@ -255,7 +271,7 @@ const Profile = ({
             buttonText="Choose image"
             onChange={(e) => setBannerImage(e)}
             imgExtension={['.jpg', '.gif', '.png', '.gif']}
-            maxFileSize={5242880}
+            maxFileSize={16777216}
           />
         </div>
         <p className="subtitle">
