@@ -17,10 +17,21 @@ const ChangeLogin = ({ updatePassword }) => {
     const [newPW, setNewPW] = useState('');
     const [conPW, setConPW] = useState('');
 
+    const setEditingMode = (edit) => {
+        setEditing(edit);
+
+        setSave(edit ? 'saveButton' : 'saveButtonHide');
+        setCancel(edit ? 'cancelButton' : 'cancelButtonHide');
+
+        if (!edit) {
+            setNewPW('');
+            setOldPW('');
+            setConPW('');
+        }
+    }
+
     const openEdit = () => {
-        setEditing(!editing);
-        setSave("saveButton");
-        setCancel("cancelButton");
+        setEditingMode(true);
     }
 
     const conChange = (event) => {
@@ -30,17 +41,12 @@ const ChangeLogin = ({ updatePassword }) => {
       };
 
     const cancelSave = () => {
-        setEditing(!editing);
-        setSave("saveButtonHide");
-        setCancel("cancelButtonHide");
+        setEditingMode(false);
         setConInvalid('userInput');
         setConError('conErrorNone');
-        setNewPW('');
-        setOldPW('');
-        setConPW('');
     }
 
-    const save = () => {
+    const save = async () => {
         if (newPW !== conPW || newPW ==='') {
             setConInvalid('conInputInvalid');
             setConError('conError');
@@ -52,82 +58,70 @@ const ChangeLogin = ({ updatePassword }) => {
             "new_password": newPW
         }
 
-        updatePassword(data, function(){
-            NotificationManager.success("Password successfully changed!", '', 3000);
+        updatePassword(data, function() {
+            NotificationManager.success('Password successfully changed!', '', 3000);
+            setEditingMode(false);
         },
         function(msg){
             NotificationManager.error(msg, 'Password change unsuccessful!', 3000);
         });
-        setEditing(!editing);
-        setSave("saveButtonHide");
-        setCancel("cancelButtonHide");
-        setNewPW('');
-        setOldPW('');
-        setConPW('');
 
     }
 
-    const swap = (condition) => {
-        switch(condition) {
-            case true:
-                return (
-                    <div>
-                        <div className="formElement">
-                        <p>
-                            Current password
-                        </p>
-                        <input
-                            className="userInput"
-                            value={oldPW}
-                            onChange={e => setOldPW(e.target.value)}
-                            type="password"
-                        />
-                        </div>
-                        {/* <Link to="/recover" className="subtitle">Forgot password?</Link> */}
-                        <div className="formElement">
-                        <p>
-                            New password
-                        </p>
-                        <input
-                            className="userInput"
-                            value={newPW}
-                            onChange={e => setNewPW(e.target.value)}
-                            type="password"
-                        />
-                        </div>
-                        <div className="formElement">
-                        <p>
-                            Confirm new password
-                        </p>
-                        <input
-                            className={conInvalid}
-                            value={conPW}
-                            onChange={conChange}
-                            type="password"
-                        />
-                        </div>
-                        <div className={conError}>
-                            Passwords don't match or left blank.
-                        </div>
+    const swap = (editingMode) => {
+        if (editingMode) {
+            return (
+                <div>
+                    <div className="formElement">
+                    <p>
+                        Current password
+                    </p>
+                    <input
+                        className="userInput"
+                        value={oldPW}
+                        onChange={e => setOldPW(e.target.value)}
+                        type="password"
+                    />
                     </div>
-                );
-
-            case false:
-                return (
-                    <div className="changePassword">
-                        <div className="changePasswordHeader">
-                            <h3>Change Password</h3>
-                            <button
-                            onClick={openEdit}
-                            >
-                                Edit
-                            </button>
-                        </div>
-                        It’s a good idea to use a strong one that you aren’t using elsewhere!
+                    <div className="formElement">
+                    <p>
+                        New password
+                    </p>
+                    <input
+                        className="userInput"
+                        value={newPW}
+                        onChange={e => setNewPW(e.target.value)}
+                        type="password"
+                    />
                     </div>
-                );
-            default:
-                return;
+                    <div className="formElement">
+                    <p>
+                        Confirm new password
+                    </p>
+                    <input
+                        className={conInvalid}
+                        value={conPW}
+                        onChange={conChange}
+                        type="password"
+                    />
+                    </div>
+                    <div className={conError}>
+                        Passwords don't match or left blank.
+                    </div>
+                </div>
+            );
+        } else {
+            return (
+                <div className="changePassword">
+                    <div className="changePasswordHeader">
+                        <h3>Change Password</h3>
+                        <button onClick={openEdit}>
+                            Edit
+                        </button>
+                    </div>
+                    It’s a good idea to use a strong one that you aren’t using elsewhere!
+                </div>
+            );
         }
     }
 
