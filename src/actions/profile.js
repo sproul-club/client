@@ -37,7 +37,7 @@ export const loadProfile = () => async (dispatch) => {
 
 // Update profile
 export const updateProfile = (formData, success, error) => async (dispatch) => {
-  const justTheRightData = {
+  const justTheRightData = JSON.stringify({
     name: formData.name,
     tags: formData.tags,
     app_required: formData.app_required,
@@ -45,7 +45,7 @@ export const updateProfile = (formData, success, error) => async (dispatch) => {
     about_us: formData.about_us,
     get_involved: formData.get_involved,
     social_media_links: formData.social_media_links,
-  };
+  });
   try {
     const config = {
       headers: {

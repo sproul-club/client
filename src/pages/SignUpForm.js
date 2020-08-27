@@ -10,7 +10,10 @@ import {
 } from '../actions/auth';
 import signup from './assets/signup.png';
 import 'react-notifications/lib/notifications.css';
-import {NotificationManager, NotificationContainer} from 'react-notifications';
+import {
+  NotificationManager,
+  NotificationContainer,
+} from 'react-notifications';
 
 const MultiStepForm = ({ register, resendConfirmationEmail, tagOptions }) => {
   var appOptions = [
@@ -51,18 +54,12 @@ const MultiStepForm = ({ register, resendConfirmationEmail, tagOptions }) => {
       tagsList.push(tags[i].value);
     }
 
-    register(
-      clubName,
-      email,
-      pwd,
-      tagsList,
-      !!appReq.value,
-      !!recruiting.value
-    ).then(() => setStep(currStep + 1))
-    .catch(err => {
-      var errMessage = err.response.data.reason;
-      NotificationManager.error(errMessage, "Unable to register!", 3000);
-    });
+    register(clubName, email, pwd, tagsList, !!appReq.value, !!recruiting.value)
+      .then(() => setStep(currStep + 1))
+      .catch((err) => {
+        var errMessage = err.response.data.reason;
+        NotificationManager.error(errMessage, 'Unable to register!', 3000);
+      });
   };
 
   const _prev = () => {
@@ -247,7 +244,7 @@ const MultiStepForm = ({ register, resendConfirmationEmail, tagOptions }) => {
         setResentEmail={setResentEmail}
         resendConfirmationEmail={resendConfirmationEmail}
       />
-      <NotificationContainer/>
+      <NotificationContainer />
     </>
   );
 };
@@ -313,7 +310,7 @@ const StepOne = (props) => {
         onChange={(e) => props.setEmail(e.target.value)}
       />
       <p className="subtitle">
-      {/* <span style={{ color: '#FF0000' }}>*</span> Password must be at least 8 characters, include 1 number, and 1 symbol! */}
+        {/* <span style={{ color: '#FF0000' }}>*</span> Password must be at least 8 characters, include 1 number, and 1 symbol! */}
       </p>
       <input
         className={`${
@@ -344,7 +341,13 @@ const StepOne = (props) => {
       <div className="buttonWrapper">
         <div className="help">
           <p>Invalid email?</p>
-          <a href="https://airtable.com/shr4wECf5beHGLgfV" target="_blank">Click here</a>
+          <a
+            href="https://airtable.com/shr4wECf5beHGLgfV"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            Click here
+          </a>
         </div>
         <button onClick={props._next} className="nextButton">
           Next →
