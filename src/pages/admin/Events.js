@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Modal from '../../layout/Modal';
 import { connect } from 'react-redux';
 import EventComp from './EventComp.js';
@@ -111,10 +111,6 @@ const Events = ({ addEvent, updateEvent, deleteEvent, events: eventState }) => {
     setEvents(newEventList);
   }
 
-  useEffect(() => {
-    setEvents(eventState);
-  }, [eventState]);
-
   const eventComps = events.map((ev, i) => (
     <EventComp
       key={i}
@@ -141,7 +137,11 @@ const Events = ({ addEvent, updateEvent, deleteEvent, events: eventState }) => {
         />
       </div>
 
-      <Modal showModal={showModal} setShowModal={setShowModal} close={cancelAdd}>
+      <Modal
+        showModal={showModal}
+        setShowModal={setShowModal}
+        close={cancelAdd}
+      >
         <form className="eventModal" onSubmit={(e) => addEv(e)}>
           <h3 id="res-bold">Add New Event</h3>
           <p id="res-desc">Link an event for prospective or current members!</p>
