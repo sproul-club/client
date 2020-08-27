@@ -213,7 +213,7 @@ const Events = ({ addEvent, updateEvent, deleteEvent, events: eventState }) => {
                 value={text}
                 placeholder="Enter a short description about what your event is about and what attendees can expect!"
                 onChange={(e) => setText(e.target.value)}
-                maxLength={1000}
+                maxLength={500}
               />
             </div>
           </div>
