@@ -218,7 +218,7 @@ const Profile = ({
             buttonText="Choose image"
             onChange={(e) => setLogoImage(e)}
             imgExtension={['.jpg', '.gif', '.png', '.gif']}
-            maxFileSize={5242880}
+            maxFileSize={16777216}
           />
         </div>
         <p className="subtitle">
@@ -255,7 +255,7 @@ const Profile = ({
             buttonText="Choose image"
             onChange={(e) => setBannerImage(e)}
             imgExtension={['.jpg', '.gif', '.png', '.gif']}
-            maxFileSize={5242880}
+            maxFileSize={16777216}
           />
         </div>
         <p className="subtitle">
