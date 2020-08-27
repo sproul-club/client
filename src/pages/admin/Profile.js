@@ -30,7 +30,7 @@ const Profile = ({
   const [orgName, setOrgName] = useState(profile.name);
   const [orgEmail, setOrgEmail] = useState(profile.owner);
   const [descr, setDescr] = useState(profile.about_us);
-  const [descrChars, setChars] = useState(1500 - descr.length);
+  const [descrChars, setChars] = useState(750 - descr.length);
   const [tags, setTags] = useState(profile.tags.map((tag) => tagOptions[tag]));
   const [appReq, setAppReq] = useState(
     appOptions[profile.app_required === true ? 0 : 1]
@@ -104,7 +104,7 @@ const Profile = ({
 
   const descrChange = (e) => {
     setDescr(e.target.value);
-    setChars(1500 - e.target.value.length);
+    setChars(750 - e.target.value.length);
   };
 
   const reqFieldsCheck = () => {
@@ -152,7 +152,7 @@ const Profile = ({
           />
         </div>
         <p className="subtitle">
-          This setting cannot be changed. Please contact{' '}
+        <span style={{ color: '#FF0000' }}>*</span> This setting cannot be changed. Please contact{' '}
           <a
             target="_blank"
             rel="noopener noreferrer"
@@ -220,6 +220,14 @@ const Profile = ({
             maxFileSize={5242880}
           />
         </div>
+        <p className="subtitle">
+        <span style={{ color: '#FF0000' }}>*</span> Please make sure your logo is ~ 360 x 360 pixels. {' '}
+          <a href="https://www.photoresizer.com/"
+            target="_blank">
+            <span style={{ color: '#54a0f1' }}>Click here</span>
+          </a>{' '}
+          for a resource that helps you resize your images. 
+        </p>
         <div className="formElement">
           <p>Banner</p>
           <ImageUploader
@@ -245,13 +253,21 @@ const Profile = ({
             maxFileSize={5242880}
           />
         </div>
+        <p className="subtitle">
+        <span style={{ color: '#FF0000' }}>*</span> Please make sure your banner is ~ 820 x 312 pixels. {' '}
+          <a href="https://www.photoresizer.com/"
+            target="_blank">
+            <span style={{ color: '#54a0f1' }}>Click here</span>
+          </a>{' '}
+          for a resource that helps you resize your images. 
+        </p>
         <div className="formElement">
           <p>Description</p>
           <textarea
             className="descriptionInput"
             placeholder="Enter a short description about your organization."
             type="text"
-            maxLength={1500}
+            maxLength={750}
             value={descr}
             onChange={descrChange}
           />

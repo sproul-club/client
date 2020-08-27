@@ -313,7 +313,7 @@ const StepOne = (props) => {
         onChange={(e) => props.setEmail(e.target.value)}
       />
       <p className="subtitle">
-        *Password must be at least 8 characters, include 1 number, and 1 symbol!
+      <span style={{ color: '#FF0000' }}>*</span> Password must be at least 8 characters, include 1 number, and 1 symbol!
       </p>
       <input
         className={`${
@@ -344,7 +344,7 @@ const StepOne = (props) => {
       <div className="buttonWrapper">
         <div className="help">
           <p>Invalid email?</p>
-          <a href="https://airtable.com/shr4wECf5beHGLgfV">Click here</a>
+          <a href="https://airtable.com/shr4wECf5beHGLgfV" target="_blank">Click here</a>
         </div>
         <button onClick={props._next} className="nextButton">
           Next →

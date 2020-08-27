@@ -6,6 +6,7 @@ import {
   NotificationContainer,
 } from 'react-notifications';
 
+
 const EventComp = (props) => {
   /*Tracks input values for edit modal*/
   const [title, setTitle] = useState('');
@@ -31,6 +32,12 @@ const EventComp = (props) => {
   function singleSave() {
     if (eventLink.length > 0 && !validURL(eventLink)) {
       NotificationManager.error('Please enter a valid URL', '', 1500);
+      return
+    }
+    const start = Date.parse(startDate + ' ' + startTime);
+    const end = Date.parse(endDate + ' ' + endTime);
+    if (end < start) {
+      NotificationManager.error("Event end must come before start", "", 3000);
       return;
     }
     setShowEditModal(false);
