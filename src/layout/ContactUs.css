@@ -4,9 +4,11 @@
   display: flex;
   flex-direction: column;
   position: fixed;
+  align-items: center;
+  justify-content: center;
   bottom: 20px;
   left: 20px;
-  background: #4475af;
+  background: #54a0f1;
   color: white;
   padding: 10px;
   padding-top: 5px;
@@ -30,7 +32,9 @@
 }
 
 .contact-text {
-  margin-left: -2px;
-  margin-top: -3px;
-  font-size: 10px;
+  font-size: 8px;
+}
+
+.contact-icon {
+  margin-bottom: 2px;
 }
