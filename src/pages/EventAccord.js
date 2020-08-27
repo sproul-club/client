@@ -8,7 +8,7 @@ import {
 } from 'react-accessible-accordion';
 
 function convertTime(datetime) {
-    var hour = datetime.getHours();
+    var hour = datetime.getUTCHours() - 7;
     var minutes = datetime.getMinutes();
     var dd = hour > 12 ? 'PM' : 'AM';
     hour = hour > 12 ? hour - 12 : hour;

@@ -10,10 +10,7 @@ import {
   NotificationContainer,
 } from 'react-notifications';
 
-const Events = ({ addEvent, updateEvent, deleteEvent, events: eventState }) => {
-  /*Holds all existing events*/
-  const [events, setEvents] = useState(eventState);
-
+const Events = ({ addEvent, updateEvent, deleteEvent, events }) => {
   /*Determines if add event modal is shown*/
   const [showModal, setShowModal] = useState(false);
 
@@ -43,7 +40,6 @@ const Events = ({ addEvent, updateEvent, deleteEvent, events: eventState }) => {
       NotificationManager.error('Please enter a valid URL', '', 1500);
       return;
     }
-    setEvents([...events, emptyEvent]);
     // call add event action
     addEvent(emptyEvent);
 
@@ -80,7 +76,6 @@ const Events = ({ addEvent, updateEvent, deleteEvent, events: eventState }) => {
     endTime,
     text
   ) {
-    let tempArr = [...events];
     const start = startDate.concat(' ' + startTime);
     const end = endDate.concat(' ' + endTime);
     const tempObj = {
@@ -91,7 +86,7 @@ const Events = ({ addEvent, updateEvent, deleteEvent, events: eventState }) => {
       event_end: end,
       description: text,
     };
-    tempArr[id] = tempObj;
+
     //update event action
     updateEvent(id, {
       name: title,
@@ -100,15 +95,11 @@ const Events = ({ addEvent, updateEvent, deleteEvent, events: eventState }) => {
       event_end: end,
       description: text,
     });
-    setEvents(tempArr);
   }
 
   /*Passed down to eventComp to allow it to remove event from state array, count--*/
   function removeEvent(id) {
     deleteEvent(id);
-    const testEventList = events.filter((event) => event.id !== id);
-    const newEventList = [...testEventList];
-    setEvents(newEventList);
   }
 
   const eventComps = events.map((ev, i) => (

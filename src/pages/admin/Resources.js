@@ -20,8 +20,6 @@ const Resources = ({
   updateResource,
   deleteResource,
 }) => {
-  /*Holds all existing resources*/
-
   /*Determines if add resource shown*/
   const [showModal, setShowModal] = useState(false);
 
@@ -31,13 +29,6 @@ const Resources = ({
 
   /*Passed down to resComp to allow editing of resources array above*/
   function entryChange(id, name, link) {
-    let tempArr = [...resources];
-    const tempObj = {
-      id: id,
-      name: name,
-      link: link,
-    };
-    tempArr[id] = tempObj;
     //update resource action
     updateResource(id, { name: name, link: link });
   }
