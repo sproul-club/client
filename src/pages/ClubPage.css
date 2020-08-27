@@ -289,6 +289,8 @@ hr {
   font-size: 1.2vw;
   justify-content: space-between;
   align-items: center;
+  margin-top: 1vh;
+
 }
 
 .event-flex-left {
