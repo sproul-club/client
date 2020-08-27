@@ -100,6 +100,9 @@ function GridComponent({ tagOptions, clubs, classes, loadClubs }) {
   ));
   return (
     <div className="wrapper">
+      <div className="num-results">
+        {clubs.length} results
+      </div>
       <Grid container spacing={2} className="card-grid">
         {GridList}
       </Grid>
