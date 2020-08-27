@@ -320,7 +320,7 @@ const EventComp = (props) => {
       </Modal>
 
       {/*DELETE RESOURCE MODAL*/}
-      <Modal showModal={showDelModal} setShowModal={setShowDelModal}>
+      <Modal showModal={showDelModal} setShowModal={setShowDelModal} close={() => setShowDelModal(false)}>
         <div className="del-modal">
           <p className="del-text">Are you sure you want to delete this?</p>
           <div className="del-buttons-flex">

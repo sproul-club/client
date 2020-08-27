@@ -20,6 +20,7 @@ import Modal from './pages/Modal.js';
 import store from './store';
 import ContactUs from './layout/ContactUs.js';
 import { loadProfile, getTags } from './actions/profile';
+import { refreshToken } from './actions/auth';
 import { Provider } from 'react-redux';
 import PrivateRoute from './utils/PrivateRoute';
 import Navbar from './layout/Navbar';
@@ -28,6 +29,7 @@ const App = () => {
   useEffect(() => {
     store.dispatch(loadProfile());
     store.dispatch(getTags());
+    setTimeout(store.dispatch(refreshToken()), 300000);
   }, []);
 
   return (
