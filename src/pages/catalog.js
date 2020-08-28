@@ -170,6 +170,7 @@ const Catalog = ({ searchClubs, clearOrganization, tagOptions }) => {
                   multi={true}
                   search={true}
                   placeholder="Add up to 3 tags"
+                  value={tags}
                   set={tagsOnChange}
                 />
               </AccordionItemPanel>

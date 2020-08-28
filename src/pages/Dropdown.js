@@ -38,6 +38,9 @@ const customStyles = {
     background: '#D1D3D4',
     color: '#2b2b2b',
     borderRadius: 10,
+    "&:hover": {
+      color: 'hsl(0,0%,40%)',
+    }
   }),
   singleValue: (provided, state) => ({
     ...provided,
@@ -46,6 +49,7 @@ const customStyles = {
   multiValueLabel: (provided, state) => ({
     ...provided,
     'margin-left': "4px",
+    fontSize: '12px',
   }),
   indicatorSeparator: (provided, state) => ({
     ...provided,

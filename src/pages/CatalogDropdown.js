@@ -18,13 +18,11 @@ const customStyles = {
     fontStyle: 'normal',
     borderRadius: 5,
     border: 'solid 1px #949494',
-    // border: (state.selectProps.error) ? 'solid 1px #ff2d2d' : 'solid 1px #949494',
   }),
   menu: (provided, state) => ({
     ...provided,
     margin: 8,
     marginTop: 2,
-    width: 'calc(100% - 7px - 1px - 10px - 8px)',
     fontSize: '12px',
     fontFamily: 'Qanelas Soft',
     fontWeight: 300,
@@ -37,6 +35,10 @@ const customStyles = {
     background: '#D1D3D4',
     color: '#2b2b2b',
     borderRadius: 10,
+    cursor: 'pointer',
+    "&:hover": {
+      color: 'hsl(0,0%,40%)',
+    }
   }),
   singleValue: (provided, state) => ({
     ...provided,
@@ -45,6 +47,7 @@ const customStyles = {
   multiValueLabel: (provided, state) => ({
     ...provided,
     'margin-left': "4px",
+    fontSize: '12px',
   }),
   indicatorSeparator: (provided, state) => ({
     ...provided,
@@ -101,6 +104,7 @@ const Dropdown = (props) => (
     isMulti={props.multi}
     options={props.options}
     placeholder={props.placeholder}
+    value={props.value}
     onChange={(e) => handleChange(e, props)}
     closeMenuOnSelect={!props.multi}
     maxMenuHeight={200}
