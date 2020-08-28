@@ -77,11 +77,11 @@ const StepOne = (props) => {
       <div className="errorWrapper">
         <div className={`error ${props.emptyEmail}`}>
           <img src={error} className="errorIcon" alt="required" />
-          <p>this field is required</p>
+          <p>This field is required.</p>
         </div>
         <div className={`error ${props.emailError}`}>
           <img src={error} className="errorIcon" alt="email invalid" />
-          <p>email address is not RSO registered</p>
+          <p>There is no account associated with this email address.</p>
         </div>
       </div>
 
@@ -90,7 +90,7 @@ const StepOne = (props) => {
       </div>
       <div className="close text">
         <h2>Reset your password</h2>
-        <p>Enter your club's CalLink email.</p>
+        <p>Enter your club's account email.</p>
       </div>
 
       <input

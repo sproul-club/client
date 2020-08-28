@@ -268,27 +268,27 @@ const StepOne = (props) => {
       <div className="errorWrapper">
         <div className={`error ${props.emptyName}`}>
           <img src={error} className="errorIcon" alt="error" />
-          <p>this field is required</p>
+          <p>This field is required.</p>
         </div>
         <div className={`error ${props.emptyEmail}`}>
           <img src={error} className="errorIcon" alt="error" />
-          <p>this field is required</p>
+          <p>This field is required.</p>
         </div>
         <div className={`error ${props.emptyPwd}`}>
           <img src={error} className="errorIcon" alt="error" />
-          <p>this field is required</p>
+          <p>This field is required.</p>
         </div>
         <div className={`error ${props.emailError}`}>
           <img src={error} className="errorIcon" alt="error" />
-          <p>email address is not associated with an RSO</p>
+          <p>Email address is not associated with an RSO.</p>
         </div>
         <div className={`error ${props.conError}`}>
           <img alt="error" src={error} className="errorIcon" />
-          <p>passwords do not match</p>
+          <p>Passwords do not match.</p>
         </div>
         <div className={`error ${props.pwdWeakError}`}>
           <img alt="error" src={error} className="errorIcon" />
-          <p>password is not strong enough</p>
+          <p>Password is not strong enough.</p>
         </div>
       </div>
       <div className="formHeader">
@@ -380,19 +380,19 @@ const StepTwo = (props) => {
       <div className="errorWrapper">
         <div className={`error ${props.emptyTags}`}>
           <img alt="error" src={error} className="errorIcon" />
-          <p>this field is required</p>
+          <p>This field is required.</p>
         </div>
         <div className={`error ${props.emptyAppReq}`}>
           <img alt="error" src={error} className="errorIcon" />
-          <p>this field is required</p>
+          <p>This field is required.</p>
         </div>
         <div className={`error ${props.emptyRecruit}`}>
           <img alt="error" src={error} className="errorIcon" />
-          <p>this field is required</p>
+          <p>This field is required.</p>
         </div>
         <div className={`error ${props.tagError}`}>
           <img alt="error" src={error} className="errorIcon" />
-          <p>reached max tag number</p>
+          <p>This field reached max tag number.</p>
         </div>
       </div>
       <div className="formHeader">

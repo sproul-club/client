@@ -1,4 +1,5 @@
 .signin .content {
+  font-family: Qanelas Soft Bold;
   position: relative;
   padding-top: 86.6px;
   height: calc(100vh - 86.6px - 71.6px);
@@ -43,9 +44,9 @@
 .signin .form a {
   margin-top: 8px;
   text-decoration: none;
-  font-family: montserrat, sans-serif;
+  font-family: Qanelas Soft Semi Bold;
   font-weight: 500;
-  font-size: 12px;
+  font-size: 13px;
   color: #949494;
   transition: color 0.15s;
 }
@@ -64,7 +65,7 @@
   border-radius: 5px;
   border: solid 1px #949494;
   box-shadow: 1.5px 2px 3px #888888b5;
-  font-family: roboto, sans-serif;
+  font-family: Qanelas Soft;
   font-weight: 400;
   font-style: normal;
   font-size: 14px;
@@ -82,10 +83,10 @@
   border: none;
   box-shadow: 1px 2px 3px #888888b5;
   text-decoration: none;
-  font-family: montserrat, sans-serif;
+  font-family: Qanelas Soft Semi Bold;
   font-weight: 600;
   font-style: normal;
-  font-size: 14px;
+  font-size: 15px;
   color: white;
   background-color: #54a0f1;
   transition: background-color 0.15s;
@@ -140,10 +141,10 @@
 .signin .errorWrapper p {
   margin-top: 8px;
   color: #ff2d2d;
-  font-family: montserrat, sans-serif;
+  font-family: Qanelas Soft;
   font-weight: 700;
   font-style: normal;
-  font-size: 11.5px;
+  font-size: 13px;
 }
 
 .signin .emailUnverified, 

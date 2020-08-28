@@ -12,7 +12,7 @@ const ComingSoon = () => {
   return (
     <div className="comingsoon">
       <div className="text">
-        <h3>We are almost there</h3>
+        <h3>Coming soon on August 28</h3>
         <p>Stay tuned for something amazing.</p>
         <div className="buttonContainer">
           <a href="/">Return to home</a>

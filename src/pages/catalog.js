@@ -148,7 +148,7 @@ const Catalog = ({ searchClubs, clearOrganization, tagOptions }) => {
                       marginLeft: '-10px',
                       paddingLeft: '10px',
                       fontSize: '13px',
-                      fontFamily: 'Roboto,sans-serif',
+                      fontFamily: 'Qanelas Soft',
                     }}
                   />
                   <button

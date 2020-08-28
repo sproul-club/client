@@ -71,11 +71,11 @@ const StepOne = (props) => {
       <div className="errorWrapper">
         <div className={`error ${props.emptyPwd}`}>
           <img alt="error" src={error} className="errorIcon" />
-          <p>this field is required</p>
+          <p>This field is required.</p>
         </div>
         <div className={`error ${props.conError}`}>
           <img alt="error" src={error} className="errorIcon" />
-          <p>passwords do not match</p>
+          <p>Passwords do not match.</p>
         </div>
       </div>
       <div className="imgContainer two">

@@ -85,15 +85,15 @@ const SignInForm = ({ login, history, isAuthenticated }) => {
       <div className="errorWrapper">
         <div className={`error ${emptyEmail}`}>
           <img src={error} className="errorIcon" alt="error" />
-          <p>this field is required</p>
+          <p>This field is required.</p>
         </div>
         <div className={`error ${emailUnverified}`}>
           <img src={error} className="errorIcon" alt="error" />
-          <p>email address is not RSO registered</p>
+          <p>There is no account associated with this email.</p>
         </div>
         <div className={`error ${emptyPassword}`}>
           <img src={error} className="errorIcon" alt="error" />
-          <p>this field is required</p>
+          <p>This field is required.</p>
         </div>
       </div>
 
