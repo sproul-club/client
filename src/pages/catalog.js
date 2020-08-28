@@ -64,9 +64,12 @@ const Catalog = ({ searchClubs, clearOrganization, tagOptions }) => {
 
     const tagValues = tags.map((tag) => tag.value);
     const searchParams = { name, tags: tagValues, appReq: appReqValue, status: recruitingValue };
-    console.log(searchParams);
     searchClubs(searchParams);
   };
+
+  const resetFilters = () => {
+
+  }
 
   const tagsOnChange = (input) => {
     var newTags = input;
@@ -77,15 +80,28 @@ const Catalog = ({ searchClubs, clearOrganization, tagOptions }) => {
   }
 
   return (
-    <div className="App">
+    <div className="catalog">
       <div className="content">
         <div className="sidebar">
           <Accordion
             allowMultipleExpanded
             allowZeroExpanded
-            preExpanded={['a', 'b', 'c', 'd', 'e']}
+            preExpanded={['a', 'b', 'c']}
           >
             <AccordionItem className="accordion-group" uuid="a">
+              <AccordionItemPanel>
+                <div className="reset-wrapper">
+                  <button
+                    className="reset-filters"
+                    type="submit"
+                    onClick={() => resetFilters()}
+                  >
+                    reset
+                  </button>
+                </div>
+              </AccordionItemPanel>
+            </AccordionItem>
+            <AccordionItem className="accordion-group" uuid="b">
               <AccordionItemPanel>
                 <Form
                   className="search-bar"
@@ -104,20 +120,21 @@ const Catalog = ({ searchClubs, clearOrganization, tagOptions }) => {
                       borderRadius: '5px',
                       border: 'transparent',
                       marginLeft: '-10px',
-                      paddingLeft: '7px',
+                      paddingLeft: '10px',
+                      fontSize: '13px',
+                      fontFamily: 'Roboto,sans-serif',
                     }}
                   />
                   <button
                     className="search-button"
                     type="submit"
-                    style={{ marginLeft: '-5px' }}
                   >
                     <i className="fa fa-search"></i>
                   </button>
                 </Form>
               </AccordionItemPanel>
             </AccordionItem>
-            <AccordionItem className="accordion-group" uuid="b">
+            <AccordionItem className="accordion-group" uuid="c">
               <AccordionItemHeading>
                 <AccordionItemButton>Club Tags </AccordionItemButton>
               </AccordionItemHeading>
@@ -131,7 +148,7 @@ const Catalog = ({ searchClubs, clearOrganization, tagOptions }) => {
                 />
               </AccordionItemPanel>
             </AccordionItem>
-            <AccordionItem className="accordion-group" uuid="c">
+            <AccordionItem className="accordion-group" uuid="d">
               <AccordionItemHeading>
                 <AccordionItemButton>
                   Application Requirements
@@ -156,7 +173,7 @@ const Catalog = ({ searchClubs, clearOrganization, tagOptions }) => {
                 />
               </AccordionItemPanel>
             </AccordionItem>
-            <AccordionItem className="accordion-group" uuid="d">
+            <AccordionItem className="accordion-group" uuid="e">
               <AccordionItemHeading>
                 <AccordionItemButton>Membership Status</AccordionItemButton>
               </AccordionItemHeading>
@@ -175,17 +192,6 @@ const Catalog = ({ searchClubs, clearOrganization, tagOptions }) => {
                   name="checkbox"
                   value="checkbox value"
                 />
-              </AccordionItemPanel>
-            </AccordionItem>
-            <AccordionItem className="accordion-group" uuid="e">
-              <AccordionItemPanel>
-                  <button
-                    className="search-all"
-                    type="submit"
-                    onClick={() => searchAllClubs()}
-                  >
-                    Filter results
-                  </button>
               </AccordionItemPanel>
             </AccordionItem>
           </Accordion>

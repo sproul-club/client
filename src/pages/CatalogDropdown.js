@@ -10,7 +10,6 @@ const customStyles = {
   }),
   control: (provided, state) => ({
     display: 'flex',
-    width: 235,
     margin: 7,
     marginBottom: 8,
     fontSize: 12,
@@ -25,7 +24,7 @@ const customStyles = {
     ...provided,
     margin: 8,
     marginTop: 2,
-    width: 235,
+    width: 'calc(100% - 7px - 1px - 10px - 8px)',
     fontSize: '12px',
     fontFamily: 'Roboto, sans-serif',
     fontWeight: 300,
