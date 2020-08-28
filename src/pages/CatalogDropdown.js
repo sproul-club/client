@@ -47,6 +47,8 @@ const customStyles = {
   multiValueLabel: (provided, state) => ({
     ...provided,
     'margin-left': "4px",
+    'padding': '2px',
+    'padding-left': '5px',
     fontSize: '12px',
   }),
   indicatorSeparator: (provided, state) => ({

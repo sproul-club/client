@@ -111,7 +111,7 @@ const Catalog = ({ searchClubs, clearOrganization, tagOptions }) => {
           <Accordion
             allowMultipleExpanded
             allowZeroExpanded
-            preExpanded={['a', 'b', 'c']}
+            preExpanded={['a', 'b', 'c', 'd', 'e']}
           >
             <AccordionItem className="accordion-group" uuid="a">
               <AccordionItemPanel>
@@ -127,7 +127,7 @@ const Catalog = ({ searchClubs, clearOrganization, tagOptions }) => {
                 </div>
               </AccordionItemPanel>
             </AccordionItem>
-            <AccordionItem className="accordion-group" uuid="b">
+            <AccordionItem className="accordion-group search" uuid="b">
               <AccordionItemPanel>
                 <Form
                   className="search-bar"
@@ -160,7 +160,7 @@ const Catalog = ({ searchClubs, clearOrganization, tagOptions }) => {
                 </Form>
               </AccordionItemPanel>
             </AccordionItem>
-            <AccordionItem className="accordion-group" uuid="c">
+            <AccordionItem className="accordion-group border" uuid="c">
               <AccordionItemHeading>
                 <AccordionItemButton>Club Tags </AccordionItemButton>
               </AccordionItemHeading>
@@ -175,7 +175,7 @@ const Catalog = ({ searchClubs, clearOrganization, tagOptions }) => {
                 />
               </AccordionItemPanel>
             </AccordionItem>
-            <AccordionItem className="accordion-group" uuid="d">
+            <AccordionItem className="accordion-group border" uuid="d">
               <AccordionItemHeading>
                 <AccordionItemButton>
                   Application Requirements
@@ -202,7 +202,7 @@ const Catalog = ({ searchClubs, clearOrganization, tagOptions }) => {
                 />
               </AccordionItemPanel>
             </AccordionItem>
-            <AccordionItem className="accordion-group" uuid="e">
+            <AccordionItem className="accordion-group border" uuid="e">
               <AccordionItemHeading>
                 <AccordionItemButton>Membership Status</AccordionItemButton>
               </AccordionItemHeading>
