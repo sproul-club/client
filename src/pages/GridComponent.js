@@ -16,7 +16,7 @@ import { withRouter, Link } from 'react-router-dom';
 import { loadClubs, searchClubs } from '../actions/catalog';
 import './GridComponent.css';
 
-function GridComponent({ tagOptions, clubs, classes, loadClubs }) {
+function GridComponent({ tagOptions, clubs, num_clubs, classes, loadClubs }) {
   useEffect(() => {
     // Return unfiltered clubs so there is some data there when first rendered
     if (clubs.length === 0) loadClubs();
@@ -106,7 +106,7 @@ function GridComponent({ tagOptions, clubs, classes, loadClubs }) {
   return (
     <div className="wrapper">
       <div className="num-results">
-        {clubs.length} results
+        {num_clubs && `${num_clubs} results`}
       </div>
       <Grid container spacing={2} className="card-grid">
         {GridList}
@@ -118,6 +118,7 @@ function GridComponent({ tagOptions, clubs, classes, loadClubs }) {
 // This function gets a piece of the app state that is stored in redux store
 const mapStateToProps = (state) => ({
   clubs: state.catalog.clubs,
+  num_clubs: state.catalog.num_clubs,
   tagOptions: state.profile.tagOptions,
 });
 
