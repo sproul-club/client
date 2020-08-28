@@ -12,11 +12,11 @@ const initialState = {
 };
 
 export default function (state = initialState, action) {
-  const { type, payload } = action;
+  const { type, payload, num_results } = action;
 
   switch (type) {
     case SEARCH_CLUBS:
-      return { ...state, clubs: payload };
+      return { ...state, clubs: payload, num_clubs: num_results };
     case GET_ORGANIZATION:
       return { ...state, organization: payload };
     case CLEAR_ORGANIZATION:
