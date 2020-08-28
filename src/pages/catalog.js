@@ -79,6 +79,26 @@ const Catalog = ({ searchClubs, clearOrganization, tagOptions }) => {
     setTags(newTags);
   }
 
+  function toggleAppReq() {
+    setAppReq(!appReq);
+    setNoAppReq(false);
+  }
+
+  function toggleNoAppReq() {
+    setAppReq(false);
+    setNoAppReq(!noAppReq);
+  }
+
+  function toggleRecruiting() {
+    setRecruiting(!recruiting);
+    setNotRecruiting(false);
+  }
+
+  function toggleNotRecruiting() {
+    setRecruiting(false);
+    setNotRecruiting(!notRecruiting);
+  }
+
   return (
     <div className="catalog">
       <div className="content">
@@ -156,18 +176,20 @@ const Catalog = ({ searchClubs, clearOrganization, tagOptions }) => {
               </AccordionItemHeading>
               <AccordionItemPanel>
                 <CheckBox
+                  key={'appReq' + Math.random()}
                   className="checkbox"
                   label="Requires app"
                   isChecked={appReq}
-                  onClick={() => setAppReq(!appReq)}
+                  onClick={() => toggleAppReq()}
                   name="appReq"
                   value="checkbox value"
                 />
                 <CheckBox
+                  key={'noAppReq' + Math.random()}
                   className="checkbox"
                   label="No app required"
                   isChecked={noAppReq}
-                  onClick={() => setNoAppReq(!noAppReq)}
+                  onClick={() => toggleNoAppReq()}
                   name="noAppReq"
                   value="checkbox value"
                 />
@@ -179,16 +201,20 @@ const Catalog = ({ searchClubs, clearOrganization, tagOptions }) => {
               </AccordionItemHeading>
               <AccordionItemPanel>
                 <CheckBox
+                  key={'recruiting' + Math.random()}
                   className="checkbox"
                   label="Looking for members"
-                  onClick={() => setRecruiting(!recruiting)}
+                  isChecked={recruiting}
+                  onClick={() => toggleRecruiting()}
                   name="checkbox"
                   value="checkbox value"
                 />
                 <CheckBox
+                  key={'notRecruiting' + Math.random()}
                   className="checkbox"
                   label="Not looking for members"
-                  onClick={() => setNotRecruiting(!notRecruiting)}
+                  isChecked={notRecruiting}
+                  onClick={() => toggleNotRecruiting()}
                   name="checkbox"
                   value="checkbox value"
                 />
