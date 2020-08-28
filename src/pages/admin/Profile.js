@@ -72,7 +72,7 @@ const Profile = ({
           NotificationManager.success('Logo uploaded successfully!', '', 1500);
         },
         (err) => {
-          if (err.response.status == 503) {
+          if (err.response.status === 503) {
             NotificationManager.error(
               'Something went wrong on our end. Please try again later',
               'Logo image upload unsuccessful',
@@ -100,7 +100,7 @@ const Profile = ({
           );
         },
         (err) => {
-          if (err.response.status == 503) {
+          if (err.response.status === 503) {
             NotificationManager.error(
               'Something went wrong on our end. Please try again later',
               'Banner image upload unsuccessful',
@@ -276,7 +276,7 @@ const Profile = ({
         </div>
         <p className="subtitle">
           <span style={{ color: '#FF0000' }}>*</span> Please make sure your
-          banner is ~ 820 x 312 pixels.{' '}
+          banner is at least 820 x 312 pixels.{' '}
           <a
             href="https://www.photoresizer.com/"
             target="_blank"

@@ -66,8 +66,8 @@ export const updateProfile = (formData, success, error) => async (dispatch) => {
 export const uploadLogo = (images, success, error) => async (dispatch) => {
   try {
     let data = new FormData();
-    if (!images.logo)
-      return;
+
+    if (!images.logo) return;
 
     data.append('logo', images.logo);
 
@@ -93,8 +93,8 @@ export const uploadLogo = (images, success, error) => async (dispatch) => {
 export const uploadBanner = (images, success, error) => async (dispatch) => {
   try {
     let data = new FormData();
-    if (!images.banner)
-      return;
+
+    if (!images.banner) return;
 
     data.append('banner', images.banner);
 
@@ -132,7 +132,7 @@ export const addEvent = (formData) => async (dispatch) => {
 
     const res = await axios.post('/api/admin/events', event, config);
 
-    await dispatch({ type: ADD_EVENT, payload: res.data });
+    dispatch({ type: ADD_EVENT, payload: res.data });
   } catch (err) {
     console.log(err.response);
   }
