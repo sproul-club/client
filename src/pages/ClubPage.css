@@ -307,7 +307,7 @@ hr {
 .event-flex-right {
   font-size: 1.1vw;
   text-align: end;
-  min-width: 180px;
+  min-width: 50%;
 }
 .accordion__button-club:focus {
   outline: 0;
