@@ -106,7 +106,7 @@ function GridComponent({ tagOptions, clubs, num_clubs, classes, loadClubs }) {
   return (
     <div className="wrapper">
       <div className="num-results">
-        {num_clubs && num_clubs !== 0 && `${num_clubs} Results`}
+        {num_clubs ? `${num_clubs} Results` : ''}
       </div>
       <Grid container spacing={2} className="card-grid">
         {GridList}

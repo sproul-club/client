@@ -73,6 +73,8 @@ const Dropdown = (props) => (
         dangerLight: '#D1D3D4',
       },
     })}
+    classNamePrefix="react-select"
+    className="react-select-container"
     borderRadius="4"
     marginLeft="4px"
     defaultValue={props.defaultValue || null}

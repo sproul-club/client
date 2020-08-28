@@ -61,7 +61,7 @@ const Navbar = ({
   );
 
   const loggedInLinks = (
-    <div style={{ display: 'flex', flexDirection: 'row' }}>
+    <div className='logged-in-links'>
       <Link to="/catalog" className="nav-link hide-sm">
         Discover
       </Link>

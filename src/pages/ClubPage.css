@@ -451,4 +451,15 @@ hr {
     flex-wrap: wrap;
     justify-content: flex-start;
   }
+  .header-img {
+    position: relative;
+    width: 100%;
+    height: auto;
+    left: 0;
+  }
+
+  .flex-container-chungus {
+    width: 100vw;
+    left: 0;
+  }
 }

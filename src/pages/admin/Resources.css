@@ -1,5 +1,5 @@
 .resources .formGroup {
-  align-items:center;
+  align-items: center;
 }
 
 .add-button {
@@ -102,7 +102,7 @@
   padding-left: 12px;
   border: solid 1px;
   border-radius: 5px;
-} 
+}
 
 #buttons-flex {
   display: flex;
@@ -170,4 +170,47 @@
 #del-del {
   padding: 10px 10px;
   font-size: 14px;
+}
+
+@media screen and (max-width: 850px) {
+  .resources .formGroup {
+    padding: 0px;
+  }
+  .resources .formGroup .res-flex {
+    width: 100%;
+    margin: 5px 0;
+  }
+  .add-button {
+    margin: 20px;
+    margin-left: 100px;
+  }
+  .res-modal {
+    width: calc(100vw - 40px);
+  }
+  .gray-modal {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    margin-bottom: 10px;
+    margin-left: 0;
+    width: 100%;
+    padding-bottom: 40px;
+    padding-top: 10px;
+  }
+  #res-desc {
+    margin: 0;
+  }
+  #res-bold {
+    margin: 0;
+  }
+
+  .resourcesInput {
+    width: 320px;
+  }
+  .input-holder {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-left: 0;
+  }
 }
