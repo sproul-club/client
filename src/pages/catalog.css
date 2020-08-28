@@ -1,13 +1,22 @@
-.App {
+/* ---------- Overall page content layout ----------- */
+.catalog {
   text-align: center;
 }
 
+.catalog .content {
+  /* total height - header - footer */
+  min-height: calc(100vh - 87px - 61px);
+  padding-top: 87px;
+  display: flex;
+}
+
+/* ---------------- Sidebar styling ----------------- */
 /* sidebar do be looking garbage on horizontal resize -karen */
-.sidebar {
+.catalog .sidebar {
   text-align: left;
   align-self: start;
   margin-top: 20px;
-  width: 250px;
+  width: 300px;
   float: left;
   color: #2b2b2b;
   padding: 12px;
@@ -16,7 +25,139 @@
   margin-right: 15px;
 }
 
-.cards {
+.catalog .accordion {
+  /* border: 1px solid rgba(0, 0, 0, 0.1); */
+  width: 100%;
+  text-align: left;
+  margin-left: 15px;
+  margin-top: 23px;
+}
+
+.catalog .accordion .accordion-group {
+  margin-bottom: 15px;
+}
+
+.catalog .accordion__heading {
+  display: inline-flex;
+  width: 100%;
+  font-weight: bold;
+}
+
+.catalog .accordion__button {
+  display: inline-flex;
+  flex-direction: row-reverse;
+  cursor: pointer;
+  padding-top: 6px;
+  padding-bottom: 12px;
+  text-align: left;
+  border: none;
+  margin-left: 7px;
+  justify-content: space-between;
+  width: 315px;
+}
+
+/* .catalog .accordion__button:hover {
+    background-color: #ddd;
+} */
+
+.catalog .accordion__button:focus {
+  outline: 0;
+}
+
+.catalog .accordion__button:before {
+  display: flex;
+  content: '';
+  height: 10px;
+  width: 10px;
+  margin-right: 12px;
+  border-bottom: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+  transform: rotate(45deg);
+}
+
+.catalog .accordion__button[aria-expanded='true']::before,
+.catalog .accordion__button[aria-selected='true']::before {
+  transform: rotate(-135deg);
+}
+
+[hidden] {
+  display: none;
+}
+
+.catalog .accordion__panel {
+  /* padding: 5px; */
+  animation: fadein 0.35s ease-in;
+  /* padding: 18px; */
+  text-align: left;
+  border: none;
+}
+
+.catalog .reset-wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.catalog .reset-wrapper .reset-filters {
+  margin-right: 7px;
+  padding: 4px 14px;
+  border: none;
+  border-radius: 8px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 13px;
+  font-family: montserrat, sans-serif;
+  font-weight: 500;
+  color: white;
+  background-color: #54a0f1;
+  transition: background-color 0.15s;
+}
+.catalog .reset-wrapper .reset-filters:hover {
+  cursor: pointer;
+  background-color: #6eaff5;
+}
+
+.catalog .search-bar {
+  display: flex;
+  flex-direction: row;
+  /* full accordion - border+padding - button padding */
+  width: calc(100% - 7px - 1px - 10px - 8px);
+  height: 38px;
+  border-radius: 5px;
+  border: solid 1px #949494;
+  padding-left: 10px;
+  margin-left: 7px;
+}
+
+.catalog .search-button {
+  width: 100%;
+  border-radius: 3px;
+  color: #949494;
+  background: transparent;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-right: 8px;
+  border: none;
+  cursor: pointer;
+}
+.catalog .search-button:hover {
+  background: transparent;
+}
+
+.catalog .checkbox {
+  margin-left: 3px;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+
+.catalog .checkbox > label {
+  margin-top: 1.5px;
+  margin-left: 7px;
+}
+
+/* ------------- Club card grid styling ------------- */
+.catalog .cards {
   flex: 1;
   /* -- flex-direction: row; */
   text-align: left;
@@ -31,147 +172,15 @@
   line-height: 14px;
 }
 
-.accordion {
-  /* border: 1px solid rgba(0, 0, 0, 0.1); */
-  width: 100%;
-  text-align: left;
-  margin-left: 15px;
-}
-
-.search-bar {
-  display: flex;
-  flex-direction: row;
-  width: 225px;
-  height: 38px;
-  border-radius: 5px;
-  border: solid 1px #949494;
-  padding-left: 10px;
-  margin-left: 7px;
-}
-
-.search-button {
-  height: 25px;
-  width: 60px;
-  border-radius: 3px;
-  color: #949494;
-  align-self: center;
-  margin-right: 5px;
-  border: none;
-  cursor: pointer;
-}
-.search-button:hover {
-  background: transparent;
-}
-
-.search-all {
-  background-color: #54a0f1;
-  transition: background-color 0.15s;
-  color: white;
-  text-align: center;
-  padding: 10px;
-  text-decoration: none;
-  font-size: 16px;
-  border-radius: 6px;
-  font-weight: bold;
-  width: 236px;
-  border: none;
-  margin-left: 8px;
-  margin-top: 10px;
-}
-
-.search-all:hover {
-  cursor: pointer;
-  background-color: #6eaff5;
-}
-
-.accordion-group {
-  margin-bottom: 15px;
-}
-
-.accordion__heading {
-  display: inline-flex;
-  width: 100%;
-  font-weight: bold;
-}
-
-.accordion__button {
-  display: inline-flex;
-  flex-direction: row-reverse;
-  cursor: pointer;
-  padding-top: 6px;
-  padding-bottom: 12px;
-  text-align: left;
-  border: none;
-  margin-left: 7px;
-  justify-content: space-between;
-  width: 315px;
-}
-
-/* .accordion__button:hover {
-    background-color: #ddd;
-} */
-
-.accordion__button:focus {
-  outline: 0;
-}
-
-.accordion__button:before {
-  display: flex;
-  content: '';
-  height: 10px;
-  width: 10px;
-  margin-right: 12px;
-  border-bottom: 2px solid currentColor;
-  border-right: 2px solid currentColor;
-  transform: rotate(45deg);
-}
-
-.accordion__button[aria-expanded='true']::before,
-.accordion__button[aria-selected='true']::before {
-  transform: rotate(-135deg);
-}
-
-[hidden] {
-  display: none;
-}
-
-.accordion__panel {
-  /* padding: 5px; */
-  animation: fadein 0.35s ease-in;
-  /* padding: 18px; */
-  text-align: left;
-  border: none;
-}
-
-.checkbox {
-  margin-left: 3px;
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: flex-end;
-}
-
-.checkbox > label {
-  margin-top: 1.5px;
-  margin-left: 7px;
-}
-
-.App .content {
-  /* total height - header - footer */
-  min-height: calc(100vh - 87px - 61px);
-  padding-top: 87px;
-  display: flex;
-}
-
-.num-results {
+.catalog .num-results {
   margin-top: -18px;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   font-weight: 500;
 }
 
 /* -------------------------------------------------- */
 /* ---------------- Animation part ------------------ */
 /* -------------------------------------------------- */
-
 @keyframes fadein {
   0% {
     opacity: 0;
@@ -182,8 +191,9 @@
   }
 }
 
+/* ---------------- Media queries ------------------- */
 @media screen and (max-width: 850px) {
-  .App .content {
+  .catalog .content {
     align-items: flex-start;
     align-content: flex-start;
     align-self: flex-start;
