@@ -1,12 +1,10 @@
 import React, { useEffect } from 'react';
-
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   withRouter,
 } from 'react-router-dom';
-
 import { Landing } from './pages/Landing.js';
 import { ComingSoon } from './pages/ComingSoon.js';
 import Catalog from './pages/catalog.js';
@@ -16,7 +14,7 @@ import { ResetPassword } from './pages/ResetPassword.js';
 import { ResetPassword2 } from './pages/ResetPassword2.js';
 import Security from './pages/admin/Security.js';
 import Admin from './pages/admin/Admin.js';
-import Modal from './pages/Modal.js';
+import ClubPage from './pages/ClubPage';
 import store from './store';
 import ContactUs from './layout/ContactUs.js';
 import { loadProfile, getTags } from './actions/profile';
@@ -45,7 +43,7 @@ const App = () => {
           <Route exact path="/signin" component={SignIn} />
           <Route exact path="/recover" component={ResetPassword} />
           <Route exact path="/resetpassword" component={ResetPassword2} />
-          <Route exact path="/club/:id" component={Modal} />
+          <Route exact path="/club/:id" component={ClubPage} />
           <PrivateRoute exact path="/security" component={Security} />
           <Route>{'404'}</Route>
         </Switch>

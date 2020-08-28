@@ -10,7 +10,6 @@ const customStyles = {
   }),
   control: (provided, state) => ({
     display: 'flex',
-    width: 235,
     margin: 7,
     marginBottom: 8,
     fontSize: 12,
@@ -25,7 +24,7 @@ const customStyles = {
     ...provided,
     margin: 8,
     marginTop: 2,
-    width: 235,
+    width: 'calc(100% - 7px - 1px - 10px - 8px)',
     fontSize: '12px',
     fontFamily: 'Roboto, sans-serif',
     fontWeight: 300,
@@ -73,14 +72,13 @@ const customStyles = {
 };
 
 const handleChange = (value, props) => {
-  if (props.multi) {
-    if (value && value.length >= 3) {
-      // recolor option text to light grey, to look unclickable :'(
-      if (value.length > 3) {
-        value.pop();                        // remove 4th tag
-        props.errorPopup('tagOverflow');    // make popup visible for ~2s
-        setTimeout(function() {props.errorPopup('tagOverflowNone');}, 1000);
-      }
+  // prevent new value added if there's already three tags
+  if (value && value.length >= 3) {
+    // recolor option text to light grey, to look unclickable :'(
+    if (value.length > 3) {
+      value.pop();                        // remove 4th tag
+      props.errorPopup('tagOverflow');    // make popup visible for ~2s
+      setTimeout(function() {props.errorPopup('tagOverflowNone');}, 1000);
     }
   }
   props.set(value);

@@ -46,16 +46,6 @@ const ResComp = (props) => {
     setLink(propsLink);
   }
 
-  /*onChange for name input in edit modal*/
-  function changeName(event) {
-    setName(event.target.value);
-  }
-
-  /*onChange for link input in edit modal*/
-  function changeLink(event) {
-    setLink(event.target.value);
-  }
-
   /*Update states to reflect current value in array*/
   if (propsName !== props.data.name) {
     setPropsName(props.data.name);
@@ -115,7 +105,7 @@ const ResComp = (props) => {
                 placeholder="Type resource name"
                 className="resourcesInput"
                 type="text"
-                onChange={changeName}
+                onChange={(e) => setName(e.target.value)}
               ></input>
               <div className="input-title">URL Link</div>
               <input
@@ -123,7 +113,7 @@ const ResComp = (props) => {
                 placeholder="+ Add a link (google drive, google form, youtube, etc)"
                 className="resourcesInput"
                 type="text"
-                onChange={changeLink}
+                onChange={(e) => setLink(e.target.value)}
               ></input>
             </div>
           </div>
@@ -141,7 +131,11 @@ const ResComp = (props) => {
       </Modal>
 
       {/*DELETE RESOURCE MODAL*/}
-      <Modal showModal={showDelModal} setShowModal={setShowDelModal} close={() => setShowDelModal(false)}>
+      <Modal
+        showModal={showDelModal}
+        setShowModal={setShowDelModal}
+        close={() => setShowDelModal(false)}
+      >
         <div className="del-modal">
           <p className="del-text">Are you sure you want to delete this?</p>
           <div className="del-buttons-flex">

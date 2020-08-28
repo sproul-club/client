@@ -27,7 +27,6 @@ function ClubPage({
   if (!organization.id) return <Loading />;
 
   const socLinks = organization.social_media_links;
-
   const contactComps = Object.keys(socLinks).map((key, i) =>
     socLinks[key] !== null && socLinks[key] !== '' ? (
       <a
@@ -46,6 +45,7 @@ function ClubPage({
       </a>
     ) : null
   );
+  
   const resComps = organization.resources.map((res, i) => (
     <div className="desc-text" id="resources" key={i}>
       {res.name}

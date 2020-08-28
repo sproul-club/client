@@ -20,7 +20,7 @@ function GridComponent({ tagOptions, clubs, classes, loadClubs }) {
   useEffect(() => {
     // Return unfiltered clubs so there is some data there when first rendered
     if (clubs.length === 0) loadClubs();
-  }, [clubs, loadClubs]);
+  }, [loadClubs]);
 
   const GridList = clubs.map((club, i) => (
     <Grid item key={i} sm={12} md={6} lg={4} className="club-card">
@@ -100,6 +100,9 @@ function GridComponent({ tagOptions, clubs, classes, loadClubs }) {
   ));
   return (
     <div className="wrapper">
+      <div className="num-results">
+        {clubs.length} results
+      </div>
       <Grid container spacing={2} className="card-grid">
         {GridList}
       </Grid>

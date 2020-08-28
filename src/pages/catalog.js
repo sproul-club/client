@@ -29,36 +29,79 @@ const Catalog = ({ searchClubs, clearOrganization, tagOptions }) => {
   const classes = useStyles();
 
   const [name, setName] = useState('');
-  const [appReq, setAppReq] = useState(null);
-  const [status, setStatus] = useState(null);
   const [tags, setTags] = useState([]);
+
+  //checkbox logic jankness
+  const [appReq, setAppReq] = useState(false);
+  const [noAppReq, setNoAppReq] = useState(false);
+  const [recruiting, setRecruiting] = useState(false);
+  const [notRecruiting, setNotRecruiting] = useState(false);
 
   // clearing organization to be viewed every time navigate back to club page
   useEffect(() => {
     clearOrganization();
   }, [clearOrganization]);
 
-  const searchAllClubs = () => {
-    // const tags = multiselectRef.current.getSelectedItems();
-    const tagValues = tags.map((tag) => tag.value);
-    const searchParams = { name, tags: tagValues, appReq, status };
+  // run search when any state except "name" updates
+  useEffect(() => {
+    searchAllClubs();
+  }, [tags, appReq, noAppReq, recruiting, notRecruiting]);
 
-    // Calls searchClubs redux action, which hits the backend API
-    // then updates the apps state in redux to be the response
-    // This data is then read in the GridComponent through mapStateToProps
+  const searchAllClubs = () => {
+    //checkbox logic jankness
+    var appReqValue = null;
+    if (appReq && !(noAppReq)) {
+      appReqValue = true;
+    } else if (!appReq && noAppReq) {
+      appReqValue = false;
+    }
+    var recruitingValue = null;
+    if (recruiting && !(notRecruiting)) {
+      recruitingValue = true;
+    } else if (!recruiting && notRecruiting) {
+      recruitingValue = false;
+    }
+
+    const tagValues = tags.map((tag) => tag.value);
+    const searchParams = { name, tags: tagValues, appReq: appReqValue, status: recruitingValue };
     searchClubs(searchParams);
   };
 
+  const resetFilters = () => {
+
+  }
+
+  const tagsOnChange = (input) => {
+    var newTags = input;
+    if (input === null) {
+      newTags = [];
+    }
+    setTags(newTags);
+  }
+
   return (
-    <div className="App">
+    <div className="catalog">
       <div className="content">
         <div className="sidebar">
           <Accordion
             allowMultipleExpanded
             allowZeroExpanded
-            preExpanded={['a', 'b', 'c', 'd']}
+            preExpanded={['a', 'b', 'c']}
           >
             <AccordionItem className="accordion-group" uuid="a">
+              <AccordionItemPanel>
+                <div className="reset-wrapper">
+                  <button
+                    className="reset-filters"
+                    type="submit"
+                    onClick={() => resetFilters()}
+                  >
+                    reset
+                  </button>
+                </div>
+              </AccordionItemPanel>
+            </AccordionItem>
+            <AccordionItem className="accordion-group" uuid="b">
               <AccordionItemPanel>
                 <Form
                   className="search-bar"
@@ -77,20 +120,21 @@ const Catalog = ({ searchClubs, clearOrganization, tagOptions }) => {
                       borderRadius: '5px',
                       border: 'transparent',
                       marginLeft: '-10px',
-                      paddingLeft: '7px',
+                      paddingLeft: '10px',
+                      fontSize: '13px',
+                      fontFamily: 'Roboto,sans-serif',
                     }}
                   />
                   <button
                     className="search-button"
                     type="submit"
-                    style={{ marginLeft: '-5px' }}
                   >
                     <i className="fa fa-search"></i>
                   </button>
                 </Form>
               </AccordionItemPanel>
             </AccordionItem>
-            <AccordionItem className="accordion-group" uuid="b">
+            <AccordionItem className="accordion-group" uuid="c">
               <AccordionItemHeading>
                 <AccordionItemButton>Club Tags </AccordionItemButton>
               </AccordionItemHeading>
@@ -100,11 +144,11 @@ const Catalog = ({ searchClubs, clearOrganization, tagOptions }) => {
                   multi={true}
                   search={true}
                   placeholder="Add up to 3 tags"
-                  set={setTags}
+                  set={tagsOnChange}
                 />
               </AccordionItemPanel>
             </AccordionItem>
-            <AccordionItem className="accordion-group" uuid="c">
+            <AccordionItem className="accordion-group" uuid="d">
               <AccordionItemHeading>
                 <AccordionItemButton>
                   Application Requirements
@@ -115,38 +159,36 @@ const Catalog = ({ searchClubs, clearOrganization, tagOptions }) => {
                   className="checkbox"
                   label="Requires app"
                   isChecked={appReq}
-                  onClick={() => setAppReq(true)}
+                  onClick={() => setAppReq(!appReq)}
                   name="appReq"
                   value="checkbox value"
                 />
                 <CheckBox
                   className="checkbox"
                   label="No app required"
-                  isChecked={!appReq && appReq !== null}
-                  onClick={() => setAppReq(false)}
+                  isChecked={noAppReq}
+                  onClick={() => setNoAppReq(!noAppReq)}
                   name="noAppReq"
                   value="checkbox value"
                 />
               </AccordionItemPanel>
             </AccordionItem>
-            <AccordionItem className="accordion-group" uuid="d">
+            <AccordionItem className="accordion-group" uuid="e">
               <AccordionItemHeading>
-                <AccordionItemButton>Member Status</AccordionItemButton>
+                <AccordionItemButton>Membership Status</AccordionItemButton>
               </AccordionItemHeading>
               <AccordionItemPanel>
                 <CheckBox
                   className="checkbox"
                   label="Looking for members"
-                  isChecked={status}
-                  onClick={() => setStatus(true)}
+                  onClick={() => setRecruiting(!recruiting)}
                   name="checkbox"
                   value="checkbox value"
                 />
                 <CheckBox
                   className="checkbox"
                   label="Not looking for members"
-                  isChecked={!status && appReq !== null}
-                  onClick={() => setStatus(false)}
+                  onClick={() => setNotRecruiting(!notRecruiting)}
                   name="checkbox"
                   value="checkbox value"
                 />
