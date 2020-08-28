@@ -91,6 +91,7 @@ const Catalog = ({ searchClubs, clearOrganization, tagOptions }) => {
             <AccordionItem className="accordion-group" uuid="a">
               <AccordionItemPanel>
                 <div className="reset-wrapper">
+                  <h2>Filters</h2>
                   <button
                     className="reset-filters"
                     type="submit"

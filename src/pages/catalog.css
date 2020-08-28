@@ -25,6 +25,11 @@
   margin-right: 15px;
 }
 
+.catalog .sidebar h2 {
+  font-size: 14px;
+  margin-left: 9px;
+}
+
 .catalog .accordion {
   /* border: 1px solid rgba(0, 0, 0, 0.1); */
   width: 100%;
@@ -94,7 +99,7 @@
 
 .catalog .reset-wrapper {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
 }
 
 .catalog .reset-wrapper .reset-filters {
