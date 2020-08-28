@@ -5,7 +5,7 @@
 
 .info-flex {
   display: flex;
-  flex-direction: column;    
+  flex-direction: column;
 }
 
 .icon-title-flex {
@@ -40,7 +40,7 @@
   margin-left: 15px;
   background-color: #E2E2E2;
   border-radius: 5px;
-  padding: 0vw 0.9vw 0vw 0.9vw;
+  padding: 0vw 0.5vw 0vw 0.5vw;
   font-family: Qanelas Soft Semi Bold;
   font-size: 17px;
 }
@@ -74,14 +74,14 @@
       height: 35px;
       margin-right: 10px;
     }
-    
+
     .club-name {
       font-size: 16px;
-  
+
     }
     .grid-tags-flex {
       margin-left: -5px;
-  
+
     }
     .req-flex {
       margin-left: -5px;
@@ -99,13 +99,13 @@
       height: 45px;
       margin-right: 15px;
     }
-    
+
     .club-name {
       font-size: 18px;
 
-  
+
     }
-/* 
+/*
   .req-flex {
     margin-left: -2px;
   } */
