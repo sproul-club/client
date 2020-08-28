@@ -89,8 +89,8 @@
 .catalog .accordion__button:before {
   display: flex;
   content: '';
-  height: 10px;
-  width: 10px;
+  height: 7px;
+  width: 7px;
   margin-right: 12px;
   border-bottom: 2px solid currentColor;
   border-right: 2px solid currentColor;

@@ -43,6 +43,8 @@
 }
 
 .header a.active {
+  margin-top: 2px;
+  padding: 11px;
   background-color: #54a0f1;
   transition: background-color 0.15s;
   color: white;
