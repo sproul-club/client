@@ -22,6 +22,7 @@
 }
 
 .club-name {
+  letter-spacing: 0.03em;
   font-size: 22px;
   font-family: Qanelas Soft;
   font-weight: bold;
