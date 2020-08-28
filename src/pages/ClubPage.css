@@ -74,6 +74,7 @@
   font-size: 2.1vw;
   letter-spacing: 0.02em;
   color: #000000;
+  word-wrap: break-word;
 }
 
 .tags-flex {
@@ -127,9 +128,8 @@
   box-sizing: border-box;
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
+  word-wrap: break-word;
 }
-
-
 
 .desc-text {
   position: relative;
@@ -182,6 +182,7 @@
   box-sizing: border-box;
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
+  word-wrap: break-word;
 }
 
 #right-text {
