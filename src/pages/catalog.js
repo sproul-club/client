@@ -29,45 +29,52 @@ const Catalog = ({ searchClubs, clearOrganization, tagOptions }) => {
   const classes = useStyles();
 
   const [name, setName] = useState('');
-  // const [appReq, setAppReq] = useState(null);
-  // const [status, setStatus] = useState(null);
   const [tags, setTags] = useState([]);
 
   //checkbox logic jankness
-  const [appReqChecked, setAppReqChecked] = useState(false);
-  const [noAppReqChecked, setNoAppReqChecked] = useState(false);
-  const [recruitingChecked, setRecruitingChecked] = useState(false);
-  const [notRecruitingChecked, setNotRecruitingChecked] = useState(false);
+  const [appReq, setAppReq] = useState(false);
+  const [noAppReq, setNoAppReq] = useState(false);
+  const [recruiting, setRecruiting] = useState(false);
+  const [notRecruiting, setNotRecruiting] = useState(false);
 
   // clearing organization to be viewed every time navigate back to club page
   useEffect(() => {
     clearOrganization();
   }, [clearOrganization]);
 
-  const searchAllClubs = () => {
+  // run search when any state except "name" updates
+  useEffect(() => {
+    searchAllClubs();
+  }, [tags, appReq, noAppReq, recruiting, notRecruiting]);
 
+  const searchAllClubs = () => {
     //checkbox logic jankness
-    var appReq;
-    if (appReqChecked && !(noAppReqChecked)){
-      appReq = true;
-    } else if (!appReqChecked && noAppReqChecked){
-      appReq = false;
-    } else {
-      appReq = null;
+    var appReqValue = null;
+    if (appReq && !(noAppReq)) {
+      appReqValue = true;
+    } else if (!appReq && noAppReq) {
+      appReqValue = false;
     }
-    var status = null;
-    if (recruitingChecked && !(notRecruitingChecked)){
-      status = true;
-    } else if (!recruitingChecked && notRecruitingChecked){
-      status = false;
-    } else {
-      status = null;
+    var recruitingValue = null;
+    if (recruiting && !(notRecruiting)) {
+      recruitingValue = true;
+    } else if (!recruiting && notRecruiting) {
+      recruitingValue = false;
     }
 
     const tagValues = tags.map((tag) => tag.value);
-    const searchParams = { name, tags: tagValues, appReq, status };
+    const searchParams = { name, tags: tagValues, appReq: appReqValue, status: recruitingValue };
+    console.log(searchParams);
     searchClubs(searchParams);
   };
+
+  const tagsOnChange = (input) => {
+    var newTags = input;
+    if (input === null) {
+      newTags = [];
+    }
+    setTags(newTags);
+  }
 
   return (
     <div className="App">
@@ -120,7 +127,7 @@ const Catalog = ({ searchClubs, clearOrganization, tagOptions }) => {
                   multi={true}
                   search={true}
                   placeholder="Add up to 3 tags"
-                  set={setTags}
+                  set={tagsOnChange}
                 />
               </AccordionItemPanel>
             </AccordionItem>
@@ -134,14 +141,16 @@ const Catalog = ({ searchClubs, clearOrganization, tagOptions }) => {
                 <CheckBox
                   className="checkbox"
                   label="Requires app"
-                  onClick={() => {setAppReqChecked(!appReqChecked)}}
+                  isChecked={appReq}
+                  onClick={() => setAppReq(!appReq)}
                   name="appReq"
                   value="checkbox value"
                 />
                 <CheckBox
                   className="checkbox"
                   label="No app required"
-                  onClick={() => setNoAppReqChecked(!noAppReqChecked)}
+                  isChecked={noAppReq}
+                  onClick={() => setNoAppReq(!noAppReq)}
                   name="noAppReq"
                   value="checkbox value"
                 />
@@ -155,14 +164,14 @@ const Catalog = ({ searchClubs, clearOrganization, tagOptions }) => {
                 <CheckBox
                   className="checkbox"
                   label="Looking for members"
-                  onClick={() => setRecruitingChecked(!recruitingChecked)}
+                  onClick={() => setRecruiting(!recruiting)}
                   name="checkbox"
                   value="checkbox value"
                 />
                 <CheckBox
                   className="checkbox"
                   label="Not looking for members"
-                  onClick={() => setNotRecruitingChecked(!notRecruitingChecked)}
+                  onClick={() => setNotRecruiting(!notRecruiting)}
                   name="checkbox"
                   value="checkbox value"
                 />

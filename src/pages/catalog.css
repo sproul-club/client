@@ -25,7 +25,8 @@
   /* -- width: 300px; */
   float: left;
   color: #2b2b2b;
-  padding: 15px;
+  padding: 30px;
+  padding-right: 40px;
   font-size: 14px;
   line-height: 14px;
 }
@@ -162,8 +163,8 @@
 }
 
 .num-results {
-  margin-top: -22px;
-  margin-bottom: 5px;
+  margin-top: -18px;
+  margin-bottom: 15px;
   font-weight: 500;
 }
 
