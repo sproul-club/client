@@ -11,3 +11,45 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+/* -------------------------------------------------- */
+/* --------------------- Fonts ---------------------- */
+/* -------------------------------------------------- */
+
+@font-face {
+  font-family: 'Qanelas Soft';
+  src: local('Qanelas Soft Medium'), local('Qanelas-Soft-Medium'),
+      url('./pages/assets/fonts/Qanelas-Medium.woff2') format('woff2'),
+      url('./pages/assets/fonts/Qanelas-Medium.woff') format('woff'),
+      url('./pages/assets/fonts/Qanelas-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Qanelas Soft Semi Bold';
+  src: local('Qanelas Soft Semi Bold'), local('Qanelas-Soft-Semi-Bold'),
+      url('./pages/assets/fonts/Qanelas-SemiBold.woff2') format('woff2'),
+      url('./pages/assets/fonts/Qanelas-SemiBold.woff') format('woff'),
+      url('./pages/assets/fonts/Qanelas-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Qanelas Soft Bold';
+  src: local('Qanelas Soft Bold'), local('Qanelas-Soft-Bold'),
+      url('./pages/assets/fonts/Qanelas-Bold.woff2') format('woff2'),
+      url('./pages/assets/fonts/Qanelas-Bold.woff') format('woff'),
+      url('./pages/assets/fonts/Qanelas-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Qanelas Soft Extra Bold';
+  src: local('Qanelas Soft Extra Bold'), local('Qanelas-Soft-Extra-Bold'),
+      url('./pages/assets/fonts/Qanelas-ExtraBold.woff2') format('woff2'),
+      url('./pages/assets/fonts/Qanelas-ExtraBold.woff') format('woff'),
+      url('./pages/assets/fonts/Qanelas-ExtraBold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+}

@@ -41,7 +41,12 @@ function GridComponent({ tagOptions, clubs, num_clubs, classes, loadClubs }) {
               className={classes.media}
               image={club.banner_url || require('./assets/default_banner.jpg')}
             />
-            <CardContent>
+            <CardContent
+              style={{ 
+                padding: '14px',
+                paddingTop: '9px'
+             }}
+            >
               <div className="info-flex">
                 <div className="icon-title-flex">
                   <img
@@ -101,7 +106,7 @@ function GridComponent({ tagOptions, clubs, num_clubs, classes, loadClubs }) {
   return (
     <div className="wrapper">
       <div className="num-results">
-        {num_clubs && `${num_clubs} results`}
+        {num_clubs && `${num_clubs} Results`}
       </div>
       <Grid container spacing={2} className="card-grid">
         {GridList}

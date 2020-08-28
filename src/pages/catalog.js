@@ -80,6 +80,7 @@ const Catalog = ({
     return () => window.removeEventListener('scroll', onScroll);
   }, [numResults, num_clubs]);
 
+  
   const searchAllClubs = throttle(
     async (limit = eventsLoadedAtOnce, skip = 0, loadMore = false) => {
       //checkbox logic jankness
@@ -120,7 +121,14 @@ const Catalog = ({
     200
   );
 
-  const resetFilters = () => {};
+  const resetFilters = () => {
+    setName('');
+    setTags([]);
+    setAppReq(false);
+    setNoAppReq(false);
+    setRecruiting(false);
+    setNotRecruiting(false);
+  }
 
   const tagsOnChange = (input) => {
     var newTags = input;
@@ -157,7 +165,7 @@ const Catalog = ({
           <Accordion
             allowMultipleExpanded
             allowZeroExpanded
-            preExpanded={['a', 'b', 'c']}
+            preExpanded={['a', 'b', 'c', 'd', 'e']}
           >
             <AccordionItem className="accordion-group" uuid="a">
               <AccordionItemPanel>
@@ -173,7 +181,7 @@ const Catalog = ({
                 </div>
               </AccordionItemPanel>
             </AccordionItem>
-            <AccordionItem className="accordion-group" uuid="b">
+            <AccordionItem className="accordion-group search" uuid="b">
               <AccordionItemPanel>
                 <Form
                   className="search-bar"
@@ -203,7 +211,7 @@ const Catalog = ({
                 </Form>
               </AccordionItemPanel>
             </AccordionItem>
-            <AccordionItem className="accordion-group" uuid="c">
+            <AccordionItem className="accordion-group border" uuid="c">
               <AccordionItemHeading>
                 <AccordionItemButton>Club Tags </AccordionItemButton>
               </AccordionItemHeading>
@@ -213,11 +221,12 @@ const Catalog = ({
                   multi={true}
                   search={true}
                   placeholder="Add up to 3 tags"
+                  value={tags}
                   set={tagsOnChange}
                 />
               </AccordionItemPanel>
             </AccordionItem>
-            <AccordionItem className="accordion-group" uuid="d">
+            <AccordionItem className="accordion-group border" uuid="d">
               <AccordionItemHeading>
                 <AccordionItemButton>
                   Application Requirements
@@ -244,7 +253,7 @@ const Catalog = ({
                 />
               </AccordionItemPanel>
             </AccordionItem>
-            <AccordionItem className="accordion-group" uuid="e">
+            <AccordionItem className="accordion-group border" uuid="e">
               <AccordionItemHeading>
                 <AccordionItemButton>Membership Status</AccordionItemButton>
               </AccordionItemHeading>
@@ -252,7 +261,7 @@ const Catalog = ({
                 <CheckBox
                   key={'recruiting' + Math.random()}
                   className="checkbox"
-                  label="Looking for members"
+                  label="Taking new members"
                   isChecked={recruiting}
                   onClick={() => toggleRecruiting()}
                   name="checkbox"
@@ -261,7 +270,7 @@ const Catalog = ({
                 <CheckBox
                   key={'notRecruiting' + Math.random()}
                   className="checkbox"
-                  label="Not looking for members"
+                  label="Not taking new members"
                   isChecked={notRecruiting}
                   onClick={() => toggleNotRecruiting()}
                   name="checkbox"
