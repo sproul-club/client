@@ -68,7 +68,12 @@ const Catalog = ({ searchClubs, clearOrganization, tagOptions }) => {
   };
 
   const resetFilters = () => {
-
+    setName('');
+    setTags([]);
+    setAppReq(false);
+    setNoAppReq(false);
+    setRecruiting(false);
+    setNotRecruiting(false);
   }
 
   const tagsOnChange = (input) => {

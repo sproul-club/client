@@ -26,7 +26,7 @@ const customStyles = {
     marginTop: 2,
     width: 'calc(100% - 7px - 1px - 10px - 8px)',
     fontSize: '12px',
-    fontFamily: 'Roboto, sans-serif',
+    fontFamily: 'Qanelas Soft',
     fontWeight: 300,
     fontStyle: 'normal',
     textAlign: 'left',
