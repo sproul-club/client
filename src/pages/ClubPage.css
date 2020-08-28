@@ -8,7 +8,7 @@
   background-position: 50% 10%;
   border-radius: 10px;
   border: 1px solid #c4c4c4;
-  margin-top: 87px;
+  margin-top: 67px;
 }
 
 .flex-container-chungus {
@@ -193,7 +193,6 @@
   display: flex;
   flex-direction: column;
   margin-bottom: 0.8vw;
-
 }
 
 #resources {
@@ -229,7 +228,8 @@
 }
 
 .link-image:hover {
-  filter: invert(67%) sepia(33%) saturate(4603%) hue-rotate(186deg) brightness(96%) contrast(97%);
+  filter: invert(67%) sepia(33%) saturate(4603%) hue-rotate(186deg)
+    brightness(96%) contrast(97%);
 }
 /*====================================*/
 /*GENERAL TAGS*/
@@ -283,7 +283,7 @@ hr {
 }
 
 #gray-ev-link {
-  color: #8D8D8D;
+  color: #8d8d8d;
 }
 
 .event-flex-container {
@@ -295,7 +295,6 @@ hr {
   justify-content: space-between;
   align-items: center;
   margin-top: 1vh;
-
 }
 
 .event-flex-left {
@@ -387,8 +386,6 @@ hr {
     flex-direction: row;
   }
 
- 
-
   .desc-box p,
   .events-box p,
   .contact-box p,
@@ -429,7 +426,6 @@ hr {
     border-radius: 6px;
     letter-spacing: 0.03em;
   }
-
 
   .link-image {
     width: 4.5vw;

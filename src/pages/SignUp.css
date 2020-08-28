@@ -1,11 +1,10 @@
 /* Overall page content layout */
 .signup .content {
-  padding-top: 86.6px;
-  min-height: calc(100vh - 86.6px - 82.6px);
+  padding-top: 66.6px;
+  height: calc(100vh - 66.6px - 71.6px);
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 5%;
 }
 
 /* Description styling */
@@ -459,17 +458,20 @@
     padding-right: 12px;
   }
 
-  .signup .error.emptyName, .signup .error.emptyTags{
+  .signup .error.emptyName,
+  .signup .error.emptyTags {
     margin-left: 250px;
     margin-top: 220px;
   }
 
-  .signup .error.tagOverflow, .signup .tagOverflowNone {
+  .signup .error.tagOverflow,
+  .signup .tagOverflowNone {
     margin-left: 206px;
     margin-top: 220px;
   }
 
-  .signup .error.emptyEmail, .signup .error.emptyAppReq {
+  .signup .error.emptyEmail,
+  .signup .error.emptyAppReq {
     margin-left: 250px;
     margin-top: 292px;
   }

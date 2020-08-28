@@ -6,8 +6,8 @@
 
 .catalog .content {
   /* total height - header - footer */
-  min-height: calc(100vh - 87px - 61px);
-  padding-top: 87px;
+  min-height: calc(100vh - 70px - 62px);
+  padding-top: 67px;
   display: flex;
 }
 

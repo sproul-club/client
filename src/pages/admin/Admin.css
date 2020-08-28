@@ -1,7 +1,7 @@
 .clubEdit {
-  height: calc(100vh - 87px);
+  height: calc(100vh - 67px);
   overflow-y: hidden;
-  padding-top: 87px;
+  padding-top: 67px;
 }
 
 .admin-page {
@@ -152,6 +152,6 @@
   color: #ff2d2d;
 }
 
-a{
+a {
   text-decoration: none;
 }
