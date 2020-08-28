@@ -210,7 +210,7 @@ const Catalog = ({ searchClubs, clearOrganization, tagOptions }) => {
                 <CheckBox
                   key={'recruiting' + Math.random()}
                   className="checkbox"
-                  label="Looking for members"
+                  label="Taking new members"
                   isChecked={recruiting}
                   onClick={() => toggleRecruiting()}
                   name="checkbox"
@@ -219,7 +219,7 @@ const Catalog = ({ searchClubs, clearOrganization, tagOptions }) => {
                 <CheckBox
                   key={'notRecruiting' + Math.random()}
                   className="checkbox"
-                  label="Not looking for members"
+                  label="Not taking new members"
                   isChecked={notRecruiting}
                   onClick={() => toggleNotRecruiting()}
                   name="checkbox"
