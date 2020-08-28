@@ -14,10 +14,9 @@ export const loadClubs = () => async (dispatch) => {
     };
 
     const params = JSON.stringify({ limit: 30, skip: 0 });
-
     const res = await axios.post('/api/catalog/organizations', params, config);
 
-    dispatch({ type: SEARCH_CLUBS, payload: res.data });
+    dispatch({ type: SEARCH_CLUBS, payload: res.data.results, num_results: res.data.num_results });
   } catch (err) {
     console.log(err);
   }
@@ -38,9 +37,9 @@ export const searchClubs = ({
     };
 
     const params = JSON.stringify({ search, tags, app_required, new_members });
-
     const res = await axios.post('/api/catalog/search', params, config);
-    dispatch({ type: SEARCH_CLUBS, payload: res.data });
+
+    dispatch({ type: SEARCH_CLUBS, payload: res.data.results, num_results: res.data.num_results });
   } catch (err) {
     console.log(err);
   }
