@@ -68,7 +68,12 @@ const Catalog = ({ searchClubs, clearOrganization, tagOptions }) => {
   };
 
   const resetFilters = () => {
-
+    setName('');
+    setTags([]);
+    setAppReq(false);
+    setNoAppReq(false);
+    setRecruiting(false);
+    setNotRecruiting(false);
   }
 
   const tagsOnChange = (input) => {
@@ -165,6 +170,7 @@ const Catalog = ({ searchClubs, clearOrganization, tagOptions }) => {
                   multi={true}
                   search={true}
                   placeholder="Add up to 3 tags"
+                  value={tags}
                   set={tagsOnChange}
                 />
               </AccordionItemPanel>

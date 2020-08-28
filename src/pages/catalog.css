@@ -100,9 +100,11 @@
 .catalog .reset-wrapper {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .catalog .reset-wrapper .reset-filters {
+  height: fit-content;
   margin-right: 7px;
   padding: 4px 14px;
   border: none;

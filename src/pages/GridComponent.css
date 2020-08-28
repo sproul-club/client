@@ -12,6 +12,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  margin-bottom: 3px;
 }
 
 .card-club-logo {
@@ -22,9 +23,8 @@
 
 .club-name {
   font-size: 22px;
-  font-family: montserrat, sans-serif;
+  font-family: Qanelas Soft;
   font-weight: bold;
-
 }
 
 .grid-tags-flex {
@@ -39,9 +39,9 @@
   margin-top: 8px;
   margin-left: 15px;
   background-color: #E2E2E2;
-  border-radius: 6px;
-  padding: 0.2vw 1vw 0.2vw 1vw;
-  font-family: roboto, sans-serif;
+  border-radius: 5px;
+  padding: 0vw 0.9vw 0vw 0.9vw;
+  font-family: Qanelas Soft;
   font-size: 17px;
 }
 
@@ -76,9 +76,7 @@
     }
     
     .club-name {
-      font-size: 15px;
-      font-family: montserrat, sans-serif;
-      font-weight: bold;
+      font-size: 16px;
   
     }
     .grid-tags-flex {
@@ -89,8 +87,8 @@
       margin-left: -5px;
     }
   .grid-tag {
-      font-size: 10px;
-      margin-top: 4px;
+      font-size: 12px;
+      margin-top: 6px;
       margin-left: 4px;
   }
 }
@@ -104,8 +102,7 @@
     
     .club-name {
       font-size: 18px;
-      font-family: montserrat, sans-serif;
-      font-weight: bold;
+
   
     }
 /* 

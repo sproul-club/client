@@ -11,3 +11,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@font-face {
+  font-family: 'Qanelas Soft';
+  src: local('Qanelas Soft Medium'), local('Qanelas-Soft-Medium'),
+      url('./pages/assets/fonts/Qanelas-Medium.woff2') format('woff2'),
+      url('./pages/assets/fonts/Qanelas-Medium.woff') format('woff'),
+      url('./pages/assets/fonts/Qanelas-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}

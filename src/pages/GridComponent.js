@@ -41,7 +41,12 @@ function GridComponent({ tagOptions, clubs, num_clubs, classes, loadClubs }) {
               className={classes.media}
               image={club.banner_url || require('./assets/default_banner.jpg')}
             />
-            <CardContent>
+            <CardContent
+              style={{ 
+                padding: '13px',
+                paddingTop: '9px'
+             }}
+            >
               <div className="info-flex">
                 <div className="icon-title-flex">
                   <img
