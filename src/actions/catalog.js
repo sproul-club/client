@@ -1,4 +1,4 @@
-import { SEARCH_CLUBS, GET_ORGANIZATION, CLEAR_ORGANIZATION } from './types';
+import { SEARCH_CLUBS, GET_ORGANIZATION, CLEAR_ORGANIZATION, LOAD_MORE_ORGS } from './types';
 import axios from 'axios';
 
 // Search Clubs
@@ -27,6 +27,8 @@ export const searchClubs = ({
   tags,
   appReq: app_required,
   status: new_members,
+  limit,
+  skip,
 }) => async (dispatch) => {
   try {
     const config = {
@@ -36,7 +38,7 @@ export const searchClubs = ({
       },
     };
 
-    const params = JSON.stringify({ search, tags, app_required, new_members });
+    const params = JSON.stringify({ search, tags, app_required, new_members, limit, skip });
     const res = await axios.post('/api/catalog/search', params, config);
 
     dispatch({ type: SEARCH_CLUBS, payload: res.data.results, num_results: res.data.num_results });
@@ -58,6 +60,32 @@ export const getOrganization = (orgId) => async (dispatch) => {
 export const clearOrganization = () => (dispatch) => {
   try {
     dispatch({ type: CLEAR_ORGANIZATION });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+
+export const loadMoreOrgs = ({
+  name: search,
+  tags,
+  appReq: app_required,
+  status: new_members,
+  limit,
+  skip,
+}) => async (dispatch) => {
+  try {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+      },
+    };
+
+    const params = JSON.stringify({ search, tags, app_required, new_members, limit, skip });
+    const res = await axios.post('/api/catalog/search', params, config);
+
+    dispatch({ type: LOAD_MORE_ORGS, payload: res.data.results, num_results: res.data.num_results });
   } catch (err) {
     console.log(err);
   }

@@ -2,9 +2,8 @@ import {
   SEARCH_CLUBS,
   GET_ORGANIZATION,
   CLEAR_ORGANIZATION,
+  LOAD_MORE_ORGS,
 } from '../actions/types';
-
-// const allClubs = Object.keys(catalogData).map((club) => catalogData[club]);
 
 const initialState = {
   clubs: [],
@@ -21,6 +20,8 @@ export default function (state = initialState, action) {
       return { ...state, organization: payload };
     case CLEAR_ORGANIZATION:
       return { ...state, organization: {} };
+    case LOAD_MORE_ORGS:
+      return { ...state, clubs: [...state.clubs, ...payload] };
     default:
       return state;
   }

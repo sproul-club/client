@@ -3,8 +3,14 @@ import './catalog.css';
 import GridComponent from './GridComponent';
 import Footer from '../layout/Footer';
 import { withRouter } from 'react-router-dom';
+import LoadingComponent from '../layout/LoadingComponent';
+import { throttle } from '../utils/throttle';
 import { connect } from 'react-redux';
-import { searchClubs, clearOrganization } from '../actions/catalog';
+import {
+  searchClubs,
+  clearOrganization,
+  loadMoreOrgs,
+} from '../actions/catalog';
 import Dropdown from './CatalogDropdown.js';
 import {
   Accordion,
@@ -16,7 +22,13 @@ import {
 import { Form, TextBox, CheckBox } from 'react-form-elements';
 import { makeStyles } from '@material-ui/core/styles';
 
-const Catalog = ({ searchClubs, clearOrganization, tagOptions }) => {
+const Catalog = ({
+  searchClubs,
+  clearOrganization,
+  tagOptions,
+  loadMoreOrgs,
+  num_clubs,
+}) => {
   const useStyles = makeStyles({
     root: {
       minWidth: 200,
@@ -25,6 +37,8 @@ const Catalog = ({ searchClubs, clearOrganization, tagOptions }) => {
       height: 140,
     },
   });
+
+  const eventsLoadedAtOnce = 18;
 
   const classes = useStyles();
 
@@ -37,6 +51,9 @@ const Catalog = ({ searchClubs, clearOrganization, tagOptions }) => {
   const [recruiting, setRecruiting] = useState(false);
   const [notRecruiting, setNotRecruiting] = useState(false);
 
+  const [moreLoading, setMoreLoading] = useState(false);
+  const [numResults, setNumResults] = useState(eventsLoadedAtOnce);
+
   // clearing organization to be viewed every time navigate back to club page
   useEffect(() => {
     clearOrganization();
@@ -47,29 +64,63 @@ const Catalog = ({ searchClubs, clearOrganization, tagOptions }) => {
     searchAllClubs();
   }, [tags, appReq, noAppReq, recruiting, notRecruiting]);
 
-  const searchAllClubs = () => {
-    //checkbox logic jankness
-    var appReqValue = null;
-    if (appReq && !(noAppReq)) {
-      appReqValue = true;
-    } else if (!appReq && noAppReq) {
-      appReqValue = false;
-    }
-    var recruitingValue = null;
-    if (recruiting && !(notRecruiting)) {
-      recruitingValue = true;
-    } else if (!recruiting && notRecruiting) {
-      recruitingValue = false;
-    }
+  // Listener for when scroll reaches bottom, call the function to load more clubs
+  useEffect(() => {
+    const onScroll = () => {
+      if (
+        window.innerHeight + window.pageYOffset >=
+          document.body.offsetHeight - 0.5 &&
+        numResults < num_clubs
+      ) {
+        searchAllClubs(eventsLoadedAtOnce, numResults, true);
+      }
+    };
+    window.addEventListener('scroll', onScroll);
 
-    const tagValues = tags.map((tag) => tag.value);
-    const searchParams = { name, tags: tagValues, appReq: appReqValue, status: recruitingValue };
-    searchClubs(searchParams);
-  };
+    return () => window.removeEventListener('scroll', onScroll);
+  }, [numResults, num_clubs]);
 
-  const resetFilters = () => {
+  const searchAllClubs = throttle(
+    async (limit = eventsLoadedAtOnce, skip = 0, loadMore = false) => {
+      //checkbox logic jankness
+      var appReqValue = null;
+      if (appReq && !noAppReq) {
+        appReqValue = true;
+      } else if (!appReq && noAppReq) {
+        appReqValue = false;
+      }
+      var recruitingValue = null;
+      if (recruiting && !notRecruiting) {
+        recruitingValue = true;
+      } else if (!recruiting && notRecruiting) {
+        recruitingValue = false;
+      }
+      const tagValues = tags.map((tag) => tag.value);
+      const searchParams = {
+        name,
+        tags: tagValues,
+        appReq: appReqValue,
+        status: recruitingValue,
+        limit,
+        skip,
+      };
 
-  }
+      if (loadMore) {
+        setMoreLoading(true);
+        await loadMoreOrgs(searchParams);
+        setNumResults((numResults) => numResults + eventsLoadedAtOnce);
+        setMoreLoading(false);
+        return;
+      }
+
+      setNumResults(eventsLoadedAtOnce);
+      window.scrollTo(0, 0);
+      searchClubs(searchParams);
+    },
+    200
+  );
+
+  const resetFilters = () => {};
 
   const tagsOnChange = (input) => {
     var newTags = input;
@@ -77,7 +128,7 @@ const Catalog = ({ searchClubs, clearOrganization, tagOptions }) => {
       newTags = [];
     }
     setTags(newTags);
-  }
+  };
 
   function toggleAppReq() {
     setAppReq(!appReq);
@@ -146,10 +197,7 @@ const Catalog = ({ searchClubs, clearOrganization, tagOptions }) => {
                       fontFamily: 'Roboto,sans-serif',
                     }}
                   />
-                  <button
-                    className="search-button"
-                    type="submit"
-                  >
+                  <button className="search-button" type="submit">
                     <i className="fa fa-search"></i>
                   </button>
                 </Form>
@@ -225,6 +273,22 @@ const Catalog = ({ searchClubs, clearOrganization, tagOptions }) => {
         </div>
         <div className="cards">
           <GridComponent tagOptions={tagOptions} classes={classes} />
+          <div className="more-content">
+            {moreLoading ? (
+              <LoadingComponent />
+            ) : (
+              numResults < num_clubs && (
+                <button
+                  className="load-more"
+                  onClick={() =>
+                    searchAllClubs(eventsLoadedAtOnce, numResults, true)
+                  }
+                >
+                  load more
+                </button>
+              )
+            )}
+          </div>
         </div>
       </div>
       <Footer />
@@ -233,10 +297,12 @@ const Catalog = ({ searchClubs, clearOrganization, tagOptions }) => {
 };
 
 const mapStateToProps = (state) => ({
-  tagOptions: state.profile.tagOptions
-})
+  num_clubs: state.catalog.num_clubs,
+  tagOptions: state.profile.tagOptions,
+});
 
 export default withRouter(
-  connect(mapStateToProps, { searchClubs, clearOrganization })(Catalog)
+  connect(mapStateToProps, { searchClubs, clearOrganization, loadMoreOrgs })(
+    Catalog
+  )
 );
-

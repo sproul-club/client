@@ -13,7 +13,7 @@
   z-index: 998;
   position: fixed;
   width: calc(100% - 64px);
-  background: rgb(255, 255, 255, 0.9);
+  background: rgb(255, 255, 255, 0.95);
 }
 
 .header .nav-link {
