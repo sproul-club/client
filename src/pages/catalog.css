@@ -6,8 +6,8 @@
 
 .catalog .content {
   /* total height - header - footer */
-  min-height: calc(100vh - 87px - 61px);
-  padding-top: 87px;
+  min-height: calc(100vh - 70px - 62px);
+  padding-top: 67px;
   display: flex;
 }
 
@@ -189,7 +189,7 @@
   text-align: left;
   align-self: start;
   margin-top: 20px;
-  margin-left: 285px;
+  margin-left: 270px;
   /* -- width: 300px; */
   float: left;
   color: #2b2b2b;

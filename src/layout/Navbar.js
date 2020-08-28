@@ -44,7 +44,7 @@ const Navbar = ({
     logout(history);
   };
 
-  if (loading) return null;
+  // if (loading) return null;
 
   const loggedOutLinks = (
     <>
@@ -61,7 +61,7 @@ const Navbar = ({
   );
 
   const loggedInLinks = (
-    <div style={{ display: 'flex', flexDirection: 'row' }}>
+    <div className='logged-in-links'>
       <Link to="/catalog" className="nav-link hide-sm">
         Discover
       </Link>
@@ -74,13 +74,15 @@ const Navbar = ({
         ref={authDropDownRef}
         onClick={toggleDropdown}
       >
-        <div className="org-email">
-          {organizationEmail}
-          <i
-            style={{ marginLeft: '5px' }}
-            className={`fas ${dropdownVis ? 'fa-caret-down' : 'fa-caret-up'}`}
-          ></i>
-        </div>
+        {!loading && (
+          <div className="org-email">
+            {organizationEmail}
+            <i
+              style={{ marginLeft: '5px' }}
+              className={`fas ${dropdownVis ? 'fa-caret-down' : 'fa-caret-up'}`}
+            ></i>
+          </div>
+        )}
         {dropdownVis && (
           <div className="dropdown">
             <Link className="option" to="/admin">
