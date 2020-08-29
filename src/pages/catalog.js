@@ -293,7 +293,7 @@ const Catalog = ({
                     searchAllClubs(eventsLoadedAtOnce, numResults, true)
                   }
                 >
-                  load more
+                  Load More
                 </button>
               )
             )}
