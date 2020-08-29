@@ -24,6 +24,10 @@ const Navbar = ({
   const navbarRef = useRef();
   const authDropDownRef = useRef();
 
+  useEffect(() => {
+    setNavbarVis(false);
+  }, [window.location.pathname]);
+
   // If it is on mobile, and the navbar is visible, if click outside, hide sidebar
   useOnClickOutside(navbarRef, () => {
     if (window.innerWidth <= 800 && navbarVis === true) {
