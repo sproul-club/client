@@ -6,8 +6,8 @@
 
 .catalog .content {
   /* total height - header - footer */
-  min-height: calc(100vh - 87px - 61px);
-  padding-top: 87px;
+  min-height: calc(100vh - 70px - 62px);
+  padding-top: 67px;
   display: flex;
 }
 
@@ -48,7 +48,7 @@
 }
 
 .catalog .accordion .accordion-group.border {
-  margin-bottom: 7px;
+  margin-bottom: 6px;
   padding-top: 7px;
   border-top: 2px solid #80808021;
 }
@@ -178,7 +178,7 @@
 }
 
 .catalog .checkbox > label {
-  margin-top: 1.5px;
+  margin-top: 2.5px;
   margin-left: 7px;
 }
 
@@ -189,7 +189,7 @@
   text-align: left;
   align-self: start;
   margin-top: 20px;
-  margin-left: 285px;
+  margin-left: 270px;
   /* -- width: 300px; */
   float: left;
   color: #2b2b2b;
@@ -229,6 +229,10 @@
   margin-top: 30px;
 }
 
+.expand-search {
+  display: none;
+}
+
 /* -------------------------------------------------- */
 /* ---------------- Animation part ------------------ */
 /* -------------------------------------------------- */
@@ -249,5 +253,55 @@
     align-content: flex-start;
     align-self: flex-start;
     flex-direction: column;
+  }
+
+  .catalog .sidebar {
+    height: 85px;
+    display: fixed;
+    background: white;
+    z-index: 2;
+    width: 100%;
+    overflow: hidden;
+    padding: 0px;
+    border-bottom: 1px solid #ccc;
+    border-radius: 0px 0px 5px 5px;
+    /* display: none; */
+  }
+  .show-search {
+    height: 460px !important;
+  }
+  .expand-search {
+    display: flex;
+    justify-content: center;
+    width: 350px;
+    position: absolute;
+    bottom: 5px;
+    overflow: hidden;
+  }
+  .expand-search button {
+    background: white;
+    margin-top: 5px;
+    width: 100px;
+    border: 1px solid #54a0f1;
+    color: #54a0f1;
+    border-radius: 5px;
+    font-family: Qanelas Soft;
+  }
+
+  .accordion {
+    width: 350px !important;
+    padding: auto;
+  }
+  .catalog .accordion-group,
+  .catalog .accordion__button {
+    width: 350px;
+  }
+  .catalog .cards {
+    margin-left: 0px;
+    padding: 10px;
+    margin-top: 100px;
+  }
+  .reset-wrapper {
+    display: none !important;
   }
 }

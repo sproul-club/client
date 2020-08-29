@@ -108,7 +108,7 @@ const Profile = ({
             );
           } else {
             NotificationManager.error(
-              'For best results, please upload a banner that has an aspect ratio of 16:6',
+              'For best results, please upload a banner that has an aspect ratio of 8:3',
               'Banner image upload unsuccessful',
               5000
             );
@@ -252,7 +252,7 @@ const Profile = ({
         <div className="formElement">
           <p>Banner</p>
           <ImageUploader
-            label="16:6 ratio - e.g. Facebook cover image"
+            label="8:3 ratio - e.g. Facebook cover image"
             buttonStyles={{
               background: '#54a0f1',
             }}

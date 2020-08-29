@@ -24,6 +24,10 @@ const Navbar = ({
   const navbarRef = useRef();
   const authDropDownRef = useRef();
 
+  useEffect(() => {
+    setNavbarVis(false);
+  }, [window.location.pathname]);
+
   // If it is on mobile, and the navbar is visible, if click outside, hide sidebar
   useOnClickOutside(navbarRef, () => {
     if (window.innerWidth <= 800 && navbarVis === true) {
@@ -44,8 +48,6 @@ const Navbar = ({
     logout(history);
   };
 
-  if (loading) return null;
-
   const loggedOutLinks = (
     <>
       <Link to="/catalog" className="nav-link">
@@ -61,11 +63,11 @@ const Navbar = ({
   );
 
   const loggedInLinks = (
-    <div style={{ display: 'flex', flexDirection: 'row' }}>
-      <Link to="/catalog" className="nav-link hide-sm">
+    <div className="logged-in-links">
+      <Link to="/catalog" className="nav-link">
         Discover
       </Link>
-      <Link to={`/club/${orgId}`} className="nav-link hide-sm">
+      <Link to={`/club/${orgId}`} className="nav-link">
         View Profile
       </Link>
       <div
@@ -81,6 +83,7 @@ const Navbar = ({
             className={`fas ${dropdownVis ? 'fa-caret-down' : 'fa-caret-up'}`}
           ></i>
         </div>
+
         {dropdownVis && (
           <div className="dropdown">
             <Link className="option" to="/admin">
@@ -98,6 +101,12 @@ const Navbar = ({
     </div>
   );
 
+  const display = isAuthenticated
+    ? loggedInLinks
+    : loading
+    ? ''
+    : loggedOutLinks;
+
   return (
     <>
       <div className="header" ref={navbarRef}>
@@ -108,9 +117,7 @@ const Navbar = ({
           <i className="fas fa-bars"></i>
         </div>
         {(navbarVis || window.innerWidth >= 800) && (
-          <div className="header-right">
-            {isAuthenticated ? loggedInLinks : loggedOutLinks}
-          </div>
+          <div className="header-right">{display}</div>
         )}
       </div>
     </>

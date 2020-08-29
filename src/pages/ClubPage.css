@@ -1,3 +1,10 @@
+.clubpage {
+  min-height: 100vh;
+  max-width: 100vw;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
 .header-img {
   position: relative;
   width: 75vw;
@@ -8,7 +15,7 @@
   background-position: 50% 10%;
   border-radius: 10px;
   border: 1px solid #c4c4c4;
-  margin-top: 87px;
+  margin-top: 67px;
 }
 
 .flex-container-chungus {
@@ -193,7 +200,6 @@
   display: flex;
   flex-direction: column;
   margin-bottom: 0.8vw;
-
 }
 
 #resources {
@@ -229,7 +235,8 @@
 }
 
 .link-image:hover {
-  filter: invert(67%) sepia(33%) saturate(4603%) hue-rotate(186deg) brightness(96%) contrast(97%);
+  filter: invert(67%) sepia(33%) saturate(4603%) hue-rotate(186deg)
+    brightness(96%) contrast(97%);
 }
 /*====================================*/
 /*GENERAL TAGS*/
@@ -283,7 +290,7 @@ hr {
 }
 
 #gray-ev-link {
-  color: #8D8D8D;
+  color: #8d8d8d;
 }
 
 .event-flex-container {
@@ -295,7 +302,6 @@ hr {
   justify-content: space-between;
   align-items: center;
   margin-top: 1vh;
-
 }
 
 .event-flex-left {
@@ -387,8 +393,6 @@ hr {
     flex-direction: row;
   }
 
- 
-
   .desc-box p,
   .events-box p,
   .contact-box p,
@@ -414,6 +418,21 @@ hr {
     letter-spacing: 0.03em;
   }
 
+  .event-flex-left,
+  .event-flex-right,
+  .left-box .desc-text,
+  .right-box .desc-text {
+    font-size: 10px;
+  }
+
+  .left-box p,
+  .right-box p,
+  .contact-box p {
+    font-size: 13px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+  }
+
   .accordion__panel-event {
     animation: fadein 0.35s ease-in;
     text-align: left;
@@ -430,12 +449,13 @@ hr {
     letter-spacing: 0.03em;
   }
 
-
   .link-image {
-    width: 4.5vw;
-    margin-left: 1vw;
-    margin-top: 1vw;
-    height: auto;
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+  }
+  .link-flex {
+    width: 100% !important;
   }
 
   .res-img {
@@ -454,5 +474,16 @@ hr {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: flex-start;
+  }
+  .header-img {
+    position: relative;
+    width: 100%;
+    height: auto;
+    left: 0;
+  }
+
+  .flex-container-chungus {
+    width: 100vw;
+    left: 0;
   }
 }

@@ -1,7 +1,7 @@
 .clubEdit {
-  height: calc(100vh - 87px);
+  height: calc(100vh - 67px);
   overflow-y: hidden;
-  padding-top: 87px;
+  padding-top: 67px;
 }
 
 .admin-page {
@@ -152,6 +152,62 @@
   color: #ff2d2d;
 }
 
-a{
+a {
   text-decoration: none;
+}
+
+@media screen and (max-width: 850px) {
+  .admin-sidebar {
+    background: white;
+    height: 40px;
+    padding: 10px 0px;
+    position: fixed;
+    top: 67px;
+    left: 0px;
+    max-width: 100vh;
+    width: 100vw;
+    display: table;
+  }
+  .admin-sidebar a {
+    font-size: 12px;
+    padding: 0 10px;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+  }
+  .admin-content {
+    padding: 0 10px;
+    padding-top: 50px;
+    margin-bottom: 50px;
+  }
+  .admin-page .formGroup {
+    padding: 10px;
+  }
+
+  .admin-page .formElement {
+    display: flex;
+    flex-direction: column;
+    align-items: unset;
+    width: auto;
+  }
+  .admin-page .formElement p {
+    text-align: left;
+  }
+  .admin-page .formElement .userInput {
+    width: 320px !important;
+    height: 34px;
+  }
+  .subtitle {
+    margin-left: 0px;
+  }
+  .descriptionInput {
+    width: 300px !important;
+  }
+  .react-select__control,
+  .react-select__menu {
+    max-width: 330px !important;
+  }
+  .event {
+    width: 100%;
+  }
 }
