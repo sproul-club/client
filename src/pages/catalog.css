@@ -229,6 +229,10 @@
   margin-top: 10px;
 }
 
+.expand-search {
+  display: none;
+}
+
 /* -------------------------------------------------- */
 /* ---------------- Animation part ------------------ */
 /* -------------------------------------------------- */
@@ -249,5 +253,50 @@
     align-content: flex-start;
     align-self: flex-start;
     flex-direction: column;
+  }
+
+  .catalog .sidebar {
+    height: 85px;
+    display: fixed;
+    background: white;
+    z-index: 2;
+    width: 100%;
+    overflow: hidden;
+    padding: 0px;
+    border-bottom: 1px solid #ccc;
+    border-radius: 0px 0px 5px 5px;
+    /* display: none; */
+  }
+  .show-search {
+    height: 460px !important;
+  }
+  .expand-search {
+    display: unset;
+    margin-left: 125px;
+    margin-top: 5px;
+    position: absolute;
+    bottom: 5px;
+    background: white;
+    width: 100px;
+    border: 1px solid #54a0f1;
+    color: #54a0f1;
+    border-radius: 5px;
+  }
+
+  .accordion {
+    width: 350px !important;
+    padding: auto;
+  }
+  .catalog .accordion-group,
+  .catalog .accordion__button {
+    width: 350px;
+  }
+  .catalog .cards {
+    margin-left: 0px;
+    padding: 10px;
+    margin-top: 100px;
+  }
+  .reset-wrapper {
+    display: none !important;
   }
 }

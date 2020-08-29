@@ -149,7 +149,7 @@
   .header {
     padding-left: 10px;
     padding-right: 10px;
-    width: calc(100% - 20px);
+    width: calc(100vw - 20px);
   }
   .header-right {
     width: 100%;
@@ -169,12 +169,10 @@
     margin-top: 0px !important;
     margin: 0px !important;
   }
-  /* .hide-sm {
-    display: none;
-  } */
 
   .logged-in-links {
     flex-direction: column;
+    align-items: center;
   }
   .dropdown {
     margin-right: 10px;

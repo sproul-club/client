@@ -87,7 +87,7 @@ function ClubPage({
   );
 
   return (
-    <div style={{ minHeight: '100vh' }}>
+    <div className='clubpage'>
       <img
         className="header-img"
         src={organization.banner_url || require('./assets/default_banner.jpg')}
