@@ -1,2 +1,4 @@
 node_modules
 .idea/
+src/layout/Disclaimer.css
+src/layout/Disclaimer.js
