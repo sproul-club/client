@@ -3,6 +3,7 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
+  margin-top: 20px;
 }
 .lds-ring {
   display: inline-block;

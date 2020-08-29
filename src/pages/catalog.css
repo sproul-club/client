@@ -256,10 +256,10 @@
   }
 
   .catalog .sidebar {
-    height: 85px;
+    height: 80px;
     display: fixed;
     background: white;
-    z-index: 2;
+    z-index: 501 !important;
     width: 100%;
     overflow: hidden;
     padding: 0px;
@@ -274,6 +274,7 @@
     display: flex;
     justify-content: center;
     width: 350px;
+    height: 25px;
     position: absolute;
     bottom: 5px;
     overflow: hidden;
@@ -291,6 +292,10 @@
   .accordion {
     width: 350px !important;
     padding: auto;
+  }
+  .search {
+    margin-top: -5px;
+    z-index: 500;
   }
   .catalog .accordion-group,
   .catalog .accordion__button {
