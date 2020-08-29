@@ -10,6 +10,8 @@ import {
   searchClubs,
   clearOrganization,
   loadMoreOrgs,
+  setFormDetails,
+  clearOrganizations,
 } from '../actions/catalog';
 import Dropdown from './CatalogDropdown.js';
 import {
@@ -28,6 +30,8 @@ const Catalog = ({
   tagOptions,
   loadMoreOrgs,
   num_clubs,
+  formDetails,
+  setFormDetails,
 }) => {
   const useStyles = makeStyles({
     root: {
@@ -37,19 +41,18 @@ const Catalog = ({
       height: 140,
     },
   });
+  const {
+    name,
+    tags,
+    appReq,
+    noAppReq,
+    recruiting,
+    notRecruiting,
+  } = formDetails;
 
   const eventsLoadedAtOnce = 18;
 
   const classes = useStyles();
-
-  const [name, setName] = useState('');
-  const [tags, setTags] = useState([]);
-
-  //checkbox logic jankness
-  const [appReq, setAppReq] = useState(false);
-  const [noAppReq, setNoAppReq] = useState(false);
-  const [recruiting, setRecruiting] = useState(false);
-  const [notRecruiting, setNotRecruiting] = useState(false);
 
   const [moreLoading, setMoreLoading] = useState(false);
   const [numResults, setNumResults] = useState(eventsLoadedAtOnce);
@@ -101,7 +104,7 @@ const Catalog = ({
       }
       const tagValues = tags.map((tag) => tag.value);
       const searchParams = {
-        name,
+        name: name,
         tags: tagValues,
         appReq: appReqValue,
         status: recruitingValue,
@@ -120,18 +123,20 @@ const Catalog = ({
       setNumResults(eventsLoadedAtOnce);
       setExpandSearch(false);
       window.scrollTo(0, 0);
-      searchClubs(searchParams);
+      setMoreLoading(true);
+      await searchClubs(searchParams);
+      setMoreLoading(false);
     },
-    300
+    2000
   );
 
   const resetFilters = () => {
-    setName('');
-    setTags([]);
-    setAppReq(false);
-    setNoAppReq(false);
-    setRecruiting(false);
-    setNotRecruiting(false);
+    setFormDetails({ name: 'name', value: '' });
+    setFormDetails({ name: 'tags', value: [] });
+    setFormDetails({ name: 'appReq', value: false });
+    setFormDetails({ name: 'noAppReq', value: false });
+    setFormDetails({ name: 'recruiting', value: false });
+    setFormDetails({ name: 'notRecruiting', value: false });
   };
 
   const tagsOnChange = (input) => {
@@ -139,27 +144,30 @@ const Catalog = ({
     if (input === null) {
       newTags = [];
     }
-    setTags(newTags);
+    setFormDetails({ name: 'tags', value: newTags });
   };
 
   function toggleAppReq() {
-    setAppReq(!appReq);
-    setNoAppReq(false);
+    setFormDetails({ name: 'appReq', value: !appReq });
+    setFormDetails({ name: 'noAppReq', value: false });
   }
 
   function toggleNoAppReq() {
-    setAppReq(false);
-    setNoAppReq(!noAppReq);
+    setFormDetails({ name: 'appReq', value: false });
+    setFormDetails({ name: 'noAppReq', value: !noAppReq });
   }
 
   function toggleRecruiting() {
-    setRecruiting(!recruiting);
-    setNotRecruiting(false);
+    setFormDetails({ name: 'recruiting', value: !recruiting });
+    setFormDetails({ name: 'notRecruiting', value: false });
   }
 
   function toggleNotRecruiting() {
-    setRecruiting(false);
-    setNotRecruiting(!notRecruiting);
+    setFormDetails({ name: 'recruiting', value: false });
+    setFormDetails({ name: 'notRecruiting', value: !notRecruiting });
+  }
+  function changeSearch(e) {
+    setFormDetails({ name: 'name', value: e.target.value });
   }
 
   return (
@@ -191,12 +199,13 @@ const Catalog = ({
                   className="search-bar"
                   onSubmit={() => searchAllClubs()}
                   name="submit"
+                  autoComplete="none"
                 >
                   <TextBox
                     name="name"
                     label=""
                     value={name}
-                    onChange={(e) => setName(e.target.value)}
+                    onChange={(e) => changeSearch(e)}
                     placeholder="Search by name"
                     style={{
                       width: '200px',
@@ -317,10 +326,14 @@ const Catalog = ({
 const mapStateToProps = (state) => ({
   num_clubs: state.catalog.num_clubs,
   tagOptions: state.profile.tagOptions,
+  formDetails: state.catalog.formDetails,
 });
 
 export default withRouter(
-  connect(mapStateToProps, { searchClubs, clearOrganization, loadMoreOrgs })(
-    Catalog
-  )
+  connect(mapStateToProps, {
+    searchClubs,
+    clearOrganization,
+    loadMoreOrgs,
+    setFormDetails,
+  })(Catalog)
 );
