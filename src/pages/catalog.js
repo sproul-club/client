@@ -122,7 +122,7 @@ const Catalog = ({
       window.scrollTo(0, 0);
       searchClubs(searchParams);
     },
-    200
+    300
   );
 
   const resetFilters = () => {
@@ -213,13 +213,11 @@ const Catalog = ({
                     <i className="fa fa-search"></i>
                   </button>
                 </Form>
-
-                <button
-                  className="expand-search"
-                  onClick={toggleExpandedSearch}
-                >
-                  {expandSearch ? 'Hide Filters' : 'Show Filters'}
-                </button>
+                <div className="expand-search">
+                  <button onClick={toggleExpandedSearch}>
+                    {expandSearch ? 'Hide Filters' : 'Show Filters'}
+                  </button>
+                </div>
               </AccordionItemPanel>
             </AccordionItem>
             <AccordionItem className="accordion-group border" uuid="c">

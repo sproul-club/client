@@ -271,16 +271,21 @@
     height: 460px !important;
   }
   .expand-search {
-    display: unset;
-    margin-left: 125px;
-    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+    width: 350px;
     position: absolute;
     bottom: 5px;
+    overflow: hidden;
+  }
+  .expand-search button {
     background: white;
+    margin-top: 5px;
     width: 100px;
     border: 1px solid #54a0f1;
     color: #54a0f1;
     border-radius: 5px;
+    font-family: Qanelas Soft;
   }
 
   .accordion {
