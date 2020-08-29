@@ -54,6 +54,10 @@ const Catalog = ({
   const [moreLoading, setMoreLoading] = useState(false);
   const [numResults, setNumResults] = useState(eventsLoadedAtOnce);
 
+  const [expandSearch, setExpandSearch] = useState(true);
+
+  const toggleExpandedSearch = () => setExpandSearch(!expandSearch);
+
   // clearing organization to be viewed every time navigate back to club page
   useEffect(() => {
     clearOrganization();
@@ -80,7 +84,6 @@ const Catalog = ({
     return () => window.removeEventListener('scroll', onScroll);
   }, [numResults, num_clubs]);
 
-  
   const searchAllClubs = throttle(
     async (limit = eventsLoadedAtOnce, skip = 0, loadMore = false) => {
       //checkbox logic jankness
@@ -115,6 +118,7 @@ const Catalog = ({
       }
 
       setNumResults(eventsLoadedAtOnce);
+      setExpandSearch(false);
       window.scrollTo(0, 0);
       searchClubs(searchParams);
     },
@@ -128,7 +132,7 @@ const Catalog = ({
     setNoAppReq(false);
     setRecruiting(false);
     setNotRecruiting(false);
-  }
+  };
 
   const tagsOnChange = (input) => {
     var newTags = input;
@@ -161,7 +165,7 @@ const Catalog = ({
   return (
     <div className="catalog">
       <div className="content">
-        <div className="sidebar">
+        <div className={`${expandSearch && 'show-search'} sidebar`}>
           <Accordion
             allowMultipleExpanded
             allowZeroExpanded
@@ -209,6 +213,13 @@ const Catalog = ({
                     <i className="fa fa-search"></i>
                   </button>
                 </Form>
+
+                <button
+                  className="expand-search"
+                  onClick={toggleExpandedSearch}
+                >
+                  {expandSearch ? 'Hide Filters' : 'Show Filters'}
+                </button>
               </AccordionItemPanel>
             </AccordionItem>
             <AccordionItem className="accordion-group border" uuid="c">
