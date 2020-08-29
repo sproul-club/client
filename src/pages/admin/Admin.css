@@ -178,6 +178,7 @@ a {
   .admin-content {
     padding: 0 10px;
     padding-top: 50px;
+    margin-bottom: 50px;
   }
   .admin-page .formGroup {
     padding: 10px;

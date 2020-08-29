@@ -4,11 +4,6 @@
   align-items: center;
   text-align: center;
 }
-.loading-text {
-  font-size: 20px;
-  margin-top: 10px;
-  color: #73b6d8;
-}
 .lds-ring {
   display: inline-block;
   position: relative;
