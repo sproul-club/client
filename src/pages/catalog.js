@@ -127,7 +127,7 @@ const Catalog = ({
       await searchClubs(searchParams);
       setMoreLoading(false);
     },
-    300
+    2000
   );
 
   const resetFilters = () => {
@@ -199,6 +199,7 @@ const Catalog = ({
                   className="search-bar"
                   onSubmit={() => searchAllClubs()}
                   name="submit"
+                  autoComplete="none"
                 >
                   <TextBox
                     name="name"

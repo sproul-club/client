@@ -118,7 +118,7 @@ export const refreshToken = () => async (dispatch, getState) => {
 
       localStorage.setItem('token', res.data.access);
       localStorage.setItem('expiresAt', new Date().getTime() + 300000);
-
+      
       dispatch({ type: REFRESH_TOKEN, payload: res.data });
     }
   } catch (err) {

@@ -80,11 +80,11 @@ export const uploadLogo = (images, success, error) => async (dispatch) => {
     };
 
     const res = await axios.post('/api/admin/upload-logo', data, config);
-    await success();
+    success();
 
-    await dispatch({ type: UPLOAD_IMAGES, payload: res.data });
+    dispatch({ type: UPLOAD_IMAGES, payload: res.data });
   } catch (err) {
-    await error(err);
+    error(err);
     console.log(err.response);
   }
 };
@@ -252,10 +252,10 @@ export const updatePassword = (formData, success, error) => async (
     const data = JSON.stringify(formData);
     const res = await axios.post('/api/admin/change-password', data, config);
 
-    await dispatch({ type: UPDATE_PASSWORD, payload: res.data });
-    await success();
+    dispatch({ type: UPDATE_PASSWORD, payload: res.data });
+    success();
   } catch (err) {
-    await error(err.response.data.reason);
+    error(err.response.data.reason);
   }
 };
 
@@ -270,3 +270,4 @@ export const getTags = () => async (dispatch) => {
     console.log(err.response);
   }
 };
+

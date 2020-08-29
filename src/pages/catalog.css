@@ -273,7 +273,7 @@
   .expand-search {
     display: flex;
     justify-content: center;
-    width: 350px;
+    width: 95vw;
     height: 25px;
     position: absolute;
     bottom: 5px;
@@ -289,9 +289,10 @@
     font-family: Qanelas Soft;
   }
 
-  .accordion {
-    width: 350px !important;
+  .catalog .accordion {
+    width: 95vw !important;
     padding: auto;
+    margin: auto;
   }
   .search {
     margin-top: -5px;
@@ -299,7 +300,7 @@
   }
   .catalog .accordion-group,
   .catalog .accordion__button {
-    width: 350px;
+    width: 95vw;
   }
   .catalog .cards {
     margin-left: 0px;
