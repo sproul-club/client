@@ -48,7 +48,7 @@
 }
 
 .catalog .accordion .accordion-group.border {
-  margin-bottom: 7px;
+  margin-bottom: 6px;
   padding-top: 7px;
   border-top: 2px solid #80808021;
 }
@@ -178,7 +178,7 @@
 }
 
 .catalog .checkbox > label {
-  margin-top: 1.5px;
+  margin-top: 2.5px;
   margin-left: 7px;
 }
 
