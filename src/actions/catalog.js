@@ -1,4 +1,12 @@
-import { SEARCH_CLUBS, GET_ORGANIZATION, CLEAR_ORGANIZATION, LOAD_MORE_ORGS } from './types';
+import {
+  SEARCH_CLUBS,
+  GET_ORGANIZATION,
+  CLEAR_ORGANIZATION,
+  CLEAR_ORGANIZATIONS,
+  LOAD_MORE_ORGS,
+  SET_FORM_DETAILS,
+  SET_TAGS,
+} from './types';
 import axios from 'axios';
 
 // Search Clubs
@@ -16,7 +24,11 @@ export const loadClubs = () => async (dispatch) => {
     const params = JSON.stringify({ limit: 30, skip: 0 });
     const res = await axios.post('/api/catalog/organizations', params, config);
 
-    dispatch({ type: SEARCH_CLUBS, payload: res.data.results, num_results: res.data.num_results });
+    dispatch({
+      type: SEARCH_CLUBS,
+      payload: res.data.results,
+      num_results: res.data.num_results,
+    });
   } catch (err) {
     console.log(err);
   }
@@ -38,10 +50,21 @@ export const searchClubs = ({
       },
     };
 
-    const params = JSON.stringify({ search, tags, app_required, new_members, limit, skip });
+    const params = JSON.stringify({
+      search,
+      tags,
+      app_required,
+      new_members,
+      limit,
+      skip,
+    });
     const res = await axios.post('/api/catalog/search', params, config);
 
-    dispatch({ type: SEARCH_CLUBS, payload: res.data.results, num_results: res.data.num_results });
+    dispatch({
+      type: SEARCH_CLUBS,
+      payload: res.data.results,
+      num_results: res.data.num_results,
+    });
   } catch (err) {
     console.log(err);
   }
@@ -65,7 +88,6 @@ export const clearOrganization = () => (dispatch) => {
   }
 };
 
-
 export const loadMoreOrgs = ({
   name: search,
   tags,
@@ -82,11 +104,31 @@ export const loadMoreOrgs = ({
       },
     };
 
-    const params = JSON.stringify({ search, tags, app_required, new_members, limit, skip });
+    const params = JSON.stringify({
+      search,
+      tags,
+      app_required,
+      new_members,
+      limit,
+      skip,
+    });
     const res = await axios.post('/api/catalog/search', params, config);
 
-    dispatch({ type: LOAD_MORE_ORGS, payload: res.data.results, num_results: res.data.num_results });
+    dispatch({
+      type: LOAD_MORE_ORGS,
+      payload: res.data.results,
+      num_results: res.data.num_results,
+    });
   } catch (err) {
     console.log(err);
   }
+};
+
+export const setFormDetails = ({ name, value }) => {
+  if (Array.isArray(value)) return { type: SET_TAGS, payload: { name, value } };
+  return { type: SET_FORM_DETAILS, payload: { name, value } };
+};
+
+export const clearOrganizations = () => {
+  return { type: CLEAR_ORGANIZATIONS };
 };

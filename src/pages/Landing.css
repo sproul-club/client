@@ -27,7 +27,6 @@
   align-items: center;
   flex-direction: column;
   margin-bottom: 40px;
-  margin-top: 80px;
 }
 
 .landing .text {
@@ -65,7 +64,7 @@
 
 .landing .text a {
   width: 250px;
-  font-size: 1.0em;
+  font-size: 1em;
   line-height: 1em;
   background: white;
   font-family: Qanelas Soft Semi Bold;
@@ -166,7 +165,7 @@
   font-style: normal;
   letter-spacing: 0.06em;
   text-align: left;
-  line-height: 1.6
+  line-height: 1.6;
 }
 
 .landing .moreContent .featureWrapper h2 {

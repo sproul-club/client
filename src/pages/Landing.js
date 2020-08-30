@@ -25,7 +25,8 @@ const Landing = () => {
             sproul.club helps you discover student clubs, organizations, and
             communities on campus - built by students, for students!
           </p>
-          <Link to="/signup">Register Your Club</Link>
+          {/* <Link to="/signup">Register Your Club</Link> */}
+          <Link to="/catalog">Explore Student Orgs</Link>
         </div>
       </div>
       <div className="moreContent">

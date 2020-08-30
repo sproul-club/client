@@ -28,7 +28,10 @@ const customStyles = {
     fontWeight: 300,
     fontStyle: 'normal',
     textAlign: 'left',
-    color: (state.selectProps.value && state.selectProps.value.length >= 3) ? '#cccccc' : '#4e4e4e'
+    color:
+      state.selectProps.value && state.selectProps.value.length >= 3
+        ? '#cccccc'
+        : '#4e4e4e',
   }),
   multiValueRemove: (provided, state) => ({
     ...provided,
@@ -36,9 +39,9 @@ const customStyles = {
     color: '#2b2b2b',
     borderRadius: 10,
     cursor: 'pointer',
-    "&:hover": {
+    '&:hover': {
       color: 'hsl(0,0%,40%)',
-    }
+    },
   }),
   singleValue: (provided, state) => ({
     ...provided,
@@ -46,8 +49,8 @@ const customStyles = {
   }),
   multiValueLabel: (provided, state) => ({
     ...provided,
-    'margin-left': "4px",
-    'padding': '2px',
+    'margin-left': '4px',
+    padding: '2px',
     'padding-left': '5px',
     fontSize: '12px',
   }),
@@ -68,7 +71,7 @@ const customStyles = {
     ...provided,
     padding: '5px 8px',
   }),
-  "@media only screen and (min-width: 1700px)": {
+  '@media only screen and (min-width: 1700px)': {
     menu: (provided, state) => ({
       ...provided,
       width: 500,
@@ -81,13 +84,15 @@ const handleChange = (value, props) => {
   if (value && value.length >= 3) {
     // recolor option text to light grey, to look unclickable :'(
     if (value.length > 3) {
-      value.pop();                        // remove 4th tag
-      props.errorPopup('tagOverflow');    // make popup visible for ~2s
-      setTimeout(function() {props.errorPopup('tagOverflowNone');}, 1000);
+      value.pop(); // remove 4th tag
+      props.errorPopup('tagOverflow'); // make popup visible for ~2s
+      setTimeout(function () {
+        props.errorPopup('tagOverflowNone');
+      }, 1000);
     }
   }
   props.set(value);
-}
+};
 
 const Dropdown = (props) => (
   <Select
@@ -114,4 +119,3 @@ const Dropdown = (props) => (
 );
 
 export default Dropdown;
-
