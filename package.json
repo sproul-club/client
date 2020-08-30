@@ -27,6 +27,7 @@
     "react-dom": "^16.13.1",
     "react-dropdown-select": "^4.4.2",
     "react-form-elements": "^4.14.0",
+    "react-ga": "^3.1.2",
     "react-hooks": "^1.0.1",
     "react-hooks-helper": "^1.6.0",
     "react-images-upload": "^1.2.8",
