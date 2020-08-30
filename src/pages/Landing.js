@@ -8,8 +8,11 @@ import mock1 from './assets/mock1.png';
 import mock2 from './assets/mock2.png';
 import mock3 from './assets/mock3.png';
 import bearshehe from './assets/landingbears.svg';
+import ReactGA from 'react-ga';
 
 const Landing = () => {
+  ReactGA.initialize('UA-176775736-1');
+  ReactGA.pageview('/landing');
   return (
     <div className="landing">
       <div className="content">
