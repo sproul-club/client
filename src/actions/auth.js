@@ -63,20 +63,21 @@ export const login = (email, password, history, success, error) => async (
     let res = await axios.post('/api/user/login', body, config);
 
     localStorage.setItem('token', res.data.access);
-    localStorage.setItem('expiresAt', new Date().getTime() + 300000);
+    localStorage.setItem('expiresAt', new Date().getTime() + res.data.access_expires_in);
     localStorage.setItem('refreshToken', res.data.refresh);
+    localStorage.setItem('refreshExpiresAt', new Date().getTime() + res.data.refresh_expires_in)
 
     await dispatch(loadProfile());
-    await dispatch({ type: LOGIN_SUCCESS, payload: res.data });
-    await success();
+    dispatch({ type: LOGIN_SUCCESS, payload: res.data });
+    success();
   } catch (err) {
-    await dispatch({ type: AUTH_ERROR, payload: err });
-    await error(err.response.data.reason);
+    dispatch({ type: AUTH_ERROR, payload: err });
+    error(err.response.data.reason);
   }
 };
 
 // Logout / clear profile
-export const logout = (history) => async (dispatch) => {
+export const logout = (history, useBackend = true) => async (dispatch) => {
   const refreshToken = localStorage.getItem('refreshToken');
   const config = {
     headers: {
@@ -85,19 +86,22 @@ export const logout = (history) => async (dispatch) => {
       Authorization: `Bearer ${refreshToken}`,
     },
   };
-  try {
-    // revoke refresh token
-    await axios.delete('/api/user/revoke-refresh', config);
 
-    // remove tokens from local storage
-    localStorage.removeItem('token');
-    localStorage.removeItem('refreshToken');
-
-    history.push('/');
-    dispatch({ type: LOGOUT });
-  } catch (err) {
-    dispatch({ type: AUTH_ERROR, payload: err });
+  if (useBackend) {
+    try {
+      // revoke refresh token
+      await axios.delete('/api/user/revoke-refresh', config);
+    } catch (err) {
+      dispatch({ type: AUTH_ERROR, payload: err });
+    }
   }
+
+  localStorage.removeItem('token');
+  localStorage.removeItem('refreshToken');
+
+  history.push('/');
+  // remove tokens from local storage
+  dispatch({ type: LOGOUT });
 };
 
 export const refreshToken = () => async (dispatch, getState) => {
@@ -113,12 +117,13 @@ export const refreshToken = () => async (dispatch, getState) => {
   };
 
   try {
+    console.log(expiresAt - new Date().getTime());
     if (expiresAt < new Date().getTime()) {
       const res = await axios.post('/api/user/refresh', {}, config);
 
       localStorage.setItem('token', res.data.access);
       localStorage.setItem('expiresAt', new Date().getTime() + 300000);
-      
+
       dispatch({ type: REFRESH_TOKEN, payload: res.data });
     }
   } catch (err) {

@@ -13,12 +13,12 @@ import { SignIn } from './pages/SignIn.js';
 import { ResetPassword } from './pages/ResetPassword.js';
 import { ResetPassword2 } from './pages/ResetPassword2.js';
 import Security from './pages/admin/Security.js';
+import ErrorPage from './pages/ErrorPage';
 import Admin from './pages/admin/Admin.js';
 import ClubPage from './pages/ClubPage';
 import store from './store';
 import ContactUs from './layout/ContactUs.js';
 import { loadProfile, getTags } from './actions/profile';
-import { refreshToken } from './actions/auth';
 import { Provider } from 'react-redux';
 import PrivateRoute from './utils/PrivateRoute';
 import Navbar from './layout/Navbar';
@@ -27,7 +27,6 @@ const App = () => {
   useEffect(() => {
     store.dispatch(loadProfile());
     store.dispatch(getTags());
-    setTimeout(store.dispatch(refreshToken()), 300000);
   }, []);
 
   return (
@@ -45,7 +44,9 @@ const App = () => {
           <Route exact path="/resetpassword" component={ResetPassword2} />
           <Route exact path="/club/:id" component={ClubPage} />
           <PrivateRoute exact path="/security" component={Security} />
-          <Route>{'404'}</Route>
+          <Route>
+            <ErrorPage />
+          </Route>
         </Switch>
         <ContactUs />
       </Router>
