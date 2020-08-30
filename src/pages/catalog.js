@@ -23,6 +23,7 @@ import {
 } from 'react-accessible-accordion';
 import { Form, TextBox, CheckBox } from 'react-form-elements';
 import { makeStyles } from '@material-ui/core/styles';
+import ReactGA from 'react-ga';
 
 const Catalog = ({
   searchClubs,
@@ -169,6 +170,8 @@ const Catalog = ({
   function changeSearch(e) {
     setFormDetails({ name: 'name', value: e.target.value });
   }
+  ReactGA.initialize('UA-176775736-1');
+  ReactGA.pageview('/catalog');
 
   return (
     <div className="catalog">

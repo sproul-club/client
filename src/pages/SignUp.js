@@ -2,9 +2,12 @@ import React from 'react';
 import './SignUp.css';
 import MultiStepForm from './SignUpForm.js';
 import Footer from '../layout/Footer';
+import ReactGA from 'react-ga';
 
 const SignUp = () => {
   // const isHeaderOpen = props.active ? 'active' : 'muted';
+  ReactGA.initialize('UA-176775736-1');
+  ReactGA.pageview('/signup');
 
   return (
       <div className="signup">
