@@ -22,6 +22,7 @@ import {
   AccordionItemPanel,
 } from 'react-accessible-accordion';
 import { Form, TextBox, CheckBox } from 'react-form-elements';
+import ReactGA from 'react-ga';
 
 const Catalog = ({
   searchClubs,
@@ -157,6 +158,8 @@ const Catalog = ({
   function changeSearch(e) {
     setFormDetails({ name: 'name', value: e.target.value });
   }
+  ReactGA.initialize('UA-176775736-1');
+  ReactGA.pageview('/catalog');
 
   return (
     <div className="catalog">
@@ -299,7 +302,7 @@ const Catalog = ({
                     searchAllClubs(eventsLoadedAtOnce, numResults, true)
                   }
                 >
-                  load more
+                  Load More
                 </button>
               )
             )}

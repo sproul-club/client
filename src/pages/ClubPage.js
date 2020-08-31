@@ -6,6 +6,7 @@ import Loading from '../layout/Loading';
 import { withRouter } from 'react-router-dom';
 import { getOrganization, clearOrganization } from '../actions/catalog';
 import { connect } from 'react-redux';
+import ReactGA from 'react-ga';
 
 function ClubPage({
   organization,
@@ -85,6 +86,9 @@ function ClubPage({
       ✗ Not Taking New Members
     </div>
   );
+
+  ReactGA.initialize('UA-176775736-1');
+  ReactGA.pageview('/' + history.location.pathname.slice(6));
 
   return (
     <div className='clubpage'>
