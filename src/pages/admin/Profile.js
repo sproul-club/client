@@ -43,7 +43,7 @@ const Profile = ({
 
   const submit = () => {
     const newProfile = {
-      name: orgName,
+      name: orgName.trim(),
       owner: orgEmail,
       tags: tags.map((tags) => tags.value),
       about_us: descr,

@@ -18,7 +18,7 @@ function ClubPage({
   const routeId = history.location.pathname.slice(6);
   useEffect(() => {
     if (organization.id !== routeId) getOrganization(routeId);
-    // return function clears the loaded profile when component unmounts
+    // clears the loaded profile when component unmounts
     return () => {
       !organization.id && clearOrganization();
     };

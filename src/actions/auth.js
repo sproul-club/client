@@ -7,6 +7,7 @@ import {
 } from './types';
 import axios from 'axios';
 import { loadProfile } from './profile';
+import setAuthToken from '../utils/setAuthToken';
 
 axios.defaults.baseURL = 'https://sc-backend-prod.herokuapp.com';
 
@@ -63,9 +64,15 @@ export const login = (email, password, history, success, error) => async (
     let res = await axios.post('/api/user/login', body, config);
 
     localStorage.setItem('token', res.data.access);
-    localStorage.setItem('expiresAt', new Date().getTime() + res.data.access_expires_in);
+    localStorage.setItem(
+      'expiresAt',
+      new Date().getTime() + res.data.access_expires_in
+    );
     localStorage.setItem('refreshToken', res.data.refresh);
-    localStorage.setItem('refreshExpiresAt', new Date().getTime() + res.data.refresh_expires_in)
+    localStorage.setItem(
+      'refreshExpiresAt',
+      new Date().getTime() + res.data.refresh_expires_in
+    );
 
     await dispatch(loadProfile());
     dispatch({ type: LOGIN_SUCCESS, payload: res.data });
@@ -117,12 +124,15 @@ export const refreshToken = () => async (dispatch, getState) => {
   };
 
   try {
-    console.log(expiresAt - new Date().getTime());
     if (expiresAt < new Date().getTime()) {
       const res = await axios.post('/api/user/refresh', {}, config);
 
       localStorage.setItem('token', res.data.access);
-      localStorage.setItem('expiresAt', new Date().getTime() + 300000);
+      localStorage.setItem(
+        'expiresAt',
+        new Date().getTime() + res.data.access_expires_in
+      );
+      setAuthToken(res.data.access);
 
       dispatch({ type: REFRESH_TOKEN, payload: res.data });
     }
@@ -225,7 +235,7 @@ export const sendResetPasswordEmail = (email) => {
 export const resetPassword = (password) => {
   // const token = localStorage.getItem('token');
   const token = new URLSearchParams(window.location.search).get('token');
-  console.log(token);
+
   // Set headers
   const config = {
     headers: {
@@ -234,8 +244,6 @@ export const resetPassword = (password) => {
     },
   };
   const body = JSON.stringify({ token, password });
-  console.log(body);
-
   return axios
     .post('/api/user/confirm-reset', body, config)
     .then((response) => {
