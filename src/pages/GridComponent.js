@@ -15,8 +15,19 @@ import { connect } from 'react-redux';
 import { withRouter, Link } from 'react-router-dom';
 import { loadClubs, searchClubs } from '../actions/catalog';
 import './GridComponent.css';
+import { makeStyles } from '@material-ui/core/styles';
 
-function GridComponent({ tagOptions, clubs, num_clubs, classes, loadClubs }) {
+function GridComponent({ tagOptions, clubs, num_clubs, loading, loadClubs }) {
+  const useStyles = makeStyles({
+    root: {
+      minWidth: 200,
+    },
+    media: {
+      height: 140,
+    },
+  });
+  const { root, media } = useStyles();
+
   useEffect(() => {
     // Return unfiltered clubs so there is some data there when first rendered
     if (clubs.length === 0) loadClubs();
@@ -24,7 +35,7 @@ function GridComponent({ tagOptions, clubs, num_clubs, classes, loadClubs }) {
 
   const GridList = clubs.map((club, i) => (
     <Grid item key={i} sm={12} md={6} lg={4} className="club-card">
-      <Card className={classes.root}>
+      <Card className={root}>
         <CardActionArea>
           <Link
             to={{
@@ -38,7 +49,7 @@ function GridComponent({ tagOptions, clubs, num_clubs, classes, loadClubs }) {
           >
             <CardMedia
               style={{ height: 0, paddingTop: '56%' }}
-              className={classes.media}
+              className={media}
               image={club.banner_url || require('./assets/default_banner.jpg')}
             />
             <CardContent
@@ -106,7 +117,7 @@ function GridComponent({ tagOptions, clubs, num_clubs, classes, loadClubs }) {
   return (
     <div className="wrapper">
       <div className="num-results">
-        {num_clubs ? `${num_clubs} Results` : ''}
+        {num_clubs ? `${num_clubs} Results` : loading ? '' : 'No Results Found'}
       </div>
       <Grid container spacing={2} className="card-grid">
         {GridList}

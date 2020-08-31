@@ -22,7 +22,6 @@ import {
   AccordionItemPanel,
 } from 'react-accessible-accordion';
 import { Form, TextBox, CheckBox } from 'react-form-elements';
-import { makeStyles } from '@material-ui/core/styles';
 
 const Catalog = ({
   searchClubs,
@@ -33,14 +32,6 @@ const Catalog = ({
   formDetails,
   setFormDetails,
 }) => {
-  const useStyles = makeStyles({
-    root: {
-      minWidth: 200,
-    },
-    media: {
-      height: 140,
-    },
-  });
   const {
     name,
     tags,
@@ -52,11 +43,8 @@ const Catalog = ({
 
   const eventsLoadedAtOnce = 18;
 
-  const classes = useStyles();
-
   const [moreLoading, setMoreLoading] = useState(false);
   const [numResults, setNumResults] = useState(eventsLoadedAtOnce);
-
   const [expandSearch, setExpandSearch] = useState(true);
 
   const toggleExpandedSearch = () => setExpandSearch(!expandSearch);
@@ -299,7 +287,7 @@ const Catalog = ({
           </Accordion>
         </div>
         <div className="cards">
-          <GridComponent tagOptions={tagOptions} classes={classes} />
+          <GridComponent loading={moreLoading} />
           <div className="more-content">
             {moreLoading ? (
               <LoadingComponent />
