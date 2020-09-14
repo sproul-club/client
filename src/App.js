@@ -23,6 +23,11 @@ import { Provider } from 'react-redux';
 import PrivateRoute from './utils/PrivateRoute';
 import Navbar from './layout/Navbar';
 
+import Moment from 'react-moment';
+import 'moment-timezone';
+
+Moment.globalTimezone = 'America/Los_Angeles';
+
 const App = () => {
   useEffect(() => {
     store.dispatch(loadProfile());

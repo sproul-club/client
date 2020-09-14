@@ -6,7 +6,9 @@ import {
   AccordionItemButton,
   AccordionItemPanel,
 } from 'react-accessible-accordion';
-import { formatDates } from '../utils/formatTimeAndDate';
+
+import Moment from 'react-moment';
+import { simplestRangeFormat, START_DATETIME, END_DATETIME } from '../utils/formatTimeAndDate';
 
 function EventAccord({ data }) {
   return data.events.map((event, i) => (
@@ -15,7 +17,15 @@ function EventAccord({ data }) {
         <div className="event-flex-container">
           <div className="event-flex-left">{event.name}</div>
           <div className="event-flex-right">
-            {formatDates(event.event_start, event.event_end)}
+            <Moment
+              interval={0}
+              date={event.event_start}
+              format={simplestRangeFormat(event.event_start, event.event_end, START_DATETIME)}/>
+            {" - "}
+            <Moment
+              interval={0}
+              date={event.event_end}
+              format={simplestRangeFormat(event.event_start, event.event_end, END_DATETIME)} />
           </div>
         </div>
         <AccordionItemHeading className="accordion__heading-club">
