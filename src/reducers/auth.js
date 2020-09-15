@@ -8,9 +8,11 @@ import {
   AUTH_ERROR,
 } from '../actions/types';
 
+import { API, TOKENS } from '../utils/backendClient';
+
 const initialState = {
-  token: localStorage.getItem('token'),
-  refreshToken: localStorage.getItem('token'),
+  token: TOKENS.access.get(),
+  refreshToken: TOKENS.refresh.get(),
   isAuthenticated: false,
   loading: true,
   errors: null,
