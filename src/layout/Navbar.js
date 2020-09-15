@@ -101,11 +101,7 @@ const Navbar = ({
     </div>
   );
 
-  const display = isAuthenticated
-    ? loggedInLinks
-    : loading
-    ? ''
-    : loggedOutLinks;
+  const display = isAuthenticated ? loggedInLinks : (loading ? '' : loggedOutLinks);
 
   return (
     <>
