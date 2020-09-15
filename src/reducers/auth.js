@@ -2,6 +2,7 @@ import {
   REGISTER_SUCCESS,
   LOGIN_SUCCESS,
   LOAD_PROFILE,
+  LOAD_PROFILE_NOT_LOGGED_IN,
   LOAD_PROFILE_ERROR,
   REFRESH_TOKEN,
   LOGOUT,
@@ -26,6 +27,12 @@ export default function (state = initialState, action) {
       return {
         ...state,
         isAuthenticated: true,
+        loading: false,
+      };
+    case LOAD_PROFILE_NOT_LOGGED_IN:
+      return {
+        ...state,
+        isAuthenticated: false,
         loading: false,
       };
     case LOAD_PROFILE_ERROR:
