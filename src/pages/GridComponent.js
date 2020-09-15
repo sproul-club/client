@@ -17,7 +17,7 @@ import { loadClubs, searchClubs } from '../actions/catalog';
 import './GridComponent.css';
 import { makeStyles } from '@material-ui/core/styles';
 
-function GridComponent({ tagOptions, clubs, num_clubs, loading, loadClubs }) {
+function GridComponent({ tagOptions, clubs, num_clubs, loading }) {
   const useStyles = makeStyles({
     root: {
       minWidth: 200,
@@ -27,11 +27,6 @@ function GridComponent({ tagOptions, clubs, num_clubs, loading, loadClubs }) {
     },
   });
   const { root, media } = useStyles();
-
-  useEffect(() => {
-    // Return unfiltered clubs so there is some data there when first rendered
-    if (clubs.length === 0) loadClubs();
-  }, [loadClubs]);
 
   const GridList = clubs.map((club, i) => (
     <Grid item key={i} sm={12} md={6} lg={4} className="club-card">
@@ -133,6 +128,6 @@ const mapStateToProps = (state) => ({
   tagOptions: state.profile.tagOptions,
 });
 
-export default connect(mapStateToProps, { loadClubs, searchClubs })(
+export default connect(mapStateToProps, { searchClubs })(
   withRouter(GridComponent)
 );
