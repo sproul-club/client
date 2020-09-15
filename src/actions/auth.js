@@ -82,9 +82,9 @@ export const refreshToken = () => async (dispatch, getState) => {
 };
 
 // Verify email as Callink email
-export const isCallinkEmail = (email) => {
+export const isCallinkEmail = async (email) => {
   try {
-    const res = API.post('/api/user/email-exists', { email });
+    const res = await API.post('/api/user/email-exists', { email });
     return res.data.exists;
   } catch (err) {
     console.log(err);
@@ -93,9 +93,9 @@ export const isCallinkEmail = (email) => {
 };
 
 // Verify if password is strong enough
-export const isPasswordStrong = (password) => {
+export const isPasswordStrong = async (password) => {
   try {
-    const res = API.post('/api/user/password-strength', { password });
+    const res = await API.post('/api/user/password-strength', { password });
     return res.data.strong;
   } catch (err) {
     console.log(err);
@@ -117,9 +117,9 @@ export const resendConfirmationEmail = (email, setResentEmail) => async (dispatc
 };
 
 // Send a password confirmation email to the user
-export const sendResetPasswordEmail = (email) => {
+export const sendResetPasswordEmail = async (email) => {
   try {
-    const res = API.post('/api/user/request-reset', { email });
+    const res = await API.post('/api/user/request-reset', { email });
     return res.data.status;
   } catch (err) {
     console.log(err);
@@ -128,11 +128,11 @@ export const sendResetPasswordEmail = (email) => {
 };
 
 // Reset password
-export const resetPassword = (password) => {
+export const resetPassword = async (password) => {
   const token = new URLSearchParams(window.location.search).get('token');
 
   try {
-    const res = API.post('/api/user/confirm-reset', { token, password });
+    const res = await API.post('/api/user/confirm-reset', { token, password });
     return res.data.status;
   } catch (err) {
     console.log(err);
