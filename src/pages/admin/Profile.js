@@ -40,6 +40,7 @@ const Profile = ({
   async function uploadLogoPic(logoUploads) {
     if (logoUploads && logoUploads.length > 0) {
       try {
+        NotificationManager.info('Uploading logo...', '', 1500);
         await uploadLogo(logoUploads[0]);
         NotificationManager.success('Logo uploaded successfully!', '', 1500);
       } catch (err) {
@@ -63,6 +64,7 @@ const Profile = ({
   async function uploadBannerPic(bannerUploads) {
     if (bannerUploads && bannerUploads.length > 0) {
       try {
+        NotificationManager.info('Uploading banner...', '', 1500);
         await uploadBanner(bannerUploads[0]);
         NotificationManager.success('Banner uploaded successfully!', '', 1500);
       } catch (err) {
