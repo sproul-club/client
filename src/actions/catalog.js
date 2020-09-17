@@ -8,7 +8,7 @@ import {
   SET_TAGS,
 } from './types';
 
-import { API, TOKENS } from '../utils/backendClient';
+import { API } from '../utils/backendClient';
 
 export const loadClubs = () => async (dispatch) => {
   try {

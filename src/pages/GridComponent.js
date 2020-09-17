@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
   Card,
   CardActionArea,
@@ -13,7 +13,7 @@ import {
 import { connect } from 'react-redux';
 
 import { withRouter, Link } from 'react-router-dom';
-import { loadClubs, searchClubs } from '../actions/catalog';
+import { searchClubs } from '../actions/catalog';
 import './GridComponent.css';
 import { makeStyles } from '@material-ui/core/styles';
 

@@ -42,9 +42,6 @@ export const login = (email, password) => async (dispatch) => {
 
 // Logout / clear profile
 export const logout = (history, useBackend = true) => async (dispatch) => {
-  const accessToken = TOKENS.access.get();
-  const refreshToken = TOKENS.refresh.get();
-
   if (useBackend) {
     try {
       // revoke both access & refresh token
