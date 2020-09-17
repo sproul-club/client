@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, withRouter, Redirect } from 'react-router-dom';
 import './SignIn.css';
 import { connect } from 'react-redux';
@@ -16,6 +16,13 @@ const SignInForm = ({ login, history, isAuthenticated }) => {
   const [emailUnverified, setEmailUnverified] = useState('noError');
   const [emptyEmail, setEmptyEmail] = useState('noError');
   const [emptyPassword, setEmptyPassword] = useState('noError');
+
+  // This is needed since the NotificationComponent needs to be fully rendered before displaying notifications right away
+  useEffect(() => {
+    const userConfirmed = new URLSearchParams(window.location.search).get('confirmed') === 'true';
+    if (userConfirmed)
+      NotificationManager.success("You've successfully confirmed your email! Please log in", '', 3000);
+  }, []);
 
   if (isAuthenticated) {
     return <Redirect to="/admin" />;
