@@ -26,15 +26,13 @@ const SignInForm = ({ login, history, isAuthenticated }) => {
 
     let hasErrors = await checkErrors();
     if (!hasErrors) {
-      // passes the history object (from react-router-dom's withRouter) to redirect after login
-      login(
-        email,
-        pw,
-        history,
-        () => history.push('/admin'),
-        (errMessage) =>
-          NotificationManager.error(errMessage, 'Unable to sign in!', 3000)
-      );
+      try {
+        await login(email, pw);
+        history.push('/admin');
+      } catch (err) {
+        var errMessage = err.response.data.reason;
+        NotificationManager.error(errMessage, 'Unable to register!', 3000);
+      }
     }
   };
 
