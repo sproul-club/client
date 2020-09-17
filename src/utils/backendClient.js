@@ -25,8 +25,8 @@ class AuthToken {
   }
 
   set(token, expiresIn) {
-    localStorage.setItem(this.tokenKey, this.token);
-    localStorage.setItem(this.expireKey, new Date().getTime() + expiresIn);
+    localStorage.setItem(this.tokenKey, token);
+    localStorage.setItem(this.expireKey, new Date().getTime() + expiresIn * 1000);
 
     if (this.tokenKey === ACCESS_TOKEN_KEY)
       API.defaults.headers.common['Authorization'] = `Bearer ${token}`;
