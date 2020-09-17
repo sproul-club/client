@@ -23,7 +23,7 @@ const ContactInfo = ({ profile, updateProfile }) => {
   if (email === null) {
     setEmail(profile.owner);
   }
-  
+
   const normalizeUrls = () => {
     setWebsite(normalizeUrl(website));
     setFacebook(normalizeUrl(facebook));

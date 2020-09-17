@@ -17,18 +17,15 @@ export const register = (name, email, password, tags, app_required, new_members)
       tags, app_required, new_members,
     });
 
-    await dispatch({ type: REGISTER_SUCCESS, payload: res.data });
+    dispatch({ type: REGISTER_SUCCESS, payload: res.data });
   } catch (err) {
-    await dispatch({ type: AUTH_ERROR, payload: err });
+    dispatch({ type: AUTH_ERROR, payload: err });
     throw err;
   }
 };
 
 // Login User
-export const login = (email, password, history, success, error) => async (dispatch) => {
-  // Set headers
-  const body = JSON.stringify({ email, password });
-
+export const login = (email, password) => async (dispatch) => {
   try {
     const res = await API.post('/api/user/login', { email, password });
 
@@ -37,10 +34,9 @@ export const login = (email, password, history, success, error) => async (dispat
 
     await dispatch(loadProfile());
     dispatch({ type: LOGIN_SUCCESS, payload: res.data });
-    await success();
   } catch (err) {
     dispatch({ type: AUTH_ERROR, payload: err });
-    await error(err.response.data.reason);
+    throw err;
   }
 };
 
@@ -68,14 +64,15 @@ export const logout = (history, useBackend = true) => async (dispatch) => {
 };
 
 export const refreshToken = () => async (dispatch, getState) => {
+  if (!TOKENS.access.hasExpired())
+    return;
+
   try {
-    if (TOKENS.access.hasExpired()) {
-      const res = await API.post('/api/user/refresh', {}, TOKENS.refresh.fullHeaderConfig());
+    const res = await API.post('/api/user/refresh', {}, TOKENS.refresh.fullHeaderConfig());
 
-      TOKENS.access.set(res.data.access, res.data.access_expires_in);
+    TOKENS.access.set(res.data.access, res.data.access_expires_in);
 
-      dispatch({ type: REFRESH_TOKEN, payload: res.data });
-    }
+    dispatch({ type: REFRESH_TOKEN, payload: res.data });
   } catch (err) {
     dispatch({ type: AUTH_ERROR, payload: err });
   }
@@ -87,8 +84,8 @@ export const isCallinkEmail = async (email) => {
     const res = await API.post('/api/user/email-exists', { email });
     return res.data.exists;
   } catch (err) {
+    // TODO: HANDLE THIS CASE
     console.log(err);
-    // dispatch({ type: AUTH_ERROR, payload: err });
   }
 };
 
@@ -98,21 +95,18 @@ export const isPasswordStrong = async (password) => {
     const res = await API.post('/api/user/password-strength', { password });
     return res.data.strong;
   } catch (err) {
+    // TODO: HANDLE THIS CASE
     console.log(err);
-    // dispatch({ type: AUTH_ERROR, payload: err });
   }
 };
 
-// Login User
-export const resendConfirmationEmail = (email, setResentEmail) => async (dispatch) => {
+// Resend account confirmation email
+export const resendConfirmationEmail = (email) => async (dispatch) => {
   try {
-    setResentEmail(false);
     await API.post('/api/user/resend-confirm', { email });
-    setResentEmail(true);
-
-    // dispatch({ type: RESEND_EMAIL , payload: res.data });
   } catch (err) {
     dispatch({ type: AUTH_ERROR, payload: err });
+    throw err;
   }
 };
 
@@ -122,19 +116,19 @@ export const sendResetPasswordEmail = async (email) => {
     const res = await API.post('/api/user/request-reset', { email });
     return res.data.status;
   } catch (err) {
+    // TODO: HANDLE THIS CASE
     console.log(err);
     // dispatch({ type: AUTH_ERROR, payload: err });
   }
 };
 
 // Reset password
-export const resetPassword = async (password) => {
-  const token = new URLSearchParams(window.location.search).get('token');
-
+export const resetPassword = async (password, token) => {
   try {
     const res = await API.post('/api/user/confirm-reset', { token, password });
     return res.data.status;
   } catch (err) {
+    // TODO: HANDLE THIS CASE
     console.log(err);
     // dispatch({ type: AUTH_ERROR, payload: err });
   }

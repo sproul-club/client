@@ -28,7 +28,7 @@ class AuthToken {
     localStorage.setItem(this.tokenKey, this.token);
     localStorage.setItem(this.expireKey, new Date().getTime() + expiresIn);
 
-    if (this.tokenKey == ACCESS_TOKEN_KEY)
+    if (this.tokenKey === ACCESS_TOKEN_KEY)
       API.defaults.headers.common['Authorization'] = `Bearer ${token}`;
   }
 
@@ -37,7 +37,7 @@ class AuthToken {
   }
 
   exists() {
-    return this.get() != '';
+    return this.get() !== '';
   }
 
   header() {
@@ -65,7 +65,7 @@ class AuthToken {
     localStorage.setItem(this.tokenKey, '');
     localStorage.setItem(this.expireKey, -1);
 
-    if (this.tokenKey == ACCESS_TOKEN_KEY)
+    if (this.tokenKey === ACCESS_TOKEN_KEY)
       delete API.defaults.headers.common['Authorization'];
   }
 }

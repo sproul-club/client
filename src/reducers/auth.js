@@ -9,7 +9,7 @@ import {
   AUTH_ERROR,
 } from '../actions/types';
 
-import { API, TOKENS } from '../utils/backendClient';
+import { TOKENS } from '../utils/backendClient';
 
 const initialState = {
   token: TOKENS.access.get(),
