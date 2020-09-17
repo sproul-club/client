@@ -180,7 +180,7 @@ const Profile = ({
           <Dropdown
             options={tagOptions}
             multi={true}
-            search={false}
+            search={true}
             defaultValue={profile.tags.map((tag) => tagOptions[tag])}
             placeholder="Add up to 3 tags"
             set={setTags}
