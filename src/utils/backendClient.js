@@ -44,7 +44,7 @@ class AuthToken {
   }
 
   exists() {
-    return this.get() !== '';
+    return !!this.get();
   }
 
   header() {
