@@ -81,7 +81,6 @@ export const isCallinkEmail = async (email) => {
     const res = await API.post('/api/user/email-exists', { email });
     return res.data.exists;
   } catch (err) {
-    // TODO: HANDLE THIS CASE
     console.log(err);
   }
 };
@@ -92,7 +91,6 @@ export const isPasswordStrong = async (password) => {
     const res = await API.post('/api/user/password-strength', { password });
     return res.data.strong;
   } catch (err) {
-    // TODO: HANDLE THIS CASE
     console.log(err);
   }
 };
@@ -113,8 +111,7 @@ export const sendResetPasswordEmail = async (email) => {
     const res = await API.post('/api/user/request-reset', { email });
     return res.data.status;
   } catch (err) {
-    // TODO: HANDLE THIS CASE
-    console.log(err);
+    throw err;
     // dispatch({ type: AUTH_ERROR, payload: err });
   }
 };
@@ -125,8 +122,7 @@ export const resetPassword = async (password, token) => {
     const res = await API.post('/api/user/confirm-reset', { token, password });
     return res.data.status;
   } catch (err) {
-    // TODO: HANDLE THIS CASE
-    console.log(err);
+    throw err;
     // dispatch({ type: AUTH_ERROR, payload: err });
   }
 };
