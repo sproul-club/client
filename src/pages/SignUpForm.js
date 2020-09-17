@@ -54,18 +54,32 @@ const MultiStepForm = ({
     return <Redirect to="/admin" />;
   }
 
-  const submitValue = () => {
+  async function resendConfirmEmail(email) {
+    setResentEmail(false);
+
+    try {
+      await resendConfirmationEmail(email);
+    } catch (err) {
+      var errMessage = err.response.data.reason;
+      NotificationManager.error(errMessage, 'Unable to register!', 3000);
+    } finally {
+      setResentEmail(true);
+    }
+  }
+
+  const submitValue = async () => {
     const tagsList = [];
     for (var i = 0; i < tags.length; i++) {
       tagsList.push(tags[i].value);
     }
 
-    register(clubName, email, pwd, tagsList, !!appReq.value, !!recruiting.value)
-      .then(() => setStep(currStep + 1))
-      .catch((err) => {
-        var errMessage = err.response.data.reason;
-        NotificationManager.error(errMessage, 'Unable to register!', 3000);
-      });
+    try {
+      await register(clubName, email, pwd, tagsList, !!appReq.value, !!recruiting.value);
+      setStep(currStep + 1);
+    } catch (err) {
+      var errMessage = err.response.data.reason;
+      NotificationManager.error(errMessage, 'Unable to register!', 3000);
+    }
   };
 
   const _prev = () => {
@@ -248,7 +262,7 @@ const MultiStepForm = ({
         resentEmail={resentEmail}
         email={email}
         setResentEmail={setResentEmail}
-        resendConfirmationEmail={resendConfirmationEmail}
+        resendConfirmationEmail={resendConfirmEmail}
       />
     </>
   );
@@ -454,9 +468,7 @@ const StepThree = (props) => {
         <h2>Didn't receive an email?</h2>
         <div
           style={{ fontSize: '12px', cursor: 'pointer' }}
-          onClick={() =>
-            props.resendConfirmationEmail(props.email, props.setResentEmail)
-          }
+          onClick={() => props.resendConfirmationEmail(props.email)}
         >
           Resend email
         </div>
