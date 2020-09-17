@@ -18,7 +18,8 @@ const ResetPassword2Form = () => {
     } else if (pwd !== con) {
       setConError('conError');
     } else {
-      resetPassword(pwd).then((status) => {
+      const token = new URLSearchParams(window.location.search).get('token');
+      resetPassword(pwd, token).then((status) => {
         if (status === 'success') {
           setStep(currStep + 1);
         } else {
