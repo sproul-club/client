@@ -34,7 +34,7 @@ export const loadProfile = () => async (dispatch) => {
 };
 
 // Update profile
-export const updateProfile = (formData, success, error) => async (dispatch) => {
+export const updateProfile = (formData) => async (dispatch) => {
   try {
     await API.post('/api/admin/profile', {
       name: formData.name,
@@ -46,61 +46,54 @@ export const updateProfile = (formData, success, error) => async (dispatch) => {
       social_media_links: formData.social_media_links,
     });
 
-    await success();
     dispatch({ type: UPDATE_PROFILE, payload: formData });
   } catch (err) {
-    await error();
-    console.log(err);
+    console.log(err.response.data);
+    throw err;
   }
 };
 
 // Upload Logo
-export const uploadLogo = (images, success, error) => async (dispatch) => {
+export const uploadLogo = (logo) => async (dispatch) => {
+  if (!logo) return;
+
+  let data = new FormData();
+  data.append('logo', logo);
+
+  const config = {
+    headers: {
+      'Content-Type': `multipart/form-data; boundary=${data._boundary}`,
+    },
+  };
+
   try {
-    let data = new FormData();
-
-    if (!images.logo) return;
-
-    data.append('logo', images.logo);
-
-    const config = {
-      headers: {
-        'Content-Type': `multipart/form-data; boundary=${data._boundary}`,
-      },
-    };
-
     const res = await API.post('/api/admin/upload-logo', data, config);
-    await success();
-
     dispatch({ type: UPLOAD_IMAGES, payload: res.data });
   } catch (err) {
-    error(err);
-    console.log(err.response);
+    console.log(err.response.data);
+    throw err;
   }
 };
 
 // Upload Banner
-export const uploadBanner = (images, success, error) => async (dispatch) => {
+export const uploadBanner = (banner) => async (dispatch) => {
+  if (!banner) return;
+
+  let data = new FormData();
+  data.append('banner', banner);
+
+  const config = {
+    headers: {
+      'Content-Type': `multipart/form-data; boundary=${data._boundary}`,
+    },
+  };
+
   try {
-    let data = new FormData();
-
-    if (!images.banner) return;
-
-    data.append('banner', images.banner);
-
-    const config = {
-      headers: {
-        'Content-Type': `multipart/form-data; boundary=${data._boundary}`,
-      },
-    };
-
     const res = await API.post('/api/admin/upload-banner', data, config);
-    await success();
-
     dispatch({ type: UPLOAD_IMAGES, payload: res.data });
   } catch (err) {
-    await error(err);
-    console.log(err.response);
+    console.log(err.response.data);
+    throw err;
   }
 };
 
