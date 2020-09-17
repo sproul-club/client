@@ -432,7 +432,7 @@ const StepTwo = (props) => {
         <Dropdown
           options={props.tagOptions}
           multi={true}
-          search={false}
+          search={true}
           placeholder="Add up to 3 tags"
           defaultValue={props.tags}
           set={props.setTags}
