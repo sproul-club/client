@@ -20,20 +20,27 @@ const API = axios.create({
 
 class AuthToken {
   constructor(tokenType, expiresAtKey) {
-    this.tokenKey = tokenType
+    this.tokenKey = tokenType;
     this.expireKey = expiresAtKey;
+
+    this.initializeAccessHeader();
   }
 
   set(token, expiresIn) {
     localStorage.setItem(this.tokenKey, token);
     localStorage.setItem(this.expireKey, new Date().getTime() + expiresIn * 1000);
 
-    if (this.tokenKey === ACCESS_TOKEN_KEY)
-      API.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    this.initializeAccessHeader();
   }
 
   get() {
     return localStorage.getItem(this.tokenKey);
+  }
+
+  initializeAccessHeader() {
+    let token = this.get();
+    if (this.tokenKey === ACCESS_TOKEN_KEY && token)
+      API.defaults.headers.common['Authorization'] = `Bearer ${token}`;
   }
 
   exists() {
