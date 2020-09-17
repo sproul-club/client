@@ -10,11 +10,7 @@ import {
   resendConfirmationEmail,
 } from '../actions/auth';
 import signup from './assets/signup.png';
-import 'react-notifications/lib/notifications.css';
-import {
-  NotificationManager,
-  NotificationContainer,
-} from 'react-notifications';
+import { NotificationManager } from 'react-notifications';
 
 const MultiStepForm = ({
   register,
@@ -254,7 +250,6 @@ const MultiStepForm = ({
         setResentEmail={setResentEmail}
         resendConfirmationEmail={resendConfirmationEmail}
       />
-      <NotificationContainer />
     </>
   );
 };

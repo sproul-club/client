@@ -5,11 +5,7 @@ import { connect } from 'react-redux';
 import { login } from '../actions/auth';
 import error from './assets/error.svg';
 import { isCallinkEmail } from '../actions/auth';
-import 'react-notifications/lib/notifications.css';
-import {
-  NotificationManager,
-  NotificationContainer,
-} from 'react-notifications';
+import { NotificationManager } from 'react-notifications';
 
 const SignInForm = ({ login, history, isAuthenticated }) => {
   // user inputs
@@ -126,7 +122,6 @@ const SignInForm = ({ login, history, isAuthenticated }) => {
       <button type="submit" className="submitButton" onClick={submitValue}>
         Sign in
       </button>
-      <NotificationContainer />
     </form>
   );
 };

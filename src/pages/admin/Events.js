@@ -5,10 +5,7 @@ import EventComp from './EventComp.js';
 import { addEvent, updateEvent, deleteEvent } from '../../actions/profile';
 import { validURL, normalizeUrl } from '../../utils/normalizeUrl';
 import './Events.css';
-import {
-  NotificationManager,
-  NotificationContainer,
-} from 'react-notifications';
+import { NotificationManager } from 'react-notifications';
 
 const Events = ({ addEvent, updateEvent, deleteEvent, events }) => {
   /*Determines if add event modal is shown*/
@@ -207,7 +204,6 @@ const Events = ({ addEvent, updateEvent, deleteEvent, events }) => {
           </button>
         </form>
       </Modal>
-      <NotificationContainer />
     </div>
   );
 };

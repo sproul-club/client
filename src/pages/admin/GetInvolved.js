@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
 import { updateProfile } from '../../actions/profile';
 import { connect } from 'react-redux';
-import {
-  NotificationManager,
-  NotificationContainer,
-} from 'react-notifications';
+import { NotificationManager } from 'react-notifications';
 
 const GetInvolved = ({ profile, get_involved, updateProfile }) => {
   const [involvedDesc, setInvolvedDesc] = useState(get_involved);
@@ -62,7 +59,6 @@ const GetInvolved = ({ profile, get_involved, updateProfile }) => {
       <button className="saveButton" onClick={submitValue}>
         Save changes{' '}
       </button>
-      <NotificationContainer />
     </div>
   );
 };

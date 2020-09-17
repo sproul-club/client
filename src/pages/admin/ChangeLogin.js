@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { updatePassword } from '../../actions/profile';
 // import { Link } from 'react-router-dom';
-import 'react-notifications/lib/notifications.css';
-import {NotificationManager, NotificationContainer} from 'react-notifications';
+import { NotificationManager } from 'react-notifications';
 
 const ChangeLogin = ({ updatePassword }) => {
     const [editing, setEditing] = useState(false);
@@ -140,7 +139,6 @@ const ChangeLogin = ({ updatePassword }) => {
             <button className={showCancel} onClick={cancelSave}>
                 Cancel
             </button>
-            <NotificationContainer />
         </div>
     )
 }

@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Modal from '../../layout/Modal';
 import { normalizeUrl, validURL } from '../../utils/normalizeUrl';
-import {
-  NotificationManager,
-  NotificationContainer,
-} from 'react-notifications';
+import { NotificationManager } from 'react-notifications';
 
 import Moment from 'react-moment';
 import { simplestRangeFormat, START_DATETIME, END_DATETIME } from '../../utils/formatTimeAndDate';
@@ -258,7 +255,6 @@ const EventComp = ({ data, entryChange, removeEvent }) => {
           </div>
         </div>
       </Modal>
-      <NotificationContainer />
     </div>
   );
 };

@@ -5,6 +5,10 @@ import {
   Route,
   withRouter,
 } from 'react-router-dom';
+
+import 'react-notifications/lib/notifications.css';
+import { NotificationContainer } from 'react-notifications';
+
 import { Landing } from './pages/Landing.js';
 import { ComingSoon } from './pages/ComingSoon.js';
 import Catalog from './pages/catalog.js';
@@ -54,6 +58,7 @@ const App = () => {
           </Route>
         </Switch>
         <ContactUs />
+        <NotificationContainer />
       </Router>
     </Provider>
   );

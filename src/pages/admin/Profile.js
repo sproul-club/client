@@ -3,11 +3,7 @@ import Dropdown from './AdminDropdown.js';
 import { connect } from 'react-redux';
 import ImageUploader from '../../react-images-upload';
 import { updateProfile, uploadLogo, uploadBanner } from '../../actions/profile';
-import 'react-notifications/lib/notifications.css';
-import {
-  NotificationManager,
-  NotificationContainer,
-} from 'react-notifications';
+import { NotificationManager } from 'react-notifications';
 
 const Profile = ({
   profile,
@@ -309,7 +305,6 @@ const Profile = ({
       >
         Save changes
       </button>
-      <NotificationContainer />
     </div>
   );
 };
