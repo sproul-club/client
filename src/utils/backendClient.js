@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 const LOCAL_URL = 'https://sc-backend.ngrok.io';
-const DEV_URL = 'https://sc-backend-dev.herokuapp.com';
-const PROD_URL = 'https://sc-backend-prod.herokuapp.com';
+const DEV_URL   = 'https://sc-backend-dev.herokuapp.com';
+const PROD_URL  = 'https://sc-backend-prod.herokuapp.com';
 
 const ACCESS_TOKEN_KEY  = 'token';
 const REFRESH_TOKEN_KEY = 'refreshToken';
@@ -10,7 +10,7 @@ const ACCESS_TOKEN_EXPIRE_KEY  = 'expiresAt';
 const REFRESH_TOKEN_EXPIRE_KEY = 'refreshExpiresAt';
 
 const API = axios.create({
-  baseURL: LOCAL_URL,
+  baseURL: PROD_URL,
   headers: {
     accept: 'application/json',
     'Access-Control-Allow-Origin': '*',
