@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { updateProfile } from '../../actions/profile';
-import {NotificationManager, NotificationContainer} from 'react-notifications';
-import {normalizeUrl} from '../../utils/normalizeUrl'
+import { NotificationManager } from 'react-notifications';
+import { normalizeUrl } from '../../utils/normalizeUrl'
 
 const ContactInfo = ({ profile, updateProfile }) => {
   const contactInfo = profile.social_media_links;
@@ -23,7 +23,7 @@ const ContactInfo = ({ profile, updateProfile }) => {
   if (email === null) {
     setEmail(profile.owner);
   }
-  
+
   const normalizeUrls = () => {
     setWebsite(normalizeUrl(website));
     setFacebook(normalizeUrl(facebook));
@@ -188,7 +188,6 @@ const ContactInfo = ({ profile, updateProfile }) => {
       <button className="saveButton" onClick={normalizeUrls}>
         Save changes
       </button>
-      <NotificationContainer/>
     </div>
   );
 };

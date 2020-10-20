@@ -3,11 +3,7 @@ import Dropdown from './AdminDropdown.js';
 import { connect } from 'react-redux';
 import ImageUploader from '../../react-images-upload';
 import { updateProfile, uploadLogo, uploadBanner } from '../../actions/profile';
-import 'react-notifications/lib/notifications.css';
-import {
-  NotificationManager,
-  NotificationContainer,
-} from 'react-notifications';
+import { NotificationManager } from 'react-notifications';
 
 const Profile = ({
   profile,
@@ -41,7 +37,55 @@ const Profile = ({
   const [logoImage, setLogoImage] = useState(null);
   const [bannerImage, setBannerImage] = useState(null);
 
-  const submit = () => {
+  async function uploadLogoPic(logoUploads) {
+    if (logoUploads && logoUploads.length > 0) {
+      try {
+        NotificationManager.info('Uploading logo...', '', 1500);
+        await uploadLogo(logoUploads[0]);
+        NotificationManager.success('Logo uploaded successfully!', '', 1500);
+      } catch (err) {
+        if (err.response.status === 503) {
+          NotificationManager.error(
+            'Something went wrong on our end. Please try again later',
+            'Logo image upload unsuccessful',
+            5000
+          );
+        } else {
+          NotificationManager.error(
+            'For best results, please upload a logo that has an aspect ratio of 1:1',
+            'Logo image upload unsuccessful',
+            5000
+          );
+        }
+      }
+    }
+  }
+
+  async function uploadBannerPic(bannerUploads) {
+    if (bannerUploads && bannerUploads.length > 0) {
+      try {
+        NotificationManager.info('Uploading banner...', '', 1500);
+        await uploadBanner(bannerUploads[0]);
+        NotificationManager.success('Banner uploaded successfully!', '', 1500);
+      } catch (err) {
+        if (err.response.status === 503) {
+          NotificationManager.error(
+            'Something went wrong on our end. Please try again later',
+            'Banner image upload unsuccessful',
+            5000
+          );
+        } else {
+          NotificationManager.error(
+            'For best results, please upload a logo that has an aspect ratio of 8:3',
+            'Banner image upload unsuccessful',
+            5000
+          );
+        }
+      }
+    }
+  }
+
+  const submit = async () => {
     const newProfile = {
       name: orgName.trim(),
       owner: orgEmail,
@@ -51,71 +95,17 @@ const Profile = ({
       new_members: !!recruiting.value,
     };
 
-    updateProfile(
-      newProfile,
-      function () {
-        NotificationManager.success(
-          'Profile changes saved successfully!',
-          '',
-          1500
-        );
-      },
-      function () {
-        NotificationManager.error('Profile changes unsuccessful!', '', 1500);
-      }
-    );
-
-    if (logoImage && logoImage.length > 0) {
-      uploadLogo(
-        { logo: logoImage[0] },
-        () => {
-          NotificationManager.success('Logo uploaded successfully!', '', 1500);
-        },
-        (err) => {
-          if (err.response.status === 503) {
-            NotificationManager.error(
-              'Something went wrong on our end. Please try again later',
-              'Logo image upload unsuccessful',
-              5000
-            );
-          } else {
-            NotificationManager.error(
-              'For best results, please upload a logo that has an aspect ratio of 1:1',
-              'Logo image upload unsuccessful',
-              5000
-            );
-          }
-        }
-      );
+    try {
+      await updateProfile(newProfile);
+      NotificationManager.success('Profile changes saved successfully!', '', 1500);
+    } catch (err) {
+      NotificationManager.error('Profile changes unsuccessful!', '', 1500);
     }
 
-    if (bannerImage && bannerImage.length > 0) {
-      uploadBanner(
-        { banner: bannerImage[0] },
-        () => {
-          NotificationManager.success(
-            'Banner uploaded successfully!',
-            '',
-            1500
-          );
-        },
-        (err) => {
-          if (err.response.status === 503) {
-            NotificationManager.error(
-              'Something went wrong on our end. Please try again later',
-              'Banner image upload unsuccessful',
-              5000
-            );
-          } else {
-            NotificationManager.error(
-              'For best results, please upload a banner that has an aspect ratio of 8:3',
-              'Banner image upload unsuccessful',
-              5000
-            );
-          }
-        }
-      );
-    }
+    await Promise.all([
+      uploadLogoPic(logoImage),
+      uploadBannerPic(bannerImage)
+    ]);
   };
 
   const descrChange = (e) => {
@@ -184,7 +174,7 @@ const Profile = ({
           <Dropdown
             options={tagOptions}
             multi={true}
-            search={false}
+            search={true}
             defaultValue={profile.tags.map((tag) => tagOptions[tag])}
             placeholder="Add up to 3 tags"
             set={setTags}
@@ -309,7 +299,6 @@ const Profile = ({
       >
         Save changes
       </button>
-      <NotificationContainer />
     </div>
   );
 };

@@ -10,11 +10,7 @@ import {
   resendConfirmationEmail,
 } from '../actions/auth';
 import signup from './assets/signup.png';
-import 'react-notifications/lib/notifications.css';
-import {
-  NotificationManager,
-  NotificationContainer,
-} from 'react-notifications';
+import { NotificationManager } from 'react-notifications';
 
 const MultiStepForm = ({
   register,
@@ -58,18 +54,32 @@ const MultiStepForm = ({
     return <Redirect to="/admin" />;
   }
 
-  const submitValue = () => {
+  async function resendConfirmEmail(email) {
+    setResentEmail(false);
+
+    try {
+      await resendConfirmationEmail(email);
+    } catch (err) {
+      var errMessage = err.response.data.reason;
+      NotificationManager.error(errMessage, 'Unable to register!', 3000);
+    } finally {
+      setResentEmail(true);
+    }
+  }
+
+  const submitValue = async () => {
     const tagsList = [];
     for (var i = 0; i < tags.length; i++) {
       tagsList.push(tags[i].value);
     }
 
-    register(clubName, email, pwd, tagsList, !!appReq.value, !!recruiting.value)
-      .then(() => setStep(currStep + 1))
-      .catch((err) => {
-        var errMessage = err.response.data.reason;
-        NotificationManager.error(errMessage, 'Unable to register!', 3000);
-      });
+    try {
+      await register(clubName, email, pwd, tagsList, !!appReq.value, !!recruiting.value);
+      setStep(currStep + 1);
+    } catch (err) {
+      var errMessage = err.response.data.reason;
+      NotificationManager.error(errMessage, 'Unable to register!', 3000);
+    }
   };
 
   const _prev = () => {
@@ -252,9 +262,8 @@ const MultiStepForm = ({
         resentEmail={resentEmail}
         email={email}
         setResentEmail={setResentEmail}
-        resendConfirmationEmail={resendConfirmationEmail}
+        resendConfirmationEmail={resendConfirmEmail}
       />
-      <NotificationContainer />
     </>
   );
 };
@@ -374,7 +383,6 @@ const StepTwo = (props) => {
 
   // ideally this var will set the dropdowns to red-border css as well...
   let haveError = props.emptyRecruit === 'emptyRecruit';
-  // console.log("haveError3=" + haveError3);
   return (
     <div className="formGroup">
       <div className="errorWrapper">
@@ -423,7 +431,7 @@ const StepTwo = (props) => {
         <Dropdown
           options={props.tagOptions}
           multi={true}
-          search={false}
+          search={true}
           placeholder="Add up to 3 tags"
           defaultValue={props.tags}
           set={props.setTags}
@@ -459,9 +467,7 @@ const StepThree = (props) => {
         <h2>Didn't receive an email?</h2>
         <div
           style={{ fontSize: '12px', cursor: 'pointer' }}
-          onClick={() =>
-            props.resendConfirmationEmail(props.email, props.setResentEmail)
-          }
+          onClick={() => props.resendConfirmationEmail(props.email)}
         >
           Resend email
         </div>

@@ -7,22 +7,12 @@ import {
   SET_FORM_DETAILS,
   SET_TAGS,
 } from './types';
-import axios from 'axios';
 
-// Search Clubs
-axios.defaults.baseURL = 'https://sc-backend-prod.herokuapp.com';
+import { API } from '../utils/backendClient';
 
 export const loadClubs = () => async (dispatch) => {
   try {
-    const config = {
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-      },
-    };
-
-    const params = JSON.stringify({ limit: 30, skip: 0 });
-    const res = await axios.post('/api/catalog/organizations', params, config);
+    const res = await API.post('/api/catalog/organizations', { limit: 30, skip: 0 });
 
     dispatch({
       type: SEARCH_CLUBS,
@@ -43,22 +33,8 @@ export const searchClubs = ({
   skip,
 }) => async (dispatch) => {
   try {
-    const config = {
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-      },
-    };
-
-    const params = JSON.stringify({
-      search,
-      tags,
-      app_required,
-      new_members,
-      limit,
-      skip,
-    });
-    const res = await axios.post('/api/catalog/search', params, config);
+    const body = { search, tags, app_required, new_members, limit, skip };
+    const res = await API.post('/api/catalog/search', body);
 
     dispatch({
       type: SEARCH_CLUBS,
@@ -72,7 +48,7 @@ export const searchClubs = ({
 
 export const getOrganization = (orgId) => async (dispatch) => {
   try {
-    const res = await axios.get(`/api/catalog/organizations/${orgId}`);
+    const res = await API.get(`/api/catalog/organizations/${orgId}`);
 
     dispatch({ type: GET_ORGANIZATION, payload: res.data });
   } catch (err) {
@@ -97,22 +73,8 @@ export const loadMoreOrgs = ({
   skip,
 }) => async (dispatch) => {
   try {
-    const config = {
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-      },
-    };
-
-    const params = JSON.stringify({
-      search,
-      tags,
-      app_required,
-      new_members,
-      limit,
-      skip,
-    });
-    const res = await axios.post('/api/catalog/search', params, config);
+    const body = { search, tags, app_required, new_members, limit, skip };
+    const res = await API.post('/api/catalog/search', body);
 
     dispatch({
       type: LOAD_MORE_ORGS,

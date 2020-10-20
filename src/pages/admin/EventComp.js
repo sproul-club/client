@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import Modal from '../../layout/Modal';
 import { normalizeUrl, validURL } from '../../utils/normalizeUrl';
-import {
-  NotificationManager,
-  NotificationContainer,
-} from 'react-notifications';
-import { formatDates } from '../../utils/formatTimeAndDate';
+import { NotificationManager } from 'react-notifications';
+
+import Moment from 'react-moment';
+import { simplestRangeFormat, START_DATETIME, END_DATETIME } from '../../utils/formatTimeAndDate';
 
 const EventComp = ({ data, entryChange, removeEvent }) => {
   /*Tracks input values for edit modal*/
@@ -133,7 +132,17 @@ const EventComp = ({ data, entryChange, removeEvent }) => {
             />
           </div>
         </div>
-        <div className="event-date">{formatDates(propsStart, propsEnd)}</div>
+        <div className="event-date">
+          <Moment
+            interval={0}
+            date={propsStart}
+            format={simplestRangeFormat(propsStart, propsEnd, START_DATETIME)}/>
+          {" - "}
+          <Moment
+            interval={0}
+            date={propsEnd}
+            format={simplestRangeFormat(propsStart, propsEnd, END_DATETIME)} />
+        </div>
         <div className="event-description">{propsText}</div>
       </div>
 
@@ -246,7 +255,6 @@ const EventComp = ({ data, entryChange, removeEvent }) => {
           </div>
         </div>
       </Modal>
-      <NotificationContainer />
     </div>
   );
 };

@@ -5,6 +5,10 @@ import {
   Route,
   withRouter,
 } from 'react-router-dom';
+
+import 'react-notifications/lib/notifications.css';
+import { NotificationContainer } from 'react-notifications';
+
 import { Landing } from './pages/Landing.js';
 import { ComingSoon } from './pages/ComingSoon.js';
 import Catalog from './pages/catalog.js';
@@ -22,6 +26,11 @@ import { loadProfile, getTags } from './actions/profile';
 import { Provider } from 'react-redux';
 import PrivateRoute from './utils/PrivateRoute';
 import Navbar from './layout/Navbar';
+
+import Moment from 'react-moment';
+import 'moment-timezone';
+
+Moment.globalTimezone = 'America/Los_Angeles';
 
 const App = () => {
   useEffect(() => {
@@ -49,6 +58,7 @@ const App = () => {
           </Route>
         </Switch>
         <ContactUs />
+        <NotificationContainer />
       </Router>
     </Provider>
   );
