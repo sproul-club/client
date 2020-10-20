@@ -24,8 +24,10 @@ const Navbar = ({
   const navbarRef = useRef();
   const authDropDownRef = useRef();
 
+  // Close navbar when on page change (mobile)
   useEffect(() => {
     setNavbarVis(false);
+    // eslint-disable-next-line
   }, [window.location.pathname]);
 
   // If it is on mobile, and the navbar is visible, if click outside, hide sidebar

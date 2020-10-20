@@ -1,12 +1,9 @@
 import React from 'react';
-import RichText from './RichText';
 
 const ErrorPage = () => {
-  return (
-    <div style={{ paddingTop: '30vh' }}>
-      Error
-      {/* <RichText /> */}
-    </div>
+  return (<>
+    <div style={{paddingTop: '40vh',display: 'flex', justifyContent: 'center' }}>Page not Found :(</div>
+    </>
   );
 };
 
