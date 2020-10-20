@@ -73,6 +73,8 @@
 
 .noresults-image-container {
   display: flex;
+  flex-direction: column;
+
   width: fill;
   height: 900px;
 
@@ -81,13 +83,13 @@
   font-family: Qanelas Soft Semi Bold;
 
   /*background: #000000;*/
-
   justify-content: center;
   align-items: center;
 }
 
 .noresults-image {
   height: 300px;
+  margin-bottom: 10px;
 }
 
 #app-req {

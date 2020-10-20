@@ -5,15 +5,15 @@ import './ErrorPage.css'
 
 const ErrorPage = () => {
   return (
-    <div className="landing">
+    <div className="errorpage">
       <div className="content">
         <div className="imageContainer">
           {/* Image here */}
         </div>
         <div className="text">
-          <h3>Error 404</h3>
+          <h3>404 Error</h3>
           <p>
-            We couldn't find that page! 
+            We couldn't find that page!
           </p>
         </div>
       </div>

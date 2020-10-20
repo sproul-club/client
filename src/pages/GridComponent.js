@@ -125,6 +125,7 @@ function GridComponent({ tagOptions, clubs, num_clubs, loading }) {
                     src={uwubear}
                     alt="no results placeholder"
                   />
+                  Try a different search! 
               </div>
             </div>
         }

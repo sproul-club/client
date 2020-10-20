@@ -1,4 +1,4 @@
-.landing {
+.errorpage {
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -9,7 +9,7 @@
   background-size: cover;
 }
 
-.landing .content {
+.errorpage .content {
   min-height: 87vh;
   display: flex;
   /* justify-content: space-between; */
@@ -21,7 +21,7 @@
   margin-bottom: 20px;
 }
 
-.landing .content .imageContainer {
+.errorpage .content .imageContainer {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -29,7 +29,7 @@
   height: 0px; /* TODO: change this once we add a photo! */
 }
 
-.landing .text {
+.errorpage .text {
   display: flex;
   flex-direction: column;
   position: relative;
@@ -38,4 +38,15 @@
   max-width: 650px;
   float: left;
   align-items: center;
+}
+
+.errorpage .text h3 {
+  color: #2b2b2b;
+  font-size: 2em;
+  line-height: 1.2em;
+  font-family: Qanelas Soft Extra Bold;
+  font-weight: 700;
+  font-style: normal;
+  line-height: 42px;
+  margin-bottom: 5px;
 }
