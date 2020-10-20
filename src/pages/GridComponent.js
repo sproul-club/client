@@ -17,6 +17,8 @@ import { searchClubs } from '../actions/catalog';
 import './GridComponent.css';
 import { makeStyles } from '@material-ui/core/styles';
 
+import uwubear from './assets/landingbears.svg';
+
 function GridComponent({ tagOptions, clubs, num_clubs, loading }) {
   const useStyles = makeStyles({
     root: {
@@ -112,7 +114,20 @@ function GridComponent({ tagOptions, clubs, num_clubs, loading }) {
   return (
     <div className="wrapper">
       <div className="num-results">
-        {num_clubs ? `${num_clubs} Results` : loading ? '' : 'No Results Found'}
+        {num_clubs ? `${num_clubs} Results` : loading ? '' :
+            <div className="noresults-content">
+              <div className="noresults-text">
+              No results found.
+              </div>
+              <div className="noresults-image-container">
+                  <img
+                    className="noresults-image"
+                    src={uwubear}
+                    alt="no results placeholder"
+                  />
+              </div>
+            </div>
+        }
       </div>
       <Grid container spacing={2} className="card-grid">
         {GridList}

@@ -53,6 +53,43 @@
   margin-left: -13px;
 }
 
+.noresults-content {
+    display: flex;
+    flex-direction: column;
+    /*background: #000000;*/
+    margin-left: -13px;
+    height: 50vh;
+
+    justify-content: left;
+    align-items: flex-start;
+}
+
+.noresults-text {
+  margin-top: 0px;
+  margin-bottom: 10px;
+  margin-left: 8px;
+  font-family: Qanelas Soft Semi Bold;
+}
+
+.noresults-image-container {
+  display: flex;
+  width: fill;
+  height: 900px;
+
+  margin-bottom: 10px;
+  margin-left: 8px;
+  font-family: Qanelas Soft Semi Bold;
+
+  /*background: #000000;*/
+
+  justify-content: center;
+  align-items: center;
+}
+
+.noresults-image {
+  height: 300px;
+}
+
 #app-req {
   background-color: #FFF1AE;
 }
