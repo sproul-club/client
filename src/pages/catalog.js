@@ -11,7 +11,6 @@ import {
   clearOrganization,
   loadMoreOrgs,
   setFormDetails,
-  clearOrganizations,
 } from '../actions/catalog';
 import Dropdown from './CatalogDropdown.js';
 import {
