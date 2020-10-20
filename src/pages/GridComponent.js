@@ -31,7 +31,7 @@ function GridComponent({ tagOptions, clubs, num_clubs, loading, loadClubs }) {
   useEffect(() => {
     // Return unfiltered clubs so there is some data there when first rendered
     if (clubs.length === 0) loadClubs();
-  }, [loadClubs]);
+  }, [loadClubs, clubs.length]);
 
   const GridList = clubs.map((club, i) => (
     <Grid item key={i} sm={12} md={6} lg={4} className="club-card">

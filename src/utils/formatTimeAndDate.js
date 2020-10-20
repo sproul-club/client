@@ -48,20 +48,20 @@ export function formatDate(datetime) {
     return dayArr[datetime.getDay()] + ', ' + month + ' ' + day + ', ' + time;
   }
 
-  const dateWithTimeZone = (d) => {
-    let date = new Date(d);
+  // const dateWithTimeZone = (d) => {
+  //   let date = new Date(d);
   
-    let utcDate = new Date(date.toLocaleString('en-US', { timeZone: "UTC" }));
-    let tzDate = new Date(date.toLocaleString('en-US', { timeZone: "America/Los_Angeles" }));
-    console.log(date);
-    console.log(utcDate);
-    console.log(tzDate);
-    let offset = utcDate.getTime() - tzDate.getTime();
+  //   let utcDate = new Date(date.toLocaleString('en-US', { timeZone: "UTC" }));
+  //   let tzDate = new Date(date.toLocaleString('en-US', { timeZone: "America/Los_Angeles" }));
+  //   console.log(date);
+  //   console.log(utcDate);
+  //   console.log(tzDate);
+  //   let offset = utcDate.getTime() - tzDate.getTime();
   
-    date.setTime( date.getTime() + offset );
+  //   date.setTime( date.getTime() + offset );
   
-    return date;
-  };
+  //   return date;
+  // };
 
   const formatTime = (hr, min) => {
     var dd = ' AM';
