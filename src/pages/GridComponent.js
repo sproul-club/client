@@ -16,6 +16,10 @@ import { withRouter, Link } from 'react-router-dom';
 import { searchClubs } from '../actions/catalog';
 import './GridComponent.css';
 import { makeStyles } from '@material-ui/core/styles';
+import CreateIcon from '@material-ui/icons/CreateRounded';
+import HappyIcon from '@material-ui/icons/SentimentSatisfiedRounded';
+import CheckIcon from '@material-ui/icons/CheckRounded';
+import CrossIcon from '@material-ui/icons/CloseRounded';
 
 function GridComponent({ tagOptions, clubs, num_clubs, loading }) {
   const useStyles = makeStyles({
@@ -66,32 +70,24 @@ function GridComponent({ tagOptions, clubs, num_clubs, loading }) {
               <div className="req-flex">
                 {club.app_required ? (
                   <div className="grid-tag" id="app-req">
-                    <span role="img" aria-label="emoji">
-                      ✎
-                    </span>{' '}
-                    Requires App
+                    <CreateIcon style={{ fontSize: '1em'}} />
+                    <span>Requires App</span>
                   </div>
                 ) : (
                   <div className="grid-tag" id="app-not-req">
-                    <span role="img" aria-label="emoji">
-                      ☺︎
-                    </span>{' '}
-                    No App Required
+                    <HappyIcon style={{ fontSize: '1em'}} />
+                    <span>No App Required</span>
                   </div>
                 )}
                 {club.new_members ? (
                   <div className="grid-tag" id="open-tag">
-                    <span role="img" aria-label="emoji">
-                      ✓
-                    </span>{' '}
-                    Taking New Members
+                    <CheckIcon style={{ fontSize: '1em'}} />
+                    <span>Taking New Members</span>
                   </div>
                 ) : (
                   <div className="grid-tag" id="not-open-tag">
-                    <span role="img" aria-label="emoji">
-                      ✗
-                    </span>{' '}
-                    Not Taking New Members
+                    <CrossIcon style={{ fontSize: '1em'}} />
+                    <span>Not Taking New Members</span>
                   </div>
                 )}
               </div>
