@@ -7,6 +7,10 @@ import { withRouter } from 'react-router-dom';
 import { getOrganization, clearOrganization } from '../actions/catalog';
 import { connect } from 'react-redux';
 import ReactGA from 'react-ga';
+import CreateIcon from '@material-ui/icons/CreateRounded';
+import HappyIcon from '@material-ui/icons/SentimentSatisfiedRounded';
+import CheckIcon from '@material-ui/icons/CheckRounded';
+import CrossIcon from '@material-ui/icons/CloseRounded';
 
 function ClubPage({
   organization,
@@ -69,21 +73,25 @@ function ClubPage({
 
   const appReq = organization.app_required ? (
     <div className="tag" id="app-req">
-      ✎ Requires App
+      <CreateIcon style={{ fontSize: '1em'}} />
+      <span>Requires App</span>
     </div>
   ) : (
     <div className="tag" id="app-not-req">
-      ☺︎ No App Required
+      <HappyIcon style={{ fontSize: '1em'}} />
+      <span>No App Required</span>
     </div>
   );
 
   const clubOpen = organization.new_members ? (
     <div className="tag" id="open-tag">
-      ✓ Taking New Members
+      <CheckIcon style={{ fontSize: '1em'}} />
+      <span>Taking New Members</span>
     </div>
   ) : (
     <div className="tag" id="not-open-tag">
-      ✗ Not Taking New Members
+      <CrossIcon style={{ fontSize: '1em'}} />
+      <span>Not Taking New Members</span>
     </div>
   );
 

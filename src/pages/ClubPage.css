@@ -93,6 +93,9 @@
 }
 
 .tag {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   margin-left: 0.5vw;
   background-color: #e2e2e2;
   border-radius: 6px;
@@ -100,6 +103,10 @@
   font-family: Qanelas Soft;
   font-size: 1.1vw;
   flex-direction: row;
+}
+
+.tag span {
+  margin-left: 0.3em;
 }
 
 .app-flex {
