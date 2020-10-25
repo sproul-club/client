@@ -17,15 +17,15 @@ function ClubPage({
 }) {
   const routeId = history.location.pathname.slice(6);
   useEffect(() => {
-    if (organization.id !== routeId) getOrganization(routeId);
+    if (organization.link_name !== routeId) getOrganization(routeId);
     // clears the loaded profile when component unmounts
     return () => {
-      !organization.id && clearOrganization();
+      !organization.link_name && clearOrganization();
     };
-    // recall useEffect when the id in url changes
+    // recall useEffect when the link_name in url changes
   }, [routeId]);
 
-  if (!organization.id) return <Loading />;
+  if (!organization.link_name) return <Loading />;
 
   const socLinks = organization.social_media_links;
   const contactComps = Object.keys(socLinks).map((key, i) =>
@@ -46,7 +46,7 @@ function ClubPage({
       </a>
     ) : null
   );
-  
+
   const resComps = organization.resources.map((res, i) => (
     <div className="desc-text" id="resources" key={i}>
       {res.name}

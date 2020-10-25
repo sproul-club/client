@@ -34,7 +34,7 @@ function GridComponent({ tagOptions, clubs, num_clubs, loading }) {
         <CardActionArea>
           <Link
             to={{
-              pathname: `/club/${club.id}`,
+              pathname: `/club/${club.link_name}`,
               state: { modal: true },
             }}
             style={{
