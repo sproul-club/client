@@ -125,7 +125,7 @@ const Navbar = ({
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
   organizationEmail: state.profile.owner,
-  orgId: state.profile.id,
+  orgId: state.profile.link_name,
   loading: state.auth.loading,
 });
 
