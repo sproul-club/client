@@ -38,6 +38,7 @@ function EventAccord({ data }) {
         <AccordionItemPanel className="accordion__panel-event">
           {event.description}
           <br></br>
+          {(event.link ? 
           <div id="gray-ev-link">
             event link
             <a
@@ -53,6 +54,7 @@ function EventAccord({ data }) {
               />
             </a>
           </div>
+          : null)}
         </AccordionItemPanel>
       </AccordionItem>
       <hr width="90%"></hr>
