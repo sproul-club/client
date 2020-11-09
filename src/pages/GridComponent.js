@@ -21,6 +21,8 @@ import HappyIcon from '@material-ui/icons/SentimentSatisfiedRounded';
 import CheckIcon from '@material-ui/icons/CheckRounded';
 import CrossIcon from '@material-ui/icons/CloseRounded';
 
+import uwubear from './assets/landingbears.svg';
+
 function GridComponent({ tagOptions, clubs, num_clubs, loading }) {
   const useStyles = makeStyles({
     root: {
@@ -108,7 +110,21 @@ function GridComponent({ tagOptions, clubs, num_clubs, loading }) {
   return (
     <div className="wrapper">
       <div className="num-results">
-        {num_clubs ? `${num_clubs} Results` : loading ? '' : 'No Results Found'}
+        {num_clubs ? `${num_clubs} Results` : loading ? '' :
+            <div className="noresults-content">
+              <div className="noresults-text">
+              No results found.
+              </div>
+              <div className="noresults-image-container">
+                  <img
+                    className="noresults-image"
+                    src={uwubear}
+                    alt="no results placeholder"
+                  />
+                  Try a different search! 
+              </div>
+            </div>
+        }
       </div>
       <Grid container spacing={2} className="card-grid">
         {GridList}
