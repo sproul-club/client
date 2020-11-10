@@ -18,6 +18,7 @@ import { ResetPassword } from './pages/ResetPassword.js';
 import { ResetPassword2 } from './pages/ResetPassword2.js';
 import Security from './pages/admin/Security.js';
 import ErrorPage from './pages/ErrorPage';
+import AboutPage from './pages/AboutPage';
 import Admin from './pages/admin/Admin.js';
 import ClubPage from './pages/ClubPage';
 import store from './store';
@@ -45,6 +46,7 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={Landing} />
           <Route exact path="/comingsoon" component={ComingSoon} />
+          <Route exact path="/about" component={AboutPage} />
           <PrivateRoute path="/admin" component={Admin} />
           <Route path="/catalog" component={Catalog} />
           <Route exact path="/signup" component={SignUp} />

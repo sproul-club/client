@@ -1,0 +1,55 @@
+.polaroid {
+  height: 275px;
+  width: 210px;
+  background-color: #000000;
+  background: #FFFFFF;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+
+  display: flex;
+  flex-direction: column;;
+  align-items: center;
+  justify-content: center;
+}
+
+.polaroid imageContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100px;
+
+}
+
+.polaroid .text h1 {
+  color: #2b2b2b;
+  font-size: 18px;
+  font-family: Qanelas Soft;
+  font-weight: 200;
+  font-style: normal;
+
+  margin-top: 15px;
+  margin-bottom: 5px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.polaroid .text h2 {
+  color: #4b5d52;
+  font-size: 18px;
+  font-family: Qanelas Soft;
+  font-weight: 200;
+  font-style: normal;
+
+  margin-top: 0px;
+  margin-bottom: 0px;
+
+  display: flex;
+  align-items: flex-start;
+}
+
+.polaroid .default-image {
+  height: 150px;
+  margin-bottom: 10px;
+}

@@ -52,6 +52,9 @@ const Navbar = ({
 
   const loggedOutLinks = (
     <>
+      <Link to="/about" className="nav-link">
+        About
+      </Link>
       <Link to="/catalog" className="nav-link">
         Discover
       </Link>
