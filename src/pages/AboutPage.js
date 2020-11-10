@@ -30,11 +30,39 @@ const AboutPage = () => {
           </p>
           <h1>The Team</h1>
           <h2>Product Design</h2>
-          <PolaroidComponent name="Izzie Lau" position="Engineer"/>
-
+          <div className="carousel">
+            <PolaroidComponent name="Tina Teng" position="Design Lead"/>
+            <PolaroidComponent name="Grace Ng" position="Designer"/>
+            <PolaroidComponent name="James Hua" position="Designer"/>
+            <PolaroidComponent name="Yuki Dian" position="Designer"/>
+            <PolaroidComponent name="Cynthia Shi" position="Designer"/>
+          </div>
           <h2>Frontend Development</h2>
+          <div className="carousel">
+            <PolaroidComponent name="Allen Li" position="Frontend Lead"/>
+            <PolaroidComponent name="Amy Tong" position="Frontend Lead"/>
+            <PolaroidComponent name="Izzie Lau" position="Frontend Engineer"/>
+            <PolaroidComponent name="Karen Tan" position="Frontend Engineer"/>
+            <PolaroidComponent name="Satiya Kem" position="Frontend Engineer"/>
+          </div>
+          <div className="carousel">
+            <PolaroidComponent name="Nico Galin" position="Frontend Engineer"/>
+            <PolaroidComponent name="Christine Luo" position="Frontend Engineer"/>
+            <PolaroidComponent name="Matt Clagett" position="Frontend Engineer"/>
+            <PolaroidComponent name="Juliet Kim" position="Frontend Engineer"/>
+          </div>
           <h2>Backend Development</h2>
+          <div className="carousel">
+            <PolaroidComponent name="Tejas Shah" position="Backend Lead"/>
+            <PolaroidComponent name="Joyce Li" position="Backend Engineer"/>
+            <PolaroidComponent name="Franco Achacoso" position="Backend Engineer"/>
+          </div>
           <h2>Business & Design</h2>
+          <div className="carousel">
+            <PolaroidComponent name="Kevin Feng" position="Project Manager"/>
+            <PolaroidComponent name="Vicky Liu" position="Project Manager"/>
+            <PolaroidComponent name="Jasmine Syu" position="Visual Designer"/>
+          </div>
 
         </div>
       </div>

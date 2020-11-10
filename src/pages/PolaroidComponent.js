@@ -5,25 +5,18 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import defaultbear from './assets/default_logo.jpg';
 
-const PolaroidComponent = ({ name, image, position }) => {
-  const useStyles = makeStyles({
-    root: {
-      minWidth: 200,
-    },
-    media: {
-      height: 140,
-    },
-  });
-  const { root, media } = useStyles();
-
+const PolaroidComponent = ({ name, image, position, linkedin }) => {
   return (
+    <a href={linkedin != null ? `${linkedin}` : "https://www.linkedin.com/company/sproul-club/"} target="_blank">
     <div className="polaroid">
       <div className="imageContainer">
-        <img
-          className="default-image"
-          src={defaultbear}
-          alt="a light blue bear with a dark blue background"
-        />
+        {image != null ? `${image}` :
+          <img
+            className="default-image"
+            src={defaultbear}
+            alt="a light blue bear with a dark blue background"
+          />
+        }
       </div>
       <div className="text">
         <h1>
@@ -34,6 +27,7 @@ const PolaroidComponent = ({ name, image, position }) => {
         </h2>
       </div>
     </div>
+    </a>
   );
 }
 
