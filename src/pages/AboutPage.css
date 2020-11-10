@@ -95,3 +95,11 @@
   margin-left: 10px;
   height: 250px;
 }
+
+.about .content .image {
+  object-fit: cover;
+
+  width: 120px;
+  height: 120px;
+  margin-bottom: 0px;
+}

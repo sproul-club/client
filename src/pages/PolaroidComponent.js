@@ -10,7 +10,7 @@ const PolaroidComponent = ({ name, image, position, linkedin }) => {
     <a href={linkedin != null ? `${linkedin}` : "https://www.linkedin.com/company/sproul-club/"} target="_blank">
     <div className="polaroid">
       <div className="imageContainer">
-        {image != null ? `${image}` :
+        {image != null ? image :
           <img
             className="default-image"
             src={defaultbear}
