@@ -8,6 +8,11 @@ const Footer = () => {
         Made with <i className="fas fa-heart" style={{ color: 'red' }}></i> by{' '}
         <a href="/">sproul.club</a>!
       </div>
+      <div className="end">
+        <a href="/about" className="end">
+          About Us
+        </a>
+      </div>
       <div className="links">
         <a
           target="_blank"

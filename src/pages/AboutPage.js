@@ -2,6 +2,7 @@ import React from 'react';
 
 import './AboutPage.css'
 import PolaroidComponent from './PolaroidComponent.js'
+import Footer from '../layout/Footer';
 
 import tina from './assets/profile-photos/tina.JPG'
 import grace from './assets/profile-photos/grace.JPG'
@@ -87,9 +88,9 @@ const AboutPage = () => {
             <PolaroidComponent name="Vicky Liu" position="Project Manager" linkedin="https://www.linkedin.com/in/yqvickyliu/" image=<img className="image" src={vicky} />/>
             <PolaroidComponent name="Jasmine Syu" position="Visual Designer" linkedin="https://www.linkedin.com/in/jasminesyu/" image=<img className="image" src={jasmine} />/>
           </div>
-
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
