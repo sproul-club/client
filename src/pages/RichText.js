@@ -12,6 +12,8 @@ class RichText extends React.Component {
     this.focus = () => this.refs.editor.focus();
     this.onChange = (editorState) => {
       this.setState({editorState})
+      console.log('content state: ', editorState.getCurrentContent())
+      console.log('content state: ', JSON.stringify(editorState.getCurrentContent()))
 
       // console.log(stateToHTML(editorState.getCurrentContent()))
       // console.log(convertFromHTML(stateToHTML(editorState.getCurrentContent())))
@@ -83,7 +85,6 @@ class RichText extends React.Component {
         className += ' RichEditor-hidePlaceholder';
       }
     }
-    console.log(EditorState.createWithContent(stateFromHTML(this.props.descr)))
 
     return (
       <div className="RichEditor-root">
@@ -103,7 +104,6 @@ class RichText extends React.Component {
             handleKeyCommand={this.handleKeyCommand}
             keyBindingFn={this.mapKeyToEditorCommand}
             onChange={this.onChange}
-            defaultEditorState={EditorState.createWithContent(stateFromHTML(this.props.descr))}
             ref="editor"
             spellCheck={true}
           />
