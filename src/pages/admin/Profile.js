@@ -5,6 +5,9 @@ import ImageUploader from '../../react-images-upload';
 import { updateProfile, uploadLogo, uploadBanner } from '../../actions/profile';
 import { NotificationManager } from 'react-notifications';
 import RichText from '../RichText'
+import {stateFromHTML} from 'draft-js-import-html';
+import {stateToHTML} from 'draft-js-export-html';
+
 
 const Profile = ({
   profile,
@@ -23,10 +26,10 @@ const Profile = ({
     { value: 1, label: 'Accepting members' },
     { value: 0, label: 'Not accepting members' },
   ];
-
+  console.log(stateFromHTML(profile.about_us))
   const [orgName, setOrgName] = useState(profile.name);
   const [orgEmail, setOrgEmail] = useState(profile.owner);
-  const [descr, setDescr] = useState(profile.about_us);
+  const [descr, setDescr] = useState(stateFromHTML(profile.about_us));
   const [descrChars, setChars] = useState(750 - profile.about_us.replace(/<[^>]*>?/gm, '').length);
   const [tags, setTags] = useState(profile.tags.map((tag) => tagOptions[tag]));
   const [appReq, setAppReq] = useState(
@@ -37,6 +40,7 @@ const Profile = ({
   );
   const [logoImage, setLogoImage] = useState(null);
   const [bannerImage, setBannerImage] = useState(null);
+
 
   async function uploadLogoPic(logoUploads) {
     if (logoUploads && logoUploads.length > 0) {
@@ -92,7 +96,7 @@ const Profile = ({
       name: orgName.trim(),
       owner: orgEmail,
       tags: tags.map((tags) => tags.value),
-      about_us: descr,
+      about_us: stateToHTML(descr),
       app_required: !!appReq.value,
       new_members: !!recruiting.value,
     };
