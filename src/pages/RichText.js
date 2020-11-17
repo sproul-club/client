@@ -7,18 +7,13 @@ import "./RichText.css"
 class RichText extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {editorState: EditorState.createEmpty()};
+    this.state = {editorState: EditorState.createWithContent(props.descr)};
 
     this.focus = () => this.refs.editor.focus();
     this.onChange = (editorState) => {
       this.setState({editorState})
-      console.log('content state: ', editorState.getCurrentContent())
-      console.log('content state: ', JSON.stringify(editorState.getCurrentContent()))
-
-      // console.log(stateToHTML(editorState.getCurrentContent()))
-      // console.log(convertFromHTML(stateToHTML(editorState.getCurrentContent())))
       
-      this.props.setDescr(stateToHTML(editorState.getCurrentContent()))
+      this.props.setDescr(editorState.getCurrentContent())
       
       const editorText = editorState.getCurrentContent().getPlainText('\u0001')
       this.props.setChars(750 - editorText.length)
