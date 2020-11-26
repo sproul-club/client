@@ -19,7 +19,7 @@ import { ResetPassword2 } from './pages/ResetPassword2.js';
 import Security from './pages/admin/Security.js';
 import ErrorPage from './pages/ErrorPage';
 import FAQ from './pages/FAQ';
-import Admin from './pages/admin/Admin.js';
+import Admin from './pages/admin1/Admin.js';
 import ClubPage from './pages/ClubPage';
 import store from './store';
 import ContactUs from './layout/ContactUs.js';
