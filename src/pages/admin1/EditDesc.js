@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
-import { updateProfile } from '../../actions/profile';
+import React, { useState } from 'react';
 import { NotificationManager } from 'react-notifications';
 import './EditView.css';
 import Modal from '../../layout/Modal';
@@ -25,14 +23,9 @@ const EditDesc = ({
     setDescrChars(750 - descr.length);
   }
 
-  /*Updates entries in the edit modal to reflect saved resources*/
-  // useEffect(() => {
-  //   setDescr(profile.about_us);
-  //   setDescrChars(750 - descr.length);
-  // }, [profile.about_us, 750 - descr.length]);
-
   const submit = async () => {
     const newProfile = {
+      name: profile.name,
       about_us: descr,
     };
 
@@ -52,8 +45,7 @@ const EditDesc = ({
       <div className="text">{profile.about_us}</div>
            
       <Modal
-        // showModal={showDescrModal}
-        showModal={true}
+        showModal={showDescrModal}
         setShowModal={setShowDescrModal}
         close={cancelEdit}
       >
@@ -61,7 +53,7 @@ const EditDesc = ({
           <div className="admin-modal-header">About {profile.name}</div>
           <div className="admin-modal-text">Enter a short description about your organization.</div>
           <div className="input-holder">
-            <div className="input-title">Description *</div>
+            <div className="input-title">Description</div>
             <input
               value={descr}
               placeholder="Enter a description"
@@ -87,10 +79,4 @@ const EditDesc = ({
   );
 };
 
-const mapStateToProps = (state) => ({
-  profile: state.profile.profile,
-});
-
-export default connect(mapStateToProps, {
-  updateProfile,
-})(EditDesc);
+export default EditDesc;
