@@ -23,6 +23,7 @@ import ClubPage from './pages/ClubPage';
 import store from './store';
 import ContactUs from './layout/ContactUs.js';
 import { loadProfile, getTags } from './actions/profile';
+import { loadAllClubs} from './actions/catalog';
 import { Provider } from 'react-redux';
 import PrivateRoute from './utils/PrivateRoute';
 import Navbar from './layout/Navbar';
@@ -35,6 +36,7 @@ Moment.globalTimezone = 'America/Los_Angeles';
 const App = () => {
   useEffect(() => {
     store.dispatch(loadProfile());
+    store.dispatch(loadAllClubs())
     store.dispatch(getTags());
   }, []);
 
