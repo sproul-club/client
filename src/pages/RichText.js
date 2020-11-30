@@ -83,14 +83,16 @@ class RichText extends React.Component {
 
     return (
       <div className="RichEditor-root">
-        <BlockStyleControls
-          editorState={editorState}
-          onToggle={this.toggleBlockType}
-        />
-        <InlineStyleControls
-          editorState={editorState}
-          onToggle={this.toggleInlineStyle}
-        />
+        <div style={{display: 'flex', flexDirection: 'row'}}>
+          <InlineStyleControls
+            editorState={editorState}
+            onToggle={this.toggleInlineStyle}
+          />
+          <BlockStyleControls
+            editorState={editorState}
+            onToggle={this.toggleBlockType}
+          />
+        </div>
         <div className={className} onClick={this.focus}>
           <Editor
             blockStyleFn={getBlockStyle}
@@ -149,11 +151,11 @@ class StyleButton extends React.Component {
 }
 
 const BLOCK_TYPES = [
-  {label: 'big', style: 'header-two'},
-  {label: 'little', style: 'header-six'},
-  {label: 'quote', style: 'blockquote'},
-  {label: 'list', style: 'unordered-list-item'},
-  {label: 'nums', style: 'ordered-list-item'},
+  {label: <i className="fas fa-heading" style={{fontSize: '14px'}}/>, style: 'header-two'},
+  {label: <i className="fas fa-heading" style={{fontSize: '11px'}}/>, style: 'header-six'},
+  {label: <i className="fas fa-quote-left" style={{fontSize: '12px'}}/>, style: 'blockquote'},
+  {label: <i className="fas fa-list" style={{fontSize: '12px'}}/>, style: 'unordered-list-item'},
+  {label: <i className="fas fa-list-ol" style={{fontSize: '12px'}}/>, style: 'ordered-list-item'},
 ];
 
 const BlockStyleControls = (props) => {
@@ -180,9 +182,9 @@ const BlockStyleControls = (props) => {
 };
 
 var INLINE_STYLES = [
-  {label: 'Bold', style: 'BOLD'},
-  {label: 'Italic', style: 'ITALIC'},
-  {label: 'Underline', style: 'UNDERLINE'},
+  {label: <i className="fas fa-bold" style={{fontSize: '12px'}}/>, style: 'BOLD'},
+  {label: <i className="fas fa-italic" style={{fontSize: '12px'}}/>, style: 'ITALIC'},
+  {label: <i className="fas fa-underline" style={{fontSize: '12px'}}/>, style: 'UNDERLINE'},
   // {label: 'Monospace', style: 'CODE'},
 ];
 
