@@ -7,6 +7,7 @@ import LoadingComponent from '../layout/LoadingComponent';
 import { throttle } from '../utils/throttle';
 import { connect } from 'react-redux';
 import {
+  storeAllClubs,
   searchClubs,
   clearOrganization,
   loadMoreOrgs,
@@ -46,6 +47,8 @@ const Catalog = ({
   const [moreLoading, setMoreLoading] = useState(false);
   const [numResults, setNumResults] = useState(eventsLoadedAtOnce);
   const [expandSearch, setExpandSearch] = useState(true);
+  //storing clubs
+  const [clubs, setClubs] = useState(null);
 
   const toggleExpandedSearch = () => setExpandSearch(!expandSearch);
 
@@ -75,8 +78,15 @@ const Catalog = ({
     return () => window.removeEventListener('scroll', onScroll);
   }, [numResults, num_clubs]);
 
+  //storing clubs
+  const storeAllClubsInObject = () => {
+    setClubs(storeAllClubs());
+    console.log(clubs);
+  }
+
   const searchAllClubs = throttle(
     async (limit = eventsLoadedAtOnce, skip = 0, loadMore = false) => {
+      storeAllClubsInObject();
       //checkbox logic jankness
       var appReqValue = null;
       if (appReq && !noAppReq) {
@@ -107,7 +117,6 @@ const Catalog = ({
         setMoreLoading(false);
         return;
       }
-
       setNumResults(eventsLoadedAtOnce);
       setExpandSearch(false);
       window.scrollTo(0, 0);

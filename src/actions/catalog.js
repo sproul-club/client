@@ -1,4 +1,5 @@
 import {
+  STORE_ALL_CLUBS,
   SEARCH_CLUBS,
   GET_ORGANIZATION,
   CLEAR_ORGANIZATION,
@@ -9,6 +10,22 @@ import {
 } from './types';
 
 import { API } from '../utils/backendClient';
+
+export const storeAllClubs = () => async (dispatch) => {
+  try {
+    //change limit based on number of clubs on sproul.club
+    const res = await API.post('/api/catalog/organizations', {limit:300, skip:0});
+
+    // Don't need dispatch???
+    return{
+      type: STORE_ALL_CLUBS,
+      payload: res.data.results,
+      num_results: res.data.num_results,
+    }
+  } catch (err) {
+    console.log(err);
+  }
+}
 
 export const loadClubs = () => async (dispatch) => {
   try {
