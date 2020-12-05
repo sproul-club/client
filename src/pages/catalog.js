@@ -11,6 +11,7 @@ import {
   clearOrganization,
   loadMoreOrgs,
   setFormDetails,
+  loadMoreClubs
 } from '../actions/catalog';
 import Dropdown from './CatalogDropdown.js';
 import {
@@ -23,14 +24,16 @@ import {
 import { Form, TextBox, CheckBox } from 'react-form-elements';
 import ReactGA from 'react-ga';
 
+const eventsLoadedAtOnce = 18
+
 const Catalog = ({
-  searchClubs,
   clearOrganization,
   tagOptions,
-  loadMoreOrgs,
+  loadMoreClubs,
   num_clubs,
   formDetails,
   setFormDetails,
+  num_displayed
 }) => {
   const {
     name,
@@ -41,10 +44,7 @@ const Catalog = ({
     notRecruiting,
   } = formDetails;
 
-  const eventsLoadedAtOnce = 18;
-
   const [moreLoading, setMoreLoading] = useState(false);
-  const [numResults, setNumResults] = useState(eventsLoadedAtOnce);
   const [expandSearch, setExpandSearch] = useState(true);
 
   const toggleExpandedSearch = () => setExpandSearch(!expandSearch);
@@ -54,10 +54,6 @@ const Catalog = ({
     clearOrganization();
   }, [clearOrganization]);
 
-  // run search when any state except "name" updates
-  useEffect(() => {
-    searchAllClubs();
-  }, [tags, appReq, noAppReq, recruiting, notRecruiting]);
 
   // Listener for when scroll reaches bottom, call the function to load more clubs
   useEffect(() => {
@@ -65,58 +61,15 @@ const Catalog = ({
       if (
         window.innerHeight + window.pageYOffset >=
           document.body.offsetHeight - 0.5 &&
-        numResults < num_clubs
+          num_displayed < num_clubs
       ) {
-        searchAllClubs(eventsLoadedAtOnce, numResults, true);
+        loadMoreClubs(eventsLoadedAtOnce)
       }
     };
     window.addEventListener('scroll', onScroll);
 
     return () => window.removeEventListener('scroll', onScroll);
-  }, [numResults, num_clubs]);
-
-  const searchAllClubs = throttle(
-    async (limit = eventsLoadedAtOnce, skip = 0, loadMore = false) => {
-      //checkbox logic jankness
-      var appReqValue = null;
-      if (appReq && !noAppReq) {
-        appReqValue = true;
-      } else if (!appReq && noAppReq) {
-        appReqValue = false;
-      }
-      var recruitingValue = null;
-      if (recruiting && !notRecruiting) {
-        recruitingValue = true;
-      } else if (!recruiting && notRecruiting) {
-        recruitingValue = false;
-      }
-      const tagValues = tags.map((tag) => tag.value);
-      const searchParams = {
-        name: name,
-        tags: tagValues,
-        appReq: appReqValue,
-        status: recruitingValue,
-        limit,
-        skip,
-      };
-
-      if (loadMore) {
-        setMoreLoading(true);
-        await loadMoreOrgs(searchParams);
-        setNumResults((numResults) => numResults + eventsLoadedAtOnce);
-        setMoreLoading(false);
-        return;
-      }
-
-      setNumResults(eventsLoadedAtOnce);
-      setExpandSearch(false);
-      window.scrollTo(0, 0);
-      setMoreLoading(true);
-      await searchClubs(searchParams);
-      setMoreLoading(false);
-    },
-    2000
-  );
+  }, [num_displayed, num_clubs]);
 
   const resetFilters = () => {
     setFormDetails({ name: 'name', value: '' });
@@ -187,7 +140,6 @@ const Catalog = ({
               <AccordionItemPanel>
                 <Form
                   className="search-bar"
-                  onSubmit={() => searchAllClubs()}
                   name="submit"
                   autoComplete="none"
                 >
@@ -294,11 +246,11 @@ const Catalog = ({
             {moreLoading ? (
               <LoadingComponent />
             ) : (
-              numResults < num_clubs && (
+              num_displayed < num_clubs && (
                 <button
                   className="load-more"
                   onClick={() =>
-                    searchAllClubs(eventsLoadedAtOnce, numResults, true)
+                    loadMoreClubs(eventsLoadedAtOnce)
                   }
                 >
                   Load More
@@ -317,6 +269,7 @@ const mapStateToProps = (state) => ({
   num_clubs: state.catalog.num_clubs,
   tagOptions: state.profile.tagOptions,
   formDetails: state.catalog.formDetails,
+  num_displayed: state.catalog.num_displayed
 });
 
 export default withRouter(
@@ -325,5 +278,6 @@ export default withRouter(
     clearOrganization,
     loadMoreOrgs,
     setFormDetails,
+    loadMoreClubs
   })(Catalog)
 );

@@ -128,7 +128,7 @@ function ClubPage({
           {organization.about_us ? (
             <div className="left-box">
               <p>Description</p>
-              <div className="desc-text">{organization.about_us}</div>
+              <div className="desc-text" dangerouslySetInnerHTML={{ __html: organization.about_us }}></div>
             </div>
           ) : null}
 
