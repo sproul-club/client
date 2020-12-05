@@ -77,7 +77,7 @@
 }
 
 .search-filter {
-  width: 420px;
+  width: 410px;
   margin-left: 0px;
 }
 
@@ -105,10 +105,19 @@
 .sort-filter-dropdown {
   margin-right: 0px;
 }
+.sort-filter-dropdown {
+  padding-left: 5px;
+}
+.sort-filter-dropdown .filter-selection {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
 
-.status-filter,
-.tags-filter {
+.status-filter {
   width: 114px;
+}
+.tags-filter {
+  width: 124px;
 }
 
 .app-filter,

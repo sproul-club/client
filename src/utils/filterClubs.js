@@ -3,15 +3,26 @@ export const filterClubs = (allOrganizations, formDetails, tagOptions, num_resul
   console.log(num_results)
   const orgList = allOrganizations.map((club) => club.club)
 
-  let filteredClubs = orgList.filter(club => club.name.includes(formDetails.name))
+  // Filter by name
+  let filteredClubs = orgList.filter(club => club.name.toLowerCase().includes(formDetails.name.toLowerCase()))
+
+  // Filter by app required checked
   if(formDetails.appReq)
     filteredClubs = filteredClubs.filter(club => club.app_required === true)
+
+  // Filter - app not required checked
   if (formDetails.noAppReq)
     filteredClubs = filteredClubs.filter(club => club.app_required === false)
+
+  // Filter - recruiting checked
   if (formDetails.recruiting)
     filteredClubs = filteredClubs.filter(club => club.app_required === true)
+
+  // Filter - not recruiting checked
   if (formDetails.notRecruiting)
     filteredClubs = filteredClubs.filter(club => club.app_required === false)
+  
+  // Filter by tags
   let searchTags = formDetails.tags.map((tag) => tag.label)
   for (let tag of searchTags){
     filteredClubs = filteredClubs.filter(club => {

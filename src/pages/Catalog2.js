@@ -39,6 +39,8 @@ const Catalog2 = ({
     notRecruiting,
   } = formDetails;
 
+  console.log(tags)
+
 
   // clearing organization to be viewed every time navigate back to club page
   useEffect(() => {
@@ -219,12 +221,16 @@ const Catalog2 = ({
             {showSortDD && (
               <div className="filter-dropdown sort-filter-dropdown">
                 <div className='filter-selection'>
-                  <input type="checkbox"/>
-                  <span> Required</span>
+                  <span> Ascending</span>
                 </div>
                 <div className='filter-selection'>
-                  <input type="checkbox"/>
-                  <span> Not Required</span>
+                  <span> Decending</span>
+                </div>
+                <div className='filter-selection'>
+                  <span> Recently Added</span>
+                </div>
+                <div className='filter-selection'>
+                  <span> Deadline</span>
                 </div>
               </div>
             )}
