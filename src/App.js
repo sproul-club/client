@@ -12,6 +12,7 @@ import { NotificationContainer } from 'react-notifications';
 import { Landing } from './pages/Landing.js';
 import { ComingSoon } from './pages/ComingSoon.js';
 import Catalog from './pages/catalog.js';
+import Catalog2 from './pages/Catalog2.js';
 import { SignUp } from './pages/SignUp.js';
 import { SignIn } from './pages/SignIn.js';
 import { ResetPassword } from './pages/ResetPassword.js';
@@ -49,6 +50,7 @@ const App = () => {
           <Route exact path="/comingsoon" component={ComingSoon} />
           <PrivateRoute path="/admin" component={Admin} />
           <Route path="/catalog" component={Catalog} />
+          <Route path="/catalog2" component={Catalog2} />
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/signin" component={SignIn} />
           <Route exact path="/recover" component={ResetPassword} />

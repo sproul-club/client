@@ -241,7 +241,7 @@ const Catalog = ({
           </Accordion>
         </div>
         <div className="cards">
-          <GridComponent loading={moreLoading} />
+          <GridComponent/>
           <div className="more-content">
             {moreLoading ? (
               <LoadingComponent />
