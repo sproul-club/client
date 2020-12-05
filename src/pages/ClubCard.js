@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 const ClubCard = ({club, tagOptions}) => {
 
   // const {app_required, banner_url, logo_url, name, new_members, tags} = club
-  const {link_name, name, banner_url, logo_url, new_members } = club
+  const {link_name, name, banner_url, logo_url, new_members, app_required } = club
   console.log(club)
 
   return (
@@ -16,7 +16,7 @@ const ClubCard = ({club, tagOptions}) => {
         <img src={banner_url || banner} alt="banner" className="clubcard-banner"/>
         <div className="app-required-tag">
           <span className='appreq-tag'>
-          <i className="fas fa-pen"></i>{' '}App Required</span> 
+          <i className="fas fa-pen"></i>{' '}{app_required ? 'App Required' : 'No App Required'}</span> 
         </div>
       </div>
       <div className="clubcard-content">

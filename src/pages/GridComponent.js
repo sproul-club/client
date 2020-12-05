@@ -42,9 +42,9 @@ function GridComponent({ tagOptions, clubs, num_clubs, loading, formDetails, num
   return (
     <div className="wrapper">
       <div className="num-results">
-        {num_clubs ? `${num_clubs} Results` : loading ? '' : 'No Results Found'}
+        {num_clubs ? `Displaying ${num_clubs} Results` : loading ? '' : 'No Results Found'}
       </div>
-      <Grid justify='space-between' container spacing={2} className="card-grid">
+      <Grid justify='space-between' container className="card-grid">
         {GridList}
       </Grid>
     </div>
