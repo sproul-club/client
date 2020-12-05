@@ -11,7 +11,7 @@ import './GridComponent.css';
 import { filterClubs } from '../utils/filterClubs';
 import ClubCard from './ClubCard';
 
-function GridComponent({ tagOptions, clubs, num_clubs, loading, formDetails, num_displayed }) {
+function GridComponent({ tagOptions, clubs, loading, formDetails, num_displayed }) {
 
   const [num_filtered_results, filteredClubs] = filterClubs(clubs, formDetails, tagOptions, num_displayed)
   
@@ -20,7 +20,7 @@ function GridComponent({ tagOptions, clubs, num_clubs, loading, formDetails, num
   return (
     <div className="wrapper">
       <div className="num-results">
-        {num_clubs ? `Displaying ${num_clubs} Results` : loading ? '' : 'No Results Found'}
+        {num_filtered_results ? `Displaying ${num_filtered_results} Results` : loading ? '' : 'No Results Found'}
       </div>
       <Grid justify='space-between' container className="card-grid">
         {GridList}
@@ -32,7 +32,6 @@ function GridComponent({ tagOptions, clubs, num_clubs, loading, formDetails, num
 // This function gets a piece of the app state that is stored in redux store
 const mapStateToProps = (state) => ({
   clubs: state.catalog.allOrganizations,
-  num_clubs: state.catalog.num_clubs,
   formDetails: state.catalog.formDetails,
   tagOptions: state.profile.tagOptions,
   num_displayed: state.catalog.num_displayed
