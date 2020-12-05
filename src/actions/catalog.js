@@ -15,7 +15,7 @@ import { API } from '../utils/backendClient';
 
 export const loadAllClubs = () => async (dispatch) => {
   try {
-    const res = await API.post('/api/catalog/organizations', {});
+    const res = await API.post('/api/catalog/organizations', {limit: 500, skip: 0});
 
     dispatch({
       type: LOAD_ALL_CLUBS,

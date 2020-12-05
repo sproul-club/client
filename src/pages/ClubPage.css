@@ -156,6 +156,10 @@
   letter-spacing: 0.03em;
   width: 90%;
 }
+.left-box .desc-text p {
+  font-weight: unset;
+  left: unset;
+}
 
 /*====================================*/
 /*RIGHT FLEXBOX*/
