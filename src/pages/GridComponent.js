@@ -1,10 +1,6 @@
 import React from 'react';
 import { Grid } from '@material-ui/core';
-
-// import Card from 'react-bootstrap/Card';
-
 import { connect } from 'react-redux';
-
 import { withRouter  } from 'react-router-dom';
 import { searchClubs } from '../actions/catalog';
 import './GridComponent.css';

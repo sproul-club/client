@@ -23,7 +23,11 @@ export const filterClubs = (allOrganizations, formDetails, tagOptions, num_resul
     filteredClubs = filteredClubs.filter(club => club.app_required === false)
   
   // Filter by tags
-  let searchTags = formDetails.tags.map((tag) => tag.label)
+  let searchTags = []
+  for (const [key, value] of Object.entries(formDetails.tags)) {
+    if(key && value === true) searchTags.push(key)
+  }
+
   for (let tag of searchTags){
     filteredClubs = filteredClubs.filter(club => {
       let clubtags = club.tags.map(tag => tagOptions[tag].label)

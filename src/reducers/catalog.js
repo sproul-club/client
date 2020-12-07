@@ -19,7 +19,7 @@ const initialState = {
   organization: {},
   formDetails: {
     name: '',
-    tags: [],
+    tags: {},
     appReq: false,
     noAppReq: false,
     recruiting: false,
@@ -53,7 +53,7 @@ export default function (state = initialState, action) {
         ...state,
         formDetails: {
           ...state.formDetails,
-          tags: [...payload.value],
+          tags: { ...state.formDetails.tags, [payload.value]: !state.formDetails.tags[payload.value]},
         },
       };
     case SET_FORM_DETAILS:

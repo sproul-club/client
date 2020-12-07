@@ -81,6 +81,10 @@ const Catalog2 = ({
     setFormDetails({ name: 'tags', value: newTags });
   };
 
+  const toggleTag = tagLabel => {
+    setFormDetails({ name: 'tags', value: tagLabel })
+  }
+
   function toggleAppReq() {
     setFormDetails({ name: 'appReq', value: !appReq });
     setFormDetails({ name: 'noAppReq', value: false });
@@ -172,7 +176,7 @@ const Catalog2 = ({
             {showTagsDD && (
               <div className="filter-dropdown scrollable-content">
                 {tagOptions.map(tag => (
-                  <div className='filter-selection'>
+                  <div className='filter-selection' key={tag.value} onClick={()=>toggleTag(tag.label)}>
                     <input type="checkbox"/> {tag.label}
                   </div>
                 ))}

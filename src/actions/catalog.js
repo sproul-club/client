@@ -124,7 +124,7 @@ export const loadMoreOrgs = ({
 };
 
 export const setFormDetails = ({ name, value }) => {
-  if (Array.isArray(value)) return { type: SET_TAGS, payload: { name, value } };
+  if (name === "tags") return { type: SET_TAGS, payload: { name, value } };
   return { type: SET_FORM_DETAILS, payload: { name, value } };
 };
 
