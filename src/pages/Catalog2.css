@@ -80,6 +80,9 @@
   font-size: 10px;
   cursor: pointer;
 }
+.reset-filters:hover {
+  color: #588fca;
+}
 
 .search-filter {
   width: 410px;

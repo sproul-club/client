@@ -108,6 +108,7 @@ const Catalog2 = ({
         <div className="banner">
           <img src={banner} alt="banner"/>
         </div>
+        {/* ok so I was trying to put some of this styling in the filters class but it wasn't working so here it is in js */}
         <div style={{position: 'sticky', top: '67px', paddingBottom: '10px', borderBottom: '1px solid #ccc'}} className='filters'>
 
           {/* Search Bar */}
