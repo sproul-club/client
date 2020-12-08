@@ -29,7 +29,6 @@ const Catalog2 = ({
   const [showMembersDD, setShowMembersDD] = useState(false)
   const [showSortDD, setShowSortDD] = useState(false)
   
-
   const {
     name,
     tags,
@@ -38,9 +37,6 @@ const Catalog2 = ({
     recruiting,
     notRecruiting,
   } = formDetails;
-
-  console.log(tags)
-
 
   // clearing organization to be viewed every time navigate back to club page
   useEffect(() => {
@@ -71,14 +67,6 @@ const Catalog2 = ({
     setFormDetails({ name: 'noAppReq', value: false });
     setFormDetails({ name: 'recruiting', value: false });
     setFormDetails({ name: 'notRecruiting', value: false });
-  };
-
-  const tagsOnChange = (input) => {
-    var newTags = input;
-    if (input === null) {
-      newTags = [];
-    }
-    setFormDetails({ name: 'tags', value: newTags });
   };
 
   const toggleTag = tagLabel => {
@@ -119,7 +107,7 @@ const Catalog2 = ({
         <div className="banner">
           <img src={banner} alt="banner"/>
         </div>
-        <div style={{position: 'sticky', top: '67px', paddingBottom: '10px', borderBottom: '1px solid #ccc'}}className='filters'>
+        <div style={{position: 'sticky', top: '67px', paddingBottom: '10px', borderBottom: '1px solid #ccc'}} className='filters'>
 
           {/* Search Bar */}
           <div className="filter search-filter">
@@ -128,7 +116,7 @@ const Catalog2 = ({
           </div>
 
           {/* Status Dropdown */}
-          <div className='filter-wrapper'>
+          <div className='filter-wrapper' onMouseEnter={()=>setShowStatusDD(true)} onMouseLeave={()=>setShowStatusDD(false)} >
             <div onClick={() => setShowStatusDD(!showStatusDD)} className={`${showStatusDD && 'openDD'} filter status-filter`}>
               Status
               {showStatusDD ? <i className='fas fa-caret-down'></i> : <i className='fas fa-caret-up'></i>}
@@ -148,7 +136,7 @@ const Catalog2 = ({
           </div>
 
           {/* App Dropdown */}
-          <div className='filter-wrapper'>
+          <div className='filter-wrapper' onMouseEnter={()=>setShowAppDD(true)} onMouseLeave={()=>setShowAppDD(false)} >
             <div onClick={() => setShowAppDD(!showAppDD)} className={`${showAppDD && 'openDD'} filter app-filter`}>
               App
               {showAppDD ? <i className='fas fa-caret-down'></i> : <i className='fas fa-caret-up'></i>}
@@ -168,7 +156,7 @@ const Catalog2 = ({
           </div>
 
           {/* Tags Dropdown */}
-          <div className='filter-wrapper'>
+          <div className='filter-wrapper' onMouseEnter={()=>setShowTagsDD(true)} onMouseLeave={()=>setShowTagsDD(false)} >
             <div onClick={() => setShowTagsDD(!showTagsDD)} className={`${showTagsDD && 'openDD'} filter tags-filter`}>
               Tags
               {showTagsDD ? <i className='fas fa-caret-down'></i> : <i className='fas fa-caret-up'></i>}
@@ -177,7 +165,7 @@ const Catalog2 = ({
               <div className="filter-dropdown scrollable-content">
                 {tagOptions.map(tag => (
                   <div className='filter-selection' key={tag.value} onClick={()=>toggleTag(tag.label)}>
-                    <input type="checkbox"/> {tag.label}
+                    <input type="checkbox" checked={tags[tag.label]}/> {tag.label}
                   </div>
                 ))}
               </div>
@@ -185,7 +173,7 @@ const Catalog2 = ({
           </div>
 
           {/* Members Dropdown */}
-          <div className='filter-wrapper'>
+          <div className='filter-wrapper' onMouseEnter={()=>setShowMembersDD(true)} onMouseLeave={()=>setShowMembersDD(false)} >
             <div onClick={() => setShowMembersDD(!showMembersDD)} className={`${showMembersDD && 'openDD'} filter members-filter`}>
               Members
               {showMembersDD ? <i className='fas fa-caret-down'></i> : <i className='fas fa-caret-up'></i>}
@@ -217,7 +205,7 @@ const Catalog2 = ({
           </div>
 
           {/* Members Dropdown */}
-          <div className='filter-wrapper'>
+          <div className='filter-wrapper' onMouseEnter={()=>setShowSortDD(true)} onMouseLeave={()=>setShowSortDD(false)} >
             <div onClick={() => setShowSortDD(!showSortDD)} className={`${showSortDD && 'openDD'} filter sort-filter`}>
               Sort
               {showSortDD ? <i className='fas fa-caret-down'></i> : <i className='fas fa-caret-up'></i>}

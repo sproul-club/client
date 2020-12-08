@@ -6,9 +6,7 @@ import { Link } from 'react-router-dom'
 
 const ClubCard = ({club, tagOptions}) => {
 
-  // const {app_required, banner_url, logo_url, name, new_members, tags} = club
   const {link_name, name, banner_url, logo_url, new_members, app_required } = club
-  console.log(club)
 
   return (
     <Link to={`/club/${link_name}`} className='clubcard'>
@@ -39,9 +37,6 @@ const ClubCard = ({club, tagOptions}) => {
                 {tagOptions.length > 0 && tagOptions[tag].label}{' '}
               </div>
             ))}
-            {/* <div className="clubcard-tag">Business </div>
-            <div className="clubcard-tag">Design</div>
-            <div className="clubcard-tag">Technology</div> */}
           </div>
           <div className="clubcard-newmembers">
             {new_members ? (

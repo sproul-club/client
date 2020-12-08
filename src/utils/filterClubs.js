@@ -34,6 +34,9 @@ export const filterClubs = (allOrganizations, formDetails, tagOptions, num_resul
       return clubtags.includes(tag)
     })
   }
+
+  // SORTING - a.name > b.name for ascending, b.name for descending
+  // filteredClubs = filteredClubs.sort((a,b) => a.name > b.name ? -1 : 1);
   
   const num_filtered_results = filteredClubs.length
   const sliced_filtered_results = filteredClubs.slice(0, num_results)
