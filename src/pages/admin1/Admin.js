@@ -3,11 +3,11 @@ import './Admin.css';
 import { loadProfile } from '../../actions/profile';
 import { Route, Switch, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import Profile from './Profile';
-import ContactInfo from './ContactInfo';
-import GetInvolved from './GetInvolved';
-import Events from './Events';
-import Resources from './Resources';
+// import Profile from './Profile';
+// import ContactInfo from './ContactInfo';
+// import GetInvolved from './GetInvolved';
+// import Events from './Events';
+// import Resources from './Resources';
 import EditView from './EditView';
 
 const Admin = ({ profile, events, resources, loadProfile }) => {
@@ -73,7 +73,7 @@ const Admin = ({ profile, events, resources, loadProfile }) => {
         </div> */}
         <div className="admin-content">
           <Switch>
-            <Route path="/admin/contact" render={() => <ContactInfo />} />
+            {/* <Route path="/admin/contact" render={() => <ContactInfo />} />
             <Route
               path="/admin/getinvolved"
               render={() => <GetInvolved profile={profile} />}
@@ -85,7 +85,7 @@ const Admin = ({ profile, events, resources, loadProfile }) => {
             <Route
               path="/admin/events"
               render={() => <Events events={events} />}
-            />
+            /> */}
             <Route path="/admin" render={() => <EditView />} />
           </Switch>
         </div>
