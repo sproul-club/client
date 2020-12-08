@@ -11,6 +11,7 @@ import {
   loadMoreClubs
 } from '../actions/catalog';
 import ReactGA from 'react-ga';
+import Footer from '../layout/Footer'
 
 const eventsLoadedAtOnce = 18
 
@@ -101,7 +102,7 @@ const Catalog2 = ({
   ReactGA.pageview('/catalog');
 
 
-  return (
+  return (<>
     <div className='catalog-page'>
       <div className="catalog-content">
         <div className="banner">
@@ -112,7 +113,8 @@ const Catalog2 = ({
           {/* Search Bar */}
           <div className="filter search-filter">
             <i class="fas fa-search"></i>
-            <input type="text" placeholder='Search' value={name} onChange={(e) => changeSearch(e)} className='search-input'/>
+            <input type="text" placeholder='Search' value={name} onChange={(e) => changeSearch(e)} className='search-input'/> 
+            <span className='reset-filters'>reset filters</span>
           </div>
 
           {/* Status Dropdown */}
@@ -234,6 +236,8 @@ const Catalog2 = ({
         </div>
       </div>
     </div>
+    <Footer/>
+    </>
   )
 }
 
