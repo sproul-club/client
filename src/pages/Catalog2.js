@@ -146,14 +146,7 @@ const Catalog2 = ({
             </div>
             {showAppDD && (
               <div className="filter-dropdown">
-                <div onClick={toggleAppReq} className='filter-selection'>
-                  <input type="checkbox" checked={appReq}/>
-                  <span> Required</span>
-                </div>
-                <div onClick={toggleNoAppReq}  className='filter-selection'>
-                  <input type="checkbox" checked={noAppReq}/>
-                  <span> Not Required</span>
-                </div>
+                test
               </div>
             )}
           </div>
