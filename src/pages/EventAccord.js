@@ -20,6 +20,7 @@ function EventAccord({ data }) {
   return orderedEvents.map((event, i) => (
     <Accordion className="accordion" allowZeroExpanded key={i}>
       <AccordionItem key={event.event_start} className="accordion-group">
+      <AccordionItemButton>
         <div className="event-container">
           <div className="event-flex-left">{event.name}</div>
           <div className="event-flex-right">
@@ -34,9 +35,7 @@ function EventAccord({ data }) {
               format={simplestRangeFormat(event.event_start, event.event_end, END_DATETIME)} />
           </div>
         </div>
-        <AccordionItemHeading className="accordion__heading-club">
-          <AccordionItemButton className="accordion__button-club"></AccordionItemButton>
-        </AccordionItemHeading>
+        <div className="accordion__button-club"></div>
         <AccordionItemPanel className="accordion__panel-event">
           {event.description}
           <br></br>
@@ -58,6 +57,7 @@ function EventAccord({ data }) {
           </div>
           : null)}
         </AccordionItemPanel>
+        </AccordionItemButton>
       </AccordionItem>
       <hr width="90%"></hr>
     </Accordion>
