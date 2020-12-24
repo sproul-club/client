@@ -34,6 +34,21 @@
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
 }
 
+.clubpage-content-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.clubpage-content-header-icon {
+  color: #8D8D8D;
+}
+
+.clubpage-content-header-icon:hover {
+  cursor: pointer;
+}
+
 .clubpage-header-content {
   display: flex;
   flex-direction: row;
@@ -145,7 +160,7 @@
 
 .clubpage-content-left {
   flex: 2;
-  margin-right: 20px;
+  margin-right: 60px;
 }
 
 .clubpage-content-item{
@@ -177,7 +192,7 @@
   border-radius: 10px;
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
   background-color: white;
-  padding: 15px;
+  padding: 5px 15px 15px 15px;
   margin-bottom: 20px;
 }
 
@@ -265,6 +280,10 @@
   .clubpage-content {
     flex-direction: column;
     margin: 2vw;
+  }
+
+  .clubpage-content-left {
+    margin-right: 0;
   }
 
   .clubpage-content-item{

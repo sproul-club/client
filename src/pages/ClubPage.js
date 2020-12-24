@@ -11,6 +11,7 @@ import { connect } from 'react-redux';
 import ReactGA from 'react-ga';
 import RightArrow from '@material-ui/icons/CallMadeRounded';
 import HeartBordered from '@material-ui/icons/FavoriteBorderRounded';
+import EditIcon from '@material-ui/icons/EditRounded';
 
 function ClubPage({
   organization,
@@ -30,6 +31,7 @@ function ClubPage({
   }, [routeId]);
 
   let admin = true;
+  /*
   organization.gallery = [
     {
       type: "i",
@@ -46,7 +48,7 @@ function ClubPage({
       src: "https://www.youtube.com/watch?v=IREN9O3eVkI&ab_channel=YouTube",
       caption: "The team"
     },
-  ];
+  ];*/
   let [tab, setTab] = useState('overview')
 
   if (!organization.link_name) return <Loading />;
@@ -149,13 +151,19 @@ function ClubPage({
               <div>
                 {organization.about_us &&
                   <div className='clubpage-content-about clubpage-content-item' >
-                    <h1>About {organization.name}</h1>
+                    <a className='clubpage-content-header'>
+                      <h1>About {organization.name}</h1>
+                      <EditIcon className="clubpage-content-header-icon"/>
+                    </a>
                     <p dangerouslySetInnerHTML={{ __html: organization.about_us }}></p>
                   </div>
                 }
                 {organization.gallery &&
                   <div className='clubpage-content-gallery clubpage-content-item' >
-                    <h1>Gallery</h1>
+                    <a className='clubpage-content-header'>
+                      <h1>Gallery</h1>
+                      <EditIcon className="clubpage-content-header-icon"/>
+                    </a>
                     <Gallery data={organization.gallery}/>
                   </div>
                 }
@@ -163,14 +171,20 @@ function ClubPage({
             }
             {tab === 'recruitment' && 
               <div className= "clubpage-content-timeline">
-                <h1>Recruitment Timeline</h1>
+                <a className='clubpage-content-header'>
+                  <h1>Recruitment Timeline</h1>
+                  <EditIcon className="clubpage-content-header-icon"/>
+                </a>
               </div>
             }
             {tab === 'events' &&
               <div className= "clubpage-content-events">
                 {organization.events.length > 0 ?
                   <div>
-                    <h1>Events</h1>
+                    <a className='clubpage-content-header'>
+                      <h1>Events</h1>
+                      <EditIcon className="clubpage-content-header-icon"/>
+                    </a>
                     <EventAccord data={organization} />
                   </div>
                 : 
@@ -182,7 +196,10 @@ function ClubPage({
           <div className='clubpage-content-right'>
             {organization.get_involved && 
               <div className="clubpage-content-getinvolved clubpage-tile">
-                <h1>How to Get Involved</h1>
+                <a className='clubpage-content-header'>
+                  <h1>How to Get Involved</h1>
+                  <EditIcon className="clubpage-content-header-icon"/>
+                </a>
                 <p>{organization.get_involved}</p>
                 <button className="clubpage-apply-btn" /* NEED AN ONCLICK HANDLER TO LINK TO APPLICATION*/>
                   Apply Now!
@@ -191,7 +208,10 @@ function ClubPage({
               </div>
             }
             <div className="clubpage-content-contact clubpage-tile">
-              <h1>Contact Information</h1>
+              <a className='clubpage-content-header'>
+                <h1>Contact Information</h1>
+                <EditIcon className="clubpage-content-header-icon"/>
+              </a>
               <h2>Website</h2>
               <h2>Email</h2>
               <h2>Social Media</h2>
@@ -199,7 +219,10 @@ function ClubPage({
             </div>
             {organization.resources && organization.resources.length > 0 && 
               <div className="clubpage-content-getinvolved clubpage-tile">
-                <h1>Resources</h1>
+                <a className='clubpage-content-header'>
+                  <h1>Resources</h1>
+                  <EditIcon className="clubpage-content-header-icon"/>
+                </a>
                 <div className="clubpage-content-resource-list">{resComps}</div>
               </div>
             }
