@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './ClubPage.css';
 import EventAccord from './EventAccord';
 import Footer from '../layout/Footer';
 import Loading from '../layout/Loading';
+import Tag from '../layout/Tag';
 import { withRouter } from 'react-router-dom';
 import { getOrganization, clearOrganization } from '../actions/catalog';
 import { connect } from 'react-redux';
@@ -11,6 +12,8 @@ import CreateIcon from '@material-ui/icons/CreateRounded';
 import HappyIcon from '@material-ui/icons/SentimentSatisfiedRounded';
 import CheckIcon from '@material-ui/icons/CheckRounded';
 import CrossIcon from '@material-ui/icons/CloseRounded';
+import RightArrow from '@material-ui/icons/CallMadeRounded';
+import HeartBordered from '@material-ui/icons/FavoriteBorderRounded';
 
 function ClubPage({
   organization,
@@ -29,6 +32,8 @@ function ClubPage({
     // recall useEffect when the link_name in url changes
   }, [routeId]);
 
+  let [tab, setTab] = useState('overview')
+
   if (!organization.link_name) return <Loading />;
 
   const socLinks = organization.social_media_links;
@@ -43,7 +48,7 @@ function ClubPage({
         }
       >
         <img
-          className="link-image"
+          className="clubpage-sm-link"
           src={require('./assets/linkImages/' + key + '.png')}
           alt="web link"
         />
@@ -52,11 +57,10 @@ function ClubPage({
   );
 
   const resComps = organization.resources.map((res, i) => (
-    <div className="desc-text" id="resources" key={i}>
+    <div className="clubpage-content-resource" id="resources" key={i}>
       {res.name}
       <a target="_blank" rel="noopener noreferrer" href={res.link} key={i}>
         <img
-          className="res-img"
           src={require('./assets/linkImages/resLink.png')}
           alt="resource"
         />
@@ -64,106 +68,119 @@ function ClubPage({
     </div>
   ));
 
-  const tagList = organization.tags.map((tag, i) => (
-    <div className="tag" key={i}>
-      {' '}
-      {tagOptions[tag] && tagOptions[tag].label}{' '}
-    </div>
+
+  let categoryList = organization.tags.map((tag, i) => (
+    <Tag label={tagOptions[tag] && tagOptions[tag].label} />
   ));
-
-  const appReq = organization.app_required ? (
-    <div className="tag" id="app-req">
-      <CreateIcon style={{ fontSize: '1em'}} />
-      <span>Requires App</span>
-    </div>
-  ) : (
-    <div className="tag" id="app-not-req">
-      <HappyIcon style={{ fontSize: '1em'}} />
-      <span>No App Required</span>
-    </div>
-  );
-
-  const clubOpen = organization.new_members ? (
-    <div className="tag" id="open-tag">
-      <CheckIcon style={{ fontSize: '1em'}} />
-      <span>Taking New Members</span>
-    </div>
-  ) : (
-    <div className="tag" id="not-open-tag">
-      <CrossIcon style={{ fontSize: '1em'}} />
-      <span>Not Taking New Members</span>
-    </div>
-  );
+  let tagList = [];
+  if (organization.new_members) {
+    tagList.push(<Tag label="Taking New Members" color="#c9f0c9" />);
+  } else {
+    tagList.push(<Tag label="Not Taking New Members" color="#ffd6d6" />);
+  }
+  if (organization.app_required) {
+    tagList.push(<Tag label="Application Required" color="#fff1ae" />);
+  } else {
+    tagList.push(<Tag label="Application Not Required" color="#cdeaff" />)
+  }
 
   ReactGA.initialize('UA-176775736-1');
   ReactGA.pageview('/' + history.location.pathname.slice(6));
 
   return (
-    <div className='clubpage'>
-      <img
-        className="header-img"
-        src={organization.banner_url || require('./assets/default_banner.jpg')}
-        alt=""
-      />
-      <div className="flex-container-chungus">
-        <div className="flex-container-left">
-          <div className="logo-box">
-            <img
-              className="club-logo"
-              src={
-                organization.logo_url || require('./assets/default_logo.jpg')
-              }
-              alt="club"
-            />
-            <div className="club-info-flex">
-              <div className="club-title">{organization.name}</div>
-              <div className="app-flex">
-                {appReq}
-                {clubOpen}
+    <div className='clubpage-wrapper'>
+      <div className='clubpage'>
+        <div className='clubpage-header'>
+          <img
+            className="header-img"
+            src={organization.banner_url || require('./assets/default_banner.jpg')}
+            alt=""
+          />
+          <div className="clubpage-header-content">
+            <div className="clubpage-header-left">
+              <img
+                className="club-logo"
+                src={
+                  organization.logo_url || require('./assets/default_logo.jpg')
+                }
+                alt="club"
+              />
+            </div>
+            <div className="clubpage-header-middle">
+              <div class="club-title">{organization.name}</div>
+              <div class="header-tags">
+                {categoryList}
               </div>
-              <div className="tags-flex">{tagList}</div>
-            </div>
-          </div>
-
-          {organization.about_us ? (
-            <div className="left-box">
-              <p>Description</p>
-              <div className="desc-text" dangerouslySetInnerHTML={{ __html: organization.about_us }}></div>
-            </div>
-          ) : null}
-
-          {organization.events.length > 0 ? (
-            <div className="left-box">
-              <p>Events</p>
-              <EventAccord data={organization} />
-            </div>
-          ) : null}
-        </div>
-
-        <div className="flex-container-right">
-          <div className="contact-box">
-            <p>Contact Us</p>
-            <div className="link-flex">{contactComps}</div>
-          </div>
-
-          {organization.resources.length > 0 ? (
-            <div className="right-box">
-              <p>Resources</p>
-              <div className="resources-flex">{resComps}</div>
-            </div>
-          ) : null}
-
-          {organization.get_involved ? (
-            <div className="right-box">
-              <p>How to Get Involved</p>
-              <div className="desc-text" id="right-text">
-                {organization.get_involved}
+              <div class="header-tags">
+                {tagList}
               </div>
             </div>
-          ) : null}
+            <div className="clubpage-header-right">
+                <button className="clubpage-favorite-button">
+                  <HeartBordered fontSize="small"/>
+                  <span>Favorite</span>
+                </button>
+            </div>
+          </div>
+          <div className="clubpage-header-nav">
+            <button className={`clubpage-header-nav-item ${tab == "overview" ? "selected" : ""}`} onClick={() => setTab("overview")}>Overview</button>
+            <button className={`clubpage-header-nav-item ${tab == "recruitment" ? "selected" : ""}`} onClick={() => setTab("recruitment")}>Recruitment</button>
+            <button className={`clubpage-header-nav-item ${tab == "events" ? "selected" : ""}`} onClick={() => setTab("events")}>Events</button>
+          </div>
         </div>
+        <div className='clubpage-content'>
+          <div className='clubpage-content-left'>
+            {tab === 'overview' &&
+              <div>
+                <div className='clubpage-content-about clubpage-content-item' >
+                  <h1>About {organization.name}</h1>
+                  <p dangerouslySetInnerHTML={{ __html: organization.about_us }}></p>
+                </div>
+                <div className='clubpage-content-gallery clubpage-content-item' >
+                  <h1>Gallery</h1>
+                </div>
+              </div>
+            }
+            {tab === 'recruitment' && 
+              <div className= "clubpage-content-timeline">
+                <h1>Recruitment Timeline</h1>
+              </div>
+            }
+            {tab === 'events' && organization.events.length > 0 &&
+              <div className= "clubpage-content-events">
+                <h1>Events</h1>
+                <EventAccord data={organization} />
+              </div>
+            }
+          </div>
+          <div className='clubpage-content-right'>
+            {organization.get_involved && 
+              <div className="clubpage-content-getinvolved clubpage-tile">
+                <h1>How to Get Involved</h1>
+                <p>{organization.get_involved}</p>
+                <button className="clubpage-apply-btn">
+                  Apply Now!
+                  <RightArrow style={{marginLeft: 5}}/>
+                </button>
+              </div>
+            }
+            <div className="clubpage-content-contact clubpage-tile">
+              <h1>Contact Information</h1>
+              <h2>Website</h2>
+              <h2>Email</h2>
+              <h2>Social Media</h2>
+              <div className="clubpage-sm-link-list">{contactComps}</div>
+            </div>
+            {organization.resources && organization.resources.length > 0 && 
+              <div className="clubpage-content-getinvolved clubpage-tile">
+                <h1>Resources</h1>
+                <div className="clubpage-content-resource-list">{resComps}</div>
+              </div>
+            }
+          </div>
+        </div>
+        <Footer />
       </div>
-      <Footer />
     </div>
   );
 }

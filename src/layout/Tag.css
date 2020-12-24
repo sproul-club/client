@@ -1,0 +1,28 @@
+.tag {
+    border-radius: 5px;
+    padding: 0 10px 0 10px;
+    margin: 0 10px 8px 0;
+    text-align: left;
+}
+
+.tag span {
+    display: inline-block;
+    font-weight: normal;
+    padding: 0 8px 0 8px;
+    font-family: Qanelas Soft;
+    font-size: 15px;
+    width: fit-content;
+    text-indent: none;
+}
+
+@media screen and (max-width: 850px) {
+    .tag {
+        background-color: #e2e2e2;
+        border-radius: 6px;
+        padding: 0.1vw 0.5vw 0.1vw 0.5vw;
+    }
+
+    .tag span{
+        font-size: 0.8em;
+    }
+}
