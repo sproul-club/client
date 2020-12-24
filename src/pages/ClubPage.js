@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './ClubPage.css';
 import EventAccord from './EventAccord';
+import Gallery from '../layout/Gallery';
 import Footer from '../layout/Footer';
 import Loading from '../layout/Loading';
 import Tag from '../layout/Tag';
@@ -8,10 +9,6 @@ import { withRouter } from 'react-router-dom';
 import { getOrganization, clearOrganization } from '../actions/catalog';
 import { connect } from 'react-redux';
 import ReactGA from 'react-ga';
-import CreateIcon from '@material-ui/icons/CreateRounded';
-import HappyIcon from '@material-ui/icons/SentimentSatisfiedRounded';
-import CheckIcon from '@material-ui/icons/CheckRounded';
-import CrossIcon from '@material-ui/icons/CloseRounded';
 import RightArrow from '@material-ui/icons/CallMadeRounded';
 import HeartBordered from '@material-ui/icons/FavoriteBorderRounded';
 
@@ -32,6 +29,24 @@ function ClubPage({
     // recall useEffect when the link_name in url changes
   }, [routeId]);
 
+  let admin = true;
+  organization.gallery = [
+    {
+      type: "i",
+      src: "https://picsum.photos/seed/picsum/1000/500",
+      caption: ""
+    },
+    {
+      type: "i",
+      src: "https://picsum.photos/seed/picsum/1000/1000",
+      caption: "The team"
+    },
+    {
+      type: "v",
+      src: "https://www.youtube.com/watch?v=IREN9O3eVkI&ab_channel=YouTube",
+      caption: "The team"
+    },
+  ];
   let [tab, setTab] = useState('overview')
 
   if (!organization.link_name) return <Loading />;
@@ -116,7 +131,7 @@ function ClubPage({
               </div>
             </div>
             <div className="clubpage-header-right">
-                <button className="clubpage-favorite-button">
+                <button className="clubpage-favorite-button" /* NEED AN ONCLICK HANDLER TO ACTUALL DO SOMETHING HERE*/>
                   <HeartBordered fontSize="small"/>
                   <span>Favorite</span>
                 </button>
@@ -132,13 +147,18 @@ function ClubPage({
           <div className='clubpage-content-left'>
             {tab === 'overview' &&
               <div>
-                <div className='clubpage-content-about clubpage-content-item' >
-                  <h1>About {organization.name}</h1>
-                  <p dangerouslySetInnerHTML={{ __html: organization.about_us }}></p>
-                </div>
-                <div className='clubpage-content-gallery clubpage-content-item' >
-                  <h1>Gallery</h1>
-                </div>
+                {organization.about_us &&
+                  <div className='clubpage-content-about clubpage-content-item' >
+                    <h1>About {organization.name}</h1>
+                    <p dangerouslySetInnerHTML={{ __html: organization.about_us }}></p>
+                  </div>
+                }
+                {organization.gallery &&
+                  <div className='clubpage-content-gallery clubpage-content-item' >
+                    <h1>Gallery</h1>
+                    <Gallery data={organization.gallery}/>
+                  </div>
+                }
               </div>
             }
             {tab === 'recruitment' && 
@@ -146,10 +166,16 @@ function ClubPage({
                 <h1>Recruitment Timeline</h1>
               </div>
             }
-            {tab === 'events' && organization.events.length > 0 &&
+            {tab === 'events' &&
               <div className= "clubpage-content-events">
-                <h1>Events</h1>
-                <EventAccord data={organization} />
+                {organization.events.length > 0 ?
+                  <div>
+                    <h1>Events</h1>
+                    <EventAccord data={organization} />
+                  </div>
+                : 
+                  <p>There are no events scheduled.</p>
+                }
               </div>
             }
           </div>
@@ -158,7 +184,7 @@ function ClubPage({
               <div className="clubpage-content-getinvolved clubpage-tile">
                 <h1>How to Get Involved</h1>
                 <p>{organization.get_involved}</p>
-                <button className="clubpage-apply-btn">
+                <button className="clubpage-apply-btn" /* NEED AN ONCLICK HANDLER TO LINK TO APPLICATION*/>
                   Apply Now!
                   <RightArrow style={{marginLeft: 5}}/>
                 </button>

@@ -17,7 +17,7 @@
 
 .clubpage h1 {
   font-size: 1.5em;
-  margin-bottom: 0;
+  margin-bottom: 15px;
 }
 
 .clubpage h2 {
@@ -129,6 +129,7 @@
 
 .clubpage-header-nav-item:hover{ 
   cursor: pointer;
+  opacity: 0.8;
 }
 
 .clubpage-header-nav-item.selected {
@@ -169,6 +170,7 @@
 
 .clubpage-apply-btn:hover {
   cursor: pointer;
+  opacity: 0.8;
 }
 
 .clubpage-tile {
