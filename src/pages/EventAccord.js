@@ -7,6 +7,8 @@ import {
   AccordionItemPanel,
 } from 'react-accessible-accordion';
 
+import "./EventAccord.css";
+
 import Moment from 'react-moment';
 import { simplestRangeFormat, START_DATETIME, END_DATETIME } from '../utils/formatTimeAndDate';
 
@@ -16,10 +18,10 @@ function EventAccord({ data }) {
 
 
   return orderedEvents.map((event, i) => (
-    <Accordion className="accordion-club" allowZeroExpanded key={i}>
+    <Accordion className="accordion" allowZeroExpanded key={i}>
       <AccordionItem key={event.event_start} className="accordion-group">
       <AccordionItemButton>
-        <div className="event-flex-container">
+        <div className="event-container">
           <div className="event-flex-left">{event.name}</div>
           <div className="event-flex-right">
             <Moment
