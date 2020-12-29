@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { updateProfile } from '../../actions/profile';
 import { NotificationManager } from 'react-notifications';
-import { normalizeUrl } from '../../utils/normalizeUrl'
+import { normalizeUrl } from '../../utils/normalizeUrl';
+import './Admin.css';
+
 
 const ContactInfo = ({ profile, updateProfile }) => {
   const contactInfo = profile.social_media_links;
@@ -74,7 +76,7 @@ const ContactInfo = ({ profile, updateProfile }) => {
       <div className="formGroup">
         <div className="formElement">
           <p>
-            Email Address <span className='red'>*</span>
+            Email Address <span style={{ color: '#FF0000' }}>*</span>
           </p>
           <input
             className="userInput"
@@ -198,9 +200,7 @@ const ContactInfo = ({ profile, updateProfile }) => {
           />
         </div>
       </div>
-      <button className="saveButton" onClick={submit}>
-        Save changes
-      </button>
+      <button id="save-button" onClick={submit}> Save </button>
     </div>
   );
 };
