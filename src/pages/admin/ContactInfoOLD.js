@@ -6,6 +6,7 @@ import { normalizeUrl } from '../../utils/normalizeUrl'
 
 const ContactInfo = ({ profile, updateProfile }) => {
   const contactInfo = profile.social_media_links;
+  const [normalized, setNormalized] = useState(false);
 
   const [email, setEmail] = useState(contactInfo.contact_email);
   const [website, setWebsite] = useState(contactInfo.website);
@@ -24,8 +25,7 @@ const ContactInfo = ({ profile, updateProfile }) => {
     setEmail(profile.owner);
   }
 
-  const submit = async () => {
-    // normalize all URLs
+  const normalizeUrls = () => {
     setWebsite(normalizeUrl(website));
     setFacebook(normalizeUrl(facebook));
     setInstagram(normalizeUrl(instagram));
@@ -37,7 +37,13 @@ const ContactInfo = ({ profile, updateProfile }) => {
     setTwitter(normalizeUrl(twitter));
     setGcalendar(normalizeUrl(gcalendar));
     setYoutube(normalizeUrl(youtube));
-    const newProfile = {
+    setNormalized(true)
+  }
+
+  if (normalized === true) {
+    setNormalized(false)
+    updateProfile({
+      ...profile.profile,
       social_media_links: {
         contact_email: email,
         website,
@@ -51,17 +57,11 @@ const ContactInfo = ({ profile, updateProfile }) => {
         twitter,
         youtube,
         gcalendar,
-      }
-    };
-
-    // update backend
-    try {
-      await updateProfile(newProfile);
-      NotificationManager.success('Changes to Contact Information saved successfully!', '', 1500);
-    } catch (err) {
-      console.log(err);
-      NotificationManager.error('Changes to Contact Information did not successfully!', '', 1500);
-    }
+      }}, function() {
+        NotificationManager.success("Contact information changes saved successfully!", '', 3000);
+      }, function() {
+        NotificationManager.error("Contact information changes unsuccessful!", '', 3000);
+      });
   }
 
   return (
@@ -198,7 +198,7 @@ const ContactInfo = ({ profile, updateProfile }) => {
           />
         </div>
       </div>
-      <button className="saveButton" onClick={submit}>
+      <button className="saveButton" onClick={normalizeUrls}>
         Save changes
       </button>
     </div>
@@ -206,7 +206,7 @@ const ContactInfo = ({ profile, updateProfile }) => {
 };
 
 const mapStateToProps = (state) => ({
-  profile: state.profile.profile,
+  profile: state.profile,
 });
 
 export default connect(mapStateToProps, { updateProfile })(ContactInfo);

@@ -13,6 +13,10 @@ import RightArrow from '@material-ui/icons/CallMadeRounded';
 import HeartBordered from '@material-ui/icons/FavoriteBorderRounded';
 import EditIcon from '@material-ui/icons/EditRounded';
 import { Route, Switch, Link } from 'react-router-dom';
+import Modal from '../layout/Modal';
+import ContactInfo from '../pages/admin/ContactInfo';
+import GetInvolved from '../pages/admin/GetInvolved';
+import AboutClub from '../pages/admin/AboutClub';
 
 function ClubPage({
   admin,
@@ -22,6 +26,16 @@ function ClubPage({
   tagOptions,
   history,
 }) {
+  const [showContactModal, setShowContactModal] = useState(false);
+  const [showInvolvedModal, setShowInvolvedModal] = useState(false);
+  const [showAboutModal, setShowAboutModal] = useState(false);
+
+  function cancelEdit() {
+    setShowContactModal(false);
+    setShowInvolvedModal(false);
+    setShowAboutModal(false);
+  }
+
   const path = history.location.pathname.split("/").slice(2);
   const routeId = path[0];
   useEffect(() => {
@@ -97,7 +111,7 @@ function ClubPage({
         <div className='clubpage-content-header'>
           <h1>About {organization.name}</h1>
           {admin && 
-            <EditIcon className="clubpage-content-header-icon"/>
+            <EditIcon className="clubpage-content-header-icon" onClick={() => setShowAboutModal(admin)}/>
           }
         </div>
         <p dangerouslySetInnerHTML={{ __html: organization.about_us }}></p>
@@ -227,7 +241,7 @@ function ClubPage({
                 <div className='clubpage-content-header'>
                   <h1>How to Get Involved</h1>
                   {admin && 
-                    <EditIcon className="clubpage-content-header-icon"/>
+                    <EditIcon className="clubpage-content-header-icon" onClick={() => setShowInvolvedModal(admin)}/>
                   }
                   </div>
                 <p>{organization.get_involved}</p>
@@ -241,7 +255,7 @@ function ClubPage({
               <div className='clubpage-content-header'>
                 <h1>Contact Information</h1>
                 {admin && 
-                  <EditIcon className="clubpage-content-header-icon"/>
+                  <EditIcon className="clubpage-content-header-icon" onClick={() => setShowContactModal(admin)}/>
                 }
                 </div>
               <h2>Website</h2>
@@ -262,6 +276,35 @@ function ClubPage({
             }
           </div>
         </div>
+        <Modal
+          showModal={showAboutModal}
+          setShowModal={setShowAboutModal}
+          close={cancelEdit}
+        >
+          <div className="admin-modal">
+            <AboutClub profile={organization}/>
+          </div>
+        </Modal>
+
+        <Modal
+          showModal={showInvolvedModal}
+          setShowModal={setShowInvolvedModal}
+          close={cancelEdit}
+        >
+          <div className="admin-modal">
+            <GetInvolved profile={organization}/>
+          </div>
+        </Modal>
+
+        <Modal
+          showModal={showContactModal}
+          setShowModal={setShowContactModal}
+          close={cancelEdit}
+        >
+          <div className="admin-modal">
+            <ContactInfo profile={organization}/>
+          </div>
+        </Modal>
         <Footer />
       </div>
     </div>
