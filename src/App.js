@@ -19,6 +19,7 @@ import { ResetPassword } from './pages/ResetPassword.js';
 import { ResetPassword2 } from './pages/ResetPassword2.js';
 import Security from './pages/admin/Security.js';
 import ErrorPage from './pages/ErrorPage';
+import FAQ from './pages/FAQ';
 import Admin from './pages/admin/Admin.js';
 import ClubPage from './pages/ClubPage';
 import store from './store';
@@ -55,7 +56,8 @@ const App = () => {
           <Route exact path="/signin" component={SignIn} />
           <Route exact path="/recover" component={ResetPassword} />
           <Route exact path="/resetpassword" component={ResetPassword2} />
-          <Route path="/club/:id" component={ClubPage} />
+          <Route exact path="/club/:id" component={ClubPage} />
+          <Route exact path="/FAQ" component={FAQ} />
           <PrivateRoute exact path="/security" component={Security} />
           <Route>
             <ErrorPage />
