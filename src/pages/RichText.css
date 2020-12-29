@@ -1,11 +1,13 @@
 .RichEditor-root {
   background: #fff;
-  border: 1px solid #ccc;
+  border: 1px solid #ddd;
   font-family: 'Georgia', serif;
   font-size: 14px;
   padding: 15px;
-  width: 500px;
-  margin-left: 30%;
+  height: 200px;
+  width: 450px !important;
+  overflow-y: auto;
+  line-height: 1.2;
 }
 
 .RichEditor-editor {
@@ -22,7 +24,8 @@
 }
 
 .RichEditor-editor .public-DraftEditor-content {
-  min-height: 100px;
+  min-height: 200px;
+  width: 100%;
 }
 
 .RichEditor-hidePlaceholder .public-DraftEditorPlaceholder-root {
@@ -56,12 +59,16 @@
   color: #999;
   cursor: pointer;
   margin-right: 16px;
-  padding: 2px 5px;
-  border: 1px solid #ccc;
-
+  padding: 2px 0;
   display: inline-block;
 }
 
 .RichEditor-activeButton {
   color: #5890ff;
+}
+
+@media screen and (max-width: 800px) {
+  .RichEditor-root {
+    width: 375px !important;
+  }
 }

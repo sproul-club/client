@@ -12,6 +12,7 @@ const ContactInfo = ({ profile, updateProfile }) => {
   const [website, setWebsite] = useState(contactInfo.website);
   const [facebook, setFacebook] = useState(contactInfo.facebook);
   const [instagram, setInstagram] = useState(contactInfo.instagram);
+  const [discord, setDiscord] = useState(contactInfo.discord);
   const [linkedin, setLinkedin] = useState(contactInfo.linkedin);
   const [github, setGithub] = useState(contactInfo.github);
   const [behance, setBehance] = useState(contactInfo.behance);
@@ -28,6 +29,7 @@ const ContactInfo = ({ profile, updateProfile }) => {
     setWebsite(normalizeUrl(website));
     setFacebook(normalizeUrl(facebook));
     setInstagram(normalizeUrl(instagram));
+    setDiscord(normalizeUrl(discord));
     setLinkedin(normalizeUrl(linkedin));
     setGithub(normalizeUrl(github));
     setBehance(normalizeUrl(behance));
@@ -47,6 +49,7 @@ const ContactInfo = ({ profile, updateProfile }) => {
         website,
         facebook,
         instagram,
+        discord,
         linkedin,
         behance,
         github,
@@ -71,7 +74,7 @@ const ContactInfo = ({ profile, updateProfile }) => {
       <div className="formGroup">
         <div className="formElement">
           <p>
-            Email Address <span>*</span>
+            Email Address <span className='red'>*</span>
           </p>
           <input
             className="userInput"
@@ -90,6 +93,16 @@ const ContactInfo = ({ profile, updateProfile }) => {
             className="userInput"
             value={website || ''}
             onChange={(e) => setWebsite(e.target.value)}
+            type="text"
+            placeholder="+  Add a link"
+          />
+        </div>
+        <div className="formElement">
+          <p>Discord</p>
+          <input
+            className="userInput"
+            value={discord || ''}
+            onChange={(e) => setDiscord(e.target.value)}
             type="text"
             placeholder="+  Add a link"
           />

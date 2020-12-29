@@ -4,6 +4,10 @@ import { connect } from 'react-redux';
 import ImageUploader from '../../react-images-upload';
 import { updateProfile, uploadLogo, uploadBanner } from '../../actions/profile';
 import { NotificationManager } from 'react-notifications';
+import RichText from '../RichText'
+import {stateFromHTML} from 'draft-js-import-html';
+import {stateToHTML} from 'draft-js-export-html';
+
 
 const Profile = ({
   profile,
@@ -22,11 +26,11 @@ const Profile = ({
     { value: 1, label: 'Accepting members' },
     { value: 0, label: 'Not accepting members' },
   ];
-
+  console.log(stateFromHTML(profile.about_us))
   const [orgName, setOrgName] = useState(profile.name);
   const [orgEmail, setOrgEmail] = useState(profile.owner);
-  const [descr, setDescr] = useState(profile.about_us);
-  const [descrChars, setChars] = useState(750 - descr.length);
+  const [descr, setDescr] = useState(stateFromHTML(profile.about_us));
+  const [descrChars, setChars] = useState(750 - profile.about_us.replace(/<[^>]*>?/gm, '').length);
   const [tags, setTags] = useState(profile.tags.map((tag) => tagOptions[tag]));
   const [appReq, setAppReq] = useState(
     appOptions[profile.app_required === true ? 0 : 1]
@@ -36,6 +40,7 @@ const Profile = ({
   );
   const [logoImage, setLogoImage] = useState(null);
   const [bannerImage, setBannerImage] = useState(null);
+
 
   async function uploadLogoPic(logoUploads) {
     if (logoUploads && logoUploads.length > 0) {
@@ -86,11 +91,12 @@ const Profile = ({
   }
 
   const submit = async () => {
+    console.log(descr)
     const newProfile = {
       name: orgName.trim(),
       owner: orgEmail,
       tags: tags.map((tags) => tags.value),
-      about_us: descr,
+      about_us: stateToHTML(descr),
       app_required: !!appReq.value,
       new_members: !!recruiting.value,
     };
@@ -106,11 +112,6 @@ const Profile = ({
       uploadLogoPic(logoImage),
       uploadBannerPic(bannerImage)
     ]);
-  };
-
-  const descrChange = (e) => {
-    setDescr(e.target.value);
-    setChars(750 - e.target.value.length);
   };
 
   const reqFieldsCheck = () => {
@@ -278,14 +279,15 @@ const Profile = ({
         </p>
         <div className="formElement">
           <p>Description</p>
-          <textarea
+          {/* <textarea
             className="descriptionInput"
             placeholder="Enter a short description about your organization."
             type="text"
             maxLength={750}
             value={descr}
             onChange={descrChange}
-          />
+          /> */}
+          <RichText setChars={setChars} setDescr={setDescr} descr={descr}/>
         </div>
         <p className="subtitle">{descrChars} characters remaining</p>
       </div>
