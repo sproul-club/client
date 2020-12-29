@@ -21,7 +21,7 @@
   border: 1px solid #ccc;
   border-radius: 10px;
   padding: 20px;
-  height: 70%;
+  max-height: 70%;
   overflow-y: scroll;
 }
 

@@ -5,6 +5,7 @@ import { NotificationManager } from 'react-notifications';
 import RichText from '../RichText'
 import {stateFromHTML} from 'draft-js-import-html';
 import {stateToHTML} from 'draft-js-export-html';
+import './Admin.css';
 
 const AboutClub = ({
   profile,
@@ -35,17 +36,16 @@ const AboutClub = ({
   return (
     <div>
       <h3> About {profile.name} </h3>
-        <div className="admin-modal-text">Enter a short description about your organization.</div>
-          <div className="input-holder">
-            <div className="input-title">Description</div>
+        <p>Enter a short description about your organization.</p>
+        <div className="formGroup">
+          <div className="formElement">
             <RichText setChars={setDescrChars} setDescr={setDescr} descr={descr}/>
           </div>
           <div className="subtitle">{descrChars} characters remaining</div> 
-        <div id="buttons-flex">
-          <button id="save-button" onClick={submit}>
-            Save
-          </button>
         </div>
+        
+        <button id="save-button" onClick={submit}> Save </button>
+        
       
     </div>
   );

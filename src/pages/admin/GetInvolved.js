@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { updateProfile } from '../../actions/profile';
 import { connect } from 'react-redux';
 import { NotificationManager } from 'react-notifications';
+import { normalizeUrl } from '../../utils/normalizeUrl';
+import './Admin.css';
+
 
 const GetInvolved = ({ profile, get_involved, updateProfile }) => {
   const [involvedDesc, setInvolvedDesc] = useState(get_involved);
@@ -24,7 +27,8 @@ const GetInvolved = ({ profile, get_involved, updateProfile }) => {
     setInvolvedLink(''); // placeholder: need API endpoint for application link
   }
 
-  const submitValue = async () => {
+  const submit = async () => {
+    setInvolvedLink(normalizeUrl(involvedLink));
     const newProfile = {
       get_involved: involvedDesc,
       // get_involved_link: involvedLink, // placeholder: need API endpoint for application link
@@ -61,26 +65,24 @@ const GetInvolved = ({ profile, get_involved, updateProfile }) => {
             onChange={descrChange}
           />
         </div>
-        <p className="subtitle">{descrChars} characters remaining</p>
+        <div className="subtitle">{descrChars} characters remaining</div>
 
         <div className="formElement">
           <p>Application Link</p>
           <input
-            className="descriptionInput"
+            className="userInput"
             placeholder="Enter link"
             type="text"
             maxLength={500}
             /*value={involvedDesc}
             onChange={(e) => setInvolvedDesc(e.target.value)}
             */
-            value={involvedDesc}
-            onChange={descrChange}
+            value={involvedLink}
+            onChange={involvedLinkChange}
           />
         </div>
       </div>
-      <button className="saveButton" onClick={submitValue}>
-        Save changes{' '}
-      </button>
+      <button id="save-button" onClick={submit}> Save </button>
     </div>
   );
 };
