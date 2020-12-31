@@ -15,6 +15,7 @@ import { ComingSoon } from './pages/ComingSoon.js';
 import Catalog2 from './pages/Catalog2.js';
 import { SignUp } from './pages/SignUp.js';
 import { SignIn } from './pages/SignIn.js';
+import RegisterStudent from './pages/RegisterStudent.js'
 import { ResetPassword } from './pages/ResetPassword.js';
 import { ResetPassword2 } from './pages/ResetPassword2.js';
 import Security from './pages/admin/Security.js';
@@ -53,6 +54,7 @@ const App = () => {
           <Route path="/admin2" component={Admin2} />
           <Route path="/catalog" component={Catalog2} />
           {/* <Route path="/catalog2" component={Catalog2} /> */}
+          <Route exact path="/register" component={RegisterStudent} />
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/signin" component={SignIn} />
           <Route exact path="/recover" component={ResetPassword} />
