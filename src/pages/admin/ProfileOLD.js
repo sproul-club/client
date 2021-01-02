@@ -26,13 +26,6 @@ const Profile = ({
     { value: 1, label: 'Accepting members' },
     { value: 0, label: 'Not accepting members' },
   ];
-
-  var sizeOptions = [
-    { value: 0, label: '1-20 members' },
-    { value: 1, label: '20-50 members' },
-    { value: 2, label: '50+ members' },
-  ];
-
   console.log(stateFromHTML(profile.about_us))
   const [orgName, setOrgName] = useState(profile.name);
   const [orgEmail, setOrgEmail] = useState(profile.owner);
@@ -45,8 +38,6 @@ const Profile = ({
   const [recruiting, setRecruit] = useState(
     recruitOptions[profile.new_members === true ? 0 : 1]
   );
-  const [size, setSize] = useState(sizeOptions[0])
-
   const [logoImage, setLogoImage] = useState(null);
   const [bannerImage, setBannerImage] = useState(null);
 
@@ -158,6 +149,28 @@ const Profile = ({
           />
         </div>
         <div className="formElement">
+          <p>Account Email Address</p>
+          <input
+            className="userInput"
+            type="text"
+            disabled="disabled"
+            value={orgEmail}
+            onChange={(e) => setOrgEmail(e.target.value)}
+          />
+        </div>
+        <p className="subtitle">
+          <span style={{ color: '#FF0000' }}>*</span> This setting cannot be
+          changed. Please contact{' '}
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="mailto:sproul.club@gmail.com"
+          >
+            <span style={{ color: '#54a0f1' }}>sproul.club@gmail.com</span>
+          </a>{' '}
+          for further assistance.
+        </p>
+        <div className="formElement">
           <p>Tags</p>
           <Dropdown
             options={tagOptions}
@@ -166,17 +179,6 @@ const Profile = ({
             defaultValue={profile.tags.map((tag) => tagOptions[tag])}
             placeholder="Add up to 3 tags"
             set={setTags}
-          />
-        </div>
-        <div className="formElement">
-          <p>Club Size</p>
-          <Dropdown
-            options={sizeOptions}
-            multi={false}
-            search={false}
-            defaultValue={appOptions[size]}
-            placeholder="Select club size"
-            set={setSize}
           />
         </div>
         <div className="formElement">
@@ -191,44 +193,15 @@ const Profile = ({
           />
         </div>
         <div className="formElement">
-          <p>Recruitment Period</p>
-            <div className="input-time">
-              <input
-                className="modal-input"
-                type="date"
-                //onChange={(e) => setStartDate(e.target.value)} //TODO
-                //value={startDate} //TODO
-                required
-              />
-              <span> to </span>
-              <input
-                className="modal-input"
-                type="date"
-                //onChange={(e) => setEndDate(e.target.value)} //TODO
-                //value={endDate} //TODO
-                required
-              />
-            </div>
-        </div>
-        <div className="formElement">
-          <p>Application Deadline</p>
-          <div className="input-time">
-              <input
-                className="modal-input"
-                type="date"
-                //onChange={(e) => setStartDate(e.target.value)} //TODO
-                //value={startDate} //TODO
-                required
-              />
-              <span> to </span>
-              <input
-                className="modal-input"
-                type="date"
-                //onChange={(e) => setEndDate(e.target.value)} //TODO
-                //value={endDate} //TODO
-                required
-              />
-            </div>
+          <p>Membership Status</p>
+          <Dropdown
+            options={recruitOptions}
+            multi={false}
+            search={false}
+            defaultValue={recruitOptions[profile.new_members === true ? 0 : 1]}
+            placeholder="Select recruitment status"
+            set={setRecruit}
+          />
         </div>
         <div className="formElement">
           <p>Logo</p>
@@ -304,8 +277,30 @@ const Profile = ({
           </a>{' '}
           for a resource that helps you resize your images.
         </p>
+        <div className="formElement">
+          <p>Description</p>
+          {/* <textarea
+            className="descriptionInput"
+            placeholder="Enter a short description about your organization."
+            type="text"
+            maxLength={750}
+            value={descr}
+            onChange={descrChange}
+          /> */}
+          <RichText setChars={setChars} setDescr={setDescr} descr={descr}/>
+        </div>
+        <p className="subtitle">{descrChars} characters remaining</p>
       </div>
-      <button id="save-button" onClick={submit}> Save </button>
+      <button
+        className="saveButton"
+        onClick={
+          tags === null || orgName.match(/^ *$/) !== null
+            ? reqFieldsCheck
+            : submit
+        }
+      >
+        Save changes
+      </button>
     </div>
   );
 };

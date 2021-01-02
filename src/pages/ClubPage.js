@@ -17,6 +17,7 @@ import Modal from '../layout/Modal';
 import ContactInfo from '../pages/admin/ContactInfo';
 import GetInvolved from '../pages/admin/GetInvolved';
 import AboutClub from '../pages/admin/AboutClub';
+import Profile from '../pages/admin/Profile';
 
 function ClubPage({
   admin,
@@ -29,11 +30,13 @@ function ClubPage({
   const [showContactModal, setShowContactModal] = useState(false);
   const [showInvolvedModal, setShowInvolvedModal] = useState(false);
   const [showAboutModal, setShowAboutModal] = useState(false);
+  const [showProfileModal, setShowProfileModal] = useState(false);
 
   function cancelEdit() {
     setShowContactModal(false);
     setShowInvolvedModal(false);
     setShowAboutModal(false);
+    setShowProfileModal(false);
   }
 
   const path = history.location.pathname.split("/").slice(2);
@@ -181,6 +184,9 @@ function ClubPage({
                   <HeartBordered fontSize="small"/>
                   <span>Favorite</span>
                 </button>
+                {admin && 
+                  <EditIcon className="clubpage-content-header-icon" onClick={() => setShowProfileModal(admin)}/>
+                }
             </div>
           </div>
           <div className="clubpage-header-nav">
@@ -278,6 +284,17 @@ function ClubPage({
             }
           </div>
         </div>
+
+        <Modal
+          showModal={showProfileModal}
+          setShowModal={setShowProfileModal}
+          close={cancelEdit}
+        >
+          <div className="admin-modal">
+            <Profile profile={organization}/>
+          </div>
+        </Modal>
+
         <Modal
           showModal={showAboutModal}
           setShowModal={setShowAboutModal}
@@ -307,6 +324,7 @@ function ClubPage({
             <ContactInfo profile={organization}/>
           </div>
         </Modal>
+
         <Footer />
       </div>
     </div>
