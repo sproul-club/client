@@ -39,7 +39,7 @@ function RecruitmentTL({ data }) {
                     >
                        {<img
                             className="res-img"
-                            //src={require('./recrEventLinks/gcal.PNG')}
+                            src={require('./assets/linkImages/gcal.PNG')}
                             alt="resource"
                             id="gcal"
                        />}
@@ -51,7 +51,7 @@ function RecruitmentTL({ data }) {
                     >
                        {<img
                             className="res-img"
-                            //src={require('./recrEventLinks/recrFB.PNG')}
+                            src={require('./assets/linkImages/recrFB.PNG')}
                             alt="resource"
                             className="recrButton"
                        />}
@@ -63,7 +63,7 @@ function RecruitmentTL({ data }) {
                     >
                        {<img
                             className="res-img"
-                            //src={require('./recrEventLinks/recrZM.PNG')}
+                            src={require('./assets/linkImages/recrZM.PNG')}
                             alt="resource"
                             className="recrButton"
                        />}
