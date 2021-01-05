@@ -2,18 +2,16 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { updateProfile } from '../../actions/profile';
 import { NotificationManager } from 'react-notifications';
-import { normalizeUrl } from '../../utils/normalizeUrl';
-import './Admin.css';
-
+import { normalizeUrl } from '../../utils/normalizeUrl'
 
 const ContactInfo = ({ profile, updateProfile }) => {
   const contactInfo = profile.social_media_links;
+  const [normalized, setNormalized] = useState(false);
 
   const [email, setEmail] = useState(contactInfo.contact_email);
   const [website, setWebsite] = useState(contactInfo.website);
   const [facebook, setFacebook] = useState(contactInfo.facebook);
   const [instagram, setInstagram] = useState(contactInfo.instagram);
-  const [discord, setDiscord] = useState(contactInfo.discord);
   const [linkedin, setLinkedin] = useState(contactInfo.linkedin);
   const [github, setGithub] = useState(contactInfo.github);
   const [behance, setBehance] = useState(contactInfo.behance);
@@ -26,12 +24,10 @@ const ContactInfo = ({ profile, updateProfile }) => {
     setEmail(profile.owner);
   }
 
-  const submit = async () => {
-    // normalize all URLs
+  const normalizeUrls = () => {
     setWebsite(normalizeUrl(website));
     setFacebook(normalizeUrl(facebook));
     setInstagram(normalizeUrl(instagram));
-    setDiscord(normalizeUrl(discord));
     setLinkedin(normalizeUrl(linkedin));
     setGithub(normalizeUrl(github));
     setBehance(normalizeUrl(behance));
@@ -39,13 +35,18 @@ const ContactInfo = ({ profile, updateProfile }) => {
     setTwitter(normalizeUrl(twitter));
     setGcalendar(normalizeUrl(gcalendar));
     setYoutube(normalizeUrl(youtube));
-    const newProfile = {
+    setNormalized(true)
+  }
+
+  if (normalized === true) {
+    setNormalized(false)
+    updateProfile({
+      ...profile.profile,
       social_media_links: {
         contact_email: email,
         website,
         facebook,
         instagram,
-        discord,
         linkedin,
         behance,
         github,
@@ -53,17 +54,11 @@ const ContactInfo = ({ profile, updateProfile }) => {
         twitter,
         youtube,
         gcalendar,
-      }
-    };
-
-    // update backend
-    try {
-      await updateProfile(newProfile);
-      NotificationManager.success('Changes to Contact Information saved successfully!', '', 1500);
-    } catch (err) {
-      console.log(err);
-      NotificationManager.error('Changes to Contact Information did not successfully!', '', 1500);
-    }
+      }}, function() {
+        NotificationManager.success("Contact information changes saved successfully!", '', 3000);
+      }, function() {
+        NotificationManager.error("Contact information changes unsuccessful!", '', 3000);
+      });
   }
 
   return (
@@ -76,7 +71,7 @@ const ContactInfo = ({ profile, updateProfile }) => {
       <div className="formGroup">
         <div className="formElement">
           <p>
-            Email Address <span style={{ color: '#FF0000' }}>*</span>
+            Email Address <span>*</span>
           </p>
           <input
             className="userInput"
@@ -95,16 +90,6 @@ const ContactInfo = ({ profile, updateProfile }) => {
             className="userInput"
             value={website || ''}
             onChange={(e) => setWebsite(e.target.value)}
-            type="text"
-            placeholder="+  Add a link"
-          />
-        </div>
-        <div className="formElement">
-          <p>Discord</p>
-          <input
-            className="userInput"
-            value={discord || ''}
-            onChange={(e) => setDiscord(e.target.value)}
             type="text"
             placeholder="+  Add a link"
           />
@@ -200,13 +185,15 @@ const ContactInfo = ({ profile, updateProfile }) => {
           />
         </div>
       </div>
-      <button id="save-button" onClick={submit}> Save </button>
+      <button className="saveButton" onClick={normalizeUrls}>
+        Save changes
+      </button>
     </div>
   );
 };
 
 const mapStateToProps = (state) => ({
-  profile: state.profile.profile,
+  profile: state.profile,
 });
 
 export default connect(mapStateToProps, { updateProfile })(ContactInfo);
