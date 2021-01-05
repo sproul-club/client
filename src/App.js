@@ -20,6 +20,8 @@ import { ResetPassword } from './pages/ResetPassword.js';
 import { ResetPassword2 } from './pages/ResetPassword2.js';
 import Security from './pages/admin/Security.js';
 import ErrorPage from './pages/ErrorPage';
+import AboutPage from './pages/AboutPage';
+import FAQ from './pages/FAQ';
 import Admin from './pages/admin/Admin.js';
 import ClubPage from './pages/ClubPage';
 import store from './store';
@@ -32,7 +34,6 @@ import Navbar from './layout/Navbar';
 
 import Moment from 'react-moment';
 import 'moment-timezone';
-import Admin2 from './pages/admin/Admin2.js';
 
 Moment.globalTimezone = 'America/Los_Angeles';
 
@@ -50,8 +51,8 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={Landing} />
           <Route exact path="/comingsoon" component={ComingSoon} />
+          <Route exact path="/about" component={AboutPage} />
           <PrivateRoute path="/admin" component={Admin} />
-          <Route path="/admin2" component={Admin2} />
           <Route path="/catalog" component={Catalog2} />
           {/* <Route path="/catalog2" component={Catalog2} /> */}
           <Route exact path="/register" component={RegisterStudent} />
@@ -60,6 +61,7 @@ const App = () => {
           <Route exact path="/recover" component={ResetPassword} />
           <Route exact path="/resetpassword" component={ResetPassword2} />
           <Route exact path="/club/:id" component={ClubPage} />
+          <Route exact path="/FAQ" component={FAQ} />
           <PrivateRoute exact path="/security" component={Security} />
           <Route>
             <ErrorPage />

@@ -2,34 +2,45 @@ import React, { useState } from 'react';
 import { updateProfile } from '../../actions/profile';
 import { connect } from 'react-redux';
 import { NotificationManager } from 'react-notifications';
+import { normalizeUrl } from '../../utils/normalizeUrl';
+import './Admin.css';
+
 
 const GetInvolved = ({ profile, get_involved, updateProfile }) => {
   const [involvedDesc, setInvolvedDesc] = useState(get_involved);
-  const [descrChars, setChars] = useState(500 - involvedDesc.length);
+  const [descrChars, setInvolvedChars] = useState(500 - involvedDesc.length);
+  const [involvedLink, setInvolvedLink] = useState(''); // placeholder: need API endpoint for application link
+
 
   const descrChange = (e) => {
     setInvolvedDesc(e.target.value);
-    setChars(500 - e.target.value.length);
+    setInvolvedChars(500 - e.target.value.length);
   };
 
-  const submitValue = (e) => {
-    updateProfile(
-      { ...profile, get_involved: involvedDesc },
-      function () {
-        NotificationManager.success(
-          'Description changes saved successfully!',
-          '',
-          3000
-        );
-      },
-      function () {
-        NotificationManager.error(
-          'Description changes unsuccessful!',
-          '',
-          3000
-        );
-      }
-    );
+  const involvedLinkChange = (e) => {
+    setInvolvedLink(e.target.value);
+  };
+
+  function cancelEdit() {
+    setInvolvedDesc(profile.get_involved);
+    setInvolvedChars(500 - involvedDesc.length);
+    setInvolvedLink(''); // placeholder: need API endpoint for application link
+  }
+
+  const submit = async () => {
+    setInvolvedLink(normalizeUrl(involvedLink));
+    const newProfile = {
+      get_involved: involvedDesc,
+      // get_involved_link: involvedLink, // placeholder: need API endpoint for application link
+    };
+
+    try {
+      await updateProfile(newProfile);
+      NotificationManager.success('Changes to How to Get Involved saved successfully!', '', 1500);
+    } catch (err) {
+      console.log(err);
+      NotificationManager.error('Changes to How to Get Involved did not save successfully!', '', 1500);
+    }
   };
 
   return (
@@ -54,15 +65,29 @@ const GetInvolved = ({ profile, get_involved, updateProfile }) => {
             onChange={descrChange}
           />
         </div>
-        <p className="subtitle">{descrChars} characters remaining</p>
+        <div className="subtitle">{descrChars} characters remaining</div>
+
+        <div className="formElement">
+          <p>Application Link</p>
+          <input
+            className="userInput"
+            placeholder="Enter link"
+            type="text"
+            maxLength={500}
+            /*value={involvedDesc}
+            onChange={(e) => setInvolvedDesc(e.target.value)}
+            */
+            value={involvedLink}
+            onChange={involvedLinkChange}
+          />
+        </div>
       </div>
-      <button className="saveButton" onClick={submitValue}>
-        Save changes{' '}
-      </button>
+      <button id="save-button" onClick={submit}> Save </button>
     </div>
   );
 };
 const mapStateToProps = (state) => ({
+  profile: state.profile.profile,
   get_involved: state.profile.get_involved,
 });
 

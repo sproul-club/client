@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { updateProfile } from '../../actions/profile';
 import { NotificationManager } from 'react-notifications';
-import { normalizeUrl } from '../../utils/normalizeUrl'
+import { normalizeUrl } from '../../utils/normalizeUrl';
+import './Admin.css';
+
 
 const ContactInfo = ({ profile, updateProfile }) => {
   const contactInfo = profile.social_media_links;
-  const [normalized, setNormalized] = useState(false);
 
   const [email, setEmail] = useState(contactInfo.contact_email);
   const [website, setWebsite] = useState(contactInfo.website);
@@ -25,7 +26,8 @@ const ContactInfo = ({ profile, updateProfile }) => {
     setEmail(profile.owner);
   }
 
-  const normalizeUrls = () => {
+  const submit = async () => {
+    // normalize all URLs
     setWebsite(normalizeUrl(website));
     setFacebook(normalizeUrl(facebook));
     setInstagram(normalizeUrl(instagram));
@@ -37,13 +39,7 @@ const ContactInfo = ({ profile, updateProfile }) => {
     setTwitter(normalizeUrl(twitter));
     setGcalendar(normalizeUrl(gcalendar));
     setYoutube(normalizeUrl(youtube));
-    setNormalized(true)
-  }
-
-  if (normalized === true) {
-    setNormalized(false)
-    updateProfile({
-      ...profile.profile,
+    const newProfile = {
       social_media_links: {
         contact_email: email,
         website,
@@ -57,11 +53,17 @@ const ContactInfo = ({ profile, updateProfile }) => {
         twitter,
         youtube,
         gcalendar,
-      }}, function() {
-        NotificationManager.success("Contact information changes saved successfully!", '', 3000);
-      }, function() {
-        NotificationManager.error("Contact information changes unsuccessful!", '', 3000);
-      });
+      }
+    };
+
+    // update backend
+    try {
+      await updateProfile(newProfile);
+      NotificationManager.success('Changes to Contact Information saved successfully!', '', 1500);
+    } catch (err) {
+      console.log(err);
+      NotificationManager.error('Changes to Contact Information did not successfully!', '', 1500);
+    }
   }
 
   return (
@@ -74,7 +76,7 @@ const ContactInfo = ({ profile, updateProfile }) => {
       <div className="formGroup">
         <div className="formElement">
           <p>
-            Email Address <span className='red'>*</span>
+            Email Address <span style={{ color: '#FF0000' }}>*</span>
           </p>
           <input
             className="userInput"
@@ -198,15 +200,13 @@ const ContactInfo = ({ profile, updateProfile }) => {
           />
         </div>
       </div>
-      <button className="saveButton" onClick={normalizeUrls}>
-        Save changes
-      </button>
+      <button id="save-button" onClick={submit}> Save </button>
     </div>
   );
 };
 
 const mapStateToProps = (state) => ({
-  profile: state.profile,
+  profile: state.profile.profile,
 });
 
 export default connect(mapStateToProps, { updateProfile })(ContactInfo);
