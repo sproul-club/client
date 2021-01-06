@@ -190,7 +190,8 @@ const Profile = ({
             set={setAppReq}
           />
         </div>
-        <div className="formElement">
+        {appReq.value === 0 && 
+          <div className="formElement">
           <p>Recruitment Period</p>
             <div className="input-time">
               <input
@@ -209,92 +210,61 @@ const Profile = ({
                 required
               />
             </div>
-        </div>
-        <div className="formElement">
-          <p>Application Deadline</p>
-          <div className="input-time">
-              <input
-                className="modal-input"
-                type="date"
-                //onChange={(e) => setStartDate(e.target.value)} //TODO
-                //value={startDate} //TODO
-                required
-              />
-              <span> to </span>
-              <input
-                className="modal-input"
-                type="date"
-                //onChange={(e) => setEndDate(e.target.value)} //TODO
-                //value={endDate} //TODO
-                required
-              />
-            </div>
-        </div>
-        <div className="formElement">
-          <p>Logo</p>
-          <ImageUploader
-            label="1:1 ratio - square image"
-            buttonStyles={{
-              background: '#54a0f1',
-            }}
-            fileContainerStyle={{
-              width: '300px',
-              float: 'left',
-            }}
-            labelStyles={{
-              width: '250px',
-              marginRight: 0,
-              textAlign: 'center',
-            }}
-            withIcon={true}
-            singleImage={true}
-            withPreview={true}
-            buttonText="Choose image"
-            onChange={(e) => setLogoImage(e)}
-            imgExtension={['.jpg', '.gif', '.png', '.gif']}
-            maxFileSize={16777216}
-          />
-        </div>
+          </div>
+        }
+        
+        {appReq.value === 1 && 
+          <div className="formElement">
+            <p>Application Open to Close</p>
+            <div className="input-time">
+                <input
+                  className="modal-input"
+                  type="date"
+                  //onChange={(e) => setStartDate(e.target.value)} //TODO
+                  //value={startDate} //TODO
+                  required
+                />
+                <span> to </span>
+                <input
+                  className="modal-input"
+                  type="date"
+                  //onChange={(e) => setEndDate(e.target.value)} //TODO
+                  //value={endDate} //TODO
+                  required
+                />
+              </div>
+          </div>
+        }
+      </div>
+
+      <div className="modal-right">
+        {/* logo upload */}
+        <p>Logo</p>
+        <ImageUploader
+          label="1:1 ratio - square image"
+          buttonStyles={{
+            background: '#54a0f1',
+          }}
+          fileContainerStyle={{
+            width: '300px',
+            float: 'left',
+          }}
+          labelStyles={{
+            width: '250px',
+            marginRight: 0,
+            textAlign: 'center',
+          }}
+          withIcon={true}
+          singleImage={true}
+          withPreview={true}
+          buttonText="Choose image"
+          onChange={(e) => setLogoImage(e)}
+          imgExtension={['.jpg', '.gif', '.png', '.gif']}
+          maxFileSize={16777216}
+        />
         <p className="subtitle">
           <span style={{ color: '#FF0000' }}>*</span> Please make sure your logo
           is at least 360 x 360 pixels.{' '}
-          <a
-            href="https://www.photoresizer.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <span style={{ color: '#54a0f1' }}>Click here</span>
-          </a>{' '}
-          for a resource that helps you resize your images.
-        </p>
-        <div className="formElement">
-          <p>Banner</p>
-          <ImageUploader
-            label="8:3 ratio - e.g. Facebook cover image"
-            buttonStyles={{
-              background: '#54a0f1',
-            }}
-            fileContainerStyle={{
-              width: '300px',
-              float: 'left',
-            }}
-            labelStyles={{
-              width: '250px',
-              marginRight: 0,
-              textAlign: 'center',
-            }}
-            withIcon={true}
-            singleImage={true}
-            withPreview={true}
-            buttonText="Choose image"
-            onChange={(e) => setBannerImage(e)}
-            imgExtension={['.jpg', '.gif', '.png', '.gif']}
-            maxFileSize={16777216}
-          />
-        </div>
-        <p className="subtitle">
-          <span style={{ color: '#FF0000' }}>*</span> Please make sure your
-          banner is at least 1640 x 624 pixels.{' '}
           <a
             href="https://www.photoresizer.com/"
             target="_blank"

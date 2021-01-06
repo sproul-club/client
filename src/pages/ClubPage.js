@@ -18,6 +18,7 @@ import ContactInfo from '../pages/admin/ContactInfo';
 import GetInvolved from '../pages/admin/GetInvolved';
 import AboutClub from '../pages/admin/AboutClub';
 import Profile from '../pages/admin/Profile';
+import Banner from '../pages/admin/Banner';
 
 function ClubPage({
   admin,
@@ -31,12 +32,14 @@ function ClubPage({
   const [showInvolvedModal, setShowInvolvedModal] = useState(false);
   const [showAboutModal, setShowAboutModal] = useState(false);
   const [showProfileModal, setShowProfileModal] = useState(false);
+  const [showBannerModal, setShowBannerModal] = useState(false);
 
   function cancelEdit() {
     setShowContactModal(false);
     setShowInvolvedModal(false);
     setShowAboutModal(false);
     setShowProfileModal(false);
+    setShowBannerModal(false);
   }
 
   const path = history.location.pathname.split("/").slice(2);
@@ -160,6 +163,9 @@ function ClubPage({
             src={organization.banner_url || require('./assets/default_banner.jpg')}
             alt=""
           />
+          {admin && 
+            <EditIcon className="clubpage-content-header-icon" onClick={() => setShowBannerModal(admin)}/>
+          }
           <div className="clubpage-header-content">
             <div className="clubpage-header-left">
               <img
@@ -284,6 +290,16 @@ function ClubPage({
             }
           </div>
         </div>
+
+        <Modal
+          showModal={showBannerModal}
+          setShowModal={setShowBannerModal}
+          close={cancelEdit}
+        >
+          <div className="admin-modal">
+            <Banner profile={organization}/>
+          </div>
+        </Modal>
 
         <Modal
           showModal={showProfileModal}
