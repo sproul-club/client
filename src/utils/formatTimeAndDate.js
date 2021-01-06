@@ -37,3 +37,7 @@ export function simplestRangeFormat(start_dt, end_dt, datetype) {
     }
   }
 }
+
+export function justTimeFormat(start_dt, end_dt, datetype) {
+  return 'h:mm A z'
+}

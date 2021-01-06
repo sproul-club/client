@@ -15,10 +15,12 @@ import { ComingSoon } from './pages/ComingSoon.js';
 import Catalog2 from './pages/Catalog2.js';
 import { SignUp } from './pages/SignUp.js';
 import { SignIn } from './pages/SignIn.js';
+import RegisterStudent from './pages/RegisterStudent.js'
 import { ResetPassword } from './pages/ResetPassword.js';
 import { ResetPassword2 } from './pages/ResetPassword2.js';
 import Security from './pages/admin/Security.js';
 import ErrorPage from './pages/ErrorPage';
+import AboutPage from './pages/AboutPage';
 import FAQ from './pages/FAQ';
 import Admin from './pages/admin/Admin.js';
 import ClubPage from './pages/ClubPage';
@@ -49,9 +51,11 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={Landing} />
           <Route exact path="/comingsoon" component={ComingSoon} />
+          <Route exact path="/about" component={AboutPage} />
           <PrivateRoute path="/admin" component={Admin} />
           <Route path="/catalog" component={Catalog2} />
           {/* <Route path="/catalog2" component={Catalog2} /> */}
+          <Route exact path="/register" component={RegisterStudent} />
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/signin" component={SignIn} />
           <Route exact path="/recover" component={ResetPassword} />

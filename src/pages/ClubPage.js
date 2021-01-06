@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './ClubPage.css';
+import RecruitmentTL from './RecruitmentTL';
 import EventAccord from './EventAccord';
 import Gallery from '../layout/Gallery';
 import Footer from '../layout/Footer';
@@ -151,6 +152,10 @@ function ClubPage({
     tagList.push(<Tag key={"nar"} label="Application Not Required" color="#cdeaff" />)
   }
 
+  const numEvents = organization.events.length;
+  const lineHeight = (numEvents - 1) * 14;
+  const lineTop = -(numEvents) * 13;
+
   ReactGA.initialize('UA-176775736-1');
   ReactGA.pageview('/' + history.location.pathname.slice(6).split("/")[0]);
 
@@ -224,6 +229,10 @@ function ClubPage({
                     {admin && 
                       <EditIcon className="clubpage-content-header-icon"/>
                     }
+                  </div>
+                  <div className="recr-container">
+                    <RecruitmentTL data={organization}/>
+                    <div className="vl" style={{height : lineHeight + "vw", top: lineTop + "vw"}}></div>
                   </div>
                 </div>
               } />

@@ -147,7 +147,7 @@
   font-size: 13px;
 }
 
-.signin .emailUnverified, 
+.signin .emailUnverified,
 .emptyEmail, .emptyPassword {
   /* transition to visible popup */
   visibility: visible;
@@ -215,5 +215,3 @@
 }
 
 /* WEBKIT FOR OLD SAFARI VERSIONS */
-
-
