@@ -85,7 +85,7 @@ const Navbar = ({
           {organizationEmail}
           <i
             style={{ marginLeft: '5px' }}
-            className={`fas ${dropdownVis ? 'fa-caret-down' : 'fa-caret-up'}`}
+            className={`fas ${dropdownVis ? 'fa-caret-up' : 'fa-caret-down'}`}
           ></i>
         </div>
 
