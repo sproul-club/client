@@ -29,6 +29,7 @@ const AboutClub = ({
       await updateProfile(newProfile);
       NotificationManager.success('Changes to About ' + profile.name + ' saved successfully!', '', 1500);
     } catch (err) {
+      console.log(err)
       NotificationManager.error('Changes to About ' + profile.name + ' did not save successfully!', '', 1500);
     }
   };

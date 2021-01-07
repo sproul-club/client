@@ -163,14 +163,16 @@ function ClubPage({
     <div className='clubpage-wrapper'>
       <div className='clubpage'>
         <div className='clubpage-header'>
-          <img
-            className="header-img"
-            src={organization.banner_url || require('./assets/default_banner.jpg')}
-            alt=""
-          />
-          {admin && 
-            <EditIcon className="clubpage-content-header-icon" onClick={() => setShowBannerModal(admin)}/>
-          }
+            <div className='clubpage-banner'>
+              <img
+                className="header-img"
+                src={organization.banner_url || require('./assets/default_banner.jpg')}
+                alt=""
+              />
+              {admin && 
+                <EditIcon className="clubpage-content-header-icon" onClick={() => setShowBannerModal(admin)}/>
+              }
+            </div>
           <div className="clubpage-header-content">
             <div className="clubpage-header-left">
               <img
