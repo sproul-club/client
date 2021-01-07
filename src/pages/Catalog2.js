@@ -122,7 +122,7 @@ const Catalog2 = ({
           <div className='filter-wrapper' onMouseEnter={()=>setShowStatusDD(true)} onMouseLeave={()=>setShowStatusDD(false)} >
             <div onClick={() => setShowStatusDD(!showStatusDD)} className={`${showStatusDD && 'openDD'} filter status-filter`}>
               Status
-              {showStatusDD ? <i className='fas fa-caret-down'></i> : <i className='fas fa-caret-up'></i>}
+              {showStatusDD ? <i className='fas fa-caret-up'></i> : <i className='fas fa-caret-down'></i>}
             </div>
             {showStatusDD && (
               <div className="filter-dropdown">
@@ -142,7 +142,7 @@ const Catalog2 = ({
           <div className='filter-wrapper' onMouseEnter={()=>setShowAppDD(true)} onMouseLeave={()=>setShowAppDD(false)} >
             <div onClick={() => setShowAppDD(!showAppDD)} className={`${showAppDD && 'openDD'} filter app-filter`}>
               App
-              {showAppDD ? <i className='fas fa-caret-down'></i> : <i className='fas fa-caret-up'></i>}
+              {showAppDD ? <i className='fas fa-caret-up'></i> : <i className='fas fa-caret-down'></i>}
             </div>
             {showAppDD && (
               <div className="filter-dropdown">
@@ -155,7 +155,7 @@ const Catalog2 = ({
           <div className='filter-wrapper' onMouseEnter={()=>setShowTagsDD(true)} onMouseLeave={()=>setShowTagsDD(false)} >
             <div onClick={() => setShowTagsDD(!showTagsDD)} className={`${showTagsDD && 'openDD'} filter tags-filter`}>
               Tags
-              {showTagsDD ? <i className='fas fa-caret-down'></i> : <i className='fas fa-caret-up'></i>}
+              {showTagsDD ? <i className='fas fa-caret-up'></i> : <i className='fas fa-caret-down'></i>}
             </div>
             {showTagsDD && (
               <div className="filter-dropdown scrollable-content">
@@ -172,7 +172,7 @@ const Catalog2 = ({
           <div className='filter-wrapper' onMouseEnter={()=>setShowMembersDD(true)} onMouseLeave={()=>setShowMembersDD(false)} >
             <div onClick={() => setShowMembersDD(!showMembersDD)} className={`${showMembersDD && 'openDD'} filter members-filter`}>
               Members
-              {showMembersDD ? <i className='fas fa-caret-down'></i> : <i className='fas fa-caret-up'></i>}
+              {showMembersDD ? <i className='fas fa-caret-up'></i> : <i className='fas fa-caret-down'></i>}
             </div>
             {showMembersDD && (
               <div className="filter-dropdown">
@@ -204,7 +204,7 @@ const Catalog2 = ({
           <div className='filter-wrapper' onMouseEnter={()=>setShowSortDD(true)} onMouseLeave={()=>setShowSortDD(false)} >
             <div onClick={() => setShowSortDD(!showSortDD)} className={`${showSortDD && 'openDD'} filter sort-filter`}>
               Sort
-              {showSortDD ? <i className='fas fa-caret-down'></i> : <i className='fas fa-caret-up'></i>}
+              {showSortDD ? <i className='fas fa-caret-up'></i> : <i className='fas fa-caret-down'></i>}
             </div>
             {showSortDD && (
               <div className="filter-dropdown sort-filter-dropdown">
