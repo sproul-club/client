@@ -10,7 +10,7 @@ const ACCESS_TOKEN_EXPIRE_KEY  = 'expiresAt';
 const REFRESH_TOKEN_EXPIRE_KEY = 'refreshExpiresAt';
 
 const API = axios.create({
-  baseURL: PROD_URL,
+  baseURL: DEV_URL,
   headers: {
     accept: 'application/json',
     'Access-Control-Allow-Origin': '*',
