@@ -1,7 +1,9 @@
 export const filterClubs = (allOrganizations, formDetails, tagOptions, num_results) => {
 
+  console.log(allOrganizations)
+
   console.log(num_results)
-  const orgList = allOrganizations.map((club) => club.club)
+  const orgList = allOrganizations
 
   // Filter by name
   let filteredClubs = orgList.filter(club => club.name.toLowerCase().includes(formDetails.name.toLowerCase()))

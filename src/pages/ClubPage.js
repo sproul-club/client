@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './ClubPage.css';
+import RecruitmentTL from './RecruitmentTL';
 import EventAccord from './EventAccord';
 import Gallery from '../layout/Gallery';
 import Footer from '../layout/Footer';
@@ -13,6 +14,12 @@ import RightArrow from '@material-ui/icons/CallMadeRounded';
 import HeartBordered from '@material-ui/icons/FavoriteBorderRounded';
 import EditIcon from '@material-ui/icons/EditRounded';
 import { Route, Switch, Link } from 'react-router-dom';
+import Modal from '../layout/Modal';
+import ContactInfo from '../pages/admin/ContactInfo';
+import GetInvolved from '../pages/admin/GetInvolved';
+import AboutClub from '../pages/admin/AboutClub';
+import Profile from '../pages/admin/Profile';
+import Banner from '../pages/admin/Banner';
 
 function ClubPage({
   admin,
@@ -22,6 +29,20 @@ function ClubPage({
   tagOptions,
   history,
 }) {
+  const [showContactModal, setShowContactModal] = useState(false);
+  const [showInvolvedModal, setShowInvolvedModal] = useState(false);
+  const [showAboutModal, setShowAboutModal] = useState(false);
+  const [showProfileModal, setShowProfileModal] = useState(false);
+  const [showBannerModal, setShowBannerModal] = useState(false);
+
+  function cancelEdit() {
+    setShowContactModal(false);
+    setShowInvolvedModal(false);
+    setShowAboutModal(false);
+    setShowProfileModal(false);
+    setShowBannerModal(false);
+  }
+
   const path = history.location.pathname.split("/").slice(2);
   const routeId = path[0];
   useEffect(() => {
@@ -66,7 +87,7 @@ function ClubPage({
         target="_blank"
         rel="noopener noreferrer"
         href={
-          key === 'contact_email' ? 'mailto:' + socLinks[key] : socLinks[key]
+          key === 'contact_email' ? 'mailto:' + socLinks[key] : "https://" + socLinks[key]
         }
       >
         <img
@@ -97,7 +118,7 @@ function ClubPage({
         <div className='clubpage-content-header'>
           <h1>About {organization.name}</h1>
           {admin && 
-            <EditIcon className="clubpage-content-header-icon"/>
+            <EditIcon className="clubpage-content-header-icon" onClick={() => setShowAboutModal(admin)}/>
           }
         </div>
         <p dangerouslySetInnerHTML={{ __html: organization.about_us }}></p>
@@ -131,6 +152,10 @@ function ClubPage({
     tagList.push(<Tag key={"nar"} label="Application Not Required" color="#cdeaff" />)
   }
 
+  const numEvents = organization.events.length;
+  const lineHeight = (numEvents - 1) * 14;
+  const lineTop = -(numEvents) * 13;
+
   ReactGA.initialize('UA-176775736-1');
   ReactGA.pageview('/' + history.location.pathname.slice(6).split("/")[0]);
 
@@ -143,6 +168,9 @@ function ClubPage({
             src={organization.banner_url || require('./assets/default_banner.jpg')}
             alt=""
           />
+          {admin && 
+            <EditIcon className="clubpage-content-header-icon" onClick={() => setShowBannerModal(admin)}/>
+          }
           <div className="clubpage-header-content">
             <div className="clubpage-header-left">
               <img
@@ -167,6 +195,9 @@ function ClubPage({
                   <HeartBordered fontSize="small"/>
                   <span>Favorite</span>
                 </button>
+                {admin && 
+                  <EditIcon className="clubpage-content-header-icon" onClick={() => setShowProfileModal(admin)}/>
+                }
             </div>
           </div>
           <div className="clubpage-header-nav">
@@ -199,6 +230,10 @@ function ClubPage({
                       <EditIcon className="clubpage-content-header-icon"/>
                     }
                   </div>
+                  <div className="recr-container">
+                    <RecruitmentTL data={organization}/>
+                    <div className="vl" style={{height : lineHeight + "vw", top: lineTop + "vw"}}></div>
+                  </div>
                 </div>
               } />
               <Route path={admin ? "/admin/events" : `/club/${routeId}/events`} render={() =>
@@ -227,7 +262,7 @@ function ClubPage({
                 <div className='clubpage-content-header'>
                   <h1>How to Get Involved</h1>
                   {admin && 
-                    <EditIcon className="clubpage-content-header-icon"/>
+                    <EditIcon className="clubpage-content-header-icon" onClick={() => setShowInvolvedModal(admin)}/>
                   }
                   </div>
                 <p>{organization.get_involved}</p>
@@ -241,11 +276,13 @@ function ClubPage({
               <div className='clubpage-content-header'>
                 <h1>Contact Information</h1>
                 {admin && 
-                  <EditIcon className="clubpage-content-header-icon"/>
+                  <EditIcon className="clubpage-content-header-icon" onClick={() => setShowContactModal(admin)}/>
                 }
                 </div>
               <h2>Website</h2>
+              <a href={"https://"+organization.social_media_links.website}>{organization.social_media_links.website}</a>
               <h2>Email</h2>
+              <a href={"mailto:"+organization.social_media_links.contact_email}>{organization.social_media_links.contact_email}</a>
               <h2>Social Media</h2>
               <div className="clubpage-sm-link-list">{contactComps}</div>
             </div>
@@ -262,6 +299,57 @@ function ClubPage({
             }
           </div>
         </div>
+
+        <Modal
+          showModal={showBannerModal}
+          setShowModal={setShowBannerModal}
+          close={cancelEdit}
+        >
+          <div className="admin-modal">
+            <Banner profile={organization}/>
+          </div>
+        </Modal>
+
+        <Modal
+          showModal={showProfileModal}
+          setShowModal={setShowProfileModal}
+          close={cancelEdit}
+        >
+          <div className="admin-modal">
+            <Profile profile={organization}/>
+          </div>
+        </Modal>
+
+        <Modal
+          showModal={showAboutModal}
+          setShowModal={setShowAboutModal}
+          close={cancelEdit}
+        >
+          <div className="admin-modal">
+            <AboutClub profile={organization}/>
+          </div>
+        </Modal>
+
+        <Modal
+          showModal={showInvolvedModal}
+          setShowModal={setShowInvolvedModal}
+          close={cancelEdit}
+        >
+          <div className="admin-modal">
+            <GetInvolved profile={organization}/>
+          </div>
+        </Modal>
+
+        <Modal
+          showModal={showContactModal}
+          setShowModal={setShowContactModal}
+          close={cancelEdit}
+        >
+          <div className="admin-modal">
+            <ContactInfo profile={organization}/>
+          </div>
+        </Modal>
+
         <Footer />
       </div>
     </div>
