@@ -96,6 +96,11 @@
   transition-duration: 0.13s;
   transition-timing-function: ease-out;
 }
+.menu.menu-close:hover {
+  transition-duration: 0.05s;
+  opacity: 0.8;
+}
+
 .menu.menu-open {
   color: #54A0F1;
   background-color: #FFFFFF;

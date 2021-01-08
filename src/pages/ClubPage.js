@@ -194,13 +194,15 @@ function ClubPage({
               </div>
             </div>
             <div className="clubpage-header-right">
+              {!admin && 
                 <button className="clubpage-favorite-button" /* NEED AN ONCLICK HANDLER TO ACTUALL DO SOMETHING HERE*/>
                   <HeartBordered fontSize="small"/>
                   <span>Favorite</span>
                 </button>
-                {admin && 
-                  <EditIcon className="clubpage-content-header-icon" onClick={() => setShowProfileModal(admin)}/>
-                }
+              }             
+              {admin && 
+                <EditIcon className="clubpage-content-header-icon" onClick={() => setShowProfileModal(admin)}/>
+              }
             </div>
           </div>
           <div className="clubpage-header-nav">
