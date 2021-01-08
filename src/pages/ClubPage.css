@@ -29,6 +29,7 @@
 }
 
 .clubpage-header {
+  position: relative;
   border-radius: 10px;
   margin: 0 auto;
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
@@ -47,6 +48,13 @@
 
 .clubpage-content-header-icon:hover {
   cursor: pointer;
+}
+
+.clubpage-content-header-icon.above-banner {
+  position: absolute;
+  z-index: 2;
+  top: 22px;
+  right: 25px;
 }
 
 .clubpage-header-content {
