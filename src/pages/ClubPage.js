@@ -20,6 +20,7 @@ import GetInvolved from '../pages/admin/GetInvolved';
 import AboutClub from '../pages/admin/AboutClub';
 import Profile from '../pages/admin/Profile';
 import Banner from '../pages/admin/Banner';
+import RecrEvents from '../pages/admin/RecrEvents';
 
 function ClubPage({
   admin,
@@ -34,6 +35,7 @@ function ClubPage({
   const [showAboutModal, setShowAboutModal] = useState(false);
   const [showProfileModal, setShowProfileModal] = useState(false);
   const [showBannerModal, setShowBannerModal] = useState(false);
+  const [showRecrModal, setShowRecrModal] = useState(false);
 
   function cancelEdit() {
     setShowContactModal(false);
@@ -41,6 +43,7 @@ function ClubPage({
     setShowAboutModal(false);
     setShowProfileModal(false);
     setShowBannerModal(false);
+    setShowRecrModal(false);
   }
 
   const path = history.location.pathname.split("/").slice(2);
@@ -227,7 +230,7 @@ function ClubPage({
                   <div className='clubpage-content-header'>
                     <h1>Recruitment Timeline</h1>
                     {admin && 
-                      <EditIcon className="clubpage-content-header-icon"/>
+                      <EditIcon className="clubpage-content-header-icon" onClick={() => setShowRecrModal(admin)}/>
                     }
                   </div>
                   <div className="recr-container">
@@ -348,6 +351,17 @@ function ClubPage({
           <div className="admin-modal">
             <ContactInfo profile={organization}/>
           </div>
+        </Modal>
+
+        <Modal
+          showModal={showRecrModal}
+          setShowModal={setShowRecrModal}
+          close={cancelEdit}
+        >
+          <div className="admin-modal">
+            <RecrEvents profile={organization}/>
+          </div>
+
         </Modal>
 
         <Footer />
