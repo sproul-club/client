@@ -6,24 +6,40 @@ import {
   AccordionItemButton,
   AccordionItemPanel,
 } from 'react-accessible-accordion';
-import { formatDates } from '../utils/formatTimeAndDate';
+
+import "./EventAccord.css";
+
+import Moment from 'react-moment';
+import { simplestRangeFormat, START_DATETIME, END_DATETIME } from '../utils/formatTimeAndDate';
 
 function EventAccord({ data }) {
-  return data.events.map((event, i) => (
-    <Accordion className="accordion-club" allowZeroExpanded key={i}>
+
+  const orderedEvents = data.events.sort((a,b) => (a.event_start > b.event_start) ? 1 : ((b.event_start > a.event_start) ? -1 : 0))
+
+
+  return orderedEvents.map((event, i) => (
+    <Accordion className="accordion" allowZeroExpanded key={i}>
       <AccordionItem key={event.event_start} className="accordion-group">
-        <div className="event-flex-container">
+      <AccordionItemButton>
+        <div className="event-container">
           <div className="event-flex-left">{event.name}</div>
           <div className="event-flex-right">
-            {formatDates(event.event_start, event.event_end)}
+            <Moment
+              interval={0}
+              date={event.event_start}
+              format={simplestRangeFormat(event.event_start, event.event_end, START_DATETIME)}/>
+            {" - "}
+            <Moment
+              interval={0}
+              date={event.event_end}
+              format={simplestRangeFormat(event.event_start, event.event_end, END_DATETIME)} />
           </div>
         </div>
-        <AccordionItemHeading className="accordion__heading-club">
-          <AccordionItemButton className="accordion__button-club"></AccordionItemButton>
-        </AccordionItemHeading>
+        <div className="accordion__button-club"></div>
         <AccordionItemPanel className="accordion__panel-event">
           {event.description}
           <br></br>
+          {(event.link ? 
           <div id="gray-ev-link">
             event link
             <a
@@ -39,7 +55,9 @@ function EventAccord({ data }) {
               />
             </a>
           </div>
+          : null)}
         </AccordionItemPanel>
+        </AccordionItemButton>
       </AccordionItem>
       <hr width="90%"></hr>
     </Accordion>

@@ -1,5 +1,4 @@
 .footer-wrapper {
-
   font-family: Qanelas Soft Semi Bold;
   position: static;
   bottom: 0;
@@ -10,10 +9,17 @@
   padding-top: 10px;
   padding-bottom: 2px;
   font-size: 14px;
+
+  background: #FFFFFF;
 }
 
 .footer-wrapper a {
   color: #54a0f1;
+  text-decoration: none;
+}
+
+.footer-wrapper a:hover {
+  color: #4475AF;
   text-decoration: none;
 }
 
@@ -25,4 +31,9 @@
 .footer-link-image {
   width: 25px;
   height: auto;
+}
+
+.footer-wrapper .end {
+  margin-top: 5px;
+  margin-bottom: 5px;
 }

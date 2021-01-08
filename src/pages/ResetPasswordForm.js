@@ -3,6 +3,7 @@ import './ResetPassword.css';
 import image from './assets/resetpwd1.png';
 import error from './assets/error.svg';
 import { isCallinkEmail, sendResetPasswordEmail } from '../actions/auth';
+import { NotificationManager } from 'react-notifications';
 
 const ResetPasswordForm = () => {
   const [currStep, setStep] = useState(1);
@@ -14,18 +15,23 @@ const ResetPasswordForm = () => {
   const [emailUnverified, setEmailUnverified] = useState('noError');
   const [emptyEmail, setEmptyEmail] = useState('noError');
 
-  const submitEmail = () => {
-    checkErrors().then((errorExists) => {
-      if (!errorExists) {
-        sendResetPasswordEmail(email).then((status) => {
-          if (status === 'success') {
-            setStep(currStep + 1);
-          } else {
-            console.log('An error occurred. Please try again later.');
-          }
-        });
+  const submitEmail = async () => {
+    let errorExists = await checkErrors();
+
+    if (!errorExists) {
+      try {
+        await sendResetPasswordEmail(email);
+        setStep(currStep + 1);
+      } catch (err) {
+        let errMessage;
+        if (err.response && err.response.data && err.response.data.reason)
+          errMessage = err.response.data.reason;
+        else
+          errMessage = 'Something went wrong on our end. Please contact us.';
+
+        NotificationManager.error(errMessage, 'Unable to send password reset email', 5000);
       }
-    });
+    }
   };
 
   async function checkErrors() {

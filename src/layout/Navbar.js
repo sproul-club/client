@@ -24,8 +24,10 @@ const Navbar = ({
   const navbarRef = useRef();
   const authDropDownRef = useRef();
 
+  // Close navbar when on page change (mobile)
   useEffect(() => {
     setNavbarVis(false);
+    // eslint-disable-next-line
   }, [window.location.pathname]);
 
   // If it is on mobile, and the navbar is visible, if click outside, hide sidebar
@@ -50,6 +52,9 @@ const Navbar = ({
 
   const loggedOutLinks = (
     <>
+      <Link to="/about" className="nav-link">
+        About
+      </Link>
       <Link to="/catalog" className="nav-link">
         Discover
       </Link>
@@ -80,7 +85,7 @@ const Navbar = ({
           {organizationEmail}
           <i
             style={{ marginLeft: '5px' }}
-            className={`fas ${dropdownVis ? 'fa-caret-down' : 'fa-caret-up'}`}
+            className={`fas ${dropdownVis ? 'fa-caret-up' : 'fa-caret-down'}`}
           ></i>
         </div>
 
@@ -101,11 +106,7 @@ const Navbar = ({
     </div>
   );
 
-  const display = isAuthenticated
-    ? loggedInLinks
-    : loading
-    ? ''
-    : loggedOutLinks;
+  const display = isAuthenticated ? loggedInLinks : (loading ? '' : loggedOutLinks);
 
   return (
     <>
@@ -127,7 +128,7 @@ const Navbar = ({
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
   organizationEmail: state.profile.owner,
-  orgId: state.profile.id,
+  orgId: state.profile.link_name,
   loading: state.auth.loading,
 });
 

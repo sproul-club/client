@@ -1,15 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, withRouter, Redirect } from 'react-router-dom';
 import './SignIn.css';
 import { connect } from 'react-redux';
 import { login } from '../actions/auth';
 import error from './assets/error.svg';
 import { isCallinkEmail } from '../actions/auth';
-import 'react-notifications/lib/notifications.css';
-import {
-  NotificationManager,
-  NotificationContainer,
-} from 'react-notifications';
+import { NotificationManager } from 'react-notifications';
 
 const SignInForm = ({ login, history, isAuthenticated }) => {
   // user inputs
@@ -21,6 +17,13 @@ const SignInForm = ({ login, history, isAuthenticated }) => {
   const [emptyEmail, setEmptyEmail] = useState('noError');
   const [emptyPassword, setEmptyPassword] = useState('noError');
 
+  // This is needed since the NotificationComponent needs to be fully rendered before displaying notifications right away
+  useEffect(() => {
+    const userConfirmed = new URLSearchParams(window.location.search).get('confirmed') === 'true';
+    if (userConfirmed)
+      NotificationManager.success("You've successfully confirmed your email! Please log in", '', 3000);
+  }, []);
+
   if (isAuthenticated) {
     return <Redirect to="/admin" />;
   }
@@ -30,15 +33,13 @@ const SignInForm = ({ login, history, isAuthenticated }) => {
 
     let hasErrors = await checkErrors();
     if (!hasErrors) {
-      // passes the history object (from react-router-dom's withRouter) to redirect after login
-      login(
-        email,
-        pw,
-        history,
-        () => history.push('/admin'),
-        (errMessage) =>
-          NotificationManager.error(errMessage, 'Unable to sign in!', 3000)
-      );
+      try {
+        await login(email, pw);
+        history.push('/admin');
+      } catch (err) {
+        var errMessage = err.response.data.reason;
+        NotificationManager.error(errMessage, 'Unable to register!', 3000);
+      }
     }
   };
 
@@ -126,7 +127,6 @@ const SignInForm = ({ login, history, isAuthenticated }) => {
       <button type="submit" className="submitButton" onClick={submitValue}>
         Sign in
       </button>
-      <NotificationContainer />
     </form>
   );
 };

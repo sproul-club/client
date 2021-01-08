@@ -1,5 +1,8 @@
 import {
   SEARCH_CLUBS,
+  FILTER_CLUBS,
+  LOAD_ALL_CLUBS,
+  LOAD_MORE_CLUBS,
   GET_ORGANIZATION,
   CLEAR_ORGANIZATION,
   CLEAR_ORGANIZATIONS,
@@ -10,10 +13,13 @@ import {
 
 const initialState = {
   clubs: [],
+  displayed: [],
+  num_displayed: 18,
+  allOrganizations: [],
   organization: {},
   formDetails: {
     name: '',
-    tags: [],
+    tags: {},
     appReq: false,
     noAppReq: false,
     recruiting: false,
@@ -27,6 +33,13 @@ export default function (state = initialState, action) {
   switch (type) {
     case SEARCH_CLUBS:
       return { ...state, clubs: payload, num_clubs: num_results };
+    case FILTER_CLUBS:
+      console.log(payload)
+      return { ...state, clubs: payload[1]}
+    case LOAD_ALL_CLUBS:
+      return { ...state, clubs: payload.slice(0,state.num_displayed), allOrganizations: payload, num_clubs: num_results };
+    case LOAD_MORE_CLUBS:
+      return { ...state, num_displayed: state.num_displayed + payload }
     case GET_ORGANIZATION:
       return { ...state, organization: payload };
     case CLEAR_ORGANIZATION:
@@ -40,7 +53,7 @@ export default function (state = initialState, action) {
         ...state,
         formDetails: {
           ...state.formDetails,
-          tags: [...payload.value],
+          tags: { ...state.formDetails.tags, [payload.value]: !state.formDetails.tags[payload.value]},
         },
       };
     case SET_FORM_DETAILS:

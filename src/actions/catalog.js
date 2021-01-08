@@ -1,5 +1,8 @@
 import {
   SEARCH_CLUBS,
+  FILTER_CLUBS,
+  LOAD_ALL_CLUBS,
+  LOAD_MORE_CLUBS,
   GET_ORGANIZATION,
   CLEAR_ORGANIZATION,
   CLEAR_ORGANIZATIONS,
@@ -7,25 +10,16 @@ import {
   SET_FORM_DETAILS,
   SET_TAGS,
 } from './types';
-import axios from 'axios';
 
-// Search Clubs
-axios.defaults.baseURL = 'https://sc-backend-prod.herokuapp.com';
+import { API } from '../utils/backendClient';
 
-export const loadClubs = () => async (dispatch) => {
+export const loadAllClubs = () => async (dispatch) => {
   try {
-    const config = {
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-      },
-    };
-
-    const params = JSON.stringify({ limit: 30, skip: 0 });
-    const res = await axios.post('/api/catalog/organizations', params, config);
+    const res = await API.get('/api/catalog/organizations?limit=999&skip=0');
+    console.log(res)
 
     dispatch({
-      type: SEARCH_CLUBS,
+      type: LOAD_ALL_CLUBS,
       payload: res.data.results,
       num_results: res.data.num_results,
     });
@@ -33,6 +27,40 @@ export const loadClubs = () => async (dispatch) => {
     console.log(err);
   }
 };
+
+export const loadMoreClubs = (num_clubs) => {
+  return { type: LOAD_MORE_CLUBS, payload: num_clubs }
+};
+
+export const filterClubs = (allOrganizations, formDetails, tagOptions, num_results) => {
+
+  console.log(num_results)
+  const orgList = allOrganizations.map((club) => club.club)
+
+  let filteredClubs = orgList
+  if (formDetails.name > 0)
+    filteredClubs = filteredClubs.filter(club => club.name.includes(formDetails.name))
+  if (formDetails.appReq)
+    filteredClubs = filteredClubs.filter(club => club.app_required === true)
+  if (formDetails.noAppReq)
+    filteredClubs = filteredClubs.filter(club => club.app_required === false)
+  if (formDetails.recruiting)
+    filteredClubs = filteredClubs.filter(club => club.app_required === true)
+  if (formDetails.notRecruiting)
+    filteredClubs = filteredClubs.filter(club => club.app_required === false)
+  let searchTags = formDetails.tags.map((tag) => tag.label)
+  for (let tag of searchTags){
+    filteredClubs = filteredClubs.filter(club => {
+      let clubtags = club.tags.map(tag => tagOptions[tag].label)
+      return clubtags.includes(tag)
+    })
+  }
+  
+  const num_filtered_results = filteredClubs.length
+  const sliced_filtered_results = filteredClubs.slice(0, num_results)
+
+  return {type: FILTER_CLUBS, payload: sliced_filtered_results}
+}
 
 export const searchClubs = ({
   name: search,
@@ -43,22 +71,8 @@ export const searchClubs = ({
   skip,
 }) => async (dispatch) => {
   try {
-    const config = {
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-      },
-    };
-
-    const params = JSON.stringify({
-      search,
-      tags,
-      app_required,
-      new_members,
-      limit,
-      skip,
-    });
-    const res = await axios.post('/api/catalog/search', params, config);
+    const body = { search, tags, app_required, new_members, limit, skip };
+    const res = await API.post('/api/catalog/search', body);
 
     dispatch({
       type: SEARCH_CLUBS,
@@ -72,7 +86,7 @@ export const searchClubs = ({
 
 export const getOrganization = (orgId) => async (dispatch) => {
   try {
-    const res = await axios.get(`/api/catalog/organizations/${orgId}`);
+    const res = await API.get(`/api/catalog/organizations/${orgId}`);
 
     dispatch({ type: GET_ORGANIZATION, payload: res.data });
   } catch (err) {
@@ -97,22 +111,8 @@ export const loadMoreOrgs = ({
   skip,
 }) => async (dispatch) => {
   try {
-    const config = {
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-      },
-    };
-
-    const params = JSON.stringify({
-      search,
-      tags,
-      app_required,
-      new_members,
-      limit,
-      skip,
-    });
-    const res = await axios.post('/api/catalog/search', params, config);
+    const body = { search, tags, app_required, new_members, limit, skip };
+    const res = await API.post('/api/catalog/search', body);
 
     dispatch({
       type: LOAD_MORE_ORGS,
@@ -125,7 +125,7 @@ export const loadMoreOrgs = ({
 };
 
 export const setFormDetails = ({ name, value }) => {
-  if (Array.isArray(value)) return { type: SET_TAGS, payload: { name, value } };
+  if (name === "tags") return { type: SET_TAGS, payload: { name, value } };
   return { type: SET_FORM_DETAILS, payload: { name, value } };
 };
 

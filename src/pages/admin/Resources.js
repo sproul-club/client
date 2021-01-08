@@ -9,10 +9,7 @@ import {
 } from '../../actions/profile';
 import './Resources.css';
 import { validURL, normalizeUrl } from '../../utils/normalizeUrl';
-import {
-  NotificationManager,
-  NotificationContainer,
-} from 'react-notifications';
+import { NotificationManager } from 'react-notifications';
 
 const Resources = ({
   resources,
@@ -135,7 +132,6 @@ const Resources = ({
           </div>
         </div>
       </Modal>
-      <NotificationContainer />
     </div>
   );
 };

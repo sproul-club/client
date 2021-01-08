@@ -3,11 +3,11 @@ import Dropdown from './AdminDropdown.js';
 import { connect } from 'react-redux';
 import ImageUploader from '../../react-images-upload';
 import { updateProfile, uploadLogo, uploadBanner } from '../../actions/profile';
-import 'react-notifications/lib/notifications.css';
-import {
-  NotificationManager,
-  NotificationContainer,
-} from 'react-notifications';
+import { NotificationManager } from 'react-notifications';
+import RichText from '../RichText'
+import {stateFromHTML} from 'draft-js-import-html';
+import {stateToHTML} from 'draft-js-export-html';
+
 
 const Profile = ({
   profile,
@@ -27,10 +27,17 @@ const Profile = ({
     { value: 0, label: 'Not accepting members' },
   ];
 
+  var sizeOptions = [
+    { value: 0, label: '1-20 members' },
+    { value: 1, label: '20-50 members' },
+    { value: 2, label: '50+ members' },
+  ];
+
+  console.log(stateFromHTML(profile.about_us))
   const [orgName, setOrgName] = useState(profile.name);
   const [orgEmail, setOrgEmail] = useState(profile.owner);
-  const [descr, setDescr] = useState(profile.about_us);
-  const [descrChars, setChars] = useState(750 - descr.length);
+  const [descr, setDescr] = useState(stateFromHTML(profile.about_us));
+  const [descrChars, setChars] = useState(750 - profile.about_us.replace(/<[^>]*>?/gm, '').length);
   const [tags, setTags] = useState(profile.tags.map((tag) => tagOptions[tag]));
   const [appReq, setAppReq] = useState(
     appOptions[profile.app_required === true ? 0 : 1]
@@ -38,89 +45,82 @@ const Profile = ({
   const [recruiting, setRecruit] = useState(
     recruitOptions[profile.new_members === true ? 0 : 1]
   );
+  const [size, setSize] = useState(sizeOptions[0])
+
   const [logoImage, setLogoImage] = useState(null);
   const [bannerImage, setBannerImage] = useState(null);
 
-  const submit = () => {
+
+  async function uploadLogoPic(logoUploads) {
+    if (logoUploads && logoUploads.length > 0) {
+      try {
+        NotificationManager.info('Uploading logo...', '', 1500);
+        await uploadLogo(logoUploads[0]);
+        NotificationManager.success('Logo uploaded successfully!', '', 1500);
+      } catch (err) {
+        if (err.response.status === 503) {
+          NotificationManager.error(
+            'Something went wrong on our end. Please try again later',
+            'Logo image upload unsuccessful',
+            5000
+          );
+        } else {
+          NotificationManager.error(
+            'For best results, please upload a logo that has an aspect ratio of 1:1',
+            'Logo image upload unsuccessful',
+            5000
+          );
+        }
+      }
+    }
+  }
+
+  async function uploadBannerPic(bannerUploads) {
+    if (bannerUploads && bannerUploads.length > 0) {
+      try {
+        NotificationManager.info('Uploading banner...', '', 1500);
+        await uploadBanner(bannerUploads[0]);
+        NotificationManager.success('Banner uploaded successfully!', '', 1500);
+      } catch (err) {
+        if (err.response.status === 503) {
+          NotificationManager.error(
+            'Something went wrong on our end. Please try again later',
+            'Banner image upload unsuccessful',
+            5000
+          );
+        } else {
+          NotificationManager.error(
+            'For best results, please upload a logo that has an aspect ratio of 8:3',
+            'Banner image upload unsuccessful',
+            5000
+          );
+        }
+      }
+    }
+  }
+
+  const submit = async () => {
+    console.log(descr)
     const newProfile = {
-      name: orgName,
+      name: orgName.trim(),
       owner: orgEmail,
       tags: tags.map((tags) => tags.value),
-      about_us: descr,
+      about_us: stateToHTML(descr),
       app_required: !!appReq.value,
       new_members: !!recruiting.value,
     };
 
-    updateProfile(
-      newProfile,
-      function () {
-        NotificationManager.success(
-          'Profile changes saved successfully!',
-          '',
-          1500
-        );
-      },
-      function () {
-        NotificationManager.error('Profile changes unsuccessful!', '', 1500);
-      }
-    );
-
-    if (logoImage && logoImage.length > 0) {
-      uploadLogo(
-        { logo: logoImage[0] },
-        () => {
-          NotificationManager.success('Logo uploaded successfully!', '', 1500);
-        },
-        (err) => {
-          if (err.response.status === 503) {
-            NotificationManager.error(
-              'Something went wrong on our end. Please try again later',
-              'Logo image upload unsuccessful',
-              5000
-            );
-          } else {
-            NotificationManager.error(
-              'For best results, please upload a logo that has an aspect ratio of 1:1',
-              'Logo image upload unsuccessful',
-              5000
-            );
-          }
-        }
-      );
+    try {
+      await updateProfile(newProfile);
+      NotificationManager.success('Profile changes saved successfully!', '', 1500);
+    } catch (err) {
+      NotificationManager.error('Profile changes unsuccessful!', '', 1500);
     }
 
-    if (bannerImage && bannerImage.length > 0) {
-      uploadBanner(
-        { banner: bannerImage[0] },
-        () => {
-          NotificationManager.success(
-            'Banner uploaded successfully!',
-            '',
-            1500
-          );
-        },
-        (err) => {
-          if (err.response.status === 503) {
-            NotificationManager.error(
-              'Something went wrong on our end. Please try again later',
-              'Banner image upload unsuccessful',
-              5000
-            );
-          } else {
-            NotificationManager.error(
-              'For best results, please upload a banner that has an aspect ratio of 8:3',
-              'Banner image upload unsuccessful',
-              5000
-            );
-          }
-        }
-      );
-    }
-  };
-
-  const descrChange = (e) => {
-    setDescr(e.target.value);
-    setChars(750 - e.target.value.length);
+    await Promise.all([
+      uploadLogoPic(logoImage),
+      uploadBannerPic(bannerImage)
+    ]);
   };
 
   const reqFieldsCheck = () => {
@@ -158,36 +158,25 @@ const Profile = ({
           />
         </div>
         <div className="formElement">
-          <p>Account Email Address</p>
-          <input
-            className="userInput"
-            type="text"
-            disabled="disabled"
-            value={orgEmail}
-            onChange={(e) => setOrgEmail(e.target.value)}
-          />
-        </div>
-        <p className="subtitle">
-          <span style={{ color: '#FF0000' }}>*</span> This setting cannot be
-          changed. Please contact{' '}
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="mailto:sproul.club@gmail.com"
-          >
-            <span style={{ color: '#54a0f1' }}>sproul.club@gmail.com</span>
-          </a>{' '}
-          for further assistance.
-        </p>
-        <div className="formElement">
           <p>Tags</p>
           <Dropdown
             options={tagOptions}
             multi={true}
-            search={false}
+            search={true}
             defaultValue={profile.tags.map((tag) => tagOptions[tag])}
             placeholder="Add up to 3 tags"
             set={setTags}
+          />
+        </div>
+        <div className="formElement">
+          <p>Club Size</p>
+          <Dropdown
+            options={sizeOptions}
+            multi={false}
+            search={false}
+            defaultValue={appOptions[size]}
+            placeholder="Select club size"
+            set={setSize}
           />
         </div>
         <div className="formElement">
@@ -201,42 +190,78 @@ const Profile = ({
             set={setAppReq}
           />
         </div>
-        <div className="formElement">
-          <p>Membership Status</p>
-          <Dropdown
-            options={recruitOptions}
-            multi={false}
-            search={false}
-            defaultValue={recruitOptions[profile.new_members === true ? 0 : 1]}
-            placeholder="Select recruitment status"
-            set={setRecruit}
-          />
-        </div>
-        <div className="formElement">
-          <p>Logo</p>
-          <ImageUploader
-            label="1:1 ratio - square image"
-            buttonStyles={{
-              background: '#54a0f1',
-            }}
-            fileContainerStyle={{
-              width: '300px',
-              float: 'left',
-            }}
-            labelStyles={{
-              width: '250px',
-              marginRight: 0,
-              textAlign: 'center',
-            }}
-            withIcon={true}
-            singleImage={true}
-            withPreview={true}
-            buttonText="Choose image"
-            onChange={(e) => setLogoImage(e)}
-            imgExtension={['.jpg', '.gif', '.png', '.gif']}
-            maxFileSize={16777216}
-          />
-        </div>
+        {appReq.value === 0 && 
+          <div className="formElement">
+          <p>Recruitment Period</p>
+            <div className="input-time">
+              <input
+                className="modal-input"
+                type="date"
+                //onChange={(e) => setStartDate(e.target.value)} //TODO
+                //value={startDate} //TODO
+                required
+              />
+              <span> to </span>
+              <input
+                className="modal-input"
+                type="date"
+                //onChange={(e) => setEndDate(e.target.value)} //TODO
+                //value={endDate} //TODO
+                required
+              />
+            </div>
+          </div>
+        }
+        
+        {appReq.value === 1 && 
+          <div className="formElement">
+            <p>Application Open to Close</p>
+            <div className="input-time">
+                <input
+                  className="modal-input"
+                  type="date"
+                  //onChange={(e) => setStartDate(e.target.value)} //TODO
+                  //value={startDate} //TODO
+                  required
+                />
+                <span> to </span>
+                <input
+                  className="modal-input"
+                  type="date"
+                  //onChange={(e) => setEndDate(e.target.value)} //TODO
+                  //value={endDate} //TODO
+                  required
+                />
+              </div>
+          </div>
+        }
+      </div>
+
+      <div className="modal-right">
+        {/* logo upload */}
+        <p>Logo</p>
+        <ImageUploader
+          label="1:1 ratio - square image"
+          buttonStyles={{
+            background: '#54a0f1',
+          }}
+          fileContainerStyle={{
+            width: '300px',
+            float: 'left',
+          }}
+          labelStyles={{
+            width: '250px',
+            marginRight: 0,
+            textAlign: 'center',
+          }}
+          withIcon={true}
+          singleImage={true}
+          withPreview={true}
+          buttonText="Choose image"
+          onChange={(e) => setLogoImage(e)}
+          imgExtension={['.jpg', '.gif', '.png', '.gif']}
+          maxFileSize={16777216}
+        />
         <p className="subtitle">
           <span style={{ color: '#FF0000' }}>*</span> Please make sure your logo
           is at least 360 x 360 pixels.{' '}
@@ -249,67 +274,8 @@ const Profile = ({
           </a>{' '}
           for a resource that helps you resize your images.
         </p>
-        <div className="formElement">
-          <p>Banner</p>
-          <ImageUploader
-            label="8:3 ratio - e.g. Facebook cover image"
-            buttonStyles={{
-              background: '#54a0f1',
-            }}
-            fileContainerStyle={{
-              width: '300px',
-              float: 'left',
-            }}
-            labelStyles={{
-              width: '250px',
-              marginRight: 0,
-              textAlign: 'center',
-            }}
-            withIcon={true}
-            singleImage={true}
-            withPreview={true}
-            buttonText="Choose image"
-            onChange={(e) => setBannerImage(e)}
-            imgExtension={['.jpg', '.gif', '.png', '.gif']}
-            maxFileSize={16777216}
-          />
-        </div>
-        <p className="subtitle">
-          <span style={{ color: '#FF0000' }}>*</span> Please make sure your
-          banner is at least 1640 x 624 pixels.{' '}
-          <a
-            href="https://www.photoresizer.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <span style={{ color: '#54a0f1' }}>Click here</span>
-          </a>{' '}
-          for a resource that helps you resize your images.
-        </p>
-        <div className="formElement">
-          <p>Description</p>
-          <textarea
-            className="descriptionInput"
-            placeholder="Enter a short description about your organization."
-            type="text"
-            maxLength={750}
-            value={descr}
-            onChange={descrChange}
-          />
-        </div>
-        <p className="subtitle">{descrChars} characters remaining</p>
       </div>
-      <button
-        className="saveButton"
-        onClick={
-          tags === null || orgName.match(/^ *$/) !== null
-            ? reqFieldsCheck
-            : submit
-        }
-      >
-        Save changes
-      </button>
-      <NotificationContainer />
+      <button id="save-button" onClick={submit}> Save </button>
     </div>
   );
 };

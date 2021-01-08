@@ -2,15 +2,18 @@ import {
   REGISTER_SUCCESS,
   LOGIN_SUCCESS,
   LOAD_PROFILE,
+  LOAD_PROFILE_NOT_LOGGED_IN,
   LOAD_PROFILE_ERROR,
   REFRESH_TOKEN,
   LOGOUT,
   AUTH_ERROR,
 } from '../actions/types';
 
+import { TOKENS } from '../utils/backendClient';
+
 const initialState = {
-  token: localStorage.getItem('token'),
-  refreshToken: localStorage.getItem('token'),
+  token: TOKENS.access.get(),
+  refreshToken: TOKENS.refresh.get(),
   isAuthenticated: false,
   loading: true,
   errors: null,
@@ -24,6 +27,12 @@ export default function (state = initialState, action) {
       return {
         ...state,
         isAuthenticated: true,
+        loading: false,
+      };
+    case LOAD_PROFILE_NOT_LOGGED_IN:
+      return {
+        ...state,
+        isAuthenticated: false,
         loading: false,
       };
     case LOAD_PROFILE_ERROR:

@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Modal from '../../layout/Modal';
 import { normalizeUrl, validURL } from '../../utils/normalizeUrl';
-import {
-  NotificationManager,
-  NotificationContainer,
-} from 'react-notifications';
+import { NotificationManager } from 'react-notifications';
 
 const ResComp = (props) => {
   /*Tracks input values for edit modal*/
@@ -148,7 +145,6 @@ const ResComp = (props) => {
           </div>
         </div>
       </Modal>
-      <NotificationContainer />
     </div>
   );
 };

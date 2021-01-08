@@ -5,239 +5,124 @@ import {
   REFRESH_TOKEN,
   AUTH_ERROR,
 } from './types';
-import axios from 'axios';
-import { loadProfile } from './profile';
 
-axios.defaults.baseURL = 'https://sc-backend-prod.herokuapp.com';
+import { loadProfile } from './profile';
+import { API, TOKENS } from '../utils/backendClient';
 
 // Register User
-export const register = (
-  name,
-  email,
-  password,
-  tags,
-  app_required,
-  new_members
-) => async (dispatch) => {
-  const config = {
-    headers: {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-    },
-  };
-
-  const body = JSON.stringify({
-    name,
-    email,
-    password,
-    tags,
-    app_required,
-    new_members,
-  });
-
+export const register = (name, email, password, tags, app_required, new_members) => async (dispatch) => {
   try {
-    let res = await axios.post('/api/user/register', body, config);
+    const res = await API.post('/api/user/register', {
+      name, email, password,
+      tags, app_required, new_members,
+    });
 
-    await dispatch({ type: REGISTER_SUCCESS, payload: res.data });
+    dispatch({ type: REGISTER_SUCCESS, payload: res.data });
   } catch (err) {
-    await dispatch({ type: AUTH_ERROR, payload: err });
+    dispatch({ type: AUTH_ERROR, payload: err });
     throw err;
   }
 };
 
 // Login User
-export const login = (email, password, history, success, error) => async (
-  dispatch
-) => {
-  // Set headers
-  const config = {
-    headers: {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-    },
-  };
-
-  const body = JSON.stringify({ email, password });
-
+export const login = (email, password) => async (dispatch) => {
   try {
-    let res = await axios.post('/api/user/login', body, config);
+    const res = await API.post('/api/user/login', { email, password });
 
-    localStorage.setItem('token', res.data.access);
-    localStorage.setItem('expiresAt', new Date().getTime() + 300000);
-    localStorage.setItem('refreshToken', res.data.refresh);
+    TOKENS.access.set(res.data.access, res.data.access_expires_in);
+    TOKENS.refresh.set(res.data.refresh, res.data.refresh_expires_in);
 
     await dispatch(loadProfile());
-    await dispatch({ type: LOGIN_SUCCESS, payload: res.data });
-    await success();
+    dispatch({ type: LOGIN_SUCCESS, payload: res.data });
   } catch (err) {
-    await dispatch({ type: AUTH_ERROR, payload: err });
-    await error(err.response.data.reason);
+    dispatch({ type: AUTH_ERROR, payload: err });
+    throw err;
   }
 };
 
 // Logout / clear profile
-export const logout = (history) => async (dispatch) => {
-  const refreshToken = localStorage.getItem('refreshToken');
-  const config = {
-    headers: {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-      Authorization: `Bearer ${refreshToken}`,
-    },
-  };
-  try {
-    // revoke refresh token
-    await axios.delete('/api/user/revoke-refresh', config);
-
-    // remove tokens from local storage
-    localStorage.removeItem('token');
-    localStorage.removeItem('refreshToken');
-
-    history.push('/');
-    dispatch({ type: LOGOUT });
-  } catch (err) {
-    dispatch({ type: AUTH_ERROR, payload: err });
+export const logout = (history, useBackend = true) => async (dispatch) => {
+  if (useBackend) {
+    try {
+      // revoke both access & refresh token
+      await API.delete('/api/user/revoke-access', TOKENS.access.fullHeaderConfig());
+      await API.delete('/api/user/revoke-refresh', TOKENS.refresh.fullHeaderConfig());
+    } catch (err) {
+      dispatch({ type: AUTH_ERROR, payload: err });
+    }
   }
+
+  // remove tokens from local storage
+  TOKENS.access.delete();
+  TOKENS.refresh.delete();
+
+  history.push('/');
+  dispatch({ type: LOGOUT });
 };
 
 export const refreshToken = () => async (dispatch, getState) => {
-  const expiresAt = localStorage.getItem('expiresAt');
-  const refreshToken = localStorage.getItem('refreshToken');
-
-  const config = {
-    headers: {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-      Authorization: `Bearer ${refreshToken}`,
-    },
-  };
+  if (!TOKENS.access.hasExpired())
+    return;
 
   try {
-    if (expiresAt < new Date().getTime()) {
-      const res = await axios.post('/api/user/refresh', {}, config);
+    const res = await API.post('/api/user/refresh', {}, TOKENS.refresh.fullHeaderConfig());
 
-      localStorage.setItem('token', res.data.access);
-      localStorage.setItem('expiresAt', new Date().getTime() + 300000);
-      
-      dispatch({ type: REFRESH_TOKEN, payload: res.data });
-    }
+    TOKENS.access.set(res.data.access, res.data.access_expires_in);
+
+    dispatch({ type: REFRESH_TOKEN, payload: res.data });
   } catch (err) {
     dispatch({ type: AUTH_ERROR, payload: err });
   }
 };
 
 // Verify email as Callink email
-export const isCallinkEmail = (email) => {
-  // Set headers
-  const config = {
-    headers: {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-    },
-  };
-  const body = JSON.stringify({ email });
-
-  return axios
-    .post('/api/user/email-exists', body, config)
-    .then((response) => {
-      return response.data.exists;
-    })
-    .catch((err) => {
-      console.log(err);
-      // dispatch({ type: AUTH_ERROR, payload: err });
-    });
+export const isCallinkEmail = async (email) => {
+  try {
+    const res = await API.post('/api/user/email-exists', { email });
+    return res.data.exists;
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 // Verify if password is strong enough
-export const isPasswordStrong = (password) => {
-  // Set headers
-  const config = {
-    headers: {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-    },
-  };
-  const body = JSON.stringify({ password });
-
-  return axios
-    .post('/api/user/password-strength', body, config)
-    .then((response) => {
-      return response.data.strong;
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+export const isPasswordStrong = async (password) => {
+  try {
+    const res = await API.post('/api/user/password-strength', { password });
+    return res.data.strong;
+  } catch (err) {
+    console.log(err);
+  }
 };
 
-// Login User
-export const resendConfirmationEmail = (email, setResentEmail) => async (
-  dispatch
-) => {
-  // Set headers
-  const config = {
-    headers: {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-    },
-  };
-
-  const body = JSON.stringify({ email });
-
+// Resend account confirmation email
+export const resendConfirmationEmail = (email) => async (dispatch) => {
   try {
-    setResentEmail(false);
-    await axios.post('/api/user/resend-confirm', body, config);
-    setResentEmail(true);
-
-    // dispatch({ type: RESEND_EMAIL , payload: res.data });
+    await API.post('/api/user/resend-confirm', { email });
   } catch (err) {
     dispatch({ type: AUTH_ERROR, payload: err });
+    throw err;
   }
 };
 
 // Send a password confirmation email to the user
-export const sendResetPasswordEmail = (email) => {
-  // Set headers
-  const config = {
-    headers: {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-    },
-  };
-  const body = JSON.stringify({ email });
-
-  return axios
-    .post('/api/user/request-reset', body, config)
-    .then((response) => {
-      return response.data.status;
-    })
-    .catch((err) => {
-      console.log(err);
-      // dispatch({ type: AUTH_ERROR, payload: err });
-    });
+export const sendResetPasswordEmail = async (email) => {
+  try {
+    const res = await API.post('/api/user/request-reset', { email });
+    return res.data.status;
+  } catch (err) {
+    throw err;
+    // dispatch({ type: AUTH_ERROR, payload: err });
+  }
 };
 
 // Reset password
-export const resetPassword = (password) => {
-  // const token = localStorage.getItem('token');
-  const token = new URLSearchParams(window.location.search).get('token');
-  console.log(token);
-  // Set headers
-  const config = {
-    headers: {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-    },
-  };
-  const body = JSON.stringify({ token, password });
-  console.log(body);
-
-  return axios
-    .post('/api/user/confirm-reset', body, config)
-    .then((response) => {
-      return response.data.status;
-    })
-    .catch((err) => {
-      console.log(err);
-      // dispatch({ type: AUTH_ERROR, payload: err });
-    });
+export const resetPassword = async (password, token) => {
+  try {
+    const res = await API.post('/api/user/confirm-reset', { token, password });
+    return res.data.status;
+  } catch (err) {
+    throw err;
+    // dispatch({ type: AUTH_ERROR, payload: err });
+  }
 };

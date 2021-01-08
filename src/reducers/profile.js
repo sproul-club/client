@@ -44,7 +44,7 @@ export default function (state = initialState, action) {
         ...state,
         profile: payload,
         owner: payload.owner,
-        id: payload.id,
+        link_name: payload.link_name,
         resources: payload.resources,
         events: payload.events,
         images: { logo_url, banner_url },
