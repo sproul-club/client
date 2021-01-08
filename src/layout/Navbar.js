@@ -6,6 +6,8 @@ import { logout, login } from '../actions/auth';
 import './Navbar.css';
 import useOnClickOutside from '../utils/useOnClickOutside';
 
+import logo from '../pages/assets/logo.png';
+
 const Navbar = ({
   organizationEmail,
   orgId,
@@ -22,11 +24,13 @@ const Navbar = ({
   const toggleDropdown = () => setDropownVis((dropdownVis) => !dropdownVis);
 
   const navbarRef = useRef();
-  const authDropDownRef = useRef();
+  const dropDownRef = useRef();
 
-  // Close navbar when on page change (mobile)
+  // Close navbar on page change (mobile)
+  // Close dropdown on page change
   useEffect(() => {
     setNavbarVis(false);
+    setDropownVis(false);
     // eslint-disable-next-line
   }, [window.location.pathname]);
 
@@ -37,7 +41,8 @@ const Navbar = ({
     }
   });
 
-  useOnClickOutside(authDropDownRef, () => {
+  // On desktop, if dropdown is visible, if click outside, hide dropdown
+  useOnClickOutside(dropDownRef, () => {
     if (dropdownVis === true) {
       setDropownVis(false);
     }
@@ -50,7 +55,8 @@ const Navbar = ({
     logout(history);
   };
 
-  const loggedOutLinks = (
+
+  const loggedOut = (
     <>
       <Link to="/about" className="nav-link">
         About
@@ -58,44 +64,62 @@ const Navbar = ({
       <Link to="/catalog" className="nav-link">
         Discover
       </Link>
-      <Link to="/signin" className="nav-link signin">
-        Club sign in
-      </Link>
-      <Link to="/signup" className="nav-link active">
-        Add a club
-      </Link>
+      <div
+        className={`menu logout ${dropdownVis ? 'menu-open' : 'menu-close'}`}
+        ref={dropDownRef}
+        onClick={toggleDropdown}
+      >
+        <div className="menu-text">
+          Sign in
+          <i
+            style={{ marginLeft: '9px' }}
+            className={`fas ${dropdownVis ? 'fa-angle-up' : 'fa-angle-down'}`}
+          ></i>
+        </div>
+        {dropdownVis && (
+          <div className="dropdown">
+            <Link className="option" to="/">
+              Students
+            </Link>
+            <Link className="option mid-option" to="/signin">
+              Clubs
+            </Link>
+          </div>
+        )}
+      </div>
     </>
   );
 
-  const loggedInLinks = (
+  const loggedInStudent = (
     <div className="logged-in-links">
+      <Link to="/about" className="nav-link">
+        About
+      </Link>
       <Link to="/catalog" className="nav-link">
         Discover
       </Link>
-      <Link to={`/club/${orgId}`} className="nav-link">
-        View Profile
-      </Link>
       <div
-        className="org-menu"
-        href="/signup"
-        ref={authDropDownRef}
+        className={`menu login ${dropdownVis ? 'menu-open' : 'menu-close'}`}
+        ref={dropDownRef}
         onClick={toggleDropdown}
       >
-        <div className="org-email">
-          {organizationEmail}
+        <div className="menu-text">
+          Account
           <i
-            style={{ marginLeft: '5px' }}
-            className={`fas ${dropdownVis ? 'fa-caret-up' : 'fa-caret-down'}`}
+            style={{ marginLeft: '9px' }}
+            className={`fas ${dropdownVis ? 'fa-angle-up' : 'fa-angle-down'}`}
           ></i>
         </div>
-
         {dropdownVis && (
           <div className="dropdown">
-            <Link className="option" to="/admin">
-              Edit Club Page
+            <Link to="/dashboard" className="option">
+              Dashboard
             </Link>
-            <Link to="/security" className="option mid-option">
-              Account Security
+            <Link to="/" className="option mid-option">
+              Favorites
+            </Link>
+            <Link to="/" className="option mid-option">
+              Settings
             </Link>
             <div className="option" onClick={logoutSelect}>
               Log Out
@@ -106,11 +130,49 @@ const Navbar = ({
     </div>
   );
 
-  const display = isAuthenticated ? loggedInLinks : (loading ? '' : loggedOutLinks);
+  const loggedInOrg = (
+    <div className="logged-in-links">
+      <Link to="/about" className="nav-link">
+        About
+      </Link>
+      <Link to="/catalog" className="nav-link">
+        Discover
+      </Link>
+      <div
+        className={`menu login ${dropdownVis ? 'menu-open' : 'menu-close'}`}
+        ref={dropDownRef}
+        onClick={toggleDropdown}
+      >
+        <div className="menu-text">
+          Account
+          <i
+            style={{ marginLeft: '9px' }}
+            className={`fas ${dropdownVis ? 'fa-angle-up' : 'fa-angle-down'}`}
+          ></i>
+        </div>
+        {dropdownVis && (
+          <div className="dropdown">
+            <Link to="/admin" className="option">
+              Profile
+            </Link>
+            <Link to="/security" className="option mid-option">
+              Security
+            </Link>
+            <div className="option" onClick={logoutSelect}>
+              Log Out
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+
+  const display = isAuthenticated ? loggedInOrg : (loading ? '' : loggedOut);
 
   return (
     <>
       <div className="header" ref={navbarRef}>
+        <img src={logo} className="logo-img" alt="bears" />
         <Link to="/" className="nav-link logo">
           sproul.club
         </Link>
