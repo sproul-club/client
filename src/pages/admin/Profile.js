@@ -146,77 +146,57 @@ const Profile = ({
         Add an organization logo, profile banner, edit your tags, membership
         status, application requirements, and organization description.
       </div>
-      <div className="formGroup">
-        <div className="formElement">
-          <p>Name of Organization</p>
-          <input
-            className="userInput"
-            type="text"
-            value={orgName}
-            onChange={(e) => setOrgName(e.target.value)}
-            maxLength={100}
-          />
-        </div>
-        <div className="formElement">
-          <p>Tags</p>
-          <Dropdown
-            options={tagOptions}
-            multi={true}
-            search={true}
-            defaultValue={profile.tags.map((tag) => tagOptions[tag])}
-            placeholder="Add up to 3 tags"
-            set={setTags}
-          />
-        </div>
-        <div className="formElement">
-          <p>Club Size</p>
-          <Dropdown
-            options={sizeOptions}
-            multi={false}
-            search={false}
-            defaultValue={appOptions[size]}
-            placeholder="Select club size"
-            set={setSize}
-          />
-        </div>
-        <div className="formElement">
-          <p>Application Requirement</p>
-          <Dropdown
-            options={appOptions}
-            multi={false}
-            search={false}
-            defaultValue={appOptions[profile.app_required === true ? 0 : 1]}
-            placeholder="Select application requirement"
-            set={setAppReq}
-          />
-        </div>
-        {appReq.value === 0 && 
+
+      <div style={{display: 'flex', flexDirection: 'row'}}className="modal-wrapper">
+      <div className="modal-left">
+        <div className="formGroup">
           <div className="formElement">
-          <p>Recruitment Period</p>
-            <div className="input-time">
-              <input
-                className="modal-input"
-                type="date"
-                //onChange={(e) => setStartDate(e.target.value)} //TODO
-                //value={startDate} //TODO
-                required
-              />
-              <span> to </span>
-              <input
-                className="modal-input"
-                type="date"
-                //onChange={(e) => setEndDate(e.target.value)} //TODO
-                //value={endDate} //TODO
-                required
-              />
-            </div>
+            <p>Name of Organization</p>
+            <input
+              className="userInput"
+              type="text"
+              value={orgName}
+              onChange={(e) => setOrgName(e.target.value)}
+              maxLength={100}
+            />
           </div>
-        }
-        
-        {appReq.value === 1 && 
           <div className="formElement">
-            <p>Application Open to Close</p>
-            <div className="input-time">
+            <p>Tags</p>
+            <Dropdown
+              options={tagOptions}
+              multi={true}
+              search={true}
+              defaultValue={profile.tags.map((tag) => tagOptions[tag])}
+              placeholder="Add up to 3 tags"
+              set={setTags}
+            />
+          </div>
+          <div className="formElement">
+            <p>Club Size</p>
+            <Dropdown
+              options={sizeOptions}
+              multi={false}
+              search={false}
+              defaultValue={appOptions[size]}
+              placeholder="Select club size"
+              set={setSize}
+            />
+          </div>
+          <div className="formElement">
+            <p>Application Requirement</p>
+            <Dropdown
+              options={appOptions}
+              multi={false}
+              search={false}
+              defaultValue={appOptions[profile.app_required === true ? 0 : 1]}
+              placeholder="Select application requirement"
+              set={setAppReq}
+            />
+          </div>
+          {appReq.value === 0 && 
+            <div className="formElement">
+            <p>Recruitment Period</p>
+              <div className="input-time">
                 <input
                   className="modal-input"
                   type="date"
@@ -233,47 +213,74 @@ const Profile = ({
                   required
                 />
               </div>
-          </div>
-        }
+            </div>
+          }
+          
+          {appReq.value === 1 && 
+            <div className="formElement">
+              <p>Application Open to Close</p>
+              <div className="input-time">
+                  <input
+                    className="modal-input"
+                    type="date"
+                    //onChange={(e) => setStartDate(e.target.value)} //TODO
+                    //value={startDate} //TODO
+                    required
+                  />
+                  <span> to </span>
+                  <input
+                    className="modal-input"
+                    type="date"
+                    //onChange={(e) => setEndDate(e.target.value)} //TODO
+                    //value={endDate} //TODO
+                    required
+                  />
+                </div>
+            </div>
+          }
+        </div>
       </div>
 
       <div className="modal-right">
-        {/* logo upload */}
-        <p>Logo</p>
-        <ImageUploader
-          label="1:1 ratio - square image"
-          buttonStyles={{
-            background: '#54a0f1',
-          }}
-          fileContainerStyle={{
-            width: '300px',
-            float: 'left',
-          }}
-          labelStyles={{
-            width: '250px',
-            marginRight: 0,
-            textAlign: 'center',
-          }}
-          withIcon={true}
-          singleImage={true}
-          withPreview={true}
-          buttonText="Choose image"
-          onChange={(e) => setLogoImage(e)}
-          imgExtension={['.jpg', '.gif', '.png', '.gif']}
-          maxFileSize={16777216}
-        />
-        <p className="subtitle">
-          <span style={{ color: '#FF0000' }}>*</span> Please make sure your logo
-          is at least 360 x 360 pixels.{' '}
-          <a
-            href="https://www.photoresizer.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <span style={{ color: '#54a0f1' }}>Click here</span>
-          </a>{' '}
-          for a resource that helps you resize your images.
-        </p>
+          {/* logo upload */}
+          
+          <ImageUploader
+            label="1:1 ratio - square image"
+            buttonStyles={{
+              background: '#54a0f1',
+            }}
+            fileContainerStyle={{
+              width: '300px',
+              // float: 'left',
+              margin: '40px',
+            }}
+            labelStyles={{
+              width: '250px',
+              marginRight: 0,
+              textAlign: 'center',
+            }}
+            withIcon={true}
+            singleImage={true}
+            withPreview={true}
+            buttonText="Upload a logo"
+            onChange={(e) => setLogoImage(e)}
+            imgExtension={['.jpg', '.gif', '.png', '.gif']}
+            maxFileSize={16777216}
+          />
+          <p className="subtitle">
+            <span style={{ color: '#FF0000' }}>*</span> Please make sure your logo
+            is at least 360 x 360 pixels.{' '}
+            <a
+              href="https://www.photoresizer.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span style={{ color: '#54a0f1' }}>Click here</span>
+            </a>{' '}
+            for a resource that helps you resize your images.
+          </p>
+      </div>
+
       </div>
       <button id="save-button" onClick={submit}> Save </button>
     </div>

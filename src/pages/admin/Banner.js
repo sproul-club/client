@@ -63,7 +63,8 @@ const Banner = ({
 
   return (
     <div>
-      <p>Banner</p>
+      <h3>Banner</h3>
+      <p>Upload your organization's banner</p>
       <ImageUploader
         label="8:3 ratio - e.g. Facebook cover image"
         buttonStyles={{
@@ -71,7 +72,8 @@ const Banner = ({
         }}
         fileContainerStyle={{
           width: '300px',
-          float: 'left',
+          // float: 'left',
+          marginBottom: '40px',
         }}
         labelStyles={{
           width: '250px',
@@ -97,7 +99,7 @@ const Banner = ({
             <span style={{ color: '#54a0f1' }}>Click here</span>
           </a>{' '}
           for a resource that helps you resize your images.
-        </p>
+      </p>
       <button id="save-button" onClick={submit}> Save </button>
     </div>
   );
