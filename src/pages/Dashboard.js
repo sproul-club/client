@@ -12,11 +12,19 @@ import RightArrow from '@material-ui/icons/ChevronRightRounded';
 import LeftArrow from '@material-ui/icons/ChevronLeftRounded';
 import Moment from 'react-moment';
 import { containsToday, isUpcoming, simplestRangeFormat, simpleDayFormat, END_DATETIME, isSameDay } from '../utils/formatTimeAndDate';
+import AppTracker from './AppTracker';
+import Modal from '../layout/Modal';
 
 function Dashboard({student}) {
   useEffect(() => {
     // Outline leftover from ClubPage
   }, []);
+  const [showTrackerModal, setTrackerModal] = useState(false);
+
+  function cancelEdit() {
+    setTrackerModal(false);
+  }
+
   /* TEMPORARY HARDCODED STUDENT FOR TESTING */
   student = {
     majors: [],
@@ -144,6 +152,37 @@ function Dashboard({student}) {
     interviewed_clubs: []
   }
 
+  // function updateTracker(club, prevKey, arrow) {
+  //   if (prevKey == "interested_clubs" && arrow == "right") {
+  //     var newKey = "applied_clubs";
+  //   } else if (prevKey == "applied_clubs" && arrow == "right") {
+  //     var newKey = "interviewed_clubs";
+  //   } else if (prevKey == "applied_clubs" && arrow == "left") {
+  //     var newKey = "interested_clubs";
+  //   } else if (prevKey == "interviewed_clubs" && arrow == "left") {
+  //     var newKey = "applied_clubs";
+  //   } else {
+  //     var newKey = "";
+  //   }
+
+  //   var i = student.club_board[prevKey].indexOf(club);
+  //   var n = student.club_board[prevKey].length;
+  //   if (i == n - 1) {
+  //     student.club_board[prevKey].pop();
+  //   } else if (i == 0) {
+  //     student.club_board[prevKey].shift();
+  //   } 
+  //   else {
+  //     var left = student.club_board[prevKey].slice(0, i);
+  //     var right = student.club_board[prevKey].slice(i+1, n);
+  //     student.club_board[prevKey] = left.concat(right);
+  //   }
+    
+  //   if (newKey != "") {
+  //     student.club_board[newKey].push(club);
+  //   }
+  // }
+
   Object.keys(student.club_board).forEach((key) => {
     student.club_board[key].forEach((club) => {
       appTracker[key].push(
@@ -262,7 +301,7 @@ function Dashboard({student}) {
               {appTracker.interested_clubs.length > 0 ? appTracker.interested_clubs :
                 <span>No interested clubs.</span>
               }
-              <button className='dashboard-add-interested'>+ New</button>
+              <button className='dashboard-add-interested' onClick={() => setTrackerModal(true)}>+ New</button>
             </div>
             <div className='dashboard-app-tracker-list'>
               <h3>Applied</h3>
@@ -282,6 +321,16 @@ function Dashboard({student}) {
           <h2>Master Application Timeline</h2>
           {/* MASTER APPLICATION TIMELINE HERE*/}
         </div>
+
+        <Modal
+          showModal={showTrackerModal}
+          setShowModal={setTrackerModal}
+          close={cancelEdit}
+        >
+          <div className="dashboard-modal">
+            <AppTracker />
+          </div>
+        </Modal>
         <Footer />
       </div>
     </div>

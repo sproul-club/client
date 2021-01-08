@@ -115,7 +115,7 @@ const Catalog2 = ({
           <div className="filter search-filter">
             <i class="fas fa-search"></i>
             <input type="text" placeholder='Search' value={name} onChange={(e) => changeSearch(e)} className='search-input'/> 
-            <span className='reset-filters'>reset filters</span>
+            <span className='reset-filters' onClick={() => resetFilters()}>reset filters</span>
           </div>
 
           {/* Status Dropdown */}
@@ -233,7 +233,7 @@ const Catalog2 = ({
 
         </div>
         <div className="results-content">
-          <GridComponent/>
+          <GridComponent displayBanner= {true}/>
         </div>
       </div>
     </div>

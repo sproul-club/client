@@ -4,19 +4,21 @@ import logo from './assets/default_logo.jpg'
 import banner from './assets/default_banner.jpg'
 import { Link } from 'react-router-dom'
 
-const ClubCard = ({club, tagOptions}) => {
+const ClubCard = ({club, tagOptions, displayBanner}) => {
 
   const {link_name, name, banner_url, logo_url, new_members, app_required } = club
 
   return (
     <Link to={`/club/${link_name}`} className='clubcard'>
-      <div className="banner-content">
-        <img src={banner_url || banner} alt="banner" className="clubcard-banner"/>
-        <div className="app-required-tag">
-          <span className='appreq-tag'>
-          <i className="fas fa-pen"></i>{' '}{app_required ? 'App Required' : 'No App Required'}</span> 
+      {displayBanner &&
+        <div className="banner-content">
+          <img src={banner_url || banner} alt="banner" className="clubcard-banner"/>
+          <div className="app-required-tag">
+            <span className='appreq-tag'>
+            <i className="fas fa-pen"></i>{' '}{app_required ? 'App Required' : 'No App Required'}</span> 
+          </div>
         </div>
-      </div>
+      }
       <div className="clubcard-content">
         <div className="clubcard-content-row1">
           <img src={logo_url || logo} alt="logo" className='clubcard-logo'/>

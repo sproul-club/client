@@ -1,0 +1,40 @@
+#recr-main {
+    width: 70vw;
+    min-height: 70vh;
+    position: relative;
+}
+ 
+ 
+ 
+.recr-button {
+    border-radius: 5px;
+    padding: 8px 15px;
+    font-weight: 700;
+    font-size: 14px;
+    margin-top: 20px;
+    
+}
+ 
+#recr-add {
+    border: 2px solid #54a0f1;
+    color: #54a0f1;
+    background: white;
+}
+ 
+#recr-cancel {
+    padding: 10px 25px;
+    margin-left: 48vw;
+    margin-right: 1vw;
+    border: 0px;
+    color: 2B2B2B;
+    background: #C4C4C4;
+}
+ 
+#recr-save {
+    padding: 10px 25px;
+    right: 30px;
+    border: 0px;
+    background: #54A0F1;
+    color: white;
+ 
+}
