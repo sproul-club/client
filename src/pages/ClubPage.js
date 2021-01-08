@@ -169,7 +169,7 @@ function ClubPage({
             alt=""
           />
           {admin && 
-            <EditIcon className="clubpage-content-header-icon" onClick={() => setShowBannerModal(admin)}/>
+            <EditIcon className="clubpage-content-header-icon above-banner" onClick={() => setShowBannerModal(admin)}/>
           }
           <div className="clubpage-header-content">
             <div className="clubpage-header-left">
