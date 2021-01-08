@@ -17,6 +17,7 @@ function Dashboard({student}) {
   useEffect(() => {
     // Outline leftover from ClubPage
   }, []);
+  
   /* TEMPORARY HARDCODED STUDENT FOR TESTING */
   student = {
     majors: [],

@@ -100,8 +100,7 @@ const Catalog2 = ({
 
   ReactGA.initialize('UA-176775736-1');
   ReactGA.pageview('/catalog');
-
-
+  
   return (<>
     <div className='catalog-page'>
       <div className="catalog-content">
