@@ -41,14 +41,18 @@
   font-weight: 600;
 }
 
-.signin .form a {
+.signin .form .fine-print {
   margin-top: 8px;
   text-decoration: none;
   font-family: Qanelas Soft Semi Bold;
   font-weight: 500;
   font-size: 13px;
   color: #949494;
-  transition: color 0.15s;
+}
+
+.signin .form a {
+  color: #4285cc;
+  transition: color 0.13s;
 }
 
 .signin .form a:hover {
