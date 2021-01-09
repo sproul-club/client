@@ -11,11 +11,19 @@ import RightArrow from '@material-ui/icons/ChevronRightRounded';
 import LeftArrow from '@material-ui/icons/ChevronLeftRounded';
 import ReactMoment from 'react-moment';
 import { containsToday, isUpcoming, simplestRangeFormat, simpleDayFormat, END_DATETIME, isSameDay, isWithinFourWeeks, eventsOverlap } from '../utils/formatTimeAndDate';
+import AppTracker from './AppTracker';
+import Modal from '../layout/Modal';
 
 function Dashboard({student}) {
   useEffect(() => {
     // Outline leftover from ClubPage
   }, []);
+  const [showTrackerModal, setTrackerModal] = useState(false);
+
+  function cancelEdit() {
+    setTrackerModal(false);
+  }
+
   /* TEMPORARY HARDCODED STUDENT FOR TESTING */
   student = {
     majors: [],
@@ -301,7 +309,7 @@ function Dashboard({student}) {
               {appTracker.interested_clubs.length > 0 ? appTracker.interested_clubs :
                 <span>No interested clubs.</span>
               }
-              <button className='dashboard-add-interested'>+ New</button>
+              <button className='dashboard-add-interested' onClick={() => setTrackerModal(true)}>+ New</button>
             </div>
             <div className='dashboard-app-tracker-list'>
               <h3>Applied</h3>
@@ -324,6 +332,16 @@ function Dashboard({student}) {
           </span>
           <MasterTimeline data={timeline}/>
         </div>
+
+        <Modal
+          showModal={showTrackerModal}
+          setShowModal={setTrackerModal}
+          close={cancelEdit}
+        >
+          <div className="dashboard-modal">
+            <AppTracker />
+          </div>
+        </Modal>
         <Footer />
       </div>
     </div>

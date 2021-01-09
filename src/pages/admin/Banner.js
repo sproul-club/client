@@ -39,16 +39,6 @@ const Banner = ({
   }
 
   const submit = async () => {
-    // console.log(descr)
-    // const newProfile = {
-    //   name: orgName.trim(),
-    //   owner: orgEmail,
-    //   tags: tags.map((tags) => tags.value),
-    //   about_us: stateToHTML(descr),
-    //   app_required: !!appReq.value,
-    //   new_members: !!recruiting.value,
-    // };
-
     // try {
     //   await updateProfile(newProfile);
     //   NotificationManager.success('Profile changes saved successfully!', '', 1500);
@@ -56,14 +46,25 @@ const Banner = ({
     //   NotificationManager.error('Profile changes unsuccessful!', '', 1500);
     // }
 
-    await Promise.all([
-      uploadBannerPic(bannerImage)
-    ]);
+    try {
+      await Promise.all([
+        uploadBannerPic(bannerImage)
+      ]);
+        NotificationManager.success('Banner changes saved successfully!', '', 1500);
+        
+      } catch (err) {
+        NotificationManager.error('Banner changes unsuccessful!', '', 1500);
+      }
+
+    // await Promise.all([
+    //   uploadBannerPic(bannerImage)
+    // ]);
   };
 
   return (
     <div>
-      <p>Banner</p>
+      <h3>Banner</h3>
+      <p>Upload your organization's banner</p>
       <ImageUploader
         label="8:3 ratio - e.g. Facebook cover image"
         buttonStyles={{
@@ -71,7 +72,8 @@ const Banner = ({
         }}
         fileContainerStyle={{
           width: '300px',
-          float: 'left',
+          // float: 'left',
+          marginBottom: '40px',
         }}
         labelStyles={{
           width: '250px',
@@ -97,7 +99,7 @@ const Banner = ({
             <span style={{ color: '#54a0f1' }}>Click here</span>
           </a>{' '}
           for a resource that helps you resize your images.
-        </p>
+      </p>
       <button id="save-button" onClick={submit}> Save </button>
     </div>
   );

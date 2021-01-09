@@ -44,6 +44,9 @@ export const updateProfile = (formData) => async (dispatch) => {
       about_us: formData.about_us,
       get_involved: formData.get_involved,
       social_media_links: formData.social_media_links,
+      num_users: formData.num_users,
+      apply_deadline: '1970-01-01T00:00:00Z', //dummy value to fix      
+      apply_link: formData.apply_link,
     });
 
     dispatch({ type: UPDATE_PROFILE, payload: formData });
