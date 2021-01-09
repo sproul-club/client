@@ -39,16 +39,6 @@ const Banner = ({
   }
 
   const submit = async () => {
-    // console.log(descr)
-    // const newProfile = {
-    //   name: orgName.trim(),
-    //   owner: orgEmail,
-    //   tags: tags.map((tags) => tags.value),
-    //   about_us: stateToHTML(descr),
-    //   app_required: !!appReq.value,
-    //   new_members: !!recruiting.value,
-    // };
-
     // try {
     //   await updateProfile(newProfile);
     //   NotificationManager.success('Profile changes saved successfully!', '', 1500);
@@ -56,9 +46,19 @@ const Banner = ({
     //   NotificationManager.error('Profile changes unsuccessful!', '', 1500);
     // }
 
-    await Promise.all([
-      uploadBannerPic(bannerImage)
-    ]);
+    try {
+      await Promise.all([
+        uploadBannerPic(bannerImage)
+      ]);
+        NotificationManager.success('Banner changes saved successfully!', '', 1500);
+        
+      } catch (err) {
+        NotificationManager.error('Banner changes unsuccessful!', '', 1500);
+      }
+
+    // await Promise.all([
+    //   uploadBannerPic(bannerImage)
+    // ]);
   };
 
   return (

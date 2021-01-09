@@ -21,17 +21,17 @@ const GetInvolved = ({ profile, get_involved, updateProfile }) => {
     setInvolvedLink(e.target.value);
   };
 
-  function cancelEdit() {
-    setInvolvedDesc(profile.get_involved);
-    setInvolvedChars(500 - involvedDesc.length);
-    setInvolvedLink(''); // placeholder: need API endpoint for application link
-  }
+  // function cancelEdit() {
+  //   setInvolvedDesc(profile.get_involved);
+  //   setInvolvedChars(500 - involvedDesc.length);
+  //   setInvolvedLink(''); // placeholder: need API endpoint for application link
+  // }
 
   const submit = async () => {
     setInvolvedLink(normalizeUrl(involvedLink));
     const newProfile = {
       get_involved: involvedDesc,
-      // get_involved_link: involvedLink, // placeholder: need API endpoint for application link
+      apply_link: involvedLink, // placeholder: need API endpoint for application link
     };
 
     try {
@@ -74,9 +74,6 @@ const GetInvolved = ({ profile, get_involved, updateProfile }) => {
             placeholder="Enter link"
             type="text"
             maxLength={500}
-            /*value={involvedDesc}
-            onChange={(e) => setInvolvedDesc(e.target.value)}
-            */
             value={involvedLink}
             onChange={involvedLinkChange}
           />

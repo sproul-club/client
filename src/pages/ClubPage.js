@@ -271,10 +271,12 @@ function ClubPage({
                   }
                   </div>
                 <p>{organization.get_involved}</p>
-                <button className="clubpage-apply-btn" /* NEED AN ONCLICK HANDLER TO LINK TO APPLICATION*/>
-                  Apply Now!
-                  <RightArrow style={{marginLeft: 5}}/>
-                </button>
+                <a href={"https://"+organization.apply_link}>
+                  <button className="clubpage-apply-btn" /* NEED AN ONCLICK HANDLER TO LINK TO APPLICATION*/>
+                    Apply Now!
+                    <RightArrow style={{marginLeft: 5}}/>
+                  </button>
+                </a>
               </div>
             }
             <div className="clubpage-content-contact clubpage-tile">
