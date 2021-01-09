@@ -47,7 +47,6 @@ const AboutClub = ({
         
         <button id="save-button" onClick={submit}> Save </button>
         
-      
     </div>
   );
 };
