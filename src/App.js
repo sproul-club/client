@@ -35,6 +35,7 @@ import Navbar from './layout/Navbar';
 
 import Moment from 'react-moment';
 import 'moment-timezone';
+import StudentSettings from './pages/student/StudentSettings.js';
 
 Moment.globalTimezone = 'America/Los_Angeles';
 
@@ -64,6 +65,7 @@ const App = () => {
           <Route exact path="/resetpassword" component={ResetPassword2} />
           <Route path="/club/:id" component={ClubPage} />
           <Route exact path="/dashboard" component={Dashboard} />
+          <Route exact path="/student/settings" component={StudentSettings} />
           <PrivateRoute exact path="/security" component={Security} />
           <Route>
             <ErrorPage />
