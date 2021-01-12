@@ -262,7 +262,7 @@ function ClubPage({
             </Switch>
           </div>
           <div className='clubpage-content-right'>
-            {organization.get_involved && 
+            {(organization.get_involved || organization.apply_link) && 
               <div className="clubpage-content-getinvolved clubpage-tile">
                 <div className='clubpage-content-header'>
                   <h1>How to Get Involved</h1>
@@ -271,12 +271,14 @@ function ClubPage({
                   }
                   </div>
                 <p>{organization.get_involved}</p>
+                {organization.apply_link && 
                 <a href={"https://"+organization.apply_link}>
-                  <button className="clubpage-apply-btn" /* NEED AN ONCLICK HANDLER TO LINK TO APPLICATION*/>
+                  <button className="clubpage-apply-btn">
                     Apply Now!
                     <RightArrow style={{marginLeft: 5}}/>
                   </button>
                 </a>
+                }
               </div>
             }
             <div className="clubpage-content-contact clubpage-tile">

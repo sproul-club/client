@@ -45,7 +45,7 @@ const Profile = ({
   const [recruiting, setRecruit] = useState(
     recruitOptions[profile.new_members === true ? 0 : 1]
   );
-  const [size, setSize] = useState(sizeOptions[0])
+  const [size, setSize] = useState(0)
 
   const [logoImage, setLogoImage] = useState(null);
   const [bannerImage, setBannerImage] = useState(null);
@@ -75,32 +75,8 @@ const Profile = ({
     }
   }
 
-  async function uploadBannerPic(bannerUploads) {
-    if (bannerUploads && bannerUploads.length > 0) {
-      try {
-        NotificationManager.info('Uploading banner...', '', 1500);
-        await uploadBanner(bannerUploads[0]);
-        NotificationManager.success('Banner uploaded successfully!', '', 1500);
-      } catch (err) {
-        if (err.response.status === 503) {
-          NotificationManager.error(
-            'Something went wrong on our end. Please try again later',
-            'Banner image upload unsuccessful',
-            5000
-          );
-        } else {
-          NotificationManager.error(
-            'For best results, please upload a logo that has an aspect ratio of 8:3',
-            'Banner image upload unsuccessful',
-            5000
-          );
-        }
-      }
-    }
-  }
-
   const submit = async () => {
-    console.log(descr)
+    console.log(profile)
     const newProfile = {
       name: orgName.trim(),
       owner: orgEmail,
@@ -118,8 +94,7 @@ const Profile = ({
     }
 
     await Promise.all([
-      uploadLogoPic(logoImage),
-      uploadBannerPic(bannerImage)
+      uploadLogoPic(logoImage)
     ]);
   };
 
@@ -147,7 +122,7 @@ const Profile = ({
         status, application requirements, and organization description.
       </div>
 
-      <div style={{display: 'flex', flexDirection: 'row'}}className="modal-wrapper">
+      <div style={{display: 'flex', flexDirection: 'row'}} className="modal-wrapper">
       <div className="modal-left">
         <div className="formGroup">
           <div className="formElement">
@@ -177,7 +152,7 @@ const Profile = ({
               options={sizeOptions}
               multi={false}
               search={false}
-              defaultValue={appOptions[size]}
+              defaultValue={sizeOptions[size]}
               placeholder="Select club size"
               set={setSize}
             />
@@ -268,14 +243,15 @@ const Profile = ({
             maxFileSize={16777216}
           />
           <p className="subtitle">
-            <span style={{ color: '#FF0000' }}>*</span> Please make sure your logo
+            <span style={{ color: '#FF0000', marginLeft: '40px'}}>*</span> Please make sure your logo
             is at least 360 x 360 pixels.{' '}
+            <br></br>
             <a
               href="https://www.photoresizer.com/"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <span style={{ color: '#54a0f1' }}>Click here</span>
+              <span style={{ color: '#54a0f1', marginLeft: '40px' }}>Click here</span>
             </a>{' '}
             for a resource that helps you resize your images.
           </p>

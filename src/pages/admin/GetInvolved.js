@@ -9,7 +9,7 @@ import './Admin.css';
 const GetInvolved = ({ profile, get_involved, updateProfile }) => {
   const [involvedDesc, setInvolvedDesc] = useState(get_involved);
   const [descrChars, setInvolvedChars] = useState(500 - involvedDesc.length);
-  const [involvedLink, setInvolvedLink] = useState(''); // placeholder: need API endpoint for application link
+  const [involvedLink, setInvolvedLink] = useState(profile.apply_link);
 
 
   const descrChange = (e) => {
@@ -31,7 +31,7 @@ const GetInvolved = ({ profile, get_involved, updateProfile }) => {
     setInvolvedLink(normalizeUrl(involvedLink));
     const newProfile = {
       get_involved: involvedDesc,
-      apply_link: involvedLink, // placeholder: need API endpoint for application link
+      apply_link: involvedLink, 
     };
 
     try {
