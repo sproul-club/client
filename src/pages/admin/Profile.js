@@ -45,7 +45,7 @@ const Profile = ({
   const [recruiting, setRecruit] = useState(
     recruitOptions[profile.new_members === true ? 0 : 1]
   );
-  const [size, setSize] = useState(sizeOptions[0])
+  const [size, setSize] = useState(0)
 
   const [logoImage, setLogoImage] = useState(null);
   const [bannerImage, setBannerImage] = useState(null);
@@ -76,7 +76,7 @@ const Profile = ({
   }
 
   const submit = async () => {
-    console.log(descr)
+    console.log(profile)
     const newProfile = {
       name: orgName.trim(),
       owner: orgEmail,
@@ -152,7 +152,7 @@ const Profile = ({
               options={sizeOptions}
               multi={false}
               search={false}
-              defaultValue={appOptions[size]}
+              defaultValue={sizeOptions[size]}
               placeholder="Select club size"
               set={setSize}
             />
