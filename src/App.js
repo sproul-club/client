@@ -25,6 +25,7 @@ import FAQ from './pages/FAQ';
 import Admin from './pages/admin/Admin.js';
 import ClubPage from './pages/ClubPage';
 import Dashboard from './pages/Dashboard.js';
+import Favorites from './pages/Favorites.js';
 import store from './store';
 import ContactUs from './layout/ContactUs.js';
 import { loadProfile, getTags } from './actions/profile';
@@ -65,6 +66,8 @@ const App = () => {
           <Route exact path="/resetpassword" component={ResetPassword2} />
           <Route path="/club/:id" component={ClubPage} />
           <Route exact path="/dashboard" component={Dashboard} />
+          <Route exact path="/FAQ" component={FAQ} />
+          <Route exact path="/favorites" component={Favorites} />
           <Route exact path="/student/settings" component={StudentSettings} />
           <PrivateRoute exact path="/security" component={Security} />
           <Route>

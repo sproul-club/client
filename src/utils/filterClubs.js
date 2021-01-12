@@ -1,4 +1,4 @@
-export const filterClubs = (allOrganizations, formDetails, tagOptions, num_results) => {
+export const filterClubs = (allOrganizations, formDetails, tagOptions, num_results, favorites) => {
 
   console.log(allOrganizations)
 
@@ -7,6 +7,11 @@ export const filterClubs = (allOrganizations, formDetails, tagOptions, num_resul
 
   // Filter by name
   let filteredClubs = orgList.filter(club => club.name.toLowerCase().includes(formDetails.name.toLowerCase()))
+
+  if (favorites)
+    filteredClubs = filteredClubs.filter(
+      item => favorites.includes(item.name)
+    )
 
   // Filter by app required checked
   if(formDetails.appReq)

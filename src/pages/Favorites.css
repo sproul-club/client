@@ -1,0 +1,59 @@
+.favorites-wrapper {
+    min-height: 100vh;
+    max-width: 100vw;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding-top: 67px;
+    position: relative;
+    font-family: Qanelas Soft;
+    letter-spacing: 0.03em;
+}
+
+.favorites {
+    padding-top: 0.6em;
+    width: 80vw;
+    max-width: 1150px;
+    margin: 0 auto 0 auto;
+}
+
+.favorites > * {
+    margin-top: 3em;
+}
+
+.favorites h1 {
+    font-size: xxx-large;
+    margin: 0 0 0.2em 0;
+}
+
+.favorites h2 {
+    font-size: larger;
+    margin-bottom: -20px;
+    margin-top: 0px;
+}
+
+.favorites .subtext {
+    font-size: 14px;
+}
+
+.favorites-img {
+    display: block;
+    margin-top: -20px;
+    width: 300px;
+}
+
+.favorites-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: top;
+}
+
+.recommended h2 {
+    width: 100vw;
+    display: flex;
+    color: black;
+}
+
+.favorites .filters {
+    margin-bottom: -28px;
+}

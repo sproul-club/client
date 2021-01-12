@@ -14,7 +14,7 @@ const ClubCard = ({club, tagOptions, displayBanner}) => {
         <div className="banner-content">
           <img src={banner_url || banner} alt="banner" className="clubcard-banner"/>
           <div className="app-required-tag">
-            <span className='appreq-tag'>
+            <span className={app_required ? 'appreq-tag' : 'noappreq-tag'}>
             <i className="fas fa-pen"></i>{' '}{app_required ? 'App Required' : 'No App Required'}</span> 
           </div>
         </div>
