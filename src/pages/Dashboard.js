@@ -1,23 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import './Dashboard.css';
-import EventAccord from './EventAccord';
-import Gallery from '../layout/Gallery';
 import Footer from '../layout/Footer';
 import Loading from '../layout/Loading';
+import MasterTimeline from './MasterTimeline';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import ReactGA from 'react-ga';
 import Delete from '@material-ui/icons/DeleteOutlineRounded';
 import RightArrow from '@material-ui/icons/ChevronRightRounded';
 import LeftArrow from '@material-ui/icons/ChevronLeftRounded';
-import Moment from 'react-moment';
-import { containsToday, isUpcoming, simplestRangeFormat, simpleDayFormat, END_DATETIME, isSameDay } from '../utils/formatTimeAndDate';
+import ReactMoment from 'react-moment';
+import { containsToday, isUpcoming, simplestRangeFormat, simpleDayFormat, END_DATETIME, isSameDay, isWithinFourWeeks, eventsOverlap } from '../utils/formatTimeAndDate';
+import AppTracker from './AppTracker';
+import Modal from '../layout/Modal';
 
 function Dashboard({student}) {
   useEffect(() => {
     // Outline leftover from ClubPage
   }, []);
-  
+  const [showTrackerModal, setTrackerModal] = useState(false);
+
+  function cancelEdit() {
+    setTrackerModal(false);
+  }
+
   /* TEMPORARY HARDCODED STUDENT FOR TESTING */
   student = {
     majors: [],
@@ -38,13 +44,7 @@ function Dashboard({student}) {
               id: "fall-2020-recruitment-with-180-degrees-consulting-at-uc-berkeley",
               link: "https://www.facebook.com/events/784593735644618/",
               name: "Application Due"
-            }
-          ]
-        },
-        {
-          name: "sproul.club",
-          icon: "https://sproul-club-images-prod.s3-us-west-1.amazonaws.com/logo/sproul.club-logo-cc6381f68d09a056ef7770a0e9fbdca8.png",
-          events: [
+            },
             {
               description: "See our Facebook events for more details.",
               event_end: "2021-09-04T23:59:00",
@@ -56,7 +56,7 @@ function Dashboard({student}) {
           ]
         },
         {
-          name: "sproul.club",
+          name: "random club",
           icon: "https://sproul-club-images-prod.s3-us-west-1.amazonaws.com/logo/sproul.club-logo-cc6381f68d09a056ef7770a0e9fbdca8.png",
           events: [
             {
@@ -72,13 +72,13 @@ function Dashboard({student}) {
       ],
       applied_clubs: [
         {
-          name: "sproul.club",
+          name: "devclub",
           icon: "https://sproul-club-images-prod.s3-us-west-1.amazonaws.com/logo/sproul.club-logo-cc6381f68d09a056ef7770a0e9fbdca8.png",
           events: [
             {
               description: "See our Facebook events for more details.",
-              event_end: "2021-09-04T23:59:00",
-              event_start: "2021-01-07T08:00:00",
+              event_end: "2021-01-22T23:59:00",
+              event_start: "2021-01-10T08:00:00",
               id: "fall-2020-recruitment-with-180-degrees-consulting-at-uc-berkeley",
               link: "https://www.facebook.com/events/784593735644618/",
               name: "Virtual Tabling"
@@ -86,37 +86,61 @@ function Dashboard({student}) {
           ]
         },
         {
-          name: "sproul.club",
+          name: "no club",
           icon: "https://sproul-club-images-prod.s3-us-west-1.amazonaws.com/logo/sproul.club-logo-cc6381f68d09a056ef7770a0e9fbdca8.png",
           events: [
             {
               description: "See our Facebook events for more details.",
-              event_end: "2021-01-07T15:30:00",
-              event_start: "2021-01-07T11:00:00",
+              event_end: "2021-01-10T15:30:00",
+              event_start: "2021-01-10T11:00:00",
               id: "fall-2020-recruitment-with-180-degrees-consulting-at-uc-berkeley",
               link: "https://www.facebook.com/events/784593735644618/",
               name: "Infosession #1"
+            },
+            {
+              description: "See our Facebook events for more details.",
+              event_end: "2021-01-13T15:30:00",
+              event_start: "2021-01-12T11:00:00",
+              id: "fall-2020-recruitment-with-180-degrees-consulting-at-uc-berkeley",
+              link: "https://www.facebook.com/events/784593735644618/",
+              name: "Infosession #2"
+            },
+            {
+              description: "See our Facebook events for more details.",
+              event_end: "2021-01-13T15:30:00",
+              event_start: "2021-01-07T11:00:00",
+              id: "fall-2020-recruitment-with-180-degrees-consulting-at-uc-berkeley",
+              link: "https://www.facebook.com/events/784593735644618/",
+              name: "First Wave Recruitment"
             }
           ]
         },
         {
-          name: "sproul.club",
+          name: "maybe club",
           icon: "https://sproul-club-images-prod.s3-us-west-1.amazonaws.com/logo/sproul.club-logo-cc6381f68d09a056ef7770a0e9fbdca8.png",
           events: [
             {
               description: "See our Facebook events for more details.",
               event_end: "2021-01-11T15:30:00",
-              event_start: "2021-01-07T11:00:00",
+              event_start: "2021-01-08T11:00:00",
               id: "fall-2020-recruitment-with-180-degrees-consulting-at-uc-berkeley",
               link: "https://www.facebook.com/events/784593735644618/",
               name: "Speaker Panel"
+            },
+            {
+              description: "See our Facebook events for more details.",
+              event_end: "2021-01-13T15:30:00",
+              event_start: "2021-01-12T11:00:00",
+              id: "fall-2020-recruitment-with-180-degrees-consulting-at-uc-berkeley",
+              link: "https://www.facebook.com/events/784593735644618/",
+              name: "Speaker Panel #2"
             }
           ]
         }
       ],
       interviewed_clubs: [
         {
-          name: "sproul.club",
+          name: "offbrand club",
           icon: "https://sproul-club-images-prod.s3-us-west-1.amazonaws.com/logo/sproul.club-logo-cc6381f68d09a056ef7770a0e9fbdca8.png",
           events: [
             {
@@ -145,10 +169,13 @@ function Dashboard({student}) {
     interviewed_clubs: []
   }
 
+  let timeline = {
+  }
+
   Object.keys(student.club_board).forEach((key) => {
-    student.club_board[key].forEach((club) => {
+    student.club_board[key].forEach((club, ind) => {
       appTracker[key].push(
-        <div className='dashboard-clubcard'>
+        <div key={`tracker${ind}`} className='dashboard-clubcard'>
           <div className='dashboard-clubcard-title'>
             <img
               className='dashboard-clubicon'
@@ -162,51 +189,51 @@ function Dashboard({student}) {
               <Delete className='dashboard-clubcard-delete'/>
             </button>
             <button className='dashboard-clubcard-left'>
-              <LeftArrow className={key !='interested_clubs' ? 'active' : ''}/>
+              <LeftArrow className={key !== 'interested_clubs' ? 'active' : ''}/>
             </button>
             <button className='dashboard-clubcard-right'>
-              <RightArrow className={key !='interviewed_clubs' ? 'active' : ''}/>
+              <RightArrow className={key !== 'interviewed_clubs' ? 'active' : ''}/>
             </button>
           </div>
         </div>
       )
-      club.events.forEach((event) => {
-        let key;
+      club.events.forEach((event, ind) => {
+        let evKey;
         if(containsToday(event.event_start, event.event_end)) {
-          key = 'today';
+          evKey = 'today';
         } else if(isUpcoming(event.event_start)) {
-          key = 'upcoming';
+          evKey = 'upcoming';
         } else {
           return;
         }
         let date;
-        if (key === 'today' && isSameDay(event.event_start, event.event_end)) {
+        if (evKey === 'today' && isSameDay(event.event_start, event.event_end)) {
           date = <span className='dashboard-event-date'>
-            <Moment
+            <ReactMoment
               interval={0}
               date={event.event_start}
               format={simplestRangeFormat(event.event_start, event.event_end, END_DATETIME, false)}
             />
             {" - "}
-            <Moment
+            <ReactMoment
               interval={0}
               date={event.event_end}
               format={simplestRangeFormat(event.event_start, event.event_end, END_DATETIME, false)}
             />
           </span>
-        } else if (key === 'today') {
+        } else if (evKey === 'today') {
           date = <span>All Day</span>
         } else {
           date = <span>
-            <Moment
+            <ReactMoment
               interval={0}
               date={event.event_start}
               format={simpleDayFormat(event.event_start)}
             />
           </span>
         }
-        eventDashboard[key].push(
-          <div className='dashboard-event'>
+        eventDashboard[evKey].push(
+          <div key={`${key}_${club.name}_event_${ind}`} className='dashboard-event'>
             <div className='dashboard-event-content'>
               <img
                 className="dashboard-clubicon"
@@ -221,12 +248,31 @@ function Dashboard({student}) {
             {date}
           </div>
         )
+        if (isWithinFourWeeks(event.event_start)) {
+          if (!timeline[club.name]) {
+            timeline[club.name] = {
+              icon: club.icon,
+              events: [],
+            }
+          }
+          let set = false;
+          for (let i = 0, l = timeline[club.name].events.length; i < l; i++) {
+            if (!eventsOverlap(timeline[club.name].events[i], event)) {
+              set = true;
+              timeline[club.name].events[i].push(event);
+              break;
+            }
+          }
+          if (!set) {
+            timeline[club.name].events.push([event]);
+          }
+        }
       })
     })
   })
 
   if (!student) return <Loading />;
-  
+
   return (
     <div className='dashboard-wrapper'>
       <div className='dashboard'>
@@ -250,7 +296,7 @@ function Dashboard({student}) {
             <img
               className="dashboard-flyer-bears-img"
               src={require('./assets/dashboard-flyer-bears.svg')}
-              alt="flyer bears image"
+              alt="flyer bears"
             />
           </div>
         </div>
@@ -263,7 +309,7 @@ function Dashboard({student}) {
               {appTracker.interested_clubs.length > 0 ? appTracker.interested_clubs :
                 <span>No interested clubs.</span>
               }
-              <button className='dashboard-add-interested'>+ New</button>
+              <button className='dashboard-add-interested' onClick={() => setTrackerModal(true)}>+ New</button>
             </div>
             <div className='dashboard-app-tracker-list'>
               <h3>Applied</h3>
@@ -280,9 +326,22 @@ function Dashboard({student}) {
           </div>
         </div>
         <div className='dashboard-app-timeline'>
-          <h2>Master Application Timeline</h2>
-          {/* MASTER APPLICATION TIMELINE HERE*/}
+          <span className='dashboard-app-tl-header'>
+            <h2>Master Application Timeline</h2>
+            <i className="dashboard-subtext">*Timeline in PST</i>
+          </span>
+          <MasterTimeline data={timeline}/>
         </div>
+
+        <Modal
+          showModal={showTrackerModal}
+          setShowModal={setTrackerModal}
+          close={cancelEdit}
+        >
+          <div className="dashboard-modal">
+            <AppTracker />
+          </div>
+        </Modal>
         <Footer />
       </div>
     </div>

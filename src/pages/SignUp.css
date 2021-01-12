@@ -1,10 +1,11 @@
 /* Overall page content layout */
 .signup .content {
   padding-top: 66.6px;
-  height: calc(100vh - 66.6px - 71.6px);
+  min-height: calc(100vh - 66.6px - 71.6px);
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 80px;
 }
 
 /* Description styling */
@@ -64,9 +65,9 @@
   font-style: normal;
   box-shadow: 3px 3px 1px rgb(0, 0, 0, 0.3);
   width: 350px;
-  height: 454px;
+  height: 520px;
   border-radius: 15px;
-  padding: 20px;
+  padding: 0px 20px;
   border: solid 1px #949494;
   display: flex;
   flex-direction: column;
@@ -77,6 +78,7 @@
 }
 
 .signup .form .formGroup {
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -553,6 +555,10 @@
   .signup .complete a {
     font-size: 16px;
     margin: 10px;
+  }
+
+  .signup .form {
+    height: 680px;
   }
 }
 

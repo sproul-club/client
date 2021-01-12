@@ -17,7 +17,7 @@
   position: relative;
 }
 
-.appreq-tag {
+.appreq-tag, .noappreq-tag {
   position: absolute;
   text-decoration: none;
   font-size: 11px;
@@ -29,6 +29,11 @@
   border-radius: 6px;
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
 }
+
+.noappreq-tag {
+  background: #C9F0C9;
+}
+
 .appreq-tag i {
   margin-right: 3px;
 }

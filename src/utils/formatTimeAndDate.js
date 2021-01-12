@@ -7,8 +7,23 @@ function isSameYear(start, end) {
   return moment(start).isSame(end, 'year');
 }
 
+export function dayDiff(start, end, ceil=false) {
+  let e = moment(end).startOf('day');
+  let s = moment(start).startOf('day');
+  if (ceil) {
+    e = e.add(1, 'days');
+    s = s.add(1, 'days');
+  }
+  return e.diff(s, 'days');
+}
+
 export function isSameDay(start, end) {
   return moment(start).isSame(end, 'day');
+}
+
+export function isWithinFourWeeks(start) {
+  const sunday = moment().startOf('week');
+  return moment(start).isSameOrAfter(sunday, 'day') && moment(start).isBefore(sunday.add(30, 'days'));
 }
 
 export function containsToday(start, end) {
@@ -26,6 +41,23 @@ export function isUpcoming(start) {
   const today = moment();
   if (s.isAfter(today)) {
     return true;
+  }
+  return false;
+}
+
+export function eventsOverlap(eventList, e1) {
+  for (let i = 0, l = eventList.length; i < l; i++) {
+    const e2 = eventList[i];
+    const e1Start = moment(e1.event_start);
+    const e1End= moment(e1.event_end);
+    const e2Start = moment(e2.event_start);
+    const e2End= moment(e2.event_end);
+    if(
+      (e2Start.isSameOrBefore(e1Start) && e2End.isSameOrAfter(e1Start))
+      || (e1Start.isSameOrBefore(e2Start) && e1End.isSameOrAfter(e2Start))
+    ) {
+      return true;
+    }
   }
   return false;
 }

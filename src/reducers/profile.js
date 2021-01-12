@@ -22,6 +22,7 @@ const initialState = {
     app_required: false,
     new_members: false,
     about_us: '',
+    num_users: 0,
   },
   resources: [],
   events: [],
@@ -32,6 +33,8 @@ const initialState = {
   social_media_links: {},
   get_involved: '',
   tagOptions: [],
+  apply_deadline: '',
+  apply_link: '',
 };
 
 export default function (state = initialState, action) {
@@ -50,6 +53,8 @@ export default function (state = initialState, action) {
         images: { logo_url, banner_url },
         social_media_links: payload.social_media_links,
         get_involved: payload.get_involved,
+        apply_deadline: payload.apply_deadline,
+        apply_link: payload.apply_link,
       };
     case UPDATE_PROFILE:
       const updateSocial = payload.social_media_links
@@ -58,11 +63,19 @@ export default function (state = initialState, action) {
       const updateGetInvolved = payload.get_involved
         ? payload.get_involved
         : state.get_involved;
+      const updateAppDeadline = payload.apply_deadline
+        ? payload.apply_deadline
+        : state.apply_deadline;
+      const updateAppLink = payload.apply_link
+        ? payload.apply_link
+        : state.apply_link;
       return {
         ...state,
         profile: payload,
         get_involved: updateGetInvolved,
         social_media_links: updateSocial,
+        apply_deadline: updateAppDeadline,
+        apply_link: updateAppLink,
       };
     case UPLOAD_IMAGES:
       // return { ...state, images: payload };

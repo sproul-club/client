@@ -99,7 +99,7 @@ const SignInForm = ({ login, history, isAuthenticated }) => {
       </div>
 
       <div className="formHeader">
-        <h2>Sign into sproul.club</h2>
+        <h2>Club sign-in portal</h2>
       </div>
       <p>Email</p>
 
@@ -123,7 +123,10 @@ const SignInForm = ({ login, history, isAuthenticated }) => {
         type="password"
         onChange={(e) => passwordOnChange(e.target.value)}
       />
-      <Link to="/recover">Forgot password?</Link>
+      <div className="fine-print">
+        <Link to="/recover">Forgot password?</Link> <br/>
+        Don't have an account? Sign up <Link to="/signup">here</Link>
+      </div>
       <button type="submit" className="submitButton" onClick={submitValue}>
         Sign in
       </button>

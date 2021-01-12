@@ -83,22 +83,7 @@ function Favorites({student,
         majors: [],
         minors: [],
         interests: [],
-        favorited_clubs: [
-            {
-                name: "sproul.club",
-                icon: "https://sproul-club-images-prod.s3-us-west-1.amazonaws.com/logo/sproul.club-logo-cc6381f68d09a056ef7770a0e9fbdca8.png",
-                events: [
-                  {
-                    description: "See our Facebook events for more details.",
-                    event_end: "2021-09-04T23:59:00",
-                    event_start: "2021-08-25T08:00:00",
-                    id: "fall-2020-recruitment-with-180-degrees-consulting-at-uc-berkeley",
-                    link: "https://www.facebook.com/events/784593735644618/",
-                    name: "Application Due"
-                  }
-                ]
-              },
-        ],
+        favorited_clubs: ["Karasuno High VBC", "User Testing"],
         visited_clubs: [],
         club_board: {
           interested_clubs: [
@@ -352,13 +337,13 @@ function Favorites({student,
                     </div>
                 </div>
                 <div className="results-content">
-                    <GridComponent/>
+                    <GridComponent displayBanner= {true} favorites={student.favorited_clubs}/>
                 </div>
                 <div className='recommended'>
                     <h2>Recommended</h2>
                 </div>
                 <div className="results-content">
-                    <GridComponent/>
+                    <GridComponent displayBanner= {true}/>
                 </div>
             </div>
             <Footer />
