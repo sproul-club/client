@@ -262,7 +262,7 @@ function ClubPage({
             </Switch>
           </div>
           <div className='clubpage-content-right'>
-            {organization.get_involved && 
+            {(organization.get_involved || organization.apply_link) && 
               <div className="clubpage-content-getinvolved clubpage-tile">
                 <div className='clubpage-content-header'>
                   <h1>How to Get Involved</h1>
