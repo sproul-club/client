@@ -10,6 +10,7 @@ import './Admin.css';
 const AboutClub = ({
   profile,
   updateProfile,
+  close,
 }) => {
   const [descr, setDescr] = useState(stateFromHTML(profile.about_us));
   const [descrChars, setDescrChars] = useState(750 - profile.about_us.replace(/<[^>]*>?/gm, '').length);
@@ -28,6 +29,7 @@ const AboutClub = ({
     try {
       await updateProfile(newProfile);
       NotificationManager.success('Changes to About ' + profile.name + ' saved successfully!', '', 1500);
+      close();
     } catch (err) {
       console.log(err)
       NotificationManager.error('Changes to About ' + profile.name + ' did not save successfully!', '', 1500);

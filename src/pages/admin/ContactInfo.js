@@ -6,7 +6,7 @@ import { normalizeUrl } from '../../utils/normalizeUrl';
 import './Admin.css';
 
 
-const ContactInfo = ({ profile, updateProfile }) => {
+const ContactInfo = ({ profile, updateProfile, close }) => {
   const contactInfo = profile.social_media_links;
 
   const [email, setEmail] = useState(contactInfo.contact_email);
@@ -60,6 +60,7 @@ const ContactInfo = ({ profile, updateProfile }) => {
     try {
       await updateProfile(newProfile);
       NotificationManager.success('Changes to Contact Information saved successfully!', '', 1500);
+      close();
     } catch (err) {
       console.log(err);
       NotificationManager.error('Changes to Contact Information did not successfully!', '', 1500);

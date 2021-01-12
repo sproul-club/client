@@ -315,7 +315,7 @@ function ClubPage({
           close={cancelEdit}
         >
           <div className="admin-modal">
-            <Banner profile={organization}/>
+            <Banner profile={organization} close={cancelEdit}/>
           </div>
         </Modal>
 
@@ -325,7 +325,7 @@ function ClubPage({
           close={cancelEdit}
         >
           <div className="admin-modal">
-            <Profile profile={organization}/>
+            <Profile profile={organization} close={cancelEdit}/>
           </div>
         </Modal>
 
@@ -335,7 +335,7 @@ function ClubPage({
           close={cancelEdit}
         >
           <div className="admin-modal">
-            <AboutClub profile={organization}/>
+            <AboutClub profile={organization} close={cancelEdit}/>
           </div>
         </Modal>
 
@@ -345,7 +345,7 @@ function ClubPage({
           close={cancelEdit}
         >
           <div className="admin-modal">
-            <GetInvolved profile={organization}/>
+            <GetInvolved profile={organization} close={cancelEdit}/>
           </div>
         </Modal>
 
@@ -355,7 +355,7 @@ function ClubPage({
           close={cancelEdit}
         >
           <div className="admin-modal">
-            <ContactInfo profile={organization}/>
+            <ContactInfo profile={organization} close={cancelEdit}/>
           </div>
         </Modal>
 
