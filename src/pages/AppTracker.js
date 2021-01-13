@@ -20,7 +20,8 @@ const AppTracker = ({
   num_clubs,
   formDetails,
   setFormDetails,
-  num_displayed
+  num_displayed,
+  close,
 }) => {
   const [showAppDD, setShowAppDD] = useState(false);
   const [showTagsDD, setShowTagsDD] = useState(false);
@@ -76,6 +77,7 @@ const AppTracker = ({
     try {
       //await updateProfile(newProfile);
       NotificationManager.success('Sucessfully updated Application Tracker', '', 1500);
+      close();
     } catch (err) {
       //console.log(err);
       NotificationManager.error('Unable to update Application Tracker', '', 1500);
@@ -175,7 +177,7 @@ const AppTracker = ({
             )}
         </div>
       </div>
-      <GridComponent displayBanner={false}/>
+      <GridComponent displayBanner= {true} favorites={student.favorited_clubs}/>
 
       <button id="save-button" onClick={submit}> Save Selected </button>
     </div>

@@ -20,18 +20,23 @@
   background: white;
   border: 1px solid #ccc;
   border-radius: 10px;
-  padding: 20px;
+  padding: 25px;
+  padding-top: 35px;
   max-height: 70%;
   overflow-y: scroll;
+  /* background-color: lavender; */
 }
 
 .exit {
-  position: absolute;
-  top: 10px;
-  right: 10px;
+  position: sticky;
+  top: 0px;
+  margin-right: -11px;
+  float: right;
   cursor: pointer;
   color: #333;
   font-size: 24px;
+  position: sticky;
+  /* background-color: pink; */
 }
 
 .exit:hover {

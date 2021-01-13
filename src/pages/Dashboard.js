@@ -29,7 +29,7 @@ function Dashboard({student}) {
     majors: [],
     minors: [],
     interests: [],
-    favorited_clubs: [],
+    favorited_clubs: ["Karasuno High VBC", "User Testing"],
     visited_clubs: [],
     club_board: {
       interested_clubs: [
@@ -339,7 +339,7 @@ function Dashboard({student}) {
           close={cancelEdit}
         >
           <div className="dashboard-modal">
-            <AppTracker />
+            <AppTracker student={student} close={cancelEdit}/>
           </div>
         </Modal>
         <Footer />
