@@ -78,7 +78,7 @@ function ClubPage({
   const tempTab = path[1];
   if (tempTab) {
     tab = tempTab;
-  } 
+  }
 
   if (!organization.link_name) return <Loading />;
 
@@ -114,13 +114,13 @@ function ClubPage({
     </div>
   ));
 
-  const overview = 
+  const overview =
     <div>
     {organization.about_us &&
       <div className='clubpage-content-about clubpage-content-item' >
         <div className='clubpage-content-header'>
           <h1>About {organization.name}</h1>
-          {admin && 
+          {admin &&
             <EditIcon className="clubpage-content-header-icon" onClick={() => setShowAboutModal(admin)}/>
           }
         </div>
@@ -131,7 +131,7 @@ function ClubPage({
       <div className='clubpage-content-gallery clubpage-content-item' >
         <div className='clubpage-content-header'>
           <h1>Gallery</h1>
-          {admin && 
+          {admin &&
             <EditIcon className="clubpage-content-header-icon"/>
           }
         </div>
@@ -171,7 +171,7 @@ function ClubPage({
             src={organization.banner_url || require('./assets/default_banner.jpg')}
             alt=""
           />
-          {admin && 
+          {admin &&
             <EditIcon className="clubpage-content-header-icon above-banner" onClick={() => setShowBannerModal(admin)}/>
           }
           <div className="clubpage-header-content">
@@ -194,29 +194,29 @@ function ClubPage({
               </div>
             </div>
             <div className="clubpage-header-right">
-              {!admin && 
+              {!admin &&
                 <button className="clubpage-favorite-button" /* NEED AN ONCLICK HANDLER TO ACTUALL DO SOMETHING HERE*/>
                   <HeartBordered fontSize="small"/>
                   <span>Favorite</span>
                 </button>
-              }             
-              {admin && 
+              }
+              {admin &&
                 <EditIcon className="clubpage-content-header-icon" onClick={() => setShowProfileModal(admin)}/>
               }
             </div>
           </div>
           <div className="clubpage-header-nav">
-            <Link 
+            <Link
               to={admin ? "/admin/overview" : `/club/${routeId}/overview`}
               className={`clubpage-header-nav-item ${tab === "overview" ? "selected" : ""}`} onClick={() => setTab("overview")}>
               Overview
             </Link>
-            <Link 
+            <Link
               to={admin ? "/admin/recruitment" : `/club/${routeId}/recruitment`}
               className={`clubpage-header-nav-item ${tab === "recruitment" ? "selected" : ""}`} onClick={() => setTab("recruitment")}>
               Recruitment
             </Link>
-            <Link 
+            <Link
               to={admin ? "/admin/events" : `/club/${routeId}/events`}
               className={`clubpage-header-nav-item ${tab === "events" ? "selected" : ""}`} onClick={() => setTab("events")}>
               Events
@@ -227,11 +227,11 @@ function ClubPage({
           <div className='clubpage-content-left'>
             <Switch>
               <Route path={admin ? "/admin/overview" : `/club/${routeId}/overview`} render={() => overview}/>
-              <Route path={admin ? "/admin/recruitment" : `/club/${routeId}/recruitment`} render={() => 
+              <Route path={admin ? "/admin/recruitment" : `/club/${routeId}/recruitment`} render={() =>
                 <div className= "clubpage-content-timeline">
                   <div className='clubpage-content-header'>
                     <h1>Recruitment Timeline</h1>
-                    {admin && 
+                    {admin &&
                       <EditIcon className="clubpage-content-header-icon" onClick={() => setShowRecrModal(admin)}/>
                     }
                   </div>
@@ -246,14 +246,14 @@ function ClubPage({
                   <div>
                     <div className='clubpage-content-header'>
                       <h1>Events</h1>
-                      {admin && 
+                      {admin &&
                         <EditIcon className="clubpage-content-header-icon"/>
                       }
                       </div>
-                      {organization.events.length > 0 ? 
+                      {organization.events.length > 0 ?
                         <EventAccord data={organization} />
                       :
-                      <p>There are no events scheduled.</p>
+                      <p>This feature is coming soon!</p>
                       }
                   </div>
                 </div>
@@ -262,16 +262,16 @@ function ClubPage({
             </Switch>
           </div>
           <div className='clubpage-content-right'>
-            {(organization.get_involved || organization.apply_link) && 
+            {(organization.get_involved || organization.apply_link) &&
               <div className="clubpage-content-getinvolved clubpage-tile">
                 <div className='clubpage-content-header'>
                   <h1>How to Get Involved</h1>
-                  {admin && 
+                  {admin &&
                     <EditIcon className="clubpage-content-header-icon" onClick={() => setShowInvolvedModal(admin)}/>
                   }
                   </div>
                 <p>{organization.get_involved}</p>
-                {organization.apply_link && 
+                {organization.apply_link &&
                 <a href={"https://"+organization.apply_link}>
                   <button className="clubpage-apply-btn">
                     Apply Now!
@@ -284,7 +284,7 @@ function ClubPage({
             <div className="clubpage-content-contact clubpage-tile">
               <div className='clubpage-content-header'>
                 <h1>Contact Information</h1>
-                {admin && 
+                {admin &&
                   <EditIcon className="clubpage-content-header-icon" onClick={() => setShowContactModal(admin)}/>
                 }
                 </div>
@@ -295,11 +295,11 @@ function ClubPage({
               <h2>Social Media</h2>
               <div className="clubpage-sm-link-list">{contactComps}</div>
             </div>
-            {organization.resources && organization.resources.length > 0 && 
+            {organization.resources && organization.resources.length > 0 &&
               <div className="clubpage-content-getinvolved clubpage-tile">
                 <div className='clubpage-content-header'>
                   <h1>Resources</h1>
-                  {admin && 
+                  {admin &&
                     <EditIcon className="clubpage-content-header-icon"/>
                   }
                 </div>
