@@ -11,6 +11,7 @@ const Banner = ({
   uploadLogo,
   uploadBanner,
   images,
+  close,
 }) => {
   const [bannerImage, setBannerImage] = useState(null);
 
@@ -19,7 +20,7 @@ const Banner = ({
       try {
         NotificationManager.info('Uploading banner...', '', 1500);
         await uploadBanner(bannerUploads[0]);
-        NotificationManager.success('Banner uploaded successfully!', '', 1500);
+        // NotificationManager.success('Banner uploaded successfully!', '', 1500);
       } catch (err) {
         if (err.response.status === 503) {
           NotificationManager.error(
@@ -29,7 +30,7 @@ const Banner = ({
           );
         } else {
           NotificationManager.error(
-            'For best results, please upload a logo that has an aspect ratio of 8:3',
+            'For best results, please upload a logo that has an aspect ratio of 10:3',
             'Banner image upload unsuccessful',
             5000
           );
@@ -50,10 +51,10 @@ const Banner = ({
       await Promise.all([
         uploadBannerPic(bannerImage)
       ]);
-        NotificationManager.success('Banner changes saved successfully!', '', 1500);
-        
+        NotificationManager.success('Banner changes saved successfully! Refresh to see changes', '', 5000);
+        close();
       } catch (err) {
-        NotificationManager.error('Banner changes unsuccessful!', '', 1500);
+        NotificationManager.error('Banner changes unsuccessful!', '', 5000);
       }
 
     // await Promise.all([
@@ -66,7 +67,7 @@ const Banner = ({
       <h3>Banner</h3>
       <p>Upload your organization's banner</p>
       <ImageUploader
-        label="8:3 ratio - e.g. Facebook cover image"
+        label="10:3 ratio"
         buttonStyles={{
           background: '#54a0f1',
         }}

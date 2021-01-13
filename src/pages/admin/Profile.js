@@ -16,6 +16,7 @@ const Profile = ({
   uploadBanner,
   images,
   tagOptions,
+  close,
 }) => {
   var appOptions = [
     { value: 1, label: 'Application required' },
@@ -88,14 +89,16 @@ const Profile = ({
 
     try {
       await updateProfile(newProfile);
+      await Promise.all([
+        uploadLogoPic(logoImage)
+      ]);
       NotificationManager.success('Profile changes saved successfully!', '', 1500);
+      close();
     } catch (err) {
       NotificationManager.error('Profile changes unsuccessful!', '', 1500);
     }
 
-    await Promise.all([
-      uploadLogoPic(logoImage)
-    ]);
+    
   };
 
   const reqFieldsCheck = () => {

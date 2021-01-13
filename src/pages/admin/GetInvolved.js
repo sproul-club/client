@@ -6,7 +6,7 @@ import { normalizeUrl } from '../../utils/normalizeUrl';
 import './Admin.css';
 
 
-const GetInvolved = ({ profile, get_involved, updateProfile }) => {
+const GetInvolved = ({ profile, get_involved, updateProfile, close }) => {
   const [involvedDesc, setInvolvedDesc] = useState(get_involved);
   const [descrChars, setInvolvedChars] = useState(500 - involvedDesc.length);
   const [involvedLink, setInvolvedLink] = useState(profile.apply_link);
@@ -37,6 +37,7 @@ const GetInvolved = ({ profile, get_involved, updateProfile }) => {
     try {
       await updateProfile(newProfile);
       NotificationManager.success('Changes to How to Get Involved saved successfully!', '', 1500);
+      close();
     } catch (err) {
       console.log(err);
       NotificationManager.error('Changes to How to Get Involved did not save successfully!', '', 1500);
