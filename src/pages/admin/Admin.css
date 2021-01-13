@@ -152,9 +152,9 @@
 
 .subtitle {
   margin-top: -20px;
-  font-size: 10px;
+  font-size: 10px !important;
   /* margin-left: 210px; */
-  align-self: flex-end;
+  /* align-self: flex-end; */
   margin-bottom: 20px;
   text-decoration: none;
 }

@@ -66,7 +66,7 @@ const GetInvolved = ({ profile, get_involved, updateProfile, close }) => {
             onChange={descrChange}
           />
         </div>
-        <div className="subtitle">{descrChars} characters remaining</div>
+        <div style={{ alignSelf: 'flex-end' }} className="subtitle">{descrChars} characters remaining</div>
 
         <div className="formElement">
           <p>Application Link</p>
