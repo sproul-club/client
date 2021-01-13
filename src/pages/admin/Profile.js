@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Dropdown from './AdminDropdown.js';
 import { connect } from 'react-redux';
 import ImageUploader from '../../react-images-upload';
-import { updateProfile, uploadLogo, uploadBanner } from '../../actions/profile';
+import { updateProfile, uploadLogo } from '../../actions/profile';
 import { NotificationManager } from 'react-notifications';
 import RichText from '../RichText'
 import {stateFromHTML} from 'draft-js-import-html';
@@ -13,7 +13,6 @@ const Profile = ({
   profile,
   updateProfile,
   uploadLogo,
-  uploadBanner,
   images,
   tagOptions,
   close,
@@ -49,7 +48,6 @@ const Profile = ({
   const [size, setSize] = useState(0)
 
   const [logoImage, setLogoImage] = useState(null);
-  const [bannerImage, setBannerImage] = useState(null);
 
 
   async function uploadLogoPic(logoUploads) {
@@ -121,7 +119,7 @@ const Profile = ({
     <div>
       <h3>Profile</h3>
       <div className="admin-text">
-        Add an organization logo, profile banner, edit your tags, membership
+        Add an organization logo, edit your tags, membership
         status, application requirements, and organization description.
       </div>
 
@@ -275,5 +273,4 @@ const mapStateToProps = (state) => ({
 export default connect(mapStateToProps, {
   updateProfile,
   uploadLogo,
-  uploadBanner,
 })(Profile);
