@@ -20,7 +20,8 @@ const Banner = ({
       try {
         NotificationManager.info('Uploading banner...', '', 1500);
         await uploadBanner(bannerUploads[0]);
-        // NotificationManager.success('Banner uploaded successfully!', '', 1500);
+        NotificationManager.success('Banner changes saved successfully! Refresh to see changes', '', 5000);
+        close();
       } catch (err) {
         if (err.response.status === 503) {
           NotificationManager.error(
@@ -51,8 +52,7 @@ const Banner = ({
       await Promise.all([
         uploadBannerPic(bannerImage)
       ]);
-        NotificationManager.success('Banner changes saved successfully! Refresh to see changes', '', 5000);
-        close();
+        // NotificationManager.success('Banner changes saved successfully! Refresh to see changes', '', 5000);
       } catch (err) {
         NotificationManager.error('Banner changes unsuccessful!', '', 5000);
       }
