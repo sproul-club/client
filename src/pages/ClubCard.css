@@ -64,6 +64,7 @@
 
 .clubcard-text {
   padding-left: 10px;
+  flex-grow: 1;
   color: #2b2b2b;
   height: 78px;
 }
@@ -91,6 +92,7 @@
 }
 
 .clubcard-like {
+  
   color: #e95f5f;
 }
 
