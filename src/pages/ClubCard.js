@@ -54,12 +54,12 @@ const ClubCard = ({club, tagOptions, displayBanner}) => {
             {new_members ? (
               <>
                 <i className="fas fa-check"></i> 
-                {' '}Taking members
+                {' '}Open
               </>
             ) : (
               <>
                 <i className="fas fa-times"></i> 
-                {' '}Not taking members
+                {' '}Closed
               </>
             )}
           </div>

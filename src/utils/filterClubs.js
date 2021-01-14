@@ -47,7 +47,6 @@ export const filterClubs = (allOrganizations, formDetails, tagOptions, num_resul
   for (const [key, value] of Object.entries(formDetails.members)) {
     if(key && value === true) searchMembers.push(Number(key))
   }
-  console.log('selected', searchMembers)
   if(searchMembers.length > 0){
     filteredClubs = filteredClubs.filter(club => {
       return searchMembers.includes(club.num_users)
