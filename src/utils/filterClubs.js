@@ -44,15 +44,53 @@ export const filterClubs = (allOrganizations, formDetails, tagOptions, num_resul
   }
 
   // SORTING - a.name > b.name for ascending, b.name for descending
-  if (formDetails.sort === 'Asc') {
-    filteredClubs = filteredClubs.sort((a,b) => a.name > b.name ? 1 : -1);
-  } else if (formDetails.sort == "Desc") {
-    filteredClubs = filteredClubs.sort((a,b) => a.name > b.name ? -1 : 1);
-  } else if (formDetails.sort == "Fresh") {
-    filteredClubs = filteredClubs.sort((a,b) => a.last_updated > b.last_updated ? -1 : 1);
-    filteredClubs.forEach(element => console.log(element.last_updated, element.name));
-  } else if (formDetails.sort == "Ddln") {
 
+  function sorted(type) {
+    if (type == "Fresh") {
+      return function (a, b) {
+        // equal items sort equally
+        if (a.last_updated === b.last_updated) {
+            return 0;
+        }
+        // nulls sort after anything else
+        else if (a.last_updated === null) {
+            return 1;
+        }
+        else if (b.last_updated === null) {
+            return -1;
+        }
+        // otherwise, lowest sorts first
+        else {
+            return a.last_updated < b.last_updated ? -1 : 1;
+        }
+      };
+    } else {
+      return function (a, b) {
+        // equal items sort equally
+        if (a.apply_deadline_end === b.apply_deadline_end) {
+            return 0;
+        }
+        // nulls sort after anything else
+        else if (a.apply_deadline_end === null) {
+            return 1;
+        }
+        else if (b.apply_deadline_end === null) {
+            return -1;
+        }
+        // otherwise, lowest sorts first
+        else {
+            return a.apply_deadline_end < b.apply_deadline_end ? -1 : 1;
+        }
+      };
+    }
+  }
+
+  if (formDetails.sort === 'Asc') {
+    filteredClubs = filteredClubs.sort((a,b) => a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1);
+  } else if (formDetails.sort == "Desc") {
+    filteredClubs = filteredClubs.sort((a,b) => a.name.toLowerCase() > b.name.toLowerCase() ? -1 : 1);
+  } else if (formDetails.sort == "Desc" || formDetails.sort == 'Fresh') {
+    filteredClubs = filteredClubs.sort(sorted(formDetails.sort));
   }
   
   

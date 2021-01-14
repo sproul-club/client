@@ -69,6 +69,7 @@ const Catalog2 = ({
     setFormDetails({ name: 'noAppReq', value: false });
     setFormDetails({ name: 'recruiting', value: false });
     setFormDetails({ name: 'notRecruiting', value: false });
+    setFormDetails({ name: 'sort', value: 'Asc' });
   };
 
   const toggleTag = tagLabel => {
@@ -226,7 +227,7 @@ const Catalog2 = ({
                   <span> Decending</span>
                 </div>
                 <div className='filter-selection' onClick={()=>toggleSort("Fresh")}>
-                  <span> Recently Added</span>
+                  <span> Recently Updated</span>
                 </div>
                 <div className='filter-selection'>
                   <span> Deadline</span>
