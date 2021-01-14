@@ -38,6 +38,7 @@ const Catalog2 = ({
     noAppReq,
     recruiting,
     notRecruiting,
+    sort,
     members
   } = formDetails;
 
@@ -70,10 +71,11 @@ const Catalog2 = ({
     setFormDetails({ name: 'noAppReq', value: false });
     setFormDetails({ name: 'recruiting', value: false });
     setFormDetails({ name: 'notRecruiting', value: false });
+    setFormDetails({ name: 'sort', value: 'Asc' });
   };
 
   const toggleTag = tagLabel => {
-    setFormDetails({ name: 'tags', value: tagLabel })
+    setFormDetails({ name: 'tags', value: tagLabel });
   }
 
   const toggleMembers = tagLabel => {
@@ -99,6 +101,10 @@ const Catalog2 = ({
     setFormDetails({ name: 'recruiting', value: false });
     setFormDetails({ name: 'notRecruiting', value: !notRecruiting });
   }
+
+  function toggleSort(e) {
+    setFormDetails({ name: 'sort', value: e});
+  }  
 
   function changeSearch(e) {
     setFormDetails({ name: 'name', value: e.target.value });
@@ -151,12 +157,12 @@ const Catalog2 = ({
             </div>
             {showAppDD && (
               <div className="filter-dropdown">
-                <div className='filter-selection'>
-                  <input type="checkbox" onClick={toggleAppReq}/>
+                <div className='filter-selection' onClick={toggleAppReq}>
+                  <input type="checkbox" checked={appReq}/>
                   <span> App Required</span>
                 </div>
-                <div className='filter-selection'>
-                  <input type="checkbox" onClick={toggleNoAppReq}/>
+                <div className='filter-selection' onClick={toggleNoAppReq}>
+                  <input type="checkbox" checked={noAppReq}/>
                   <span> No Application</span>
                 </div>
               </div>
@@ -206,14 +212,14 @@ const Catalog2 = ({
             </div>
             {showSortDD && (
               <div className="filter-dropdown sort-filter-dropdown">
-                <div className='filter-selection'>
+                <div className='filter-selection' onClick={()=>toggleSort("Asc")}>
                   <span> Ascending</span>
                 </div>
-                <div className='filter-selection'>
+                <div className='filter-selection' onClick={()=>toggleSort("Desc")}>
                   <span> Decending</span>
                 </div>
-                <div className='filter-selection'>
-                  <span> Recently Added</span>
+                <div className='filter-selection' onClick={()=>toggleSort("Fresh")}>
+                  <span> Recently Updated</span>
                 </div>
                 <div className='filter-selection'>
                   <span> Deadline</span>
