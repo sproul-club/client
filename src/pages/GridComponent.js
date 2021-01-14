@@ -9,8 +9,12 @@ import ClubCard from './ClubCard';
 import uwubear from './assets/landingbears.svg';
 
 function GridComponent({ tagOptions, clubs, loading, formDetails, num_displayed, displayBanner, favorites}) {
+  console.log(clubs);
 
-  const [num_filtered_results, filteredClubs] = filterClubs(clubs, formDetails, tagOptions, num_displayed, favorites)
+  if (!formDetails.sort) {
+    formDetails.sort = 'Asc';
+  }
+  const [num_filtered_results, filteredClubs] = filterClubs(clubs, formDetails, tagOptions, num_displayed, favorites);
 
   const GridList = filteredClubs.map((club, i) => <ClubCard key={i} tagOptions={tagOptions} club={club} displayBanner={displayBanner}/>);
 
