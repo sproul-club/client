@@ -19,6 +19,8 @@ export const REFRESH_TOKEN = 'REFRESH_TOKEN';
 export const LOGOUT = 'LOGOUT';
 export const AUTH_ERROR = 'AUTH_ERROR';
 export const GET_TAGS = 'GET_TAGS';
+export const GET_SIZE_TAGS = 'GET_SIZE_TAGS';
+
 
 export const UPDATE_PROFILE = 'UPDATE_PROFILE';
 export const UPDATE_EVENT = 'UPDATE_EVENT';

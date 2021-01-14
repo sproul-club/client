@@ -76,7 +76,7 @@
 }
 
 .modal-input {
-  border: 1px solid #555;
+  border: 1px solid;
   font-size: 16px;
   width: 150px;
   height: 34px;

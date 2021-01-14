@@ -28,7 +28,7 @@ import Dashboard from './pages/Dashboard.js';
 import Favorites from './pages/Favorites.js';
 import store from './store';
 import ContactUs from './layout/ContactUs.js';
-import { loadProfile, getTags } from './actions/profile';
+import { loadProfile, getTags, getSizeTags} from './actions/profile';
 import { loadAllClubs} from './actions/catalog';
 import { Provider } from 'react-redux';
 import PrivateRoute from './utils/PrivateRoute';
@@ -37,14 +37,16 @@ import Navbar from './layout/Navbar';
 import Moment from 'react-moment';
 import 'moment-timezone';
 import StudentSettings from './pages/student/StudentSettings.js';
+import profile from './reducers/profile.js';
 
 Moment.globalTimezone = 'America/Los_Angeles';
 
 const App = () => {
   useEffect(() => {
     store.dispatch(loadProfile());
-    store.dispatch(loadAllClubs())
+    store.dispatch(loadAllClubs());
     store.dispatch(getTags());
+    store.dispatch(getSizeTags());
   }, []);
 
   return (
