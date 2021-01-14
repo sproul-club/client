@@ -15,6 +15,7 @@ const Profile = ({
   uploadLogo,
   images,
   tagOptions,
+  sizeTagOptions,
   close,
 }) => {
   var appOptions = [
@@ -27,13 +28,6 @@ const Profile = ({
     { value: 0, label: 'Not accepting members' },
   ];
 
-  var sizeOptions = [
-    { value: 0, label: '1-20 members' },
-    { value: 1, label: '20-50 members' },
-    { value: 2, label: '50+ members' },
-  ];
-
-  console.log(stateFromHTML(profile.about_us))
   const [orgName, setOrgName] = useState(profile.name);
   const [orgEmail, setOrgEmail] = useState(profile.owner);
   const [descr, setDescr] = useState(stateFromHTML(profile.about_us));
@@ -45,10 +39,9 @@ const Profile = ({
   const [recruiting, setRecruit] = useState(
     recruitOptions[profile.new_members === true ? 0 : 1]
   );
-  const [size, setSize] = useState(0)
+  const [size, setSize] = useState(profile.num_users);
 
   const [logoImage, setLogoImage] = useState(null);
-
 
   async function uploadLogoPic(logoUploads) {
     if (logoUploads && logoUploads.length > 0) {
@@ -83,6 +76,7 @@ const Profile = ({
       about_us: stateToHTML(descr),
       app_required: !!appReq.value,
       new_members: !!recruiting.value,
+      num_users: size.value,
     };
 
     try {
@@ -95,8 +89,6 @@ const Profile = ({
     } catch (err) {
       NotificationManager.error('Profile changes unsuccessful!', '', 1500);
     }
-
-    
   };
 
   const reqFieldsCheck = () => {
@@ -150,10 +142,10 @@ const Profile = ({
           <div className="formElement">
             <p>Club Size</p>
             <Dropdown
-              options={sizeOptions}
+              options={sizeTagOptions}
               multi={false}
               search={false}
-              defaultValue={sizeOptions[size]}
+              defaultValue={sizeTagOptions[size]}
               placeholder="Select club size"
               set={setSize}
             />
@@ -268,6 +260,7 @@ const mapStateToProps = (state) => ({
   profile: state.profile.profile,
   images: state.profile.images,
   tagOptions: state.profile.tagOptions,
+  sizeTagOptions: state.profile.sizeTagOptions,
 });
 
 export default connect(mapStateToProps, {

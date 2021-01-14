@@ -28,7 +28,7 @@ import Dashboard from './pages/Dashboard.js';
 import Favorites from './pages/Favorites.js';
 import store from './store';
 import ContactUs from './layout/ContactUs.js';
-import { loadProfile, getTags } from './actions/profile';
+import { loadProfile, getTags, getSizeTags} from './actions/profile';
 import { loadAllClubs} from './actions/catalog';
 import { Provider } from 'react-redux';
 import PrivateRoute from './utils/PrivateRoute';
@@ -45,6 +45,7 @@ const App = () => {
     store.dispatch(loadProfile());
     store.dispatch(loadAllClubs())
     store.dispatch(getTags());
+    store.dispatch(getSizeTags());
   }, []);
 
   return (

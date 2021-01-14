@@ -12,6 +12,7 @@ import {
   DELETE_RESOURCE,
   UPDATE_PASSWORD,
   GET_TAGS,
+  GET_SIZE_TAGS,
 } from './types';
 import FormData from 'form-data';
 
@@ -45,6 +46,7 @@ export const updateProfile = (formData) => async (dispatch) => {
       get_involved: formData.get_involved,
       social_media_links: formData.social_media_links,
       num_users: formData.num_users,
+      //apply_deadline: formData.apply_deadline,
       apply_deadline: '1970-01-01T00:00:00Z', //dummy value to fix      
       apply_link: formData.apply_link,
     });
@@ -186,6 +188,16 @@ export const getTags = () => async (dispatch) => {
     const res = await API.get('/api/catalog/tags');
     const tags = res.data.map((tag) => ({ label: tag.name, value: tag.id }));
     dispatch({ type: GET_TAGS, payload: tags });
+  } catch (err) {
+    console.log(err.response);
+  }
+};
+
+export const getSizeTags = () => async (dispatch) => {
+  try {
+    const res = await API.get('/api/catalog/num-user-tags');
+    const size_tags = res.data.map((tag) => ({ label: tag.value, value: tag.id }));
+    dispatch({ type: GET_SIZE_TAGS, payload: size_tags });
   } catch (err) {
     console.log(err.response);
   }

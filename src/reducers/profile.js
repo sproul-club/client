@@ -10,6 +10,7 @@ import {
   UPDATE_RESOURCE,
   DELETE_RESOURCE,
   GET_TAGS,
+  GET_SIZE_TAGS,
 } from '../actions/types';
 
 const initialState = {
@@ -33,6 +34,7 @@ const initialState = {
   social_media_links: {},
   get_involved: '',
   tagOptions: [],
+  sizeTagOptions: [],
   apply_deadline: '',
   apply_link: '',
 };
@@ -92,6 +94,8 @@ export default function (state = initialState, action) {
       return { ...state, resources: payload };
     case GET_TAGS:
       return { ...state, tagOptions: payload };
+    case GET_SIZE_TAGS:
+      return { ...state, sizeTagOptions: payload };
     default:
       return state;
   }
