@@ -15,11 +15,6 @@ const AboutClub = ({
   const [descr, setDescr] = useState(stateFromHTML(profile.about_us));
   const [descrChars, setDescrChars] = useState(750 - profile.about_us.replace(/<[^>]*>?/gm, '').length);
 
-  const descrChange = (e) => {
-    setDescr(e.target.value);
-    setDescrChars(750 - e.target.value.length);
-  }; 
-
   const submit = async () => {
     const newProfile = {
       name: profile.name,

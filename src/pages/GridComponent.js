@@ -1,12 +1,10 @@
 import React from 'react';
-import { Grid } from '@material-ui/core';
 import { connect } from 'react-redux';
 import { withRouter  } from 'react-router-dom';
 import { searchClubs } from '../actions/catalog';
 import './GridComponent.css';
 import { filterClubs } from '../utils/filterClubs';
 import ClubCard from './ClubCard';
-import uwubear from './assets/landingbears.svg';
 
 function GridComponent({ tagOptions, clubs, loading, formDetails, num_displayed, displayBanner, favorites}) {
 

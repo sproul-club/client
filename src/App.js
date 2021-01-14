@@ -37,7 +37,6 @@ import Navbar from './layout/Navbar';
 import Moment from 'react-moment';
 import 'moment-timezone';
 import StudentSettings from './pages/student/StudentSettings.js';
-import profile from './reducers/profile.js';
 
 Moment.globalTimezone = 'America/Los_Angeles';
 
@@ -60,7 +59,6 @@ const App = () => {
           <Route exact path="/faq" component={FAQ} />
           <PrivateRoute path="/admin" component={Admin} />
           <Route path="/catalog" component={Catalog2} />
-          {/* <Route path="/catalog2" component={Catalog2} /> */}
           <Route exact path="/register" component={RegisterStudent} />
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/signin" component={SignIn} />

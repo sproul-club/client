@@ -61,7 +61,7 @@ const Catalog2 = ({
     window.addEventListener('scroll', onScroll);
 
     return () => window.removeEventListener('scroll', onScroll);
-  }, [num_displayed, num_clubs]);
+  }, [num_displayed, num_clubs, loadMoreClubs]);
 
   const resetFilters = () => {
     setFormDetails({ name: 'name', value: '' });
