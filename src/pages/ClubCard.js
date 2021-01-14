@@ -11,12 +11,12 @@ const ClubCard = ({club, tagOptions, displayBanner}) => {
   const measuredRef = (node) => {
     if (node !== null) {
       const height = node.getBoundingClientRect().height
-      const lines = height <= 16 ? 1 : height <= 32 ? 'two-line' : 'three-line'
+      const lines = height <= 16 ? 'one-line' : height <= 32 ? 'two-line' : 'three-line'
       setLines(lines);
     }
   };
 
-  const {link_name, name, banner_url, logo_url, new_members, app_required } = club
+  const {link_name, name, banner_url, logo_url, new_members, app_required, about_us } = club
 
   return (
     <Link to={`/club/${link_name}`} className='clubcard'>
@@ -34,7 +34,7 @@ const ClubCard = ({club, tagOptions, displayBanner}) => {
           <img src={logo_url || logo} alt="logo" className='clubcard-logo'/>
           <div className='clubcard-text'>
             <div className="clubcard-title" ref={measuredRef}>{name}</div>
-            <div className={lines + ' clubcard-description'}>We are an interactive platform where students can search for clubs, organizations, and communities relevant to their interests at UC Berkeley.</div>
+            <div className={lines + ' clubcard-description'}>{about_us.replace(/(<([^>]+)>)/gi, "")}</div>
           </div>
           <div className="clubcard-like">
             <i class="fas fa-heart"></i>
