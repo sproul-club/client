@@ -37,13 +37,14 @@ import Navbar from './layout/Navbar';
 import Moment from 'react-moment';
 import 'moment-timezone';
 import StudentSettings from './pages/student/StudentSettings.js';
+import profile from './reducers/profile.js';
 
 Moment.globalTimezone = 'America/Los_Angeles';
 
 const App = () => {
   useEffect(() => {
     store.dispatch(loadProfile());
-    store.dispatch(loadAllClubs())
+    store.dispatch(loadAllClubs());
     store.dispatch(getTags());
     store.dispatch(getSizeTags());
   }, []);

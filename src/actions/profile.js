@@ -25,6 +25,8 @@ export const loadProfile = () => async (dispatch) => {
     try {
       await dispatch(refreshToken());
       const res = await API.get('/api/admin/profile');
+      console.log("hi");
+      console.log(res);
       dispatch({ type: LOAD_PROFILE, payload: res.data });
     } catch (err) {
       dispatch({ type: LOAD_PROFILE_ERROR, payload: err });
@@ -46,8 +48,10 @@ export const updateProfile = (formData) => async (dispatch) => {
       get_involved: formData.get_involved,
       social_media_links: formData.social_media_links,
       num_users: formData.num_users,
-      //apply_deadline: formData.apply_deadline,
-      apply_deadline: '1970-01-01T00:00:00Z', //dummy value to fix      
+      recruiting_start: formData.recruiting_start,   
+      recruiting_end: formData.recruiting_end,   
+      apply_deadline_start: formData.apply_deadline_start,   
+      apply_deadline_end: formData.apply_deadline_end,   
       apply_link: formData.apply_link,
     });
 

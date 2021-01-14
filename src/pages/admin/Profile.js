@@ -4,9 +4,7 @@ import { connect } from 'react-redux';
 import ImageUploader from '../../react-images-upload';
 import { updateProfile, uploadLogo } from '../../actions/profile';
 import { NotificationManager } from 'react-notifications';
-import RichText from '../RichText'
-import {stateFromHTML} from 'draft-js-import-html';
-import {stateToHTML} from 'draft-js-export-html';
+
 
 
 const Profile = ({
@@ -30,8 +28,6 @@ const Profile = ({
 
   const [orgName, setOrgName] = useState(profile.name);
   const [orgEmail, setOrgEmail] = useState(profile.owner);
-  const [descr, setDescr] = useState(stateFromHTML(profile.about_us));
-  const [descrChars, setChars] = useState(750 - profile.about_us.replace(/<[^>]*>?/gm, '').length);
   const [tags, setTags] = useState(profile.tags.map((tag) => tagOptions[tag]));
   const [appReq, setAppReq] = useState(
     appOptions[profile.app_required === true ? 0 : 1]
@@ -40,8 +36,15 @@ const Profile = ({
     recruitOptions[profile.new_members === true ? 0 : 1]
   );
   const [size, setSize] = useState(profile.num_users);
-
   const [logoImage, setLogoImage] = useState(null);
+  const [recrStartDate, setRecrStartDate] = useState(
+    (profile.recruiting_start == null || profile.recruiting_start == '1970-01-01T00:00:00' ) ? null : profile.recruiting_start.substring(0, 10)); 
+  const [recrEndDate, setRecrEndDate] = useState(
+    (profile.recruiting_end == null || profile.recruiting_end == '1970-01-01T00:00:00' ) ? null : profile.recruiting_end.substring(0, 10)); 
+  const [appStartDate, setAppStartDate] = useState(
+    (profile.apply_deadline_start == null || profile.apply_deadline_start == '1970-01-01T00:00:00' ) ? null : profile.apply_deadline_start.substring(0, 10)); 
+  const [appEndDate, setAppEndDate] = useState(
+    (profile.apply_deadline_end == null || profile.apply_deadline_end == '1970-01-01T00:00:00' ) ? null : profile.apply_deadline_end.substring(0, 10)); 
 
   async function uploadLogoPic(logoUploads) {
     if (logoUploads && logoUploads.length > 0) {
@@ -68,15 +71,17 @@ const Profile = ({
   }
 
   const submit = async () => {
-    console.log(profile)
     const newProfile = {
       name: orgName.trim(),
       owner: orgEmail,
       tags: tags.map((tags) => tags.value),
-      about_us: stateToHTML(descr),
       app_required: !!appReq.value,
       new_members: !!recruiting.value,
       num_users: size.value,
+      recruiting_start: recrStartDate ? recrStartDate : '1970-01-01T00:00:00Z',
+      recruiting_end: recrEndDate ? recrEndDate : '1970-01-01T00:00:00Z',
+      apply_deadline_start: appStartDate ? appStartDate : '1970-01-01T00:00:00Z',
+      apply_deadline_end: appEndDate ? appEndDate : '1970-01-01T00:00:00Z',
     };
 
     try {
@@ -112,7 +117,7 @@ const Profile = ({
       <h3>Profile</h3>
       <div className="admin-text">
         Add an organization logo, edit your tags, membership
-        status, application requirements, and organization description.
+        status, recruitment period, or application requirements.
       </div>
 
       <div style={{display: 'flex', flexDirection: 'row'}} className="modal-wrapper">
@@ -168,17 +173,19 @@ const Profile = ({
                 <input
                   className="modal-input"
                   type="date"
-                  //onChange={(e) => setStartDate(e.target.value)} //TODO
-                  //value={startDate} //TODO
+                  onChange={(e) => setRecrStartDate(e.target.value)} //TODO
+                  value={recrStartDate} //TODO
                   required
+                  style={{backgroundColor: "white"}}
                 />
                 <span> to </span>
                 <input
                   className="modal-input"
                   type="date"
-                  //onChange={(e) => setEndDate(e.target.value)} //TODO
-                  //value={endDate} //TODO
+                  onChange={(e) => setRecrEndDate(e.target.value)} //TODO
+                  value={recrEndDate} //TODO
                   required
+                  style={{backgroundColor: "white"}}
                 />
               </div>
             </div>
@@ -188,21 +195,23 @@ const Profile = ({
             <div className="formElement">
               <p>Application Open to Close</p>
               <div className="input-time">
-                  <input
-                    className="modal-input"
-                    type="date"
-                    //onChange={(e) => setStartDate(e.target.value)} //TODO
-                    //value={startDate} //TODO
-                    required
-                  />
-                  <span> to </span>
-                  <input
-                    className="modal-input"
-                    type="date"
-                    //onChange={(e) => setEndDate(e.target.value)} //TODO
-                    //value={endDate} //TODO
-                    required
-                  />
+                <input
+                  className="modal-input"
+                  type="date"
+                  onChange={(e) => setAppStartDate(e.target.value)} //TODO
+                  value={appStartDate} //TODO
+                  required
+                  style={{backgroundColor: "white"}}
+                />
+                <span> to </span>
+                <input
+                  className="modal-input"
+                  type="date"
+                  onChange={(e) => setAppEndDate(e.target.value)} //TODO
+                  value={appEndDate} //TODO
+                  required
+                  style={{backgroundColor: "white"}}
+                />
                 </div>
             </div>
           }

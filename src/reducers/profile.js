@@ -35,7 +35,10 @@ const initialState = {
   get_involved: '',
   tagOptions: [],
   sizeTagOptions: [],
-  apply_deadline: '',
+  recruiting_start: '',
+  recruiting_end: '',
+  apply_deadline_start: '',
+  apply_deadline_end: '',
   apply_link: '',
 };
 
@@ -55,7 +58,10 @@ export default function (state = initialState, action) {
         images: { logo_url, banner_url },
         social_media_links: payload.social_media_links,
         get_involved: payload.get_involved,
-        apply_deadline: payload.apply_deadline,
+        recruiting_start: payload.recruiting_start,
+        recruiting_end: payload.recruiting_end,
+        apply_deadline_start: payload.apply_deadline_start,
+        apply_deadline_end: payload.apply_deadline_end,
         apply_link: payload.apply_link,
       };
     case UPDATE_PROFILE:
@@ -65,9 +71,18 @@ export default function (state = initialState, action) {
       const updateGetInvolved = payload.get_involved
         ? payload.get_involved
         : state.get_involved;
-      const updateAppDeadline = payload.apply_deadline
-        ? payload.apply_deadline
-        : state.apply_deadline;
+      const updateRecruitingStart = payload.recruiting_start
+        ? payload.recruiting_start
+        : state.recruiting_start;
+      const updateRecruitingEnd = payload.recruiting_end
+        ? payload.recruiting_end
+        : state.recruiting_end;
+      const updateAppDeadlineStart = payload.apply_deadline_start
+        ? payload.apply_deadline_start
+        : state.apply_deadline_start;
+      const updateAppDeadlineEnd = payload.apply_deadline_end
+        ? payload.apply_deadline_end
+        : state.apply_deadline_end;
       const updateAppLink = payload.apply_link
         ? payload.apply_link
         : state.apply_link;
@@ -76,7 +91,10 @@ export default function (state = initialState, action) {
         profile: payload,
         get_involved: updateGetInvolved,
         social_media_links: updateSocial,
-        apply_deadline: updateAppDeadline,
+        recruiting_start: updateRecruitingStart,
+        recruiting_end: updateRecruitingEnd,
+        apply_deadline_start: updateAppDeadlineStart,
+        apply_deadline_end: updateAppDeadlineEnd,
         apply_link: updateAppLink,
       };
     case UPLOAD_IMAGES:
