@@ -1,13 +1,14 @@
-export const filterClubs = (allOrganizations, formDetails, tagOptions, num_results, favorites) => {
+export const filterClubs = (allOrganizations, formDetails, tagOptions, num_results, favorites, sort) => {
 
-  console.log(allOrganizations)
+  // console.log(allOrganizations)
 
-  console.log(num_results)
+  // console.log(num_results)
   const orgList = allOrganizations
 
   // Filter by name
   let filteredClubs = orgList.filter(club => club.name.toLowerCase().includes(formDetails.name.toLowerCase()))
 
+  // Filter by favorites if student account
   if (favorites)
     filteredClubs = filteredClubs.filter(
       item => favorites.includes(item.name)
@@ -43,7 +44,17 @@ export const filterClubs = (allOrganizations, formDetails, tagOptions, num_resul
   }
 
   // SORTING - a.name > b.name for ascending, b.name for descending
-  // filteredClubs = filteredClubs.sort((a,b) => a.name > b.name ? -1 : 1);
+  if (formDetails.sort === 'Asc') {
+    filteredClubs = filteredClubs.sort((a,b) => a.name > b.name ? 1 : -1);
+  } else if (formDetails.sort == "Desc") {
+    filteredClubs = filteredClubs.sort((a,b) => a.name > b.name ? -1 : 1);
+  } else if (formDetails.sort == "Fresh") {
+    filteredClubs = filteredClubs.sort((a,b) => a.last_updated > b.last_updated ? -1 : 1);
+    filteredClubs.forEach(element => console.log(element.last_updated, element.name));
+  } else if (formDetails.sort == "Ddln") {
+
+  }
+  
   
   const num_filtered_results = filteredClubs.length
   const sliced_filtered_results = filteredClubs.slice(0, num_results)
