@@ -8,6 +8,9 @@ export const CLEAR_ORGANIZATIONS = 'CLEAR_ORGANIZATIONS';
 export const LOAD_MORE_ORGS = 'LOAD_MORE_ORGS';
 export const SET_FORM_DETAILS = 'SET_FORM_DETAILS';
 export const SET_TAGS = 'SET_TAGS';
+export const RESET_TAGS = 'RESET_TAGS'
+export const SET_MEMBERS = 'SET_MEMBERS'
+
 
 export const LOAD_PROFILE = 'LOAD_PROFILE';
 export const LOAD_PROFILE_NOT_LOGGED_IN = 'LOAD_PROFILE_NOT_LOGGED_IN';
@@ -19,6 +22,8 @@ export const REFRESH_TOKEN = 'REFRESH_TOKEN';
 export const LOGOUT = 'LOGOUT';
 export const AUTH_ERROR = 'AUTH_ERROR';
 export const GET_TAGS = 'GET_TAGS';
+export const GET_SIZE_TAGS = 'GET_SIZE_TAGS';
+
 
 export const UPDATE_PROFILE = 'UPDATE_PROFILE';
 export const UPDATE_EVENT = 'UPDATE_EVENT';

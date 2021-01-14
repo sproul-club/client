@@ -9,6 +9,8 @@ import {
   LOAD_MORE_ORGS,
   SET_FORM_DETAILS,
   SET_TAGS,
+  RESET_TAGS,
+  SET_MEMBERS,
 } from './types';
 
 import { API } from '../utils/backendClient';
@@ -125,7 +127,14 @@ export const loadMoreOrgs = ({
 };
 
 export const setFormDetails = ({ name, value }) => {
-  if (name === "tags") return { type: SET_TAGS, payload: { name, value } };
+  if (name === "tags"){
+    if (value === 'reset') return {type: RESET_TAGS }
+    return { type: SET_TAGS, payload: { name, value } };
+  }
+  if (name === "members"){
+    return { type: SET_MEMBERS, payload: { name, value } };
+  }
+  
   return { type: SET_FORM_DETAILS, payload: { name, value } };
 };
 
