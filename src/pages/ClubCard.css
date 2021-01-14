@@ -64,7 +64,9 @@
 
 .clubcard-text {
   padding-left: 10px;
+  flex-grow: 1;
   color: #2b2b2b;
+  height: 78px;
 }
 
 .clubcard-title {
@@ -75,9 +77,22 @@
 
 .clubcard-description {
   font-size: 11px;
+  overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;  
+}
+.one-line {
+  -webkit-line-clamp: 4;
+}
+.two-line {
+  -webkit-line-clamp: 3;
+}
+.three-line {
+  -webkit-line-clamp: 2;
 }
 
 .clubcard-like {
+  
   color: #e95f5f;
 }
 

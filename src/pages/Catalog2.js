@@ -3,6 +3,7 @@ import './Catalog2.css'
 import banner from './assets/catalog_banner.jpg'
 import GridComponent from './GridComponent'
 import { connect } from 'react-redux'
+import {membersMap} from '../utils/filterClubs'
 import {
   searchClubs,
   clearOrganization,
@@ -37,6 +38,7 @@ const Catalog2 = ({
     noAppReq,
     recruiting,
     notRecruiting,
+    members
   } = formDetails;
 
   // clearing organization to be viewed every time navigate back to club page
@@ -63,7 +65,7 @@ const Catalog2 = ({
 
   const resetFilters = () => {
     setFormDetails({ name: 'name', value: '' });
-    setFormDetails({ name: 'tags', value: [] });
+    setFormDetails({ name: 'tags', value: 'reset' });
     setFormDetails({ name: 'appReq', value: false });
     setFormDetails({ name: 'noAppReq', value: false });
     setFormDetails({ name: 'recruiting', value: false });
@@ -72,6 +74,10 @@ const Catalog2 = ({
 
   const toggleTag = tagLabel => {
     setFormDetails({ name: 'tags', value: tagLabel })
+  }
+
+  const toggleMembers = tagLabel => {
+    setFormDetails({ name: 'members', value: tagLabel })
   }
 
   function toggleAppReq() {
@@ -108,7 +114,7 @@ const Catalog2 = ({
           <img src={banner} alt="banner"/>
         </div>
         {/* ok so I was trying to put some of this styling in the filters class but it wasn't working so here it is in js */}
-        <div style={{position: 'sticky', top: '67px', paddingBottom: '10px', borderBottom: '1px solid #ccc'}} className='filters'>
+        <div style={{position: 'sticky', top: '67px', paddingBottom: '10px', borderBottom: '1px solid #ccc'}} className='filters noselect'>
 
           {/* Search Bar */}
           <div className="filter search-filter">
@@ -182,26 +188,12 @@ const Catalog2 = ({
             </div>
             {showMembersDD && (
               <div className="filter-dropdown">
-                <div className='filter-selection'>
-                  <input type="checkbox"/>
-                  <span> 0-10</span>
-                </div>
-                <div className='filter-selection'>
-                  <input type="checkbox"/>
-                  <span> 10-20</span>
-                </div>
-                <div className='filter-selection'>
-                  <input type="checkbox"/>
-                  <span> 20-50</span>
-                </div>
-                <div className='filter-selection'>
-                  <input type="checkbox"/>
-                  <span> 50-100</span>
-                </div>
-                <div className='filter-selection'>
-                  <input type="checkbox"/>
-                  <span> 100+</span>
-                </div>
+                {membersMap.map((option)=>(
+                  <div onClick={()=>toggleMembers(option.value)} className='filter-selection'>
+                    <input type="checkbox" checked={members[option.value]}/>
+                    <span>{option.label}</span>
+                  </div>
+                ))}
               </div>
             )}
           </div>
