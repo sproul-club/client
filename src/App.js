@@ -38,7 +38,6 @@ import Navbar from './layout/Navbar';
 import Moment from 'react-moment';
 import 'moment-timezone';
 import StudentSettings from './pages/student/StudentSettings.js';
-import profile from './reducers/profile.js';
 
 Moment.globalTimezone = 'America/Los_Angeles';
 

@@ -2,7 +2,6 @@ import React from 'react';
 import {
   Accordion,
   AccordionItem,
-  AccordionItemHeading,
   AccordionItemButton,
   AccordionItemPanel,
 } from 'react-accessible-accordion';
@@ -134,10 +133,10 @@ function RecrAccord({data}) {
                             </div>
                             <div id="recr-forge-holder">
                                     <button className="recr-forge">
-                                        <img className="recr-img" src={require('../assets/recrDup.PNG')}></img>     
+                                        <img className="recr-img" alt='recruitment' src={require('../assets/recrDup.PNG')}></img>     
                                     </button>
                                     <button className="recr-forge" >
-                                        <img className="recr-img" src={require('../assets/recrOop.PNG')}></img>     
+                                        <img className="recr-img" alt='recruitment' src={require('../assets/recrOop.PNG')}></img>     
                                     </button>
                                 </div>
                             </div>

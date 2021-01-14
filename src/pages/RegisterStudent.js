@@ -1,12 +1,7 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import ReactGA from 'react-ga';
-import { Link } from 'react-router-dom';
-import ScrollAnimation from 'react-animate-on-scroll';
-import Footer from '../layout/Footer';
-
 import './RegisterStudent.css';
-
 import {
     setFormDetails,
 } from '../actions/catalog';
@@ -39,12 +34,7 @@ const RegisterStudent = ({
     var selectedTags = [];
 
     const {
-        name,
         tags,
-        appReq,
-        noAppReq,
-        recruiting,
-        notRecruiting,
     } = formDetails;
 
     function setSelectedYear(value) {
@@ -118,7 +108,7 @@ const RegisterStudent = ({
                     </div>
                     :
                     <div class="modal">
-                        <img class="image" src={cutelilbearohyesyouare}/>
+                        <img class="image" alt='cute little bear yes you are' src={cutelilbearohyesyouare}/>
                         <div class="title">
                             Just a few more things...
                         </div>

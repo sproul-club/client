@@ -58,7 +58,6 @@ export const filterClubs = (allOrganizations, formDetails, tagOptions, num_resul
     })
   }
   
-  const num_filtered_results = filteredClubs.length
   const sliced_filtered_results = filteredClubs.slice(0, num_results)
 
   return {type: FILTER_CLUBS, payload: sliced_filtered_results}

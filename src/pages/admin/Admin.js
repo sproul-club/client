@@ -2,11 +2,6 @@ import React, { useEffect } from 'react';
 import './Admin.css';
 import { loadProfile } from '../../actions/profile';
 import { connect } from 'react-redux';
-import Profile from './Profile';
-import ContactInfo from './ContactInfo';
-import GetInvolved from './GetInvolved';
-import Events from './Events';
-import Resources from './Resources';
 import ClubPage from '../ClubPage';
 
 const Admin = ({ profile, admin, loadProfile }) => {

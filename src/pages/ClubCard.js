@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState } from 'react'
+import React, { useState } from 'react'
 import './ClubCard.css'
 import logo from './assets/default_logo.jpg'
 import banner from './assets/default_banner.jpg'

@@ -25,7 +25,7 @@ const StudentSettings = ({tagOptions}) => {
           <div className="email">name@berkeley.edu</div>
 
           <div className='label'>Preferences</div>
-          <SettingsDropdown options={yearOptions} selections={year} options={yearOptions} placeholder='Year' set={setYear}/>
+          <SettingsDropdown options={yearOptions} selections={year} placeholder='Year' set={setYear}/>
           <SettingsMultiSelect selections={majors} options={majorsOptions} placeholder='Major(s)' set={setMajors} max={3}/>
           <SettingsMultiSelect selections={minors} options={minorOptions} placeholder='Minor(s)' set={setMinors} max={3}/>
           <SettingsMultiSelect selections={interests} options={tagOptions.map(option => option.label)} placeholder='Interests' set={setInterests} max={18} showInner={false} hideOnClick={false}/>

@@ -68,6 +68,8 @@
   flex-grow: 1;
   color: #2b2b2b;
   height: 78px;
+  max-height: 78px;
+  overflow: hidden;
 }
 
 .clubcard-title {

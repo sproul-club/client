@@ -91,7 +91,7 @@ const Banner = ({
       />
       <p className="subtitle">
           <span style={{ color: '#FF0000' }}>*</span> Please make sure your
-          banner is at least 1640 x 624 pixels.{' '}
+          banner is at least 1640 x 492 pixels.{' '}
           <a
             href="https://www.photoresizer.com/"
             target="_blank"
