@@ -25,8 +25,6 @@ export const loadProfile = () => async (dispatch) => {
     try {
       await dispatch(refreshToken());
       const res = await API.get('/api/admin/profile');
-      console.log("hi");
-      console.log(res);
       dispatch({ type: LOAD_PROFILE, payload: res.data });
     } catch (err) {
       dispatch({ type: LOAD_PROFILE_ERROR, payload: err });

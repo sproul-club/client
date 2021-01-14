@@ -173,19 +173,17 @@ const Profile = ({
                 <input
                   className="modal-input"
                   type="date"
-                  onChange={(e) => setRecrStartDate(e.target.value)} //TODO
-                  value={recrStartDate} //TODO
+                  onChange={(e) => setRecrStartDate(e.target.value)}
+                  value={recrStartDate}
                   required
-                  style={{backgroundColor: "white"}}
                 />
                 <span> to </span>
                 <input
                   className="modal-input"
                   type="date"
-                  onChange={(e) => setRecrEndDate(e.target.value)} //TODO
-                  value={recrEndDate} //TODO
+                  onChange={(e) => setRecrEndDate(e.target.value)}
+                  value={recrEndDate}
                   required
-                  style={{backgroundColor: "white"}}
                 />
               </div>
             </div>
@@ -198,19 +196,17 @@ const Profile = ({
                 <input
                   className="modal-input"
                   type="date"
-                  onChange={(e) => setAppStartDate(e.target.value)} //TODO
-                  value={appStartDate} //TODO
+                  onChange={(e) => setAppStartDate(e.target.value)} 
+                  value={appStartDate}
                   required
-                  style={{backgroundColor: "white"}}
                 />
                 <span> to </span>
                 <input
                   className="modal-input"
                   type="date"
-                  onChange={(e) => setAppEndDate(e.target.value)} //TODO
-                  value={appEndDate} //TODO
+                  onChange={(e) => setAppEndDate(e.target.value)} 
+                  value={appEndDate} 
                   required
-                  style={{backgroundColor: "white"}}
                 />
                 </div>
             </div>
