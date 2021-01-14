@@ -7,14 +7,14 @@ import { Link } from 'react-router-dom'
 const ClubCard = ({club, tagOptions, displayBanner}) => {
 
   const [lines, setLines] = useState('one-line');
-
-  const measuredRef = useCallback(node => {
+  
+  const measuredRef = (node) => {
     if (node !== null) {
       const height = node.getBoundingClientRect().height
       const lines = height <= 16 ? 1 : height <= 32 ? 'two-line' : 'three-line'
       setLines(lines);
     }
-  }, []);
+  };
 
   const {link_name, name, banner_url, logo_url, new_members, app_required } = club
 

@@ -63,7 +63,7 @@ const Catalog2 = ({
 
   const resetFilters = () => {
     setFormDetails({ name: 'name', value: '' });
-    setFormDetails({ name: 'tags', value: [] });
+    setFormDetails({ name: 'tags', value: 'reset' });
     setFormDetails({ name: 'appReq', value: false });
     setFormDetails({ name: 'noAppReq', value: false });
     setFormDetails({ name: 'recruiting', value: false });

@@ -9,6 +9,7 @@ import {
   LOAD_MORE_ORGS,
   SET_TAGS,
   SET_FORM_DETAILS,
+  RESET_TAGS,
 } from '../actions/types';
 
 const initialState = {
@@ -54,6 +55,14 @@ export default function (state = initialState, action) {
         formDetails: {
           ...state.formDetails,
           tags: { ...state.formDetails.tags, [payload.value]: !state.formDetails.tags[payload.value]},
+        },
+      };
+    case RESET_TAGS:
+      return {
+        ...state,
+        formDetails: {
+          ...state.formDetails,
+          tags: {},
         },
       };
     case SET_FORM_DETAILS:
