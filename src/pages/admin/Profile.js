@@ -176,7 +176,6 @@ const Profile = ({
                   onChange={(e) => setRecrStartDate(e.target.value)}
                   value={recrStartDate}
                   required
-                  style={{backgroundColor: "white"}}
                 />
                 <span> to </span>
                 <input
@@ -185,7 +184,6 @@ const Profile = ({
                   onChange={(e) => setRecrEndDate(e.target.value)}
                   value={recrEndDate}
                   required
-                  style={{backgroundColor: "white"}}
                 />
               </div>
             </div>
@@ -201,7 +199,6 @@ const Profile = ({
                   onChange={(e) => setAppStartDate(e.target.value)} 
                   value={appStartDate}
                   required
-                  style={{backgroundColor: "white"}}
                 />
                 <span> to </span>
                 <input
@@ -210,7 +207,6 @@ const Profile = ({
                   onChange={(e) => setAppEndDate(e.target.value)} 
                   value={appEndDate} 
                   required
-                  style={{backgroundColor: "white"}}
                 />
                 </div>
             </div>
