@@ -10,6 +10,7 @@ import {
   SET_TAGS,
   SET_FORM_DETAILS,
   RESET_TAGS,
+  SET_MEMBERS
 } from '../actions/types';
 
 const initialState = {
@@ -25,6 +26,7 @@ const initialState = {
     noAppReq: false,
     recruiting: false,
     notRecruiting: false,
+    members: {}
   },
 };
 
@@ -63,6 +65,14 @@ export default function (state = initialState, action) {
         formDetails: {
           ...state.formDetails,
           tags: {},
+        },
+      };
+    case SET_MEMBERS:
+      return {
+        ...state,
+        formDetails: {
+          ...state.formDetails,
+          members: { ...state.formDetails.members, [payload.value]: !state.formDetails.members[payload.value]},
         },
       };
     case SET_FORM_DETAILS:

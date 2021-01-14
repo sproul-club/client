@@ -42,6 +42,19 @@ export const filterClubs = (allOrganizations, formDetails, tagOptions, num_resul
     })
   }
 
+  // Filter by members
+  let searchMembers = []
+  for (const [key, value] of Object.entries(formDetails.members)) {
+    if(key && value === true) searchMembers.push(Number(key))
+  }
+  console.log('selected', searchMembers)
+  if(searchMembers.length > 0){
+    filteredClubs = filteredClubs.filter(club => {
+      return searchMembers.includes(club.num_users)
+    })
+  }
+
+
   // SORTING - a.name > b.name for ascending, b.name for descending
   // filteredClubs = filteredClubs.sort((a,b) => a.name > b.name ? -1 : 1);
   
@@ -50,3 +63,11 @@ export const filterClubs = (allOrganizations, formDetails, tagOptions, num_resul
 
   return [num_filtered_results, sliced_filtered_results]
 }
+
+export const membersMap = [
+  {value: 0, label: '0-10'},
+  {value: 1, label: '10-20'},
+  {value: 2, label: '20-50'},
+  {value: 3, label: '50-100'},
+  {value: 4, label: '100+'},
+]
