@@ -41,17 +41,15 @@ const Banner = ({
   }
 
   const submit = async () => {
-    // try {
-    //   await updateProfile(newProfile);
-    //   NotificationManager.success('Profile changes saved successfully!', '', 1500);
-    // } catch (err) {
-    //   NotificationManager.error('Profile changes unsuccessful!', '', 1500);
-    // }
+    // const newProfile = {
+    //   ...profile,
+    // };
 
     try {
       await Promise.all([
         uploadBannerPic(bannerImage)
       ]);
+      // await updateProfile(newProfile);
         // NotificationManager.success('Banner changes saved successfully! Refresh to see changes', '', 5000);
       } catch (err) {
         NotificationManager.error('Banner changes unsuccessful!', '', 5000);
