@@ -56,6 +56,7 @@ const ContactInfo = ({ profile, updateProfile, close }) => {
         gcalendar,
       }
     };
+    console.log(newProfile);
 
     // update backend
     try {

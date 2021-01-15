@@ -80,6 +80,7 @@ function ClubPage({
     tab = tempTab;
   }
 
+  console.log(organization);
   if (!organization.link_name) return <Loading />;
 
   const socLinks = organization.social_media_links;

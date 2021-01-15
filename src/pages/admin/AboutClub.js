@@ -40,7 +40,7 @@ const AboutClub = ({
           <div className="formElement">
             <RichText setChars={setDescrChars} setDescr={setDescr} descr={descr}/>
           </div>
-          <div style={{ alignSelf: 'flex-end' }} className="subtitle">{descrChars} characters remaining</div> 
+          <div style={{ alignSelf: 'flex-end', "margin-right": "100px"}} className="subtitle">{descrChars} characters remaining</div> 
         </div>
         
         <button id="save-button" onClick={submit}> Save </button>
