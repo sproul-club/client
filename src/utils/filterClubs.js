@@ -24,11 +24,11 @@ export const filterClubs = (allOrganizations, formDetails, tagOptions, num_resul
 
   // Filter - recruiting checked
   if (formDetails.recruiting)
-    filteredClubs = filteredClubs.filter(club => club.app_required === true)
+    filteredClubs = filteredClubs.filter(club => club.new_members === true)
 
   // Filter - not recruiting checked
   if (formDetails.notRecruiting)
-    filteredClubs = filteredClubs.filter(club => club.app_required === false)
+    filteredClubs = filteredClubs.filter(club => club.new_members === false)
   
   // Filter by tags
   let searchTags = []
@@ -55,7 +55,7 @@ export const filterClubs = (allOrganizations, formDetails, tagOptions, num_resul
   }
 
 
-  // SORTING - a.name > b.name for ascending, b.name for descending
+  // Sorting
 
   function sorted(type) {
     if (type == "Fresh") {
@@ -101,7 +101,7 @@ export const filterClubs = (allOrganizations, formDetails, tagOptions, num_resul
     filteredClubs = filteredClubs.sort((a,b) => a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1);
   } else if (formDetails.sort == "Desc") {
     filteredClubs = filteredClubs.sort((a,b) => a.name.toLowerCase() > b.name.toLowerCase() ? -1 : 1);
-  } else if (formDetails.sort == "Desc" || formDetails.sort == 'Fresh') {
+  } else {
     filteredClubs = filteredClubs.sort(sorted(formDetails.sort));
   }
   

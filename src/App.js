@@ -26,6 +26,7 @@ import Admin from './pages/admin/Admin.js';
 import ClubPage from './pages/ClubPage';
 import Dashboard from './pages/Dashboard.js';
 import Favorites from './pages/Favorites.js';
+import Activation from './pages/Activation.js';
 import store from './store';
 import ContactUs from './layout/ContactUs.js';
 import { loadProfile, getTags, getSizeTags} from './actions/profile';
@@ -70,6 +71,7 @@ const App = () => {
           <Route exact path="/favorites" component={Favorites} />
           <Route exact path="/student/settings" component={StudentSettings} />
           <PrivateRoute exact path="/security" component={Security} />
+          <Route exact path="/activation" component={Activation} />
           <Route>
             <ErrorPage />
           </Route>
