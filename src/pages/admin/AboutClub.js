@@ -17,6 +17,7 @@ const AboutClub = ({
 
   const submit = async () => {
     const newProfile = {
+      ...profile,
       name: profile.name,
       about_us: stateToHTML(descr),
     };

@@ -21,15 +21,10 @@ const GetInvolved = ({ profile, get_involved, updateProfile, close }) => {
     setInvolvedLink(e.target.value);
   };
 
-  // function cancelEdit() {
-  //   setInvolvedDesc(profile.get_involved);
-  //   setInvolvedChars(500 - involvedDesc.length);
-  //   setInvolvedLink(''); // placeholder: need API endpoint for application link
-  // }
-
   const submit = async () => {
     setInvolvedLink(normalizeUrl(involvedLink));
     const newProfile = {
+      ...profile,
       get_involved: involvedDesc,
       apply_link: involvedLink, 
     };
