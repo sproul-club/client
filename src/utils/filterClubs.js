@@ -73,7 +73,7 @@ export const filterClubs = (allOrganizations, formDetails, tagOptions, num_resul
         }
         // otherwise, lowest sorts first
         else {
-            return a.last_updated < b.last_updated ? -1 : 1;
+            return a.last_updated < b.last_updated ? 1 : -1;
         }
       };
     } else {
@@ -91,7 +91,7 @@ export const filterClubs = (allOrganizations, formDetails, tagOptions, num_resul
         }
         // otherwise, lowest sorts first
         else {
-            return a.apply_deadline_end < b.apply_deadline_end ? -1 : 1;
+            return a.apply_deadline_end > b.apply_deadline_end ? 1 : -1;
         }
       };
     }

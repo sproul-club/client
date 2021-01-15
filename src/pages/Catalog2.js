@@ -221,7 +221,7 @@ const Catalog2 = ({
                 <div className='filter-selection' onClick={()=>toggleSort("Fresh")}>
                   <span> Recently Updated</span>
                 </div>
-                <div className='filter-selection'>
+                <div className='filter-selection' onClick={()=>toggleSort("Ddln")}>
                   <span> Deadline</span>
                 </div>
               </div>
