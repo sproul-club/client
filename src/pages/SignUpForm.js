@@ -380,6 +380,82 @@ const StepTwo = (props) => {
   if (props.currStep !== 2) {
     return null;
   }
+  const customStyles = {
+    multiValue: (provided, state) => ({
+      ...provided,
+      background: '#D1D3D4',
+      color: '#2b2b2b',
+      'border-radius': 4,
+    }),
+    control: (provided, state) => ({
+      display: 'flex',
+      width: 320,
+      margin: 7,
+      marginBottom: 8,
+      fontSize: 12,
+      fontFamily: 'Roboto, sans-serif',
+      fontWeight: 400,
+      fontStyle: 'normal',
+      borderRadius: 5,
+      border: 'solid 1px #949494',
+      // border: (state.selectProps.error) ? 'solid 1px #ff2d2d' : 'solid 1px #949494',
+    }),
+    menu: (provided, state) => ({
+      ...provided,
+      margin: 8,
+      marginTop: 2,
+      width: 320,
+      fontSize: '12px',
+      fontFamily: 'Qanelas Soft',
+      fontWeight: 300,
+      fontStyle: 'normal',
+      textAlign: 'left',
+      color: (state.selectProps.value && state.selectProps.value.length >= 3) ? '#cccccc' : '#4e4e4e'
+    }),
+    multiValueRemove: (provided, state) => ({
+      ...provided,
+      background: '#D1D3D4',
+      color: '#2b2b2b',
+      borderRadius: 10,
+      "&:hover": {
+        color: 'hsl(0,0%,40%)',
+      }
+    }),
+    singleValue: (provided, state) => ({
+      ...provided,
+      color: '#4e4e4e',
+    }),
+    multiValueLabel: (provided, state) => ({
+      ...provided,
+      'margin-left': "4px",
+      'padding': '2px',
+      'padding-left': '5px',
+      fontSize: '12px',
+    }),
+    indicatorSeparator: (provided, state) => ({
+      ...provided,
+      width: 0,
+    }),
+  
+    clearIndicator: (provided, state) => ({
+      ...provided,
+      cursor: 'pointer',
+    }),
+    dropdownIndicator: (provided, state) => ({
+      ...provided,
+      cursor: 'pointer',
+    }),
+    valueContainer: (provided, state) => ({
+      ...provided,
+      padding: '5px 8px',
+    }),
+    "@media only screen and (min-width: 1700px)": {
+      menu: (provided, state) => ({
+        ...provided,
+        width: 500,
+      }),
+    },
+  };
 
   // ideally this var will set the dropdowns to red-border css as well...
   let haveError = props.emptyRecruit === 'emptyRecruit';
@@ -418,6 +494,7 @@ const StepTwo = (props) => {
           defaultValue={props.recruiting}
           set={props.setRecruit}
           error={haveError}
+          style={customStyles}
         />
         <Dropdown
           options={props.appOptions}
@@ -426,6 +503,7 @@ const StepTwo = (props) => {
           placeholder="Select application requirement"
           defaultValue={props.appReq}
           set={props.setAppReq}
+          style={customStyles}
           // error={haveError}
         />
         <Dropdown
@@ -436,6 +514,7 @@ const StepTwo = (props) => {
           defaultValue={props.tags}
           set={props.setTags}
           errorPopup={props.setTagError}
+          style={customStyles}
           // error={haveError}
         />
       </div>
