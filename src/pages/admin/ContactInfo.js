@@ -40,6 +40,7 @@ const ContactInfo = ({ profile, updateProfile, close }) => {
     setGcalendar(normalizeUrl(gcalendar));
     setYoutube(normalizeUrl(youtube));
     const newProfile = {
+      ...profile,
       social_media_links: {
         contact_email: email,
         website,
@@ -55,6 +56,7 @@ const ContactInfo = ({ profile, updateProfile, close }) => {
         gcalendar,
       }
     };
+    console.log(newProfile);
 
     // update backend
     try {

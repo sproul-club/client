@@ -65,14 +65,13 @@
   padding-right: 20px;
 }
 
-.formGroup {
+.clubpage-wrapper .formGroup {
   display: flex;
   flex-direction: column;
   overflow-y: auto;
   /* background: #f8f8f8; */
-  /* padding: 30px; */
-  padding-top: 30px;
-  margin-bottom: 30px;
+  padding-top: 10px;
+  margin-bottom: 4px;
 }
 
 .formElement {
