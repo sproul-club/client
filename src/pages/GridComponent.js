@@ -5,6 +5,7 @@ import { searchClubs } from '../actions/catalog';
 import './GridComponent.css';
 import { filterClubs } from '../utils/filterClubs';
 import ClubCard from './ClubCard';
+import confusion from './assets/resetpwd1.png'
 
 function GridComponent({ tagOptions, clubs, loading, formDetails, num_displayed, displayBanner, favorites}) {
   console.log(clubs);
@@ -19,7 +20,7 @@ function GridComponent({ tagOptions, clubs, loading, formDetails, num_displayed,
   return (
     <div className="wrapper">
       <div className="num-results">
-        {num_filtered_results ? `Displaying ${num_filtered_results} Results` : loading ? '' : 'No Results Found'}
+        {num_filtered_results ? `Displaying ${num_filtered_results} Results` : loading ? '' : <div class="noresults-content"> <div class="noresults-text"> No Results Found </div> <img class="noresults-image" src={confusion} /> </div>}
       </div>
       <div className="card-grid">
         {GridList}
