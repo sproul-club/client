@@ -13,6 +13,9 @@ import {
   UPDATE_PASSWORD,
   GET_TAGS,
   GET_SIZE_TAGS,
+  ADD_RECR_EVENT,
+  DELETE_RECR_EVENT,
+  UPDATE_RECR_EVENT,
 } from './types';
 import FormData from 'form-data';
 
@@ -133,6 +136,37 @@ export const deleteEvent = (id) => async (dispatch) => {
     const res = await API.delete(`/api/admin/events/${id}`);
 
     dispatch({ type: DELETE_EVENT, payload: res.data });
+  } catch (err) {
+    console.log(err);
+  }
+};
+// Recruitment Event Actions
+export const addRecrEvent = (newEvent) => async (dispatch) => {
+  try {
+    const res = await API.post('/api/admin/recruiting-events', newEvent);
+    dispatch({ type: ADD_RECR_EVENT, payload: res.data });
+  } catch (err) {
+    console.log(err.response);
+  }
+};
+ 
+export const updateRecrEvent = (eventId, eventInfo) => async (dispatch) => {
+  try {
+    const res = await API.put(`/api/admin/recruiting-events/${eventId}`, eventInfo);
+ 
+    dispatch({ type: UPDATE_RECR_EVENT, payload: res.data });
+  } catch (err) {
+    console.log(err.response);
+  }
+};
+ 
+export const deleteRecrEvent = (id) => async (dispatch) => {
+  try {
+    // This will hit the api that will add the event, and return the new data with event added
+    // and then update the profile information in state to be correct
+    const res = await API.delete(`/api/admin/recruiting-events/${id}`);
+ 
+    dispatch({ type: DELETE_RECR_EVENT, payload: res.data });
   } catch (err) {
     console.log(err);
   }
