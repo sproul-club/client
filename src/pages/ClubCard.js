@@ -51,15 +51,10 @@ const ClubCard = ({club, tagOptions, displayBanner}) => {
             ))}
           </div>
           <div className="clubcard-newmembers">
-            {new_members ? (
+            {new_members && (
               <>
                 <i className="fas fa-check"></i> 
-                {' '}Taking members
-              </>
-            ) : (
-              <>
-                <i className="fas fa-times"></i> 
-                {' '}Not taking members
+                {' '}OPEN
               </>
             )}
           </div>
