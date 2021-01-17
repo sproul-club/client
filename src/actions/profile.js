@@ -24,16 +24,11 @@ import { API, TOKENS } from '../utils/backendClient';
 
 // Load Profile
 export const loadProfile = () => async (dispatch) => {
-  if (TOKENS.access.exists()) {
-    try {
-      await dispatch(refreshToken());
-      const res = await API.get('/api/admin/profile');
-      dispatch({ type: LOAD_PROFILE, payload: res.data });
-    } catch (err) {
-      dispatch({ type: LOAD_PROFILE_ERROR, payload: err });
-    }
-  } else {
-    dispatch({ type: LOAD_PROFILE_NOT_LOGGED_IN });
+  try {
+    const res = await API.get('/api/admin/profile');
+    dispatch({ type: LOAD_PROFILE, payload: res.data });
+  } catch (err) {
+    dispatch({ type: LOAD_PROFILE_ERROR, payload: err });
   }
 };
 
