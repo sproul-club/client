@@ -9,7 +9,7 @@ import './Activation.css';
 import Loading from '../layout/Loading';
 import { NotificationManager } from 'react-notifications';
 
-const Activation = ({tagOptions, profile, updateProfile}) => {
+const Activation = ({tagOptions, profile, updateProfile, setActivation}) => {
     const [clubName, setClubName] = useState('');
     const [tags, setTags] = useState([]);
     const [members, setMembers] = useState('');
@@ -72,7 +72,11 @@ const Activation = ({tagOptions, profile, updateProfile}) => {
             apply_deadline_end : recruitingEnd ? recruitingEnd : '1970-01-01T00:00:00Z',
             recruiting_start: recruitingStart ? recruitingStart : '1970-01-01T00:00:00Z',
             recruiting_end: recruitingEnd ? recruitingEnd : '1970-01-01T00:00:00Z',
-            is_reactivating: false
+            is_reactivating: true
+        }
+
+        if (setActivation) {
+          setActivation(true);
         }
 
         try {
