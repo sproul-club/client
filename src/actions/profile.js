@@ -59,7 +59,7 @@ export const updateProfile = (formData) => async (dispatch) => {
 
     dispatch({ type: UPDATE_PROFILE, payload: formData });
   } catch (err) {
-    console.log(err.response.data);
+    console.log(err);
     throw err;
   }
 };

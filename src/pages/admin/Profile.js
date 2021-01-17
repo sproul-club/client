@@ -69,7 +69,6 @@ const Profile = ({
   }
 
   const submit = async () => {
-    console.log(recrEndDate);
     const newProfile = {
       ...profile,
       name: orgName.trim(),
@@ -227,6 +226,7 @@ const Profile = ({
               width: '300px',
               // float: 'left',
               margin: '40px',
+              background: 'transparent',
             }}
             labelStyles={{
               width: '250px',
