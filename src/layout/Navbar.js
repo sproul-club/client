@@ -55,7 +55,7 @@ const Navbar = ({
       <Link to="/about" className="nav-link">
         About
       </Link>
-      <Link to="/catalog" className="nav-link">
+      {/* <Link to="/catalog" className="nav-link">
         Discover
       </Link>
       <Link to="/signin" className="nav-link signin">
@@ -63,7 +63,7 @@ const Navbar = ({
       </Link>
       <Link to="/signup" className="nav-link active">
         Add a club
-      </Link>
+      </Link> */}
     </>
   );
 
@@ -106,7 +106,8 @@ const Navbar = ({
     </div>
   );
 
-  const display = isAuthenticated ? loggedInLinks : (loading ? '' : loggedOutLinks);
+  // const display = isAuthenticated ? loggedInLinks : (loading ? '' : loggedOutLinks);
+  const display = loggedOutLinks
 
   return (
     <>
