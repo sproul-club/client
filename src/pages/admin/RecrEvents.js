@@ -7,10 +7,12 @@ import { validURL, normalizeUrl } from '../../utils/normalizeUrl';
 import './RecrEvents.css';
 import './Admin.css';
 import RecrAccord from './RecrAccord';
+import { ContactSupportOutlined } from '@material-ui/icons';
  
  
 const RecrEvents = ({profile, events, incNumEvents, cancelEdit, addRecrEvent, updateRecrEvent, deleteRecrEvent}) => {
-    var addSuccess = true;
+    const [addSuccess, setAddSuccess] = useState(true);
+
     const addEv = async (e) => {
         e.preventDefault();
         const emptyEvent = {
@@ -26,10 +28,11 @@ const RecrEvents = ({profile, events, incNumEvents, cancelEdit, addRecrEvent, up
         try {
             await addRecrEvent(emptyEvent);
         } catch (err) {
-            addSuccess = false;
+            setAddSuccess(false);
+            console.log("ERROR");
             console.log(err);
         }
-        if (addSuccess) {
+        if (addSuccess == true) {
           incNumEvents(1);
         }
     };
@@ -60,6 +63,29 @@ const RecrEvents = ({profile, events, incNumEvents, cancelEdit, addRecrEvent, up
           invite_only: inv_only
         });
       }
+
+    const dupEvent = async (event) => {
+      console.log("DUPE TEXT")
+      console.log(event)
+      const duplicatedEvent = {
+        name: event.name + " copy",
+        link: event.link,
+        virtual_link: event.virtual_link,
+        event_start: event.event_start,
+        event_end: event.event_end,
+        description: event.description,
+        invite_only: event.invite_only,
+      };
+      try {
+        await addRecrEvent(duplicatedEvent);
+      } catch (err) {
+          addSuccess = false;
+          console.log(err);
+      }
+      if (addSuccess) {
+        incNumEvents(1);
+      }
+    }
     const count = [1,2]
     function saveAll() {
       for (const num in count) {
@@ -83,11 +109,12 @@ const RecrEvents = ({profile, events, incNumEvents, cancelEdit, addRecrEvent, up
                 Add events related to recruitment!
             </div>
             <hr style={{width: "97.5%", marginLeft: "-0.25%"}}></hr>
-            <div style={{minHeight:"52vh"}}>
+            <div style={{minHeight:"42vh"}}>
                 {events.map((ev, i) => (
                     <RecrAccord 
                         data={ev}
                         deleteRecrEvent = {deleteRecrEvent}
+                        dupEvent = {dupEvent}
                         entryChange = {entryChange}
                         key = {i}
                         delRef = {delRef}
