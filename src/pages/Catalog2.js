@@ -139,11 +139,11 @@ const Catalog2 = ({
               <div className="filter-dropdown">
                 <div className='filter-selection' onClick={toggleRecruiting}>
                   <input type="checkbox" checked={recruiting}/> 
-                  <span> Taking members</span>
+                  <span> Recruiting</span>
                 </div>
                 <div className='filter-selection' onClick={toggleNotRecruiting}>
                   <input type="checkbox" checked={notRecruiting}/>
-                  <span> Not taking members</span>
+                  <span> Not recruiting</span>
                 </div>
               </div>
             )}

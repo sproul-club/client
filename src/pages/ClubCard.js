@@ -54,7 +54,7 @@ const ClubCard = ({club, tagOptions, displayBanner}) => {
             {new_members && (
               <>
                 <i className="fas fa-check"></i> 
-                {' '}OPEN
+                {' '}RECRUITING
               </>
             )}
           </div>
