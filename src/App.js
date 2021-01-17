@@ -30,6 +30,7 @@ import Navbar from './layout/Navbar';
 
 import Moment from 'react-moment';
 import 'moment-timezone';
+import UnderConstruction from './pages/UnderConstruction.js';
 
 Moment.globalTimezone = 'America/Los_Angeles';
 
@@ -44,17 +45,18 @@ const App = () => {
       <Router>
         <Navbar />
         <Switch>
-          <Route exact path="/" component={Landing} />
-          <Route exact path="/comingsoon" component={ComingSoon} />
+          <Route exact path="/" component={UnderConstruction} />
+          {/* <Route exact path="/" component={Landing} />
+          <Route exact path="/comingsoon" component={ComingSoon} /> */}
           <Route exact path="/about" component={AboutPage} />
-          <PrivateRoute path="/admin" component={Admin} />
+          {/* <PrivateRoute path="/admin" component={Admin} />
           <Route path="/catalog" component={Catalog} />
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/signin" component={SignIn} />
           <Route exact path="/recover" component={ResetPassword} />
           <Route exact path="/resetpassword" component={ResetPassword2} />
           <Route exact path="/club/:id" component={ClubPage} />
-          <PrivateRoute exact path="/security" component={Security} />
+          <PrivateRoute exact path="/security" component={Security} /> */}
           <Route>
             <ErrorPage />
           </Route>
