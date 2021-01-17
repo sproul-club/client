@@ -1,21 +1,21 @@
 import axios from 'axios';
 
 const LOCAL_URL = 'https://sc-backend.ngrok.io';
-const DEV_URL   = 'https://sc-backend-dev.herokuapp.com';
-const PROD_URL  = 'https://sc-backend-prod.herokuapp.com';
+const DEV_URL = 'https://sc-backend-dev.herokuapp.com';
+const PROD_URL = 'https://sc-backend-prod.herokuapp.com';
 
-const ACCESS_TOKEN_KEY  = 'token';
+const ACCESS_TOKEN_KEY = 'token';
 const REFRESH_TOKEN_KEY = 'refreshToken';
-const ACCESS_TOKEN_EXPIRE_KEY  = 'expiresAt';
+const ACCESS_TOKEN_EXPIRE_KEY = 'expiresAt';
 const REFRESH_TOKEN_EXPIRE_KEY = 'refreshExpiresAt';
 
 const API = axios.create({
-  baseURL: DEV_URL,
+  baseURL: LOCAL_URL,
   headers: {
     accept: 'application/json',
     'Access-Control-Allow-Origin': '*',
     'Content-Type': 'application/json',
-  }
+  },
 });
 
 class AuthToken {
@@ -28,7 +28,10 @@ class AuthToken {
 
   set(token, expiresIn) {
     localStorage.setItem(this.tokenKey, token);
-    localStorage.setItem(this.expireKey, new Date().getTime() + expiresIn * 1000);
+    localStorage.setItem(
+      this.expireKey,
+      new Date().getTime() + expiresIn * 1000
+    );
 
     this.initializeAccessHeader();
   }
@@ -56,7 +59,7 @@ class AuthToken {
       headers: {
         Authorization: this.header(),
       },
-    }
+    };
   }
 
   expiresAt() {
@@ -79,7 +82,7 @@ class AuthToken {
 
 const TOKENS = {
   access: new AuthToken(ACCESS_TOKEN_KEY, ACCESS_TOKEN_EXPIRE_KEY),
-  refresh: new AuthToken(REFRESH_TOKEN_KEY, REFRESH_TOKEN_EXPIRE_KEY)
-}
+  refresh: new AuthToken(REFRESH_TOKEN_KEY, REFRESH_TOKEN_EXPIRE_KEY),
+};
 
 export { API, TOKENS };

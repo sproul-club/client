@@ -38,6 +38,8 @@ function ClubPage({
   const [showBannerModal, setShowBannerModal] = useState(false);
   const [showRecrModal, setShowRecrModal] = useState(false);
 
+  const [eventsSet, setEventsSet] = useState(false);
+
   function cancelEdit() {
     setShowContactModal(false);
     setShowInvolvedModal(false);
@@ -85,7 +87,23 @@ function ClubPage({
     return <Activation/>
   }
   
+  const [numEvents, setNumEvents] = useState('');
+
   if (!organization.link_name) return <Loading />;
+
+  if (!eventsSet) {
+    setEventsSet(true)
+    setNumEvents(organization.recruiting_events.length);
+  }
+
+  const lineHeight = (numEvents - 1) * 12;
+  const lineTop = -(numEvents) * 11;
+
+  function incNumEvents(num) {
+    if (numEvents + num >= 0) {
+      setNumEvents(numEvents + num);
+    }
+  }
 
   const socLinks = organization.social_media_links;
   const contactComps = Object.keys(socLinks).map((key, i) =>
@@ -159,10 +177,6 @@ function ClubPage({
   } else {
     tagList.push(<Tag key={"nar"} label="Application Not Required" color="#cdeaff" />)
   }
-
-  const numEvents = organization.events.length;
-  const lineHeight = (numEvents - 1) * 14;
-  const lineTop = -(numEvents) * 13;
 
   ReactGA.initialize('UA-176775736-1');
   ReactGA.pageview('/' + history.location.pathname.slice(6).split("/")[0]);
@@ -241,7 +255,8 @@ function ClubPage({
                     }
                   </div>
                   <div className="recr-container">
-                    <RecruitmentTL data={organization}/>
+                    <RecruitmentTL adminCheck = {admin} profile={organization} events={organization.recruiting_events} currRoute = {routeId}>
+                    </RecruitmentTL>
                     <div className="vl" style={{height : lineHeight + "vw", top: lineTop + "vw"}}></div>
                   </div>
                 </div>
@@ -370,7 +385,7 @@ function ClubPage({
           close={cancelEdit}
         >
           <div className="admin-modal">
-            <RecrEvents profile={organization}/>
+            <RecrEvents profile = {organization} events = {organization.recruiting_events} cancelEdit = {cancelEdit} incNumEvents = {incNumEvents}/>
           </div>
 
         </Modal>

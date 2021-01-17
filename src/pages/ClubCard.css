@@ -15,10 +15,12 @@
 
 .banner-content {
   width: 100%;
+  height: 153px;
   position: relative;
 }
 
-.appreq-tag, .noappreq-tag {
+.appreq-tag,
+.noappreq-tag {
   position: absolute;
   text-decoration: none;
   font-size: 11px;
@@ -32,7 +34,7 @@
 }
 
 .noappreq-tag {
-  background: #C9F0C9;
+  background: #c9f0c9;
 }
 
 .appreq-tag i {
@@ -41,14 +43,16 @@
 
 .clubcard-banner {
   width: 100%;
-  height: 100%;
-  object-fit: contain;
+  height: 153px;
+  object-fit: cover;
   border-radius: 10px;
 }
 
 .clubcard-logo {
+  min-width: 78px;
   width: 78px;
   height: 78px;
+  min-height: 78px;
   border-radius: 10px;
 }
 
@@ -75,14 +79,15 @@
 .clubcard-title {
   font-size: 14px;
   font-weight: bold;
+  line-height: 16px;
   margin-bottom: 5px;
 }
 
 .clubcard-description {
   font-size: 11px;
   overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;  
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
 }
 .one-line {
   -webkit-line-clamp: 4;
@@ -95,7 +100,6 @@
 }
 
 .clubcard-like {
-  
   color: #e95f5f;
 }
 
@@ -122,6 +126,7 @@
 
 .clubcard-newmembers {
   font-size: 10px;
-  color: #444;
+  color: #54a0f1;
+  font-weight: bold;
   line-height: 20px;
 }
