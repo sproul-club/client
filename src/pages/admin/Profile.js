@@ -5,8 +5,6 @@ import ImageUploader from '../../react-images-upload';
 import { updateProfile, uploadLogo } from '../../actions/profile';
 import { NotificationManager } from 'react-notifications';
 
-
-
 const Profile = ({
   profile,
   updateProfile,
@@ -71,6 +69,7 @@ const Profile = ({
   }
 
   const submit = async () => {
+    console.log(recrEndDate);
     const newProfile = {
       ...profile,
       name: orgName.trim(),
@@ -192,7 +191,7 @@ const Profile = ({
           
           {appReq.value === 1 && 
             <div className="formElement">
-              <p>Application Open to Close</p>
+              <p>Application Deadline</p>
               <div className="input-time">
                 <input
                   className="modal-input"

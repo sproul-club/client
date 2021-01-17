@@ -51,6 +51,7 @@ export const updateProfile = (formData) => async (dispatch) => {
       apply_deadline_start: formData.apply_deadline_start,   
       apply_deadline_end: formData.apply_deadline_end,   
       apply_link: formData.apply_link,
+      is_reactivating: formData.is_reactivating
     });
 
     dispatch({ type: UPDATE_PROFILE, payload: formData });

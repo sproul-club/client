@@ -1,82 +1,5 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import Select from 'react-select';
-
-// const customStyles = {
-//   multiValue: (provided, state) => ({
-//     ...provided,
-//     background: '#D1D3D4',
-//     color: '#2b2b2b',
-//     'border-radius': 4,
-//   }),
-//   control: (provided, state) => ({
-//     display: 'flex',
-//     width: 320,
-//     margin: 7,
-//     marginBottom: 8,
-//     fontSize: 12,
-//     fontFamily: 'Roboto, sans-serif',
-//     fontWeight: 400,
-//     fontStyle: 'normal',
-//     borderRadius: 5,
-//     border: 'solid 1px #949494',
-//     // border: (state.selectProps.error) ? 'solid 1px #ff2d2d' : 'solid 1px #949494',
-//   }),
-//   menu: (provided, state) => ({
-//     ...provided,
-//     margin: 8,
-//     marginTop: 2,
-//     width: 320,
-//     fontSize: '12px',
-//     fontFamily: 'Qanelas Soft',
-//     fontWeight: 300,
-//     fontStyle: 'normal',
-//     textAlign: 'left',
-//     color: (state.selectProps.value && state.selectProps.value.length >= 3) ? '#cccccc' : '#4e4e4e'
-//   }),
-//   multiValueRemove: (provided, state) => ({
-//     ...provided,
-//     background: '#D1D3D4',
-//     color: '#2b2b2b',
-//     borderRadius: 10,
-//     "&:hover": {
-//       color: 'hsl(0,0%,40%)',
-//     }
-//   }),
-//   singleValue: (provided, state) => ({
-//     ...provided,
-//     color: '#4e4e4e',
-//   }),
-//   multiValueLabel: (provided, state) => ({
-//     ...provided,
-//     'margin-left': "4px",
-//     'padding': '2px',
-//     'padding-left': '5px',
-//     fontSize: '12px',
-//   }),
-//   indicatorSeparator: (provided, state) => ({
-//     ...provided,
-//     width: 0,
-//   }),
-
-//   clearIndicator: (provided, state) => ({
-//     ...provided,
-//     cursor: 'pointer',
-//   }),
-//   dropdownIndicator: (provided, state) => ({
-//     ...provided,
-//     cursor: 'pointer',
-//   }),
-//   valueContainer: (provided, state) => ({
-//     ...provided,
-//     padding: '5px 8px',
-//   }),
-//   "@media only screen and (min-width: 1700px)": {
-//     menu: (provided, state) => ({
-//       ...provided,
-//       width: 500,
-//     }),
-//   },
-// };
 
 const handleChange = (value, props) => {
   if (props.multi) {
@@ -92,8 +15,9 @@ const handleChange = (value, props) => {
   props.set(value);
 }
 
-const Dropdown = (props) => (
-  <Select
+const Dropdown = (props) => {
+  return (
+    <Select
     styles={props.style}
     theme={(theme) => ({
       ...theme,
@@ -113,7 +37,9 @@ const Dropdown = (props) => (
     onChange={(e) => handleChange(e, props)}
     closeMenuOnSelect={!props.multi}
     maxMenuHeight={150}
+    isClearable={false}
   />
-);
+  )
+}
 
 export default Dropdown;

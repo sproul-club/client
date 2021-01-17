@@ -28,6 +28,7 @@
     align-items: center;
     width: 100%;
     margin-bottom: 20px;
+    margin-top: 20px;
   }
 
   .activation .formHeader {
@@ -57,6 +58,10 @@
     border-radius: 5px;
     border: solid 1px #949494;
     color: #4e4e4e;
+  }
+
+  .activation .userInput .hidden {
+    display: none;
   }
 
   input[type="date"]:before {

@@ -21,6 +21,7 @@ import AboutClub from '../pages/admin/AboutClub';
 import Profile from '../pages/admin/Profile';
 import Banner from '../pages/admin/Banner';
 import RecrEvents from '../pages/admin/RecrEvents';
+import Activation from './Activation';
 
 function ClubPage({
   admin,
@@ -80,7 +81,10 @@ function ClubPage({
     tab = tempTab;
   }
 
-  console.log(organization);
+  if (admin && !organization.reactivated) {
+    return <Activation/>
+  }
+  
   if (!organization.link_name) return <Loading />;
 
   const socLinks = organization.social_media_links;
