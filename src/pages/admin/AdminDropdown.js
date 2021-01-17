@@ -9,7 +9,7 @@ const customStyles = {
   }),
   control: () => ({
     display: 'flex',
-    width: '430px',
+    width: '351px',
     margin: 0,
     fontSize: 14,
     lineHeight: '16px',
@@ -22,7 +22,7 @@ const customStyles = {
     ...provided,
     margin: 0,
     marginTop: 2,
-    width: '430px',
+    width: '351px',
     fontSize: 14,
     textAlign: 'left',
     color:
@@ -85,6 +85,7 @@ const Dropdown = (props) => (
     maxMenuHeight={200}
     onChange={(e) => handleChange(e, props)}
     closeMenuOnSelect={!props.multi}
+    isClearable={false}
   />
 );
 

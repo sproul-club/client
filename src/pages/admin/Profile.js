@@ -154,6 +154,7 @@ const Profile = ({
               defaultValue={sizeTagOptions[size]}
               placeholder="Select club size"
               set={setSize}
+              style={{width: '400px'}}
             />
           </div>
           <div className="formElement">
