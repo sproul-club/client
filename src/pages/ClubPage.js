@@ -21,6 +21,7 @@ import AboutClub from '../pages/admin/AboutClub';
 import Profile from '../pages/admin/Profile';
 import Banner from '../pages/admin/Banner';
 import RecrEvents from '../pages/admin/RecrEvents';
+import Activation from './Activation';
 
 function ClubPage({
   admin,
@@ -37,7 +38,8 @@ function ClubPage({
   const [showBannerModal, setShowBannerModal] = useState(false);
   const [showRecrModal, setShowRecrModal] = useState(false);
 
-  const [eventsSet, setEventsSet] = useState(false);
+  const [eventsSet, setEventsSet] = useState('');
+  const [activated, setActivation] = useState(false);
 
   function cancelEdit() {
     setShowContactModal(false);
@@ -57,7 +59,9 @@ function ClubPage({
       !organization.link_name && clearOrganization();
     };
     // recall useEffect when the link_name in url changes
-  }, [routeId]);
+  }, [routeId, activated, organization]);
+
+  console.log(organization);
   /*
   organization.gallery = [
     {
@@ -83,6 +87,13 @@ function ClubPage({
   }
 
   const [numEvents, setNumEvents] = useState('');
+
+  console.log(organization.reactivated);
+  console.log(activated);
+
+  if (admin && !activated && !organization.reactivated) {
+    return <Activation setActivation={setActivation}/>
+  }
 
   if (!organization.link_name) return <Loading />;
 

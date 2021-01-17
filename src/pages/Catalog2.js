@@ -204,7 +204,7 @@ const Catalog2 = ({
             )}
           </div>
 
-          {/* Members Dropdown */}
+          {/* Sort Dropdown */}
           <div className='filter-wrapper' onMouseEnter={()=>setShowSortDD(true)} onMouseLeave={()=>setShowSortDD(false)} >
             <div onClick={() => setShowSortDD(!showSortDD)} className={`${showSortDD && 'openDD'} filter sort-filter`}>
               Sort
@@ -212,6 +212,9 @@ const Catalog2 = ({
             </div>
             {showSortDD && (
               <div className="filter-dropdown sort-filter-dropdown">
+                <div className='filter-selection' onClick={()=>toggleSort("Rand")}>
+                  <span> Default (Random)</span>
+                </div>
                 <div className='filter-selection' onClick={()=>toggleSort("Asc")}>
                   <span> Ascending</span>
                 </div>

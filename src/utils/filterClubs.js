@@ -56,6 +56,15 @@ export const filterClubs = (allOrganizations, formDetails, tagOptions, num_resul
 
 
   // Sorting
+  function random(clubs) {
+    for (var i = clubs.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var temp = clubs[i];
+      clubs[i] = clubs[j];
+      clubs[j] = temp;
+    }
+    return clubs
+  }
 
   function sorted(type) {
     if (type == "Fresh") {
@@ -96,8 +105,9 @@ export const filterClubs = (allOrganizations, formDetails, tagOptions, num_resul
       };
     }
   }
-
-  if (formDetails.sort === 'Asc') {
+  if (formDetails.sort === 'Rand') {
+    filteredClubs = random(filteredClubs);
+  } else if (formDetails.sort === 'Asc') {
     filteredClubs = filteredClubs.sort((a,b) => a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1);
   } else if (formDetails.sort == "Desc") {
     filteredClubs = filteredClubs.sort((a,b) => a.name.toLowerCase() > b.name.toLowerCase() ? -1 : 1);

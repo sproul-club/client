@@ -44,6 +44,7 @@ const initialState = {
   apply_deadline_start: '',
   apply_deadline_end: '',
   apply_link: '',
+  // reactivated: false
 };
 
 export default function (state = initialState, action) {
