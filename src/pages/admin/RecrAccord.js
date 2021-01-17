@@ -37,7 +37,11 @@ const RecrAccord = forwardRef((props, ref) => {
     function singleDelete() {
         props.deleteRecrEvent(props.data.id);  
         props.incNumEvents(-1);
-      }
+    }
+
+    function duplicateEvent() {
+        props.dupEvent(props.data);
+    }
     
     function singleSave() {
         if (eventLink.length > 0 && !validURL(eventLink)) {
@@ -242,7 +246,7 @@ const RecrAccord = forwardRef((props, ref) => {
                                 
                             </div>
                             <div id="recr-forge-holder">
-                                    <button className="recr-forge" onClick={singleSave}>
+                                    <button className="recr-forge" onClick={duplicateEvent}>
                                         <img className="recr-img" src={require('../assets/recrDup.PNG')}></img>     
                                     </button>
                                     <button className="recr-forge" onClick={singleDelete}>
