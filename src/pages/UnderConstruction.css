@@ -1,4 +1,5 @@
 .construction-wrapper {
+  font-family: 'Qanelas Soft';
   display: flex;
   flex-direction: column;
   /* justify-content: center; */
@@ -6,7 +7,7 @@
   background: #fbfbfb;
   max-width: 100vw;
   height: 80vh;
-  font-size: 32px;
+  font-size: 26px;
   text-align: center;
   padding-top: 20vh;
   overflow: hidden;
@@ -15,6 +16,7 @@
 .builderbear {
   width: 500px;
   height: auto;
+  margin-bottom: 20px;
 }
 
 @media screen and (max-width: 800px) {
