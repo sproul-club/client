@@ -56,7 +56,8 @@ function ClubPage({
     if (!admin && organization.link_name !== routeId) getOrganization(routeId);
     // clears the loaded profile when component unmounts
     return () => {
-      !organization.link_name && clearOrganization();
+      // sorry karen uncommented line below bc it fixed something but lmk if it ends up breaking something else hehe
+      //!organization.link_name && clearOrganization();
     };
     // recall useEffect when the link_name in url changes
   }, [routeId, activated, organization]);
