@@ -6,7 +6,7 @@
 }
 
 .catalog-content {
-  width: 1150px;
+  max-width: 1150px;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -148,4 +148,11 @@
 }
 .scrollable-content::-webkit-scrollbar-thumb {
   background: rgb(134, 134, 134) !important;
+}
+
+@media screen and (max-width: 1150px){
+  
+  .catalog-content {
+    width: 100vw;
+  }
 }

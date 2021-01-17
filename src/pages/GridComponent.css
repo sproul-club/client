@@ -80,7 +80,8 @@
 
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+  grid-template-columns: repeat(auto-fill, 370px); 
+  justify-content: space-around;
   grid-gap: 1em;
 }
 
@@ -171,6 +172,6 @@
     margin-left: 8px;
   }
   .card-grid {
-    justify-content: space-between;
+    justify-content: space-around;
   }
 }
