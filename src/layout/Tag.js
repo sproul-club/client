@@ -18,7 +18,7 @@ const Tag = (props) => {
       <img src={Pen} className={props.listId === 'ar' ? 'icon' : 'hidden'}/>
       <img src={Face} className={props.listId === 'nar' ? 'icon' : 'hidden'}/>
       <span>{props.label} </span>
-      <img src={Dot} className={Number.isInteger(props.listId) || props.listId === 'mem' ? 'hidden' : 'icon'}/>
+      <img src={Dot} className={Number.isInteger(props.listId) || props.listId === 'mem' ? 'hidden' : 'icon-dot'}/>
     </div>
   );
 };

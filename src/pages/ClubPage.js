@@ -299,14 +299,16 @@ function ClubPage({
                   }
                   </div>
                 <p>{organization.get_involved}</p>
-                {organization.apply_link &&
-                <a href={"https://"+organization.apply_link}>
-                  <button className="clubpage-apply-btn">
-                    Apply Now!
-                    <RightArrow style={{marginLeft: 5}}/>
-                  </button>
-                </a>
-                }
+                <div className="apply-button-wrapper">
+                  {organization.apply_link &&
+                    <a href={"https://"+organization.apply_link}>
+                      <button className="clubpage-apply-btn">
+                        Apply Now!
+                        <RightArrow style={{marginLeft: 5, height: "1.6vw"}}/>
+                      </button>
+                    </a>
+                  }
+                </div>
               </div>
             }
             <div className="clubpage-content-contact clubpage-tile">
