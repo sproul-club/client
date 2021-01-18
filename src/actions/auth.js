@@ -101,6 +101,7 @@ export const resendConfirmationEmail = (email) => async (dispatch) => {
     await API.post('/api/user/resend-confirm', { email });
   } catch (err) {
     dispatch({ type: AUTH_ERROR, payload: err });
+    console.log(err);
     throw err;
   }
 };
