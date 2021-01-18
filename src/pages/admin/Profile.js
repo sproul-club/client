@@ -11,7 +11,7 @@ const Profile = ({
   uploadLogo,
   images,
   tagOptions,
-  sizeTagOptions,
+  sizeOptions,
   close,
 }) => {
   var appOptions = [
@@ -20,8 +20,8 @@ const Profile = ({
   ];
 
   var recruitOptions = [
-    { value: 1, label: 'Accepting members' },
-    { value: 0, label: 'Not accepting members' },
+    { value: 1, label: 'Recruiting members' },
+    { value: 0, label: 'Not recruiting members' },
   ];
 
   const [orgName, setOrgName] = useState(profile.name);
@@ -36,13 +36,13 @@ const Profile = ({
   const [size, setSize] = useState(profile.num_users);
   const [logoImage, setLogoImage] = useState(null);
   const [recrStartDate, setRecrStartDate] = useState(
-    (profile.recruiting_start == null || profile.recruiting_start == '1970-01-01T00:00:00' ) ? null : profile.recruiting_start.substring(0, 10)); 
+    (profile.recruiting_start == null) ? null : profile.recruiting_start.substring(0, 10)); 
   const [recrEndDate, setRecrEndDate] = useState(
-    (profile.recruiting_end == null || profile.recruiting_end == '1970-01-01T00:00:00' ) ? null : profile.recruiting_end.substring(0, 10)); 
+    (profile.recruiting_end == null) ? null : profile.recruiting_end.substring(0, 10)); 
   const [appStartDate, setAppStartDate] = useState(
-    (profile.apply_deadline_start == null || profile.apply_deadline_start == '1970-01-01T00:00:00' ) ? null : profile.apply_deadline_start.substring(0, 10)); 
+    (profile.apply_deadline_start == null) ? null : profile.apply_deadline_start.substring(0, 10)); 
   const [appEndDate, setAppEndDate] = useState(
-    (profile.apply_deadline_end == null || profile.apply_deadline_end == '1970-01-01T00:00:00' ) ? null : profile.apply_deadline_end.substring(0, 10)); 
+    (profile.apply_deadline_end == null) ? null : profile.apply_deadline_end.substring(0, 10)); 
 
   async function uploadLogoPic(logoUploads) {
     if (logoUploads && logoUploads.length > 0) {
@@ -77,11 +77,14 @@ const Profile = ({
       app_required: !!appReq.value,
       new_members: !!recruiting.value,
       num_users: size.value ? size.value : size,
-      recruiting_start: recrStartDate ? recrStartDate : '1970-01-01T00:00:00',
-      recruiting_end: recrEndDate ? recrEndDate : '1970-01-01T00:00:00',
-      apply_deadline_start: appStartDate ? appStartDate : '1970-01-01T00:00:00',
-      apply_deadline_end: appEndDate ? appEndDate : '1970-01-01T00:00:00',
-      is_reactivating: false
+      // recruiting_start: recrStartDate ? recrStartDate : '1970-01-01T00:00:00',
+      // recruiting_end: recrEndDate ? recrEndDate : '1970-01-01T00:00:00',
+      // apply_deadline_start: appStartDate ? appStartDate : '1970-01-01T00:00:00',
+      // apply_deadline_end: appEndDate ? appEndDate : '1970-01-01T00:00:00',
+      apply_deadline_start : (recruiting.value === 1 && appReq.value === 1) ? appStartDate : null,
+      apply_deadline_end : (recruiting.value === 1 && appReq.value === 1)? appEndDate : null,
+      recruiting_start: (recruiting.value === 1 && appReq.value === 0)? recrStartDate : null,
+      recruiting_end: (recruiting.value === 1 && appReq.value === 0)? recrEndDate : null,
     };
 
     try {
@@ -147,10 +150,10 @@ const Profile = ({
           <div className="formElement">
             <p>Club Size</p>
             <Dropdown
-              options={sizeTagOptions}
+              options={sizeOptions}
               multi={false}
               search={false}
-              defaultValue={sizeTagOptions[size]}
+              defaultValue={sizeOptions[size]}
               placeholder="Select club size"
               set={setSize}
               style={{width: '400px'}}
@@ -165,6 +168,17 @@ const Profile = ({
               defaultValue={appOptions[profile.app_required === true ? 0 : 1]}
               placeholder="Select application requirement"
               set={setAppReq}
+            />
+          </div>
+          <div className="formElement">
+            <p>Recruitment Status</p>
+            <Dropdown
+              options={recruitOptions}
+              multi={false}
+              search={false}
+              defaultValue={recruitOptions[profile.new_members === true ? 0 : 1]}
+              placeholder="Select recruitment status"
+              set={setRecruit}
             />
           </div>
           {appReq.value === 0 && 
@@ -226,7 +240,8 @@ const Profile = ({
             fileContainerStyle={{
               width: '300px',
               // float: 'left',
-              margin: '40px',
+              marginLeft: '40px',
+              marginBottom: '30px',
               background: 'transparent',
             }}
             labelStyles={{
@@ -259,6 +274,7 @@ const Profile = ({
 
       </div>
       <button id="save-button" onClick={submit}> Save </button>
+      <button id="cancel-button" onClick={() => close()}> Cancel </button>
     </div>
   );
 };
@@ -267,7 +283,7 @@ const mapStateToProps = (state) => ({
   profile: state.profile.profile,
   images: state.profile.images,
   tagOptions: state.profile.tagOptions,
-  sizeTagOptions: state.profile.sizeTagOptions,
+  sizeOptions: state.profile.sizeOptions,
 });
 
 export default connect(mapStateToProps, {

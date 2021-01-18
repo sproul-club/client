@@ -29,7 +29,7 @@
   font-size: 1vw;
   /* margin-bottom: 1vw; */
   line-height: 1.3vw;
-  margin-top: 1vw;
+  /* margin-top: 1vw; */
 }
 
 .clubpage-content-contact a {
@@ -238,7 +238,7 @@
   font-size: 1vw;
   padding: 8px 25px 8px 25px;
   border-radius: 10px;
-  margin: 0 auto 0 auto;
+  margin: 1vw auto 0 auto;
   align-items: center;
   transition: opacity 0.05s;
 }

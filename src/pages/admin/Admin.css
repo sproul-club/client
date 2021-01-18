@@ -65,6 +65,10 @@
   padding-right: 20px;
 }
 
+.admin-modal .admin-text {
+  margin-bottom: 30px;
+}
+
 .clubpage-wrapper .formGroup {
   display: flex;
   flex-direction: column;
@@ -72,15 +76,25 @@
   /* background: #f8f8f8; */
   padding-top: 10px;
   margin-bottom: 4px;
+  margin-right: 100px;
 }
 
 .formElement {
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: 100%;
+  justify-content: center;
   line-height: 12px;
   margin-bottom: 20px;
+}
+
+.formElement .input-time {
+  display: flex;
+  align-items: center;
+}
+
+.formElement .input-time span {
+  padding: 0 6px 0 6px;
 }
 
 .formElement p {
@@ -100,49 +114,60 @@
 } */
 
 .formElement .userInput {
-  width: 311px;
+  width: 320px;
   height: 0px;
   padding: 20px;
+  padding-left: 14px;
   border: solid 1px;
   border-radius: 5px;
   resize: none;
-  font-family: 'Helvetica Neue', sans-serif;
+  font-family: 'Qanelas Soft', sans-serif;
   font-weight: 400;
   font-style: normal;
-  font-size: 16px;
+  font-size: 14px;
   margin-bottom: 4px;
 }
 
 .formElement .descriptionInput {
-  width: 311px;
+  width: 400px;
   height: 200px;
-  padding: 20px;
+  padding: 16px;
   border: solid 1px;
   border-radius: 5px;
   resize: none;
-  font-family: 'Helvetica Neue', sans-serif;
+  font-family: 'Qanelas Soft', sans-serif;
   font-weight: 400;
   font-style: normal;
-  font-size: 16px;
+  font-size: 14px;
   margin-bottom: 4px;
+}
+
+.getInvolved p {
+  width: 120px;
+}
+
+.getInvolved .userInput {
+  width: 400px;
 }
 
 .formElement .descriptionInput::placeholder {
   font-size: 16px;
 }
 
+.fa-times:before {
+    margin-right: 10px;
+}
 
 .formElement .modal-input {
   border: 1px solid;
-  font-size: 16px;
-  width: 150px;
+  font-size: 14px;
+  width: 162px;
   height: 34px;
-  padding-left: 12px;
+  padding-left: 0px;
   border-radius: 5px;
-  font-family: 'Helvetica Neue', sans-serif;
+  font-family: 'Qanelas Soft', sans-serif;
   background-color: white;
 }
-
 
 .admin-page button {
   margin-bottom: 20px;
@@ -206,6 +231,11 @@
 #cancel-button:hover {
   color: #ff1111;
   border: 1px solid #ff1111;
+  cursor: pointer;
+}
+
+.modal-input {
+  font-family: 'Quanelas Soft, sans-serif'
 }
 
 .delete-modal {
@@ -223,6 +253,15 @@
 }
 .admin-page a {
   text-decoration: none;
+}
+
+.modal-right {
+  margin-right: 60px;
+  margin-left: 40px;
+}
+
+.modal-left .formGroup {
+  margin-right: 0px;
 }
 
 @media screen and (max-width: 850px) {

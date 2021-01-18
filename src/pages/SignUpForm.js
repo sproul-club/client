@@ -17,6 +17,7 @@ const MultiStepForm = ({
   isAuthenticated,
   resendConfirmationEmail,
   tagOptions,
+  sizeOptions,
 }) => {
   var appOptions = [
     { value: true, label: 'Application required' },
@@ -37,6 +38,7 @@ const MultiStepForm = ({
   const [tags, setTags] = useState([]);
   const [appReq, setAppReq] = useState(true);
   const [recruiting, setRecruit] = useState(true);
+  const [size, setSize] = useState('');
   const [resentEmail, setResentEmail] = useState(false);
   /* error indicators */
   const [emailUnverified, setEmailUnverified] = useState('noError');
@@ -49,6 +51,11 @@ const MultiStepForm = ({
   const [emptyTags, setEmptyTags] = useState('noError');
   const [emptyAppReq, setEmptyAppReq] = useState('unset');
   const [emptyRecruit, setEmptyRecruit] = useState('unset');
+  const [emptySize, setEmptySize] = useState('unset');
+  const [recrStartDate, setRecrStartDate] = useState(null);
+  const [recrEndDate, setRecrEndDate] = useState(null);
+  const [appStartDate, setAppStartDate] = useState(null);
+  const [appEndDate, setAppEndDate] = useState(null);
 
   if (isAuthenticated) {
     return <Redirect to="/admin" />;
@@ -74,7 +81,7 @@ const MultiStepForm = ({
     }
 
     try {
-      await register(clubName, email, pwd, tagsList, !!appReq.value, !!recruiting.value);
+      await register(clubName, email, pwd, tagsList, !!appReq.value, !!recruiting.value, size.value, appStartDate, appEndDate, recrStartDate, recrEndDate);
       setStep(currStep + 1);
     } catch (err) {
       var errMessage = err.response.data.reason;
@@ -153,6 +160,10 @@ const MultiStepForm = ({
       setEmptyRecruit('emptyRecruit');
       errorExists = true;
     }
+    if (emptySize !== 'noError') {
+      setEmptySize('emptySize');
+      errorExists = true;
+    }
     return errorExists;
   }
 
@@ -215,6 +226,13 @@ const MultiStepForm = ({
     }
   };
 
+  const sizeOnChange = (event) => {
+    setSize(event);
+    if (emptySize !== 'noError') {
+      setEmptySize('noError');
+    }
+  };
+
   return (
     <>
       <StepOne
@@ -244,18 +262,25 @@ const MultiStepForm = ({
         recruiting={recruiting}
         tagOptions={tagOptions}
         appOptions={appOptions}
+        sizeOptions={sizeOptions}
         recruitOptions={recruitOptions}
         setStep={setStep}
         setTags={tagsOnChange}
         setAppReq={appReqOnChange}
         setRecruit={recruitOnChange}
+        setSize={sizeOnChange}
         _prev={_prev}
         _next={_next}
         emptyTags={emptyTags}
         emptyAppReq={emptyAppReq}
         emptyRecruit={emptyRecruit}
+        emptySize={emptySize}
         tagError={tagOverflow}
         setTagError={setTagOverflow}
+        setRecrStartDate={setRecrStartDate}
+        setRecrEndDate={setRecrEndDate}
+        setAppStartDate={setAppStartDate}
+        setAppEndDate={setAppEndDate}
       />
       <StepThree
         currStep={currStep}
@@ -486,6 +511,18 @@ const StepTwo = (props) => {
         <h2>Register your club</h2>
       </div>
       <div className="drops">
+        <input
+            className={(props.recruiting.value) ? 'userInput' : 'userInput hidden'}
+            type="date"
+            placeholder={(props.appReq.value) ? "Application open date: " : "Recruiting start date: "}
+            onChange={(e) => props.appReq.value ? props.setAppStartDate(e.target.value) : props.setRecrStartDate(e.target.value)}
+        />
+        <input
+            className={(props.recruiting.value) ? 'userInput' : 'userInput hidden'}
+            type="date"
+            placeholder={(props.appReq.value) ? "Application close date: " : "Recruiting end date: "}
+            onChange={(e) => props.appReq.value ? props.setAppEndDate(e.target.value) : props.setRecrEndDate(e.target.value)}
+        />
         <Dropdown
           options={props.recruitOptions}
           multi={false}
@@ -503,6 +540,16 @@ const StepTwo = (props) => {
           placeholder="Select application requirement"
           defaultValue={props.appReq}
           set={props.setAppReq}
+          style={customStyles}
+          // error={haveError}
+        />
+        <Dropdown
+          options={props.sizeOptions}
+          multi={false}
+          search={false}
+          placeholder="Select club size"
+          defaultValue={props.size}
+          set={props.setSize}
           style={customStyles}
           // error={haveError}
         />
@@ -560,6 +607,7 @@ const StepThree = (props) => {
 
 const mapStateToProps = (state) => ({
   tagOptions: state.profile.tagOptions,
+  sizeOptions: state.profile.sizeOptions,
   isAuthenticated: state.auth.isAuthenticated,
 });
 

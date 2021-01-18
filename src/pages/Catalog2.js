@@ -134,8 +134,8 @@ const Catalog2 = ({
 
           {/* Status Dropdown */}
           <div className='filter-wrapper' onMouseEnter={()=>setShowStatusDD(true)} onMouseLeave={()=>setShowStatusDD(false)} >
-            <div onClick={() => setShowStatusDD(!showStatusDD)} className={`${showStatusDD && 'openDD'} filter status-filter`}>
-              Recruitment
+            <div onClick={() => setShowStatusDD(!showStatusDD)} className={`${showStatusDD && 'openDD'} ${(formDetails.recruiting || formDetails.notRecruiting) && 'selectedDD'} filter status-filter`}>
+              Status
               {showStatusDD ? <i className='fas fa-caret-up'></i> : <i className='fas fa-caret-down'></i>}
             </div>
             {showStatusDD && (
@@ -154,7 +154,7 @@ const Catalog2 = ({
 
           {/* App Dropdown */}
           <div className='filter-wrapper' onMouseEnter={()=>setShowAppDD(true)} onMouseLeave={()=>setShowAppDD(false)} >
-            <div onClick={() => setShowAppDD(!showAppDD)} className={`${showAppDD && 'openDD'} filter app-filter`}>
+            <div onClick={() => setShowAppDD(!showAppDD)} className={`${showAppDD && 'openDD'} ${(formDetails.appReq || formDetails.noAppReq) && 'selectedDD'} filter app-filter`}>
               App
               {showAppDD ? <i className='fas fa-caret-up'></i> : <i className='fas fa-caret-down'></i>}
             </div>
@@ -174,7 +174,7 @@ const Catalog2 = ({
 
           {/* Tags Dropdown */}
           <div className='filter-wrapper' onMouseEnter={()=>setShowTagsDD(true)} onMouseLeave={()=>setShowTagsDD(false)} >
-            <div onClick={() => setShowTagsDD(!showTagsDD)} className={`${showTagsDD && 'openDD'} filter tags-filter`}>
+            <div onClick={() => setShowTagsDD(!showTagsDD)} className={`${showTagsDD && 'openDD'} ${(Object.keys(formDetails.tags).some(k => formDetails.tags[k])) && 'selectedDD'} filter tags-filter`}>
               Tags
               {showTagsDD ? <i className='fas fa-caret-up'></i> : <i className='fas fa-caret-down'></i>}
             </div>
@@ -191,7 +191,7 @@ const Catalog2 = ({
 
           {/* Members Dropdown */}
           <div className='filter-wrapper' onMouseEnter={()=>setShowMembersDD(true)} onMouseLeave={()=>setShowMembersDD(false)} >
-            <div onClick={() => setShowMembersDD(!showMembersDD)} className={`${showMembersDD && 'openDD'} filter members-filter`}>
+            <div onClick={() => setShowMembersDD(!showMembersDD)} className={`${showMembersDD && 'openDD'} ${(Object.keys(formDetails.members).some(k => formDetails.members[k])) && 'selectedDD'} filter members-filter`}>
               Members
               {showMembersDD ? <i className='fas fa-caret-up'></i> : <i className='fas fa-caret-down'></i>}
             </div>

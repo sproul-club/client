@@ -4,6 +4,7 @@ import { updateProfile } from '../../actions/profile';
 import { NotificationManager } from 'react-notifications';
 import { normalizeUrl } from '../../utils/normalizeUrl';
 import './Admin.css';
+import { EmailOutlined } from '@material-ui/icons';
 
 
 const ContactInfo = ({ profile, updateProfile, close }) => {
@@ -22,7 +23,7 @@ const ContactInfo = ({ profile, updateProfile, close }) => {
   const [gcalendar, setGcalendar] = useState(contactInfo.gcalendar);
   const [youtube, setYoutube] = useState(contactInfo.youtube);
 
-  if (email === null) {
+  if (!email) {
     setEmail(profile.owner);
   }
 
@@ -204,6 +205,7 @@ const ContactInfo = ({ profile, updateProfile, close }) => {
         </div>
       </div>
       <button id="save-button" onClick={submit}> Save </button>
+      <button id="cancel-button" onClick={() => close()}> Cancel </button>
     </div>
   );
 };
