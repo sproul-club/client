@@ -81,6 +81,7 @@ const Profile = ({
       recruiting_end: recrEndDate ? recrEndDate : '1970-01-01T00:00:00',
       apply_deadline_start: appStartDate ? appStartDate : '1970-01-01T00:00:00',
       apply_deadline_end: appEndDate ? appEndDate : '1970-01-01T00:00:00',
+      is_reactivating: false
     };
 
     try {

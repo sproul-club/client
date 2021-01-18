@@ -71,7 +71,8 @@ const Catalog2 = ({
     setFormDetails({ name: 'noAppReq', value: false });
     setFormDetails({ name: 'recruiting', value: false });
     setFormDetails({ name: 'notRecruiting', value: false });
-    setFormDetails({ name: 'sort', value: 'Asc' });
+    setFormDetails({ name: 'members', value: 'reset' });
+    setFormDetails({ name: 'sort', value: 'Rand' });
   };
 
   const toggleTag = tagLabel => {
@@ -79,6 +80,8 @@ const Catalog2 = ({
   }
 
   const toggleMembers = tagLabel => {
+    console.log(tagLabel);
+    console.log(formDetails.members);
     setFormDetails({ name: 'members', value: tagLabel })
   }
 
