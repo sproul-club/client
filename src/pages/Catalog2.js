@@ -136,7 +136,7 @@ const Catalog2 = ({
           {/* Status Dropdown */}
           <div className='filter-wrapper' onMouseEnter={()=>setShowStatusDD(true)} onMouseLeave={()=>setShowStatusDD(false)} >
             <div onClick={() => setShowStatusDD(!showStatusDD)} className={`${showStatusDD && 'openDD'} ${(formDetails.recruiting || formDetails.notRecruiting) && 'selectedDD'} filter status-filter`}>
-              Status
+              Recruitment
               {showStatusDD ? <i className='fas fa-caret-up'></i> : <i className='fas fa-caret-down'></i>}
             </div>
             {showStatusDD && (
@@ -167,7 +167,7 @@ const Catalog2 = ({
                 </div>
                 <div className='filter-selection' onClick={toggleNoAppReq}>
                   <input type="checkbox" checked={noAppReq}/>
-                  <span> No Application</span>
+                  <span> No App Required</span>
                 </div>
               </div>
             )}
