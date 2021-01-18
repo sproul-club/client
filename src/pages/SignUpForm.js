@@ -514,14 +514,14 @@ const StepTwo = (props) => {
         <input
             className={(props.recruiting.value) ? 'userInput' : 'userInput hidden'}
             type="date"
-            placeholder={(props.appReq.value) ? "Application open date: " : "Recruiting start date: "}
-            onChange={(e) => props.appReq.value ? props.setAppStartDate(e.target.value) : props.setRecrStartDate(e.target.value)}
+            placeholder={(props.appReq.value) ? "Application close date: " : "Recruiting end date: "}
+            onChange={(e) => props.appReq.value ? props.setAppEndDate(e.target.value) : props.setRecrEndDate(e.target.value)}
         />
         <input
             className={(props.recruiting.value) ? 'userInput' : 'userInput hidden'}
             type="date"
-            placeholder={(props.appReq.value) ? "Application close date: " : "Recruiting end date: "}
-            onChange={(e) => props.appReq.value ? props.setAppEndDate(e.target.value) : props.setRecrEndDate(e.target.value)}
+            placeholder={(props.appReq.value) ? "Application open date: " : "Recruiting start date: "}
+            onChange={(e) => props.appReq.value ? props.setAppStartDate(e.target.value) : props.setRecrStartDate(e.target.value)}
         />
         <Dropdown
           options={props.recruitOptions}
