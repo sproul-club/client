@@ -53,6 +53,11 @@ export default function (state = initialState, action) {
   switch (type) {
     case LOAD_PROFILE:
       const { logo_url, banner_url } = payload;
+      Object.keys(payload.social_media_links).forEach(k => {
+        if(payload.social_media_links[k] === ''){
+          payload.social_media_links[k] = null
+        }
+      })
       return {
         ...state,
         profile: payload,
