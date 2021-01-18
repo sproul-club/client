@@ -22,7 +22,7 @@ const ContactInfo = ({ profile, updateProfile, close }) => {
   const [gcalendar, setGcalendar] = useState(contactInfo.gcalendar);
   const [youtube, setYoutube] = useState(contactInfo.youtube);
 
-  if (email === null) {
+  if (!!email) {
     setEmail(profile.owner);
   }
 
@@ -83,7 +83,7 @@ const ContactInfo = ({ profile, updateProfile, close }) => {
           </p>
           <input
             className="userInput"
-            value={email || null}
+            value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="+  Add your organization's email"
             type="text"
