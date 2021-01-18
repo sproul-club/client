@@ -135,18 +135,18 @@ const Catalog2 = ({
           {/* Status Dropdown */}
           <div className='filter-wrapper' onMouseEnter={()=>setShowStatusDD(true)} onMouseLeave={()=>setShowStatusDD(false)} >
             <div onClick={() => setShowStatusDD(!showStatusDD)} className={`${showStatusDD && 'openDD'} filter status-filter`}>
-              Status
+              Recruitment
               {showStatusDD ? <i className='fas fa-caret-up'></i> : <i className='fas fa-caret-down'></i>}
             </div>
             {showStatusDD && (
               <div className="filter-dropdown">
                 <div className='filter-selection' onClick={toggleRecruiting}>
                   <input type="checkbox" checked={recruiting}/> 
-                  <span> Recruiting</span>
+                  <span> Open</span>
                 </div>
                 <div className='filter-selection' onClick={toggleNotRecruiting}>
                   <input type="checkbox" checked={notRecruiting}/>
-                  <span> Not recruiting</span>
+                  <span> Closed</span>
                 </div>
               </div>
             )}

@@ -179,9 +179,9 @@ function ClubPage({
   let tagList = [];
 
   if (organization.new_members) {
-    tagList.push(<Tag key={"nm"} label="Recruiting" color="#c9f0c9" listId = {'nm'}/>);
+    tagList.push(<Tag key={"nm"} label="Recruitment Open" color="#c9f0c9" listId = {'nm'}/>);
   } else {
-    tagList.push(<Tag key={"nnm"} label="Not Recruiting" color="#ffd6d6" listId = {'nnm'}/>);
+    tagList.push(<Tag key={"nnm"} label="Recruitment Closed" color="#ffd6d6" listId = {'nnm'}/>);
   }
   if (organization.app_required) {
     tagList.push(<Tag key={"ar"} label="Application Required" color="#fff1ae" listId = {'ar'}/>);
