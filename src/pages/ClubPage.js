@@ -13,6 +13,7 @@ import ReactGA from 'react-ga';
 import RightArrow from '@material-ui/icons/CallMadeRounded';
 import HeartBordered from '@material-ui/icons/FavoriteBorderRounded';
 import EditIcon from '@material-ui/icons/EditRounded';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import { Route, Switch, Link } from 'react-router-dom';
 import Modal from '../layout/Modal';
 import ContactInfo from '../pages/admin/ContactInfo';
@@ -41,6 +42,8 @@ function ClubPage({
 
   const [eventsSet, setEventsSet] = useState('');
   const [activated, setActivation] = useState(false);
+
+  const [aboutMore, setAboutMore] = useState(false);
 
   function cancelEdit() {
     setShowContactModal(false);
@@ -145,7 +148,7 @@ function ClubPage({
   const overview =
     <div>
     {organization.about_us &&
-      <div className='clubpage-content-about clubpage-content-item' >
+      <div id="about" className={aboutMore ? 'clubpage-content-about clubpage-content-item-more' : 'clubpage-content-about clubpage-content-item'} >
         <div className='clubpage-content-header'>
           <h1>About {organization.name}</h1>
           {admin &&
@@ -155,8 +158,9 @@ function ClubPage({
         <p dangerouslySetInnerHTML={{ __html: organization.about_us }}></p>
       </div>
     }
+    <button className="seeMoreButton" onClick={() => setAboutMore(!aboutMore)}>{aboutMore ? "See less" : "See more"} <ExpandMoreIcon/></button>
     {organization.gallery &&
-      <div className='clubpage-content-gallery clubpage-content-item' >
+      <div className='clubpage-content-gallery clubpage-content-item'>
         <div className='clubpage-content-header'>
           <h1>Gallery</h1>
           {admin &&
@@ -175,14 +179,14 @@ function ClubPage({
   let tagList = [];
 
   if (organization.new_members) {
-    tagList.push(<Tag key={"nm"} label="Open Member Status" color="#c9f0c9" listId = {'nm'}/>);
+    tagList.push(<Tag key={"nm"} label="Recruiting" color="#c9f0c9" listId = {'nm'}/>);
   } else {
-    tagList.push(<Tag key={"nnm"} label="Closed Member Status" color="#ffd6d6" listId = {'nnm'}/>);
+    tagList.push(<Tag key={"nnm"} label="Not Recruiting" color="#ffd6d6" listId = {'nnm'}/>);
   }
   if (organization.app_required) {
     tagList.push(<Tag key={"ar"} label="Application Required" color="#fff1ae" listId = {'ar'}/>);
   } else {
-    tagList.push(<Tag key={"nar"} label="Application Not Required" color="#cdeaff" listId = {'nar'}/>)
+    tagList.push(<Tag key={"nar"} label="No Application Required" color="#cdeaff" listId = {'nar'}/>)
   }
   tagList.push(<Tag key={'mem'} label={membersMap[membersMapIndex].label + ' members'} listId = {'mem'}/>)
 

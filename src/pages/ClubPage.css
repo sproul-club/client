@@ -30,7 +30,6 @@
   /* margin-bottom: 1vw; */
   line-height: 1.3vw;
   margin-top: 1vw;
-  margin-bottom: 2vw;
 }
 
 .clubpage-content-contact a {
@@ -194,7 +193,32 @@
 }
 
 .clubpage-content-item{
-  margin-bottom: 40px;
+  max-height: 14vw;
+  overflow-y: hidden;
+}
+
+.clubpage-content-item-more {
+  height: auto;
+}
+
+.seeMoreButton {
+  background: none;
+  border: none;
+  font-family: Qanelas Soft;
+  font-size: 1vw;
+  color: #767676;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+}
+
+.seeMoreButton:hover {
+  cursor: pointer;
+}
+
+.seeMoreButtonNone {
+  display: none;
 }
 
 .clubpage-content-right {
