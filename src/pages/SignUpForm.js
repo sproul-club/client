@@ -52,8 +52,10 @@ const MultiStepForm = ({
   const [emptyAppReq, setEmptyAppReq] = useState('unset');
   const [emptyRecruit, setEmptyRecruit] = useState('unset');
   const [emptySize, setEmptySize] = useState('unset');
-  const [recruitingStart, setRStart] = useState('');
-  const [recruitingEnd, setREnd] = useState('');
+  const [recrStartDate, setRecrStartDate] = useState(null);
+  const [recrEndDate, setRecrEndDate] = useState(null);
+  const [appStartDate, setAppStartDate] = useState(null);
+  const [appEndDate, setAppEndDate] = useState(null);
 
   if (isAuthenticated) {
     return <Redirect to="/admin" />;
@@ -79,7 +81,7 @@ const MultiStepForm = ({
     }
 
     try {
-      await register(clubName, email, pwd, tagsList, !!appReq.value, !!recruiting.value, size.value);
+      await register(clubName, email, pwd, tagsList, !!appReq.value, !!recruiting.value, size.value, appStartDate, appEndDate, recrStartDate, recrEndDate);
       setStep(currStep + 1);
     } catch (err) {
       var errMessage = err.response.data.reason;
@@ -275,6 +277,10 @@ const MultiStepForm = ({
         emptySize={emptySize}
         tagError={tagOverflow}
         setTagError={setTagOverflow}
+        setRecrStartDate={setRecrStartDate}
+        setRecrEndDate={setRecrEndDate}
+        setAppStartDate={setAppStartDate}
+        setAppEndDate={setAppEndDate}
       />
       <StepThree
         currStep={currStep}
@@ -505,6 +511,18 @@ const StepTwo = (props) => {
         <h2>Register your club</h2>
       </div>
       <div className="drops">
+        <input
+            className={(props.recruiting.value) ? 'userInput' : 'userInput hidden'}
+            type="date"
+            placeholder={(props.appReq.value) ? "Application open date: " : "Recruiting start date: "}
+            onChange={(e) => props.appReq.value ? props.setAppStartDate(e.target.value) : props.setRecrStartDate(e.target.value)}
+        />
+        <input
+            className={(props.recruiting.value) ? 'userInput' : 'userInput hidden'}
+            type="date"
+            placeholder={(props.appReq.value) ? "Application close date: " : "Recruiting end date: "}
+            onChange={(e) => props.appReq.value ? props.setAppEndDate(e.target.value) : props.setRecrEndDate(e.target.value)}
+        />
         <Dropdown
           options={props.recruitOptions}
           multi={false}
