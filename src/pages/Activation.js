@@ -74,13 +74,13 @@ const Activation = ({tagOptions, profile, updateProfile, setActivation, sizeOpti
             is_reactivating: true
         }
 
-        if (setActivation) {
-          setActivation(true);
-        }
-
+        
         try {
           await updateProfile(newProfile);
           NotificationManager.success('Activation successful!', '', 1500);
+          if (setActivation) {
+            setActivation(true);
+          }
         } catch (err) {
           console.log(err);
           NotificationManager.error('Activation unsuccessful!', '', 1500);
