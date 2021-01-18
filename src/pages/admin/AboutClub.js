@@ -20,6 +20,7 @@ const AboutClub = ({
       ...profile,
       name: profile.name,
       about_us: stateToHTML(descr),
+      is_reactivating: false
     };
 
     try {

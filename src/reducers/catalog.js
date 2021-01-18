@@ -10,7 +10,8 @@ import {
   SET_TAGS,
   SET_FORM_DETAILS,
   RESET_TAGS,
-  SET_MEMBERS
+  SET_MEMBERS,
+  RESET_MEMBERS
 } from '../actions/types';
 
 const initialState = {
@@ -65,6 +66,14 @@ export default function (state = initialState, action) {
         formDetails: {
           ...state.formDetails,
           tags: {},
+        },
+      };
+    case RESET_MEMBERS:
+      return {
+        ...state,
+        formDetails: {
+          ...state.formDetails,
+          members: {},
         },
       };
     case SET_MEMBERS:
