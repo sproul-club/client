@@ -38,7 +38,7 @@ const initialState = {
   social_media_links: {},
   get_involved: '',
   tagOptions: [],
-  sizeTagOptions: [],
+  sizeOptions: [],
   recruiting_start: '',
   recruiting_end: '',
   apply_deadline_start: '',
@@ -123,7 +123,7 @@ export default function (state = initialState, action) {
     case GET_TAGS:
       return { ...state, tagOptions: payload };
     case GET_SIZE_TAGS:
-      return { ...state, sizeTagOptions: payload };
+      return { ...state, sizeOptions: payload };
     default:
       return state;
   }

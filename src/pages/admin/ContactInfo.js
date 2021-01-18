@@ -22,7 +22,7 @@ const ContactInfo = ({ profile, updateProfile, close }) => {
   const [gcalendar, setGcalendar] = useState(contactInfo.gcalendar);
   const [youtube, setYoutube] = useState(contactInfo.youtube);
 
-  if (email === null) {
+  if (!!email) {
     setEmail(profile.owner);
   }
 
@@ -83,7 +83,7 @@ const ContactInfo = ({ profile, updateProfile, close }) => {
           </p>
           <input
             className="userInput"
-            value={email || ''}
+            value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="+  Add your organization's email"
             type="text"
@@ -96,7 +96,7 @@ const ContactInfo = ({ profile, updateProfile, close }) => {
           <p>Website</p>
           <input
             className="userInput"
-            value={website || ''}
+            value={website || null}
             onChange={(e) => setWebsite(e.target.value)}
             type="text"
             placeholder="+  Add a link"
@@ -106,7 +106,7 @@ const ContactInfo = ({ profile, updateProfile, close }) => {
           <p>Discord</p>
           <input
             className="userInput"
-            value={discord || ''}
+            value={discord || null}
             onChange={(e) => setDiscord(e.target.value)}
             type="text"
             placeholder="+  Add a link"
@@ -116,7 +116,7 @@ const ContactInfo = ({ profile, updateProfile, close }) => {
           <p>Linkedin</p>
           <input
             className="userInput"
-            value={linkedin || ''}
+            value={linkedin || null}
             onChange={(e) => setLinkedin(e.target.value)}
             type="text"
             placeholder="+  Add a link"
@@ -126,7 +126,7 @@ const ContactInfo = ({ profile, updateProfile, close }) => {
           <p>Facebook</p>
           <input
             className="userInput"
-            value={facebook || ''}
+            value={facebook || null}
             onChange={(e) => setFacebook(e.target.value)}
             type="text"
             placeholder="+  Add a link"
@@ -136,7 +136,7 @@ const ContactInfo = ({ profile, updateProfile, close }) => {
           <p>Instagram</p>
           <input
             className="userInput"
-            value={instagram || ''}
+            value={instagram || null}
             onChange={(e) => setInstagram(e.target.value)}
             type="text"
             placeholder="+  Add a link"
@@ -146,7 +146,7 @@ const ContactInfo = ({ profile, updateProfile, close }) => {
           <p>Twitter</p>
           <input
             className="userInput"
-            value={twitter || ''}
+            value={twitter || null}
             onChange={(e) => setTwitter(e.target.value)}
             placeholder="+  Add a link"
             type="text"
@@ -156,7 +156,7 @@ const ContactInfo = ({ profile, updateProfile, close }) => {
           <p>Github</p>
           <input
             className="userInput"
-            value={github || ''}
+            value={github || null}
             onChange={(e) => setGithub(e.target.value)}
             placeholder="+  Add a link"
             type="text"
@@ -166,7 +166,7 @@ const ContactInfo = ({ profile, updateProfile, close }) => {
           <p>Behance</p>
           <input
             className="userInput"
-            value={behance || ''}
+            value={behance || null}
             onChange={(e) => setBehance(e.target.value)}
             placeholder="+  Add a link"
             type="text"
@@ -176,7 +176,7 @@ const ContactInfo = ({ profile, updateProfile, close }) => {
           <p>Medium</p>
           <input
             className="userInput"
-            value={medium || ''}
+            value={medium || null}
             onChange={(e) => setMedium(e.target.value)}
             type="text"
             placeholder="+  Add a link"
@@ -186,7 +186,7 @@ const ContactInfo = ({ profile, updateProfile, close }) => {
           <p>Youtube</p>
           <input
             className="userInput"
-            value={youtube || ''}
+            value={youtube || null}
             onChange={(e) => setYoutube(e.target.value)}
             type="text"
             placeholder="+  Add a link"
@@ -196,7 +196,7 @@ const ContactInfo = ({ profile, updateProfile, close }) => {
           <p>Google Calendar</p>
           <input
             className="userInput"
-            value={gcalendar || ''}
+            value={gcalendar || null}
             onChange={(e) => setGcalendar(e.target.value)}
             type="text"
             placeholder="+  Add a link"

@@ -147,7 +147,7 @@ function ClubPage({
 
   const overview =
     <div>
-    {organization.about_us &&
+    {
       <div id="about" className={aboutMore ? 'clubpage-content-about clubpage-content-item-more' : 'clubpage-content-about clubpage-content-item'} >
         <div className='clubpage-content-header'>
           <h1>About {organization.name}</h1>
@@ -294,7 +294,7 @@ function ClubPage({
             </Switch>
           </div>
           <div className='clubpage-content-right'>
-            {(organization.get_involved || organization.apply_link) &&
+            {
               <div className="clubpage-content-getinvolved clubpage-tile">
                 <div className='clubpage-content-header'>
                   <h1>How to Get Involved</h1>
