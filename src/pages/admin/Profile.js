@@ -69,7 +69,6 @@ const Profile = ({
   }
 
   const submit = async () => {
-    console.log(recrEndDate);
     const newProfile = {
       ...profile,
       name: orgName.trim(),
@@ -153,6 +152,7 @@ const Profile = ({
               defaultValue={sizeTagOptions[size]}
               placeholder="Select club size"
               set={setSize}
+              style={{width: '400px'}}
             />
           </div>
           <div className="formElement">
@@ -226,6 +226,7 @@ const Profile = ({
               width: '300px',
               // float: 'left',
               margin: '40px',
+              background: 'transparent',
             }}
             labelStyles={{
               width: '250px',
