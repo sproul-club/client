@@ -23,6 +23,7 @@ import ErrorPage from './pages/ErrorPage';
 import About from './pages/AboutPage';
 import FAQ from './pages/FAQ';
 import Admin from './pages/admin/Admin.js';
+import ConfirmEmailBanner from './pages/admin/ConfirmEmailBanner.js';
 import ClubPage from './pages/ClubPage';
 import Dashboard from './pages/Dashboard.js';
 import Favorites from './pages/Favorites.js';
@@ -53,6 +54,7 @@ const App = () => {
     <Provider store={store}>
       <Router>
         <Navbar />
+        <ConfirmEmailBanner />
         <Switch>
           <Route exact path="/" component={Landing} />
           <Route exact path="/comingsoon" component={ComingSoon} />
@@ -82,4 +84,5 @@ const App = () => {
     </Provider>
   );
 };
+
 export default withRouter(App);
