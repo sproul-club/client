@@ -78,6 +78,8 @@ export const uploadLogo = (logo) => async (dispatch) => {
   try {
     const res = await API.post('/api/admin/upload-logo', data, config);
     dispatch({ type: UPLOAD_IMAGES, payload: res.data });
+
+    await dispatch(loadProfile());
   } catch (err) {
     console.log(err.response.data);
     throw err;
@@ -100,6 +102,8 @@ export const uploadBanner = (banner) => async (dispatch) => {
   try {
     const res = await API.post('/api/admin/upload-banner', data, config);
     dispatch({ type: UPLOAD_IMAGES, payload: res.data });
+
+    await dispatch(loadProfile());
   } catch (err) {
     console.log(err.response.data);
     throw err;

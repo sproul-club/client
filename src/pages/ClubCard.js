@@ -37,7 +37,7 @@ const ClubCard = ({club, tagOptions, displayBanner}) => {
             <div className={lines + ' clubcard-description'}>{about_us.replace(/(<([^>]+)>)/gi, "")}</div>
           </div>
           <div className="clubcard-like">
-            <i class="fas fa-heart"></i>
+            {/* <i class="fas fa-heart"></i> */}
             {/* <i class="far fa-heart"></i> */}
           </div>
         </div>
@@ -54,7 +54,7 @@ const ClubCard = ({club, tagOptions, displayBanner}) => {
             {new_members && (
               <>
                 <i className="fas fa-check"></i> 
-                {' '}RECRUITING
+                {' '}OPEN
               </>
             )}
           </div>

@@ -76,7 +76,7 @@ const Profile = ({
       tags: tags.map((tags) => tags.value),
       app_required: !!appReq.value,
       new_members: !!recruiting.value,
-      num_users: size.value ? size.value : size,
+      num_users: (size.value || size.value === 0) ? size.value : size,
       // recruiting_start: recrStartDate ? recrStartDate : '1970-01-01T00:00:00',
       // recruiting_end: recrEndDate ? recrEndDate : '1970-01-01T00:00:00',
       // apply_deadline_start: appStartDate ? appStartDate : '1970-01-01T00:00:00',
@@ -240,7 +240,8 @@ const Profile = ({
             fileContainerStyle={{
               width: '300px',
               // float: 'left',
-              margin: '40px',
+              marginLeft: '40px',
+              marginBottom: '30px',
               background: 'transparent',
             }}
             labelStyles={{
@@ -273,6 +274,7 @@ const Profile = ({
 
       </div>
       <button id="save-button" onClick={submit}> Save </button>
+      <button id="cancel-button" onClick={() => close()}> Cancel </button>
     </div>
   );
 };

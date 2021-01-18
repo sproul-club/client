@@ -23,7 +23,6 @@ import Profile from '../pages/admin/Profile';
 import Banner from '../pages/admin/Banner';
 import RecrEvents from '../pages/admin/RecrEvents';
 import Activation from './Activation';
-import { membersMap } from '../utils/filterClubs'
 
 function ClubPage({
   admin,
@@ -31,6 +30,7 @@ function ClubPage({
   getOrganization,
   clearOrganization,
   tagOptions,
+  sizeOptions,
   history
 }) {
   const [showContactModal, setShowContactModal] = useState(false);
@@ -179,16 +179,16 @@ function ClubPage({
   let tagList = [];
 
   if (organization.new_members) {
-    tagList.push(<Tag key={"nm"} label="Recruiting" color="#c9f0c9" listId = {'nm'}/>);
+    tagList.push(<Tag key={"nm"} label="Recruitment Open" color="#c9f0c9" listId = {'nm'}/>);
   } else {
-    tagList.push(<Tag key={"nnm"} label="Not Recruiting" color="#ffd6d6" listId = {'nnm'}/>);
+    tagList.push(<Tag key={"nnm"} label="Recruitment Closed" color="#ffd6d6" listId = {'nnm'}/>);
   }
   if (organization.app_required) {
     tagList.push(<Tag key={"ar"} label="Application Required" color="#fff1ae" listId = {'ar'}/>);
   } else {
     tagList.push(<Tag key={"nar"} label="No Application Required" color="#cdeaff" listId = {'nar'}/>)
   }
-  tagList.push(<Tag key={'mem'} label={membersMap[membersMapIndex].label + ' members'} listId = {'mem'}/>)
+  tagList.push(<Tag key={'mem'} label={sizeOptions[membersMapIndex].label + ' members'} listId = {'mem'}/>)
 
   ReactGA.initialize('UA-176775736-1');
   ReactGA.pageview('/' + history.location.pathname.slice(6).split("/")[0]);
@@ -225,11 +225,11 @@ function ClubPage({
               </div>
             </div>
             <div className="clubpage-header-right">
-              {!admin &&
-                <button className="clubpage-favorite-button" /* NEED AN ONCLICK HANDLER TO ACTUALL DO SOMETHING HERE*/>
-                  <HeartBordered fontSize="small"/>
-                  <span>Favorite</span>
-                </button>
+              {!admin 
+              // && <button className="clubpage-favorite-button" /* NEED AN ONCLICK HANDLER TO ACTUALL DO SOMETHING HERE*/>
+              //     <HeartBordered fontSize="small"/>
+              //     <span>Favorite</span>
+              //   </button>
               }
               {admin &&
                 <EditIcon className="clubpage-content-header-icon" onClick={() => setShowProfileModal(admin)}/>
@@ -331,7 +331,7 @@ function ClubPage({
               <h2>Social Media</h2>
               <div className="clubpage-sm-link-list">{contactComps}</div>
             </div>
-            {organization.resources && organization.resources.length > 0 &&
+            {/* {organization.resources && organization.resources.length > 0 &&
               <div className="clubpage-content-getinvolved clubpage-tile">
                 <div className='clubpage-content-header'>
                   <h1>Resources</h1>
@@ -341,7 +341,7 @@ function ClubPage({
                 </div>
                 <div className="clubpage-content-resource-list">{resComps}</div>
               </div>
-            }
+            } */}
           </div>
         </div>
 
@@ -416,6 +416,7 @@ const mapStateToProps = (state, ownProps) => ({
   admin: ownProps.admin,
   organization: ownProps.admin ? state.profile.profile : state.catalog.organization,
   tagOptions: state.profile.tagOptions,
+  sizeOptions: state.profile.sizeOptions,
 });
 
 export default connect(mapStateToProps, { getOrganization, clearOrganization })(withRouter(ClubPage));

@@ -19,6 +19,7 @@ const eventsLoadedAtOnce = 18
 const Catalog2 = ({
   clearOrganization,
   tagOptions,
+  sizeOptions,
   loadMoreClubs,
   num_clubs,
   formDetails,
@@ -142,11 +143,11 @@ const Catalog2 = ({
               <div className="filter-dropdown">
                 <div className='filter-selection' onClick={toggleRecruiting}>
                   <input type="checkbox" checked={recruiting}/> 
-                  <span> Recruiting</span>
+                  <span> Open</span>
                 </div>
                 <div className='filter-selection' onClick={toggleNotRecruiting}>
                   <input type="checkbox" checked={notRecruiting}/>
-                  <span> Not recruiting</span>
+                  <span> Closed</span>
                 </div>
               </div>
             )}
@@ -197,7 +198,7 @@ const Catalog2 = ({
             </div>
             {showMembersDD && (
               <div className="filter-dropdown">
-                {membersMap.map((option)=>(
+                {sizeOptions.map((option)=>(
                   <div onClick={()=>toggleMembers(option.value)} className='filter-selection'>
                     <input type="checkbox" checked={members[option.value]}/>
                     <span>{option.label}</span>
@@ -248,6 +249,7 @@ const Catalog2 = ({
 const mapStateToProps = (state) => ({
   num_clubs: state.catalog.num_clubs,
   tagOptions: state.profile.tagOptions,
+  sizeOptions: state.profile.sizeOptions,
   formDetails: state.catalog.formDetails,
   num_displayed: state.catalog.num_displayed
 });

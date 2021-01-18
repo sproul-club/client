@@ -290,7 +290,7 @@ function Favorites({student,
                             <div className="filter-dropdown">
                             <div className='filter-selection'>
                                 <input type="checkbox"/>
-                                <span> 0-10</span>
+                                <span> {'<'} 10</span>
                             </div>
                             <div className='filter-selection'>
                                 <input type="checkbox"/>

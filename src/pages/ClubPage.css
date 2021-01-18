@@ -16,7 +16,7 @@
 }
 
 .clubpage h1 {
-  font-size: 1.5vw;
+  font-size: 1.4vw;
   margin-top: 1vw;
   margin-bottom: .8vw;
 }
@@ -29,7 +29,7 @@
   font-size: 1vw;
   /* margin-bottom: 1vw; */
   line-height: 1.3vw;
-  margin-top: 1vw;
+  /* margin-top: 1vw; */
 }
 
 .clubpage-content-contact a {
@@ -91,7 +91,7 @@
 }
 .clubpage-header-middle {
   flex: 1 1 auto;
-  padding: 20px;
+  padding: 15px;
 }
 .clubpage-header-right {
   display: flex;
@@ -165,7 +165,7 @@
   background: none;
   border: none;
   font-weight: bolder;
-  font-size: 1.3vw;
+  font-size: 1.4vw;
   margin: 0 15px 0 15px;
   padding: 10px 0 10px 0;
   border-bottom: 4px solid transparent;
@@ -190,6 +190,8 @@
 .clubpage-content-left {
   flex: 2;
   margin-right: 60px;
+  margin-left: 0px;
+  padding: 15px 25px 25px 25px;
 }
 
 .clubpage-content-item{
@@ -228,13 +230,15 @@
 .clubpage-apply-btn {
   display: inline-flex;
   background-color: #54A0F1;
+  font-family: Qanelas Soft;
+  letter-spacing: 1.5px;
   border: none;
   color: white;
   font-weight: bold;
   font-size: 1vw;
   padding: 8px 25px 8px 25px;
   border-radius: 10px;
-  margin: 0 auto 0 auto;
+  margin: 1vw auto 0 auto;
   align-items: center;
   transition: opacity 0.05s;
 }
@@ -248,7 +252,7 @@
   border-radius: 10px;
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
   background-color: white;
-  padding: 5px 25px 25px 25px;
+  padding: 15px 25px 25px 25px;
   margin-bottom: 20px;
 }
 
@@ -268,11 +272,13 @@
   margin-top: 1vw;
 }
 
+
 .clubpage-sm-link {
   width: 2.25vw;
   margin-right: 0.5vw;
   height: auto;
 }
+
 
 .clubpage-content-resource {
   display: flex;
@@ -285,6 +291,8 @@
 }
 
 
+
+
 @media screen and (max-width: 850px) {
   .clubpage {
     width: 85vw;
@@ -292,6 +300,7 @@
 
   .clubpage h1 {
     font-size: 3vw;
+    letter-spacing: 0.05em;
   }
 
   .clubpage h2 {

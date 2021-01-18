@@ -205,6 +205,7 @@ const ContactInfo = ({ profile, updateProfile, close }) => {
         </div>
       </div>
       <button id="save-button" onClick={submit}> Save </button>
+      <button id="cancel-button" onClick={() => close()}> Cancel </button>
     </div>
   );
 };
