@@ -66,10 +66,9 @@
 .header-tags {
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
+  align-items: center;
   flex-wrap: wrap;
 }
-
 
 .clubpage-header-left {
   flex: 0 0 25%;
