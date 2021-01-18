@@ -11,7 +11,7 @@ import { ContactSupportOutlined } from '@material-ui/icons';
  
  
 const RecrEvents = ({profile, events, incNumEvents, cancelEdit, addRecrEvent, updateRecrEvent, deleteRecrEvent}) => {
-    const [addSuccess, setAddSuccess] = useState(true);
+    var addSuccess = true;
 
     const addEv = async (e) => {
         e.preventDefault();
@@ -21,15 +21,14 @@ const RecrEvents = ({profile, events, incNumEvents, cancelEdit, addRecrEvent, up
           virtual_link: "",
           event_start: "2000-01-01T00:00:00",
           event_end: "2000-01-01T00:00:00",
-          description: "",
+          description: "[enter description]",
           invite_only: false,
         };
     
         try {
             await addRecrEvent(emptyEvent);
         } catch (err) {
-            setAddSuccess(false);
-            console.log("ERROR");
+            addSuccess = false;
             console.log(err);
         }
         if (addSuccess == true) {
@@ -88,16 +87,24 @@ const RecrEvents = ({profile, events, incNumEvents, cancelEdit, addRecrEvent, up
     }
     const count = [1,2]
     function saveAll() {
-      for (const num in count) {
-        refs.current.forEach(child => {
-          if (child !== null){
-            child.save();
+      const retValues = []
+      refs.current.forEach(child => {
+        if (child !== null){
+          if (child.checkSave() == 0) {
+            child.verifySave();
+          } else {
+            retValues.push(1);
           }
-        })
-      }
-      cancelEdit();
-      //window.location.reload(true);  
+        }
+      })
+      console.log("RETURNED")
+      console.log(retValues)
+      if (retValues.reduce(function(a,b) { return a+b;}, 0) == 0) {
+        cancelEdit();
+      } 
     }
+ 
+  
     function delRef(index) {
       delete refs[index];
     }
@@ -116,6 +123,7 @@ const RecrEvents = ({profile, events, incNumEvents, cancelEdit, addRecrEvent, up
                         deleteRecrEvent = {deleteRecrEvent}
                         dupEvent = {dupEvent}
                         entryChange = {entryChange}
+                        position = {i}
                         key = {i}
                         delRef = {delRef}
                         ref = {ins => refs.current[i] = ins}

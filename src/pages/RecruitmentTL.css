@@ -6,13 +6,13 @@
     left: -2%;
     max-width: 94%;
     z-index: 100;
-    margin-bottom: 1.5vw;
+    margin-bottom: 2.5vw;
     min-height: 8vw;
 }
 .name-time-box{
     display: flex;
     flex-direction: column;
-    width: 24%;
+    width: 17vw;
 }
 .event-title {
     letter-spacing: 0.03em;
@@ -34,14 +34,18 @@
     font-style: normal;
     color: #AEAEAE;
     font-weight: 100;
-    margin: 0vw 1vw 0vw 0.7vw;
+    margin: 0vw 0vw 0vw 0vw;
     font-size: 1.0vw;
+}
+
+#first-time {
+    margin-left: 0.7vw;
 }
  
 .date-circle{
-    width: 4vw;
-    height: 4vw;
-    line-height: 4vw;
+    width: 11.5%;
+    height: 20%;
+    line-height: 4.5vw;
     border-radius: 50%;
     font-size: 1.0vw;
     font-family: Qanelas Soft;
@@ -54,16 +58,19 @@
  
 #filled{
     color: #fff;
-    background: #367BC6
+    background: #367BC6;
+    border: 0.25vw solid #367BC6;
+    width: 10.7%;
+    line-height: 4.0vw;
 }
  
 #unfilled{
     background: #FFFFFF;
     color: #367BC6;
     border: 0.25vw solid #367BC6;
-    width: 3.5vw;
-    height: 3.5vw;
-    line-height: 3.5vw;
+    width: 10.7%;
+    line-height: 4.0vw;
+
 }
  
 .desc-box {
@@ -80,7 +87,7 @@
     border-left: 6px solid #367BC6;
     z-index: -10;
     position: relative;
-    margin-left: 23.6%;
+    margin-left: 28.7%;
     border-width: 0.4vw;
   }
  
@@ -103,5 +110,5 @@
  
   .event-desc {
       margin-left: 1vw;
-      height: 6vw;
+      height: 5vw;
   }

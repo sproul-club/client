@@ -104,6 +104,7 @@
     border: none;
     width: 2vw;
     height: 2vw;
+    cursor: pointer;
 }
  
 .recr-img {
@@ -115,3 +116,38 @@
     width: 2vw;
     height: 2vw;
 }
+
+#recr-del-wrap {
+    width: 30vw;
+    height: 15vw;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#recr-del-button {
+    margin-top: 1.5vw;
+    background: #FB635E;
+    width: 5.5vw;
+    height: 2.3vw;
+    font-family: Qanelas Soft;
+    color: white;
+    border: 1.2px solid #FB635E;
+    box-sizing: border-box;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#recr-cancel-button {
+    margin-top: 0.5vw;
+    background: none;
+    width: 5.5vw;
+    height: 2.3vw;
+    font-family: Qanelas Soft;
+    border: none;
+    cursor: pointer;
+    
+}
+
+

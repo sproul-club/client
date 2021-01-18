@@ -1,6 +1,6 @@
 #recr-main {
     width: 70vw;
-    min-height: 60vh;
+    min-height: 70vh;
     position: relative;
 }
  
@@ -12,6 +12,7 @@
     font-weight: 700;
     font-size: 14px;
     margin-top: 20px;
+    cursor: pointer;
     
 }
  
