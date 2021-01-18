@@ -19,6 +19,7 @@ import {
 } from './types';
 import FormData from 'form-data';
 
+import { loadAllClubs } from './catalog';
 import { refreshToken } from './auth';
 import { API, TOKENS } from '../utils/backendClient';
 
@@ -51,6 +52,8 @@ export const updateProfile = (formData) => async (dispatch) => {
       apply_link: formData.apply_link,
       is_reactivating: formData.is_reactivating
     });
+
+    await dispatch(loadAllClubs());
 
     dispatch({ type: UPDATE_PROFILE, payload: formData });
   } catch (err) {
