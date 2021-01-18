@@ -87,20 +87,22 @@ export const filterClubs = (allOrganizations, formDetails, tagOptions, num_resul
       };
     } else {
       return function (a, b) {
+        var a_compare = a.app_required ? a.apply_deadline_end : a.recruiting_end
+        var b_compare = b.app_required ? b.apply_deadline_end : b.recruiting_end
         // equal items sort equally
-        if (a.apply_deadline_end === b.apply_deadline_end) {
+        if (a_compare === b_compare) {
             return 0;
         }
         // nulls sort after anything else
-        else if (a.apply_deadline_end === null) {
+        else if (a_compare === null || a_compare === "1970-01-01T00:00:00") {
             return 1;
         }
-        else if (b.apply_deadline_end === null) {
+        else if (b_compare === null || b_compare === "1970-01-01T00:00:00") {
             return -1;
         }
         // otherwise, lowest sorts first
         else {
-            return a.apply_deadline_end > b.apply_deadline_end ? 1 : -1;
+            return a_compare > b_compare ? 1 : -1;
         }
       };
     }

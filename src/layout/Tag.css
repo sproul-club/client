@@ -1,18 +1,56 @@
 .tag {
-    border-radius: 5px;
-    padding: 0 10px 0 10px;
-    margin: 0 10px 8px 0;
+    border-radius: .3vw;
+    padding: .1vw .5vw .1vw .5vw;
+    margin: .4vw 1vw .4vw 0;
     text-align: left;
+    border: 1px solid #767676;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tag-row2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: .5vw 4px 0 0;
 }
 
 .tag span {
     display: inline-block;
     font-weight: normal;
-    padding: 0 8px 0 8px;
     font-family: Qanelas Soft;
-    font-size: 15px;
+    font-size: 1vw;
     width: fit-content;
     text-indent: none;
+    color: #767676;
+    padding: 0 8px 0 8px;
+}
+
+.tag-row2 span {
+    display: inline-block;
+    font-weight: normal;
+    font-family: Qanelas Soft;
+    font-size: 1vw;
+    width: fit-content;
+    text-indent: none;
+    color: #767676;
+    margin-right: 8px;
+}
+
+.tag-row2 img {
+    height: 1vw;
+    width: 1vw;
+    margin-right: 4px;
+}
+
+.tag-row2 .icon-dot {
+    height: .5vw;
+    margin-right: 4px;
+}
+
+.hidden {
+    display: none;
 }
 
 @media screen and (max-width: 850px) {

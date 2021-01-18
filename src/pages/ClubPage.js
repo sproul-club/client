@@ -13,6 +13,7 @@ import ReactGA from 'react-ga';
 import RightArrow from '@material-ui/icons/CallMadeRounded';
 import HeartBordered from '@material-ui/icons/FavoriteBorderRounded';
 import EditIcon from '@material-ui/icons/EditRounded';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import { Route, Switch, Link } from 'react-router-dom';
 import Modal from '../layout/Modal';
 import ContactInfo from '../pages/admin/ContactInfo';
@@ -22,6 +23,7 @@ import Profile from '../pages/admin/Profile';
 import Banner from '../pages/admin/Banner';
 import RecrEvents from '../pages/admin/RecrEvents';
 import Activation from './Activation';
+import { membersMap } from '../utils/filterClubs'
 
 function ClubPage({
   admin,
@@ -29,7 +31,7 @@ function ClubPage({
   getOrganization,
   clearOrganization,
   tagOptions,
-  history,
+  history
 }) {
   const [showContactModal, setShowContactModal] = useState(false);
   const [showInvolvedModal, setShowInvolvedModal] = useState(false);
@@ -40,6 +42,8 @@ function ClubPage({
 
   const [eventsSet, setEventsSet] = useState('');
   const [activated, setActivation] = useState(false);
+
+  const [aboutMore, setAboutMore] = useState(false);
 
   function cancelEdit() {
     setShowContactModal(false);
@@ -88,9 +92,6 @@ function ClubPage({
   }
 
   const [numEvents, setNumEvents] = useState('');
-
-  console.log(organization.reactivated);
-  console.log(activated);
 
   if (admin && !activated && !organization.reactivated) {
     return <Activation setActivation={setActivation}/>
@@ -147,7 +148,7 @@ function ClubPage({
   const overview =
     <div>
     {organization.about_us &&
-      <div className='clubpage-content-about clubpage-content-item' >
+      <div id="about" className={aboutMore ? 'clubpage-content-about clubpage-content-item-more' : 'clubpage-content-about clubpage-content-item'} >
         <div className='clubpage-content-header'>
           <h1>About {organization.name}</h1>
           {admin &&
@@ -157,8 +158,9 @@ function ClubPage({
         <p dangerouslySetInnerHTML={{ __html: organization.about_us }}></p>
       </div>
     }
+    <button className="seeMoreButton" onClick={() => setAboutMore(!aboutMore)}>{aboutMore ? "See less" : "See more"} <ExpandMoreIcon/></button>
     {organization.gallery &&
-      <div className='clubpage-content-gallery clubpage-content-item' >
+      <div className='clubpage-content-gallery clubpage-content-item'>
         <div className='clubpage-content-header'>
           <h1>Gallery</h1>
           {admin &&
@@ -170,20 +172,23 @@ function ClubPage({
     }
   </div>
 
+  var membersMapIndex = organization.num_users;
   let categoryList = organization.tags.map((tag, i) => (
-    <Tag key={i} label={tagOptions[tag] && tagOptions[tag].label} />
+    <Tag key={i} label={tagOptions[tag] && tagOptions[tag].label} listId = {i}/>
   ));
   let tagList = [];
+
   if (organization.new_members) {
-    tagList.push(<Tag key={"nm"} label="Taking New Members" color="#c9f0c9" />);
+    tagList.push(<Tag key={"nm"} label="Recruiting" color="#c9f0c9" listId = {'nm'}/>);
   } else {
-    tagList.push(<Tag key={"nnm"} label="Not Taking New Members" color="#ffd6d6" />);
+    tagList.push(<Tag key={"nnm"} label="Not Recruiting" color="#ffd6d6" listId = {'nnm'}/>);
   }
   if (organization.app_required) {
-    tagList.push(<Tag key={"ar"} label="Application Required" color="#fff1ae" />);
+    tagList.push(<Tag key={"ar"} label="Application Required" color="#fff1ae" listId = {'ar'}/>);
   } else {
-    tagList.push(<Tag key={"nar"} label="Application Not Required" color="#cdeaff" />)
+    tagList.push(<Tag key={"nar"} label="No Application Required" color="#cdeaff" listId = {'nar'}/>)
   }
+  tagList.push(<Tag key={'mem'} label={membersMap[membersMapIndex].label + ' members'} listId = {'mem'}/>)
 
   ReactGA.initialize('UA-176775736-1');
   ReactGA.pageview('/' + history.location.pathname.slice(6).split("/")[0]);
@@ -298,14 +303,16 @@ function ClubPage({
                   }
                   </div>
                 <p>{organization.get_involved}</p>
-                {organization.apply_link &&
-                <a href={"https://"+organization.apply_link}>
-                  <button className="clubpage-apply-btn">
-                    Apply Now!
-                    <RightArrow style={{marginLeft: 5}}/>
-                  </button>
-                </a>
-                }
+                <div className="apply-button-wrapper">
+                  {organization.apply_link &&
+                    <a href={"https://"+organization.apply_link}>
+                      <button className="clubpage-apply-btn">
+                        Apply Now!
+                        <RightArrow style={{marginLeft: 5, height: "1.6vw"}}/>
+                      </button>
+                    </a>
+                  }
+                </div>
               </div>
             }
             <div className="clubpage-content-contact clubpage-tile">
@@ -397,8 +404,8 @@ function ClubPage({
 
         </Modal>
 
-        <Footer />
       </div>
+      <Footer />
     </div>
   );
 }
