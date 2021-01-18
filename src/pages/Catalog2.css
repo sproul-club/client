@@ -15,6 +15,7 @@
 .banner img {
   width: 100%;
   height: auto;
+  border-radius: 10px;
 }
 .selectedDD {
   border: 1px solid #54a0f1 !important;
@@ -70,6 +71,10 @@
   margin: 10px;
   font-size: 12px;
   color: black;
+}
+
+.filter-selection:hover {
+  background: #A0D7FF;
 }
 
 .search-input {

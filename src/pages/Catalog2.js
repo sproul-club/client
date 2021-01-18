@@ -71,7 +71,8 @@ const Catalog2 = ({
     setFormDetails({ name: 'noAppReq', value: false });
     setFormDetails({ name: 'recruiting', value: false });
     setFormDetails({ name: 'notRecruiting', value: false });
-    setFormDetails({ name: 'sort', value: 'Asc' });
+    setFormDetails({ name: 'members', value: 'reset' });
+    setFormDetails({ name: 'sort', value: 'Rand' });
   };
 
   const toggleTag = tagLabel => {
@@ -79,6 +80,8 @@ const Catalog2 = ({
   }
 
   const toggleMembers = tagLabel => {
+    console.log(tagLabel);
+    console.log(formDetails.members);
     setFormDetails({ name: 'members', value: tagLabel })
   }
 
@@ -139,11 +142,11 @@ const Catalog2 = ({
               <div className="filter-dropdown">
                 <div className='filter-selection' onClick={toggleRecruiting}>
                   <input type="checkbox" checked={recruiting}/> 
-                  <span> Taking members</span>
+                  <span> Recruiting</span>
                 </div>
                 <div className='filter-selection' onClick={toggleNotRecruiting}>
                   <input type="checkbox" checked={notRecruiting}/>
-                  <span> Not taking members</span>
+                  <span> Not recruiting</span>
                 </div>
               </div>
             )}
@@ -204,7 +207,7 @@ const Catalog2 = ({
             )}
           </div>
 
-          {/* Members Dropdown */}
+          {/* Sort Dropdown */}
           <div className='filter-wrapper' onMouseEnter={()=>setShowSortDD(true)} onMouseLeave={()=>setShowSortDD(false)} >
             <div onClick={() => setShowSortDD(!showSortDD)} className={`${showSortDD && 'openDD'} filter sort-filter`}>
               Sort
@@ -212,6 +215,9 @@ const Catalog2 = ({
             </div>
             {showSortDD && (
               <div className="filter-dropdown sort-filter-dropdown">
+                <div className='filter-selection' onClick={()=>toggleSort("Rand")}>
+                  <span> Default (Random)</span>
+                </div>
                 <div className='filter-selection' onClick={()=>toggleSort("Asc")}>
                   <span> Ascending</span>
                 </div>

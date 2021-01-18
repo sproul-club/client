@@ -9,6 +9,7 @@ export const LOAD_MORE_ORGS = 'LOAD_MORE_ORGS';
 export const SET_FORM_DETAILS = 'SET_FORM_DETAILS';
 export const SET_TAGS = 'SET_TAGS';
 export const RESET_TAGS = 'RESET_TAGS'
+export const RESET_MEMBERS= 'RESET_MEMBERS'
 export const SET_MEMBERS = 'SET_MEMBERS'
 
 

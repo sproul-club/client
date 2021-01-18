@@ -11,6 +11,7 @@ import {
   SET_TAGS,
   RESET_TAGS,
   SET_MEMBERS,
+  RESET_MEMBERS
 } from './types';
 
 import { API } from '../utils/backendClient';
@@ -131,6 +132,7 @@ export const setFormDetails = ({ name, value }) => {
     return { type: SET_TAGS, payload: { name, value } };
   }
   if (name === "members"){
+    if (value === 'reset') return {type: RESET_MEMBERS }
     return { type: SET_MEMBERS, payload: { name, value } };
   }
   

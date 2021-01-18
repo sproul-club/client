@@ -3,47 +3,99 @@ import { connect } from 'react-redux';
 import { withRouter  } from 'react-router-dom';
 import signup from './assets/signup.png';
 import Dropdown from './Dropdown.js';
-import { loadProfile } from '../actions/profile';
+import { updateProfile } from '../actions/profile';
 import './SignUp.css';
 import './Activation.css';
+import Loading from '../layout/Loading';
+import { NotificationManager } from 'react-notifications';
 
-const Activation = ({tagOptions, profile, loadProfile}) => {
-    useEffect(() => {
-        if (profile && profile.link_name && profile.link_name.length === 0) loadProfile();
-      }, [loadProfile, profile]);
-  
+const Activation = ({tagOptions, profile, updateProfile, setActivation, sizeOptions}) => {
     const [clubName, setClubName] = useState('');
     const [tags, setTags] = useState([]);
-    const [members, setMembers] = useState('');
-    const [appReq, setAppReq] = useState(false);
+    const [size, setSize] = useState('');
+    const [appReq, setAppReq] = useState('');
     const [recruitingStart, setRStart] = useState('');
     const [recruitingEnd, setREnd] = useState('');
     const [activated, setActivated] = useState(false);
-    const memberOptions = [
-        {label: "0-10", value: 0},
-        {label: "10-20", value: 1},
-        {label: "20-50", value: 2},
-        {label: "50-100", value: 3},
-        {label: "100+", value: 4},
-    ];
+    const [recruiting, setRecruit] = useState('');
+    var defaultVal = false;
 
-    const activate = () => {
-        const formDetails = {
-            "clubName" : clubName,
-            "tags" : tags,
-            "members" : members,
-            "appReq" : appReq,
-            "recruitingStart" : recruitingStart,
-            "recruitingEnd" : recruitingEnd
+    // You need both of these just to give time for the state to update before populating the club's information into the form elements
+    useEffect( () => {
+      setClubName(profile.name);
+      setAppReq(profile.app_required ? {value : 1, label : 'Application required'} : {value : 0, label : 'No application required'});
+      setTags(profile.tags.map((tag) => tagOptions[tag]));
+      setRecruit(profile.new_members ? {value: 1, label: "Taking new members"} : {value: 0, label: "Not taking new members"});
+      setSize(profile.num_users);
+      defaultVal=true;
+    }, [profile]);
+
+    useEffect( () => {
+      setClubName(profile.name);
+      setAppReq(profile.app_required ? {value : 1, label : 'Application required'} : {value : 0, label : 'No application required'});
+      setTags(profile.tags.map((tag) => tagOptions[tag]));
+      setRecruit(profile.new_members ? {value: 1, label: "Taking new members"} : {value: 0, label: "Not taking new members"});
+      setSize(profile.num_users);
+    }, [defaultVal]);
+
+    // Activate the activate button
+    useEffect(() => {
+      if (recruiting.value === 1) {
+        if (clubName && tags && size && appReq && recruitingStart && recruitingEnd) {
+          setActivated(true);
+        } else {
+          setActivated(false);
+        }
+      } else {
+        if (clubName && tags && size && appReq) {
+          setActivated(true);
+        } else {
+          setActivated(false);
+        }
+      }
+    }, [clubName, tags, size, appReq, recruitingStart, recruitingEnd, recruiting, profile]);
+
+    const activate = async () => {
+        const newProfile = {
+          ...profile,
+            name : clubName,
+            tags : tags.map((tags) => tags.value),
+            num_users : size.value,
+            app_required : !!appReq.value,
+            new_members : !!recruiting.value,
+            // apply_deadline_start : recruitingStart ? recruitingStart : '1970-01-01T00:00:00',
+            // apply_deadline_end : recruitingEnd ? recruitingEnd : '1970-01-01T00:00:00',
+            // recruiting_start: recruitingStart ? recruitingStart : '1970-01-01T00:00:00',
+            // recruiting_end: recruitingEnd ? recruitingEnd : '1970-01-01T00:00:00',
+            apply_deadline_start : (recruiting.value === 1 && appReq.value === 1) ? recruitingStart : null,
+            apply_deadline_end : (recruiting.value === 1 && appReq.value === 1)? recruitingStart : null,
+            recruiting_start: (recruiting.value === 1 && appReq.value === 0)? recruitingStart : null,
+            recruiting_end: (recruiting.value === 1 && appReq.value === 0)? recruitingStart : null,
+            is_reactivating: true
         }
 
-        console.log(formDetails);
+        if (setActivation) {
+          setActivation(true);
+        }
+
+        try {
+          await updateProfile(newProfile);
+          NotificationManager.success('Activation successful!', '', 1500);
+        } catch (err) {
+          console.log(err);
+          NotificationManager.error('Activation unsuccessful!', '', 1500);
+        }
     }
 
     const appOptions = [
-        { value: true, label: 'Application required' },
-        { value: false, label: 'No application required' },
+      { value: 1, label: 'Application required' },
+      { value: 0, label: 'No application required' }
     ];
+
+    const recruitOptions = [
+      { value: 1, label: 'Accepting new members' },
+      { value: 0, label: 'Not accepting new members' },
+  ];
 
     const customStyles = {
         multiValue: (provided, state) => ({
@@ -120,17 +172,14 @@ const Activation = ({tagOptions, profile, loadProfile}) => {
             width: 500,
           }),
         },
-      };
+    };
 
-    useEffect(() => {
-    if (clubName && tags && members && appReq && recruitingStart && recruitingEnd) {
-        setActivated(true);
-    } else {
-        setActivated(false);
+    if (tags) {
+      if (tags.every(element => element === null)) {
+        return <Loading />
+      }
     }
-    }, [clubName, tags, members, appReq, recruitingStart, recruitingEnd]);
     
-      
     return (
         <div className="activation">
             <div className="form">
@@ -145,8 +194,9 @@ const Activation = ({tagOptions, profile, loadProfile}) => {
                         className='userInput'
                         type="text"
                         placeholder="Club name (maximum 55 characters)"
-                        maxLength={100}
+                        maxLength={55}
                         onChange={(e) => setClubName(e.target.value)}
+                        defaultValue={clubName}
                     />
                     <Dropdown
                         options={tagOptions}
@@ -154,17 +204,17 @@ const Activation = ({tagOptions, profile, loadProfile}) => {
                         search={true}
                         placeholder="Select tags (maximum 3 tags)"
                         style={customStyles}
-                        defaultValue={tags}
+                        defaultValue={profile.tags.map((tag) => tagOptions[tag])}
                         set={setTags}
                     />
                     <Dropdown
-                        options={memberOptions}
+                        options={sizeOptions}
                         multi={false}
                         search={false}
                         placeholder="Select number of members"
                         style={customStyles}
-                        defaultValue={members}
-                        set={setMembers}
+                        defaultValue={sizeOptions[size]}
+                        set={setSize}
                     />
                     <Dropdown
                         options={appOptions}
@@ -175,14 +225,23 @@ const Activation = ({tagOptions, profile, loadProfile}) => {
                         defaultValue={appReq}
                         set={setAppReq}
                     />
+                    <Dropdown
+                        options={recruitOptions}
+                        multi={false}
+                        search={false}
+                        placeholder="Select recruitment status"
+                        style={customStyles}
+                        defaultValue={recruiting}
+                        set={setRecruit}
+                    />
                     <input
-                        className='userInput'
+                        className={recruiting.value === 1 ? 'userInput' : 'userInput hidden'}
                         type="date"
                         placeholder={appReq.value ? "Application open date: " : "Recruiting start date: "}
                         onChange={(e) => setRStart(e.target.value)}
                     />
                     <input
-                        className='userInput'
+                        className={recruiting.value === 1 ? 'userInput' : 'userInput hidden'}
                         type="date"
                         placeholder={appReq.value ? "Application close date: " : "Recruiting end date: "}
                         onChange={(e) => setREnd(e.target.value)}
@@ -203,10 +262,11 @@ const Activation = ({tagOptions, profile, loadProfile}) => {
     // clubs: state.catalog.allOrganizations,
     // formDetails: state.catalog.formDetails,
     tagOptions: state.profile.tagOptions,
-    profile: state.profile.profile
+    profile: state.profile.profile,
+    sizeOptions: state.profile.sizeOptions,
     // num_displayed: state.catalog.num_displayed
   });
   
-  export default connect(mapStateToProps, { loadProfile })(
+  export default connect(mapStateToProps, { updateProfile })(
     withRouter(Activation)
   );

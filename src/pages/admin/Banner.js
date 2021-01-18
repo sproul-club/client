@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Dropdown from './AdminDropdown.js';
 import { connect } from 'react-redux';
 import ImageUploader from '../../react-images-upload';
@@ -14,7 +14,9 @@ const Banner = ({
   close,
 }) => {
   const [bannerImage, setBannerImage] = useState(null);
-
+  useEffect(() => {
+    // Outline leftover from ClubPage
+  }, []);
   async function uploadBannerPic(bannerUploads) {
     if (bannerUploads && bannerUploads.length > 0) {
       try {
