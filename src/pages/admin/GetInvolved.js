@@ -40,7 +40,7 @@ const GetInvolved = ({ profile, get_involved, updateProfile, close }) => {
   };
 
   return (
-    <div>
+    <div className="getInvolved">
       <h3>How to get involved</h3>
       <div className="admin-text">
         Let prospective members know how to join or be part of your
@@ -76,6 +76,7 @@ const GetInvolved = ({ profile, get_involved, updateProfile, close }) => {
         </div>
       </div>
       <button id="save-button" onClick={submit}> Save </button>
+      <button id="cancel-button" onClick={() => close()}> Cancel </button>
     </div>
   );
 };

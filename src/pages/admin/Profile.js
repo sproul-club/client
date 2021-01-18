@@ -240,7 +240,8 @@ const Profile = ({
             fileContainerStyle={{
               width: '300px',
               // float: 'left',
-              margin: '40px',
+              marginLeft: '40px',
+              marginBottom: '30px',
               background: 'transparent',
             }}
             labelStyles={{
@@ -273,6 +274,7 @@ const Profile = ({
 
       </div>
       <button id="save-button" onClick={submit}> Save </button>
+      <button id="cancel-button" onClick={() => close()}> Cancel </button>
     </div>
   );
 };

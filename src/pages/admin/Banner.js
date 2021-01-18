@@ -66,29 +66,31 @@ const Banner = ({
     <div>
       <h3>Banner</h3>
       <p>Upload your organization's banner</p>
-      <ImageUploader
-        label="10:3 ratio"
-        buttonStyles={{
-          background: '#54a0f1',
-        }}
-        fileContainerStyle={{
-          width: '300px',
-          // float: 'left',
-          marginBottom: '40px',
-        }}
-        labelStyles={{
-          width: '250px',
-          marginRight: 0,
-          textAlign: 'center',
-        }}
-        withIcon={true}
-        singleImage={true}
-        withPreview={true}
-        buttonText="Choose image"
-        onChange={(e) => setBannerImage(e)}
-        imgExtension={['.jpg', '.gif', '.png', '.gif']}
-        maxFileSize={16777216}
-      />
+      <div className="bannerUpload">
+        <ImageUploader
+          label="10:3 ratio"
+          buttonStyles={{
+            background: '#54a0f1',
+          }}
+          fileContainerStyle={{
+            width: '570px',
+            // float: 'left',
+            marginBottom: '40px',
+          }}
+          labelStyles={{
+            width: '250px',
+            marginRight: 0,
+            textAlign: 'center',
+          }}
+          withIcon={true}
+          singleImage={true}
+          withPreview={true}
+          buttonText="Choose image"
+          onChange={(e) => setBannerImage(e)}
+          imgExtension={['.jpg', '.gif', '.png', '.gif']}
+          maxFileSize={16777216}
+        />
+      </div>
       <p className="subtitle">
           <span style={{ color: '#FF0000' }}>*</span> Please make sure your
           banner is at least 1640 x 492 pixels.{' '}
@@ -102,6 +104,7 @@ const Banner = ({
           for a resource that helps you resize your images.
       </p>
       <button id="save-button" onClick={submit}> Save </button>
+      <button id="cancel-button" onClick={() => close()}> Cancel </button>
     </div>
   );
 };

@@ -45,6 +45,7 @@ const AboutClub = ({
         </div>
         
         <button id="save-button" onClick={submit}> Save </button>
+        <button id="cancel-button" onClick={submit}> Cancel </button>
         
     </div>
   );

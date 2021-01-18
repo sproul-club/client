@@ -329,7 +329,7 @@ function ClubPage({
               <h2>Social Media</h2>
               <div className="clubpage-sm-link-list">{contactComps}</div>
             </div>
-            {organization.resources && organization.resources.length > 0 &&
+            {/* {organization.resources && organization.resources.length > 0 &&
               <div className="clubpage-content-getinvolved clubpage-tile">
                 <div className='clubpage-content-header'>
                   <h1>Resources</h1>
@@ -339,7 +339,7 @@ function ClubPage({
                 </div>
                 <div className="clubpage-content-resource-list">{resComps}</div>
               </div>
-            }
+            } */}
           </div>
         </div>
 
