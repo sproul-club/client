@@ -10,11 +10,11 @@ import { loadProfile } from './profile';
 import { API, TOKENS } from '../utils/backendClient';
 
 // Register User
-export const register = (name, email, password, tags, app_required, new_members) => async (dispatch) => {
+export const register = (name, email, password, tags, app_required, new_members, num_users) => async (dispatch) => {
   try {
     const res = await API.post('/api/user/register', {
       name, email, password,
-      tags, app_required, new_members,
+      tags, app_required, new_members, num_users
     });
 
     dispatch({ type: REGISTER_SUCCESS, payload: res.data });

@@ -9,22 +9,15 @@ import './Activation.css';
 import Loading from '../layout/Loading';
 import { NotificationManager } from 'react-notifications';
 
-const Activation = ({tagOptions, profile, updateProfile, setActivation}) => {
+const Activation = ({tagOptions, profile, updateProfile, setActivation, sizeOptions}) => {
     const [clubName, setClubName] = useState('');
     const [tags, setTags] = useState([]);
-    const [members, setMembers] = useState('');
+    const [size, setSize] = useState('');
     const [appReq, setAppReq] = useState('');
     const [recruitingStart, setRStart] = useState('');
     const [recruitingEnd, setREnd] = useState('');
     const [activated, setActivated] = useState(false);
     const [recruiting, setRecruit] = useState('');
-    const memberOptions = [
-        {label: "0-10", value: 0},
-        {label: "10-20", value: 1},
-        {label: "20-50", value: 2},
-        {label: "50-100", value: 3},
-        {label: "100+", value: 4},
-    ];
     var defaultVal = false;
 
     // You need both of these just to give time for the state to update before populating the club's information into the form elements
@@ -33,6 +26,7 @@ const Activation = ({tagOptions, profile, updateProfile, setActivation}) => {
       setAppReq(profile.app_required ? {value : 1, label : 'Application required'} : {value : 0, label : 'No application required'});
       setTags(profile.tags.map((tag) => tagOptions[tag]));
       setRecruit(profile.new_members ? {value: 1, label: "Taking new members"} : {value: 0, label: "Not taking new members"});
+      setSize(profile.num_users);
       defaultVal=true;
     }, [profile]);
 
@@ -41,37 +35,42 @@ const Activation = ({tagOptions, profile, updateProfile, setActivation}) => {
       setAppReq(profile.app_required ? {value : 1, label : 'Application required'} : {value : 0, label : 'No application required'});
       setTags(profile.tags.map((tag) => tagOptions[tag]));
       setRecruit(profile.new_members ? {value: 1, label: "Taking new members"} : {value: 0, label: "Not taking new members"});
+      setSize(profile.num_users);
     }, [defaultVal]);
 
     // Activate the activate button
     useEffect(() => {
       if (recruiting.value === 1) {
-        if (clubName && tags && members && appReq && recruitingStart && recruitingEnd) {
+        if (clubName && tags && size && appReq && recruitingStart && recruitingEnd) {
           setActivated(true);
         } else {
           setActivated(false);
         }
       } else {
-        if (clubName && tags && members && appReq) {
+        if (clubName && tags && size && appReq) {
           setActivated(true);
         } else {
           setActivated(false);
         }
       }
-    }, [clubName, tags, members, appReq, recruitingStart, recruitingEnd, recruiting, profile]);
+    }, [clubName, tags, size, appReq, recruitingStart, recruitingEnd, recruiting, profile]);
 
     const activate = async () => {
         const newProfile = {
           ...profile,
             name : clubName,
             tags : tags.map((tags) => tags.value),
-            num_users : members.value,
+            num_users : size.value,
             app_required : !!appReq.value,
             new_members : !!recruiting.value,
-            apply_deadline_start : recruitingStart ? recruitingStart : '1970-01-01T00:00:00Z',
-            apply_deadline_end : recruitingEnd ? recruitingEnd : '1970-01-01T00:00:00Z',
-            recruiting_start: recruitingStart ? recruitingStart : '1970-01-01T00:00:00Z',
-            recruiting_end: recruitingEnd ? recruitingEnd : '1970-01-01T00:00:00Z',
+            // apply_deadline_start : recruitingStart ? recruitingStart : '1970-01-01T00:00:00',
+            // apply_deadline_end : recruitingEnd ? recruitingEnd : '1970-01-01T00:00:00',
+            // recruiting_start: recruitingStart ? recruitingStart : '1970-01-01T00:00:00',
+            // recruiting_end: recruitingEnd ? recruitingEnd : '1970-01-01T00:00:00',
+            apply_deadline_start : (recruiting.value === 1 && appReq.value === 1) ? recruitingStart : null,
+            apply_deadline_end : (recruiting.value === 1 && appReq.value === 1)? recruitingStart : null,
+            recruiting_start: (recruiting.value === 1 && appReq.value === 0)? recruitingStart : null,
+            recruiting_end: (recruiting.value === 1 && appReq.value === 0)? recruitingStart : null,
             is_reactivating: true
         }
 
@@ -83,6 +82,7 @@ const Activation = ({tagOptions, profile, updateProfile, setActivation}) => {
           await updateProfile(newProfile);
           NotificationManager.success('Activation successful!', '', 1500);
         } catch (err) {
+          console.log(err);
           NotificationManager.error('Activation unsuccessful!', '', 1500);
         }
     }
@@ -208,12 +208,13 @@ const Activation = ({tagOptions, profile, updateProfile, setActivation}) => {
                         set={setTags}
                     />
                     <Dropdown
-                        options={memberOptions}
+                        options={sizeOptions}
                         multi={false}
                         search={false}
                         placeholder="Select number of members"
                         style={customStyles}
-                        set={setMembers}
+                        defaultValue={sizeOptions[size]}
+                        set={setSize}
                     />
                     <Dropdown
                         options={appOptions}
@@ -261,7 +262,8 @@ const Activation = ({tagOptions, profile, updateProfile, setActivation}) => {
     // clubs: state.catalog.allOrganizations,
     // formDetails: state.catalog.formDetails,
     tagOptions: state.profile.tagOptions,
-    profile: state.profile.profile
+    profile: state.profile.profile,
+    sizeOptions: state.profile.sizeOptions,
     // num_displayed: state.catalog.num_displayed
   });
   

@@ -17,6 +17,7 @@ const MultiStepForm = ({
   isAuthenticated,
   resendConfirmationEmail,
   tagOptions,
+  sizeOptions,
 }) => {
   var appOptions = [
     { value: true, label: 'Application required' },
@@ -37,6 +38,7 @@ const MultiStepForm = ({
   const [tags, setTags] = useState([]);
   const [appReq, setAppReq] = useState(true);
   const [recruiting, setRecruit] = useState(true);
+  const [size, setSize] = useState('');
   const [resentEmail, setResentEmail] = useState(false);
   /* error indicators */
   const [emailUnverified, setEmailUnverified] = useState('noError');
@@ -49,6 +51,9 @@ const MultiStepForm = ({
   const [emptyTags, setEmptyTags] = useState('noError');
   const [emptyAppReq, setEmptyAppReq] = useState('unset');
   const [emptyRecruit, setEmptyRecruit] = useState('unset');
+  const [emptySize, setEmptySize] = useState('unset');
+  const [recruitingStart, setRStart] = useState('');
+  const [recruitingEnd, setREnd] = useState('');
 
   if (isAuthenticated) {
     return <Redirect to="/admin" />;
@@ -74,7 +79,7 @@ const MultiStepForm = ({
     }
 
     try {
-      await register(clubName, email, pwd, tagsList, !!appReq.value, !!recruiting.value);
+      await register(clubName, email, pwd, tagsList, !!appReq.value, !!recruiting.value, size.value);
       setStep(currStep + 1);
     } catch (err) {
       var errMessage = err.response.data.reason;
@@ -153,6 +158,10 @@ const MultiStepForm = ({
       setEmptyRecruit('emptyRecruit');
       errorExists = true;
     }
+    if (emptySize !== 'noError') {
+      setEmptySize('emptySize');
+      errorExists = true;
+    }
     return errorExists;
   }
 
@@ -215,6 +224,13 @@ const MultiStepForm = ({
     }
   };
 
+  const sizeOnChange = (event) => {
+    setSize(event);
+    if (emptySize !== 'noError') {
+      setEmptySize('noError');
+    }
+  };
+
   return (
     <>
       <StepOne
@@ -244,16 +260,19 @@ const MultiStepForm = ({
         recruiting={recruiting}
         tagOptions={tagOptions}
         appOptions={appOptions}
+        sizeOptions={sizeOptions}
         recruitOptions={recruitOptions}
         setStep={setStep}
         setTags={tagsOnChange}
         setAppReq={appReqOnChange}
         setRecruit={recruitOnChange}
+        setSize={sizeOnChange}
         _prev={_prev}
         _next={_next}
         emptyTags={emptyTags}
         emptyAppReq={emptyAppReq}
         emptyRecruit={emptyRecruit}
+        emptySize={emptySize}
         tagError={tagOverflow}
         setTagError={setTagOverflow}
       />
@@ -507,6 +526,16 @@ const StepTwo = (props) => {
           // error={haveError}
         />
         <Dropdown
+          options={props.sizeOptions}
+          multi={false}
+          search={false}
+          placeholder="Select club size"
+          defaultValue={props.size}
+          set={props.setSize}
+          style={customStyles}
+          // error={haveError}
+        />
+        <Dropdown
           options={props.tagOptions}
           multi={true}
           search={true}
@@ -560,6 +589,7 @@ const StepThree = (props) => {
 
 const mapStateToProps = (state) => ({
   tagOptions: state.profile.tagOptions,
+  sizeOptions: state.profile.sizeOptions,
   isAuthenticated: state.auth.isAuthenticated,
 });
 
