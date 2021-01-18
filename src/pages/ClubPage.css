@@ -16,16 +16,32 @@
 }
 
 .clubpage h1 {
-  font-size: 1.5em;
-  margin-bottom: 15px;
+  font-size: 1.5vw;
+  margin-top: 1vw;
+  margin-bottom: .8vw;
 }
 
 .clubpage h2 {
-  font-size: 1em;
+  font-size: 1vw;
 }
 
 .clubpage p {
-  font-size: 1em;
+  font-size: 1vw;
+  /* margin-bottom: 1vw; */
+  line-height: 1.3vw;
+  margin-top: 1vw;
+  margin-bottom: 2vw;
+}
+
+.clubpage-content-contact a {
+  font-weight: 700;
+  font-size: 1vw;
+  color: #367BC6;
+}
+
+.clubpage-content-contact a:active {
+  color: #367BC6;
+  font-size: 1vw;
 }
 
 .clubpage-header {
@@ -86,7 +102,7 @@
 }
 
 .club-title {
-  margin: 0 0 10px 0;
+  margin: 0 0 .5vw 0;
   font-style: normal;
   font-weight: bold;
   font-size: 2.1vw;
@@ -107,7 +123,7 @@
 .club-logo {
   z-index: 2;
   border-radius: 5%;
-  margin: -50px auto 0 auto;
+  margin: -3.5vw auto 0 auto;
   display: block;
   width: 60%;
   height: auto;
@@ -120,7 +136,7 @@
   display:inline-flex;
   align-items: center;
   background: none;
-  padding: 8px 15px 8px 15px;
+  padding: .5vw 1vw .5vw 1vw;
   margin-top: -5px;
   margin-right: 10px;
   height: 40px;
@@ -132,6 +148,7 @@
 
 .clubpage-favorite-button span{ 
   margin-left: 0.5em;
+  font-size: 1vw;
 }
 
 .clubpage-favorite-button:hover {
@@ -141,7 +158,7 @@
 .clubpage-header-nav {
   display: flex;
   flex-direction: row;
-  padding: 15px 20px 0 20px;
+  padding: 1vw 3vw 0 3vw;
 }
 
 .clubpage-header-nav-item {
@@ -149,7 +166,7 @@
   background: none;
   border: none;
   font-weight: bolder;
-  font-size: 1em;
+  font-size: 1.3vw;
   margin: 0 15px 0 15px;
   padding: 10px 0 10px 0;
   border-bottom: 4px solid transparent;
@@ -190,6 +207,7 @@
   border: none;
   color: white;
   font-weight: bold;
+  font-size: 1vw;
   padding: 8px 25px 8px 25px;
   border-radius: 10px;
   margin: 0 auto 0 auto;
@@ -210,13 +228,20 @@
   margin-bottom: 20px;
 }
 
+.apply-button-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .clubpage-sm-link-list {
   justify-content: space-around;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-start;
-  margin-top: 0.5em;
+  margin-top: 1vw;
 }
 
 .clubpage-sm-link {
@@ -289,7 +314,6 @@
   
   .clubpage-favorite-button span{ 
     margin-left: 0;
-    font-size: 1em;
   }
 
   .clubpage-content {
