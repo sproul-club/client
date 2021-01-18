@@ -65,7 +65,7 @@
   font-style: normal;
   box-shadow: 3px 3px 1px rgb(0, 0, 0, 0.3);
   width: 350px;
-  height: 520px;
+  /* height: 520px; */
   border-radius: 15px;
   padding: 0px 20px;
   border: solid 1px #949494;
@@ -398,7 +398,7 @@
 
   .signup .form {
     width: 480px;
-    height: 620px;
+    /* height: 620px; */
     border-radius: 15px;
     padding: 28px;
   }
@@ -559,7 +559,7 @@
   }
 
   .signup .form {
-    height: 680px;
+    /* height: 680px; */
   }
 }
 
