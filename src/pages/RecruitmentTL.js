@@ -41,7 +41,7 @@ const RecruitmentTL = ({ adminCheck, profile, currRoute, events }) => {
                     <div className="name-time-box">
                         <text className="event-title">{event.name} </text>
                         {(event.event_start.slice(0,10) == event.event_end.slice(0,10)) ?
-                        <div style={{marginLeft: "0vw"}}>
+                        <div style={{marginLeft: "0vw", display:'flex', alignItems:'center', flexDirection:'column'}}>
                             <Moment className="event-time"
                             id="first-time"
                             interval={0}
@@ -61,7 +61,7 @@ const RecruitmentTL = ({ adminCheck, profile, currRoute, events }) => {
                             date={event.event_start}
                             format={dateTimeFormat(event.event_start, event.event_end, START_DATETIME)}/>
                             <text className="event-time" style={{marginLeft:"-0.0vw"}}>-</text>
-                            <div style={{marginLeft:"0.7vw"}}>
+                        <div>
                             <Moment className="event-time"
                             interval={0}
                             date={event.event_end}

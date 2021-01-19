@@ -59,6 +59,7 @@
 
 .clubpage-content-header-icon {
   color: #8D8D8D;
+  width: 1.7vw;
 }
 
 .clubpage-content-header-icon:hover {
@@ -188,10 +189,11 @@
 }
 
 .clubpage-content-left {
-  flex: 2;
+  /* flex: 2; */
   margin-right: 60px;
   margin-left: 0px;
   padding: 15px 25px 25px 25px;
+  width: 44vw;
 }
 
 .clubpage-content-item{
@@ -278,7 +280,6 @@
   margin-right: 0.5vw;
   height: auto;
 }
-
 
 .clubpage-content-resource {
   display: flex;

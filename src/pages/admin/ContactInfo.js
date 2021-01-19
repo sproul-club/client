@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { updateProfile } from '../../actions/profile';
 import { NotificationManager } from 'react-notifications';
 import { normalizeUrl } from '../../utils/normalizeUrl';
+import { validURL } from '../../utils/normalizeUrl';
 import './Admin.css';
 import { EmailOutlined } from '@material-ui/icons';
 
@@ -31,15 +32,14 @@ const ContactInfo = ({ profile, updateProfile, close }) => {
     // normalize all URLs
     setWebsite(normalizeUrl(website));
     setFacebook(normalizeUrl(facebook));
-    setInstagram(normalizeUrl(instagram));
     setDiscord(normalizeUrl(discord));
     setLinkedin(normalizeUrl(linkedin));
-    setGithub(normalizeUrl(github));
-    setBehance(normalizeUrl(behance));
+    setBehance(normalizeUrl(github));
+    setGithub(normalizeUrl(behance));
     setMedium(normalizeUrl(medium));
     setTwitter(normalizeUrl(twitter));
-    setGcalendar(normalizeUrl(gcalendar));
-    setYoutube(normalizeUrl(youtube));
+    setYoutube(normalizeUrl(gcalendar));
+    setGcalendar(normalizeUrl(youtube));
     const newProfile = {
       ...profile,
       social_media_links: {

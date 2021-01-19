@@ -12,8 +12,8 @@ import { connect } from 'react-redux';
 import ReactGA from 'react-ga';
 import RightArrow from '@material-ui/icons/CallMadeRounded';
 import HeartBordered from '@material-ui/icons/FavoriteBorderRounded';
-import EditIcon from '@material-ui/icons/EditRounded';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import ExpandLess from '@material-ui/icons/ExpandLess'
 import { Route, Switch, Link } from 'react-router-dom';
 import Modal from '../layout/Modal';
 import ContactInfo from '../pages/admin/ContactInfo';
@@ -64,10 +64,10 @@ function ClubPage({
       //!organization.link_name && clearOrganization();
     };
     // recall useEffect when the link_name in url changes
-  }, [routeId, activated, organization]);
+  }, [routeId, activated, organization, sizeOptions]);
 
   console.log(organization);
-  /*
+  
   organization.gallery = [
     {
       type: "i",
@@ -84,7 +84,7 @@ function ClubPage({
       src: "https://www.youtube.com/watch?v=IREN9O3eVkI&ab_channel=YouTube",
       caption: "The team"
     },
-  ];*/
+  ];
   let [tab, setTab] = useState('overview')
   const tempTab = path[1];
   if (tempTab) {
@@ -152,19 +152,19 @@ function ClubPage({
         <div className='clubpage-content-header'>
           <h1>About {organization.name}</h1>
           {admin &&
-            <EditIcon className="clubpage-content-header-icon" onClick={() => setShowAboutModal(admin)}/>
+            <img src={require('./assets/Edit.svg')} className="clubpage-content-header-icon" onClick={() => setShowAboutModal(admin)}/>
           }
         </div>
-        <p dangerouslySetInnerHTML={{ __html: organization.about_us }}></p>
+        <p dangerouslySetInnerHTML={organization.about_us.length > 0 ? { __html: organization.about_us } : { __html: '<p>No description provided.</p>'}}></p>
       </div>
     }
-    <button className="seeMoreButton" onClick={() => setAboutMore(!aboutMore)}>{aboutMore ? "See less" : "See more"} <ExpandMoreIcon/></button>
+    <button className="seeMoreButton" onClick={() => setAboutMore(!aboutMore)}> {aboutMore ? "See less" : "See more"} { aboutMore ?<ExpandLess/> : <ExpandMoreIcon/>} </button>
     {organization.gallery &&
       <div className='clubpage-content-gallery clubpage-content-item'>
         <div className='clubpage-content-header'>
           <h1>Gallery</h1>
           {admin &&
-            <EditIcon className="clubpage-content-header-icon"/>
+            <img src={require('./assets/Edit.svg')} className="clubpage-content-header-icon"/>
           }
         </div>
         <Gallery data={organization.gallery}/>
@@ -203,7 +203,7 @@ function ClubPage({
             alt=""
           />
           {admin &&
-            <EditIcon className="clubpage-content-header-icon above-banner" onClick={() => setShowBannerModal(admin)}/>
+            <img src={require('./assets/Edit.svg')} className="clubpage-content-header-icon above-banner" onClick={() => setShowBannerModal(admin)}/>
           }
           <div className="clubpage-header-content">
             <div className="clubpage-header-left">
@@ -232,7 +232,7 @@ function ClubPage({
               //   </button>
               }
               {admin &&
-                <EditIcon className="clubpage-content-header-icon" onClick={() => setShowProfileModal(admin)}/>
+                <img src={require('./assets/Edit.svg')} className="clubpage-content-header-icon" onClick={() => setShowProfileModal(admin)}/>
               }
             </div>
           </div>
@@ -262,10 +262,10 @@ function ClubPage({
                 <div className= "clubpage-content-timeline">
                   <div className='clubpage-content-header'>
                     <h1>Recruitment Timeline</h1>
-                    <p style={{marginLeft: ((numEvents == 0) ? "-23vw" :"-27vw")}}>*Times are in PST</p>
+                    <p style={{marginLeft: '18vw'}}>*Times are in PST</p>
 
                     {admin &&
-                      <EditIcon className="clubpage-content-header-icon" onClick={() => setShowRecrModal(admin)}/>
+                      <img src={require('./assets/Edit.svg')} className="clubpage-content-header-icon" onClick={() => setShowRecrModal(admin)}/>
                     }
                   </div>
                   <div className="recr-container">
@@ -281,7 +281,7 @@ function ClubPage({
                     <div className='clubpage-content-header'>
                       <h1>Events</h1>
                       {admin &&
-                        <EditIcon className="clubpage-content-header-icon"/>
+                        <img src={require('./assets/Edit.svg')} className="clubpage-content-header-icon"/>
                       }
                       </div>
                       {organization.events.length > 0 ?
@@ -301,7 +301,7 @@ function ClubPage({
                 <div className='clubpage-content-header'>
                   <h1>How to Get Involved</h1>
                   {admin &&
-                    <EditIcon className="clubpage-content-header-icon" onClick={() => setShowInvolvedModal(admin)}/>
+                    <img src={require('./assets/Edit.svg')} className="clubpage-content-header-icon" onClick={() => setShowInvolvedModal(admin)}/>
                   }
                   </div>
                 <p>{organization.get_involved}</p>
@@ -321,7 +321,7 @@ function ClubPage({
               <div className='clubpage-content-header'>
                 <h1>Contact Information</h1>
                 {admin &&
-                  <EditIcon className="clubpage-content-header-icon" onClick={() => setShowContactModal(admin)}/>
+                  <img src={require('./assets/Edit.svg')} className="clubpage-content-header-icon" onClick={() => setShowContactModal(admin)}/>
                 }
                 </div>
               <h2>Website</h2>

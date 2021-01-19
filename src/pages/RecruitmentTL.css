@@ -3,28 +3,34 @@
     flex-direction: row;
  
     position: relative;
-    left: -2%;
-    max-width: 94%;
+    /* left: -2%; */
+    /* max-width: 94%; */
     z-index: 100;
     margin-bottom: 2.5vw;
     min-height: 8vw;
+    background: none;
 }
 .name-time-box{
     display: flex;
     flex-direction: column;
-    width: 17vw;
+    align-items: center;
+    width: 11vw;
 }
 .event-title {
     letter-spacing: 0.03em;
     position: relative;
     margin: 0vw 1vw 1.2vw 0.7vw;
-    left: 3%;
+    /* left: 3%; */
     top: 0.7vw;
     font-family: Qanelas Soft;
     font-style: normal;
     font-weight: bold;
     font-size: 1.1vw;
     color: #3d3d3d;
+    margin-left: 0px;
+    margin-right: 0px;
+    display: flex;
+    word-break: break-word;
 }
  
 .event-time{
@@ -38,13 +44,12 @@
     font-size: 1.0vw;
 }
 
-#first-time {
-    margin-left: 0.7vw;
-}
  
 .date-circle{
-    width: 11.5%;
-    height: 20%;
+    min-width: 4vw;
+    min-height: 4vw;
+    max-width: 4vw;
+    max-height: 4vw;
     line-height: 4.5vw;
     border-radius: 50%;
     font-size: 1.0vw;
@@ -53,7 +58,6 @@
     font-weight: bold;
     font-style: normal;
     text-align: center;
- 
 }
  
 #filled{
@@ -75,26 +79,24 @@
  
 .desc-box {
     margin: 0.8vw 0vw 0vw 1.5vw;
-    max-width: 65%;
+    /* width: 10vw; */
     font-size: 1em;
     font-family: Qanelas Soft;
     font-style: normal;
-    
-    
 }
  
 .vl {
     border-left: 6px solid #367BC6;
     z-index: -10;
     position: relative;
-    margin-left: 28.7%;
+    margin-left: 13.1vw;
     border-width: 0.4vw;
   }
  
   .recr-button-row {
       display: flex;
       flex-direction: row;
-      margin-left: 22.5vw;
+      margin-left: 19vw;
       margin-top: 1vw;
       width: 7.8vw;
       
@@ -112,4 +114,6 @@
   .event-desc {
       margin-left: 1vw;
       height: 5vw;
+      font-size: 1vw;
+      width: 26vw;
   }
