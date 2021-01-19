@@ -133,7 +133,7 @@ const Profile = ({
               type="text"
               value={orgName}
               onChange={(e) => setOrgName(e.target.value)}
-              maxLength={100}
+              maxLength={70}
             />
           </div>
           <div className="formElement">
