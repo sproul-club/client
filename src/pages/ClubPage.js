@@ -325,9 +325,9 @@ function ClubPage({
                 }
                 </div>
               <h2>Website</h2>
-              <a href={"https://"+organization.social_media_links.website}>{organization.social_media_links.website}</a>
+              <a href={"https://"+organization.social_media_links.website} target="_blank">{organization.social_media_links.website}</a>
               <h2>Email</h2>
-              <a href={"mailto:"+organization.social_media_links.contact_email}>{organization.social_media_links.contact_email}</a>
+              <a href={"mailto:"+organization.social_media_links.contact_email} target="_blank">{organization.social_media_links.contact_email}</a>
               <h2>Social Media</h2>
               <div className="clubpage-sm-link-list">{contactComps}</div>
             </div>
