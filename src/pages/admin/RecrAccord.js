@@ -200,7 +200,7 @@ const RecrAccord = forwardRef((props, ref) => {
                                         type="text"
                                         className="recr-input"
                                         id="recr-link-sel"
-                                        value={"Facebook Event Link"}
+                                        value={"Event Link"}
                                         readOnly
                                     
                                     >
@@ -229,7 +229,7 @@ const RecrAccord = forwardRef((props, ref) => {
                                         type="text"
                                         className="recr-input"
                                         id="recr-link-sel"
-                                        value={"Zoom Meeting Link"}
+                                        value={"Virtal Meeting Link"}
                                         readOnly
                                     
                                     >
@@ -262,8 +262,6 @@ const RecrAccord = forwardRef((props, ref) => {
                                 <div id="recr-char">
                                     {150 - text.length} characters remaining 
                                 </div>
-                                {console.log("INVITED?")}
-                                {console.log(invOnly)}
                             <div style={{display: "flex", flexDirection: "row"}}>
                                 <input
                                     type="checkbox"
