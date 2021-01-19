@@ -40,11 +40,19 @@ const MultiStepForm = ({
   const [recruiting, setRecruit] = useState(true);
   const [size, setSize] = useState('');
   const [resentEmail, setResentEmail] = useState(false);
+  const [recrStartDate, setRecrStartDate] = useState(null);
+  const [recrEndDate, setRecrEndDate] = useState(null);
+  const [appStartDate, setAppStartDate] = useState(null);
+  const [appEndDate, setAppEndDate] = useState(null);
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
+
   /* error indicators */
   const [emailUnverified, setEmailUnverified] = useState('noError');
   const [pwdConMismatch, setPwdConMismatch] = useState('noError');
   const [pwdWeak, setPwdWeak] = useState('noError');
   const [tagOverflow, setTagOverflow] = useState('tagOverflowNone');
+  const [dateError, setDateError] = useState('noError');
   const [emptyName, setEmptyName] = useState('noError');
   const [emptyEmail, setEmptyEmail] = useState('noError');
   const [emptyPwd, setEmptyPwd] = useState('noError');
@@ -52,10 +60,11 @@ const MultiStepForm = ({
   const [emptyAppReq, setEmptyAppReq] = useState('unset');
   const [emptyRecruit, setEmptyRecruit] = useState('unset');
   const [emptySize, setEmptySize] = useState('unset');
-  const [recrStartDate, setRecrStartDate] = useState(null);
-  const [recrEndDate, setRecrEndDate] = useState(null);
-  const [appStartDate, setAppStartDate] = useState(null);
-  const [appEndDate, setAppEndDate] = useState(null);
+  const [emptyRecrStartDate, setEmptyRecrStartDate] = useState('unset');
+  const [emptyRecrEndDate, setEmptyRecrEndDate] = useState('unset');
+  const [emptyAppStartDate, setEmptyAppStartDate] = useState('unset');
+  const [emptyAppEndDate, setEmptyAppEndDate] = useState('unset');
+
 
   if (isAuthenticated) {
     return <Redirect to="/admin" />;
@@ -68,7 +77,7 @@ const MultiStepForm = ({
       await resendConfirmationEmail(email);
     } catch (err) {
       var errMessage = err.response.data.reason;
-      NotificationManager.error(errMessage, 'Unable to register!', 3000);
+      NotificationManager.error(errMessage, 'Unable to resend confirmation email!', 3000);
     } finally {
       setResentEmail(true);
     }
@@ -105,6 +114,13 @@ const MultiStepForm = ({
       /* step 2 errors */
       var errorExists = checkStep2Errors();
       if (!errorExists) {
+        if (recruiting.value && appReq.value) {
+          setAppStartDate(new Date (startDate));
+          setAppEndDate(new Date(endDate));
+        } else if (recruiting.value && !appReq.value) {
+          setRecrStartDate(new Date(startDate));
+          setRecrEndDate(new Date(endDate));
+        }
         submitValue();
       }
     }
@@ -148,22 +164,18 @@ const MultiStepForm = ({
 
   function checkStep2Errors() {
     var errorExists = false;
-    if (tags === null || tags.length === 0) {
-      setEmptyTags('emptyTags');
+    if (tags === null || tags.length === 0 || appReq.value === undefined || recruiting.value === undefined || size.value === undefined || (recruiting.value && (startDate === null || endDate === null))) {
       errorExists = true;
+      NotificationManager.error("All fields are required", "", 5000);
     }
-    if (emptyAppReq !== 'noError') {
-      setEmptyAppReq('emptyAppReq');
-      errorExists = true;
-    }
-    if (emptyRecruit !== 'noError') {
-      setEmptyRecruit('emptyRecruit');
-      errorExists = true;
-    }
-    if (emptySize !== 'noError') {
-      setEmptySize('emptySize');
-      errorExists = true;
-    }
+    if (recruiting.value){
+        var start = Date.parse(startDate);
+        var end = Date.parse(endDate);
+        if (end < start) {
+          errorExists = true;
+          NotificationManager.error("End date should come after start.", "", 5000);
+        }
+    } 
     return errorExists;
   }
 
@@ -218,14 +230,32 @@ const MultiStepForm = ({
     if (emptyAppReq !== 'noError') {
       setEmptyAppReq('noError');
     }
+    if (appReq.value) {
+      setRecrStartDate(null);
+      setRecrEndDate(null);
+    } else {
+      setAppStartDate(null);
+      setAppEndDate(null);
+    }
   };
+
   const recruitOnChange = (event) => {
     setRecruit(event);
     if (emptyRecruit !== 'noError') {
       setEmptyRecruit('noError');
     }
+    if (recruiting.value) {
+      setEmptyRecrStartDate('unset');
+      setEmptyRecrEndDate('unset');
+      setEmptyAppStartDate('unset');
+      setEmptyAppEndDate('unset');
+    } else {
+      setEmptyRecrStartDate('noError');
+      setEmptyRecrEndDate('noError');
+      setEmptyAppStartDate('noError');
+      setEmptyAppEndDate('noError');
+    }
   };
-
   const sizeOnChange = (event) => {
     setSize(event);
     if (emptySize !== 'noError') {
@@ -260,6 +290,9 @@ const MultiStepForm = ({
         tags={tags}
         appReq={appReq}
         recruiting={recruiting}
+        size={size}
+        startDate={startDate}
+        endDate={endDate}
         tagOptions={tagOptions}
         appOptions={appOptions}
         sizeOptions={sizeOptions}
@@ -269,6 +302,8 @@ const MultiStepForm = ({
         setAppReq={appReqOnChange}
         setRecruit={recruitOnChange}
         setSize={sizeOnChange}
+        setStartDate={setStartDate}
+        setEndDate={setEndDate}
         _prev={_prev}
         _next={_next}
         emptyTags={emptyTags}
@@ -277,10 +312,11 @@ const MultiStepForm = ({
         emptySize={emptySize}
         tagError={tagOverflow}
         setTagError={setTagOverflow}
-        setRecrStartDate={setRecrStartDate}
-        setRecrEndDate={setRecrEndDate}
-        setAppStartDate={setAppStartDate}
-        setAppEndDate={setAppEndDate}
+        emptyRecrStartDate={emptyRecrStartDate}
+        emptyRecrEndDate={emptyRecrEndDate}
+        emptyAppStartDate={emptyAppStartDate}
+        emptyAppEndDate={emptyAppEndDate}
+        dateError={dateError}
       />
       <StepThree
         currStep={currStep}
@@ -336,10 +372,10 @@ const StepOne = (props) => {
           props.emptyName === 'emptyName' ? 'inputInvalid' : 'userInput'
         }`}
         type="text"
-        placeholder="Club name"
+        placeholder="Club name (max. 70 characters)"
         value={props.clubName}
         onChange={(e) => props.setClubName(e.target.value)}
-        maxLength={100}
+        maxLength={70}
       />
       <input
         className={`${
@@ -486,24 +522,6 @@ const StepTwo = (props) => {
   let haveError = props.emptyRecruit === 'emptyRecruit';
   return (
     <div className="formGroup">
-      <div className="errorWrapper">
-        <div className={`error ${props.emptyTags}`}>
-          <img alt="error" src={error} className="errorIcon" />
-          <p>This field is required.</p>
-        </div>
-        <div className={`error ${props.emptyAppReq}`}>
-          <img alt="error" src={error} className="errorIcon" />
-          <p>This field is required.</p>
-        </div>
-        <div className={`error ${props.emptyRecruit}`}>
-          <img alt="error" src={error} className="errorIcon" />
-          <p>This field is required.</p>
-        </div>
-        <div className={`error ${props.tagError}`}>
-          <img alt="error" src={error} className="errorIcon" />
-          <p>This field reached max tag number.</p>
-        </div>
-      </div>
       <div className="formHeader">
         <div className="imageContainer">
           <img src={signup} alt="" />
@@ -515,13 +533,15 @@ const StepTwo = (props) => {
             className={(props.recruiting.value) ? 'userInput' : 'userInput hidden'}
             type="date"
             placeholder={(props.appReq.value) ? "Application close date: " : "Recruiting end date: "}
-            onChange={(e) => props.appReq.value ? props.setAppEndDate(e.target.value) : props.setRecrEndDate(e.target.value)}
+            onChange={(e) => props.setEndDate(e.target.value)}
+            value={props.endDate}
         />
         <input
             className={(props.recruiting.value) ? 'userInput' : 'userInput hidden'}
             type="date"
             placeholder={(props.appReq.value) ? "Application open date: " : "Recruiting start date: "}
-            onChange={(e) => props.appReq.value ? props.setAppStartDate(e.target.value) : props.setRecrStartDate(e.target.value)}
+            onChange={(e) => props.setStartDate(e.target.value)}
+            value={props.startDate}
         />
         <Dropdown
           options={props.recruitOptions}
