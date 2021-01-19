@@ -1,10 +1,33 @@
 import React from 'react';
 import Moment from 'react-moment';
 import { connect } from 'react-redux';
+import { google } from "calendar-link";
 import "./RecruitmentTL.css"
 import { justTimeFormat, simplestRangeFormat, START_DATETIME, END_DATETIME, dateTimeFormat } from '../utils/formatTimeAndDate';
 //import { propTypes } from 'react-bootstrap/esm/Image';
- 
+
+function generateGoogleEventLink(recruiting_event) {
+    let finalDescription = recruiting_event.description;
+    const hasVirtualLink = !!recruiting_event.virtual_link;
+    const hasEventLink = !!recruiting_event.link;
+
+    if (hasVirtualLink || hasEventLink)
+        finalDescription += '\n\n';
+
+    if (hasVirtualLink)
+        finalDescription += `Virtual Meeting: <a href="${recruiting_event.virtual_link}">${recruiting_event.virtual_link}</a>\n\n`;
+
+    if (hasEventLink)
+        finalDescription += `Event Link: <a href="${recruiting_event.link}">${recruiting_event.link}</a>`;
+
+    return google({
+        title: recruiting_event.name,
+        description: finalDescription.trim(),
+        start: new Date(recruiting_event.event_start),
+        end: new Date(recruiting_event.event_end)
+    });
+}
+
 const RecruitmentTL = ({ adminCheck, profile, currRoute, events }) => {
     const orderedEvents = events.sort((a,b) => (a.event_start > b.event_start) ? 1 : ((b.event_start > a.event_start) ? -1 : 0))
     var numEvents = orderedEvents.length;
@@ -58,7 +81,7 @@ const RecruitmentTL = ({ adminCheck, profile, currRoute, events }) => {
                             <a
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                href="" //gcal link
+                                href={generateGoogleEventLink(event)} //gcal link
                                 
                             >
                             {<img
@@ -68,7 +91,7 @@ const RecruitmentTL = ({ adminCheck, profile, currRoute, events }) => {
                                     id="gcal"
                             />}
                             </a>
-                            <a
+                            {(event.link != null) ? <a
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 href={event.link}
@@ -79,8 +102,8 @@ const RecruitmentTL = ({ adminCheck, profile, currRoute, events }) => {
                                     alt="resource"
                                     className="recrButton"
                             />}
-                            </a>
-                            <a
+                            </a> : null}
+                           {(event.virtual_link != null) ? <a
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 href={event.virtual_link}
@@ -91,7 +114,7 @@ const RecruitmentTL = ({ adminCheck, profile, currRoute, events }) => {
                                     alt="resource"
                                     className="recrButton"
                             />}
-                            </a>
+                            </a> : null}
                         </div>
                     </div>
                 </div>  
