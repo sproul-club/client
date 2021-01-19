@@ -91,7 +91,7 @@ const RecruitmentTL = ({ adminCheck, profile, currRoute, events }) => {
                                     id="gcal"
                             />}
                             </a>
-                            <a
+                            {(event.link != null) ? <a
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 href={event.link}
@@ -102,8 +102,8 @@ const RecruitmentTL = ({ adminCheck, profile, currRoute, events }) => {
                                     alt="resource"
                                     className="recrButton"
                             />}
-                            </a>
-                            <a
+                            </a> : null}
+                           {(event.virtual_link != null) ? <a
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 href={event.virtual_link}
@@ -114,7 +114,7 @@ const RecruitmentTL = ({ adminCheck, profile, currRoute, events }) => {
                                     alt="resource"
                                     className="recrButton"
                             />}
-                            </a>
+                            </a> : null}
                         </div>
                     </div>
                 </div>  
