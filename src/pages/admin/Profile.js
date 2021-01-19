@@ -206,7 +206,7 @@ const Profile = ({
           
           {appReq.value === 1 && 
             <div className="formElement">
-              <p>Application Deadline</p>
+              <p>Application Period</p>
               <div className="input-time">
                 <input
                   className="modal-input"
