@@ -14,54 +14,54 @@ const RecrEvents = ({profile, events, incNumEvents, cancelEdit, addRecrEvent, up
     var addSuccess = true;
 
     const addEv = async (e) => {
-        e.preventDefault();
-        const emptyEvent = {
-          name: "[Event " + events.length + "]",
-          link: "",
-          virtual_link: "",
-          event_start: "2000-01-01T00:00:00",
-          event_end: "2000-01-01T00:00:00",
-          description: "[enter description]",
-          invite_only: false,
-        };
-    
-        try {
-            await addRecrEvent(emptyEvent);
-        } catch (err) {
-            addSuccess = false;
-            console.log(err);
-        }
-        if (addSuccess == true) {
-          incNumEvents(1);
-        }
+      e.preventDefault();
+      const emptyEvent = {
+        name: "[Event " + events.length + "]",
+        link: "",
+        virtual_link: "",
+        event_start: "2000-01-01T00:00:00",
+        event_end: "2000-01-01T00:00:00",
+        description: "[enter description]",
+        invite_only: false,
+      };
+  
+      try {
+          await addRecrEvent(emptyEvent);
+      } catch (err) {
+          addSuccess = false;
+          console.log(err);
+      }
+      if (addSuccess == true) {
+        incNumEvents(1);
+      }
     };
  
     function entryChange(
-        id,
-        title,
-        eventLink,
-        startDate,
-        startTime,
-        endDate,
-        endTime,
-        text,
-        inv_only,
-        vir_link
-      ) {
-        const start = startDate.concat(' ' + startTime);
-        const end = endDate.concat(' ' + endTime);
-    
-        //update event action
-        updateRecrEvent(id, {
-          name: title,
-          link: eventLink,
-          event_start: start,
-          event_end: end,
-          description: text,
-          virtual_link: vir_link,
-          invite_only: inv_only
-        });
-      }
+      id,
+      title,
+      eventLink,
+      startDate,
+      startTime,
+      endDate,
+      endTime,
+      text,
+      inv_only,
+      vir_link
+    ) {
+      const start = startDate.concat(' ' + startTime);
+      const end = endDate.concat(' ' + endTime);
+  
+      //update event action
+      updateRecrEvent(id, {
+        name: title,
+        link: eventLink,
+        event_start: start,
+        event_end: end,
+        description: text,
+        virtual_link: vir_link,
+        invite_only: inv_only
+      });
+    }
 
     const dupEvent = async (event) => {
       console.log("DUPE TEXT")

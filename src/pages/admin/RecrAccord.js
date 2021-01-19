@@ -25,6 +25,19 @@ const RecrAccord = forwardRef((props, ref) => {
     const [virtLink, setVirtLink] = useState(props.data.virtual_link);
     const [invOnly, setInvOnly] = useState(props.data.invite_only);
 
+    // HACK: ugly fix for accidental duplication of data for adding new events
+    useEffect(() => {
+        setName(props.data.name);
+        setEventLink(props.data.link);
+        setStartDate(props.data.event_start.substring(0, 10));
+        setStartTime(props.data.event_start.substring(11, 16));
+        setEndDate(props.data.event_end.substring(0, 10));
+        setEndTime(props.data.event_end.substring(11, 16));
+        setText(props.data.description);
+        setVirtLink(props.data.virtual_link);
+        setInvOnly(props.data.invite_only);
+    }, [props.data])
+
     const [showDelModal, setShowDelModal] = useState(false);
     
     const changedStart = (startDate != "2000-01-01")
@@ -200,7 +213,7 @@ const RecrAccord = forwardRef((props, ref) => {
                                         type="text"
                                         className="recr-input"
                                         id="recr-link-sel"
-                                        value={"Facebook Event Link"}
+                                        value={"Event Link"}
                                         readOnly
                                     
                                     >
@@ -229,7 +242,7 @@ const RecrAccord = forwardRef((props, ref) => {
                                         type="text"
                                         className="recr-input"
                                         id="recr-link-sel"
-                                        value={"Zoom Meeting Link"}
+                                        value={"Virtal Meeting Link"}
                                         readOnly
                                     
                                     >
@@ -262,8 +275,6 @@ const RecrAccord = forwardRef((props, ref) => {
                                 <div id="recr-char">
                                     {150 - text.length} characters remaining 
                                 </div>
-                                {console.log("INVITED?")}
-                                {console.log(invOnly)}
                             <div style={{display: "flex", flexDirection: "row"}}>
                                 <input
                                     type="checkbox"
