@@ -112,7 +112,7 @@ const RecrEvents = ({profile, events, incNumEvents, cancelEdit, addRecrEvent, up
                 Add events related to recruitment!
             </div>
             <hr style={{width: "97.5%", marginLeft: "-0.25%"}}></hr>
-            <div style={{minHeight:"40vh"}}>
+            <div style={{minHeight:"70%"}}>
                 {events.map((ev, i) => (
                     <RecrAccord 
                         data={ev}
@@ -129,8 +129,10 @@ const RecrEvents = ({profile, events, incNumEvents, cancelEdit, addRecrEvent, up
             </div>        
             <div id="recr-buttons">
                 <button className="recr-button" id="recr-add" onClick={(e) => addEv(e)}>+ Add Event</button>
-                <button className="recr-button" id="recr-cancel" onClick={cancelEdit}>Cancel</button>
-                <button className="recr-button" id="recr-save" onClick={saveAll}>Save</button>
+                <div id="recr-cancelsave">
+                  <button className="recr-button" id="recr-cancel" onClick={cancelEdit}>Cancel</button>
+                  <button className="recr-button" id="recr-save" onClick={saveAll}>Save</button>
+                </div>
             </div>
         </div>
 )};
