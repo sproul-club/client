@@ -17,8 +17,8 @@ const RecrEvents = ({profile, events, incNumEvents, cancelEdit, addRecrEvent, up
       e.preventDefault();
       const emptyEvent = {
         name: "[Event " + events.length + "]",
-        link: "",
-        virtual_link: "",
+        link: null,
+        virtual_link: null,
         event_start: "2000-01-01T00:00:00",
         event_end: "2000-01-01T00:00:00",
         description: "[enter description]",
@@ -54,18 +54,16 @@ const RecrEvents = ({profile, events, incNumEvents, cancelEdit, addRecrEvent, up
       //update event action
       updateRecrEvent(id, {
         name: title,
-        link: eventLink,
+        link: eventLink || null,
         event_start: start,
         event_end: end,
         description: text,
-        virtual_link: vir_link,
+        virtual_link: vir_link || null,
         invite_only: inv_only
       });
     }
 
     const dupEvent = async (event) => {
-      console.log("DUPE TEXT")
-      console.log(event)
       const duplicatedEvent = {
         name: event.name + " copy",
         link: event.link,
@@ -97,8 +95,6 @@ const RecrEvents = ({profile, events, incNumEvents, cancelEdit, addRecrEvent, up
           }
         }
       })
-      console.log("RETURNED")
-      console.log(retValues)
       if (retValues.reduce(function(a,b) { return a+b;}, 0) == 0) {
         cancelEdit();
       } 
@@ -116,7 +112,7 @@ const RecrEvents = ({profile, events, incNumEvents, cancelEdit, addRecrEvent, up
                 Add events related to recruitment!
             </div>
             <hr style={{width: "97.5%", marginLeft: "-0.25%"}}></hr>
-            <div style={{minHeight:"42vh"}}>
+            <div style={{minHeight:"70%"}}>
                 {events.map((ev, i) => (
                     <RecrAccord 
                         data={ev}
@@ -133,8 +129,10 @@ const RecrEvents = ({profile, events, incNumEvents, cancelEdit, addRecrEvent, up
             </div>        
             <div id="recr-buttons">
                 <button className="recr-button" id="recr-add" onClick={(e) => addEv(e)}>+ Add Event</button>
-                <button className="recr-button" id="recr-cancel" onClick={cancelEdit}>Cancel</button>
-                <button className="recr-button" id="recr-save" onClick={saveAll}>Save</button>
+                <div id="recr-cancelsave">
+                  <button className="recr-button" id="recr-cancel" onClick={cancelEdit}>Cancel</button>
+                  <button className="recr-button" id="recr-save" onClick={saveAll}>Save</button>
+                </div>
             </div>
         </div>
 )};

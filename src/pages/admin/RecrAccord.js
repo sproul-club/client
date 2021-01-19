@@ -47,6 +47,22 @@ const RecrAccord = forwardRef((props, ref) => {
         setShowDelModal(false);
     }
 
+    if (name.slice(0,6) == "[Event") {
+        setName("")
+    }
+
+    if (text == "[enter description]") {
+        setText("")
+    }
+
+    if (eventLink == "") {
+        setEventLink(null);
+    }
+
+    if (virtLink == "") {
+        setVirtLink(null);
+    }
+
     useImperativeHandle(
         ref,
         () => ({
@@ -88,7 +104,7 @@ const RecrAccord = forwardRef((props, ref) => {
 
     
     function singleSave() {
-        if (eventLink.length > 0 && !validURL(eventLink)) {
+        if (eventLink && !validURL(eventLink)) {
             NotificationManager.error('Please enter a valid URL', '', 1500);
             return;
           }
@@ -116,8 +132,8 @@ const RecrAccord = forwardRef((props, ref) => {
     return (
         <div>
         <div id="recr-wrap">
-            <Accordion className="accordion" allowZeroExpanded>
-                <AccordionItem>
+            <Accordion preExpanded={['a']} className="accordion" allowZeroExpanded>
+                <AccordionItem uuid="a">
                     <AccordionItemButton>
                         <div className="event-container">
                             <div className="event-flex-left"> {name}</div>
@@ -139,7 +155,7 @@ const RecrAccord = forwardRef((props, ref) => {
                                         placeholder="Event name"
                                         onChange={(e) => setName(e.target.value)}
                                         value={name}
-                                        maxLength={40}
+                                        maxLength={32}
                                     >
                                     </input>
                                 </div>
@@ -213,20 +229,13 @@ const RecrAccord = forwardRef((props, ref) => {
                                         type="text"
                                         className="recr-input"
                                         id="recr-link-sel"
+                                        style={{border: "none"}}
                                         value={"Event Link"}
                                         readOnly
                                     
                                     >
                                     </input>
-                                    {/*<select
-                                        className="recr-input"
-                                        id="recr-link-sel"
-                                        onChange={(e) => set}
-                                    >
-                                        <option selected disabled hidden>Select link type</option>
-                                        <option>Zoom</option>
-                                        <option>FB Event</option>
-                                    </select>*/}
+                                
                                     <input
                                         type="text"
                                         className="recr-input"
@@ -241,8 +250,9 @@ const RecrAccord = forwardRef((props, ref) => {
                                     <input
                                         type="text"
                                         className="recr-input"
+                                        style={{border: "none"}}
                                         id="recr-link-sel"
-                                        value={"Virtal Meeting Link"}
+                                        value={"Virtual Meeting Link"}
                                         readOnly
                                     
                                     >
