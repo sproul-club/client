@@ -99,6 +99,9 @@ const Profile = ({
     }
   };
 
+  console.log(profile);
+  console.log(appStartDate);
+
   const reqFieldsCheck = () => {
     if (tags === null) {
       NotificationManager.error(
@@ -181,12 +184,15 @@ const Profile = ({
               set={setRecruit}
             />
           </div>
+
+          {recruiting.value === 1 &&
+          <div>
           {appReq.value === 0 && 
             <div className="formElement">
             <p>Recruitment Period</p>
               <div className="input-time">
                 <input
-                  className="modal-input"
+                  className='modal-input'
                   type="date"
                   onChange={(e) => setRecrStartDate(e.target.value)}
                   value={recrStartDate}
@@ -194,7 +200,7 @@ const Profile = ({
                 />
                 <span> to </span>
                 <input
-                  className="modal-input"
+                  className='modal-input'
                   type="date"
                   onChange={(e) => setRecrEndDate(e.target.value)}
                   value={recrEndDate}
@@ -209,7 +215,7 @@ const Profile = ({
               <p>Application Period</p>
               <div className="input-time">
                 <input
-                  className="modal-input"
+                  className='modal-input'
                   type="date"
                   onChange={(e) => setAppStartDate(e.target.value)} 
                   value={appStartDate}
@@ -217,7 +223,7 @@ const Profile = ({
                 />
                 <span> to </span>
                 <input
-                  className="modal-input"
+                  className='modal-input'
                   type="date"
                   onChange={(e) => setAppEndDate(e.target.value)} 
                   value={appEndDate} 
@@ -226,6 +232,9 @@ const Profile = ({
                 </div>
             </div>
           }
+          </div>
+          }
+          
         </div>
       </div>
 

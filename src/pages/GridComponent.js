@@ -20,7 +20,7 @@ function GridComponent({ tagOptions, clubs, loading, formDetails, num_displayed,
   return (
     <div className="wrapper">
       <div className="num-results">
-        {num_filtered_results ? `Displaying ${num_filtered_results} Results` : loading ? '' : <div class="noresults-content"> <div class="noresults-text"> No Results Found </div> <img class="noresults-image" src={confusion} /> </div>}
+        {num_filtered_results ? `Displaying ${num_filtered_results} Results` : loading ? '' : <div className="noresults-content"> <div className="noresults-text"> No Results Found </div> <img className="noresults-image" src={confusion} /> </div>}
       </div>
       <div className="card-grid">
         {GridList}

@@ -3,7 +3,6 @@ import './Catalog2.css'
 import banner from './assets/catalog_banner.jpg'
 import GridComponent from './GridComponent'
 import { connect } from 'react-redux'
-import {membersMap} from '../utils/filterClubs'
 import {
   searchClubs,
   clearOrganization,
@@ -128,7 +127,7 @@ const Catalog2 = ({
 
           {/* Search Bar */}
           <div className="filter search-filter">
-            <i class="fas fa-search"></i>
+            <i className="fas fa-search"></i>
             <input type="text" placeholder='Search' value={name} onChange={(e) => changeSearch(e)} className='search-input'/> 
             <span className='reset-filters' onClick={() => resetFilters()}>reset filters</span>
           </div>

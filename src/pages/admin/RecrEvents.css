@@ -4,8 +4,6 @@
     position: relative;
 }
  
- 
- 
 .recr-button {
     border-radius: 5px;
     padding: 8px 15px;
@@ -24,12 +22,17 @@
  
 #recr-cancel {
     padding: 10px 25px;
-    margin-left: 48vw;
     margin-right: 1vw;
-    border: 0px;
-    color: 2B2B2B;
-    background: #C4C4C4;
+    color: #f76767;
+    border: 1px solid #f76767;
+    background: white;
 }
+
+#recr-cancel:hover {
+    color: #ff1111;
+    border: 1px solid #ff1111;
+    cursor: pointer;
+  }
  
 #recr-save {
     padding: 10px 25px;
@@ -37,5 +40,15 @@
     border: 0px;
     background: #54A0F1;
     color: white;
- 
+}
+
+#recr-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.recr-buttons-right {
+    display: flex;
 }

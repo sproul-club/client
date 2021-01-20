@@ -23,6 +23,7 @@ import Profile from '../pages/admin/Profile';
 import Banner from '../pages/admin/Banner';
 import RecrEvents from '../pages/admin/RecrEvents';
 import Activation from './Activation';
+import {membersMap} from '../utils/filterClubs.js';
 
 function ClubPage({
   admin,
@@ -30,7 +31,6 @@ function ClubPage({
   getOrganization,
   clearOrganization,
   tagOptions,
-  sizeOptions,
   history
 }) {
   const [showContactModal, setShowContactModal] = useState(false);
@@ -64,7 +64,7 @@ function ClubPage({
       //!organization.link_name && clearOrganization();
     };
     // recall useEffect when the link_name in url changes
-  }, [routeId, activated, organization, sizeOptions]);
+  }, [routeId, activated, organization]);
 
   console.log(organization);
   
@@ -104,8 +104,8 @@ function ClubPage({
     setNumEvents(organization.recruiting_events.length);
   }
 
-  const lineHeight = (numEvents - 1) * 11.8;
-  const lineTop = -(numEvents) * 10.8;
+  const lineHeight = (numEvents - 1) * 12;
+  const lineTop = -(numEvents) * 11.4;
 
   function incNumEvents(num) {
     if (numEvents + num >= 0) {
@@ -152,14 +152,14 @@ function ClubPage({
         <div className='clubpage-content-header'>
           <h1>About {organization.name}</h1>
           {admin &&
-            <img src={require('./assets/Edit.svg')} className="clubpage-content-header-icon" onClick={() => setShowAboutModal(admin)}/>
+            <img src={require('./assets/Edit.svg')} className="clubpage-content-header-icon" onClick={() => setShowAboutModal(admin)} alt=""/>
           }
         </div>
         <p dangerouslySetInnerHTML={organization.about_us.length > 0 ? { __html: organization.about_us } : { __html: '<p>No description provided.</p>'}}></p>
       </div>
     }
     <button className="seeMoreButton" onClick={() => setAboutMore(!aboutMore)}> {aboutMore ? "See less" : "See more"} { aboutMore ?<ExpandLess/> : <ExpandMoreIcon/>} </button>
-    {organization.gallery &&
+    {/* {organization.gallery &&
       <div className='clubpage-content-gallery clubpage-content-item'>
         <div className='clubpage-content-header'>
           <h1>Gallery</h1>
@@ -169,7 +169,7 @@ function ClubPage({
         </div>
         <Gallery data={organization.gallery}/>
       </div>
-    }
+    } */}
   </div>
 
   var membersMapIndex = organization.num_users;
@@ -188,7 +188,7 @@ function ClubPage({
   } else {
     tagList.push(<Tag key={"nar"} label="No Application Required" color="#cdeaff" listId = {'nar'}/>)
   }
-  tagList.push(<Tag key={'mem'} label={sizeOptions[membersMapIndex].label + ' members'} listId = {'mem'}/>)
+  tagList.push(<Tag key={'mem'} label={membersMap[membersMapIndex].label + ' members'} listId = {'mem'}/>)
 
   ReactGA.initialize('UA-176775736-1');
   ReactGA.pageview('/' + history.location.pathname.slice(6).split("/")[0]);
@@ -203,7 +203,7 @@ function ClubPage({
             alt=""
           />
           {admin &&
-            <img src={require('./assets/Edit.svg')} className="clubpage-content-header-icon above-banner" onClick={() => setShowBannerModal(admin)}/>
+            <img src={require('./assets/Edit.svg')} className="clubpage-content-header-icon above-banner" onClick={() => setShowBannerModal(admin)} alt=""/>
           }
           <div className="clubpage-header-content">
             <div className="clubpage-header-left">
@@ -232,7 +232,7 @@ function ClubPage({
               //   </button>
               }
               {admin &&
-                <img src={require('./assets/Edit.svg')} className="clubpage-content-header-icon" onClick={() => setShowProfileModal(admin)}/>
+                <img src={require('./assets/Edit.svg')} className="clubpage-content-header-icon" onClick={() => setShowProfileModal(admin)} alt=""/>
               }
             </div>
           </div>
@@ -252,6 +252,9 @@ function ClubPage({
               className={`clubpage-header-nav-item ${tab === "events" ? "selected" : ""}`} onClick={() => setTab("events")}>
               Events
             </Link>
+            <div className='lastUpdated'>
+              {organization.last_updated ? <p>Last updated: {organization.last_updated.slice(5,7)}/{organization.last_updated.slice(8,10)}/{organization.last_updated.slice(0,4)}</p> : <p>Last updated: n/a</p>}
+            </div>
           </div>
         </div>
         <div className='clubpage-content'>
@@ -265,13 +268,13 @@ function ClubPage({
                     <p style={{marginLeft: '18vw'}}>*Times are in PST</p>
 
                     {admin &&
-                      <img src={require('./assets/Edit.svg')} className="clubpage-content-header-icon" onClick={() => setShowRecrModal(admin)}/>
+                      <img src={require('./assets/Edit.svg')} className="clubpage-content-header-icon" onClick={() => setShowRecrModal(admin)} alt=""/>
                     }
                   </div>
                   <div className="recr-container">
                     <RecruitmentTL adminCheck = {admin} profile={organization} events={organization.recruiting_events} currRoute = {routeId}>
                     </RecruitmentTL>
-                    <div className="vl" style={{height : lineHeight + "vw", top: lineTop + "vw"}}></div>
+                    <div className="vl" style={{height : lineHeight + "vw", marginTop: lineTop + 'vw'}}></div>
                   </div>
                 </div>
               } />
@@ -281,7 +284,7 @@ function ClubPage({
                     <div className='clubpage-content-header'>
                       <h1>Events</h1>
                       {admin &&
-                        <img src={require('./assets/Edit.svg')} className="clubpage-content-header-icon"/>
+                        <img src={require('./assets/Edit.svg')} className="clubpage-content-header-icon" alt=""/>
                       }
                       </div>
                       {organization.events.length > 0 ?
@@ -301,7 +304,7 @@ function ClubPage({
                 <div className='clubpage-content-header'>
                   <h1>How to Get Involved</h1>
                   {admin &&
-                    <img src={require('./assets/Edit.svg')} className="clubpage-content-header-icon" onClick={() => setShowInvolvedModal(admin)}/>
+                    <img src={require('./assets/Edit.svg')} className="clubpage-content-header-icon" onClick={() => setShowInvolvedModal(admin)} alt=""/>
                   }
                   </div>
                 <p>{organization.get_involved}</p>
@@ -321,7 +324,7 @@ function ClubPage({
               <div className='clubpage-content-header'>
                 <h1>Contact Information</h1>
                 {admin &&
-                  <img src={require('./assets/Edit.svg')} className="clubpage-content-header-icon" onClick={() => setShowContactModal(admin)}/>
+                  <img src={require('./assets/Edit.svg')} className="clubpage-content-header-icon" onClick={() => setShowContactModal(admin)} alt=""/>
                 }
                 </div>
               <h2>Website</h2>
@@ -416,7 +419,6 @@ const mapStateToProps = (state, ownProps) => ({
   admin: ownProps.admin,
   organization: ownProps.admin ? state.profile.profile : state.catalog.organization,
   tagOptions: state.profile.tagOptions,
-  sizeOptions: state.profile.sizeOptions,
 });
 
 export default connect(mapStateToProps, { getOrganization, clearOrganization })(withRouter(ClubPage));

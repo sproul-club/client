@@ -89,8 +89,11 @@
     border-left: 6px solid #367BC6;
     z-index: -10;
     position: relative;
-    margin-left: 13.1vw;
+    margin-left: 13.08vw;
     border-width: 0.4vw;
+    width: 1vw;
+    /* margin-top: -34vw; */
+    /* height: 10vh; */
   }
  
   .recr-button-row {

@@ -36,10 +36,10 @@ const RecruitmentTL = ({ adminCheck, profile, currRoute, events }) => {
     return (
         <div>
             {orderedEvents.map((event, i) => (
-                <div>
+                <div key={i}>
                 <div id="recr-box">
                     <div className="name-time-box">
-                        <text className="event-title">{event.name} </text>
+                        <p className="event-title">{event.name} </p>
                         {(event.event_start.slice(0,10) == event.event_end.slice(0,10)) ?
                         <div style={{marginLeft: "0vw", display:'flex', alignItems:'center', flexDirection:'column'}}>
                             <Moment className="event-time"
@@ -47,7 +47,7 @@ const RecruitmentTL = ({ adminCheck, profile, currRoute, events }) => {
                             interval={0}
                             date={event.event_start}
                             format={justTimeFormat(event.event_start, event.event_end, START_DATETIME)}/>
-                            <text className="event-time" style={{marginLeft:"-0.0vw"}}>-</text>
+                            <p className="event-time" style={{marginLeft:"-0.0vw"}}>-</p>
                             <Moment className="event-time"
                             interval={0}
                             date={event.event_end}
@@ -60,7 +60,7 @@ const RecruitmentTL = ({ adminCheck, profile, currRoute, events }) => {
                             interval={0}
                             date={event.event_start}
                             format={dateTimeFormat(event.event_start, event.event_end, START_DATETIME)}/>
-                            <text className="event-time" style={{marginLeft:"-0.0vw"}}>-</text>
+                            <p className="event-time" style={{marginLeft:"-0.0vw"}}>-</p>
                         <div>
                             <Moment className="event-time"
                             interval={0}
