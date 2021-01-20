@@ -327,7 +327,7 @@ function ClubPage({
                 <p>{organization.get_involved}</p>
                 <div className="apply-button-wrapper">
                   {organization.apply_link &&
-                    <a href={"https://"+organization.apply_link} target="_blank">
+                    <a href={normalizeUrl(organization.apply_link)} target="_blank">
                       <button className="clubpage-apply-btn">
                         Apply Now!
                         <RightArrow style={{marginLeft: 5, height: "1.6vw"}}/>
