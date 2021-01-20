@@ -69,6 +69,10 @@ const Profile = ({
   }
 
   const submit = async () => {
+    console.log(recruiting.value);
+    console.log(appReq.value);
+    console.log(appStartDate);
+    console.log(appEndDate);
     const newProfile = {
       ...profile,
       name: orgName.trim(),

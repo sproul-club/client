@@ -115,11 +115,11 @@ const MultiStepForm = ({
       var errorExists = checkStep2Errors();
       if (!errorExists) {
         if (recruiting.value && appReq.value) {
-          setAppStartDate(new Date (startDate));
-          setAppEndDate(new Date(endDate));
+          setAppStartDate(startDate);
+          setAppEndDate(endDate);
         } else if (recruiting.value && !appReq.value) {
-          setRecrStartDate(new Date(startDate));
-          setRecrEndDate(new Date(endDate));
+          setRecrStartDate(startDate);
+          setRecrEndDate(endDate);
         }
         submitValue();
       }

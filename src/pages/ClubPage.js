@@ -24,6 +24,7 @@ import Banner from '../pages/admin/Banner';
 import RecrEvents from '../pages/admin/RecrEvents';
 import Activation from './Activation';
 import {membersMap} from '../utils/filterClubs.js';
+import {normalizeUrl} from '../utils/normalizeUrl.js';
 
 function ClubPage({
   admin,
@@ -121,7 +122,7 @@ function ClubPage({
         target="_blank"
         rel="noopener noreferrer"
         href={
-          key === 'contact_email' ? 'mailto:' + socLinks[key] : "https://" + socLinks[key]
+          key === 'contact_email' ? 'mailto:' + socLinks[key] : normalizeUrl(socLinks[key])
         }
       >
         <img
@@ -159,17 +160,19 @@ function ClubPage({
       </div>
     }
     <button className="seeMoreButton" onClick={() => setAboutMore(!aboutMore)}> {aboutMore ? "See less" : "See more"} { aboutMore ?<ExpandLess/> : <ExpandMoreIcon/>} </button>
-    {/* {organization.gallery &&
-      <div className='clubpage-content-gallery clubpage-content-item'>
+    <div className="bottomGallery">
+    {organization.gallery &&
+      <div className='clubpage-content-gallery'>
         <div className='clubpage-content-header'>
           <h1>Gallery</h1>
           {admin &&
-            <img src={require('./assets/Edit.svg')} className="clubpage-content-header-icon"/>
+            <img src={require('./assets/Edit.svg')} className="clubpage-content-header-icon" onClick={() => setShowBannerModal(admin)}/>
           }
         </div>
         <Gallery data={organization.gallery}/>
       </div>
-    } */}
+    }
+    </div>
   </div>
 
   var membersMapIndex = organization.num_users;
@@ -347,6 +350,7 @@ function ClubPage({
             } */}
           </div>
         </div>
+        
 
         <Modal
           showModal={showBannerModal}

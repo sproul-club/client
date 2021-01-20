@@ -3,9 +3,8 @@ import { connect } from 'react-redux';
 import { updateProfile } from '../../actions/profile';
 import { NotificationManager } from 'react-notifications';
 import { normalizeUrl } from '../../utils/normalizeUrl';
-import { validURL } from '../../utils/normalizeUrl';
 import './Admin.css';
-import { EmailOutlined } from '@material-ui/icons';
+// import { EmailOutlined } from '@material-ui/icons';
 
 
 const ContactInfo = ({ profile, updateProfile, close }) => {
@@ -38,8 +37,8 @@ const ContactInfo = ({ profile, updateProfile, close }) => {
     setGithub(normalizeUrl(behance));
     setMedium(normalizeUrl(medium));
     setTwitter(normalizeUrl(twitter));
-    setYoutube(normalizeUrl(gcalendar));
-    setGcalendar(normalizeUrl(youtube));
+    setYoutube(normalizeUrl(youtube));
+    setGcalendar(normalizeUrl(gcalendar));
     const newProfile = {
       ...profile,
       social_media_links: {

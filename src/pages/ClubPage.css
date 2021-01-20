@@ -43,6 +43,14 @@
   font-size: 1vw;
 }
 
+.bottomGallery {
+  width: 44vw;
+}
+
+.clubpage-content-gallery {
+  height: 34vw;
+}
+
 .clubpage-header {
   position: relative;
   border-radius: 10px;

@@ -1,12 +1,15 @@
 .gallery {
     position: relative;
+    
 }
 .slider {
     border-radius: 10px;
+    display: flex;
+    flex-direction: column;
 }
 
 .slide {
-   
+    height: 100vw;
 }
 
 .slide .caption {
