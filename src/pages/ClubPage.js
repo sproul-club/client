@@ -87,7 +87,7 @@ function ClubPage({
     }
   };
 
-  fetchGallery();
+  // fetchGallery();
   
   organization.gallery = [
     {
@@ -98,11 +98,6 @@ function ClubPage({
     {
       type: "i",
       src: "https://picsum.photos/seed/picsum/1000/1000",
-      caption: "The team"
-    },
-    {
-      type: "v",
-      src: "https://www.youtube.com/watch?v=IREN9O3eVkI&ab_channel=YouTube",
       caption: "The team"
     },
   ];
@@ -180,7 +175,7 @@ function ClubPage({
       </div>
     }
     <button className="seeMoreButton" onClick={() => setAboutMore(!aboutMore)}> {aboutMore ? "See less" : "See more"} { aboutMore ?<ExpandLess/> : <ExpandMoreIcon/>} </button>
-    <div className="bottomGallery">
+    {/* <div className="bottomGallery">
     {organization.gallery &&
       <div className='clubpage-content-gallery'>
         <div className='clubpage-content-header'>
@@ -194,7 +189,7 @@ function ClubPage({
         </div>
       </div>
     }
-    </div>
+    </div> */}
   </div>
 
   var membersMapIndex = organization.num_users;
