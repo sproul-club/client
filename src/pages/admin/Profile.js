@@ -44,7 +44,6 @@ const Profile = ({
   const [appEndDate, setAppEndDate] = useState(
     (profile.apply_deadline_end == null) ? null : getDateOnly(profile.apply_deadline_end)); 
 
-  console.log(profile);
   function getDateOnly(obj) {
     if (obj instanceof Date) {
       obj= obj.toISOString();
@@ -76,39 +75,70 @@ const Profile = ({
     }
   }
 
-  const submit = async () => {
-    const newProfile = {
-      ...profile,
-      name: orgName.trim(),
-      owner: orgEmail,
-      tags: tags.map((tags) => tags.value),
-      app_required: !!appReq.value,
-      new_members: !!recruiting.value,
-      num_users: (size.value || size.value === 0) ? size.value : size,
-      // recruiting_start: recrStartDate ? recrStartDate : '1970-01-01T00:00:00',
-      // recruiting_end: recrEndDate ? recrEndDate : '1970-01-01T00:00:00',
-      // apply_deadline_start: appStartDate ? appStartDate : '1970-01-01T00:00:00',
-      // apply_deadline_end: appEndDate ? appEndDate : '1970-01-01T00:00:00',
-      apply_deadline_start : (recruiting.value === 1 && appReq.value === 1) ? new Date(appStartDate) : null,
-      apply_deadline_end : (recruiting.value === 1 && appReq.value === 1)? new Date(appEndDate) : null,
-      recruiting_start: (recruiting.value === 1 && appReq.value === 0)? new Date(recrStartDate) : null,
-      recruiting_end: (recruiting.value === 1 && appReq.value === 0)? new Date(recrEndDate) : null,
-    };
+  function checkDateError() {
+    var errorExists = false;
+    if (recruiting.value){
+      if (appReq.value) {
+        if (appStartDate === null || appEndDate === null) {
+          errorExists = true;
+          NotificationManager.error("These fields are required.", "", 5000);
+        } else {
+          var start = Date.parse(appStartDate);
+          var end = Date.parse(appEndDate);
+          if (end < start) {
+            errorExists = true;
+            NotificationManager.error("End date should come after start.", "", 5000);
+          }
+        }
+      } else if (!appReq.value) {
+        if (recrStartDate === null || recrEndDate === null) {
+          errorExists = true;
+          NotificationManager.error("These fields are required.", "", 5000);
+        } else {
+          var start = Date.parse(recrStartDate);
+          var end = Date.parse(recrEndDate);
+          if (end < start) {
+            errorExists = true;
+            NotificationManager.error("End date should come after start.", "", 5000);
+          }
+        }
+      }
+    } 
+    return errorExists;
+  }
 
-    try {
-      await updateProfile(newProfile);
-      await Promise.all([
-        uploadLogoPic(logoImage)
-      ]);
-      NotificationManager.success('Profile changes saved successfully!', '', 1500);
-      close();
-    } catch (err) {
-      NotificationManager.error('Profile changes unsuccessful!', '', 1500);
+  const submit = async () => {
+    if (!checkDateError()) {
+      const newProfile = {
+        ...profile,
+        name: orgName.trim(),
+        owner: orgEmail,
+        tags: tags.map((tags) => tags.value),
+        app_required: !!appReq.value,
+        new_members: !!recruiting.value,
+        num_users: (size.value || size.value === 0) ? size.value : size,
+        // recruiting_start: recrStartDate ? recrStartDate : '1970-01-01T00:00:00',
+        // recruiting_end: recrEndDate ? recrEndDate : '1970-01-01T00:00:00',
+        // apply_deadline_start: appStartDate ? appStartDate : '1970-01-01T00:00:00',
+        // apply_deadline_end: appEndDate ? appEndDate : '1970-01-01T00:00:00',
+        apply_deadline_start : (recruiting.value === 1 && appReq.value === 1) ? new Date(appStartDate) : null,
+        apply_deadline_end : (recruiting.value === 1 && appReq.value === 1)? new Date(appEndDate) : null,
+        recruiting_start: (recruiting.value === 1 && appReq.value === 0)? new Date(recrStartDate) : null,
+        recruiting_end: (recruiting.value === 1 && appReq.value === 0)? new Date(recrEndDate) : null,
+      };
+
+      try {
+        await updateProfile(newProfile);
+        await Promise.all([
+          uploadLogoPic(logoImage)
+        ]);
+        NotificationManager.success('Profile changes saved successfully!', '', 1500);
+        close();
+      } catch (err) {
+        NotificationManager.error('Profile changes unsuccessful!', '', 1500);
+      }
     }
   };
-
-  console.log(profile);
-  console.log(appStartDate);
 
   const reqFieldsCheck = () => {
     if (tags === null) {
@@ -194,53 +224,54 @@ const Profile = ({
           </div>
 
           {recruiting.value === 1 &&
-          <div>
-          {appReq.value === 0 && 
-            <div className="formElement">
-            <p>Recruitment Period</p>
-              <div className="input-time">
-                <input
-                  className='modal-input'
-                  type="date"
-                  onChange={(e) => setRecrStartDate(e.target.value)}
-                  value={recrStartDate}
-                  required
-                />
-                <span> to </span>
-                <input
-                  className='modal-input'
-                  type="date"
-                  onChange={(e) => setRecrEndDate(e.target.value)}
-                  value={recrEndDate}
-                  required
-                />
-              </div>
-            </div>
-          }
-          
-          {appReq.value === 1 && 
-            <div className="formElement">
-              <p>Application Period</p>
-              <div className="input-time">
-                <input
-                  className='modal-input'
-                  type="date"
-                  onChange={(e) => setAppStartDate(e.target.value)} 
-                  value={appStartDate}
-                  required
-                />
-                <span> to </span>
-                <input
-                  className='modal-input'
-                  type="date"
-                  onChange={(e) => setAppEndDate(e.target.value)} 
-                  value={appEndDate} 
-                  required
-                />
+            <div>
+              {appReq.value === 0 && 
+                <div className="formElement">
+                <p>Recruitment Period</p>
+                  <div className="input-time">
+                    <input
+                      className='modal-input'
+                      type="date"
+                      onChange={(e) => setRecrStartDate(e.target.value)}
+                      value={recrStartDate}
+                      required
+                    />
+                    <span> to </span>
+                    <input
+                      className='modal-input'
+                      type="date"
+                      onChange={(e) => setRecrEndDate(e.target.value)}
+                      value={recrEndDate}
+                      required
+                    />
+                  </div>
                 </div>
+              }
+            
+              {appReq.value === 1 && 
+                <div className="formElement">
+                  <p>Application Period</p>
+                  <div className="input-time">
+                    <input
+                      className='modal-input'
+                      type="date"
+                      onChange={(e) => setAppStartDate(e.target.value)} 
+                      value={appStartDate}
+                      required
+                    />
+                    <span> to </span>
+                    <input
+                      className='modal-input'
+                      type="date"
+                      onChange={(e) => setAppEndDate(e.target.value)} 
+                      value={appEndDate} 
+                      required
+                    />
+                    </div>
+                </div>
+              }
+              <p style={{float: "right"}}><span style={{ color: '#FF0000'}}>*</span> Your recruitment status will automatically change once these dates have passed.</p>
             </div>
-          }
-          </div>
           }
           
         </div>
