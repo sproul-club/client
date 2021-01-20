@@ -10,11 +10,11 @@ import { loadProfile } from './profile';
 import { API, TOKENS } from '../utils/backendClient';
 
 // Register User
-export const register = (name, email, password, tags, app_required, new_members) => async (dispatch) => {
+export const register = (name, email, password, tags, app_required, new_members, num_users, apply_deadline_start, apply_deadline_end, recruiting_start, recruiting_end) => async (dispatch) => {
   try {
     const res = await API.post('/api/user/register', {
-      name, email, password,
-      tags, app_required, new_members,
+      name, email, password, tags, app_required, new_members, num_users, 
+      apply_deadline_start, apply_deadline_end, recruiting_start, recruiting_end,
     });
 
     dispatch({ type: REGISTER_SUCCESS, payload: res.data });
@@ -41,15 +41,13 @@ export const login = (email, password) => async (dispatch) => {
 };
 
 // Logout / clear profile
-export const logout = (history, useBackend = true) => async (dispatch) => {
-  if (useBackend) {
-    try {
-      // revoke both access & refresh token
-      await API.delete('/api/user/revoke-access', TOKENS.access.fullHeaderConfig());
-      await API.delete('/api/user/revoke-refresh', TOKENS.refresh.fullHeaderConfig());
-    } catch (err) {
-      dispatch({ type: AUTH_ERROR, payload: err });
-    }
+export const logout = (history) => async (dispatch) => {
+  try {
+    // revoke both access & refresh token
+    await API.delete('/api/user/revoke-access', TOKENS.access.fullHeaderConfig());
+    await API.delete('/api/user/revoke-refresh', TOKENS.refresh.fullHeaderConfig());
+  } catch (err) {
+    dispatch({ type: AUTH_ERROR, payload: err });
   }
 
   // remove tokens from local storage
@@ -58,21 +56,6 @@ export const logout = (history, useBackend = true) => async (dispatch) => {
 
   history.push('/');
   dispatch({ type: LOGOUT });
-};
-
-export const refreshToken = () => async (dispatch, getState) => {
-  if (!TOKENS.access.hasExpired())
-    return;
-
-  try {
-    const res = await API.post('/api/user/refresh', {}, TOKENS.refresh.fullHeaderConfig());
-
-    TOKENS.access.set(res.data.access, res.data.access_expires_in);
-
-    dispatch({ type: REFRESH_TOKEN, payload: res.data });
-  } catch (err) {
-    dispatch({ type: AUTH_ERROR, payload: err });
-  }
 };
 
 // Verify email as Callink email
@@ -101,6 +84,7 @@ export const resendConfirmationEmail = (email) => async (dispatch) => {
     await API.post('/api/user/resend-confirm', { email });
   } catch (err) {
     dispatch({ type: AUTH_ERROR, payload: err });
+    console.log(err);
     throw err;
   }
 };

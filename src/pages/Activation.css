@@ -1,0 +1,112 @@
+.activation {
+    display: flex;
+    justify-content: center;
+}
+
+.activation .form {
+    font-family: Qanelas Soft Bold;
+    font-weight: 700;
+    font-style: normal;
+    box-shadow: 3px 3px 1px rgb(0, 0, 0, 0.3);
+    width: 400px;
+    height: 100%;
+    border-radius: 15px;
+    padding: 0px 20px;
+    border: solid 1px #949494;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 9% 0 4% 0
+  }
+
+  .activation .formGroup {
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+
+  .activation .formHeader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .activation .formHeader h2 {
+    font-size: 20px;
+  }
+  
+  .activation img {
+    height: 125px;
+    width: auto;
+  }
+
+  .activation .userInput {
+    width: 320px;
+    padding: 10px;
+    margin: 8px;
+    font-family: Qanelas Soft;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 12px;
+    border-radius: 5px;
+    border: solid 1px #949494;
+    color: #4e4e4e;
+  }
+
+  .activation .userInput .hidden {
+    display: none;
+  }
+
+  input[type="date"]:before {
+    content: attr(placeholder) !important;
+    color: #aaa;
+    margin-right: 0.5em;
+  }
+  input[type="date"]:focus:before,
+  input[type="date"]:valid:before {
+    content: "";
+  }
+
+  .activation .buttonWrapper {
+      width: 340px;
+      display: flex;
+      justify-content: flex-end;
+  }
+
+  .activation button {
+    font-family: Qanelas Soft;
+    font-weight: 700;
+    font-style: normal;
+    letter-spacing: 0.125em;
+    background-color: #54a0f1;
+    color: white;
+    text-decoration: none;
+    padding: 12px 20px 12px 20px;
+    border-radius: 8px;
+    border: none;
+    font-size: 14px;
+    transition: background-color 0.15s;
+    margin-bottom: 40px;
+  }
+
+  .activation .inactivatedButton {
+    background-color: #D1D3D4;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  .activation .inactivatedButton:hover {
+    background-color: #D1D3D4;
+  }
+  
+  .activation button:hover {
+    cursor: pointer;
+    background-color: #6eaff5;
+  }

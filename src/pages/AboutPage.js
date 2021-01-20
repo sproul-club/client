@@ -56,37 +56,37 @@ const AboutPage = () => {
           <h1>The Team</h1>
           <h2>Product Design</h2>
           <div className="carousel">
-            <PolaroidComponent name="Tina Teng" position="Design Lead" linkedin="https://www.linkedin.com/in/tinateng/" image=<img className="image" src={tina} />/>
-            <PolaroidComponent name="Grace Ng" position="Designer" linkedin="https://www.linkedin.com/in/graceng1224/" image=<img className="image" src={grace} />/>
-            <PolaroidComponent name="James Hua" position="Designer" linkedin="https://www.linkedin.com/in/jamesh411/" image=<img className="image" src={james} />/>
-            <PolaroidComponent name="Yuki Bian" position="Designer" linkedin="https://www.linkedin.com/in/yuki-bian%E2%9D%84%EF%B8%8F-1282ba193/" image=<img className="image" src={yuki} />/>
-            <PolaroidComponent name="Cynthia Shi" position="Designer" linkedin="https://www.linkedin.com/in/cynthia-shi/" image=<img className="image" src={cynthia} />/>
+            <PolaroidComponent name="Tina Teng" position="Design Lead" linkedin="https://www.linkedin.com/in/tinateng/" image={<img className="image" alt='Tina' src={tina} />}/>
+            <PolaroidComponent name="Grace Ng" position="Designer" linkedin="https://www.linkedin.com/in/graceng1224/" image={<img className="image" alt='Grace'  src={grace} />}/>
+            <PolaroidComponent name="James Hua" position="Designer" linkedin="https://www.linkedin.com/in/jamesh411/" image={<img className="image" alt='James'  src={james} />}/>
+            <PolaroidComponent name="Yuki Dian" position="Designer" linkedin="https://www.linkedin.com/in/yuki-bian%E2%9D%84%EF%B8%8F-1282ba193/" image={<img className="image"  alt='Yuki' src={yuki} />}/>
+            <PolaroidComponent name="Cynthia Shi" position="Designer" linkedin="https://www.linkedin.com/in/cynthia-shi/" image={<img className="image"  alt='Cynthia' src={cynthia} />}/>
           </div>
           <h2>Frontend Development</h2>
           <div className="carousel">
-            <PolaroidComponent name="Allen Li" position="Frontend Lead" linkedin="https://www.linkedin.com/in/allenliuli/" image=<img className="image" src={allen} />/>
-            <PolaroidComponent name="Amy Tong" position="Frontend Lead" linkedin="https://www.linkedin.com/in/amy-tong/" image=<img className="image" src={amy} />/>
-            <PolaroidComponent name="Izzie Lau" position="Frontend Engineer" linkedin="https://www.linkedin.com/in/izzielau/" image=<img className="image" src={izzie} />/>
-            <PolaroidComponent name="Karen Tan" position="Frontend Engineer" linkedin="https://www.linkedin.com/in/karen-t/" image=<img className="image" src={karen} />/>
-            <PolaroidComponent name="Satiya Kem" position="Frontend Engineer" linkedin="https://www.linkedin.com/in/satiya-kem-927189183/" image=<img className="image" src={satiya} />/>
+            <PolaroidComponent name="Allen Li" position="Frontend Lead" linkedin="https://www.linkedin.com/in/allenliuli/" image={<img className="image" alt='Allen'  src={allen} />}/>
+            <PolaroidComponent name="Amy Tong" position="Frontend Lead" linkedin="https://www.linkedin.com/in/amy-tong/" image={<img className="image"  alt='Amy' src={amy} />}/>
+            <PolaroidComponent name="Izzie Lau" position="Frontend Engineer" linkedin="https://www.linkedin.com/in/izzielau/" image={<img className="image" alt='Izzie' src={izzie} />}/>
+            <PolaroidComponent name="Karen Tan" position="Frontend Engineer" linkedin="https://www.linkedin.com/in/karen-t/" image={<img className="image"  alt='Karen' src={karen} />}/>
+            <PolaroidComponent name="Satiya Kem" position="Frontend Engineer" linkedin="https://www.linkedin.com/in/satiya-kem-927189183/" image={<img className="image"  alt='Satiya' src={satiya} />}/>
           </div>
           <div className="carousel">
-            <PolaroidComponent name="Nico Galin" position="Frontend Engineer" linkedin="https://www.linkedin.com/in/nicholas-galin/" image=<img className="image" src={nico} />/>
-            <PolaroidComponent name="Christine Luo" position="Frontend Engineer" linkedin="https://www.linkedin.com/in/christinealuo/" image=<img className="image" src={christine} />/>
-            <PolaroidComponent name="Matt Clagett" position="Frontend Engineer" linkedin="https://www.linkedin.com/in/matthewclagett/" image=<img className="image" src={matt} />/>
-            <PolaroidComponent name="Juliet Kim" position="Frontend Engineer" linkedin="https://www.linkedin.com/in/suhyangkim/" image=<img className="image" src={juliet} />/>
+            <PolaroidComponent name="Nico Galin" position="Frontend Engineer" linkedin="https://www.linkedin.com/in/nicholas-galin/" image={<img className="image"  alt='Nico' src={nico} />}/>
+            <PolaroidComponent name="Christine Luo" position="Frontend Engineer" linkedin="https://www.linkedin.com/in/christinealuo/" image={<img className="image"  alt='Christine' src={christine} />}/>
+            <PolaroidComponent name="Matt Clagett" position="Frontend Engineer" linkedin="https://www.linkedin.com/in/matthewclagett/" image={<img className="image"  alt='Matt' src={matt} />}/>
+            <PolaroidComponent name="Juliet Kim" position="Frontend Engineer" linkedin="https://www.linkedin.com/in/suhyangkim/" image={<img className="image"  alt='Juliet' src={juliet} />}/>
           </div>
           <h2>Backend Development</h2>
           <div className="carousel">
-            <PolaroidComponent name="Tejas Shah" position="Backend Lead" linkedin="https://www.linkedin.com/in/t-shah/" image=<img className="image" src={tejas} />/>
-            <PolaroidComponent name="Joyce Li" position="Backend Engineer" linkedin="https://www.linkedin.com/in/joyceml/" image=<img className="image" src={joyce} />/>
-            <PolaroidComponent name="Franco Achacoso" position="Backend Engineer" linkedin="https://www.linkedin.com/in/francoachacoso/" image=<img className="image" src={franco} />/>
+            <PolaroidComponent name="Tejas Shah" position="Backend Lead" linkedin="https://www.linkedin.com/in/t-shah/" image={<img className="image"  alt='Tejas' src={tejas} />}/>
+            <PolaroidComponent name="Joyce Li" position="Backend Engineer" linkedin="https://www.linkedin.com/in/joyceml/" image={<img className="image" alt='Joyce'  src={joyce} />}/>
+            <PolaroidComponent name="Franco Achacoso" position="Backend Engineer" linkedin="https://www.linkedin.com/in/francoachacoso/" image={<img className="image"  alt='Franco'  src={franco} />}/>
           </div>
           <h2>Business & Design</h2>
           <div className="carousel">
-            <PolaroidComponent name="Kevin Feng" position="Project Manager" linkedin="https://www.linkedin.com/in/kvfeng/" image=<img className="image" src={kevin} />/>
-            <PolaroidComponent name="Vicky Liu" position="Project Manager" linkedin="https://www.linkedin.com/in/yqvickyliu/" image=<img className="image" src={vicky} />/>
-            <PolaroidComponent name="Jasmine Syu" position="Visual Designer" linkedin="https://www.linkedin.com/in/jasminesyu/" image=<img className="image" src={jasmine} />/>
+            <PolaroidComponent name="Kevin Feng" position="Project Manager" linkedin="https://www.linkedin.com/in/kvfeng/" image={<img className="image"  alt='Kevin' src={kevin} />}/>
+            <PolaroidComponent name="Vicky Liu" position="Project Manager" linkedin="https://www.linkedin.com/in/yqvickyliu/" image={<img className="image"  alt='Vicky' src={vicky} />}/>
+            <PolaroidComponent name="Jasmine Syu" position="Visual Designer" linkedin="https://www.linkedin.com/in/jasminesyu/" image={<img className="image"  alt='Jasmine' src={jasmine} />}/>
           </div>
         </div>
       </div>

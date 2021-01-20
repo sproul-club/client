@@ -17,11 +17,13 @@ const Modal = ({ showModal, setShowModal, close, children }) => {
     <div>
       {showModal && (
         <div className="popup">
-          <div className="popup_inner" ref={ref}>
-            <div className="exit" onClick={closeFunction}>
-              <i className="fas fa-times"></i>
+          <div className="popup-wrapper">
+            <div className="popup_inner" ref={ref}>
+              <div className="exit" onClick={closeFunction}>
+                <i className="fas fa-times"></i>
+              </div>
+              {children}
             </div>
-            {children}
           </div>
         </div>
       )}

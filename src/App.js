@@ -11,33 +11,44 @@ import { NotificationContainer } from 'react-notifications';
 
 import { Landing } from './pages/Landing.js';
 import { ComingSoon } from './pages/ComingSoon.js';
-import Catalog from './pages/catalog.js';
+// import Catalog from './pages/catalog.js';
+import Catalog2 from './pages/Catalog2.js';
 import { SignUp } from './pages/SignUp.js';
 import { SignIn } from './pages/SignIn.js';
+import RegisterStudent from './pages/RegisterStudent.js'
 import { ResetPassword } from './pages/ResetPassword.js';
 import { ResetPassword2 } from './pages/ResetPassword2.js';
 import Security from './pages/admin/Security.js';
 import ErrorPage from './pages/ErrorPage';
 import AboutPage from './pages/AboutPage';
+import About from './pages/AboutPage';
+import FAQ from './pages/FAQ';
 import Admin from './pages/admin/Admin.js';
+import ConfirmEmailBanner from './pages/admin/ConfirmEmailBanner.js';
 import ClubPage from './pages/ClubPage';
+import Dashboard from './pages/Dashboard.js';
+import Favorites from './pages/Favorites.js';
+import Activation from './pages/Activation.js';
 import store from './store';
 import ContactUs from './layout/ContactUs.js';
-import { loadProfile, getTags } from './actions/profile';
+import { loadProfile, getTags, getSizeTags} from './actions/profile';
+import { loadAllClubs} from './actions/catalog';
 import { Provider } from 'react-redux';
 import PrivateRoute from './utils/PrivateRoute';
 import Navbar from './layout/Navbar';
 
 import Moment from 'react-moment';
 import 'moment-timezone';
-import UnderConstruction from './pages/UnderConstruction.js';
+import StudentSettings from './pages/student/StudentSettings.js';
 
 Moment.globalTimezone = 'America/Los_Angeles';
 
 const App = () => {
   useEffect(() => {
     store.dispatch(loadProfile());
+    store.dispatch(loadAllClubs());
     store.dispatch(getTags());
+    store.dispatch(getSizeTags());
   }, []);
 
   return (
@@ -45,18 +56,22 @@ const App = () => {
       <Router>
         <Navbar />
         <Switch>
-          <Route exact path="/" component={UnderConstruction} />
-          {/* <Route exact path="/" component={Landing} />
-          <Route exact path="/comingsoon" component={ComingSoon} /> */}
+          <Route exact path="/" component={Landing} />
           <Route exact path="/about" component={AboutPage} />
-          {/* <PrivateRoute path="/admin" component={Admin} />
-          <Route path="/catalog" component={Catalog} />
+          <PrivateRoute path="/admin" component={Admin} />
+          <Route path="/catalog" component={Catalog2} />
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/signin" component={SignIn} />
           <Route exact path="/recover" component={ResetPassword} />
           <Route exact path="/resetpassword" component={ResetPassword2} />
           <Route exact path="/club/:id" component={ClubPage} />
-          <PrivateRoute exact path="/security" component={Security} /> */}
+          <PrivateRoute exact path="/security" component={Security} />
+          <Route exact path="/dashboard" component={Dashboard} />
+          <Route exact path="/FAQ" component={FAQ} />
+          <Route exact path="/favorites" component={Favorites} />
+          <Route exact path="/student/settings" component={StudentSettings} />
+          <PrivateRoute exact path="/security" component={Security} />
+          <Route exact path="/activation" component={Activation} />
           <Route>
             <ErrorPage />
           </Route>
@@ -67,4 +82,5 @@ const App = () => {
     </Provider>
   );
 };
+
 export default withRouter(App);

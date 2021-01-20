@@ -2,10 +2,11 @@ import React from 'react';
 import {
   Accordion,
   AccordionItem,
-  AccordionItemHeading,
   AccordionItemButton,
   AccordionItemPanel,
 } from 'react-accessible-accordion';
+
+import "./EventAccord.css";
 
 import Moment from 'react-moment';
 import { simplestRangeFormat, START_DATETIME, END_DATETIME } from '../utils/formatTimeAndDate';
@@ -16,9 +17,10 @@ function EventAccord({ data }) {
 
 
   return orderedEvents.map((event, i) => (
-    <Accordion className="accordion-club" allowZeroExpanded key={i}>
+    <Accordion className="accordion" allowZeroExpanded key={i}>
       <AccordionItem key={event.event_start} className="accordion-group">
-        <div className="event-flex-container">
+      <AccordionItemButton>
+        <div className="event-container">
           <div className="event-flex-left">{event.name}</div>
           <div className="event-flex-right">
             <Moment
@@ -32,12 +34,11 @@ function EventAccord({ data }) {
               format={simplestRangeFormat(event.event_start, event.event_end, END_DATETIME)} />
           </div>
         </div>
-        <AccordionItemHeading className="accordion__heading-club">
-          <AccordionItemButton className="accordion__button-club"></AccordionItemButton>
-        </AccordionItemHeading>
+        <div className="accordion__button-club"></div>
         <AccordionItemPanel className="accordion__panel-event">
           {event.description}
           <br></br>
+          {(event.link ? 
           <div id="gray-ev-link">
             event link
             <a
@@ -53,7 +54,9 @@ function EventAccord({ data }) {
               />
             </a>
           </div>
+          : null)}
         </AccordionItemPanel>
+        </AccordionItemButton>
       </AccordionItem>
       <hr width="90%"></hr>
     </Accordion>

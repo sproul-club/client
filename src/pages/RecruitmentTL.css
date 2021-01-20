@@ -1,0 +1,122 @@
+#recr-box {
+    display: flex;
+    flex-direction: row;
+ 
+    position: relative;
+    /* left: -2%; */
+    /* max-width: 94%; */
+    z-index: 100;
+    margin-bottom: 2.5vw;
+    min-height: 8vw;
+    background: none;
+}
+.name-time-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 11vw;
+}
+.event-title {
+    letter-spacing: 0.03em;
+    position: relative;
+    margin: 0vw 1vw 1.2vw 0.7vw;
+    /* left: 3%; */
+    top: 0.7vw;
+    font-family: Qanelas Soft;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 1.1vw;
+    color: #3d3d3d;
+    margin-left: 0px;
+    margin-right: 0px;
+    display: flex;
+    word-break: break-word;
+}
+ 
+.event-time{
+    position: relative;
+    left: 3%;
+    font-family: Qanelas Soft;
+    font-style: normal;
+    color: #AEAEAE;
+    font-weight: 100;
+    margin: 0vw 0vw 0vw 0vw;
+    font-size: 1.0vw;
+}
+
+ 
+.date-circle{
+    min-width: 4vw;
+    min-height: 4vw;
+    max-width: 4vw;
+    max-height: 4vw;
+    line-height: 4.5vw;
+    border-radius: 50%;
+    font-size: 1.0vw;
+    font-family: Qanelas Soft;
+    margin: 0.8vw 0vw 0vw 0vw;
+    font-weight: bold;
+    font-style: normal;
+    text-align: center;
+}
+ 
+#filled{
+    color: #fff;
+    background: #367BC6;
+    border: 0.25vw solid #367BC6;
+    width: 10.7%;
+    line-height: 4.0vw;
+}
+ 
+#unfilled{
+    background: #FFFFFF;
+    color: #367BC6;
+    border: 0.25vw solid #367BC6;
+    width: 10.7%;
+    line-height: 4.0vw;
+
+}
+ 
+.desc-box {
+    margin: 0.8vw 0vw 0vw 1.5vw;
+    /* width: 10vw; */
+    font-size: 1em;
+    font-family: Qanelas Soft;
+    font-style: normal;
+}
+ 
+.vl {
+    border-left: 6px solid #367BC6;
+    z-index: -10;
+    position: relative;
+    margin-left: 13.08vw;
+    border-width: 0.4vw;
+    width: 1vw;
+    /* margin-top: -34vw; */
+    /* height: 10vh; */
+  }
+ 
+  .recr-button-row {
+      display: flex;
+      flex-direction: row;
+      margin-left: 19vw;
+      margin-top: 1vw;
+      width: 7.8vw;
+      
+  }
+  
+  .recrButton {
+      width: 2.2vw;
+      margin-left: 0.5vw;
+  }
+ 
+  #gcal {
+      width: 2.4vw;
+  }
+ 
+  .event-desc {
+      margin-left: 1vw;
+      height: 5vw;
+      font-size: 1vw;
+      width: 26vw;
+  }

@@ -1,0 +1,58 @@
+#recr-main {
+    width: 70vw;
+    min-height: 60vh;
+    position: relative;
+}
+ 
+.recr-button {
+    border-radius: 5px;
+    padding: 8px 15px;
+    font-weight: 700;
+    font-size: 14px;
+    margin-top: 20px;
+    cursor: pointer;
+    
+}
+ 
+#recr-add {
+    border: 2px solid #54a0f1;
+    color: #54a0f1;
+    background: white;
+}
+
+#recr-cancelsave {
+    white-space: nowrap;
+}
+ 
+#recr-cancel {
+    padding: 10px 25px;
+    margin-right: 1vw;
+    color: #f76767;
+    border: 1px solid #f76767;
+    background: white;
+}
+
+#recr-cancel:hover {
+    color: #ff1111;
+    border: 1px solid #ff1111;
+    cursor: pointer;
+  }
+ 
+#recr-save {
+    padding: 10px 25px;
+    border: 0px;
+    margin-left: 4%;
+    background: #54A0F1;
+    color: white;
+}
+
+#recr-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.recr-buttons-right {
+    display: flex;
+}
