@@ -67,10 +67,10 @@ const Activation = ({tagOptions, profile, updateProfile, setActivation, sizeOpti
             // apply_deadline_end : recruitingEnd ? recruitingEnd : '1970-01-01T00:00:00',
             // recruiting_start: recruitingStart ? recruitingStart : '1970-01-01T00:00:00',
             // recruiting_end: recruitingEnd ? recruitingEnd : '1970-01-01T00:00:00',
-            apply_deadline_start : (recruiting.value === 1 && appReq.value === 1) ? recruitingStart : null,
-            apply_deadline_end : (recruiting.value === 1 && appReq.value === 1)? recruitingStart : null,
-            recruiting_start: (recruiting.value === 1 && appReq.value === 0)? recruitingStart : null,
-            recruiting_end: (recruiting.value === 1 && appReq.value === 0)? recruitingStart : null,
+            apply_deadline_start : (recruiting.value === 1 && appReq.value === 1) ? new Date(recruitingStart) : null,
+            apply_deadline_end : (recruiting.value === 1 && appReq.value === 1)? new Date(recruitingStart) : null,
+            recruiting_start: (recruiting.value === 1 && appReq.value === 0)? new Date(recruitingStart) : null,
+            recruiting_end: (recruiting.value === 1 && appReq.value === 0)? new Date(recruitingStart) : null,
             is_reactivating: true
         }
 
