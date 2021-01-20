@@ -66,7 +66,7 @@ function ClubPage({
     // recall useEffect when the link_name in url changes
   }, [routeId, activated, organization]);
 
-  console.log(organization);
+  // console.log(organization);
   
   organization.gallery = [
     {
