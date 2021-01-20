@@ -238,6 +238,10 @@
   font-family: 'Quanelas Soft, sans-serif'
 }
 
+.modal-input-hidden {
+  display: hidden;
+}
+
 .delete-modal {
   display: flex;
   justify-content: center;
@@ -262,6 +266,7 @@
 
 .modal-left .formGroup {
   margin-right: 0px;
+  min-height: 380px;
 }
 
 @media screen and (max-width: 850px) {

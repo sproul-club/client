@@ -16,7 +16,8 @@ const ClubCard = ({club, tagOptions, displayBanner}) => {
     }
   };
 
-  const {link_name, name, banner_url, logo_url, new_members, app_required, about_us } = club
+  var {link_name, name, banner_url, logo_url, new_members, app_required, about_us } = club
+  about_us = about_us.length > 0 ? about_us : 'No description provided.';
 
   return (
     <Link to={`/club/${link_name}`} className='clubcard'>
@@ -34,7 +35,7 @@ const ClubCard = ({club, tagOptions, displayBanner}) => {
           <img src={logo_url || logo} alt="logo" className='clubcard-logo'/>
           <div className='clubcard-text'>
             <div className="clubcard-title" ref={measuredRef}>{name}</div>
-            <div className={lines + ' clubcard-description'}>{about_us.replace(/(<([^>]+)>)/gi, "")}</div>
+            <div className={lines + ' clubcard-description'}>{about_us.replace(/(<([^>]+)>)/gi, "").replace('&nbsp;', ' ')}</div>
           </div>
           <div className="clubcard-like">
             {/* <i class="fas fa-heart"></i> */}

@@ -34,15 +34,23 @@ const Profile = ({
     recruitOptions[profile.new_members === true ? 0 : 1]
   );
   const [size, setSize] = useState(profile.num_users);
-  const [logoImage, setLogoImage] = useState(null);
+  const [logoImage, setLogoImage] = useState(null); 
   const [recrStartDate, setRecrStartDate] = useState(
-    (profile.recruiting_start == null) ? null : profile.recruiting_start.substring(0, 10)); 
+    (profile.recruiting_start == null) ? null : getDateOnly(profile.recruiting_start)); 
   const [recrEndDate, setRecrEndDate] = useState(
-    (profile.recruiting_end == null) ? null : profile.recruiting_end.substring(0, 10)); 
+    (profile.recruiting_end == null) ? null : getDateOnly(profile.recruiting_end)); 
   const [appStartDate, setAppStartDate] = useState(
-    (profile.apply_deadline_start == null) ? null : profile.apply_deadline_start.substring(0, 10)); 
+    (profile.apply_deadline_start == null) ? null : getDateOnly(profile.apply_deadline_start)); 
   const [appEndDate, setAppEndDate] = useState(
-    (profile.apply_deadline_end == null) ? null : profile.apply_deadline_end.substring(0, 10)); 
+    (profile.apply_deadline_end == null) ? null : getDateOnly(profile.apply_deadline_end)); 
+
+  console.log(profile);
+  function getDateOnly(obj) {
+    if (obj instanceof Date) {
+      obj= obj.toISOString();
+    } 
+    return obj.split('T')[0];
+}
 
   async function uploadLogoPic(logoUploads) {
     if (logoUploads && logoUploads.length > 0) {
@@ -81,10 +89,10 @@ const Profile = ({
       // recruiting_end: recrEndDate ? recrEndDate : '1970-01-01T00:00:00',
       // apply_deadline_start: appStartDate ? appStartDate : '1970-01-01T00:00:00',
       // apply_deadline_end: appEndDate ? appEndDate : '1970-01-01T00:00:00',
-      apply_deadline_start : (recruiting.value === 1 && appReq.value === 1) ? appStartDate : null,
-      apply_deadline_end : (recruiting.value === 1 && appReq.value === 1)? appEndDate : null,
-      recruiting_start: (recruiting.value === 1 && appReq.value === 0)? recrStartDate : null,
-      recruiting_end: (recruiting.value === 1 && appReq.value === 0)? recrEndDate : null,
+      apply_deadline_start : (recruiting.value === 1 && appReq.value === 1) ? new Date(appStartDate) : null,
+      apply_deadline_end : (recruiting.value === 1 && appReq.value === 1)? new Date(appEndDate) : null,
+      recruiting_start: (recruiting.value === 1 && appReq.value === 0)? new Date(recrStartDate) : null,
+      recruiting_end: (recruiting.value === 1 && appReq.value === 0)? new Date(recrEndDate) : null,
     };
 
     try {
@@ -98,6 +106,9 @@ const Profile = ({
       NotificationManager.error('Profile changes unsuccessful!', '', 1500);
     }
   };
+
+  console.log(profile);
+  console.log(appStartDate);
 
   const reqFieldsCheck = () => {
     if (tags === null) {
@@ -133,7 +144,7 @@ const Profile = ({
               type="text"
               value={orgName}
               onChange={(e) => setOrgName(e.target.value)}
-              maxLength={100}
+              maxLength={70}
             />
           </div>
           <div className="formElement">
@@ -181,12 +192,15 @@ const Profile = ({
               set={setRecruit}
             />
           </div>
+
+          {recruiting.value === 1 &&
+          <div>
           {appReq.value === 0 && 
             <div className="formElement">
             <p>Recruitment Period</p>
               <div className="input-time">
                 <input
-                  className="modal-input"
+                  className='modal-input'
                   type="date"
                   onChange={(e) => setRecrStartDate(e.target.value)}
                   value={recrStartDate}
@@ -194,7 +208,7 @@ const Profile = ({
                 />
                 <span> to </span>
                 <input
-                  className="modal-input"
+                  className='modal-input'
                   type="date"
                   onChange={(e) => setRecrEndDate(e.target.value)}
                   value={recrEndDate}
@@ -209,7 +223,7 @@ const Profile = ({
               <p>Application Period</p>
               <div className="input-time">
                 <input
-                  className="modal-input"
+                  className='modal-input'
                   type="date"
                   onChange={(e) => setAppStartDate(e.target.value)} 
                   value={appStartDate}
@@ -217,7 +231,7 @@ const Profile = ({
                 />
                 <span> to </span>
                 <input
-                  className="modal-input"
+                  className='modal-input'
                   type="date"
                   onChange={(e) => setAppEndDate(e.target.value)} 
                   value={appEndDate} 
@@ -226,6 +240,9 @@ const Profile = ({
                 </div>
             </div>
           }
+          </div>
+          }
+          
         </div>
       </div>
 

@@ -72,9 +72,7 @@
 }
 
 .noresults-text {
-  margin-top: 0px;
-  margin-bottom: 10px;
-  margin-left: 8px;
+  margin: 0px;
   font-family: Qanelas Soft Semi Bold;
 }
 
@@ -92,18 +90,25 @@
   width: stretch;
   height: 900px;
 
-  margin-bottom: 10px;
   margin-left: 8px;
   font-family: Qanelas Soft Semi Bold;
 
   /*background: #000000;*/
   justify-content: center;
   align-items: center;
+
+}
+
+.noresults-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 40px;
 }
 
 .noresults-image {
   height: 300px;
-  margin-bottom: 10px;
+  margin-bottom: 40px;
 }
 
 #app-req {
