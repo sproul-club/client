@@ -553,6 +553,8 @@ const StepTwo = (props) => {
         <h2>Register your club</h2>
       </div>
       <div className="drops">
+      {props.recruiting.value ?
+        <p className="subtitle" style={{float: "right", paddingBottom: "15px"}}><span style={{ color: '#FF0000'}}>*</span> Your recruitment status will automatically update depending on these dates.</p> : ""}
         <input
             className={(props.recruiting.value) ? 'userInput' : 'userInput hidden'}
             type="date"
