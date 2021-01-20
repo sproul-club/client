@@ -40,26 +40,26 @@ const RecrAccord = forwardRef((props, ref) => {
 
     const [showDelModal, setShowDelModal] = useState(false);
     
-    const changedStart = (startDate != "2000-01-01")
-    const changedEnd = (endDate != "2000-01-01")
+    const changedStart = (startDate !== "2000-01-01")
+    const changedEnd = (endDate !== "2000-01-01")
     
     function cancelDel() {
         setShowDelModal(false);
     }
 
-    if (name.slice(0,6) == "[Event") {
+    if (name.slice(0,6) === "[Event") {
         setName("")
     }
 
-    if (text == "[enter description]") {
+    if (text === "[enter description]") {
         setText("")
     }
 
-    if (eventLink == "") {
+    if (eventLink === "") {
         setEventLink(null);
     }
 
-    if (virtLink == "") {
+    if (virtLink === "") {
         setVirtLink(null);
     }
 
@@ -68,17 +68,17 @@ const RecrAccord = forwardRef((props, ref) => {
         () => ({
             checkSave() {
                 var errPresent = false;
-                if (name == "") {
+                if (name === "") {
                     NotificationManager.error('Event ' + props.position + ": name required", '', 3000);
                     errPresent = true;
-                } if (text == "") {
+                } if (text === "") {
                     NotificationManager.error('Event ' + props.position + ": description required", '', 3000);
                     errPresent = true;
-                } if (changedStart == false) {
+                } if (changedStart === false) {
                     NotificationManager.error('Event ' + props.position + ": start date required", '', 3000);
                     errPresent = true;
                 } 
-                if (errPresent == true) {
+                if (errPresent === true) {
                     return 1;
                     
                 }

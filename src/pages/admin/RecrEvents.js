@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { connect } from 'react-redux';
-import { updateProfile } from '../../actions/profile';
-import { NotificationManager } from 'react-notifications';
+// import { updateProfile } from '../../actions/profile';
+// import { NotificationManager } from 'react-notifications';
 import {addRecrEvent, updateRecrEvent, deleteRecrEvent } from '../../actions/profile';
-import { validURL, normalizeUrl } from '../../utils/normalizeUrl';
+// import { validURL, normalizeUrl } from '../../utils/normalizeUrl';
 import './RecrEvents.css';
 import './Admin.css';
 import RecrAccord from './RecrAccord';
-import { ContactSupportOutlined } from '@material-ui/icons';
+// import { ContactSupportOutlined } from '@material-ui/icons';
  
  
 const RecrEvents = ({profile, events, incNumEvents, cancelEdit, addRecrEvent, updateRecrEvent, deleteRecrEvent}) => {
@@ -31,7 +31,7 @@ const RecrEvents = ({profile, events, incNumEvents, cancelEdit, addRecrEvent, up
           addSuccess = false;
           console.log(err);
       }
-      if (addSuccess == true) {
+      if (addSuccess=== true) {
         incNumEvents(1);
       }
     };
@@ -88,14 +88,14 @@ const RecrEvents = ({profile, events, incNumEvents, cancelEdit, addRecrEvent, up
       const retValues = []
       refs.current.forEach(child => {
         if (child !== null){
-          if (child.checkSave() == 0) {
+          if (child.checkSave()=== 0) {
             child.verifySave();
           } else {
             retValues.push(1);
           }
         }
       })
-      if (retValues.reduce(function(a,b) { return a+b;}, 0) == 0) {
+      if (retValues.reduce(function(a,b) { return a+b;}, 0)=== 0) {
         cancelEdit();
       } 
     }
@@ -129,7 +129,7 @@ const RecrEvents = ({profile, events, incNumEvents, cancelEdit, addRecrEvent, up
             </div>        
             <div id="recr-buttons">
                 <button className="recr-button" id="recr-add" onClick={(e) => addEv(e)}>+ Add Event</button>
-                <div id="recr-cancelsave">
+                <div className="recr-buttons-right">
                   <button className="recr-button" id="recr-cancel" onClick={cancelEdit}>Cancel</button>
                   <button className="recr-button" id="recr-save" onClick={saveAll}>Save</button>
                 </div>

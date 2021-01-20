@@ -67,7 +67,7 @@ export const filterClubs = (allOrganizations, formDetails, tagOptions, num_resul
   }
 
   function sorted(type) {
-    if (type == "Fresh") {
+    if (type==="Fresh") {
       return function (a, b) {
         // equal items sort equally
         if (a.last_updated === b.last_updated) {
@@ -111,7 +111,7 @@ export const filterClubs = (allOrganizations, formDetails, tagOptions, num_resul
     filteredClubs = random(filteredClubs);
   } else if (formDetails.sort === 'Asc') {
     filteredClubs = filteredClubs.sort((a,b) => a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1);
-  } else if (formDetails.sort == "Desc") {
+  } else if (formDetails.sort === "Desc") {
     filteredClubs = filteredClubs.sort((a,b) => a.name.toLowerCase() > b.name.toLowerCase() ? -1 : 1);
   } else {
     filteredClubs = filteredClubs.sort(sorted(formDetails.sort));
@@ -125,7 +125,7 @@ export const filterClubs = (allOrganizations, formDetails, tagOptions, num_resul
 }
 
 export const membersMap = [
-  {value: 0, label: '0-10'},
+  {value: 0, label: '< 10'},
   {value: 1, label: '10-20'},
   {value: 2, label: '20-50'},
   {value: 3, label: '50-100'},
