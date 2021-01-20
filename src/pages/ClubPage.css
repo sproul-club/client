@@ -21,6 +21,10 @@
   margin-bottom: .8vw;
 }
 
+.gallery {
+  margin-top: .8vw;
+}
+
 .clubpage h2 {
   font-size: 1vw;
 }
@@ -225,6 +229,7 @@
   justify-content: flex-end;
   align-items: center;
   width: 100%;
+  margin-bottom: .8vw;
 }
 
 .seeMoreButton:hover {

@@ -90,7 +90,13 @@ const MultiStepForm = ({
     }
 
     try {
-      await register(clubName, email, pwd, tagsList, !!appReq.value, !!recruiting.value, size.value, appStartDate, appEndDate, recrStartDate, recrEndDate);
+      if (recruiting.value && appReq.value) {
+        await register(clubName, email, pwd, tagsList, !!appReq.value, !!recruiting.value, size.value, new Date(startDate), new Date(endDate), null, null);
+      } else if (recruiting.value && !appReq.value) {
+        await register(clubName, email, pwd, tagsList, !!appReq.value, !!recruiting.value, size.value, null, null, new Date(startDate), new Date(endDate));
+      } else if (!recruiting.value){
+        await register(clubName, email, pwd, tagsList, !!appReq.value, !!recruiting.value, size.value, null, null, null, null);
+      }
       setStep(currStep + 1);
     } catch (err) {
       var errMessage = err.response.data.reason;
@@ -115,11 +121,29 @@ const MultiStepForm = ({
       var errorExists = checkStep2Errors();
       if (!errorExists) {
         if (recruiting.value && appReq.value) {
-          setAppStartDate(startDate);
-          setAppEndDate(endDate);
+          // var newStartDate = new Date(startDate);
+          // var newEndDate = new Date(endDate);
+          // setAppStartDate(newStartDate);
+          // setAppEndDate(newEndDate);
+          // setAppStartDate(new Date (startDate));
+          // setAppEndDate(new Date(endDate));
+          // console.log(new Date (startDate));
+          // console.log(new Date(endDate));
+          // console.log(appStartDate);
+          // console.log(appEndDate);
+          console.log("line 121: ", appStartDate, appEndDate, recrStartDate, recrEndDate);
         } else if (recruiting.value && !appReq.value) {
-          setRecrStartDate(startDate);
-          setRecrEndDate(endDate);
+          // var newStartDate = new Date(startDate);
+          // var newEndDate = new Date(endDate);
+          // setRecrStartDate(newStartDate);
+          // setRecrEndDate(newEndDate);
+          // setRecrStartDate(new Date(startDate));
+          // setRecrEndDate(new Date(endDate));
+          // console.log(new Date (startDate));
+          // console.log(new Date(endDate));
+          // console.log(recrStartDate);
+          // console.log(recrEndDate);
+          console.log("line 125: ",appStartDate, appEndDate, recrStartDate, recrEndDate);
         }
         submitValue();
       }

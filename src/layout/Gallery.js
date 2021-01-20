@@ -31,8 +31,8 @@ const Gallery = (props) => {
                     }
                 })}
             </Slider>
-            <ButtonBack className="back-button"><ChevronLeft style={{color: 'white', fontSize: 40}}/></ButtonBack>
-            <ButtonNext className="next-button"><ChevronRight style={{color: 'white', fontSize: 40}}/></ButtonNext>
+            {/* <ButtonBack className="back-button"><ChevronLeft style={{color: 'white', fontSize: 40}}/></ButtonBack>
+            <ButtonNext className="next-button"><ChevronRight style={{color: 'white', fontSize: 40}}/></ButtonNext> */}
         </CarouselProvider>
 );
 }

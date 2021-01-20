@@ -93,6 +93,9 @@ export const uploadBanner = (banner) => async (dispatch) => {
   let data = new FormData();
   data.append('banner', banner);
 
+  console.log(banner);
+  console.log(data);
+
   const config = {
     headers: {
       'Content-Type': `multipart/form-data; boundary=${data._boundary}`,

@@ -12,20 +12,29 @@ import LeftArrow from '@material-ui/icons/ChevronLeftRounded';
 import ReactMoment from 'react-moment';
 import { containsToday, isUpcoming, simplestRangeFormat, simpleDayFormat, END_DATETIME, isSameDay, isWithinFourWeeks, eventsOverlap } from '../utils/formatTimeAndDate';
 import AppTracker from './AppTracker';
+import Onboarding from './Onboarding';
+import OnboardingModal from '../layout/OnboardingModal';
 import Modal from '../layout/Modal';
+
 
 function Dashboard({student}) {
   useEffect(() => {
     // Outline leftover from ClubPage
   }, []);
   const [showTrackerModal, setTrackerModal] = useState(false);
+  const [showOnboardingModal, setOnboardingModal] = useState(true);
 
   function cancelEdit() {
     setTrackerModal(false);
   }
 
+  function exitOnboarding() {
+    setOnboardingModal(false);
+  }
+
   /* TEMPORARY HARDCODED STUDENT FOR TESTING */
   student = {
+    name:'Obama',
     majors: [],
     minors: [],
     interests: [],
@@ -342,6 +351,16 @@ function Dashboard({student}) {
             <AppTracker student={student} close={cancelEdit}/>
           </div>
         </Modal>
+
+        <OnboardingModal
+          showModal={showOnboardingModal}
+          setShowModal={setOnboardingModal}
+        >
+          <div className="onboarding-modal">
+            <Onboarding student={student} closeOnlyCurrent={exitOnboarding} close={exitOnboarding}/>
+          </div>
+        </OnboardingModal>
+
         <Footer />
       </div>
     </div>

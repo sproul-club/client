@@ -1,16 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import Dropdown from './AdminDropdown.js';
 import { connect } from 'react-redux';
 import ImageUploader from '../../react-images-upload';
 import { updateProfile, uploadLogo, uploadBanner } from '../../actions/profile';
 import { NotificationManager } from 'react-notifications';
 
 const Banner = ({
-  profile,
-  updateProfile,
-  uploadLogo,
   uploadBanner,
-  images,
   close,
 }) => {
   const [bannerImage, setBannerImage] = useState(null);
