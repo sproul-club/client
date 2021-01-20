@@ -20,8 +20,8 @@ const Profile = ({
   ];
 
   var recruitOptions = [
-    { value: 1, label: 'Recruiting members' },
-    { value: 0, label: 'Not recruiting members' },
+    { value: 1, label: 'Accepting new members' },
+    { value: 0, label: 'Not accepting new members' },
   ];
 
   const [orgName, setOrgName] = useState(profile.name);
@@ -270,7 +270,7 @@ const Profile = ({
                     </div>
                 </div>
               }
-              <p style={{float: "right"}}><span style={{ color: '#FF0000'}}>*</span> Your recruitment status will automatically change once these dates have passed.</p>
+              <p className="subtitle" style={{float: "right"}}><span style={{ color: '#FF0000'}}>*</span> Your recruitment status will automatically update depending on these dates.</p>
             </div>
           }
           

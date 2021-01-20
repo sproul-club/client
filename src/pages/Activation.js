@@ -25,7 +25,7 @@ const Activation = ({tagOptions, profile, updateProfile, setActivation, sizeOpti
       setClubName(profile.name);
       setAppReq(profile.app_required ? {value : 1, label : 'Application required'} : {value : 0, label : 'No application required'});
       setTags(profile.tags.map((tag) => tagOptions[tag]));
-      setRecruit(profile.new_members ? {value: 1, label: "Taking new members"} : {value: 0, label: "Not taking new members"});
+      setRecruit(profile.new_members ? {value: 1, label: "Accepting new members"} : {value: 0, label: "Not accepting new members"});
       setSize(profile.num_users);
       defaultVal=true;
     }, [profile]);
@@ -34,7 +34,7 @@ const Activation = ({tagOptions, profile, updateProfile, setActivation, sizeOpti
       setClubName(profile.name);
       setAppReq(profile.app_required ? {value : 1, label : 'Application required'} : {value : 0, label : 'No application required'});
       setTags(profile.tags.map((tag) => tagOptions[tag]));
-      setRecruit(profile.new_members ? {value: 1, label: "Taking new members"} : {value: 0, label: "Not taking new members"});
+      setRecruit(profile.new_members ? {value: 1, label: "Accepting new members"} : {value: 0, label: "Not accepting new members"});
       setSize(profile.num_users);
     }, [defaultVal]);
 
@@ -247,6 +247,8 @@ const Activation = ({tagOptions, profile, updateProfile, setActivation, sizeOpti
                         onChange={(e) => setREnd(e.target.value)}
                     />
                 </div>
+                    {recruiting.value === 1 ?
+                      <p className="subtitle" style={{float: "right"}}><span style={{ color: '#FF0000'}}>*</span> Your recruitment status will automatically update depending on these dates.</p> : ""}
                 <div className="buttonWrapper">
                     <button className={activated ? "activatedButton" : "inactivatedButton"} onClick={activate}>
                         Activate Club
