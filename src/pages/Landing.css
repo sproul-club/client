@@ -89,14 +89,38 @@
   text-align: center;
 }
 
+.landing .text a:hover {
+  background-color: #6eaff5;
+}
+
+.landing .addbutton a {
+  width: 11vw;
+  font-size: 1.2vw;
+  line-height: 1em;
+  background: white;
+  font-family: Qanelas Soft Semi Bold;
+  font-weight: 700;
+  font-style: normal;
+  display: inline-block;
+  color: #54a0f1;
+  background-color: transparent;
+  text-decoration: none;
+  padding: 1vw 1.6vw 1vw 1.6vw;
+  border-radius: .6vw;
+  border: solid .2vw #54a0f1;
+  text-align: center;
+}
+
+.landing .addbutton a:hover {
+  color: #6eaff5;
+  border: solid .2vw #6eaff5;
+  background: transparent;
+}
+
 .landing .buttons {
   width: 30vw;
   display: flex;
   justify-content: space-between;
-}
-
-.landing .text a:hover {
-  background-color: #6eaff5;
 }
 
 .landing .content .imageContainer {

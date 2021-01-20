@@ -12,11 +12,11 @@ const ComingSoon = () => {
   return (
     <div className="comingsoon">
       <div className="text">
-        <h3>Coming soon on August 28</h3>
-        <p>Stay tuned for something amazing.</p>
+        <h3>Coming soon</h3>
+        {/* <p>Stay tuned for something amazing.</p>
         <div className="buttonContainer">
           <a href="/">Return to home</a>
-        </div>
+        </div> */}
       </div>
       <div className="dotContainer">
         <img src={ball1} className="ball1" alt="dot" />

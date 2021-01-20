@@ -71,6 +71,7 @@ const App = () => {
           <Route exact path="/favorites" component={Favorites} />
           <Route exact path="/student/settings" component={StudentSettings} />
           <PrivateRoute exact path="/security" component={Security} />
+          <Route exact path="/comingsoon" component={ComingSoon} />
           {/* <Route exact path="/activation" component={Activation} /> */}
           <Route>
             <ErrorPage />
