@@ -21,6 +21,15 @@
   margin-bottom: .8vw;
 }
 
+.clubpage-tile {
+  width: 21vw;
+}
+
+.clubpage-tile p {
+  width: 100%;
+  word-wrap: break-word;
+}
+
 .gallery {
   margin-top: .8vw;
 }
