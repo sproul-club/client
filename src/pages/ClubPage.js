@@ -21,9 +21,12 @@ import GetInvolved from '../pages/admin/GetInvolved';
 import AboutClub from '../pages/admin/AboutClub';
 import Profile from '../pages/admin/Profile';
 import Banner from '../pages/admin/Banner';
+import GalleryUpload from '../pages/admin/GalleryUpload';
 import RecrEvents from '../pages/admin/RecrEvents';
 import Activation from './Activation';
 import {membersMap} from '../utils/filterClubs.js';
+import {normalizeUrl} from '../utils/normalizeUrl.js';
+import { API, TOKENS } from '../utils/backendClient';
 
 function ClubPage({
   admin,
@@ -39,6 +42,7 @@ function ClubPage({
   const [showProfileModal, setShowProfileModal] = useState(false);
   const [showBannerModal, setShowBannerModal] = useState(false);
   const [showRecrModal, setShowRecrModal] = useState(false);
+  const [showGalleryModal, setShowGalleryModal] = useState(false);
 
   const [eventsSet, setEventsSet] = useState('');
   const [activated, setActivation] = useState(false);
@@ -52,6 +56,7 @@ function ClubPage({
     setShowProfileModal(false);
     setShowBannerModal(false);
     setShowRecrModal(false);
+    setShowGalleryModal(false);
   }
 
   const path = history.location.pathname.split("/").slice(2);
@@ -67,6 +72,22 @@ function ClubPage({
   }, [routeId, activated, organization]);
 
   // console.log(organization);
+
+
+  const fetchGallery = async () => {
+    try {
+        const res = await API.get('/api/admin/gallery-pics');
+        console.log(res);
+        // dispatch({ type: UPLOAD_IMAGES, payload: res.data });
+    
+        // await dispatch(loadProfile());
+    } catch (err) {
+        console.log(err.response.data);
+        throw err;
+    }
+  };
+
+  fetchGallery();
   
   organization.gallery = [
     {
@@ -121,7 +142,7 @@ function ClubPage({
         target="_blank"
         rel="noopener noreferrer"
         href={
-          key === 'contact_email' ? 'mailto:' + socLinks[key] : "https://" + socLinks[key]
+          key === 'contact_email' ? 'mailto:' + socLinks[key] : normalizeUrl(socLinks[key])
         }
       >
         <img
@@ -159,17 +180,21 @@ function ClubPage({
       </div>
     }
     <button className="seeMoreButton" onClick={() => setAboutMore(!aboutMore)}> {aboutMore ? "See less" : "See more"} { aboutMore ?<ExpandLess/> : <ExpandMoreIcon/>} </button>
-    {/* {organization.gallery &&
-      <div className='clubpage-content-gallery clubpage-content-item'>
+    <div className="bottomGallery">
+    {organization.gallery &&
+      <div className='clubpage-content-gallery'>
         <div className='clubpage-content-header'>
-          <h1>Gallery</h1>
+          <h1>Gallery (Beta)</h1>
           {admin &&
-            <img src={require('./assets/Edit.svg')} className="clubpage-content-header-icon"/>
+            <img src={require('./assets/Edit.svg')} className="clubpage-content-header-icon" onClick={() => setShowGalleryModal(admin)}/>
           }
         </div>
-        <Gallery data={organization.gallery}/>
+        <div className="gallery">
+          <Gallery data={organization.gallery}/>
+        </div>
       </div>
-    } */}
+    }
+    </div>
   </div>
 
   var membersMapIndex = organization.num_users;
@@ -287,11 +312,8 @@ function ClubPage({
                         <img src={require('./assets/Edit.svg')} className="clubpage-content-header-icon" alt=""/>
                       }
                       </div>
-                      {organization.events.length > 0 ?
-                        <EventAccord data={organization} />
-                      :
                       <p>This feature is coming soon!</p>
-                      }
+                      
                   </div>
                 </div>
               } />
@@ -328,7 +350,7 @@ function ClubPage({
                 }
                 </div>
               <h2>Website</h2>
-              <a href={"https://"+organization.social_media_links.website} target="_blank">{organization.social_media_links.website}</a>
+              <a href={normalizeUrl(organization.social_media_links.website)} target="_blank">{organization.social_media_links.website}</a>
               <h2>Email</h2>
               <a href={"mailto:"+organization.social_media_links.contact_email} target="_blank">{organization.social_media_links.contact_email}</a>
               <h2>Social Media</h2>
@@ -347,6 +369,7 @@ function ClubPage({
             } */}
           </div>
         </div>
+        
 
         <Modal
           showModal={showBannerModal}
@@ -355,6 +378,16 @@ function ClubPage({
         >
           <div className="admin-modal">
             <Banner profile={organization} close={cancelEdit}/>
+          </div>
+        </Modal>
+
+        <Modal
+          showModal={showGalleryModal}
+          setShowModal={setShowGalleryModal}
+          close={cancelEdit}
+        >
+          <div className="admin-modal">
+            <GalleryUpload profile={organization} close={cancelEdit}/>
           </div>
         </Modal>
 

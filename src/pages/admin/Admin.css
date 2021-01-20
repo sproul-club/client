@@ -60,9 +60,10 @@
 }
 
 .admin-modal {
+  display: flex;
   max-width: 80vw;
   padding-left: 20px;
-  padding-right: 20px;
+  /* padding-right: 20px; */
 }
 
 .admin-modal .admin-text {
