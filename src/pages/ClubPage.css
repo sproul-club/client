@@ -206,15 +206,15 @@
 .clubpage-content {
   display: flex;
   flex-direction: row;
-  margin: 30px 0 30px 30px;
+  margin: 2.5vw 0 1vw 2.4vw;
 }
 
 .clubpage-content-left {
   /* flex: 2; */
-  margin-right: 60px;
+  margin-right: 4.7vw;
   margin-left: 0px;
   padding: 15px 25px 25px 25px;
-  width: 44vw;
+  min-width: 44vw;
   display: flex;
   flex-direction: column;
 }
@@ -278,8 +278,8 @@
   border-radius: 10px;
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
   background-color: white;
-  padding: 15px 25px 25px 25px;
-  margin-bottom: 20px;
+  padding: 1.5vw 2vw 1.5vw 2vw;
+  margin-bottom: 2vw;
 }
 
 .apply-button-wrapper {
