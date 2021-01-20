@@ -133,12 +133,12 @@
 
 .header-img {
   z-index: 1;
-  width: 100%;
   height: 28.539vw;
-  background-size: cover;
+  width: 100%;
   background-position: 50% 10%;
   border-radius: 10px 10px 0 0;
-  position: relative;
+  position: center;
+  object-fit: cover;
 }
 
 .club-logo {
