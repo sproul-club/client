@@ -112,7 +112,7 @@ const RecrEvents = ({profile, events, incNumEvents, cancelEdit, addRecrEvent, up
                 Add events related to recruitment!
             </div>
             <hr style={{width: "97.5%", marginLeft: "-0.25%"}}></hr>
-            <div style={{minHeight:"40vh"}}>
+            <div style={{minHeight:"70%"}}>
                 {events.map((ev, i) => (
                     <RecrAccord 
                         data={ev}

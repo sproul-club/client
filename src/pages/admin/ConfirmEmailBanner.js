@@ -26,12 +26,12 @@ const ConfirmEmailBanner = ({admin, profile, resendConfirmationEmail}) => {
 
     return (
         <div>
-            {admin && !profile.confirmed && !resentEmail && <div style={{backgroundColor: "#FFE587", paddingTop: "70px", textAlign: "center"}}>
+            {admin && !profile.confirmed && !resentEmail && <div style={{backgroundColor: "#FFE587", paddingTop: "80px", paddingBottom: "15px", textAlign: "center", fontFamily: "Qanelas Soft"}}>
                 Your club profile will not be published until email is confirmed. Please click &nbsp;
                 <u style={{  cursor: 'pointer' }} onClick={() => resendConfirmEmail(profile.owner)}>here</u>
                 &nbsp; to resend confirmation email.
             </div>}
-            {admin && !profile.confirmed && resentEmail && <div style={{backgroundColor: "#FFE587", paddingTop: "55px", textAlign: "center"}}>
+            {admin && !profile.confirmed && resentEmail && <div style={{backgroundColor: "#FFE587", paddingTop: "65px", paddingBottom: "1px", textAlign: "center", fontFamily: "Qanelas Soft"}}>
                 <p>A confirmation email was sent to {profile.owner}. Follow the instructions in the email to complete registration. Please click &nbsp;
                 <u style={{  cursor: 'pointer' }} onClick={() => resendConfirmEmail(profile.owner)}>here</u>
                 &nbsp; if the link has expired.</p>
