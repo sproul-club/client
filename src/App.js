@@ -20,6 +20,7 @@ import { ResetPassword } from './pages/ResetPassword.js';
 import { ResetPassword2 } from './pages/ResetPassword2.js';
 import Security from './pages/admin/Security.js';
 import ErrorPage from './pages/ErrorPage';
+import AboutPage from './pages/AboutPage';
 import About from './pages/AboutPage';
 import FAQ from './pages/FAQ';
 import Admin from './pages/admin/Admin.js';
@@ -54,26 +55,23 @@ const App = () => {
     <Provider store={store}>
       <Router>
         <Navbar />
-        <ConfirmEmailBanner />
         <Switch>
           <Route exact path="/" component={Landing} />
-          <Route exact path="/comingsoon" component={ComingSoon} />
-          <Route exact path="/about" component={About} />
-          <Route exact path="/faq" component={FAQ} />
+          <Route exact path="/about" component={AboutPage} />
           <PrivateRoute path="/admin" component={Admin} />
           <Route path="/catalog" component={Catalog2} />
-          <Route exact path="/register" component={RegisterStudent} />
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/signin" component={SignIn} />
           <Route exact path="/recover" component={ResetPassword} />
           <Route exact path="/resetpassword" component={ResetPassword2} />
-          <Route path="/club/:id" component={ClubPage} />
+          <Route exact path="/club/:id" component={ClubPage} />
+          <PrivateRoute exact path="/security" component={Security} />
           <Route exact path="/dashboard" component={Dashboard} />
           <Route exact path="/FAQ" component={FAQ} />
           <Route exact path="/favorites" component={Favorites} />
           <Route exact path="/student/settings" component={StudentSettings} />
           <PrivateRoute exact path="/security" component={Security} />
-          <Route exact path="/activation" component={Activation} />
+          {/* <Route exact path="/activation" component={Activation} /> */}
           <Route>
             <ErrorPage />
           </Route>

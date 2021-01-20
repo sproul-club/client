@@ -39,15 +39,14 @@ const GalleryUpload = ({
     }
   
     const submit = async () => {
-        if (!bannerImage) {
+        if (!bannerImage && !bannerImage.length > 0) {
+            console.log('React state prob not updated');
             return;
         }
 
         let data = new FormData();
         data.append('gallery', bannerImage[0]);
         data.append('caption', '');
-
-        console.log(bannerImage);
 
         const config = {
             headers: {
