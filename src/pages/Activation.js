@@ -41,7 +41,7 @@ const Activation = ({tagOptions, profile, updateProfile, setActivation, sizeOpti
     // Activate the activate button
     useEffect(() => {
       if (recruiting.value === 1) {
-        if (clubName && tags && size && appReq && recruitingStart && recruitingEnd) {
+        if (clubName && tags && size && appReq && recruitingStart && recruitingEnd && recruitingStart <= recruitingEnd) {
           setActivated(true);
         } else {
           setActivated(false);
@@ -213,7 +213,7 @@ const Activation = ({tagOptions, profile, updateProfile, setActivation, sizeOpti
                         search={false}
                         placeholder="Select number of members"
                         style={customStyles}
-                        defaultValue={sizeOptions[size]}
+                        // defaultValue={sizeOptions[size]}
                         set={setSize}
                     />
                     <Dropdown

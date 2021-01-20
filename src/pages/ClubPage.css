@@ -59,6 +59,7 @@
 
 .clubpage-content-header-icon {
   color: #8D8D8D;
+  width: 1.7vw;
 }
 
 .clubpage-content-header-icon:hover {
@@ -188,10 +189,13 @@
 }
 
 .clubpage-content-left {
-  flex: 2;
+  /* flex: 2; */
   margin-right: 60px;
   margin-left: 0px;
   padding: 15px 25px 25px 25px;
+  width: 44vw;
+  display: flex;
+  flex-direction: column;
 }
 
 .clubpage-content-item{
@@ -272,13 +276,17 @@
   margin-top: 1vw;
 }
 
+.recr-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 92vw;
+}
 
 .clubpage-sm-link {
   width: 2.25vw;
   margin-right: 0.5vw;
   height: auto;
 }
-
 
 .clubpage-content-resource {
   display: flex;
@@ -290,8 +298,16 @@
   width: 1.5em;
 }
 
+.lastUpdated {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}
 
-
+.lastUpdated p{
+  color: #767676;
+  font-style: italic;
+}
 
 @media screen and (max-width: 850px) {
   .clubpage {

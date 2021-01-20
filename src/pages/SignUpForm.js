@@ -470,7 +470,7 @@ const StepTwo = (props) => {
       ...provided,
       background: '#D1D3D4',
       color: '#2b2b2b',
-      'border-radius': 4,
+      borderRadius: 4,
     }),
     control: (provided, state) => ({
       display: 'flex',
@@ -512,9 +512,9 @@ const StepTwo = (props) => {
     }),
     multiValueLabel: (provided, state) => ({
       ...provided,
-      'margin-left': "4px",
-      'padding': '2px',
-      'padding-left': '5px',
+      marginLeft: "4px",
+      padding: '2px',
+      paddingLeft: '5px',
       fontSize: '12px',
     }),
     indicatorSeparator: (provided, state) => ({
