@@ -281,7 +281,7 @@ function ClubPage({
           <div className='clubpage-content-left'>
             <Switch>
               <Route path={admin ? "/admin/overview" : `/club/${routeId}/overview`} render={() => overview}/>
-              <Route path={admin ? "/admin/recruitment" : `/club/${routeId}/recruitment`} render={() =>
+              <Route path={admin ? "/admin/recruitment" :  `/club/${routeId}/recruitment`} render={() =>
                 <div className= "clubpage-content-timeline">
                   <div className='clubpage-content-header'>
                     <h1>Recruitment Timeline</h1>
