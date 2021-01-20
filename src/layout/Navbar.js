@@ -78,7 +78,7 @@ const Navbar = ({
         </div>
         {dropdownVis && (
           <div className="dropdown">
-            <Link className="option" to="/">
+            <Link className="option" to="/comingsoon">
               Students
             </Link>
             <Link className="option mid-option" to="/signin">

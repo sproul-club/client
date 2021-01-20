@@ -21,6 +21,9 @@
 .signup .text h3 {
   padding-top: 10px;
   font-size: 40px;
+  text-align: left;
+  width: 330px;
+  padding-left: 0px;
 }
 
 .signup li {
@@ -384,6 +387,7 @@
 @media screen and (min-width: 1700px) {
   .signup .text h3 {
     font-size: 50px;
+    width: 400px;
   }
 
   .signup li {

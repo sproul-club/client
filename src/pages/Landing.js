@@ -28,7 +28,9 @@ const Landing = () => {
           {/* <Link to="/signup">Register Your Club</Link> */}
           <div className='buttons'>
             <Link to="/catalog">Explore clubs</Link>
+            <div className="addbutton">
             <Link to="/signup">Add a club</Link>
+            </div>
           </div>
         </div>
       </div>
