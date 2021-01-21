@@ -18,7 +18,7 @@
 .clubpage h1 {
   font-size: 1.4vw;
   margin-top: 1vw;
-  margin-bottom: .8vw;
+  margin-bottom: 0.8vw;
 }
 
 .clubpage-tile {
@@ -31,7 +31,7 @@
 }
 
 .gallery {
-  margin-top: .8vw;
+  margin-top: 0.8vw;
 }
 
 .clubpage h2 {
@@ -48,11 +48,11 @@
 .clubpage-content-contact a {
   font-weight: 700;
   font-size: 1vw;
-  color: #367BC6;
+  color: #367bc6;
 }
 
 .clubpage-content-contact a:active {
-  color: #367BC6;
+  color: #367bc6;
   font-size: 1vw;
 }
 
@@ -79,7 +79,7 @@
 }
 
 .clubpage-content-header-icon {
-  color: #8D8D8D;
+  color: #8d8d8d;
   width: 1.7vw;
 }
 
@@ -123,7 +123,7 @@
 }
 
 .club-title {
-  margin: 0 0 .5vw 0;
+  margin: 0 0 0.5vw 0;
   font-style: normal;
   font-weight: bold;
   font-size: 2.1vw;
@@ -154,20 +154,20 @@
 }
 
 .clubpage-favorite-button {
-  display:inline-flex;
+  display: inline-flex;
   align-items: center;
   background: none;
-  padding: .5vw 1vw .5vw 1vw;
+  padding: 0.5vw 1vw 0.5vw 1vw;
   margin-top: -5px;
   margin-right: 10px;
   height: 40px;
   border-radius: 5px;
-  border: 2px solid #E95F5F;
+  border: 2px solid #e95f5f;
   font-weight: bolder;
-  color: #E95F5F;
+  color: #e95f5f;
 }
 
-.clubpage-favorite-button span{ 
+.clubpage-favorite-button span {
   margin-left: 0.5em;
   font-size: 1vw;
 }
@@ -183,7 +183,7 @@
 }
 
 .clubpage-header-nav-item {
-  color: #8D8D8D;
+  color: #8d8d8d;
   background: none;
   border: none;
   font-weight: bolder;
@@ -193,14 +193,14 @@
   border-bottom: 4px solid transparent;
 }
 
-.clubpage-header-nav-item:hover{ 
+.clubpage-header-nav-item:hover {
   cursor: pointer;
   opacity: 0.8;
 }
 
 .clubpage-header-nav-item.selected {
-  color: #367BC6;
-  border-bottom: 4px solid #367BC6;
+  color: #367bc6;
+  border-bottom: 4px solid #367bc6;
 }
 
 .clubpage-content {
@@ -219,7 +219,7 @@
   flex-direction: column;
 }
 
-.clubpage-content-item{
+.clubpage-content-item {
   max-height: 14vw;
   overflow-y: hidden;
 }
@@ -238,7 +238,7 @@
   justify-content: flex-end;
   align-items: center;
   width: 100%;
-  margin-bottom: .8vw;
+  margin-bottom: 0.8vw;
 }
 
 .seeMoreButton:hover {
@@ -255,7 +255,7 @@
 
 .clubpage-apply-btn {
   display: inline-flex;
-  background-color: #54A0F1;
+  background-color: #54a0f1;
   font-family: Qanelas Soft;
   letter-spacing: 1.5px;
   border: none;
@@ -326,14 +326,15 @@
   justify-content: flex-end;
 }
 
-.lastUpdated p{
+.lastUpdated p {
   color: #767676;
   font-style: italic;
 }
 
 @media screen and (max-width: 850px) {
   .clubpage {
-    width: 85vw;
+    padding-top: 0px;
+    width: 100vw;
   }
 
   .clubpage h1 {
@@ -346,44 +347,60 @@
   }
 
   .clubpage p {
-    font-size: 2.5vw;
+    font-size: 10px;
+    line-height: unset;
   }
 
   .club-title {
-    font-size: 4vw;
+    font-size: 18px;
     letter-spacing: 0.03em;
     color: #000000;
   }
+  .clubpage-tile {
+    width: 92.5vw;
+  }
 
   .clubpage-header-content {
-    flex-direction: column;
+    flex-direction: row;
   }
 
   .clubpage-header-content img {
     width: 20vw;
-    margin: -70px auto 0 auto;
   }
 
+  .club-logo {
+    margin: 5px;
+    margin-left: 10px;
+    margin-top: 10px;
+    height: 72px;
+  }
+
+  .header-tags {
+    font-size: 11px;
+  }
   .clubpage-header-middle {
-    padding: 15px 15px 5px 15px;
+    padding: 5px;
   }
 
   .clubpage-header-right {
     padding: 0 15px 0 15px;
   }
 
+  .seeMoreButton {
+    font-size: 10px !important;
+  }
+
   .clubpage-favorite-button {
-    display:inline-flex;
+    display: inline-flex;
     align-items: center;
     background: none;
     padding: 5px 15px 5px 15px;
     border-radius: 5px;
-    border: 2px solid #E95F5F;
+    border: 2px solid #e95f5f;
     font-weight: bolder;
-    color: #E95F5F;
+    color: #e95f5f;
   }
-  
-  .clubpage-favorite-button span{ 
+  .clubpage-favorite-button span {
     margin-left: 0;
   }
 
@@ -396,17 +413,17 @@
     margin-right: 0;
   }
 
-  .clubpage-content-item{
+  .clubpage-content-item {
     margin-bottom: 20px;
   }
-  
+
   .clubpage-header-nav-item {
     font-size: 0.9em;
     margin: 0 10px 0 10px;
   }
 
   .clubpage-sm-link {
-    width: 5vw;
+    width: 25px;
     margin-right: 10px;
   }
 
@@ -419,5 +436,13 @@
     width: 100%;
     height: auto;
     left: 0;
+  }
+
+  .lastUpdated {
+    font-size: 12px;
+  }
+
+  .clubpage-content-contact a {
+    font-size: 10px !important;
   }
 }

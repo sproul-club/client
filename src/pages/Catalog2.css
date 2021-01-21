@@ -56,6 +56,9 @@
     padding-right: 5vw;
     overflow-x: hidden;
   }
+  .filters {
+    padding-bottom: 0px !important;
+  }
 }
 
 .filter-wrapper {
