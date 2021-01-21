@@ -55,7 +55,6 @@ const Navbar = ({
     logout(history);
   };
 
-
   const loggedOut = (
     <>
       <Link to="/about" className="nav-link">
@@ -67,14 +66,14 @@ const Navbar = ({
       <div
         className={`menu logout ${dropdownVis ? 'menu-open' : 'menu-close'}`}
         ref={dropDownRef}
-        onClick={toggleDropdown}
-      >
+        onClick={toggleDropdown}>
         <div className="menu-text">
           Sign in
           <i
             style={{ marginLeft: '9px' }}
-            className={`fas ${dropdownVis ? 'fa-angle-up' : 'fa-angle-down'}`}
-          ></i>
+            className={`fas ${
+              dropdownVis ? 'fa-angle-up' : 'fa-angle-down'
+            }`}></i>
         </div>
         {dropdownVis && (
           <div className="dropdown">
@@ -101,14 +100,14 @@ const Navbar = ({
       <div
         className={`menu login ${dropdownVis ? 'menu-open' : 'menu-close'}`}
         ref={dropDownRef}
-        onClick={toggleDropdown}
-      >
+        onClick={toggleDropdown}>
         <div className="menu-text">
           Account
           <i
             style={{ marginLeft: '9px' }}
-            className={`fas ${dropdownVis ? 'fa-angle-up' : 'fa-angle-down'}`}
-          ></i>
+            className={`fas ${
+              dropdownVis ? 'fa-angle-up' : 'fa-angle-down'
+            }`}></i>
         </div>
         {dropdownVis && (
           <div className="dropdown">
@@ -141,14 +140,14 @@ const Navbar = ({
       <div
         className={`menu login ${dropdownVis ? 'menu-open' : 'menu-close'}`}
         ref={dropDownRef}
-        onClick={toggleDropdown}
-      >
+        onClick={toggleDropdown}>
         <div className="menu-text">
           Account
           <i
             style={{ marginLeft: '9px' }}
-            className={`fas ${dropdownVis ? 'fa-angle-up' : 'fa-angle-down'}`}
-          ></i>
+            className={`fas ${
+              dropdownVis ? 'fa-angle-up' : 'fa-angle-down'
+            }`}></i>
         </div>
         {dropdownVis && (
           <div className="dropdown">
@@ -167,7 +166,7 @@ const Navbar = ({
     </div>
   );
 
-  const display = isAuthenticated ? loggedInOrg : (loading ? '' : loggedOut);
+  const display = isAuthenticated ? loggedInOrg : loading ? '' : loggedOut;
 
   return (
     <>
