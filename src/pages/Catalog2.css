@@ -32,6 +32,32 @@
   z-index: 999;
 }
 
+@media screen and (max-width: 800px) {
+  .filters {
+    background: white;
+    flex-wrap: wrap;
+    max-height: unset;
+    padding: 0px;
+    z-index: 50;
+  }
+
+  .status-filter,
+  .app-filter,
+  .tags-filter,
+  .members-filter,
+  .sort-filter {
+    display: none !important;
+  }
+  .search-filter {
+    margin: 0px !important;
+  }
+  .results-content {
+    padding-left: 5vw;
+    padding-right: 5vw;
+    overflow-x: hidden;
+  }
+}
+
 .filter-wrapper {
   cursor: pointer;
 }
@@ -74,7 +100,7 @@
 }
 
 .filter-selection:hover {
-  background: #A0D7FF;
+  background: #a0d7ff;
 }
 
 .search-input {
@@ -157,8 +183,7 @@
   background: rgb(134, 134, 134) !important;
 }
 
-@media screen and (max-width: 1150px){
-  
+@media screen and (max-width: 1150px) {
   .catalog-content {
     width: 100vw;
   }

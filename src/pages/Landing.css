@@ -46,47 +46,46 @@
 
 .landing .text h3 {
   color: #2b2b2b;
-  font-size: 2vw;
+  font-size: 28px;
   font-family: Qanelas Soft Extra Bold;
   font-weight: 700;
   font-style: normal;
   line-height: 42px;
-  margin-bottom: 5px;
+  margin-bottom: 15px;
   margin-top: 0;
   display: flex;
   justify-content: center;
-  width: 40vw;
-  min-width: 350px;
+  width: 500px;
 }
 
 .landing .text p {
   color: #2b2b2b;
-  font-size: 14px;
+  font-size: 16px;
   font-family: Qanelas Soft;
   font-weight: 400;
   font-style: normal;
   padding-bottom: 12px;
   letter-spacing: 0.04em;
   display: flex;
-  width: 40vw;
-  min-width: 350px;
-  margin: 0;
+  width: 45vw;
+  max-width: 500px;
+  min-width: 320px;
+  margin: 0px;
+  margin-bottom: 10px;
 }
 
 .landing .text a {
   width: 100px;
   font-size: 14px;
-  line-height: 1em;
   background: white;
   font-family: Qanelas Soft Semi Bold;
   font-weight: 700;
   font-style: normal;
-  display: inline-block;
   color: #ffffff;
   background-color: #54a0f1;
   text-decoration: none;
   padding: 10px 20px;
-  border-radius: 0.6vw;
+  border-radius: 10px;
   text-align: center;
   margin-right: 10px;
   margin-left: 10px;
@@ -100,7 +99,9 @@
   }
 
   .landing .text h3 {
-    font-size: 18px;
+    /* font-size: 24px; */
+    margin-bottom: 0px;
+    width: 300px;
   }
 }
 
@@ -117,7 +118,7 @@
   display: inline-block;
   color: #54a0f1;
   text-decoration: none;
-  border-radius: 0.6vw;
+  border-radius: 10px;
   border: solid 0.2vw #54a0f1;
   text-align: center;
 }
