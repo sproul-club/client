@@ -24,7 +24,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-top: 22vh;
+  /* margin-top: 15vh; */
   margin-bottom: 10vh;
   background-image: url('./assets/landingbg.png');
   background-repeat: no-repeat;
@@ -56,12 +56,12 @@
   display: flex;
   justify-content: center;
   width: 40vw;
+  min-width: 350px;
 }
 
 .landing .text p {
   color: #2b2b2b;
-  font-size: 1.2vw;
-  line-height: 2vw;
+  font-size: 14px;
   font-family: Qanelas Soft;
   font-weight: 400;
   font-style: normal;
@@ -69,12 +69,13 @@
   letter-spacing: 0.04em;
   display: flex;
   width: 40vw;
+  min-width: 350px;
   margin: 0;
 }
 
 .landing .text a {
-  width: 11vw;
-  font-size: 1.2vw;
+  width: 100px;
+  font-size: 14px;
   line-height: 1em;
   background: white;
   font-family: Qanelas Soft Semi Bold;
@@ -84,43 +85,55 @@
   color: #ffffff;
   background-color: #54a0f1;
   text-decoration: none;
-  padding: 1vw 1.6vw 1vw 1.6vw;
-  border-radius: .6vw;
+  padding: 10px 20px;
+  border-radius: 0.6vw;
   text-align: center;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+@media screen and (max-width: 800px) {
+  .landing .text * {
+    width: 100vw;
+  }
+  .landing .text {
+    width: 100vw;
+  }
+
+  .landing .text h3 {
+    font-size: 18px;
+  }
 }
 
 .landing .text a:hover {
   background-color: #6eaff5;
 }
 
-.landing .addbutton a {
-  width: 11vw;
-  font-size: 1.2vw;
+.landing #addbutton {
+  width: 100px;
+  font-size: 14px;
   line-height: 1em;
   background: white;
-  font-family: Qanelas Soft Semi Bold;
-  font-weight: 700;
   font-style: normal;
   display: inline-block;
   color: #54a0f1;
   background-color: transparent;
   text-decoration: none;
-  padding: 1vw 1.6vw 1vw 1.6vw;
-  border-radius: .6vw;
-  border: solid .2vw #54a0f1;
+  border-radius: 0.6vw;
+  border: solid 0.2vw #54a0f1;
   text-align: center;
 }
 
 .landing .addbutton a:hover {
   color: #6eaff5;
-  border: solid .2vw #6eaff5;
+  border: solid 0.2vw #6eaff5;
   background: transparent;
 }
 
 .landing .buttons {
   width: 30vw;
+  min-width: 350px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .landing .content .imageContainer {

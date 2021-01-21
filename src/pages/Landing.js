@@ -26,11 +26,11 @@ const Landing = () => {
             communities on campus - built by students, for students!
           </p>
           {/* <Link to="/signup">Register Your Club</Link> */}
-          <div className='buttons'>
+          <div className="buttons">
             <Link to="/catalog">Explore clubs</Link>
-            <div className="addbutton">
-            <Link to="/signup">Add a club</Link>
-            </div>
+            <Link id="addbutton" to="/signup">
+              Add a club
+            </Link>
           </div>
         </div>
       </div>
