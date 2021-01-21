@@ -1,20 +1,20 @@
 .polaroid {
   height: 220px;
   width: 150px;
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 
   display: flex;
-  flex-direction: column;;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 
   margin-right: 10px;
+  margin-bottom: 10px;
 }
 
 .polaroid:hover {
-  background: #EEEEEE;
-
+  background: #eeeeee;
 }
 
 .polaroid imageContainer {

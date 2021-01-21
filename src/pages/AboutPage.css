@@ -27,6 +27,8 @@
   width: 100%;
   height: 150px;
 
+  margin-top: 0px !important;
+
   display: flex;
 
   align-items: center;
@@ -91,9 +93,11 @@
 .about .content .carousel {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 800px;
 
-  margin-left: 10px;
-  height: 250px;
+  margin-bottom: 30px;
 }
 
 .about .content .image {
@@ -102,4 +106,10 @@
   width: 120px;
   height: 120px;
   margin-bottom: 0px;
+}
+
+@media screen and (max-width: 800px) {
+  .about .text {
+    max-width: 90vw !important;
+  }
 }
