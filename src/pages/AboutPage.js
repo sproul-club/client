@@ -69,8 +69,6 @@ const AboutPage = () => {
             <PolaroidComponent name="Izzie Lau" position="Frontend Engineer" linkedin="https://www.linkedin.com/in/izzielau/" image={<img className="image" alt='Izzie' src={izzie} />}/>
             <PolaroidComponent name="Karen Tan" position="Frontend Engineer" linkedin="https://www.linkedin.com/in/karen-t/" image={<img className="image"  alt='Karen' src={karen} />}/>
             <PolaroidComponent name="Satiya Kem" position="Frontend Engineer" linkedin="https://www.linkedin.com/in/satiya-kem-927189183/" image={<img className="image"  alt='Satiya' src={satiya} />}/>
-          </div>
-          <div className="carousel">
             <PolaroidComponent name="Nico Galin" position="Frontend Engineer" linkedin="https://www.linkedin.com/in/nicholas-galin/" image={<img className="image"  alt='Nico' src={nico} />}/>
             <PolaroidComponent name="Christine Luo" position="Frontend Engineer" linkedin="https://www.linkedin.com/in/christinealuo/" image={<img className="image"  alt='Christine' src={christine} />}/>
             <PolaroidComponent name="Matt Clagett" position="Frontend Engineer" linkedin="https://www.linkedin.com/in/matthewclagett/" image={<img className="image"  alt='Matt' src={matt} />}/>

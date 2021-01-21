@@ -114,12 +114,12 @@
 .menu .menu-text {
   margin: auto 0;
   font-size: 13px;
-  padding: 10px 14px;
+  padding: 5px 9px;
   text-align: center;
 }
 
 .header-right .dropdown {
-  width: 80px;
+  width: 120px;
   margin-top: 5px;
   font-size: 13px;
   position: absolute;
@@ -156,14 +156,15 @@
 }
 
 .menu.logout {
-  width: 80px;
+  width: 100px;
   margin-left: 18px;
 }
 .menu.logout .dropdown {
-  width: 80px;
+  width: 110px;
 }
 .menu.logout .dropdown .option {
   padding: 0px 9px;
+  border-radius: 10px;
 }
 
 .menu.login {
@@ -279,13 +280,15 @@
     /* justify-content: center; */
   }
   .menu-text {
-    padding: 0px;
+    height: 25px;
+    line-height: 25px;
+    padding-left: 0px;
   }
   .menu.logout .dropdown {
     width: 100px;
     margin: 0 auto;
     right: unset;
-    margin-top: 30px;
+    margin-top: 35px;
     margin-left: -1px;
   }
   .option.mid-option {
