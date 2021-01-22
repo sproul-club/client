@@ -11,11 +11,13 @@ import {
   loadMoreClubs
 } from '../actions/catalog';
 import ReactGA from 'react-ga';
-import Footer from '../layout/Footer'
+import Footer from '../layout/Footer';
+import UnderConstruction from './UnderConstruction';
 
 const eventsLoadedAtOnce = 18
 
 const Catalog2 = ({
+  admin,
   clearOrganization,
   tagOptions,
   sizeOptions,
@@ -117,7 +119,7 @@ const Catalog2 = ({
   ReactGA.pageview('/catalog');
   
   return (<>
-    <div className='catalog-page'>
+    {admin &&<div className='catalog-page'>
       <div className="catalog-content">
         <div className="banner">
           <img src={banner} alt="banner"/>
@@ -239,7 +241,8 @@ const Catalog2 = ({
           <GridComponent displayBanner= {true}/>
         </div>
       </div>
-    </div>
+    </div>}
+    {!admin && <UnderConstruction/>}
     <Footer/>
     </>
   )
@@ -250,7 +253,8 @@ const mapStateToProps = (state) => ({
   tagOptions: state.profile.tagOptions,
   sizeOptions: state.profile.sizeOptions,
   formDetails: state.catalog.formDetails,
-  num_displayed: state.catalog.num_displayed
+  num_displayed: state.catalog.num_displayed,
+  admin: state.auth.isAuthenticated,
 });
 
 export default connect(mapStateToProps, {searchClubs,
