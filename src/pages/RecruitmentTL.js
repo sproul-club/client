@@ -2,6 +2,8 @@ import React from 'react';
 import Moment from 'react-moment';
 import { connect } from 'react-redux';
 import { google } from "calendar-link";
+import moment from 'moment';
+import 'moment-timezone';
 import "./RecruitmentTL.css"
 import { justTimeFormat, simplestRangeFormat, START_DATETIME, END_DATETIME, dateTimeFormat } from '../utils/formatTimeAndDate';
 //import { propTypes } from 'react-bootstrap/esm/Image';
@@ -38,43 +40,56 @@ const RecruitmentTL = ({ adminCheck, profile, currRoute, events }) => {
             {orderedEvents.map((event, i) => (
                 <div key={i}>
                 <div id="recr-box">
-                    <div className="name-time-box">
-                        <p className="event-title">{event.name} </p>
-                        {(event.event_start.slice(0,10) == event.event_end.slice(0,10)) ?
-                        <div style={{marginLeft: "0vw", display:'flex', alignItems:'center', flexDirection:'column'}}>
-                            <Moment className="event-time"
-                            id="first-time"
-                            interval={0}
-                            date={event.event_start}
-                            format={justTimeFormat(event.event_start, event.event_end, START_DATETIME)}/>
-                            <p className="event-time" style={{marginLeft:"-0.0vw"}}>-</p>
-                            <Moment className="event-time"
-                            interval={0}
-                            date={event.event_end}
-                            format={justTimeFormat(event.event_start, event.event_end, END_DATETIME)}/>
-                        </div> :
-                        <div style={{marginLeft: "0vw"}}>
-                            
-                            <Moment className="event-time"
-                            id="first-time"
-                            interval={0}
-                            date={event.event_start}
-                            format={dateTimeFormat(event.event_start, event.event_end, START_DATETIME)}/>
-                            <p className="event-time" style={{marginLeft:"-0.0vw"}}>-</p>
-                        <div>
-                            <Moment className="event-time"
-                            interval={0}
-                            date={event.event_end}
-                            format={dateTimeFormat(event.event_start, event.event_end, END_DATETIME)}/>
-                            </div>
-                        </div> 
-                        }
-                    </div>
+                    {/* <div className="name-time-box">
+                    </div> */}
                     <div style={{width: "3vw"}}></div>
                     <div className="date-circle" id={(today.getFullYear() > parseInt(event.event_start.slice(0,4))) || (today.getMonth() + 1 > parseInt(event.event_start.slice(5,7)) || (((today.getMonth() + 1) == parseInt(event.event_start.slice(5,7))) && (today.getDate() > parseInt(event.event_start.slice(8,10))))) ? "filled": "unfilled"}>
                         {parseInt(event.event_start.slice(5,7))}/{parseInt(event.event_start.slice(8,10))}</div>
                     <div className="desc-box">
                         <div className="event-desc">
+                        <p className="event-title">{event.name} </p>
+                        {(event.event_start.slice(0,10) == event.event_end.slice(0,10)) ?
+                        <div style={{display:'flex', flexDirection:'row', marginLeft:'-1vw', marginBottom:".5vw"}}>
+                            <div className="event-time">
+                                {"" + (parseInt(event.event_start.slice(11,13)) % 12 === 0 ? 12 : parseInt(event.event_start.slice(11,13)) % 12) + event.event_start.slice(13,16) + " " + (parseInt(event.event_start.slice(11,13)) >= 12 ? "PM" : "AM")}
+                            </div>
+
+                            {/* <Moment className="event-time"
+                            id="first-time"
+                            interval={0}
+                            date={event.event_start}
+                            format={justTimeFormat(event.event_start, event.event_end, START_DATETIME)}/> */}
+                            <p className="event-time" style={{marginLeft:"-0.0vw"}}> - </p>
+
+                            <div className="event-time">
+                                {"" + (parseInt(event.event_end.slice(11,13)) % 12 === 0 ? 12 : parseInt(event.event_end.slice(11,13)) % 12) + event.event_end.slice(13,16) + " " + (parseInt(event.event_end.slice(11,13)) >= 12 ? "PM" : "AM")}
+                            </div>
+                            {/* <Moment className="event-time"
+                            interval={0}
+                            date={event.event_end}
+                            format={justTimeFormat(event.event_start, event.event_end, END_DATETIME)}/> */}
+                        </div> :
+                        <div style={{display:'flex', flexDirection:'row', marginLeft:'-1vw', marginBottom:".5vw"}}>
+                            {/* <Moment className="event-time"
+                            id="first-time"
+                            interval={0}
+                            date={event.event_start}
+                            format={dateTimeFormat(event.event_start, event.event_end, START_DATETIME)}/> */}
+                            <div className="event-time">
+                                {'' + parseInt(event.event_start.slice(5, 7)) + "/" + parseInt(event.event_start.slice(8,10)) + " " + (parseInt(event.event_start.slice(11,13)) % 12 === 0 ? 12 : parseInt(event.event_start.slice(11,13)) % 12) + event.event_start.slice(13,16) + " " + (parseInt(event.event_start.slice(11,13)) >= 12 ? "PM" : "AM")}
+                            </div>
+                            <p className="event-time" style={{marginLeft:"-0.0vw"}}>-</p>
+                        {/* <div> */}
+                            {/* <Moment className="event-time"
+                            interval={0}
+                            date={event.event_end}
+                            format={dateTimeFormat(event.event_start, event.event_end, END_DATETIME)}/>
+                            </div> */}
+                            <div className="event-time">
+                                {'' + parseInt(event.event_end.slice(5, 7)) + "/" + parseInt(event.event_end.slice(8,10)) + " " + (parseInt(event.event_end.slice(11,13)) % 12 === 0 ? 12 : parseInt(event.event_end.slice(11,13)) % 12) + event.event_end.slice(13,16) + " " + (parseInt(event.event_end.slice(11,13)) >= 12 ? "PM" : "AM")}
+                            </div>
+                        </div> 
+                        }
                         {event.description}
                         </div>
                         <div className = "recr-button-row">

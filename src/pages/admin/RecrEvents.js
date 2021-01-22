@@ -7,6 +7,8 @@ import {addRecrEvent, updateRecrEvent, deleteRecrEvent } from '../../actions/pro
 import './RecrEvents.css';
 import './Admin.css';
 import RecrAccord from './RecrAccord';
+import moment from 'moment';
+import 'moment-timezone';
 // import { ContactSupportOutlined } from '@material-ui/icons';
  
  
@@ -50,6 +52,9 @@ const RecrEvents = ({profile, events, incNumEvents, cancelEdit, addRecrEvent, up
     ) {
       const start = startDate.concat(' ' + startTime);
       const end = endDate.concat(' ' + endTime);
+
+      console.log(start);
+      console.log(end);
   
       //update event action
       updateRecrEvent(id, {
