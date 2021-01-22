@@ -24,7 +24,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  /* margin-top: 15vh; */
+  margin-top: 15vh;
   margin-bottom: 10vh;
   background-image: url('./assets/landingbg.png');
   background-repeat: no-repeat;

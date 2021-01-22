@@ -6,7 +6,7 @@
     /* left: -2%; */
     /* max-width: 94%; */
     z-index: 100;
-    margin-bottom: 2.5vw;
+    margin-bottom: .5vw;
     min-height: 8vw;
     background: none;
 }
@@ -89,7 +89,7 @@
     border-left: 6px solid #367BC6;
     z-index: -10;
     position: relative;
-    margin-left: 13.08vw;
+    margin-left: 4.08vw;
     border-width: 0.4vw;
     width: 1vw;
     /* margin-top: -34vw; */
@@ -99,8 +99,8 @@
   .recr-button-row {
       display: flex;
       flex-direction: row;
-      margin-left: 19vw;
-      margin-top: 1vw;
+      margin-left: 28vw;
+      margin-top: 3vw;
       width: 7.8vw;
       
   }
@@ -118,5 +118,5 @@
       margin-left: 1vw;
       height: 5vw;
       font-size: 1vw;
-      width: 26vw;
+      width: 35vw;
   }

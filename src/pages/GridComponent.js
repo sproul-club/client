@@ -11,7 +11,7 @@ function GridComponent({ tagOptions, clubs, loading, formDetails, num_displayed,
   console.log(clubs);
 
   if (!formDetails.sort) {
-    formDetails.sort = 'Rand';
+    formDetails.sort = 'Fresh';
   }
   const [num_filtered_results, filteredClubs] = filterClubs(clubs, formDetails, tagOptions, num_displayed, favorites);
 

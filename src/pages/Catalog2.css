@@ -160,13 +160,16 @@
 }
 
 .status-filter {
-  width: 114px;
+  width: 100px;
 }
 .tags-filter {
   width: 124px;
 }
 
-.app-filter,
+.app-filter {
+  width: 90px;
+}
+
 .members-filter,
 .sort-filter {
   width: 83px;

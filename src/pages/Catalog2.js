@@ -215,20 +215,20 @@ const Catalog2 = ({
             </div>
             {showSortDD && (
               <div className="filter-dropdown sort-filter-dropdown">
-                <div className='filter-selection' onClick={()=>toggleSort("Rand")}>
-                  <span> Default (Random)</span>
+                <div className='filter-selection' onClick={()=>toggleSort("Fresh")}>
+                  <span> Recently Updated </span>
                 </div>
                 <div className='filter-selection' onClick={()=>toggleSort("Asc")}>
-                  <span> Ascending</span>
+                  <span> Ascending (A-Z)</span>
                 </div>
                 <div className='filter-selection' onClick={()=>toggleSort("Desc")}>
-                  <span> Decending</span>
-                </div>
-                <div className='filter-selection' onClick={()=>toggleSort("Fresh")}>
-                  <span> Recently Updated</span>
+                  <span> Decending (Z-A)</span>
                 </div>
                 <div className='filter-selection' onClick={()=>toggleSort("Ddln")}>
                   <span> Deadline</span>
+                </div>
+                <div className='filter-selection' onClick={()=>toggleSort("Rand")}>
+                  <span> Random </span>
                 </div>
               </div>
             )}
