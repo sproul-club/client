@@ -27,6 +27,8 @@ import Activation from './Activation';
 import { membersMap } from '../utils/filterClubs.js';
 import { normalizeUrl } from '../utils/normalizeUrl.js';
 import { API, TOKENS } from '../utils/backendClient';
+import GridComponent from './GridComponent';
+import ClubCardSimple from './ClubCardSimple';
 
 function ClubPage({
   admin,
@@ -61,6 +63,9 @@ function ClubPage({
 
   const path = history.location.pathname.split('/').slice(2);
   const routeId = path[0];
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [organization.link_name]);
   useEffect(() => {
     if (!admin && organization.link_name !== routeId) getOrganization(routeId);
     // clears the loaded profile when component unmounts
@@ -128,6 +133,20 @@ function ClubPage({
     }
   }
 
+  console.log(organization);
+
+  var recommendedClubCards;
+  if (!admin) {
+    var recommendedClubs = organization.recommended_clubs;
+    var recommendedClubCards = Object.keys(recommendedClubs).map((i) =>
+      recommendedClubs[i] !== null && recommendedClubs[i] !== '' ? (
+          <ClubCardSimple
+            club={recommendedClubs[i]}
+          />
+      ) : null
+    );
+  }
+
   const socLinks = organization.social_media_links;
   const contactComps = Object.keys(socLinks).map((key, i) =>
     socLinks[key] !== null && socLinks[key] !== '' ? (
@@ -160,55 +179,57 @@ function ClubPage({
 
   const overview = (
     <div>
-      {
-        <div
-          id="about"
-          className={
-            aboutMore
-              ? 'clubpage-content-about clubpage-content-item-more'
-              : 'clubpage-content-about clubpage-content-item'
-          }>
-          <div className="clubpage-content-header">
-            <h1>About {organization.name}</h1>
-            {admin && (
-              <img
-                src={require('./assets/Edit.svg')}
-                className="clubpage-content-header-icon"
-                onClick={() => setShowAboutModal(admin)}
-                alt=""
-              />
-            )}
+      <div>
+        {
+          <div
+            id="about"
+            className={
+              aboutMore
+                ? 'clubpage-content-about clubpage-content-item-more'
+                : 'clubpage-content-about clubpage-content-item'
+            }>
+            <div className="clubpage-content-header">
+              <h1>About {organization.name}</h1>
+              {admin && (
+                <img
+                  src={require('./assets/Edit.svg')}
+                  className="clubpage-content-header-icon"
+                  onClick={() => setShowAboutModal(admin)}
+                  alt=""
+                />
+              )}
+            </div>
+            <p
+              dangerouslySetInnerHTML={
+                organization.about_us.length > 0
+                  ? { __html: organization.about_us }
+                  : { __html: '<p>No description provided.</p>' }
+              }></p>
           </div>
-          <p
-            dangerouslySetInnerHTML={
-              organization.about_us.length > 0
-                ? { __html: organization.about_us }
-                : { __html: '<p>No description provided.</p>' }
-            }></p>
-        </div>
-      }
-      <button
-        className="seeMoreButton"
-        onClick={() => setAboutMore(!aboutMore)}>
-        {' '}
-        {aboutMore ? 'See less' : 'See more'}{' '}
-        {aboutMore ? <ExpandLess /> : <ExpandMoreIcon />}{' '}
-      </button>
-      {/* <div className="bottomGallery">
-    {organization.gallery &&
-      <div className='clubpage-content-gallery'>
-        <div className='clubpage-content-header'>
-          <h1>Gallery (Beta)</h1>
-          {admin &&
-            <img src={require('./assets/Edit.svg')} className="clubpage-content-header-icon" onClick={() => setShowGalleryModal(admin)}/>
-          }
-        </div>
-        <div className="gallery">
-          <Gallery data={organization.gallery}/>
-        </div>
+        }
+        <button
+          className="seeMoreButton"
+          onClick={() => setAboutMore(!aboutMore)}>
+          {' '}
+          {aboutMore ? 'See less' : 'See more'}{' '}
+          {aboutMore ? <ExpandLess /> : <ExpandMoreIcon />}{' '}
+        </button>
+        {/* <div className="bottomGallery">
+          {organization.gallery &&
+            <div className='clubpage-content-gallery'>
+              <div className='clubpage-content-header'>
+                <h1>Gallery (Beta)</h1>
+                {admin &&
+                  <img src={require('./assets/Edit.svg')} className="clubpage-content-header-icon" onClick={() => setShowGalleryModal(admin)}/>
+                }
+              </div>
+              <div className="gallery">
+                <Gallery data={organization.gallery}/>
+              </div>
+            </div>}
+        </div> */}
+      {/* <GridComponent displayBanner= {true}/> */}
       </div>
-    }
-    </div> */}
     </div>
   );
 
@@ -491,6 +512,16 @@ function ClubPage({
             } */}
           </div>
         </div>
+
+        
+          {tab === "overview" && !admin &&
+            <div className= "recommended-clubs-wrapper">
+              <h1>Similar organizations</h1>
+              <div className= "recommended-clubs"> 
+                {recommendedClubCards} 
+              </div>
+            </div>
+          } 
 
         <Modal
           showModal={showBannerModal}

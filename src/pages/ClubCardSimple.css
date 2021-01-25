@@ -1,0 +1,76 @@
+/* .clubcardsimple {
+  position: relative;
+  width: 362px;
+  height: 280px;
+  border: 1px solid blue;
+  border-radius: 10px;
+  font-family: Qanelas Soft;
+  margin-bottom: 20px;
+  margin-right: 18px;
+  text-decoration: none;
+} */
+
+.clubcardsimple-content:hover {
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
+  border: 1px solid #54a0f1;
+}
+
+.clubcardsimple-logo {
+  min-width: 90px;
+  width: 90px;
+  height: 90px;
+  min-height: 90px;
+  border-radius: 10px;
+}
+
+.clubcardsimple-content {
+  padding: 20px;
+  border: 1px solid #c4c4c4;
+  border-radius: 10px;
+}
+
+.clubcard-content-row1 {
+  display: flex;
+  flex-direction: row;
+}
+
+.clubcardsimple-text {
+  padding-left: 10px;
+  flex-grow: 1;
+  height: 90px;
+  max-height: 90px;
+  overflow: hidden;
+}
+
+.clubcard-title {
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 16px;
+  margin-bottom: 5px;
+}
+
+.clubcardsimple-description {
+  font-size: 11px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+.simple-one-line {
+  -webkit-line-clamp: 5;
+}
+.simple-two-line {
+  -webkit-line-clamp: 4;
+}
+.simple-three-line {
+  -webkit-line-clamp: 3;
+}
+.simple-four-line {
+  -webkit-line-clamp: 2;
+}
+.simple-five-line {
+  -webkit-line-clamp: 1;
+}
+
+a {
+  color: inherit;
+}
