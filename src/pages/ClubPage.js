@@ -92,19 +92,19 @@ function ClubPage({
   };
 
   // fetchGallery();
-
+/*
   organization.gallery = [
     {
       type: 'i',
-      src: 'https://picsum.photos/seed/picsum/1000/500',
+      url: 'https://picsum.photos/seed/picsum/1000/500',
       caption: '',
     },
     {
       type: 'i',
-      src: 'https://picsum.photos/seed/picsum/1000/1000',
+      url: 'https://picsum.photos/seed/picsum/1000/1000',
       caption: 'The team',
     },
-  ];
+  ];*/
   let [tab, setTab] = useState('overview');
   const tempTab = path[1];
   if (tempTab) {
@@ -214,8 +214,8 @@ function ClubPage({
           {aboutMore ? 'See less' : 'See more'}{' '}
           {aboutMore ? <ExpandLess /> : <ExpandMoreIcon />}{' '}
         </button>
-        {/* <div className="bottomGallery">
-          {organization.gallery &&
+        <div className="bottomGallery">
+          {((organization.gallery_pics && organization.gallery_pics.length > 0) || admin) &&
             <div className='clubpage-content-gallery'>
               <div className='clubpage-content-header'>
                 <h1>Gallery (Beta)</h1>
@@ -223,11 +223,13 @@ function ClubPage({
                   <img src={require('./assets/Edit.svg')} className="clubpage-content-header-icon" onClick={() => setShowGalleryModal(admin)}/>
                 }
               </div>
-              <div className="gallery">
-                <Gallery data={organization.gallery}/>
-              </div>
+              {organization.gallery_pics && organization.gallery_pics.length > 0 &&
+                <div className="gallery">
+                  <Gallery data={organization.gallery_pics}/>
+                </div>
+              }
             </div>}
-        </div> */}
+        </div>
       {/* <GridComponent displayBanner= {true}/> */}
       </div>
     </div>
