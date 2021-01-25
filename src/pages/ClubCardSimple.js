@@ -6,12 +6,12 @@ import { Link } from 'react-router-dom'
 
 const ClubCard = ({club}) => {
 
-  const [lines, setLines] = useState('one-line');
+  const [lines, setLines] = useState('simple-one-line');
   
   const measuredRef = (node) => {
     if (node !== null) {
       const height = node.getBoundingClientRect().height
-      const lines = height <= 16 ? 'one-line' : height <= 32 ? 'two-line' : height <= 48 ? 'three-line' : height <= 64 ? 'four-line' : 'five-line'
+      const lines = height <= 16 ? 'simple-one-line' : height <= 32 ? 'simple-two-line' : height <= 48 ? 'simple-three-line' : height <= 64 ? 'simple-four-line' : 'simple-five-line'
       setLines(lines);
     }
   };

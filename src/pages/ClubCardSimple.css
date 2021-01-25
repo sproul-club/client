@@ -16,10 +16,6 @@
 }
 
 .clubcardsimple-logo {
-  /* min-width: 78px;
-  width: 78px;
-  height: 78px;
-  min-height: 78px; */
   min-width: 100px;
   width: 100px;
   height: 100px;
@@ -28,14 +24,9 @@
 }
 
 .clubcardsimple-content {
-  /* display: flex;
-  flex-direction: row; */
   padding: 20px;
   border: 1px solid #c4c4c4;
   border-radius: 10px;
-  /* width: 300px; */
-  /* min-width: 300px; */
-  /* max-width: 300px; */
 }
 
 .clubcard-content-row1 {
@@ -46,7 +37,6 @@
 .clubcardsimple-text {
   padding-left: 10px;
   flex-grow: 1;
-  /* color: #2b2b2b; */
   height: 100px;
   max-height: 100px;
   overflow: hidden;
