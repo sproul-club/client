@@ -13,7 +13,11 @@ import {
   GET_SIZE_TAGS,
   ADD_RECR_EVENT,
   UPDATE_RECR_EVENT,
-  DELETE_RECR_EVENT
+  DELETE_RECR_EVENT,
+    GET_GALLERY_PHOTOS,
+  ADD_GALLERY_PHOTO,
+  UPDATE_GALLERY_PHOTO,
+  DELETE_GALLERY_PHOTO
 } from '../actions/types';
 
 const initialState = {
@@ -35,6 +39,7 @@ const initialState = {
     logo_url: '',
     banner_url: '',
   },
+  gallery_images: [],
   social_media_links: {},
   get_involved: '',
   tagOptions: [],
@@ -129,6 +134,11 @@ export default function (state = initialState, action) {
       return { ...state, tagOptions: payload };
     case GET_SIZE_TAGS:
       return { ...state, sizeOptions: payload };
+    case GET_GALLERY_PHOTOS:
+    case ADD_GALLERY_PHOTO:
+    case UPDATE_GALLERY_PHOTO:
+    case DELETE_GALLERY_PHOTO:
+      return {...state, galleryPhotos: payload};
     default:
       return state;
   }

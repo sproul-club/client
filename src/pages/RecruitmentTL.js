@@ -49,45 +49,45 @@ const RecruitmentTL = ({ adminCheck, profile, currRoute, events }) => {
                         <div className="event-desc">
                         <p className="event-title">{event.name} </p>
                         {(event.event_start.slice(0,10) == event.event_end.slice(0,10)) ?
-                        <div style={{display:'flex', flexDirection:'row', marginLeft:'-1vw', marginBottom:".5vw"}}>
-                            <div className="event-time">
+                        <div style={{display:'flex', flexDirection:'row', marginBottom:".5vw"}}>
+                            {/* <div className="event-time">
                                 {"" + (parseInt(event.event_start.slice(11,13)) % 12 === 0 ? 12 : parseInt(event.event_start.slice(11,13)) % 12) + event.event_start.slice(13,16) + " " + (parseInt(event.event_start.slice(11,13)) >= 12 ? "PM" : "AM")}
-                            </div>
+                            </div> */}
 
-                            {/* <Moment className="event-time"
+                            <Moment className="event-time"
                             id="first-time"
                             interval={0}
-                            date={event.event_start}
-                            format={justTimeFormat(event.event_start, event.event_end, START_DATETIME)}/> */}
+                            date={moment.tz(event.event_start, "America/Los_Angeles")}
+                            format={justTimeFormat(event.event_start, event.event_end, START_DATETIME)}/>
                             <p className="event-time" style={{marginLeft:"-0.0vw"}}> - </p>
 
-                            <div className="event-time">
+                            {/* <div className="event-time">
                                 {"" + (parseInt(event.event_end.slice(11,13)) % 12 === 0 ? 12 : parseInt(event.event_end.slice(11,13)) % 12) + event.event_end.slice(13,16) + " " + (parseInt(event.event_end.slice(11,13)) >= 12 ? "PM" : "AM")}
-                            </div>
-                            {/* <Moment className="event-time"
+                            </div> */}
+                            <Moment className="event-time"
                             interval={0}
-                            date={event.event_end}
-                            format={justTimeFormat(event.event_start, event.event_end, END_DATETIME)}/> */}
+                            date={moment.tz(event.event_end, "America/Los_Angeles")}
+                            format={justTimeFormat(event.event_start, event.event_end, END_DATETIME)}/>
                         </div> :
-                        <div style={{display:'flex', flexDirection:'row', marginLeft:'-1vw', marginBottom:".5vw"}}>
-                            {/* <Moment className="event-time"
+                        <div style={{display:'flex', flexDirection:'row', marginBottom:".5vw"}}>
+                            <Moment className="event-time"
                             id="first-time"
                             interval={0}
-                            date={event.event_start}
-                            format={dateTimeFormat(event.event_start, event.event_end, START_DATETIME)}/> */}
-                            <div className="event-time">
+                            date={moment.tz(event.event_start, "America/Los_Angeles")}
+                            format={dateTimeFormat(event.event_start, event.event_end, START_DATETIME)}/>
+                            {/* <div className="event-time">
                                 {'' + parseInt(event.event_start.slice(5, 7)) + "/" + parseInt(event.event_start.slice(8,10)) + " " + (parseInt(event.event_start.slice(11,13)) % 12 === 0 ? 12 : parseInt(event.event_start.slice(11,13)) % 12) + event.event_start.slice(13,16) + " " + (parseInt(event.event_start.slice(11,13)) >= 12 ? "PM" : "AM")}
-                            </div>
-                            <p className="event-time" style={{marginLeft:"-0.0vw"}}>-</p>
-                        {/* <div> */}
-                            {/* <Moment className="event-time"
-                            interval={0}
-                            date={event.event_end}
-                            format={dateTimeFormat(event.event_start, event.event_end, END_DATETIME)}/>
                             </div> */}
-                            <div className="event-time">
-                                {'' + parseInt(event.event_end.slice(5, 7)) + "/" + parseInt(event.event_end.slice(8,10)) + " " + (parseInt(event.event_end.slice(11,13)) % 12 === 0 ? 12 : parseInt(event.event_end.slice(11,13)) % 12) + event.event_end.slice(13,16) + " " + (parseInt(event.event_end.slice(11,13)) >= 12 ? "PM" : "AM")}
+                            <p className="event-time" style={{marginLeft:"-0.0vw"}}>-</p>
+                        <div>
+                            <Moment className="event-time"
+                            interval={0}
+                            date={moment.tz(event.event_end, "America/Los_Angeles")}
+                            format={dateTimeFormat(event.event_start, event.event_end, END_DATETIME)}/>
                             </div>
+                            {/* <div className="event-time">
+                                {'' + parseInt(event.event_end.slice(5, 7)) + "/" + parseInt(event.event_end.slice(8,10)) + " " + (parseInt(event.event_end.slice(11,13)) % 12 === 0 ? 12 : parseInt(event.event_end.slice(11,13)) % 12) + event.event_end.slice(13,16) + " " + (parseInt(event.event_end.slice(11,13)) >= 12 ? "PM" : "AM")}
+                            </div> */}
                         </div> 
                         }
                         {event.description}
