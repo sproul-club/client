@@ -74,7 +74,7 @@ class AuthToken {
 }
 
 const API = axios.create({
-  baseURL: PROD_URL,
+  baseURL: LOCAL_URL,
   headers: {
     accept: 'application/json',
     'Access-Control-Allow-Origin': '*',
