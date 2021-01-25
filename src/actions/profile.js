@@ -257,10 +257,10 @@ export const getGalleryPhotos = () => async (dispatch) => {
   }
 };
 
-export const addGalleryPhoto = (fileObj, caption) => async (dispatch) => {
-  if (!fileObj) return;
+export const addGalleryPhoto = (fileObj, caption, galleryLen) => async (dispatch) => {
   let data = new FormData();
 
+  data.append('id', `gallery-pic-${galleryLen}`);
   data.append('gallery', fileObj);
   data.append('caption', caption);
 
@@ -274,7 +274,7 @@ export const addGalleryPhoto = (fileObj, caption) => async (dispatch) => {
     const res = await API.post('/api/admin/gallery-pics', data, config);
     dispatch({ type: ADD_GALLERY_PHOTO, payload: res.data });
   } catch (err) {
-    console.log(err.response);
+    console.log(err.response.data);
   }
 };
 

@@ -17,16 +17,16 @@ const Gallery = (props) => {
             <Slider className="slider">
                 {props.data.map((item, ind) => {
                     const caption = item.caption ? item.caption.trim() : null;
-                    if (item.type === "i") {
+                    if (!item.type || item.type === "i") {
                         return (<Slide index={ind} className="slide">
-                            <Image src={item.src} className="item"/>
+                            <Image src={item.url} className="item"/>
                             {caption && caption.length > 0 &&
                                 <div className="caption">{caption}</div>
                             }
                         </Slide>)
                     } else if (item.type === "v") {
                         return (<Slide index={ind} className="slide">
-                            <ReactPlayer url={item.src} width={"100%"} height={"100%"} className="item"/>
+                            <ReactPlayer url={item.url} width={"100%"} height={"100%"} className="item"/>
                         </Slide>)
                     }
                 })}
