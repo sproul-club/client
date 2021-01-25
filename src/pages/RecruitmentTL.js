@@ -25,8 +25,8 @@ function generateGoogleEventLink(recruiting_event) {
     return google({
         title: recruiting_event.name,
         description: finalDescription.trim(),
-        start: new Date(recruiting_event.event_start),
-        end: new Date(recruiting_event.event_end)
+        start: recruiting_event.event_start+"-08:00",
+        end: recruiting_event.event_end+"-08:00"
     });
 }
 
