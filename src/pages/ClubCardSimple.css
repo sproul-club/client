@@ -65,19 +65,19 @@
   display: -webkit-box;
   -webkit-box-orient: vertical;
 }
-.one-line {
+.simple-one-line {
   -webkit-line-clamp: 5;
 }
-.two-line {
+.simple-two-line {
   -webkit-line-clamp: 4;
 }
-.three-line {
+.simple-three-line {
   -webkit-line-clamp: 3;
 }
-.four-line {
+.simple-four-line {
   -webkit-line-clamp: 2;
 }
-.five-line {
+.simple-five-line {
   -webkit-line-clamp: 1;
 }
 
