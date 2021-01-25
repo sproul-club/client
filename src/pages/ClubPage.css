@@ -209,6 +209,30 @@
   margin: 2.5vw 0 1vw 2.4vw;
 }
 
+.recommended-clubs-wrapper {
+  /* margin: 2.5vw 0 1vw 2.4vw;
+  margin-right: 4.7vw;
+  margin-left: 0px;
+  padding: 1.5vw 2vw 2.5vw 2vw; */
+  margin-left: 2.5vw;
+  padding: 1.5vw 0vw 2.5vw 2vw;
+  /* margin-right: 0vw; */
+  /* width: 100%; */
+}
+
+.recommended-clubs {
+  /* display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex: 1; */
+  padding-top: 15px;
+  display: grid;
+  /* grid-template-columns: repeat(auto-fill, 350px);  */
+  grid-template-columns: repeat(auto-fill, 32%); 
+  justify-content: space-between;
+  /* grid-gap: 1em; */
+}
+
 .clubpage-content-left {
   /* flex: 2; */
   margin-right: 4.7vw;
@@ -445,4 +469,10 @@
   .clubpage-content-contact a {
     font-size: 10px !important;
   }
+
+  .recommended-clubs {
+    display: flex;
+    flex-direction: column;
+  }
+  
 }
