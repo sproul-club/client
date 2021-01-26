@@ -35,10 +35,10 @@ const Gallery = (props) => {
                 })}
             </Slider>
             {props.data.length > 1 && index != 0 &&
-                <ButtonBack className="back-button" onClick={() => setIndex(index-1)}><ChevronLeft style={{color: '#767676', fontSize: 40, background:'white', borderRadius:'.8vw', boxShadow:'1px 1px 4px rgba(0, 0, 0, 0.25)'}}/></ButtonBack>
+                <ButtonBack className="back-button" onClick={() => setIndex(index-1)}><ChevronLeft style={{color: '#c1c1c1', fontSize: 40, background:'white', borderRadius:'10vw', boxShadow:'1px 1px 4px rgba(0, 0, 0, 0.25)'}}/></ButtonBack>
             }
             {props.data.length > 1 && index != props.data.length - 1 &&
-                <ButtonNext className="next-button" onClick={() => setIndex(index+1)}><ChevronRight style={{color: '#767676', fontSize: 40, background:'white', borderRadius:'.8vw', boxShadow:'1px 1px 4px rgba(0, 0, 0, 0.25)'}}/></ButtonNext>
+                <ButtonNext className="next-button" onClick={() => setIndex(index+1)}><ChevronRight style={{color: '#c1c1c1', fontSize: 40, background:'white', borderRadius:'10vw', boxShadow:'1px 1px 4px rgba(0, 0, 0, 0.25)'}}/></ButtonNext>
             }
             
         </CarouselProvider>
