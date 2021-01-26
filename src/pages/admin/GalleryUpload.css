@@ -6,6 +6,11 @@
     color:#8D8D8D;
 }
 
+.slide .caption {
+    font-size: 1vw;
+    font-family: Qanelas Soft;
+}
+
 .hiddenText {
     color: #C4C4C4;
 }
