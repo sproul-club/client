@@ -61,7 +61,14 @@
 }
 
 .clubpage-content-gallery {
-  height: 20vw;
+  height: 34vw;
+}
+
+.clubpage-content-gallery img {
+  max-width: 44vw;
+  max-height: 24.75vw;
+  min-width: 44vw;
+  min-height: 24.75vw;
 }
 
 .clubpage-header {
