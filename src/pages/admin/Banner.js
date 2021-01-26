@@ -17,7 +17,7 @@ const Banner = ({
       try {
         NotificationManager.info('Uploading banner...', '', 1500);
         await uploadBanner(bannerUploads[0]);
-        NotificationManager.success('Banner changes saved successfully! Refresh to see changes', '', 5000);
+        NotificationManager.success('Banner changes saved successfully!', '', 5000);
         close();
       } catch (err) {
         if (err.response.status === 503) {

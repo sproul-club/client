@@ -74,7 +74,7 @@ const Catalog2 = ({
     setFormDetails({ name: 'recruiting', value: false });
     setFormDetails({ name: 'notRecruiting', value: false });
     setFormDetails({ name: 'members', value: 'reset' });
-    setFormDetails({ name: 'sort', value: 'Rand' });
+    setFormDetails({ name: 'sort', value: 'Fresh' });
   };
 
   const toggleTag = tagLabel => {

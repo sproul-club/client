@@ -16,6 +16,10 @@ import {
   ADD_RECR_EVENT,
   DELETE_RECR_EVENT,
   UPDATE_RECR_EVENT,
+  GET_GALLERY_PHOTOS,
+  ADD_GALLERY_PHOTO,
+  UPDATE_GALLERY_PHOTO,
+  DELETE_GALLERY_PHOTO
 } from './types';
 import FormData from 'form-data';
 
@@ -92,7 +96,6 @@ export const uploadBanner = (banner) => async (dispatch) => {
 
   let data = new FormData();
   data.append('banner', banner);
-  data.append('caption', '');
 
   const config = {
     headers: {
@@ -243,3 +246,62 @@ export const getSizeTags = () => async (dispatch) => {
   }
 };
 
+// HI NICO LOOK OVER THESE ACTIONS AND MAKE SURE THEY'RE CORRECT <33333
+
+export const getGalleryPhotos = () => async (dispatch) => {
+  try {
+    const res = await API.get('/api/admin/gallery-media');
+    return res.data;
+  } catch (err) {
+    console.log(err.response);
+  }
+};
+
+export const addGalleryPhoto = (fileObj, caption) => async (dispatch) => {
+  let data = new FormData();
+
+  data.append('photo', fileObj);
+  data.append('caption', caption);
+
+  const config = {
+    headers: {
+      'Content-Type': `multipart/form-data; boundary=${data._boundary}`,
+    },
+  };
+
+  try {
+    const res = await API.post('/api/admin/gallery-media/photo', data, config);
+    dispatch({ type: ADD_GALLERY_PHOTO, payload: res.data });
+  } catch (err) {
+    console.log(err.response.data);
+  }
+};
+
+export const updateGalleryPhoto = (id, caption) => async (dispatch) => {
+  let data = new FormData();
+
+  data.append('caption', caption);
+
+  const config = {
+    headers: {
+      'Content-Type': `multipart/form-data; boundary=${data._boundary}`,
+    },
+  };
+
+  try {
+    const res = await API.put(`/api/admin/gallery-media/photo/${id}`, data, config);
+    dispatch({ type: UPDATE_GALLERY_PHOTO, payload: res.data });
+  } catch (err) {
+    console.log(err.response);
+  }
+};
+
+
+export const deleteGalleryPhoto = (id) => async (dispatch) => {
+  try {
+    const res = await API.delete(`/api/admin/gallery-media/${id}`);
+    dispatch({ type: DELETE_GALLERY_PHOTO, payload: res.data });
+  } catch (err) {
+    console.log(err);
+  }
+};

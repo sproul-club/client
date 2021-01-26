@@ -1,17 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import ImageUploader from '../../react-images-upload';
-import { updateProfile, uploadLogo, uploadBanner } from '../../actions/profile';
+import { updateProfile, uploadLogo, uploadBanner, getGalleryPhotos, addGalleryPhoto, updateGalleryPhoto, deleteGalleryPhoto } from '../../actions/profile';
 import { NotificationManager } from 'react-notifications';
+import store from '../../store';
 import { API, TOKENS } from '../../utils/backendClient';
+import './GalleryUpload.css';
+import Delete from '@material-ui/icons/DeleteRounded';
+import Add from '@material-ui/icons/AddRounded';
+import { CodeOutlined } from '@material-ui/icons';
 
 const GalleryUpload = ({
-    uploadBanner,
+    addGalleryPhoto,
+    updateGalleryPhoto,
+    deleteGalleryPhoto,
     close,
+    profile
   }) => {
-    const [bannerImage, setBannerImage] = useState(null);
+    const [gallery, setGallery] = useState(profile.gallery_media ? profile.gallery_media.map(el => ({...el, changed: false})) : []);
     useEffect(() => {
       // Outline leftover from ClubPage
+      store.dispatch(getGalleryPhotos());
     }, []);
     async function uploadBannerPic(bannerUploads) {
       if (bannerUploads && bannerUploads.length > 0) {
@@ -37,90 +46,194 @@ const GalleryUpload = ({
         }
       }
     }
-  
-    const submit = async () => {
-        if (!bannerImage && !bannerImage.length > 0) {
-            console.log('React state prob not updated');
-            return;
+
+    const updateImage = async (newImg, ind) => {
+      let oldGallery = [...gallery];
+      let newItem = oldGallery[ind];
+      newItem.url = newImg;
+      newItem.changed = true;
+      oldGallery[ind] = newItem;
+      setGallery(oldGallery);
+    }
+
+    const updateCaption = async (newVal, ind) => {
+      let oldGallery = [...gallery];
+      let newItem = oldGallery[ind];
+      newItem.caption = newVal;
+      newItem.changed = true;
+      oldGallery[ind] = newItem;
+      setGallery(oldGallery);
+    }
+
+    const refreshGallery = async (ind=-1) => {
+      await store.dispatch(getGalleryPhotos())
+        .then(res => {
+          let updatedGallery = [...res];
+          gallery.forEach((el, sInd) => {
+            if (el.temp && sInd != ind) {
+              updatedGallery.insert(sInd, el);
+            }
+          });
+          setGallery(updatedGallery);
+        })
+    }
+
+    const submitChanges = async (ind) => {
+      const item = gallery[ind];
+      if (!item.url) return;
+      try {
+        if (item.temp) {
+          NotificationManager.info('Uploading Changes...', '', 1500);
+          await addGalleryPhoto(item.url[0], item.caption);
+          NotificationManager.success('Changes saved successfully!', '', 5000);
+        } else {
+            await updateGalleryPhoto(item.id, item.caption);
         }
+        await refreshGallery(ind);
+      } catch (e) {
+        console.log(e);
+        if (e.response.status === 503) {
+          NotificationManager.error(
+            'Something went wrong on our end. Please try again later',
+            'Banner image upload unsuccessful',
+            5000
+          );
+        } else {
+          NotificationManager.error(
+            'For best results, please upload a logo that has an aspect ratio of 10:3',
+            'Changes upload unsuccessful',
+            5000
+          );
+        }
+      }
+    }
 
-        let data = new FormData();
-        data.append('gallery', bannerImage[0]);
-        data.append('caption', '');
+    const cancelChanges = async (ind) => {
+      let updatedGallery = [...gallery];
+      if (updatedGallery[ind].temp) {
+        updatedGallery.splice(ind, 1);
+      } else {
+        updatedGallery[ind] = {...profile.gallery_media[ind], changed: false};
+      }
+      setGallery(updatedGallery);
+    }
 
-        const config = {
-            headers: {
-              'Content-Type': `multipart/form-data; boundary=${data._boundary}`,
-            },
-          };
+    const addPhoto = async () => {
+      let updatedGallery = [...gallery];
+      updatedGallery.push({
+        url: null,
+        caption: "",
+        temp: true,
+        changed: true,
+      });
+      setGallery(updatedGallery);
+    }
 
+    const deletePhoto = async (ind) => {
+      let updatedGallery = [...gallery];
+      if (updatedGallery[ind].temp) {
+        updatedGallery.splice(ind, 1);
+        setGallery(updatedGallery);
+      } else {
+        NotificationManager.info('Deleting Gallery image...', '', 1500);
         try {
-            const res = await API.post('/api/admin/gallery-pics', data, config);
-            // dispatch({ type: UPLOAD_IMAGES, payload: res.data });
-        
-            // await dispatch(loadProfile());
-        } catch (err) {
-            console.log(err.response.data);
-            throw err;
+          await deleteGalleryPhoto(updatedGallery[ind].id);
+          await refreshGallery(ind);
+        } catch(e) {
+          NotificationManager.error(
+            'Something went wrong on our end. Please try again later',
+            'Deletion unsuccessful',
+            5000
+          );
+          console.log(e);
         }
-    // //   try {
-    //     await Promise.all([
-    //       uploadBannerPic(bannerImage)
-    //     ]);
-    //     // await updateProfile(newProfile);
-    //       // NotificationManager.success('Banner changes saved successfully! Refresh to see changes', '', 5000);
-    //     } catch (err) {
-    //       NotificationManager.error('Banner changes unsuccessful!', '', 5000);
-    //     }
-    };
-  
+        NotificationManager.success('Gallery image deleted successfully!', '', 5000);
+      }
+    }
+
     return (
-      <div>
+      <div className="gallery-upload-wrapper">
         <h3>Gallery</h3>
         <p>Upload photos to your club's gallery!</p>
-        <div className="bannerUpload">
-          <ImageUploader
-            label=""
-            buttonStyles={{
-              background: '#54a0f1',
-            }}
-            fileContainerStyle={{
-              width: '570px',
-              // float: 'left',
-              marginBottom: '40px',
-            }}
-            labelStyles={{
-              width: '250px',
-              marginRight: 0,
-              textAlign: 'center',
-            }}
-            withIcon={true}
-            singleImage={true}
-            withPreview={true}
-            buttonText="Choose image"
-            onChange={(e) => setBannerImage(e)}
-            imgExtension={['.jpg', '.gif', '.png', '.gif']}
-            maxFileSize={16777216}
-          />
+        <div className="image-list">
+          {gallery && gallery.map((el, ind) => (
+            <div className="image-card">
+              <div>
+                <div className='image-card-header'>
+                  <h4>Photo {ind + 1}</h4>
+                  <button className='delete-btn' onClick={() => deletePhoto(ind)}><Delete className="deleteImg" /></button>
+                </div>
+                {el.url ?
+                  <div className="img-preview-container">
+                    <div className="img-preview-overlay"></div>
+                    <img
+                      className="img-preview"
+                      src={typeof el.url === 'object' ? URL.createObjectURL(el.url[0]) : el.url}
+                      alt=""
+                    />
+                    <div className='img-preview-overlay'></div>
+                  </div>
+                :
+                  <ImageUploader
+                    withIcon={false}
+                    label=""
+                    buttonStyles={{
+                      background: '#54a0f1',
+                    }}
+                    fileContainerStyle={{
+                      boxShadow: 'none',
+                    }}
+                    labelStyles={{
+                      width: '250px',
+                      marginRight: 0,
+                      textAlign: 'center',
+                    }}
+                    withIcon={true}
+                    singleImage={true}
+                    withPreview={true}
+                    buttonText="Choose image"
+                    onChange={(e) => updateImage(e, ind)}
+                    imgExtension={['.jpg', '.gif', '.png', '.gif']}
+                    maxFileSize={16777216}
+                  />
+                }
+                <p className='subtext'>Upload image max 2MB. Image ratio will be cropped to 16 : 9</p>
+              </div>
+              <div className='bottom-section'>
+                <b>Caption</b>
+                <input className="caption-textbox" maxLength='50' value={el.caption} onChange={(e) => updateCaption(e.target.value, ind)} placeholder="Caption for photo"></input>
+                <p className='subtext'>50 character limit</p>
+                {el.changed &&
+                  <div className="gallery-buttons">
+                    <button id="save-button" onClick={() => submitChanges(ind)}> Save </button>
+                    <button id="cancel-button" onClick={() => cancelChanges(ind)}> Cancel </button>
+                  </div>
+                }
+              </div>
+            </div>
+          ))}
+          <button className="image-card image-card-empty" onClick={addPhoto}>
+              <Add style={{color: "#C5C5C5", fontSize: 40}}/>
+              <a className='hiddenText'>Click here to add a photo</a>
+          </button>
         </div>
-        <p className="subtitle">
-            <span style={{ color: '#FF0000' }}>*</span> This feature is undergoing beta testing.
-            The current image limit is 1 image. Please bear with us as we roll out updates!
+        <p>
+            <span style={{ color: '#FF0000', borderBottom: '10px' }}>*</span> This feature is undergoing beta testing.
         </p>
-        <button id="save-button" onClick={submit}> Save </button>
-        <button id="cancel-button" onClick={() => close()}> Cancel </button>
       </div>
     );
   };
   
-  const mapStateToProps = (state) => ({
-    profile: state.profile.profile,
-    images: state.profile.images,
+  const mapStateToProps = (state, ownProps) => ({
+    profile: ownProps.profile,
   });
   
   export default connect(mapStateToProps, {
     updateProfile,
     uploadLogo,
     uploadBanner,
+    addGalleryPhoto,
+    updateGalleryPhoto,
+    deleteGalleryPhoto,
   })(GalleryUpload);
   
