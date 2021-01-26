@@ -119,7 +119,7 @@ const Catalog2 = ({
   ReactGA.pageview('/catalog');
   
   return (<>
-    {admin &&<div className='catalog-page'>
+    <div className='catalog-page'>
       <div className="catalog-content">
         <div className="banner">
           <img src={banner} alt="banner"/>
@@ -241,8 +241,7 @@ const Catalog2 = ({
           <GridComponent displayBanner= {true}/>
         </div>
       </div>
-    </div>}
-    {!admin && <UnderConstruction/>}
+    </div>
     <Footer/>
     </>
   )
