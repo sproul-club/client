@@ -9,6 +9,7 @@
   letter-spacing: 0.03em;
 }
 
+
 .clubpage {
   padding-top: 2vw;
   width: 80vw;
@@ -68,10 +69,17 @@
 }
 
 .clubpage-content-gallery .gallery img {
-  max-width: 44vw;
+  /* max-width: 44vw;
   max-height: 24.75vw;
   min-width: 44vw;
-  min-height: 24.75vw;
+  min-height: 24.75vw; */
+  height: 100%;
+  width: auto;
+}
+
+.carousel__inner-slide {
+  display: flex;
+  justify-content: center;
 }
 
 .clubpage-header {
@@ -115,6 +123,12 @@
   flex-direction: row;
   align-items: center;
   flex-wrap: wrap;
+  -webkit-touch-callout: none; 
+  -webkit-user-select: none; 
+  -khtml-user-select: none;
+  -moz-user-select: none; 
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .clubpage-header-left {
@@ -272,7 +286,7 @@
   justify-content: flex-end;
   align-items: center;
   width: 100%;
-  margin-bottom: 1.4vw;
+  margin-bottom: 2vw;
 }
 
 .seeMoreButton:hover {
