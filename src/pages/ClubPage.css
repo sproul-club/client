@@ -61,10 +61,12 @@
 }
 
 .clubpage-content-gallery {
-  height: 34vw;
+  display: flex;
+  flex-direction: column;
+  max-height: 34vw;
 }
 
-.clubpage-content-gallery img {
+.clubpage-content-gallery .gallery img {
   max-width: 44vw;
   max-height: 24.75vw;
   min-width: 44vw;

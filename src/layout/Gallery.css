@@ -8,10 +8,6 @@
     flex-direction: column;
 }
 
-.slide {
-    height: 100vw;
-}
-
 .slide .caption {
     position: absolute;
     left: 0;
