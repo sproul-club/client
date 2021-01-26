@@ -250,18 +250,17 @@ export const getSizeTags = () => async (dispatch) => {
 
 export const getGalleryPhotos = () => async (dispatch) => {
   try {
-    const res = await API.get('/api/admin/gallery-pics');
-    dispatch({ type: GET_GALLERY_PHOTOS, payload: res.data });
+    const res = await API.get('/api/admin/gallery-media');
+    return res.data;
   } catch (err) {
     console.log(err.response);
   }
 };
 
-export const addGalleryPhoto = (fileObj, caption, galleryLen) => async (dispatch) => {
+export const addGalleryPhoto = (fileObj, caption) => async (dispatch) => {
   let data = new FormData();
 
-  data.append('id', `gallery-pic-${galleryLen}`);
-  data.append('gallery', fileObj);
+  data.append('photo', fileObj);
   data.append('caption', caption);
 
   const config = {
@@ -271,18 +270,16 @@ export const addGalleryPhoto = (fileObj, caption, galleryLen) => async (dispatch
   };
 
   try {
-    const res = await API.post('/api/admin/gallery-pics', data, config);
+    const res = await API.post('/api/admin/gallery-media/photo', data, config);
     dispatch({ type: ADD_GALLERY_PHOTO, payload: res.data });
   } catch (err) {
     console.log(err.response.data);
   }
 };
 
-export const updateGalleryPhoto = (id, fileObj, caption) => async (dispatch) => {
-  if (!fileObj) return;
+export const updateGalleryPhoto = (id, caption) => async (dispatch) => {
   let data = new FormData();
 
-  data.append('gallery', fileObj);
   data.append('caption', caption);
 
   const config = {
@@ -292,7 +289,7 @@ export const updateGalleryPhoto = (id, fileObj, caption) => async (dispatch) => 
   };
 
   try {
-    const res = await API.put(`/api/admin/gallery-pics/${id}`, data, config);
+    const res = await API.put(`/api/admin/gallery-media/photo/${id}`, data, config);
     dispatch({ type: UPDATE_GALLERY_PHOTO, payload: res.data });
   } catch (err) {
     console.log(err.response);
@@ -302,7 +299,7 @@ export const updateGalleryPhoto = (id, fileObj, caption) => async (dispatch) => 
 
 export const deleteGalleryPhoto = (id) => async (dispatch) => {
   try {
-    const res = await API.delete(`/api/admin/gallery-pics/${id}`);
+    const res = await API.delete(`/api/admin/gallery-media/${id}`);
     dispatch({ type: DELETE_GALLERY_PHOTO, payload: res.data });
   } catch (err) {
     console.log(err);

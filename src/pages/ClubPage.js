@@ -67,7 +67,9 @@ function ClubPage({
     window.scrollTo(0, 0);
   }, [organization.link_name]);
   useEffect(() => {
-    if (!admin && organization.link_name !== routeId) getOrganization(routeId);
+    if (!admin && organization.link_name !== routeId) {
+      getOrganization(routeId);
+    }
     // clears the loaded profile when component unmounts
     return () => {
       // sorry karen uncommented line below bc it fixed something but lmk if it ends up breaking something else hehe
@@ -132,8 +134,6 @@ function ClubPage({
       setNumEvents(numEvents + num);
     }
   }
-
-  console.log(organization);
 
   var recommendedClubCards;
   if (!admin) {
@@ -215,7 +215,7 @@ function ClubPage({
           {aboutMore ? <ExpandLess /> : <ExpandMoreIcon />}{' '}
         </button>
         <div className="bottomGallery">
-          {((organization.gallery_pics && organization.gallery_pics.length > 0) || admin) &&
+          {((organization.gallery_media && organization.gallery_media.length > 0) || admin) &&
             <div className='clubpage-content-gallery'>
               <div className='clubpage-content-header'>
                 <h1>Gallery (Beta)</h1>
@@ -223,9 +223,9 @@ function ClubPage({
                   <img src={require('./assets/Edit.svg')} className="clubpage-content-header-icon" onClick={() => setShowGalleryModal(admin)}/>
                 }
               </div>
-              {organization.gallery_pics && organization.gallery_pics.length > 0 &&
+              {organization.gallery_media && organization.gallery_media.length > 0 &&
                 <div className="gallery">
-                  <Gallery data={organization.gallery_pics}/>
+                  <Gallery data={organization.gallery_media}/>
                 </div>
               }
             </div>}
