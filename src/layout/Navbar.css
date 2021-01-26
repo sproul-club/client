@@ -120,13 +120,12 @@
 
 .header-right .dropdown {
   width: 120px;
-  margin-top: 5px;
+  margin-top: 9px;
+  margin-left: -6px;
   font-size: 13px;
   position: absolute;
   text-align: left;
-  right: 70px;
   display: flex;
-  float: right;
   background: white;
   flex-direction: column;
   border: 1px solid #54a0f1;
@@ -144,6 +143,7 @@
   color: #000000;
   text-decoration: none;
   transition: color 0.12s;
+  border-radius: 0px 0px 10px 10px;
 }
 .dropdown .option:hover {
   color: #54a0f1;
@@ -160,6 +160,7 @@
   margin-left: 18px;
 }
 .menu.logout .dropdown {
+  margin-top: 5px;
   width: 110px;
 }
 .menu.logout .dropdown .option {
@@ -172,7 +173,7 @@
   margin-left: 15px;
 }
 .menu.login .dropdown {
-  width: 94px;
+  width: 104px;
 }
 .menu.login .dropdown .option {
   padding: 0px 12px;

@@ -215,7 +215,7 @@
   margin-left: 0px;
   padding: 1.5vw 2vw 2.5vw 2vw; */
   margin-left: 2.5vw;
-  padding: 1.5vw 0vw 2.5vw 2vw;
+  padding: 0 0vw 2.5vw 2vw;
   /* margin-right: 0vw; */
   /* width: 100%; */
 }
@@ -237,7 +237,7 @@
   /* flex: 2; */
   margin-right: 4.7vw;
   margin-left: 0px;
-  padding: 1.5vw 2vw 2.5vw 2vw;
+  padding: 1.5vw 2vw 0 2vw;
   min-width: 44vw;
   display: flex;
   flex-direction: column;
@@ -262,7 +262,7 @@
   justify-content: flex-end;
   align-items: center;
   width: 100%;
-  margin-bottom: 0.8vw;
+  margin-bottom: 1.4vw;
 }
 
 .seeMoreButton:hover {
