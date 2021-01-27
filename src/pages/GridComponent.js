@@ -8,7 +8,6 @@ import ClubCard from './ClubCard';
 import confusion from './assets/resetpwd1.png'
 
 function GridComponent({ tagOptions, clubs, loading, formDetails, num_displayed, displayBanner, favorites}) {
-  console.log(clubs);
 
   if (!formDetails.sort) {
     formDetails.sort = 'Fresh';
