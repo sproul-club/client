@@ -36,6 +36,7 @@ import { loadAllClubs} from './actions/catalog';
 import { Provider } from 'react-redux';
 import PrivateRoute from './utils/PrivateRoute';
 import Navbar from './layout/Navbar';
+import UnderConstruction from './pages/UnderConstruction';
 
 import Moment from 'react-moment';
 import 'moment-timezone';
@@ -67,7 +68,7 @@ const App = () => {
           <Route path="/club/:id" component={ClubPage} />
           <PrivateRoute exact path="/security" component={Security} />
           <Route exact path="/dashboard" component={Dashboard} />
-          <Route exact path="/FAQ" component={FAQ} />
+          <Route exact path="/FAQ" component={UnderConstruction} />
           <Route exact path="/favorites" component={Favorites} />
           <Route exact path="/student/settings" component={StudentSettings} />
           <PrivateRoute exact path="/security" component={Security} />

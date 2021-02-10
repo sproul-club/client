@@ -38,7 +38,6 @@ function ClubPage({
   tagOptions,
   history,
 }) {
-  console.log(organization)
   const [showContactModal, setShowContactModal] = useState(false);
   const [showInvolvedModal, setShowInvolvedModal] = useState(false);
   const [showAboutModal, setShowAboutModal] = useState(false);
