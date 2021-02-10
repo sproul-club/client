@@ -1,4 +1,4 @@
-export const filterClubs = (allOrganizations, formDetails, tagOptions, num_results, favorites, sort) => {
+export const filterClubs = (allOrganizations, formDetails, tagOptions, num_results, favorites) => {
 
   // console.log(allOrganizations)
 
