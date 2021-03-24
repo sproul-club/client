@@ -1,16 +1,13 @@
-import React, {useState} from 'react';
-import './OnboardingFavorites.css'
-import coloredBall from './assets/status1.png'
-import uncoloredBall from './assets/status2.png'
-import favorite from './assets/favorite.png'
-import OnboardingModal from '../layout/OnboardingModal';
+import React, { useState } from 'react';
+import './OnboardingFavorites.css';
+import coloredBall from './assets/status1.png';
+import uncoloredBall from './assets/status2.png';
+import favorite from './assets/favorite.png';
+import OnboardingModal from '../components/onboardingModal/OnboardingModal';
 import OnboardingEvents from './OnboardingEvents';
 import OnboardingSkip from './OnboardingSkip';
 
-const OnboardingFavorites = ({
-  closeOnlySkip,
-  close
-}) => {
+const OnboardingFavorites = ({ closeOnlySkip, close }) => {
   const [showNextModal, setNextModal] = useState(false);
   const [showSkipModal, setSkipModal] = useState(false);
 
@@ -32,14 +29,9 @@ const OnboardingFavorites = ({
     <div className="onboarding">
       <div className="content">
         <div className="imageContainer">
-          <img 
-            src={favorite} 
-            className="favorite" 
-            alt="favorite picture" 
-            />
+          <img src={favorite} className="favorite" alt="favorite picture" />
         </div>
-        <br>
-        </br>
+        <br></br>
         <div className="caption-text">
           <p>
             In the Discover page, there's a catalog of clubs where you will be
@@ -49,66 +41,63 @@ const OnboardingFavorites = ({
         </div>
 
         <div className="second">
-            <button id="next-button" onClick={goToNext}> Next </button>
-            <button id="skip-button" onClick={() => setSkipModal(true)}> skip </button>
+          <button id="next-button" onClick={goToNext}>
+            {' '}
+            Next{' '}
+          </button>
+          <button id="skip-button" onClick={() => setSkipModal(true)}>
+            {' '}
+            skip{' '}
+          </button>
 
-            <button id="invalid-button"> 
+          <button id="invalid-button">
             <img
-                src={uncoloredBall}
-                id="uncoloredBall"
-                className="balls"
-                alt="uncoloredBall"
+              src={uncoloredBall}
+              id="uncoloredBall"
+              className="balls"
+              alt="uncoloredBall"
             />
             <img
-                src={coloredBall}
-                id="coloredBall"
-                className="balls"
-                alt="coloredBall"
+              src={coloredBall}
+              id="coloredBall"
+              className="balls"
+              alt="coloredBall"
             />
             <img
-                src={uncoloredBall}
-                id="uncoloredBall"
-                className="balls"
-                alt="uncoloredBall"
+              src={uncoloredBall}
+              id="uncoloredBall"
+              className="balls"
+              alt="uncoloredBall"
             />
             <img
-                src={uncoloredBall}
-                id="uncoloredBall"
-                className="balls"
-                alt="uncoloredBall"
+              src={uncoloredBall}
+              id="uncoloredBall"
+              className="balls"
+              alt="uncoloredBall"
             />
             <img
-                src={uncoloredBall}
-                id="uncoloredBall"
-                className="balls"
-                alt="uncoloredBall"
+              src={uncoloredBall}
+              id="uncoloredBall"
+              className="balls"
+              alt="uncoloredBall"
             />
-            </button>
-
+          </button>
         </div>
-    
-        <OnboardingModal
-          showModal={showNextModal}
-          setShowModal={setNextModal}
-        >
+
+        <OnboardingModal showModal={showNextModal} setShowModal={setNextModal}>
           <div className="onboarding-modal">
-            <OnboardingEvents close={exitOnboarding}/>
+            <OnboardingEvents close={exitOnboarding} />
           </div>
         </OnboardingModal>
 
-        <OnboardingModal
-          showModal={showSkipModal}
-          setShowModal={setSkipModal}
-        >
+        <OnboardingModal showModal={showSkipModal} setShowModal={setSkipModal}>
           <div className="onboarding-modal">
-            <OnboardingSkip closeOnlySkip={exitSkip} close={exitOnboarding}/>
+            <OnboardingSkip closeOnlySkip={exitSkip} close={exitOnboarding} />
           </div>
         </OnboardingModal>
-
       </div>
     </div>
   );
 };
-
 
 export default OnboardingFavorites;

@@ -2,9 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link, withRouter, Redirect } from 'react-router-dom';
 import './SignIn.css';
 import { connect } from 'react-redux';
-import { login } from '../actions/auth';
+import { login, isCallinkEmail } from '../redux/actions/auth';
 import error from './assets/error.svg';
-import { isCallinkEmail } from '../actions/auth';
 import { NotificationManager } from 'react-notifications';
 
 const SignInForm = ({ login, history, isAuthenticated }) => {
@@ -19,9 +18,14 @@ const SignInForm = ({ login, history, isAuthenticated }) => {
 
   // This is needed since the NotificationComponent needs to be fully rendered before displaying notifications right away
   useEffect(() => {
-    const userConfirmed = new URLSearchParams(window.location.search).get('confirmed') === 'true';
+    const userConfirmed =
+      new URLSearchParams(window.location.search).get('confirmed') === 'true';
     if (userConfirmed)
-      NotificationManager.success("You've successfully confirmed your email! Please log in", '', 3000);
+      NotificationManager.success(
+        "You've successfully confirmed your email! Please log in",
+        '',
+        3000
+      );
   }, []);
 
   if (isAuthenticated) {
@@ -124,7 +128,7 @@ const SignInForm = ({ login, history, isAuthenticated }) => {
         onChange={(e) => passwordOnChange(e.target.value)}
       />
       <div className="fine-print">
-        <Link to="/recover">Forgot password?</Link> <br/>
+        <Link to="/recover">Forgot password?</Link> <br />
         Don't have an account? Sign up <Link to="/signup">here</Link>
       </div>
       <button type="submit" className="submitButton" onClick={submitValue}>

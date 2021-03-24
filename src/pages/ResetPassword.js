@@ -1,6 +1,6 @@
 import React from 'react';
 import './ResetPassword.css';
-import Footer from '../layout/Footer';
+import Footer from '../components/layout/footer/Footer';
 import ResetPasswordForm from './ResetPasswordForm';
 
 const ResetPassword = () => {

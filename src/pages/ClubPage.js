@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 import './ClubPage.css';
 import RecruitmentTL from './RecruitmentTL';
 import EventAccord from './EventAccord';
-import Gallery from '../layout/Gallery';
-import Footer from '../layout/Footer';
-import Loading from '../layout/Loading';
-import Tag from '../layout/Tag';
+import Gallery from '../components/gallery/Gallery';
+import Footer from '../components/layout/footer/Footer';
+import Loading from '../components/layout/loading/Loading';
+import Tag from '../components/tag/Tag';
 import { withRouter } from 'react-router-dom';
-import { getOrganization, clearOrganization } from '../actions/catalog';
+import { getOrganization, clearOrganization } from '../redux/actions/catalog';
 import { connect } from 'react-redux';
 import ReactGA from 'react-ga';
 import RightArrow from '@material-ui/icons/CallMadeRounded';
@@ -15,7 +15,7 @@ import HeartBordered from '@material-ui/icons/FavoriteBorderRounded';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import { Route, Switch, Link } from 'react-router-dom';
-import Modal from '../layout/Modal';
+import Modal from '../components/layout/modal/Modal';
 import ContactInfo from '../pages/admin/ContactInfo';
 import GetInvolved from '../pages/admin/GetInvolved';
 import AboutClub from '../pages/admin/AboutClub';
@@ -94,7 +94,7 @@ function ClubPage({
   };
 
   // fetchGallery();
-/*
+  /*
   organization.gallery = [
     {
       type: 'i',
@@ -140,9 +140,7 @@ function ClubPage({
     var recommendedClubs = organization.recommended_clubs;
     var recommendedClubCards = Object.keys(recommendedClubs).map((i) =>
       recommendedClubs[i] !== null && recommendedClubs[i] !== '' ? (
-          <ClubCardSimple
-            club={recommendedClubs[i]}
-          />
+        <ClubCardSimple club={recommendedClubs[i]} />
       ) : null
     );
   }
@@ -215,22 +213,30 @@ function ClubPage({
           {aboutMore ? <ExpandLess /> : <ExpandMoreIcon />}{' '}
         </button>
         <div className="bottomGallery">
-          {((organization.gallery_media && organization.gallery_media.length > 0) || admin) &&
-            <div className='clubpage-content-gallery'>
-              <div className='clubpage-content-header'>
+          {((organization.gallery_media &&
+            organization.gallery_media.length > 0) ||
+            admin) && (
+            <div className="clubpage-content-gallery">
+              <div className="clubpage-content-header">
                 <h1>Gallery (Beta)</h1>
-                {admin &&
-                  <img src={require('./assets/Edit.svg')} className="clubpage-content-header-icon" onClick={() => setShowGalleryModal(admin)}/>
-                }
+                {admin && (
+                  <img
+                    src={require('./assets/Edit.svg')}
+                    className="clubpage-content-header-icon"
+                    onClick={() => setShowGalleryModal(admin)}
+                  />
+                )}
               </div>
-              {organization.gallery_media && organization.gallery_media.length > 0 &&
-                <div className="gallery">
-                  <Gallery data={organization.gallery_media}/>
-                </div>
-              }
-            </div>}
+              {organization.gallery_media &&
+                organization.gallery_media.length > 0 && (
+                  <div className="gallery">
+                    <Gallery data={organization.gallery_media} />
+                  </div>
+                )}
+            </div>
+          )}
         </div>
-      {/* <GridComponent displayBanner= {true}/> */}
+        {/* <GridComponent displayBanner= {true}/> */}
       </div>
     </div>
   );
@@ -515,15 +521,12 @@ function ClubPage({
           </div>
         </div>
 
-        
-          {tab === "overview" && !admin &&
-            <div className= "recommended-clubs-wrapper">
-              <h1>Similar organizations</h1>
-              <div className= "recommended-clubs"> 
-                {recommendedClubCards} 
-              </div>
-            </div>
-          } 
+        {tab === 'overview' && !admin && (
+          <div className="recommended-clubs-wrapper">
+            <h1>Similar organizations</h1>
+            <div className="recommended-clubs">{recommendedClubCards}</div>
+          </div>
+        )}
 
         <Modal
           showModal={showBannerModal}

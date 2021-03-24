@@ -12,10 +12,10 @@ import { NotificationContainer } from 'react-notifications';
 import { Landing } from './pages/Landing.js';
 import { ComingSoon } from './pages/ComingSoon.js';
 // import Catalog from './pages/catalog.js';
-import Catalog2 from './pages/Catalog2.js';
+import Catalog from './pages/Catalog.js';
 import { SignUp } from './pages/SignUp.js';
 import { SignIn } from './pages/SignIn.js';
-import RegisterStudent from './pages/RegisterStudent.js'
+import RegisterStudent from './pages/RegisterStudent.js';
 import { ResetPassword } from './pages/ResetPassword.js';
 import { ResetPassword2 } from './pages/ResetPassword2.js';
 import Security from './pages/admin/Security.js';
@@ -29,13 +29,13 @@ import ClubPage from './pages/ClubPage';
 import Dashboard from './pages/Dashboard.js';
 import Favorites from './pages/Favorites.js';
 import Activation from './pages/Activation.js';
-import store from './store';
-import ContactUs from './layout/ContactUs.js';
-import { loadProfile, getTags, getSizeTags} from './actions/profile';
-import { loadAllClubs} from './actions/catalog';
+import store from './redux/store';
+import ContactUs from './components/layout/contactUs/ContactUs.js';
+import { loadProfile, getTags, getSizeTags } from './redux/actions/profile';
+import { loadAllClubs } from './redux/actions/catalog';
 import { Provider } from 'react-redux';
 import PrivateRoute from './utils/PrivateRoute';
-import Navbar from './layout/Navbar';
+import Navbar from './components/layout/navbar/Navbar';
 import UnderConstruction from './pages/UnderConstruction';
 
 import Moment from 'react-moment';
@@ -60,7 +60,7 @@ const App = () => {
           <Route exact path="/" component={Landing} />
           <Route exact path="/about" component={AboutPage} />
           <PrivateRoute path="/admin" component={Admin} />
-          <Route path="/catalog" component={Catalog2} />
+          <Route path="/catalog" component={Catalog} />
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/signin" component={SignIn} />
           <Route exact path="/recover" component={ResetPassword} />

@@ -7,14 +7,35 @@ import {
 } from './types';
 
 import { loadProfile } from './profile';
-import { API, TOKENS } from '../utils/backendClient';
+import { API, TOKENS } from '../../utils/backendClient';
 
 // Register User
-export const register = (name, email, password, tags, app_required, new_members, num_users, apply_deadline_start, apply_deadline_end, recruiting_start, recruiting_end) => async (dispatch) => {
+export const register = (
+  name,
+  email,
+  password,
+  tags,
+  app_required,
+  new_members,
+  num_users,
+  apply_deadline_start,
+  apply_deadline_end,
+  recruiting_start,
+  recruiting_end
+) => async (dispatch) => {
   try {
     const res = await API.post('/api/user/register', {
-      name, email, password, tags, app_required, new_members, num_users, 
-      apply_deadline_start, apply_deadline_end, recruiting_start, recruiting_end,
+      name,
+      email,
+      password,
+      tags,
+      app_required,
+      new_members,
+      num_users,
+      apply_deadline_start,
+      apply_deadline_end,
+      recruiting_start,
+      recruiting_end,
     });
 
     dispatch({ type: REGISTER_SUCCESS, payload: res.data });
@@ -44,8 +65,14 @@ export const login = (email, password) => async (dispatch) => {
 export const logout = (history) => async (dispatch) => {
   try {
     // revoke both access & refresh token
-    await API.delete('/api/user/revoke-access', TOKENS.access.fullHeaderConfig());
-    await API.delete('/api/user/revoke-refresh', TOKENS.refresh.fullHeaderConfig());
+    await API.delete(
+      '/api/user/revoke-access',
+      TOKENS.access.fullHeaderConfig()
+    );
+    await API.delete(
+      '/api/user/revoke-refresh',
+      TOKENS.refresh.fullHeaderConfig()
+    );
   } catch (err) {
     dispatch({ type: AUTH_ERROR, payload: err });
   }

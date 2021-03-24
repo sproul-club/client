@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './ResetPassword.css';
 import image from './assets/resetpwd1.png';
 import error from './assets/error.svg';
-import { isCallinkEmail, sendResetPasswordEmail } from '../actions/auth';
+import { isCallinkEmail, sendResetPasswordEmail } from '../redux/actions/auth';
 import { NotificationManager } from 'react-notifications';
 
 const ResetPasswordForm = () => {
@@ -26,10 +26,13 @@ const ResetPasswordForm = () => {
         let errMessage;
         if (err.response && err.response.data && err.response.data.reason)
           errMessage = err.response.data.reason;
-        else
-          errMessage = 'Something went wrong on our end. Please contact us.';
+        else errMessage = 'Something went wrong on our end. Please contact us.';
 
-        NotificationManager.error(errMessage, 'Unable to send password reset email', 5000);
+        NotificationManager.error(
+          errMessage,
+          'Unable to send password reset email',
+          5000
+        );
       }
     }
   };

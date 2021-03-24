@@ -7,9 +7,9 @@ import {
   clearOrganization,
   loadMoreOrgs,
   setFormDetails,
-  loadMoreClubs
-} from '../actions/catalog';
-import './Catalog2.css';
+  loadMoreClubs,
+} from '../redux/actions/catalog';
+import './Catalog.css';
 import GridComponent from './GridComponent';
 
 const AppTracker = ({
@@ -44,9 +44,9 @@ const AppTracker = ({
     setFormDetails({ name: 'notRecruiting', value: false });
   };
 
-  const toggleTag = tagLabel => {
-    setFormDetails({ name: 'tags', value: tagLabel })
-  }
+  const toggleTag = (tagLabel) => {
+    setFormDetails({ name: 'tags', value: tagLabel });
+  };
 
   function toggleAppReq() {
     setFormDetails({ name: 'appReq', value: !appReq });
@@ -73,14 +73,21 @@ const AppTracker = ({
   }
 
   const submit = async () => {
-
     try {
       //await updateProfile(newProfile);
-      NotificationManager.success('Sucessfully updated Application Tracker', '', 1500);
+      NotificationManager.success(
+        'Sucessfully updated Application Tracker',
+        '',
+        1500
+      );
       close();
     } catch (err) {
       //console.log(err);
-      NotificationManager.error('Unable to update Application Tracker', '', 1500);
+      NotificationManager.error(
+        'Unable to update Application Tracker',
+        '',
+        1500
+      );
     }
   };
 
@@ -90,96 +97,148 @@ const AppTracker = ({
       <p>Add clubs to your board</p>
 
       <h3>Search from Catalog</h3>
-      <div style={{paddingBottom: '10px'}} className='filters'>
-
+      <div style={{ paddingBottom: '10px' }} className="filters">
         {/* Search Bar */}
-        <div style={{width: '50%'}} className="filter search-filter">
+        <div style={{ width: '50%' }} className="filter search-filter">
           <i class="fas fa-search"></i>
-          <input type="text" placeholder='Search' value={name} onChange={(e) => changeSearch(e)} className='search-input'/> 
-          <span className='reset-filters'>reset filters</span>
+          <input
+            type="text"
+            placeholder="Search"
+            value={name}
+            onChange={(e) => changeSearch(e)}
+            className="search-input"
+          />
+          <span className="reset-filters">reset filters</span>
         </div>
 
         {/* App Dropdown */}
-        <div className='filter-wrapper' onMouseEnter={()=>setShowAppDD(true)} onMouseLeave={()=>setShowAppDD(false)} >
-            <div onClick={() => setShowAppDD(!showAppDD)} className={`${showAppDD && 'openDD'} filter app-filter`}>
-              App
-              {showAppDD ? <i className='fas fa-caret-up'></i> : <i className='fas fa-caret-down'></i>}
-            </div>
-            {showAppDD && (
-              <div className="filter-dropdown">
-                <div className='filter-selection'>
-                  <input type="checkbox" onClick={toggleAppReq}/>
-                  <span> App Required</span>
-                </div>
-                <div className='filter-selection'>
-                  <input type="checkbox" onClick={toggleNoAppReq}/>
-                  <span> No Application</span>
-                </div>
-              </div>
+        <div
+          className="filter-wrapper"
+          onMouseEnter={() => setShowAppDD(true)}
+          onMouseLeave={() => setShowAppDD(false)}>
+          <div
+            onClick={() => setShowAppDD(!showAppDD)}
+            className={`${showAppDD && 'openDD'} filter app-filter`}>
+            App
+            {showAppDD ? (
+              <i className="fas fa-caret-up"></i>
+            ) : (
+              <i className="fas fa-caret-down"></i>
             )}
+          </div>
+          {showAppDD && (
+            <div className="filter-dropdown">
+              <div className="filter-selection">
+                <input type="checkbox" onClick={toggleAppReq} />
+                <span> App Required</span>
+              </div>
+              <div className="filter-selection">
+                <input type="checkbox" onClick={toggleNoAppReq} />
+                <span> No Application</span>
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Tags Dropdown */}
-          <div className='filter-wrapper' onMouseEnter={()=>setShowTagsDD(true)} onMouseLeave={()=>setShowTagsDD(false)} >
-            <div onClick={() => setShowTagsDD(!showTagsDD)} className={`${showTagsDD && 'openDD'} filter tags-filter`}>
-              Tags
-              {showTagsDD ? <i className='fas fa-caret-up'></i> : <i className='fas fa-caret-down'></i>}
-            </div>
-            {showTagsDD && (
-              <div className="filter-dropdown scrollable-content">
-                {tagOptions.map(tag => (
-                  <div className='filter-selection' key={tag.value} onClick={()=>toggleTag(tag.label)}>
-                    <input type="checkbox" checked={tags[tag.label]}/> {tag.label}
-                  </div>
-                ))}
-              </div>
+        <div
+          className="filter-wrapper"
+          onMouseEnter={() => setShowTagsDD(true)}
+          onMouseLeave={() => setShowTagsDD(false)}>
+          <div
+            onClick={() => setShowTagsDD(!showTagsDD)}
+            className={`${showTagsDD && 'openDD'} filter tags-filter`}>
+            Tags
+            {showTagsDD ? (
+              <i className="fas fa-caret-up"></i>
+            ) : (
+              <i className="fas fa-caret-down"></i>
             )}
+          </div>
+          {showTagsDD && (
+            <div className="filter-dropdown scrollable-content">
+              {tagOptions.map((tag) => (
+                <div
+                  className="filter-selection"
+                  key={tag.value}
+                  onClick={() => toggleTag(tag.label)}>
+                  <input type="checkbox" checked={tags[tag.label]} />{' '}
+                  {tag.label}
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
-      <GridComponent displayBanner={false}/> 
+      <GridComponent displayBanner={false} />
 
       <h3>Favorited</h3>
-      <div style={{paddingBottom: '10px'}} className='filters'>
+      <div style={{ paddingBottom: '10px' }} className="filters">
         {/* App Dropdown */}
-        <div className='filter-wrapper' onMouseEnter={()=>setShowAppDD(true)} onMouseLeave={()=>setShowAppDD(false)} >
-            <div onClick={() => setShowAppDD(!showAppDD)} className={`${showAppDD && 'openDD'} filter app-filter`}>
-              App
-              {showAppDD ? <i className='fas fa-caret-up'></i> : <i className='fas fa-caret-down'></i>}
-            </div>
-            {showAppDD && (
-              <div className="filter-dropdown">
-                <div className='filter-selection'>
-                  <input type="checkbox" onClick={toggleAppReq}/>
-                  <span> App Required</span>
-                </div>
-                <div className='filter-selection'>
-                  <input type="checkbox" onClick={toggleNoAppReq}/>
-                  <span> No Application</span>
-                </div>
-              </div>
+        <div
+          className="filter-wrapper"
+          onMouseEnter={() => setShowAppDD(true)}
+          onMouseLeave={() => setShowAppDD(false)}>
+          <div
+            onClick={() => setShowAppDD(!showAppDD)}
+            className={`${showAppDD && 'openDD'} filter app-filter`}>
+            App
+            {showAppDD ? (
+              <i className="fas fa-caret-up"></i>
+            ) : (
+              <i className="fas fa-caret-down"></i>
             )}
+          </div>
+          {showAppDD && (
+            <div className="filter-dropdown">
+              <div className="filter-selection">
+                <input type="checkbox" onClick={toggleAppReq} />
+                <span> App Required</span>
+              </div>
+              <div className="filter-selection">
+                <input type="checkbox" onClick={toggleNoAppReq} />
+                <span> No Application</span>
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Tags Dropdown */}
-          <div className='filter-wrapper' onMouseEnter={()=>setShowTagsDD(true)} onMouseLeave={()=>setShowTagsDD(false)} >
-            <div onClick={() => setShowTagsDD(!showTagsDD)} className={`${showTagsDD && 'openDD'} filter tags-filter`}>
-              Tags
-              {showTagsDD ? <i className='fas fa-caret-up'></i> : <i className='fas fa-caret-down'></i>}
-            </div>
-            {showTagsDD && (
-              <div className="filter-dropdown scrollable-content">
-                {tagOptions.map(tag => (
-                  <div className='filter-selection' key={tag.value} onClick={()=>toggleTag(tag.label)}>
-                    <input type="checkbox" checked={tags[tag.label]}/> {tag.label}
-                  </div>
-                ))}
-              </div>
+        <div
+          className="filter-wrapper"
+          onMouseEnter={() => setShowTagsDD(true)}
+          onMouseLeave={() => setShowTagsDD(false)}>
+          <div
+            onClick={() => setShowTagsDD(!showTagsDD)}
+            className={`${showTagsDD && 'openDD'} filter tags-filter`}>
+            Tags
+            {showTagsDD ? (
+              <i className="fas fa-caret-up"></i>
+            ) : (
+              <i className="fas fa-caret-down"></i>
             )}
+          </div>
+          {showTagsDD && (
+            <div className="filter-dropdown scrollable-content">
+              {tagOptions.map((tag) => (
+                <div
+                  className="filter-selection"
+                  key={tag.value}
+                  onClick={() => toggleTag(tag.label)}>
+                  <input type="checkbox" checked={tags[tag.label]} />{' '}
+                  {tag.label}
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
-      <GridComponent displayBanner= {true} favorites={student.favorited_clubs}/>
+      <GridComponent displayBanner={true} favorites={student.favorited_clubs} />
 
-      <button id="save-button" onClick={submit}> Save Selected </button>
+      <button id="save-button" onClick={submit}>
+        {' '}
+        Save Selected{' '}
+      </button>
     </div>
   );
 };
@@ -188,11 +247,13 @@ const mapStateToProps = (state) => ({
   num_clubs: state.catalog.num_clubs,
   tagOptions: state.profile.tagOptions,
   formDetails: state.catalog.formDetails,
-  num_displayed: state.catalog.num_displayed
+  num_displayed: state.catalog.num_displayed,
 });
 
-export default connect(mapStateToProps, {searchClubs,
+export default connect(mapStateToProps, {
+  searchClubs,
   clearOrganization,
   loadMoreOrgs,
   setFormDetails,
-  loadMoreClubs})(AppTracker)
+  loadMoreClubs,
+})(AppTracker);

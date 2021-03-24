@@ -19,13 +19,13 @@ import {
   GET_GALLERY_PHOTOS,
   ADD_GALLERY_PHOTO,
   UPDATE_GALLERY_PHOTO,
-  DELETE_GALLERY_PHOTO
+  DELETE_GALLERY_PHOTO,
 } from './types';
 import FormData from 'form-data';
 
 import { loadAllClubs } from './catalog';
 import { refreshToken } from './auth';
-import { API, TOKENS } from '../utils/backendClient';
+import { API, TOKENS } from '../../utils/backendClient';
 
 // Load Profile
 export const loadProfile = () => async (dispatch) => {
@@ -49,12 +49,12 @@ export const updateProfile = (formData) => async (dispatch) => {
       get_involved: formData.get_involved,
       social_media_links: formData.social_media_links,
       num_users: formData.num_users,
-      recruiting_start: formData.recruiting_start,   
-      recruiting_end: formData.recruiting_end,   
-      apply_deadline_start: formData.apply_deadline_start,   
-      apply_deadline_end: formData.apply_deadline_end,   
+      recruiting_start: formData.recruiting_start,
+      recruiting_end: formData.recruiting_end,
+      apply_deadline_start: formData.apply_deadline_start,
+      apply_deadline_end: formData.apply_deadline_end,
       apply_link: formData.apply_link,
-      is_reactivating: formData.is_reactivating
+      is_reactivating: formData.is_reactivating,
     });
 
     await dispatch(loadAllClubs());
@@ -156,23 +156,26 @@ export const addRecrEvent = (newEvent) => async (dispatch) => {
     console.log(err.response);
   }
 };
- 
+
 export const updateRecrEvent = (eventId, eventInfo) => async (dispatch) => {
   try {
-    const res = await API.put(`/api/admin/recruiting-events/${eventId}`, eventInfo);
- 
+    const res = await API.put(
+      `/api/admin/recruiting-events/${eventId}`,
+      eventInfo
+    );
+
     dispatch({ type: UPDATE_RECR_EVENT, payload: res.data });
   } catch (err) {
     console.log(err.response);
   }
 };
- 
+
 export const deleteRecrEvent = (id) => async (dispatch) => {
   try {
     // This will hit the api that will add the event, and return the new data with event added
     // and then update the profile information in state to be correct
     const res = await API.delete(`/api/admin/recruiting-events/${id}`);
- 
+
     dispatch({ type: DELETE_RECR_EVENT, payload: res.data });
   } catch (err) {
     console.log(err);
@@ -196,7 +199,10 @@ export const updateResource = (resourceId, resourceInfo) => async (
   try {
     // Hits API to update resource, returns new data with resource added
     //  then update the profile information in state to be correct
-    const res = await API.put(`/api/admin/resources/${resourceId}`, resourceInfo);
+    const res = await API.put(
+      `/api/admin/resources/${resourceId}`,
+      resourceInfo
+    );
     dispatch({ type: UPDATE_RESOURCE, payload: res.data });
   } catch (err) {
     console.log(err);
@@ -239,7 +245,10 @@ export const getTags = () => async (dispatch) => {
 export const getSizeTags = () => async (dispatch) => {
   try {
     const res = await API.get('/api/catalog/num-user-tags');
-    const size_tags = res.data.map((tag) => ({ label: tag.value, value: tag.id }));
+    const size_tags = res.data.map((tag) => ({
+      label: tag.value,
+      value: tag.id,
+    }));
     dispatch({ type: GET_SIZE_TAGS, payload: size_tags });
   } catch (err) {
     console.log(err.response);
@@ -289,13 +298,16 @@ export const updateGalleryPhoto = (id, caption) => async (dispatch) => {
   };
 
   try {
-    const res = await API.put(`/api/admin/gallery-media/photo/${id}`, data, config);
+    const res = await API.put(
+      `/api/admin/gallery-media/photo/${id}`,
+      data,
+      config
+    );
     dispatch({ type: UPDATE_GALLERY_PHOTO, payload: res.data });
   } catch (err) {
     console.log(err.response);
   }
 };
-
 
 export const deleteGalleryPhoto = (id) => async (dispatch) => {
   try {

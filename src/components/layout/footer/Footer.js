@@ -20,33 +20,30 @@ const Footer = () => {
         <a
           target="_blank"
           rel="noopener noreferrer"
-          href="mailto:sproul.club@gmail.com"
-        >
+          href="mailto:sproul.club@gmail.com">
           <img
             className="footer-link-image"
-            src={require('../pages/assets/linkImages/contact_emailLink.png')}
+            src={require('../../../pages/assets/linkImages/contact_emailLink.png')}
             alt="email link"
           />
         </a>
         <a
           target="_blank"
           rel="noopener noreferrer"
-          href="https://www.facebook.com/sproul.club"
-        >
+          href="https://www.facebook.com/sproul.club">
           <img
             className="footer-link-image"
-            src={require('../pages/assets/linkImages/facebookLink.png')}
+            src={require('../../../pages/assets/linkImages/facebookLink.png')}
             alt="facebook link"
           />
         </a>
         <a
           target="_blank"
           rel="noopener noreferrer"
-          href="https://www.instagram.com/sproul.club"
-        >
+          href="https://www.instagram.com/sproul.club">
           <img
             className="footer-link-image"
-            src={require('../pages/assets/linkImages/instagramLink.png')}
+            src={require('../../../pages/assets/linkImages/instagramLink.png')}
             alt="instagram link"
           />
         </a>

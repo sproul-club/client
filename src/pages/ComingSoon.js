@@ -1,6 +1,6 @@
 import React from 'react';
 import './ComingSoon.css';
-import Footer from '../layout/Footer';
+import Footer from '../components/layout/footer/Footer';
 import ball1 from './assets/ball1cropped.svg';
 import ball2 from './assets/ball2cropped.svg';
 import ball3 from './assets/ball3cropped.svg';

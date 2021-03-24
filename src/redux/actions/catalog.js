@@ -11,10 +11,10 @@ import {
   SET_TAGS,
   RESET_TAGS,
   SET_MEMBERS,
-  RESET_MEMBERS
+  RESET_MEMBERS,
 } from './types';
 
-import { API } from '../utils/backendClient';
+import { API } from '../../utils/backendClient';
 
 export const loadAllClubs = () => async (dispatch) => {
   try {
@@ -31,37 +31,43 @@ export const loadAllClubs = () => async (dispatch) => {
 };
 
 export const loadMoreClubs = (num_clubs) => {
-  return { type: LOAD_MORE_CLUBS, payload: num_clubs }
+  return { type: LOAD_MORE_CLUBS, payload: num_clubs };
 };
 
-export const filterClubs = (allOrganizations, formDetails, tagOptions, num_results) => {
+export const filterClubs = (
+  allOrganizations,
+  formDetails,
+  tagOptions,
+  num_results
+) => {
+  console.log(num_results);
+  const orgList = allOrganizations.map((club) => club.club);
 
-  console.log(num_results)
-  const orgList = allOrganizations.map((club) => club.club)
-
-  let filteredClubs = orgList
+  let filteredClubs = orgList;
   if (formDetails.name > 0)
-    filteredClubs = filteredClubs.filter(club => club.name.includes(formDetails.name))
+    filteredClubs = filteredClubs.filter((club) =>
+      club.name.includes(formDetails.name)
+    );
   if (formDetails.appReq)
-    filteredClubs = filteredClubs.filter(club => club.app_required === true)
+    filteredClubs = filteredClubs.filter((club) => club.app_required === true);
   if (formDetails.noAppReq)
-    filteredClubs = filteredClubs.filter(club => club.app_required === false)
+    filteredClubs = filteredClubs.filter((club) => club.app_required === false);
   if (formDetails.recruiting)
-    filteredClubs = filteredClubs.filter(club => club.app_required === true)
+    filteredClubs = filteredClubs.filter((club) => club.app_required === true);
   if (formDetails.notRecruiting)
-    filteredClubs = filteredClubs.filter(club => club.app_required === false)
-  let searchTags = formDetails.tags.map((tag) => tag.label)
-  for (let tag of searchTags){
-    filteredClubs = filteredClubs.filter(club => {
-      let clubtags = club.tags.map(tag => tagOptions[tag].label)
-      return clubtags.includes(tag)
-    })
+    filteredClubs = filteredClubs.filter((club) => club.app_required === false);
+  let searchTags = formDetails.tags.map((tag) => tag.label);
+  for (let tag of searchTags) {
+    filteredClubs = filteredClubs.filter((club) => {
+      let clubtags = club.tags.map((tag) => tagOptions[tag].label);
+      return clubtags.includes(tag);
+    });
   }
-  
-  const sliced_filtered_results = filteredClubs.slice(0, num_results)
 
-  return {type: FILTER_CLUBS, payload: sliced_filtered_results}
-}
+  const sliced_filtered_results = filteredClubs.slice(0, num_results);
+
+  return { type: FILTER_CLUBS, payload: sliced_filtered_results };
+};
 
 export const searchClubs = ({
   name: search,
@@ -126,15 +132,15 @@ export const loadMoreOrgs = ({
 };
 
 export const setFormDetails = ({ name, value }) => {
-  if (name === "tags"){
-    if (value === 'reset') return {type: RESET_TAGS }
+  if (name === 'tags') {
+    if (value === 'reset') return { type: RESET_TAGS };
     return { type: SET_TAGS, payload: { name, value } };
   }
-  if (name === "members"){
-    if (value === 'reset') return {type: RESET_MEMBERS }
+  if (name === 'members') {
+    if (value === 'reset') return { type: RESET_MEMBERS };
     return { type: SET_MEMBERS, payload: { name, value } };
   }
-  
+
   return { type: SET_FORM_DETAILS, payload: { name, value } };
 };
 

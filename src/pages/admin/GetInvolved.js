@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
-import { updateProfile } from '../../actions/profile';
+import { updateProfile } from '../../redux/actions/profile';
 import { connect } from 'react-redux';
 import { NotificationManager } from 'react-notifications';
 import { normalizeUrl } from '../../utils/normalizeUrl';
 import './Admin.css';
 
-
 const GetInvolved = ({ profile, get_involved, updateProfile, close }) => {
   const [involvedDesc, setInvolvedDesc] = useState(get_involved);
   const [descrChars, setInvolvedChars] = useState(500 - involvedDesc.length);
   const [involvedLink, setInvolvedLink] = useState(profile.apply_link);
-
 
   const descrChange = (e) => {
     setInvolvedDesc(e.target.value);
@@ -26,16 +24,24 @@ const GetInvolved = ({ profile, get_involved, updateProfile, close }) => {
     const newProfile = {
       ...profile,
       get_involved: involvedDesc,
-      apply_link: involvedLink, 
+      apply_link: involvedLink,
     };
 
     try {
       await updateProfile(newProfile);
-      NotificationManager.success('Changes to How to Get Involved saved successfully!', '', 1500);
+      NotificationManager.success(
+        'Changes to How to Get Involved saved successfully!',
+        '',
+        1500
+      );
       close();
     } catch (err) {
       console.log(err);
-      NotificationManager.error('Changes to How to Get Involved did not save successfully!', '', 1500);
+      NotificationManager.error(
+        'Changes to How to Get Involved did not save successfully!',
+        '',
+        1500
+      );
     }
   };
 
@@ -61,7 +67,9 @@ const GetInvolved = ({ profile, get_involved, updateProfile, close }) => {
             onChange={descrChange}
           />
         </div>
-        <div style={{ alignSelf: 'flex-end' }} className="subtitle">{descrChars} characters remaining</div>
+        <div style={{ alignSelf: 'flex-end' }} className="subtitle">
+          {descrChars} characters remaining
+        </div>
 
         <div className="formElement">
           <p>Application Link</p>
@@ -75,8 +83,14 @@ const GetInvolved = ({ profile, get_involved, updateProfile, close }) => {
           />
         </div>
       </div>
-      <button id="save-button" onClick={submit}> Save </button>
-      <button id="cancel-button" onClick={() => close()}> Cancel </button>
+      <button id="save-button" onClick={submit}>
+        {' '}
+        Save{' '}
+      </button>
+      <button id="cancel-button" onClick={() => close()}>
+        {' '}
+        Cancel{' '}
+      </button>
     </div>
   );
 };

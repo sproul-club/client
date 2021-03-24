@@ -8,7 +8,7 @@ import {
   isCallinkEmail,
   isPasswordStrong,
   resendConfirmationEmail,
-} from '../actions/auth';
+} from '../redux/actions/auth';
 import signup from './assets/signup.png';
 import { NotificationManager } from 'react-notifications';
 
@@ -65,7 +65,6 @@ const MultiStepForm = ({
   const [emptyAppStartDate, setEmptyAppStartDate] = useState('unset');
   const [emptyAppEndDate, setEmptyAppEndDate] = useState('unset');
 
-
   if (isAuthenticated) {
     return <Redirect to="/admin" />;
   }
@@ -77,7 +76,11 @@ const MultiStepForm = ({
       await resendConfirmationEmail(email);
     } catch (err) {
       var errMessage = err.response.data.reason;
-      NotificationManager.error(errMessage, 'Unable to resend confirmation email!', 3000);
+      NotificationManager.error(
+        errMessage,
+        'Unable to resend confirmation email!',
+        3000
+      );
     } finally {
       setResentEmail(true);
     }
@@ -91,11 +94,47 @@ const MultiStepForm = ({
 
     try {
       if (recruiting.value && appReq.value) {
-        await register(clubName, email, pwd, tagsList, !!appReq.value, !!recruiting.value, size.value, new Date(startDate), new Date(endDate), null, null);
+        await register(
+          clubName,
+          email,
+          pwd,
+          tagsList,
+          !!appReq.value,
+          !!recruiting.value,
+          size.value,
+          new Date(startDate),
+          new Date(endDate),
+          null,
+          null
+        );
       } else if (recruiting.value && !appReq.value) {
-        await register(clubName, email, pwd, tagsList, !!appReq.value, !!recruiting.value, size.value, null, null, new Date(startDate), new Date(endDate));
-      } else if (!recruiting.value){
-        await register(clubName, email, pwd, tagsList, !!appReq.value, !!recruiting.value, size.value, null, null, null, null);
+        await register(
+          clubName,
+          email,
+          pwd,
+          tagsList,
+          !!appReq.value,
+          !!recruiting.value,
+          size.value,
+          null,
+          null,
+          new Date(startDate),
+          new Date(endDate)
+        );
+      } else if (!recruiting.value) {
+        await register(
+          clubName,
+          email,
+          pwd,
+          tagsList,
+          !!appReq.value,
+          !!recruiting.value,
+          size.value,
+          null,
+          null,
+          null,
+          null
+        );
       }
       setStep(currStep + 1);
     } catch (err) {
@@ -131,7 +170,13 @@ const MultiStepForm = ({
           // console.log(new Date(endDate));
           // console.log(appStartDate);
           // console.log(appEndDate);
-          console.log("line 121: ", appStartDate, appEndDate, recrStartDate, recrEndDate);
+          console.log(
+            'line 121: ',
+            appStartDate,
+            appEndDate,
+            recrStartDate,
+            recrEndDate
+          );
         } else if (recruiting.value && !appReq.value) {
           // var newStartDate = new Date(startDate);
           // var newEndDate = new Date(endDate);
@@ -143,7 +188,13 @@ const MultiStepForm = ({
           // console.log(new Date(endDate));
           // console.log(recrStartDate);
           // console.log(recrEndDate);
-          console.log("line 125: ",appStartDate, appEndDate, recrStartDate, recrEndDate);
+          console.log(
+            'line 125: ',
+            appStartDate,
+            appEndDate,
+            recrStartDate,
+            recrEndDate
+          );
         }
         submitValue();
       }
@@ -188,18 +239,29 @@ const MultiStepForm = ({
 
   function checkStep2Errors() {
     var errorExists = false;
-    if (tags === null || tags.length === 0 || appReq.value === undefined || recruiting.value === undefined || size.value === undefined || (recruiting.value && (startDate === null || endDate === null))) {
+    if (
+      tags === null ||
+      tags.length === 0 ||
+      appReq.value === undefined ||
+      recruiting.value === undefined ||
+      size.value === undefined ||
+      (recruiting.value && (startDate === null || endDate === null))
+    ) {
       errorExists = true;
-      NotificationManager.error("All fields are required", "", 5000);
+      NotificationManager.error('All fields are required', '', 5000);
     }
-    if (recruiting.value){
-        var start = Date.parse(startDate);
-        var end = Date.parse(endDate);
-        if (end < start) {
-          errorExists = true;
-          NotificationManager.error("End date should come after start.", "", 5000);
-        }
-    } 
+    if (recruiting.value) {
+      var start = Date.parse(startDate);
+      var end = Date.parse(endDate);
+      if (end < start) {
+        errorExists = true;
+        NotificationManager.error(
+          'End date should come after start.',
+          '',
+          5000
+        );
+      }
+    }
     return errorExists;
   }
 
@@ -448,8 +510,7 @@ const StepOne = (props) => {
           <a
             href="https://airtable.com/shr4wECf5beHGLgfV"
             rel="noopener noreferrer"
-            target="_blank"
-          >
+            target="_blank">
             Click here
           </a>
         </div>
@@ -495,16 +556,19 @@ const StepTwo = (props) => {
       fontWeight: 300,
       fontStyle: 'normal',
       textAlign: 'left',
-      color: (state.selectProps.value && state.selectProps.value.length >= 3) ? '#cccccc' : '#4e4e4e'
+      color:
+        state.selectProps.value && state.selectProps.value.length >= 3
+          ? '#cccccc'
+          : '#4e4e4e',
     }),
     multiValueRemove: (provided, state) => ({
       ...provided,
       background: '#D1D3D4',
       color: '#2b2b2b',
       borderRadius: 10,
-      "&:hover": {
+      '&:hover': {
         color: 'hsl(0,0%,40%)',
-      }
+      },
     }),
     singleValue: (provided, state) => ({
       ...provided,
@@ -512,7 +576,7 @@ const StepTwo = (props) => {
     }),
     multiValueLabel: (provided, state) => ({
       ...provided,
-      marginLeft: "4px",
+      marginLeft: '4px',
       padding: '2px',
       paddingLeft: '5px',
       fontSize: '12px',
@@ -521,7 +585,7 @@ const StepTwo = (props) => {
       ...provided,
       width: 0,
     }),
-  
+
     clearIndicator: (provided, state) => ({
       ...provided,
       cursor: 'pointer',
@@ -534,7 +598,7 @@ const StepTwo = (props) => {
       ...provided,
       padding: '5px 8px',
     }),
-    "@media only screen and (min-width: 1700px)": {
+    '@media only screen and (min-width: 1700px)': {
       menu: (provided, state) => ({
         ...provided,
         width: 500,
@@ -553,21 +617,37 @@ const StepTwo = (props) => {
         <h2>Register your club</h2>
       </div>
       <div className="drops">
-      {props.recruiting.value ?
-        <p className="subtitle" style={{float: "right", paddingBottom: "15px"}}><span style={{ color: '#FF0000'}}>*</span> Your recruitment status will automatically update depending on these dates.</p> : ""}
+        {props.recruiting.value ? (
+          <p
+            className="subtitle"
+            style={{ float: 'right', paddingBottom: '15px' }}>
+            <span style={{ color: '#FF0000' }}>*</span> Your recruitment status
+            will automatically update depending on these dates.
+          </p>
+        ) : (
+          ''
+        )}
         <input
-            className={(props.recruiting.value) ? 'userInput' : 'userInput hidden'}
-            type="date"
-            placeholder={(props.appReq.value) ? "Application close date: " : "Recruiting end date: "}
-            onChange={(e) => props.setEndDate(e.target.value)}
-            value={props.endDate}
+          className={props.recruiting.value ? 'userInput' : 'userInput hidden'}
+          type="date"
+          placeholder={
+            props.appReq.value
+              ? 'Application close date: '
+              : 'Recruiting end date: '
+          }
+          onChange={(e) => props.setEndDate(e.target.value)}
+          value={props.endDate}
         />
         <input
-            className={(props.recruiting.value) ? 'userInput' : 'userInput hidden'}
-            type="date"
-            placeholder={(props.appReq.value) ? "Application open date: " : "Recruiting start date: "}
-            onChange={(e) => props.setStartDate(e.target.value)}
-            value={props.startDate}
+          className={props.recruiting.value ? 'userInput' : 'userInput hidden'}
+          type="date"
+          placeholder={
+            props.appReq.value
+              ? 'Application open date: '
+              : 'Recruiting start date: '
+          }
+          onChange={(e) => props.setStartDate(e.target.value)}
+          value={props.startDate}
         />
         <Dropdown
           options={props.recruitOptions}
@@ -639,8 +719,7 @@ const StepThree = (props) => {
         <h2>Didn't receive an email?</h2>
         <div
           style={{ fontSize: '12px', cursor: 'pointer' }}
-          onClick={() => props.resendConfirmationEmail(props.email)}
-        >
+          onClick={() => props.resendConfirmationEmail(props.email)}>
           Resend email
         </div>
         <div className={`email-sent ${props.resentEmail && 'sent'}`}>

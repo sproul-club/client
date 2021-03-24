@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './ResetPassword.css';
 import image from './assets/resetpwd2.png';
 import error from './assets/error.svg';
-import { resetPassword } from '../actions/auth';
+import { resetPassword } from '../redux/actions/auth';
 import { NotificationManager } from 'react-notifications';
 
 const ResetPassword2Form = () => {
@@ -28,8 +28,7 @@ const ResetPassword2Form = () => {
         let errMessage;
         if (err.response && err.response.data && err.response.data.reason)
           errMessage = err.response.data.reason;
-        else
-          errMessage = 'Something went wrong on our end. Please contact us.';
+        else errMessage = 'Something went wrong on our end. Please contact us.';
 
         NotificationManager.error(errMessage, 'Unable to reset password', 5000);
       }
@@ -120,8 +119,7 @@ const StepOne = (props) => {
       <button
         type="submit"
         onClick={(e) => props.submitPassword(e)}
-        className="button submitPassword"
-      >
+        className="button submitPassword">
         Submit
       </button>
     </form>

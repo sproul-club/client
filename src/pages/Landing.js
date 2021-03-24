@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Landing.css';
 // import ScrollAnimation from 'react-animate-on-scroll';
-import Footer from '../layout/Footer';
+import Footer from '../components/layout/footer/Footer';
 import 'animate.css/animate.min.css';
 // import mock1 from './assets/mock1.png';
 // import mock2 from './assets/mock2.png';

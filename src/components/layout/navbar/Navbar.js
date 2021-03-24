@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { logout, login } from '../actions/auth';
+import { logout, login } from '../../../redux/actions/auth';
 
 import './Navbar.css';
-import useOnClickOutside from '../utils/useOnClickOutside';
+import useOnClickOutside from '../../../utils/useOnClickOutside';
 
-import logo from '../pages/assets/logo.png';
+import logo from '../../../pages/assets/logo.png';
 
 const Navbar = ({
   organizationEmail,
@@ -63,7 +63,10 @@ const Navbar = ({
       <Link to="/catalog" className="nav-link">
         Discover
       </Link>
-      <a href="https://www.notion.so/sproul-club-c4765bb5e0884179b8bd38498eeec40f" className="nav-link join-us" target="none">
+      <a
+        href="https://www.notion.so/sproul-club-c4765bb5e0884179b8bd38498eeec40f"
+        className="nav-link join-us"
+        target="none">
         Join our team
       </a>
       <div

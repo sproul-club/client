@@ -1,6 +1,6 @@
 import React from 'react';
 import './SignIn.css';
-import Footer from '../layout/Footer';
+import Footer from '../components/layout/footer/Footer';
 import SignInForm from './SignInForm.js';
 import loginImage from './assets/login.png';
 

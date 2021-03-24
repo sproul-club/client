@@ -1,19 +1,17 @@
 import React, { useRef } from 'react';
-import useOnClickOutside from '../utils/useOnClickOutside';
-import './OnboardingModal.css';
+import useOnClickOutside from '../../../utils/useOnClickOutside';
+import './Modal.css';
 
-
-const OnboardingModal = ({ showModal, setShowModal, children }) => {
+const Modal = ({ showModal, setShowModal, close, children }) => {
   const ref = useRef();
 
   useOnClickOutside(ref, () => {
     if (showModal) {
-      setShowModal(true);
+      setShowModal(false);
     }
   });
 
-  // delete this after
-  // const closeFunction = close || setShowModal(false);
+  const closeFunction = close || setShowModal(false);
 
   return (
     <div>
@@ -21,10 +19,9 @@ const OnboardingModal = ({ showModal, setShowModal, children }) => {
         <div className="popup">
           <div className="popup-wrapper">
             <div className="popup_inner" ref={ref}>
-              {/* delete this after */}
-              {/* <div className="exit" onClick={closeFunction}>
+              <div className="exit" onClick={closeFunction}>
                 <i className="fas fa-times"></i>
-              </div> */}
+              </div>
               {children}
             </div>
           </div>
@@ -34,4 +31,4 @@ const OnboardingModal = ({ showModal, setShowModal, children }) => {
   );
 };
 
-export default OnboardingModal;
+export default Modal;
