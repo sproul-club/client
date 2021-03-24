@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import './Admin.css';
-import { loadProfile } from '../../redux/actions/profile';
+import { loadProfile } from '../../../redux/actions/profile';
 import { connect } from 'react-redux';
-import ClubPage from '../ClubPage';
+import ClubPage from '../../ClubPage';
 
 const Admin = ({ profile, admin, loadProfile }) => {
   useEffect(() => {
@@ -10,6 +10,8 @@ const Admin = ({ profile, admin, loadProfile }) => {
       loadProfile();
   }, [loadProfile, profile]);
 
+  // admin page is just club page rendered with ability to edit
+  // admin variable ensures user is authenthicated (owner of club)
   return <ClubPage admin={admin} />;
 };
 

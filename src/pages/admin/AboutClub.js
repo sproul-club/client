@@ -5,7 +5,7 @@ import { NotificationManager } from 'react-notifications';
 import RichText from '../RichText';
 import { stateFromHTML } from 'draft-js-import-html';
 import { stateToHTML } from 'draft-js-export-html';
-import './Admin.css';
+import './admin/Admin.css';
 
 const AboutClub = ({ profile, updateProfile, close }) => {
   const [descr, setDescr] = useState(stateFromHTML(profile.about_us));

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Modal from '../../layout/Modal';
-import { normalizeUrl, validURL } from '../../utils/normalizeUrl';
+import { normalizeUrl, validURL } from '../../../utils/normalizeUrl';
 import { NotificationManager } from 'react-notifications';
 
 const ResComp = (props) => {

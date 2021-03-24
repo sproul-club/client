@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import ImageUploader from '../../components/react-images-upload';
+import ImageUploader from '../../../components/react-images-upload';
 import {
   updateProfile,
   uploadLogo,
@@ -9,10 +9,10 @@ import {
   addGalleryPhoto,
   updateGalleryPhoto,
   deleteGalleryPhoto,
-} from '../../redux/actions/profile';
+} from '../../../redux/actions/profile';
 import { NotificationManager } from 'react-notifications';
-import store from '../../redux/store';
-import { API, TOKENS } from '../../utils/backendClient';
+import store from '../../../redux/store';
+import { API, TOKENS } from '../../../utils/backendClient';
 import './GalleryUpload.css';
 import Delete from '@material-ui/icons/DeleteRounded';
 import Add from '@material-ui/icons/AddRounded';

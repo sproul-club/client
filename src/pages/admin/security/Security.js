@@ -1,11 +1,11 @@
 import React from 'react';
-import Navbar from '../../components/layout/navbar/Navbar';
+import Navbar from '../../../components/layout/navbar/Navbar';
 import { Route, Switch, Link } from 'react-router-dom';
-import './Admin.css';
+import '../admin/Admin.css';
 import './Security.css';
 import ChangeLogin from './ChangeLogin.js';
 import { connect } from 'react-redux';
-import { updatePassword } from '../../redux/actions/profile';
+import { updatePassword } from '../../../redux/actions/profile';
 
 const Security = () => {
   return (

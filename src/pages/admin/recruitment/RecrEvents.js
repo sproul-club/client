@@ -1,15 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { connect } from 'react-redux';
-// import { updateProfile } from '../../actions/profile';
-// import { NotificationManager } from 'react-notifications';
 import {
   addRecrEvent,
   updateRecrEvent,
   deleteRecrEvent,
-} from '../../redux/actions/profile';
-// import { validURL, normalizeUrl } from '../../utils/normalizeUrl';
+} from '../../../redux/actions/profile';
 import './RecrEvents.css';
-import './Admin.css';
+import '../admin/Admin.css';
 import RecrAccord from './RecrAccord';
 import moment from 'moment';
 import 'moment-timezone';

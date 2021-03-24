@@ -3,7 +3,7 @@ import { updateProfile } from '../../redux/actions/profile';
 import { connect } from 'react-redux';
 import { NotificationManager } from 'react-notifications';
 import { normalizeUrl } from '../../utils/normalizeUrl';
-import './Admin.css';
+import './admin/Admin.css';
 
 const GetInvolved = ({ profile, get_involved, updateProfile, close }) => {
   const [involvedDesc, setInvolvedDesc] = useState(get_involved);

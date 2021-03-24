@@ -4,7 +4,7 @@ import React, {
   forwardRef,
   useImperativeHandle,
 } from 'react';
-import Modal from '../../components/layout/modal/Modal';
+import Modal from '../../../components/layout/modal/Modal';
 import {
   Accordion,
   AccordionItem,
@@ -14,8 +14,8 @@ import {
 } from 'react-accessible-accordion';
 
 import './RecrAccord.css';
-import '../EventAccord.css';
-import { normalizeUrl, validURL } from '../../utils/normalizeUrl';
+import '../../EventAccord.css';
+import { normalizeUrl, validURL } from '../../../utils/normalizeUrl';
 import { NotificationManager } from 'react-notifications';
 
 const RecrAccord = forwardRef((props, ref) => {
@@ -286,14 +286,14 @@ const RecrAccord = forwardRef((props, ref) => {
                     <button className="recr-forge" onClick={duplicateEvent}>
                       <img
                         className="recr-img"
-                        src={require('../assets/recrDup.PNG')}></img>
+                        src={require('../../assets/recrDup.PNG')}></img>
                     </button>
                     <button
                       className="recr-forge"
                       onClick={() => setShowDelModal(true)}>
                       <img
                         className="recr-img"
-                        src={require('../assets/recrOop.PNG')}></img>
+                        src={require('../../assets/recrOop.PNG')}></img>
                     </button>
                   </div>
                 </div>
