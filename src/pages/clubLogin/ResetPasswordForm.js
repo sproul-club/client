@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import './ResetPassword.css';
-import image from './assets/resetpwd1.png';
-import error from './assets/error.svg';
-import { isCallinkEmail, sendResetPasswordEmail } from '../redux/actions/auth';
+import image from '../assets/resetpwd1.png';
+import error from '../assets/error.svg';
+import { isCallinkEmail, sendResetPasswordEmail } from '../../redux/actions/auth';
 import { NotificationManager } from 'react-notifications';
 
 const ResetPasswordForm = () => {

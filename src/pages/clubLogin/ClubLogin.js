@@ -1,8 +1,8 @@
 import React from 'react';
-import './SignIn.css';
-import Footer from '../components/layout/footer/Footer';
-import SignInForm from './SignInForm.js';
-import loginImage from './assets/login.png';
+import './ClubLogin.css';
+import Footer from '../../components/layout/footer/Footer';
+import ClubLoginForm from './ClubLoginForm.js';
+import loginImage from '../assets/login.png';
 
 const SignIn = () => {
   return (
@@ -10,7 +10,7 @@ const SignIn = () => {
       <div className="content">
         <img src={loginImage} className="loginImage" alt="bears" />
         <div className="form">
-          <SignInForm />
+          <ClubLoginForm />
         </div>
       </div>
       <Footer />

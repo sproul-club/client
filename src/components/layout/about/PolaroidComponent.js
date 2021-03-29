@@ -1,6 +1,6 @@
 import React from 'react';
 import './PolaroidComponent.css';
-import defaultbear from './assets/default_logo.jpg';
+import defaultbear from '../../../pages/assets/default_logo.jpg';
 
 const PolaroidComponent = ({ name, image, position, linkedin }) => {
   return (

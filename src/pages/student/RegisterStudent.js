@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import ReactGA from 'react-ga';
 import './RegisterStudent.css';
-import { setFormDetails } from '../redux/actions/catalog';
+import { setFormDetails } from '../../redux/actions/catalog';
 
-import cutelilbearohyesyouare from './assets/signup.png';
-import illeniumisourlordandsavior from './assets/login.png';
+import cutelilbearohyesyouare from '../assets/signup.png';
+import illeniumisourlordandsavior from '../assets/login.png';
 
 const RegisterStudent = ({
   tagOptions,

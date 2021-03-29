@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './ClubPage.css';
-import RecruitmentTL from './RecruitmentTL';
+import RecruitmentTL from './admin/RecruitmentTL';
 import EventAccord from './EventAccord';
 import Gallery from '../components/gallery/Gallery';
 import Footer from '../components/layout/footer/Footer';

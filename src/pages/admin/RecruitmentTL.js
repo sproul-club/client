@@ -5,7 +5,7 @@ import { google } from "calendar-link";
 import moment from 'moment';
 import 'moment-timezone';
 import "./RecruitmentTL.css"
-import { justTimeFormat, simplestRangeFormat, START_DATETIME, END_DATETIME, dateTimeFormat } from '../utils/formatTimeAndDate';
+import { justTimeFormat, simplestRangeFormat, START_DATETIME, END_DATETIME, dateTimeFormat } from '../../utils/formatTimeAndDate';
 //import { propTypes } from 'react-bootstrap/esm/Image';
 
 function generateGoogleEventLink(recruiting_event) {
@@ -101,7 +101,7 @@ const RecruitmentTL = ({ adminCheck, profile, currRoute, events }) => {
                             >
                             {<img
                                     className="res-img"
-                                    src={require('./assets/linkImages/gcal.PNG')}
+                                    src={require('../assets/linkImages/gcal.PNG')}
                                     alt="resource"
                                     id="gcal"
                             />}
@@ -113,7 +113,7 @@ const RecruitmentTL = ({ adminCheck, profile, currRoute, events }) => {
                             >
                             {<img
                                     className="res-img"
-                                    src={require('./assets/linkImages/recrFB.PNG')}
+                                    src={require('../assets/linkImages/recrFB.PNG')}
                                     alt="resource"
                                     className="recrButton"
                             />}
@@ -125,7 +125,7 @@ const RecruitmentTL = ({ adminCheck, profile, currRoute, events }) => {
                             >
                             {<img
                                     className="res-img"
-                                    src={require('./assets/linkImages/recrZM.PNG')}
+                                    src={require('../assets/linkImages/recrZM.PNG')}
                                     alt="resource"
                                     className="recrButton"
                             />}

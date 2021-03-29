@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Dropdown from './Dropdown.js';
-import error from './assets/error.svg';
+import Dropdown from '../Dropdown.js';
+import error from '../assets/error.svg';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import {
@@ -8,8 +8,8 @@ import {
   isCallinkEmail,
   isPasswordStrong,
   resendConfirmationEmail,
-} from '../redux/actions/auth';
-import signup from './assets/signup.png';
+} from '../../redux/actions/auth';
+import signup from '../assets/signup.png';
 import { NotificationManager } from 'react-notifications';
 
 const MultiStepForm = ({

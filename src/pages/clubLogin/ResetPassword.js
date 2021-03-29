@@ -1,14 +1,14 @@
 import React from 'react';
 import './ResetPassword.css';
-import Footer from '../components/layout/footer/Footer';
-import ResetPassword2Form from './ResetPassword2Form';
+import Footer from '../../components/layout/footer/Footer';
+import ResetPasswordForm from './ResetPasswordForm';
 
-const ResetPassword2 = () => {
+const ResetPassword = () => {
   return (
     <div className="recover">
       <div className="content">
         <div className="form">
-          <ResetPassword2Form />
+          <ResetPasswordForm />
         </div>
       </div>
       <Footer />
@@ -16,4 +16,4 @@ const ResetPassword2 = () => {
   );
 };
 
-export { ResetPassword2 };
+export { ResetPassword };

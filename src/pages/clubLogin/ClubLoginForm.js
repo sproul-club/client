@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link, withRouter, Redirect } from 'react-router-dom';
-import './SignIn.css';
+import './ClubLogin.css';
 import { connect } from 'react-redux';
-import { login, isCallinkEmail } from '../redux/actions/auth';
-import error from './assets/error.svg';
+import { login, isCallinkEmail } from '../../redux/actions/auth';
+import error from '../assets/error.svg';
 import { NotificationManager } from 'react-notifications';
 
-const SignInForm = ({ login, history, isAuthenticated }) => {
+const ClubLoginForm = ({ login, history, isAuthenticated }) => {
   // user inputs
   const [email, setEmail] = useState('');
   const [pw, setPassword] = useState('');
@@ -142,4 +142,4 @@ const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
 });
 
-export default connect(mapStateToProps, { login })(withRouter(SignInForm));
+export default connect(mapStateToProps, { login })(withRouter(ClubLoginForm));
