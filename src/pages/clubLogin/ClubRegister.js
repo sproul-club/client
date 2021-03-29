@@ -1,7 +1,7 @@
 import React from 'react';
-import './SignUp.css';
-import MultiStepForm from './SignUpForm.js';
-import Footer from '../components/layout/footer/Footer';
+import './ClubRegister.css';
+import MultiStepForm from './ClubRegisterForm.js';
+import Footer from '../../components/layout/footer/Footer';
 import ReactGA from 'react-ga';
 
 const SignUp = () => {

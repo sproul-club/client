@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './Dashboard.css';
-import Footer from '../components/layout/footer/Footer';
-import Loading from '../components/layout/loading/Loading';
-import MasterTimeline from './MasterTimeline';
+import Footer from '../../components/layout/footer/Footer';
+import Loading from '../../components/layout/loading/Loading';
+import MasterTimeline from '../MasterTimeline';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import ReactGA from 'react-ga';
@@ -19,11 +19,11 @@ import {
   isSameDay,
   isWithinFourWeeks,
   eventsOverlap,
-} from '../utils/formatTimeAndDate';
-import AppTracker from './AppTracker';
-import Onboarding from './Onboarding';
-import OnboardingModal from '../components/onboardingModal/OnboardingModal';
-import Modal from '../components/layout/modal/Modal';
+} from '../../utils/formatTimeAndDate';
+import AppTracker from '../AppTracker';
+import Onboarding from './studentOnboarding/Onboarding';
+import OnboardingModal from './studentOnboarding/onboardingModal/OnboardingModal';
+import Modal from '../../components/layout/modal/Modal';
 
 function Dashboard({ student }) {
   useEffect(() => {
@@ -211,7 +211,7 @@ function Dashboard({ student }) {
           <div className="dashboard-clubcard-title">
             <img
               className="dashboard-clubicon"
-              src={club.icon || require('./assets/default_logo.jpg')}
+              src={club.icon || require('../assets/default_logo.jpg')}
               alt="icon"
             />
             <h4 className="dashboard-clubcard-clubname">{club.name}</h4>
@@ -292,7 +292,7 @@ function Dashboard({ student }) {
             <div className="dashboard-event-content">
               <img
                 className="dashboard-clubicon"
-                src={club.icon || require('./assets/default_logo.jpg')}
+                src={club.icon || require('../assets/default_logo.jpg')}
                 alt="icon"
               />
               <div className="dashboard-event-desc">
@@ -364,7 +364,7 @@ function Dashboard({ student }) {
           <div className="dashboard-events-photo">
             <img
               className="dashboard-flyer-bears-img"
-              src={require('./assets/dashboard-flyer-bears.svg')}
+              src={require('../assets/dashboard-flyer-bears.svg')}
               alt="flyer bears"
             />
           </div>

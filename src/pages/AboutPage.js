@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './AboutPage.css';
-import PolaroidComponent from './PolaroidComponent.js';
+import PolaroidComponent from '../components/layout/about/PolaroidComponent.js';
 import Footer from '../components/layout/footer/Footer';
 
 import tina from './assets/profile-photos/tina.JPG';

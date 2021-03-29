@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { updateProfile } from '../../redux/actions/profile';
 import { connect } from 'react-redux';
 import { NotificationManager } from 'react-notifications';
-import RichText from '../RichText';
+import RichText from '../../components/layout/richText/RichText';
 import { stateFromHTML } from 'draft-js-import-html';
 import { stateToHTML } from 'draft-js-export-html';
 import './admin/Admin.css';
