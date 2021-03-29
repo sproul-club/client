@@ -4,7 +4,7 @@
   text-align: center;
   width: 100%;
   overflow: hidden;
-  background-image: url('./assets/long_background.png');
+  background-image: url('./../assets/long_background.png');
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -26,8 +26,6 @@
 .about .content .imageContainer {
   width: 100%;
   height: 150px;
-
-  margin-top: 0px !important;
 
   display: flex;
 
@@ -93,11 +91,9 @@
 .about .content .carousel {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  max-width: 800px;
 
-  margin-bottom: 30px;
+  margin-left: 10px;
+  height: 250px;
 }
 
 .about .content .image {
@@ -106,10 +102,4 @@
   width: 120px;
   height: 120px;
   margin-bottom: 0px;
-}
-
-@media screen and (max-width: 800px) {
-  .about .text {
-    max-width: 90vw !important;
-  }
 }

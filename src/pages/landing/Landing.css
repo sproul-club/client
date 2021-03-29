@@ -4,6 +4,7 @@
   text-align: center;
   width: 100%;
   overflow: hidden;
+  background-image: url('./../assets/background.svg');
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -18,18 +19,15 @@
 }
 
 .landing .content {
-  height: 120vh;
+  min-height: 87vh;
   display: flex;
   /* justify-content: space-between; */
   justify-content: center;
+  padding-top: 40px;
   align-items: center;
   flex-direction: column;
-  margin-top: 15vh;
-  margin-bottom: 10vh;
-  background-image: url('./assets/landingbg.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
+  margin-top: 20px;
+  margin-bottom: 40px;
 }
 
 .landing .text {
@@ -41,99 +39,49 @@
   max-width: 650px;
   float: left;
   align-items: center;
-  margin-top: -18vh;
 }
 
 .landing .text h3 {
   color: #2b2b2b;
-  font-size: 28px;
+  font-size: 2em;
+  line-height: 1.2em;
   font-family: Qanelas Soft Extra Bold;
   font-weight: 700;
   font-style: normal;
   line-height: 42px;
-  margin-bottom: 15px;
-  margin-top: 0;
-  display: flex;
-  justify-content: center;
-  width: 500px;
+  margin-bottom: 5px;
 }
 
 .landing .text p {
   color: #2b2b2b;
-  font-size: 16px;
+  font-size: 1.1em;
+  line-height: 1.4em;
   font-family: Qanelas Soft;
   font-weight: 400;
   font-style: normal;
   padding-bottom: 12px;
   letter-spacing: 0.04em;
-  display: flex;
-  width: 45vw;
-  max-width: 500px;
-  min-width: 320px;
-  margin: 0px;
-  margin-bottom: 10px;
 }
 
 .landing .text a {
-  width: 100px;
-  font-size: 14px;
+  width: 250px;
+  font-size: 1em;
+  line-height: 1em;
   background: white;
   font-family: Qanelas Soft Semi Bold;
   font-weight: 700;
   font-style: normal;
+  display: inline-block;
   color: #ffffff;
   background-color: #54a0f1;
   text-decoration: none;
-  padding: 10px 20px;
-  border-radius: 10px;
+  padding: 14px 30px 14px 30px;
+  border-radius: 6px;
   text-align: center;
-  margin-right: 10px;
-  margin-left: 10px;
-}
-@media screen and (max-width: 800px) {
-  .landing .text * {
-    width: 100vw;
-  }
-  .landing .text {
-    width: 100vw;
-  }
-
-  .landing .text h3 {
-    /* font-size: 24px; */
-    margin-bottom: 0px;
-    width: 300px;
-  }
 }
 
 .landing .text a:hover {
   background-color: #6eaff5;
-}
-
-.landing #addbutton {
-  width: 100px;
-  font-size: 14px;
-  line-height: 1em;
-  background: white;
-  font-style: normal;
-  display: inline-block;
-  color: #54a0f1;
-  text-decoration: none;
-  border-radius: 10px;
-  border: solid 0.2vw #54a0f1;
-  text-align: center;
-}
-
-.landing .addbutton a:hover {
-  color: #6eaff5;
-  border: solid 0.2vw #6eaff5;
-  background: transparent;
-}
-
-.landing .buttons {
-  width: 30vw;
-  min-width: 350px;
-  display: flex;
-  justify-content: center;
 }
 
 .landing .content .imageContainer {
@@ -268,7 +216,7 @@
   align-items: center;
 }
 
-/* @media screen and (max-width: 1235px) and (min-width: 980px) {
+@media screen and (max-width: 1235px) and (min-width: 980px) {
   .landing .moreContent .feature1 img,
   .feature2 img,
   .feature3 img {
@@ -288,10 +236,10 @@
     line-height: 35px;
     font-size: 1.3em;
   }
-} */
+}
 
 /* fully mobile media-query */
-/* @media screen and (max-width: 980px) {
+@media screen and (max-width: 980px) {
   .landing {
     background: white;
   }
@@ -328,6 +276,7 @@
     margin: 0px;
     width: 360px;
     height: 275px;
+    /* margin-bottom: 50px; */
   }
 
   .landing .content .imageContainer img {
@@ -395,6 +344,7 @@
 
   .landing .moreContent {
     flex-direction: column;
+    /* height: 2450px; */
     text-align: center;
     margin-top: 0px;
   }
@@ -420,10 +370,10 @@
     margin-top: 0px;
     height: 730px;
   }
-} */
+}
 
 /* larger screens */
-/* @media screen and (min-width: 1700px) {
+@media screen and (min-width: 1700px) {
   .landing .content {
     margin-bottom: 70px;
   }
@@ -499,7 +449,7 @@
     text-align: center;
     width: 75%;
   }
-} */
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .screen3 {
@@ -525,7 +475,7 @@
   }
 }
 
-/* @keyframes screens {
+@keyframes screens {
   from {
     transform: translate(0, 0px);
   }
@@ -547,4 +497,4 @@
   to {
     transform: translate(0, -0px);
   }
-} */
+}

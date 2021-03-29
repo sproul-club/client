@@ -9,7 +9,7 @@ import {
 import "./EventAccord.css";
 
 import Moment from 'react-moment';
-import { simplestRangeFormat, START_DATETIME, END_DATETIME } from '../utils/formatTimeAndDate';
+import { simplestRangeFormat, START_DATETIME, END_DATETIME } from '../../utils/formatTimeAndDate';
 
 function EventAccord({ data }) {
 
@@ -49,7 +49,7 @@ function EventAccord({ data }) {
             >
               <img
                 className="res-img"
-                src={require('./assets/linkImages/resLink.png')}
+                src={require('../assets/linkImages/resLink.png')}
                 alt="resource"
               />
             </a>

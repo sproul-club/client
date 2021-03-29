@@ -1,14 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import './Landing.css';
-// import ScrollAnimation from 'react-animate-on-scroll';
-import Footer from '../components/layout/footer/Footer';
-import 'animate.css/animate.min.css';
-// import mock1 from './assets/mock1.png';
-// import mock2 from './assets/mock2.png';
-// import mock3 from './assets/mock3.png';
-// import bearshehe from './assets/landingbears.svg';
 import ReactGA from 'react-ga';
+import { Link } from 'react-router-dom';
+import ScrollAnimation from 'react-animate-on-scroll';
+
+import './Landing.css';
+
+import Footer from '../../components/layout/footer/Footer.js';
+import 'animate.css/animate.min.css';
+import mock1 from './../assets/mock1.png';
+import mock2 from './../assets/mock2.png';
+import mock3 from './../assets/mock3.png';
+import bearshehe from './../assets/landingbears.svg';
 
 const Landing = () => {
   ReactGA.initialize('UA-176775736-1');
@@ -16,9 +18,9 @@ const Landing = () => {
   return (
     <div className="landing">
       <div className="content">
-        {/* <div className="imageContainer">
+        <div className="imageContainer">
           <img src={bearshehe} className="bears" alt="bears" />
-        </div> */}
+        </div>
         <div className="text">
           <h3>Find your community at Berkeley</h3>
           <p>
@@ -26,15 +28,10 @@ const Landing = () => {
             communities on campus - built by students, for students!
           </p>
           {/* <Link to="/signup">Register Your Club</Link> */}
-          <div className="buttons">
-            <Link to="/catalog">Explore clubs</Link>
-            <Link id="addbutton" to="/signup">
-              Add a club
-            </Link>
-          </div>
+          <Link to="/catalog">Explore Student Orgs</Link>
         </div>
       </div>
-      {/* <div className="moreContent">
+      <div className="moreContent">
         <div className="featureWrapper">
           <div className="feature1">
             <ScrollAnimation animateIn="animate__fadeIn" animateOnce={true}>
@@ -95,7 +92,7 @@ const Landing = () => {
             </ScrollAnimation>
           </div>
         </div>
-      </div> */}
+      </div>
       <Footer />
     </div>
   );

@@ -1,33 +1,36 @@
 import React, { useEffect, useState } from 'react';
-import './ClubPage.css';
-import RecruitmentTL from './admin/RecruitmentTL';
-import EventAccord from './EventAccord';
-import Gallery from '../components/gallery/Gallery';
-import Footer from '../components/layout/footer/Footer';
-import Loading from '../components/layout/loading/Loading';
-import Tag from '../components/tag/Tag';
 import { withRouter } from 'react-router-dom';
-import { getOrganization, clearOrganization } from '../redux/actions/catalog';
 import { connect } from 'react-redux';
 import ReactGA from 'react-ga';
+import { Route, Switch, Link } from 'react-router-dom';
+
+import { getOrganization, clearOrganization } from '../../redux/actions/catalog';
+
 import RightArrow from '@material-ui/icons/CallMadeRounded';
 import HeartBordered from '@material-ui/icons/FavoriteBorderRounded';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ExpandLess from '@material-ui/icons/ExpandLess';
-import { Route, Switch, Link } from 'react-router-dom';
-import Modal from '../components/layout/modal/Modal';
-import ContactInfo from '../pages/admin/ContactInfo';
-import GetInvolved from '../pages/admin/GetInvolved';
-import AboutClub from '../pages/admin/AboutClub';
-import Profile from '../pages/admin/Profile';
-import Banner from '../pages/admin/Banner';
-import GalleryUpload from '../pages/admin/gallery/GalleryUpload';
-import RecrEvents from '../pages/admin/recruitment/RecrEvents';
+
+import './ClubPage.css';
+import RecruitmentTL from '../admin/RecruitmentTL.js';
+import EventAccord from './EventAccord';
+import Gallery from '../../components/gallery/Gallery';
+import Footer from '../../components/layout/footer/Footer';
+import Loading from '../../components/layout/loading/Loading';
+import Tag from '../../components/tag/Tag';
+
+import Modal from '../../components/layout/modal/Modal';
+import ContactInfo from '../../pages/admin/ContactInfo';
+import GetInvolved from '../../pages/admin/GetInvolved';
+import AboutClub from '../../pages/admin/AboutClub';
+import Profile from '../../pages/admin/Profile';
+import Banner from '../../pages/admin/Banner';
+import GalleryUpload from '../../pages/admin/gallery/GalleryUpload';
+import RecrEvents from '../../pages/admin/recruitment/RecrEvents';
 import Activation from './Activation';
-import { membersMap } from '../utils/filterClubs.js';
-import { normalizeUrl } from '../utils/normalizeUrl.js';
-import { API, TOKENS } from '../utils/backendClient';
-import GridComponent from './GridComponent';
+import { membersMap } from '../../utils/filterClubs.js';
+import { normalizeUrl } from '../../utils/normalizeUrl.js';
+import { API, TOKENS } from '../../utils/backendClient';
 import ClubCardSimple from './ClubCardSimple';
 
 function ClubPage({
@@ -159,7 +162,7 @@ function ClubPage({
         }>
         <img
           className="clubpage-sm-link"
-          src={require('./assets/linkImages/' + key + '.png')}
+          src={require('../assets/linkImages/' + key + '.png')}
           alt="web link"
         />
       </a>
@@ -170,7 +173,7 @@ function ClubPage({
     <div className="clubpage-content-resource" id="resources" key={i}>
       {res.name}
       <a target="_blank" rel="noopener noreferrer" href={res.link} key={i}>
-        <img src={require('./assets/linkImages/resLink.png')} alt="resource" />
+        <img src={require('../assets/linkImages/resLink.png')} alt="resource" />
       </a>
     </div>
   ));
@@ -190,7 +193,7 @@ function ClubPage({
               <h1>About {organization.name}</h1>
               {admin && (
                 <img
-                  src={require('./assets/Edit.svg')}
+                  src={require('../assets/Edit.svg')}
                   className="clubpage-content-header-icon"
                   onClick={() => setShowAboutModal(admin)}
                   alt=""
@@ -221,7 +224,7 @@ function ClubPage({
                 <h1>Gallery (Beta)</h1>
                 {admin && (
                   <img
-                    src={require('./assets/Edit.svg')}
+                    src={require('../assets/Edit.svg')}
                     className="clubpage-content-header-icon"
                     onClick={() => setShowGalleryModal(admin)}
                   />
@@ -298,13 +301,13 @@ function ClubPage({
           <img
             className="header-img"
             src={
-              organization.banner_url || require('./assets/default_banner.jpg')
+              organization.banner_url || require('../assets/default_banner.jpg')
             }
             alt=""
           />
           {admin && (
             <img
-              src={require('./assets/Edit.svg')}
+              src={require('../assets/Edit.svg')}
               className="clubpage-content-header-icon above-banner"
               onClick={() => setShowBannerModal(admin)}
               alt=""
@@ -315,7 +318,7 @@ function ClubPage({
               <img
                 className="club-logo"
                 src={
-                  organization.logo_url || require('./assets/default_logo.jpg')
+                  organization.logo_url || require('../assets/default_logo.jpg')
                 }
                 alt="club"
               />
@@ -335,7 +338,7 @@ function ClubPage({
               }
               {admin && (
                 <img
-                  src={require('./assets/Edit.svg')}
+                  src={require('../assets/Edit.svg')}
                   className="clubpage-content-header-icon"
                   onClick={() => setShowProfileModal(admin)}
                   alt=""
@@ -400,7 +403,7 @@ function ClubPage({
 
                       {admin && (
                         <img
-                          src={require('./assets/Edit.svg')}
+                          src={require('../assets/Edit.svg')}
                           className="clubpage-content-header-icon"
                           onClick={() => setShowRecrModal(admin)}
                           alt=""
@@ -432,7 +435,7 @@ function ClubPage({
                         <h1>Events</h1>
                         {admin && (
                           <img
-                            src={require('./assets/Edit.svg')}
+                            src={require('../assets/Edit.svg')}
                             className="clubpage-content-header-icon"
                             alt=""
                           />
@@ -456,7 +459,7 @@ function ClubPage({
                   <h1>How to Get Involved</h1>
                   {admin && (
                     <img
-                      src={require('./assets/Edit.svg')}
+                      src={require('../assets/Edit.svg')}
                       className="clubpage-content-header-icon"
                       onClick={() => setShowInvolvedModal(admin)}
                       alt=""
@@ -485,7 +488,7 @@ function ClubPage({
                 <h1>Contact Information</h1>
                 {admin && (
                   <img
-                    src={require('./assets/Edit.svg')}
+                    src={require('../assets/Edit.svg')}
                     className="clubpage-content-header-icon"
                     onClick={() => setShowContactModal(admin)}
                     alt=""

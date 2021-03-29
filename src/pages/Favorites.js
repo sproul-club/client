@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import './Favorites.css';
-import './Catalog.css';
+import './catalog/Catalog.css';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import GridComponent from './GridComponent';
+import GridComponent from '../components/layout/grid/GridComponent.js';
 import Footer from '../components/layout/footer/Footer';
 import Loading from '../components/layout/loading/Loading';
 import {

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import './Catalog.css';
-import banner from './assets/catalog_banner.jpg';
-import GridComponent from './GridComponent';
+import './../catalog/Catalog.css';
+import banner from './../assets/catalog_banner.jpg';
+import GridComponent from './../../components/layout/grid/GridComponent.js';
 import { connect } from 'react-redux';
 import {
   searchClubs,
@@ -9,10 +9,10 @@ import {
   loadMoreOrgs,
   setFormDetails,
   loadMoreClubs,
-} from '../redux/actions/catalog';
+} from './../../redux/actions/catalog';
 import ReactGA from 'react-ga';
-import Footer from '../components/layout/footer/Footer';
-import UnderConstruction from './UnderConstruction';
+import Footer from './../../components/layout/footer/Footer';
+import UnderConstruction from './../UnderConstruction';
 
 const eventsLoadedAtOnce = 18;
 

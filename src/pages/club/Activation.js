@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import signup from './assets/signup.png';
-import Dropdown from './Dropdown.js';
-import { updateProfile } from '../redux/actions/profile';
-import './clubLogin/ClubRegister.css';
+import signup from '../assets/signup.png';
+import Dropdown from '../Dropdown.js';
+import { updateProfile } from '../../redux/actions/profile';
+import '../clubLogin/ClubRegister.css';
 import './Activation.css';
-import Loading from '../components/layout/loading/Loading';
+import Loading from '../../components/layout/loading/Loading';
 import { NotificationManager } from 'react-notifications';
 
 const Activation = ({
