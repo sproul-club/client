@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Dropdown from '../Dropdown.js';
+import Dropdown from '../../components/layout/dropdown/Dropdown.js';
 import error from '../assets/error.svg';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
