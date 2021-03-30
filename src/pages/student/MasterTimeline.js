@@ -3,7 +3,7 @@ import moment from 'moment';
 import ReactMoment from 'react-moment';
 import './MasterTimeline.css';
 import CloseIcon from '@material-ui/icons/ChevronRightRounded';
-import { dayDiff, simplestRangeFormat, START_DATETIME, END_DATETIME } from '../utils/formatTimeAndDate';
+import { dayDiff, simplestRangeFormat, START_DATETIME, END_DATETIME } from '../../utils/formatTimeAndDate';
 
 
 function MasterTimeline({ data }) {
@@ -43,7 +43,7 @@ function MasterTimeline({ data }) {
           <div key={`clubname_${clubInd}`} className='club-name'>
             <img
               className='club-icon'
-              src={data[club].icon || require('./assets/default_logo.jpg')}
+              src={data[club].icon || require('../assets/default_logo.jpg')}
               alt="icon"
             />
             <h4 className='dashboard-app-tl-clubname'>{club}</h4>
@@ -122,7 +122,7 @@ function MasterTimeline({ data }) {
             <div className='focused-club-icon-wrapper'>
               <img
                 className='focused-club-icon'
-                src={focused.icon || require('./assets/default_logo.jpg')}
+                src={focused.icon || require('../assets/default_logo.jpg')}
                 alt="icon"
               />
             </div>

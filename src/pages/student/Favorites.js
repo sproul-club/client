@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import './Favorites.css';
-import './catalog/Catalog.css';
+import '../catalog/Catalog.css';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import GridComponent from '../components/layout/grid/GridComponent.js';
-import Footer from '../components/layout/footer/Footer';
-import Loading from '../components/layout/loading/Loading';
+import GridComponent from '../../components/layout/grid/GridComponent.js';
+import Footer from '../../components/layout/footer/Footer';
+import Loading from '../../components/layout/loading/Loading';
 import {
   searchClubs,
   clearOrganization,
   loadMoreOrgs,
   setFormDetails,
   loadMoreClubs,
-} from '../redux/actions/catalog';
+} from '../../redux/actions/catalog';
 
 function Favorites({
   student,
@@ -231,7 +231,7 @@ function Favorites({
           <div className="favorites-photo">
             <img
               className="favorites-img"
-              src={require('./assets/resetpwd2.png')}
+              src={require('../assets/resetpwd2.png')}
               alt="flyer bears image"
             />
           </div>

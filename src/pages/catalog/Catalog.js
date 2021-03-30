@@ -12,7 +12,6 @@ import {
 } from './../../redux/actions/catalog';
 import ReactGA from 'react-ga';
 import Footer from './../../components/layout/footer/Footer';
-import UnderConstruction from './../UnderConstruction';
 
 const eventsLoadedAtOnce = 18;
 

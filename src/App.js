@@ -10,7 +10,7 @@ import 'react-notifications/lib/notifications.css';
 import { NotificationContainer } from 'react-notifications';
 
 import { Landing } from './pages/landing/Landing.js';
-import { ComingSoon } from './pages/ComingSoon.js';
+import { ComingSoon } from './pages/comingSoon/ComingSoon.js';
 // import Catalog from './pages/catalog.js';
 import Catalog from './pages/catalog/Catalog.js';
 import { SignUp } from './pages/clubLogin/ClubRegister.js';
@@ -19,14 +19,14 @@ import RegisterStudent from './pages/student/RegisterStudent.js';
 import { ResetPassword } from './pages/clubLogin/ResetPassword.js';
 import { ResetPassword2 } from './pages/clubLogin/ResetPassword2.js';
 import Security from './pages/admin/security/Security.js';
-import ErrorPage from './pages/ErrorPage';
+import ErrorPage from './pages/error/ErrorPage';
 import AboutPage from './pages/about/AboutPage';
 import About from './pages/about/AboutPage';
 import FAQ from './pages/faq/FAQ';
 import Admin from './pages/admin/admin/Admin.js';
 import ClubPage from './pages/club/ClubPage';
 import Dashboard from './pages/student/Dashboard.js';
-import Favorites from './pages/Favorites.js';
+import Favorites from './pages/student/Favorites.js';
 import Activation from './pages/club/Activation.js';
 import store from './redux/store';
 import ContactUs from './components/layout/contactUs/ContactUs.js';
@@ -35,7 +35,6 @@ import { loadAllClubs } from './redux/actions/catalog';
 import { Provider } from 'react-redux';
 import PrivateRoute from './utils/PrivateRoute';
 import Navbar from './components/layout/navbar/Navbar';
-import UnderConstruction from './pages/UnderConstruction';
 
 import Moment from 'react-moment';
 import 'moment-timezone';
@@ -67,11 +66,10 @@ const App = () => {
           <Route path="/club/:id" component={ClubPage} />
           <PrivateRoute exact path="/security" component={Security} />
           <Route exact path="/dashboard" component={Dashboard} />
-          <Route exact path="/FAQ" component={UnderConstruction} />
+          <Route exact path="/FAQ" component={ComingSoon} />
           <Route exact path="/favorites" component={Favorites} />
           <Route exact path="/student/settings" component={StudentSettings} />
           <PrivateRoute exact path="/security" component={Security} />
-          <Route exact path="/comingsoon" component={ComingSoon} />
           {/* <Route exact path="/activation" component={Activation} /> */}
           <Route>
             <ErrorPage />

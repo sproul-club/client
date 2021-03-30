@@ -2,7 +2,7 @@ import React from 'react';
 
 import './ErrorPage.css'
 
-import questionablebear from './assets/resetpwd1.png';
+import questionablebear from '../assets/resetpwd1.png';
 
 const ErrorPage = () => {
   return (

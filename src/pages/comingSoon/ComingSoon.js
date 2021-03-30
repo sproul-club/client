@@ -1,12 +1,12 @@
 import React from 'react';
 import './ComingSoon.css';
-import Footer from '../components/layout/footer/Footer';
-import ball1 from './assets/ball1cropped.svg';
-import ball2 from './assets/ball2cropped.svg';
-import ball3 from './assets/ball3cropped.svg';
-import ball4 from './assets/ball4cropped.svg';
-import blob1 from './assets/blobyellow.png';
-import blob2 from './assets/blobblue.png';
+import Footer from '../../components/layout/footer/Footer';
+import ball1 from '../assets/ball1cropped.svg';
+import ball2 from '../assets/ball2cropped.svg';
+import ball3 from '../assets/ball3cropped.svg';
+import ball4 from '../assets/ball4cropped.svg';
+import blob1 from '../assets/blobyellow.png';
+import blob2 from '../assets/blobblue.png';
 
 const ComingSoon = () => {
   return (

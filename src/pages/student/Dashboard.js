@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './Dashboard.css';
 import Footer from '../../components/layout/footer/Footer';
 import Loading from '../../components/layout/loading/Loading';
-import MasterTimeline from '../MasterTimeline';
+import MasterTimeline from './MasterTimeline';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import ReactGA from 'react-ga';
@@ -20,7 +20,7 @@ import {
   isWithinFourWeeks,
   eventsOverlap,
 } from '../../utils/formatTimeAndDate';
-import AppTracker from '../AppTracker';
+import AppTracker from './AppTracker';
 import Onboarding from './studentOnboarding/Onboarding';
 import OnboardingModal from './studentOnboarding/onboardingModal/OnboardingModal';
 import Modal from '../../components/layout/modal/Modal';
