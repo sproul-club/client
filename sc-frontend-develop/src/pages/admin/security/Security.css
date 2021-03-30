@@ -1,0 +1,108 @@
+.security {
+    height: 100vh;
+    overflow-y: hidden;
+}
+
+.security .admin-page {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-top: 66px;
+}
+
+.security .admin-sidebar h3 {
+    font-size: 22px;
+    width: 100%;
+    text-align: center;
+}
+
+.changePassword {
+    background: white;
+    padding: 50px;
+    padding-top: 40px;
+    border: 1px solid #c4c4c4;
+    box-sizing: border-box;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    width: 90%;
+    margin-left: 3%;
+}
+
+.changePassword .changePasswordHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.security .formGroup button {
+    margin: 0px;
+    background: #C4C4C4;
+    color: #2e2e2e;
+}
+.security .formElement{
+    margin: 0px;
+    margin-top: 20px;
+}
+
+.security .formGroup button:hover {
+    background: #c9c9c9;
+}
+
+.security button {
+    margin-left: 30px;
+}
+
+.security .saveButtonHide {
+    display: none;
+}
+
+.security .cancelButtonHide {
+    display: none;
+}
+
+.security .cancelButton {
+    background: #C4C4C4;
+    color: #2e2e2e;
+}
+
+.security .cancelButton:hover {
+    background: #c9c9c9;
+}
+
+.security .subtitle {
+    font-size: 12px;
+    margin-left: 214px;
+    color: #54a0f1;
+    text-decoration: none;
+    width: 110px;
+  }
+
+  .security .conInputInvalid {
+    border: solid 1px #ff2d2d;
+    font-size: 16px;
+    width: 400px;
+    height: 34px;
+    padding-left: 12px;
+    border-radius: 5px;
+  }
+
+  .security .conError {
+    font-size: 12px;
+    color: #ff2d2d;
+    display: inline;
+    position: static;
+    background: none;
+    border-radius: 0px;
+    padding: 0px;
+    box-shadow: none;
+    margin-bottom: 20px;
+    margin-left: 210px;
+    margin-top: -20px;
+  }
+
+  .security .conErrorNone {
+      display: none;
+  }

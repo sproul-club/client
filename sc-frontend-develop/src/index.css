@@ -1,0 +1,73 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
+@media screen and (max-width: 850px) {
+  .disabled-mobile {
+    display: none !important;
+  }
+}
+.disabled {
+  display: none !important;
+}
+
+/* -------------------------------------------------- */
+/* --------------------- Fonts ---------------------- */
+/* -------------------------------------------------- */
+
+@font-face {
+  font-family: 'Qanelas Soft';
+  src: local('Qanelas Soft Medium'), local('Qanelas-Soft-Medium'),
+    url('./pages/assets/fonts/Qanelas-Medium.woff2') format('woff2'),
+    url('./pages/assets/fonts/Qanelas-Medium.woff') format('woff'),
+    url('./pages/assets/fonts/Qanelas-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Qanelas Soft Semi Bold';
+  src: local('Qanelas Soft Semi Bold'), local('Qanelas-Soft-Semi-Bold'),
+    url('./pages/assets/fonts/Qanelas-SemiBold.woff2') format('woff2'),
+    url('./pages/assets/fonts/Qanelas-SemiBold.woff') format('woff'),
+    url('./pages/assets/fonts/Qanelas-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Qanelas Soft Bold';
+  src: local('Qanelas Soft Bold'), local('Qanelas-Soft-Bold'),
+    url('./pages/assets/fonts/Qanelas-Bold.woff2') format('woff2'),
+    url('./pages/assets/fonts/Qanelas-Bold.woff') format('woff'),
+    url('./pages/assets/fonts/Qanelas-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Qanelas Soft Extra Bold';
+  src: local('Qanelas Soft Extra Bold'), local('Qanelas-Soft-Extra-Bold'),
+    url('./pages/assets/fonts/Qanelas-ExtraBold.woff2') format('woff2'),
+    url('./pages/assets/fonts/Qanelas-ExtraBold.woff') format('woff'),
+    url('./pages/assets/fonts/Qanelas-ExtraBold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+}

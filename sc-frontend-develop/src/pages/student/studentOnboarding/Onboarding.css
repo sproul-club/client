@@ -1,0 +1,120 @@
+.onboarding {
+    width: 600px;
+    height: 500px;
+    border-radius: 10px;
+}
+
+.content {
+    justify-content: center;
+}
+
+.register-bear {
+    width: 143px;
+    height: 143px;
+    border-radius: 6px;
+}
+
+.imageContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 58px;
+}
+
+.text h3{
+    font: Qanelas Soft;
+    font-weight: bold;
+    font-style: normal;
+    font-size: 18px;
+    line-height: 22.3px;
+    letter-spacing: 0.02em;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex: 1;
+}
+
+.caption-text p {
+    font-family: Qanelas Soft;
+    font-style: normal;
+    font-size: 18px;
+    line-height: 22.3px;
+    letter-spacing: 0.02em;
+}
+
+
+.caption-text {
+    width: 409px;
+    height: 66px;
+    text-align: center;
+    margin: auto;
+}
+
+.onboarding .content .first {
+    float: right;
+    width: 600px;
+    height: 33px;
+}
+
+.onboarding .content .first #next-button {
+    margin-top: 5px;
+    font-family: Qanelas Soft;
+    font-weight: 700;
+    font-style: normal;
+    letter-spacing: 0.125em;
+    background-color: #54a0f1;
+    color: white;
+    text-decoration: none;
+    padding: 8px 16px 8px 16px;
+    border-radius: 10px;
+    border: none;
+    font-size: 14px;
+    transition: background-color 0.15s;
+    width: 67px;
+    height: 33px;
+    margin-top: 110px;
+    margin-right: 25px;
+    float: right;
+}
+
+#next-button:hover {
+    background-color: #6eaff5;
+    cursor: pointer;
+}
+
+.onboarding .content .first #skip-button {
+    margin-top: 5px;
+    font-family: Qanelas Soft;
+    background-color: white;
+    font-weight: normal;
+    font-style: normal;
+    letter-spacing: 0.125em;
+    color: #2B2B2B;
+    text-decoration: none;
+    padding: 8px 16px 8px 16px;
+    border-radius: 10px;
+    border: none;
+    font-size: 14px;
+    transition: background-color 0.15s;
+    width: 67px;
+    height: 33px;
+    float: right;
+    margin-top: 110px;
+    margin-right: 10px;
+}
+
+.onboarding .content .first #invalid-button {
+    display: flex;
+    background-color: white;
+    padding: 8px 16px 8px 16px;
+    border-radius: 10px;
+    border: none;
+    margin-left: 240px;
+    margin-bottom: auto;
+    margin-top: 110px;
+    height: 10px;
+
+}
+
+.onboarding .content .balls {
+    padding: 5px;
+}

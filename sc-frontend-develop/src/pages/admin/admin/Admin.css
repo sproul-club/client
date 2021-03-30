@@ -1,0 +1,327 @@
+.clubEdit {
+  height: calc(100vh - 67px);
+  overflow-y: hidden;
+  padding-top: 67px;
+}
+
+.admin-page {
+  display: flex;
+  flex-direction: row;
+}
+
+.admin-sidebar {
+  height: 100vh;
+  display: flex;
+  min-width: 250px;
+  max-width: 250px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  flex-direction: column;
+  box-shadow: 1px 0.5px 0px rgba(0, 0, 0, 0.07),
+    1px 0.5px 0px rgba(0, 0, 0, 0.15);
+}
+
+.admin-sidebar a {
+  color: #aaa;
+  font-size: 20px;
+  text-decoration: none;
+  padding: 25px 40px;
+  font-weight: bold;
+}
+.admin-sidebar a:hover {
+  color: #54a0f1;
+}
+
+.admin-sidebar .selected {
+  color: #54a0f1;
+}
+
+.admin-content {
+  padding: 20px 50px;
+  width: 100%;
+  height: calc(100vh - 64px - 20px - 20px); /* viewport - navbar - padding*/
+  overflow-y: auto;
+}
+
+.admin-page .admin-text {
+  margin-bottom: 30px;
+}
+
+.admin-page .add-resource {
+  padding: 10px 20px;
+}
+.admin-page .add-resource .input {
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+}
+.admin-page .input .input-label {
+  width: 100px;
+}
+
+.admin-modal {
+  display: flex;
+  max-width: 80vw;
+  padding-left: 20px;
+  /* padding-right: 20px; */
+}
+
+.admin-modal .admin-text {
+  margin-bottom: 30px;
+}
+
+.clubpage-wrapper .formGroup {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  /* background: #f8f8f8; */
+  padding-top: 10px;
+  margin-bottom: 4px;
+  margin-right: 100px;
+}
+
+.formElement {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  line-height: 12px;
+  margin-bottom: 20px;
+}
+
+.formElement .input-time {
+  display: flex;
+  align-items: center;
+}
+
+.formElement .input-time span {
+  padding: 0 6px 0 6px;
+}
+
+.formElement p {
+  text-align: right;
+  width: 180px;
+  margin-right: 30px;
+  line-height: 20px;
+}
+
+/* .formElement .userInput {
+  font-size: 16px;
+  width: 418px;
+  height: 34px;
+  padding-left: 12px;
+  border: solid 1px;
+  border-radius: 5px;
+} */
+
+.formElement .userInput {
+  width: 320px;
+  height: 0px;
+  padding: 20px;
+  padding-left: 14px;
+  border: solid 1px;
+  border-radius: 5px;
+  resize: none;
+  font-family: 'Qanelas Soft', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.formElement .descriptionInput {
+  width: 400px;
+  height: 200px;
+  padding: 16px;
+  border: solid 1px;
+  border-radius: 5px;
+  resize: none;
+  font-family: 'Qanelas Soft', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.getInvolved p {
+  width: 120px;
+}
+
+.getInvolved .userInput {
+  width: 400px;
+}
+
+.formElement .descriptionInput::placeholder {
+  font-size: 16px;
+}
+
+.fa-times:before {
+    margin-right: 10px;
+}
+
+.formElement .modal-input {
+  border: 1px solid;
+  font-size: 14px;
+  width: 162px;
+  height: 34px;
+  padding-left: 0px;
+  border-radius: 5px;
+  font-family: 'Qanelas Soft', sans-serif;
+  background-color: white;
+}
+
+.admin-page button {
+  margin-bottom: 20px;
+  float: right;
+  background: #54a0f1;
+  border-radius: 5px;
+  padding: 10px 30px;
+  color: white;
+  font-weight: 700;
+  font-size: 16px;
+  border: none;
+  margin-right: 0px;
+}
+
+.admin-page button:hover {
+  background: #6eaff5;
+  cursor: pointer;
+}
+
+.subtitle {
+  margin-top: -20px;
+  font-size: 10px !important;
+  /* margin-left: 210px; */
+  /* align-self: flex-end; */
+  margin-bottom: 20px;
+  text-decoration: none;
+}
+
+#save-button {
+  margin-bottom: 20px;
+  float: right;
+  background: #54a0f1;
+  border-radius: 5px;
+  padding: 10px 25px;
+  color: white;
+  font-weight: 700;
+  font-size: 14px;
+  border: 1px solid #54a0f1;
+}
+
+#save-button:hover {
+  background: #6eaff5;
+  cursor: pointer;
+}
+
+#cancel-button {
+  margin-bottom: 20px;
+  margin-right: 10px;
+  float: right;
+  background: #ffffff;
+  border-radius: 5px;
+  padding: 10px 25px;
+  /*color: #ff2d2d; */
+  color: #f76767;
+  font-weight: 700;
+  font-size: 14px;
+  /*border: 1px solid #ff2d2d;*/
+  border: 1px solid #f76767;
+}
+
+#cancel-button:hover {
+  color: #ff1111;
+  border: 1px solid #ff1111;
+  cursor: pointer;
+}
+
+.modal-input {
+  font-family: 'Quanelas Soft, sans-serif'
+}
+
+.modal-input-hidden {
+  display: hidden;
+}
+
+.delete-modal {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 150px;
+  width: 300px;
+  text-align: center;
+  align-items: center;
+}
+
+.admin-page .red {
+  color: #ff2d2d;
+}
+.admin-page a {
+  text-decoration: none;
+}
+
+.modal-right {
+  margin-right: 60px;
+  margin-left: 40px;
+}
+
+.modal-left .formGroup {
+  margin-right: 0px;
+  min-height: 380px;
+}
+
+@media screen and (max-width: 850px) {
+  .admin-sidebar {
+    background: white;
+    height: 40px;
+    padding: 10px 0px;
+    position: fixed;
+    top: 67px;
+    left: 0px;
+    max-width: 100vh;
+    width: 100vw;
+    display: table;
+  }
+  .admin-sidebar a {
+    font-size: 12px;
+    padding: 0 10px;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+  }
+  .admin-content {
+    padding: 0 10px;
+    padding-top: 50px;
+    margin-bottom: 50px;
+  }
+  .admin-page .formGroup {
+    padding: 10px;
+  }
+
+  .admin-page .formElement {
+    display: flex;
+    flex-direction: column;
+    align-items: unset;
+    width: auto;
+  }
+  .admin-page .formElement p {
+    text-align: left;
+  }
+  .admin-page .formElement .userInput {
+    width: 320px !important;
+    height: 34px;
+  }
+  .subtitle {
+    margin-left: 0px;
+  }
+  .descriptionInput {
+    width: 300px !important;
+  }
+  .react-select__control,
+  .react-select__menu {
+    max-width: 330px !important;
+  }
+  .event {
+    width: 100%;
+  }
+}
