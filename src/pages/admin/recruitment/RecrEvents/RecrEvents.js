@@ -5,8 +5,8 @@ import {
   updateRecrEvent,
   deleteRecrEvent,
 } from '../../../redux/actions/profile';
-import './RecrEvents.css';
-import '../admin/Admin.css';
+import './RecrEvents.scss';
+import '../admin/Admin.scss';
 import RecrAccord from './RecrAccord';
 import moment from 'moment';
 import 'moment-timezone';
