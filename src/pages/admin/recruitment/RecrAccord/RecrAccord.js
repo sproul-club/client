@@ -13,8 +13,8 @@ import {
   AccordionItemPanel,
 } from 'react-accessible-accordion';
 
-import './RecrAccord.css';
-import '../../club/EventAccord.css';
+import './RecrAccord.scss';
+import '../../club/EventAccord.scss';
 import { normalizeUrl, validURL } from '../../../utils/normalizeUrl';
 import { NotificationManager } from 'react-notifications';
 
