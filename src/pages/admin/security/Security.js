@@ -2,7 +2,7 @@ import React from 'react';
 import Navbar from '../../../components/layout/navbar/Navbar';
 import { Route, Switch, Link } from 'react-router-dom';
 import '../admin/Admin.css';
-import './Security.css';
+import './Security.scss';
 import ChangeLogin from './ChangeLogin.js';
 import { connect } from 'react-redux';
 import { updatePassword } from '../../../redux/actions/profile';
