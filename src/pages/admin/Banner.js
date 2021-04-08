@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import ImageUploader from '../../react-images-upload';
-import { updateProfile, uploadLogo, uploadBanner } from '../../actions/profile';
+import ImageUploader from '../../components/react-images-upload';
+import { updateProfile, uploadLogo, uploadBanner } from '../../redux/actions/profile';
 import { NotificationManager } from 'react-notifications';
 
 const Banner = ({
