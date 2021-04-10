@@ -1,6 +1,7 @@
 import React from 'react';
 
-import './ErrorPage.css'
+import './ErrorPage.scss'
+import Footer from '../../components/layout/footer/Footer.js'
 
 import questionablebear from '../assets/resetpwd1.png';
 
@@ -22,6 +23,7 @@ const ErrorPage = () => {
           </p>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

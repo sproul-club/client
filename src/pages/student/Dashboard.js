@@ -170,22 +170,22 @@ function Dashboard({ student }) {
         },
       ],
       interviewed_clubs: [
-        {
-          name: 'offbrand club',
-          icon:
-            'https://sproul-club-images-prod.s3-us-west-1.amazonaws.com/logo/sproul.club-logo-cc6381f68d09a056ef7770a0e9fbdca8.png',
-          events: [
-            {
-              description: 'See our Facebook events for more details.',
-              event_end: '2021-09-04T23:59:00',
-              event_start: '2021-10-30T08:00:00',
-              id:
-                'fall-2020-recruitment-with-180-degrees-consulting-at-uc-berkeley',
-              link: 'https://www.facebook.com/events/784593735644618/',
-              name: 'Virtual Tabling',
-            },
-          ],
-        },
+        // {
+        //   name: 'offbrand club',
+        //   icon:
+        //     'https://sproul-club-images-prod.s3-us-west-1.amazonaws.com/logo/sproul.club-logo-cc6381f68d09a056ef7770a0e9fbdca8.png',
+        //   events: [
+        //     {
+        //       description: 'See our Facebook events for more details.',
+        //       event_end: '2021-09-04T23:59:00',
+        //       event_start: '2021-10-30T08:00:00',
+        //       id:
+        //         'fall-2020-recruitment-with-180-degrees-consulting-at-uc-berkeley',
+        //       link: 'https://www.facebook.com/events/784593735644618/',
+        //       name: 'Virtual Tabling',
+        //     },
+        //   ],
+        // },
       ],
     },
   };
@@ -203,6 +203,8 @@ function Dashboard({ student }) {
   };
 
   let timeline = {};
+
+  
 
   Object.keys(student.club_board).forEach((key) => {
     student.club_board[key].forEach((club, ind) => {
@@ -424,7 +426,7 @@ function Dashboard({ student }) {
           </div>
         </Modal>
 
-        <OnboardingModal
+        {/* <OnboardingModal
           showModal={showOnboardingModal}
           setShowModal={setOnboardingModal}>
           <div className="onboarding-modal">
@@ -434,7 +436,7 @@ function Dashboard({ student }) {
               close={exitOnboarding}
             />
           </div>
-        </OnboardingModal>
+        </OnboardingModal> */}
 
         <Footer />
       </div>
