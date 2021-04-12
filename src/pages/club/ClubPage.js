@@ -162,7 +162,7 @@ function ClubPage({
         }>
         <img
           className="clubpage-sm-link"
-          src={require('../assets/linkImages/' + key + '.png')}
+          src={require('../assets/linkImages/' + key + '.png').default}
           alt="web link"
         />
       </a>
