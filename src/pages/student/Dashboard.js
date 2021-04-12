@@ -383,6 +383,72 @@ function Dashboard({ student }) {
     }
     
   }
+
+  function moveClubLeft(club, index, startCol) {
+    if (startCol.id === 'column-1') return;
+
+    const start = appTrackerColumns.columns[startCol.id];
+    const finish = appTrackerColumns.columns[startCol.id === 'column-2' ? 'column-1' : 'column-2'];
+
+    const startColumnIds = Array.from(start.clubIds);
+      startColumnIds.splice(index, 1);
+      const newStart = {
+        ...start,
+        clubIds: startColumnIds,
+      };
+
+      const finishColumnIds = Array.from(finish.clubIds);
+      finishColumnIds.push(club);
+      const newFinish = {
+        ...finish,
+        clubIds: finishColumnIds,
+      };
+
+      const newAppTrackerColumns = {
+        ...appTrackerColumns,
+        columns: {
+          ...appTrackerColumns.columns,
+          [newStart.id]: newStart,
+          [newFinish.id]: newFinish
+        }
+      }
+      setColumns(newAppTrackerColumns);
+      return;
+  }
+
+  function moveClubRight(club, index, startCol) {
+    if (startCol.id === 'column-3') return;
+
+    const start = appTrackerColumns.columns[startCol.id];
+    const finish = appTrackerColumns.columns[startCol.id === 'column-1' ? 'column-2' : 'column-3'];
+
+    
+    const startColumnIds = Array.from(start.clubIds);
+      startColumnIds.splice(index, 1);
+      const newStart = {
+        ...start,
+        clubIds: startColumnIds,
+      };
+
+      const finishColumnIds = Array.from(finish.clubIds);
+      finishColumnIds.push(club);
+      const newFinish = {
+        ...finish,
+        clubIds: finishColumnIds,
+      };
+
+      const newAppTrackerColumns = {
+        ...appTrackerColumns,
+        columns: {
+          ...appTrackerColumns.columns,
+          [newStart.id]: newStart,
+          [newFinish.id]: newFinish
+        }
+      }
+      setColumns(newAppTrackerColumns);
+      return;
+  }
+
   return (
     <div className="dashboard-wrapper">
       <div className="dashboard">
@@ -469,11 +535,13 @@ function Dashboard({ student }) {
                                           <button className="dashboard-clubcard-left">
                                             <LeftArrow
                                               className={column.id !== 'column-1' ? 'active' : ''}
+                                              onClick={() => moveClubLeft(club, index, column)}
                                             />
                                           </button>
                                           <button className="dashboard-clubcard-right">
                                             <RightArrow
                                               className={column.id !== 'column-3' ? 'active' : ''}
+                                              onClick={() => moveClubRight(club, index, column)}
                                             />
                                           </button>
                                         </div>
