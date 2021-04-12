@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 
-export const StudentSettingStyles = styled.div`
+export const GalleryStyles = styled.div`
 .gallery {
     position: relative;
 

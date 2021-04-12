@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './index.css';
+import './index.css'
 import FlipMove from 'react-flip-move';
 import UploadIcon from './UploadIcon.svg';
 
@@ -213,7 +213,8 @@ class ReactImageUploadComponent extends React.Component {
 
   render() {
     return (
-      <div className={"fileUploader " + this.props.className} style={this.props.style}>
+      <IndexStyles>
+        <div className={"fileUploader " + this.props.className} style={this.props.style}>
         <div className="fileContainer" style={this.props.fileContainerStyle}>
           {this.renderIcon()}
           {this.renderLabel()}
@@ -240,6 +241,7 @@ class ReactImageUploadComponent extends React.Component {
           { this.props.withPreview ? this.renderPreview() : null }
         </div>
       </div>
+      </IndexStyles>
     )
   }
 }
