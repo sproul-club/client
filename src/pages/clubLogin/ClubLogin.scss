@@ -149,6 +149,16 @@
     color: #949494;
   }
 
+  .fine-print a {
+    margin-top: 8px;
+    text-decoration: none;
+    font-family: Qanelas Soft Semi Bold;
+    font-weight: 500;
+    font-size: 13px;
+    color: #4285cc;
+
+  }
+
   .submitButton {
     /* screen width - padding */
     width: calc(100vw - 100px);
@@ -212,7 +222,7 @@
     margin-top: 0px;
     margin-bottom: 20px;
   }
-
+  
   .signin .form .formGroup {
     padding-bottom: 2px;
   }
