@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import signup from '../assets/signup.png';
 import Dropdown from '../../components/layout/dropdown/Dropdown.js';
 import { updateProfile } from '../../redux/actions/profile';
-import '../clubLogin/ClubRegister.css';
+import '../clubLogin/ClubRegister.scss';
 import './Activation.css';
 import Loading from '../../components/layout/loading/Loading';
 import { NotificationManager } from 'react-notifications';

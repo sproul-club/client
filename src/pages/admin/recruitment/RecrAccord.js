@@ -14,7 +14,7 @@ import {
 } from 'react-accessible-accordion';
 
 import './RecrAccord.scss';
-import '../../club/EventAccord.scss';
+import '../../club/EventAccord.css';
 import { normalizeUrl, validURL } from '../../../utils/normalizeUrl';
 import { NotificationManager } from 'react-notifications';
 
