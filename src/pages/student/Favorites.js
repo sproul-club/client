@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './Favorites.css';
-import '../catalog/Catalog.css';
+import '../catalog/Catalog.scss';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import GridComponent from '../../components/layout/grid/GridComponent.js';

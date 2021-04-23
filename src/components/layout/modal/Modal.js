@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import useOnClickOutside from '../../../utils/useOnClickOutside';
-import './Modal.css';
+import './Modal.scss';
 
 const Modal = ({ showModal, setShowModal, close, children }) => {
   const ref = useRef();

@@ -1,5 +1,5 @@
 import React from 'react';
-import './FAQ.css';
+import './FAQ.scss';
 import Footer from '../../components/layout/footer/Footer.js';
 import logo from './../assets/logo.png';
 
