@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState, createRef } from 'react';
 import moment from 'moment';
 import ReactMoment from 'react-moment';
-import './MasterTimeline.css';
+import './MasterTimeline.scss';
 import CloseIcon from '@material-ui/icons/ChevronRightRounded';
 import { dayDiff, simplestRangeFormat, START_DATETIME, END_DATETIME } from '../../utils/formatTimeAndDate';
 

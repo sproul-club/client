@@ -29,14 +29,14 @@
     padding-top:0.5em;
     border-radius: 6px;
     overflow: hidden;
+
+    .subtext {
+        color: #8C8C8C;
+    }
 }
 
 .main-content {
     flex: 4;
-}
-
-.container .subtext {
-    color: #8C8C8C;
 }
 
 .month {

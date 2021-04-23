@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './Dashboard.css';
+import './Dashboard.scss';
 import Footer from '../../components/layout/footer/Footer';
 import Loading from '../../components/layout/loading/Loading';
 import MasterTimeline from './MasterTimeline';
