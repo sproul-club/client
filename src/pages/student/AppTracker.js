@@ -9,7 +9,7 @@ import {
   setFormDetails,
   loadMoreClubs,
 } from '../../redux/actions/catalog';
-import '../catalog/Catalog.css';
+import '../catalog/Catalog.scss';
 import GridComponent from '../../components/layout/grid/GridComponent.js';
 
 const AppTracker = ({

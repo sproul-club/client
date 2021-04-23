@@ -1,5 +1,5 @@
 import React from 'react';
-import './ClubLogin.css';
+import './ClubLogin.scss';
 import Footer from '../../components/layout/footer/Footer';
 import ClubLoginForm from './ClubLoginForm.js';
 import loginImage from '../assets/login.png';

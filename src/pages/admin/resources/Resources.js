@@ -7,7 +7,7 @@ import {
   updateResource,
   deleteResource,
 } from '../../actions/profile';
-import './Resources.css';
+import './Resources.scss';
 import { validURL, normalizeUrl } from '../../utils/normalizeUrl';
 import { NotificationManager } from 'react-notifications';
 
