@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, withRouter, Redirect } from 'react-router-dom';
-import './ClubLogin.css';
+import './ClubLogin.scss';
 import { connect } from 'react-redux';
 import { login, isCallinkEmail } from '../../redux/actions/auth';
 import error from '../assets/error.svg';

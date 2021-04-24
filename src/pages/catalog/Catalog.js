@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './../catalog/Catalog.css';
+import './../catalog/Catalog.scss';
 import banner from './../assets/catalog_banner.jpg';
 import GridComponent from './../../components/layout/grid/GridComponent.js';
 import { connect } from 'react-redux';
@@ -328,8 +328,8 @@ const Catalog = ({
           <div className="results-content">
             <GridComponent displayBanner={true} />
           </div>
-        </div>
-      </div>
+        </div> content
+      </div> page
       <Footer />
     </>
   );
