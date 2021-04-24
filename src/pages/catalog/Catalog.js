@@ -110,7 +110,7 @@ const Catalog = ({
   }
 
   function changeSearch(e) {
-    setFormDetails({ name: 'name', value: e.target.value });
+    setFormDetails({ name: 'name', value: e.target.value })
   }
 
   ReactGA.initialize('UA-176775736-1');

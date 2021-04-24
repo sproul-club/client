@@ -15,6 +15,7 @@ import {
 } from './types';
 
 import { API } from '../../utils/backendClient';
+// import { filterClubs as utilsFilterClubs } from './../../utils/filterClubs';
 
 export const loadAllClubs = () => async (dispatch) => {
   try {
@@ -58,7 +59,7 @@ export const filterClubs = (
     filteredClubs = filteredClubs.filter((club) => club.app_required === false);
   let searchTags = formDetails.tags.map((tag) => tag.label);
   for (let tag of searchTags) {
-    filteredClubs = filteredClubs.filter((club) => {
+    filteredClubs = orgList.filter((club) => {
       let clubtags = club.tags.map((tag) => tagOptions[tag].label);
       return clubtags.includes(tag);
     });
