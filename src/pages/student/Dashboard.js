@@ -207,7 +207,7 @@ function Dashboard({ student }) {
   Object.keys(student.club_board).forEach((key) => {
     student.club_board[key].forEach((club, ind) => {
       club.events.forEach((event, ind) => {
-        events.push(event);
+        // events.push(event);
         let evKey;
         if (containsToday(event.event_start, event.event_end)) {
           evKey = 'today';
@@ -592,7 +592,7 @@ function Dashboard({ student }) {
           </div>
         </Modal>
 
-        <StudentCalendar events={events}/>
+        <StudentCalendar student={student} useStudent={true}/>
 
         {/* <OnboardingModal
           showModal={showOnboardingModal}
