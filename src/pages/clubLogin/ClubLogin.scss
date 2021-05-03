@@ -23,8 +23,6 @@
     margin-top: 40px;
     overflow-y: hidden;
   }
-}
-
 
 .formGroup {
   width: calc(100vw - 100px);
@@ -184,6 +182,168 @@
     cursor: pointer;
   }
 }
+
+.formGroup {
+  width: calc(100vw - 100px);
+  max-width: 330px;
+  padding-bottom: 100px;
+  display: flex;
+  flex-direction: column;
+
+  h2 {
+    margin-bottom: 10px;
+  }
+  p {
+    margin-top: 15px;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  
+  .signin .form a {
+    color: #4285cc;
+    transition: color 0.13s;
+  }
+
+  a:hover {
+    color: #4e4e4e;
+  }
+
+
+  .errorWrapper {
+    width: 100%;
+  
+    .error {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      background: #faf5cc;
+      z-index: 1;
+      border-radius: 6px;
+      padding-left: 8px;
+      padding-right: 8px;
+      box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+    }
+  
+    .emailUnverified, .emptyEmail, .emptyPassword {
+      /* transition to visible popup */
+      visibility: visible;
+      opacity: 0.85;
+      transition: opacity 0.12s 0.1s ease-in;
+    }
+    
+    .noError, .unset {
+      display: none !important;
+    }
+  
+    .emptyEmail, .signin, .emailUnverified {
+      margin-left: 150px;
+      margin-top: 75px;
+    }
+  
+    .emptyPassword {
+      margin-left: 150px;
+      margin-top: 155px;
+    }
+  
+    img {
+      height: 14px;
+      width: 14px;
+      margin-right: 6px;
+    }
+  
+    p {
+      margin-top: 8px;
+      color: #ff2d2d;
+      font-family: Qanelas Soft;
+      font-weight: 700;
+      font-style: normal;
+      font-size: 13px;
+    }
+  }
+
+  .userInput {
+    /* screen width - padding - border - shadow - input padding */
+    width: calc(100vw - 100px - 2px - 1.5px - 18px);
+    /* formGroup max-width - the rest */
+    max-width: calc(325px - 2px - 1.5px - 18px);
+    padding: 9px;
+    padding-left: 11px;
+    border-radius: 5px;
+    border: solid 1px #949494;
+    box-shadow: 1.5px 2px 3px #888888b5;
+    font-family: Qanelas Soft;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 14px;
+    color: #4e4e4e;
+  }
+  
+  /* styling for sign in errors */
+  .inputInvalid {
+    width: calc(100vw - 100px - 2px - 1.5px - 18px + 2px);
+    /* formGroup max-width - the rest */
+    max-width: calc(325px - 2px - 1.5px - 18px);
+    padding: 9px;
+    padding-left: 11px;
+    border-radius: 5px;
+    box-shadow: 1.5px 2px 3px #888888b5;
+    font-family: roboto, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 14px;
+    color: #4e4e4e;
+    border: solid 1px #ff2d2d;
+  }
+
+  .fine-print {
+    margin-top: 8px;
+    text-decoration: none;
+    font-family: Qanelas Soft Semi Bold;
+    font-weight: 500;
+    font-size: 13px;
+    color: #949494;
+  }
+
+  .fine-print a {
+    margin-top: 8px;
+    text-decoration: none;
+    font-family: Qanelas Soft Semi Bold;
+    font-weight: 500;
+    font-size: 13px;
+    color: #4285cc;
+
+  }
+
+  .submitButton {
+    /* screen width - padding */
+    width: calc(100vw - 100px);
+    /* max-width - shadow */
+    max-width: calc(325px - 2px);
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 7px;
+    border: none;
+    box-shadow: 1px 2px 3px #888888b5;
+    text-decoration: none;
+    font-family: Qanelas Soft Semi Bold;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 15px;
+    color: white;
+    background-color: #54a0f1;
+    transition: background-color 0.15s;
+  }
+  
+  .submitButton:hover {
+    background-color: #6eaff5;
+    cursor: pointer;
+  }
+}
+
+}
+
 
 @media screen and (max-height: 700px) {
   .signin .loginImage {

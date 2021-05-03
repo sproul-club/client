@@ -328,8 +328,8 @@ const Catalog = ({
           <div className="results-content">
             <GridComponent displayBanner={true} />
           </div>
-        </div> content
-      </div> page
+        </div>
+      </div>
       <Footer />
     </>
   );
