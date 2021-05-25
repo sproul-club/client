@@ -5,7 +5,7 @@ import {
   updateRecrEvent,
   deleteRecrEvent,
 } from '../../../redux/actions/profile';
-import './RecrEvents.css';
+import './RecrEvents.scss';
 import '../admin/Admin.css';
 import RecrAccord from './RecrAccord';
 import moment from 'moment';

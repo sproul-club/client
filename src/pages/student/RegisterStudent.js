@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import ReactGA from 'react-ga';
-import './RegisterStudent.css';
+import './RegisterStudent.scss';
 import { setFormDetails } from '../../redux/actions/catalog';
 
 import cutelilbearohyesyouare from '../assets/signup.png';
