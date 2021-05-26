@@ -1,1 +1,76 @@
 @import 'react-big-calendar/lib/sass/styles';
+
+.rbc-month-view {
+    border: none;
+}
+
+.rbc-header + .rbc-header {
+    border-left: none;
+    padding-bottom: 4px;
+}
+
+.rbc-date-cell{
+    padding: 0px;
+    text-align:center;
+}
+
+.rbc-toolbar {
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+}
+
+.rbc-toolbar button {
+    border: none;
+}
+
+.rbc-toolbar .rbc-toolbar-label {
+    flex-grow: 0;
+    font-weight: 700;
+    padding-left: 0;
+}
+
+.rbc-date-cell a {
+    font-size: 12px;
+}
+
+.rbc-event-content{
+    font-size: 12px;
+    background:#ABDFFC;
+    color: black;
+}
+
+.rbc-event{
+    background:#ABDFFC;
+}
+
+.rbc-month-row{
+    border: 1px solid #DDD;
+    border-top: none;
+}
+.rbc-month-row + .rbc-month-row{
+    border-top: none;
+}
+
+.rbc-row-segment {
+    padding: 0px;
+    margin-top: 4px;
+}
+
+.rbc-btn-group button {
+    font-family: 'Qanelas Soft';
+}
+
+.rbc-btn-group button:active {
+    background: none !important;
+    box-shadow: none;
+}
+
+.rbc-btn-group button:focus {
+    background: none;
+}
+
+
+.rbc-btn-group button:hover {
+    cursor: pointer;
+    background: none;
+}

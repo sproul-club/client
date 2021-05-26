@@ -14,34 +14,34 @@
     width: 80vw;
     max-width: 1400px;
     margin: 0 auto 0 auto;
+
+    h1 {
+        font-size: xxx-large;
+        margin: 0 0 0.2em 0;
+    }
+
+    h2 {
+        font-size: large;
+        margin: 0 0 0.2em 0;
+    }
+
+    h3 {
+        font-size: medium;
+        margin: 0.5em 0 0.5em 0;
+    }
+
+    h4, span {
+        margin: 0;
+        font-size: 14px;
+    }
 }
 
 .dashboard > * {
     margin-top: 3em;
 }
 
-.dashboard h1 {
-    font-size: xxx-large;
-    margin: 0 0 0.2em 0;
-}
-
-.dashboard h2 {
-    font-size: large;
-    margin: 0 0 0.2em 0;
-}
-
-.dashboard h3 {
-    font-size: medium;
-    margin: 0.5em 0 0.5em 0;
-}
-
 .dashboard-subtext {
     color: #8C8C8C;
-}
-
-.dashboard h4, .dashboard span {
-    margin: 0;
-    font-size: 14px;
 }
 
 .dashboard-flyer-bears-img {
@@ -81,20 +81,20 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-}
 
-.dashboard-clubcard button {
-    color: #C4C4C4;
-    margin: 0;
-    padding: 0;
+    button {
+        color: #C4C4C4;
+        margin: 0;
+        padding: 0;
+    
+        .active{
+            color: #54A0F1;
+            cursor: pointer;
+        }
+    }
 }
 
 .dashboard-clubcard-delete {
-    cursor: pointer;
-}
-
-.dashboard-clubcard button .active{
-    color: #54A0F1;
     cursor: pointer;
 }
 
@@ -143,23 +143,22 @@
     margin-bottom: 0.8em;
     justify-content: space-between;
     max-width: 400px;
-    background: white;
+
+    button {
+        background: none;
+        border: none;
+    }
+
+    img{
+        width: 1.2em;
+        height: 1.2em;
+        margin: 0 0.5em;
+    }
 }
 
 .dashboard-clubcard > * {
     display: flex;
     flex-direction: row;
-}
-
-.dashboard-clubcard button {
-    background: none;
-    border: none;
-}
-
-.dashboard-clubcard img{
-    width: 1.2em;
-    height: 1.2em;
-    margin: 0 0.5em;
 }
 
 .dashboard-add-interested {
@@ -181,10 +180,10 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-}
 
-.dashboard-app-tl-header h2 {
-    margin: 0 1em 0 0;
+    h2 {
+        margin: 0 1em 0 0;
+    }
 }
 
 .dashboard-modal {
@@ -205,11 +204,11 @@
 .tracker-clubcard {
     display: flex;
     flex-direction: row;
-}
 
-.tracker-clubcard img {
-    width: 1.2em;
-    height: 1.2em;
+    img {
+        width: 1.2em;
+        height: 1.2em;
+    }
 }
 
 .tracker-clubcard-text {
@@ -219,6 +218,23 @@
 .tracker-clubcard-tags {
     display: flex;
     flex-direction: row;
+}
+
+.dashboard-calendar {
+    padding: 3vw;
+    border: 1px solid #DDD;
+    border-radius: 10px;
+    margin-bottom: 3em;
+}
+
+.calendar-header {
+    display:flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.calendar-header h2 {
+    margin-right: 10px;
 }
 
 

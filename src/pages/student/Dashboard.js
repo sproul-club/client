@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './Dashboard.css';
+import './Dashboard.scss';
 import Footer from '../../components/layout/footer/Footer';
 import Loading from '../../components/layout/loading/Loading';
 import MasterTimeline from './MasterTimeline';
@@ -592,7 +592,17 @@ function Dashboard({ student }) {
           </div>
         </Modal>
 
-        <StudentCalendar student={student} useStudent={true}/>
+        <div className="dashboard-calendar">
+          <div className="calendar-header">
+            <h2>Master Calendar</h2>
+            <span>
+              <i>
+                *Times are in PST
+              </i>
+            </span>
+          </div>
+          <StudentCalendar student={student} useStudent={true}/>
+        </div>
 
         {/* <OnboardingModal
           showModal={showOnboardingModal}

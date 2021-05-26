@@ -1,5 +1,5 @@
 import React from 'react';
-import './ClubRegister.css';
+import './ClubRegister.scss';
 import MultiStepForm from './ClubRegisterForm.js';
 import Footer from '../../components/layout/footer/Footer';
 import ReactGA from 'react-ga';

@@ -23,14 +23,17 @@ const StudentCalendar = ({student, useStudent}) => {
         });
       });
     });
-
+  
   return (
     <Calendar
+      views={["month"]}
       localizer={localizer}
       events={myEventsList}
       startAccessor="start"
       endAccessor="end"
       style={{ height: 500 }}
+      messages={{next:"▶",previous:"◀"}}
+      popup
     />
   )
 }

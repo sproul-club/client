@@ -110,7 +110,7 @@ const Catalog = ({
   }
 
   function changeSearch(e) {
-    setFormDetails({ name: 'name', value: e.target.value });
+    setFormDetails({ name: 'name', value: e.target.value })
   }
 
   ReactGA.initialize('UA-176775736-1');
@@ -328,8 +328,8 @@ const Catalog = ({
           <div className="results-content">
             <GridComponent displayBanner={true} />
           </div>
-        </div> content
-      </div> page
+        </div>
+      </div>
       <Footer />
     </>
   );
