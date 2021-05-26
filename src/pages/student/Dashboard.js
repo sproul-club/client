@@ -3,6 +3,7 @@ import './Dashboard.scss';
 import Footer from '../../components/layout/footer/Footer';
 import Loading from '../../components/layout/loading/Loading';
 import MasterTimeline from './MasterTimeline';
+import StudentCalendar from './StudentCalendar';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import ReactGA from 'react-ga';
@@ -23,6 +24,7 @@ import {
 import AppTracker from './AppTracker';
 // import Onboarding from './studentOnboarding/Onboarding';
 // import OnboardingModal from './studentOnboarding/onboardingModal/OnboardingModal';
+import { Link } from 'react-router-dom';
 import Modal from '../../components/layout/modal/Modal';
 import { Draggable } from 'react-beautiful-dnd';
 import { Droppable } from 'react-beautiful-dnd';
@@ -60,8 +62,8 @@ function Dashboard({ student }) {
           events: [
             {
               description: 'See our Facebook events for more details.',
-              event_end: '2021-09-04T23:59:00',
-              event_start: '2021-08-25T08:00:00',
+              event_end: '2021-05-04T23:59:00',
+              event_start: '2021-04-25T08:00:00',
               id:
                 'fall-2020-recruitment-with-180-degrees-consulting-at-uc-berkeley',
               link: 'https://www.facebook.com/events/784593735644618/',
@@ -69,8 +71,8 @@ function Dashboard({ student }) {
             },
             {
               description: 'See our Facebook events for more details.',
-              event_end: '2021-09-04T23:59:00',
-              event_start: '2021-09-12T08:00:00',
+              event_end: '2021-04-16T23:59:00',
+              event_start: '2021-04-12T08:00:00',
               id:
                 'fall-2020-recruitment-with-180-degrees-consulting-at-uc-berkeley',
               link: 'https://www.facebook.com/events/784593735644618/',
@@ -85,8 +87,8 @@ function Dashboard({ student }) {
           events: [
             {
               description: 'See our Facebook events for more details.',
-              event_end: '2021-09-04T23:59:00',
-              event_start: '2021-09-23T08:00:00',
+              event_end: '2021-04-16T23:59:00',
+              event_start: '2021-04-16T08:00:00',
               id:
                 'fall-2020-recruitment-with-180-degrees-consulting-at-uc-berkeley',
               link: 'https://www.facebook.com/events/784593735644618/',
@@ -200,9 +202,12 @@ function Dashboard({ student }) {
 
   let timeline = {};
 
+  let events = [];
+
   Object.keys(student.club_board).forEach((key) => {
     student.club_board[key].forEach((club, ind) => {
       club.events.forEach((event, ind) => {
+        // events.push(event);
         let evKey;
         if (containsToday(event.event_start, event.event_end)) {
           evKey = 'today';
@@ -586,6 +591,18 @@ function Dashboard({ student }) {
             <AppTracker student={student} close={cancelEdit} />
           </div>
         </Modal>
+
+        <div className="dashboard-calendar">
+          <div className="calendar-header">
+            <h2>Master Calendar</h2>
+            <span>
+              <i>
+                *Times are in PST
+              </i>
+            </span>
+          </div>
+          <StudentCalendar student={student} useStudent={true}/>
+        </div>
 
         {/* <OnboardingModal
           showModal={showOnboardingModal}
