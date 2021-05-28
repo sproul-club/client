@@ -220,23 +220,6 @@
     flex-direction: row;
 }
 
-.dashboard-calendar {
-    padding: 3vw;
-    border: 1px solid #DDD;
-    border-radius: 10px;
-    margin-bottom: 3em;
-}
-
-.calendar-header {
-    display:flex;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-.calendar-header h2 {
-    margin-right: 10px;
-}
-
 
 @media screen and (max-width: 850px) {
     .dashboard > * {

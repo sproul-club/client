@@ -26,7 +26,7 @@ import FAQ from './pages/faq/FAQ';
 import Admin from './pages/admin/admin/Admin.js';
 import ClubPage from './pages/club/ClubPage';
 import Dashboard from './pages/student/Dashboard.js';
-import StudentCalendar from './pages/student/StudentCalendar.js';
+import StudentCalendar from './pages/student/StudentCalendar';
 import Favorites from './pages/student/Favorites.js';
 import Activation from './pages/club/Activation.js';
 import store from './redux/store';
