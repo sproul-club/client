@@ -17,7 +17,6 @@
     margin-right: 10px;
 }
 
-
 .rbc-month-view {
     border: none;
 }
@@ -39,26 +38,20 @@
 
 .rbc-toolbar button {
     border: none;
+    color: #999999;
 }
 
 .rbc-toolbar .rbc-toolbar-label {
+    display: flex;
     flex-grow: 0;
+    align-items: flex-start;
     font-weight: 700;
     padding-left: 0;
+    width: 130px;
 }
 
 .rbc-date-cell a {
     font-size: 12px;
-}
-
-.rbc-event-content{
-    font-size: 12px;
-    background:#ABDFFC;
-    color: black;
-}
-
-.rbc-event{
-    background:#ABDFFC;
 }
 
 .rbc-month-row{
@@ -85,10 +78,64 @@
 
 .rbc-btn-group button:focus {
     background: none;
+    color: #999999;
 }
 
 
 .rbc-btn-group button:hover {
     cursor: pointer;
     background: none;
+    color: #54A0F1;
+    transition: 0.5s;
+}
+
+.rbc-event{
+    padding: 3px 5px;
+}
+
+.rbc-event-content{
+    font-size: 12px;
+    color: black;
+}
+
+.rbc-event:focus {
+    outline:none;
+}
+
+.rbc-event-content-inner{
+    display: flex;
+    align-items: center;
+}
+
+.rbc-event-content img {
+    width: 20px;
+    margin: 0 0.3em 0 0.3em;
+    margin-right: 8px;
+    border-radius: 5px;
+}
+
+.rbc-overlay-header{
+    font-family: "Qanelas Soft";
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.rbc-show-more{
+    font-weight: 400;
+    font-size: 12px;
+}
+
+.rbc-overlay-header {
+    padding: 0.5em 1em;
+    margin-bottom: 0;
+}
+
+.rbc-overlay {
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+}
+
+.rbc-overlay .rbc-event {
+    margin-top: 9px;
 }

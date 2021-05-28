@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Calendar as RBC, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
 import './Calendar.scss';
+import CalendarEvent from './CalendarEvent.js'
 
 const localizer = momentLocalizer(moment)
 
@@ -50,7 +51,7 @@ function Calendar({ student }) {
         {
           name: 'random club',
           icon:
-            'https://sproul-club-images-prod.s3-us-west-1.amazonaws.com/logo/sproul.club-logo-cc6381f68d09a056ef7770a0e9fbdca8.png',
+            'https://data.whicdn.com/images/333477434/original.jpg',
           events: [
             {
               description: 'See our Facebook events for more details.',
@@ -68,7 +69,7 @@ function Calendar({ student }) {
         {
           name: 'devclub',
           icon:
-            'https://sproul-club-images-prod.s3-us-west-1.amazonaws.com/logo/sproul.club-logo-cc6381f68d09a056ef7770a0e9fbdca8.png',
+            'http://pm1.narvii.com/7620/6144829ee2b97d83e93fbc54bf5c7ae7f3dc748er1-627-629v2_uhq.jpg',
           events: [
             {
               description: 'See our Facebook events for more details.',
@@ -84,7 +85,7 @@ function Calendar({ student }) {
         {
           name: 'no club',
           icon:
-            'https://sproul-club-images-prod.s3-us-west-1.amazonaws.com/logo/sproul.club-logo-cc6381f68d09a056ef7770a0e9fbdca8.png',
+            'https://pbs.twimg.com/profile_images/1082020318523412480/E87sUSUc_400x400.jpg',
           events: [
             {
               description: 'See our Facebook events for more details.',
@@ -118,7 +119,7 @@ function Calendar({ student }) {
         {
           name: 'maybe club',
           icon:
-            'https://sproul-club-images-prod.s3-us-west-1.amazonaws.com/logo/sproul.club-logo-cc6381f68d09a056ef7770a0e9fbdca8.png',
+            'https://pbs.twimg.com/profile_images/1259982795318812672/4DTVxmBy_400x400.jpg',
           events: [
             {
               description: 'See our Facebook events for more details.',
@@ -145,7 +146,7 @@ function Calendar({ student }) {
         {
           name: 'offbrand club',
           icon:
-            'https://sproul-club-images-prod.s3-us-west-1.amazonaws.com/logo/sproul.club-logo-cc6381f68d09a056ef7770a0e9fbdca8.png',
+            'https://i2.wp.com/i.pinimg.com/originals/1b/e7/89/1be78953afd8850b65d1c28c53e0d882.jpg',
           events: [
             {
               description: 'See our Facebook events for more details.',
@@ -162,14 +163,33 @@ function Calendar({ student }) {
     },
   };
 
+  const eventColors = [
+    "#ABDFFC",
+    "#FBD6D5",
+    "#FFF1AE",
+    "#CDEFC6"
+  ];
+
+  var counter = 0;
   Object.keys(student.club_board).forEach((key) => {
     student.club_board[key].forEach((club, ind) => {
+      var color = eventColors[counter % 4]
+      counter++;
       club.events.forEach((event, ind) => {
-        let calendarEvent = { start: new Date(event.event_start), end: new Date(event.event_end), title: event.name };
+        let calendarEvent = { start: new Date(event.event_start), end: new Date(event.event_end), title: event.name, icon: club.icon, color: color};
         calendarEventsList.push(calendarEvent);
       });
     });
   });
+
+  function eventStyleGetter(event, start, end, isSelected) {
+    var style = {
+        backgroundColor: event.color,
+    };
+    return {
+        style: style
+    };
+  }
   
   return (
     <div className="calendar-wrapper">
@@ -185,11 +205,13 @@ function Calendar({ student }) {
         views={["month"]}
         localizer={localizer}
         events={calendarEventsList}
+        components={{event: CalendarEvent}}
         startAccessor="start"
         endAccessor="end"
-        style={{ height: 500 }}
+        style={{ height: 700 }}
         messages={{next:"▶",previous:"◀"}}
         popup
+        eventPropGetter={eventStyleGetter}
       />    
     </div>
   )
