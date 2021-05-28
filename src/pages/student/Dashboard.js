@@ -3,7 +3,7 @@ import './Dashboard.scss';
 import Footer from '../../components/layout/footer/Footer';
 import Loading from '../../components/layout/loading/Loading';
 import MasterTimeline from './MasterTimeline';
-import StudentCalendar from './StudentCalendar';
+import Calendar from '../../components/calendar/Calendar';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import ReactGA from 'react-ga';
@@ -592,18 +592,8 @@ function Dashboard({ student }) {
           </div>
         </Modal>
 
-        <div className="dashboard-calendar">
-          <div className="calendar-header">
-            <h2>Master Calendar</h2>
-            <span>
-              <i>
-                *Times are in PST
-              </i>
-            </span>
-          </div>
-          <StudentCalendar student={student} useStudent={true}/>
-        </div>
-
+        <Calendar />
+       
         {/* <OnboardingModal
           showModal={showOnboardingModal}
           setShowModal={setOnboardingModal}>

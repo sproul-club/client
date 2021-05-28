@@ -1,42 +1,18 @@
-import React, { useEffect } from 'react';
-import { Calendar, momentLocalizer } from 'react-big-calendar';
-import moment from 'moment';
+import React from 'react';
+import Calendar from '../../components/calendar/Calendar';
 import './StudentCalendar.scss';
+import Footer from '../../components/layout/footer/Footer.js';
 
-const localizer = momentLocalizer(moment)
+const StudentCalendar = () => {
 
-let myEventsList = [];
-
-const StudentCalendar = ({student, useStudent}) => {
-  useEffect(() => {
-    myEventsList = [];
-  }, [myEventsList]);
-
-  if (!useStudent) { // placeholder code for viewing full calendar page
-  }
-
-    Object.keys(student.club_board).forEach((key) => {
-      student.club_board[key].forEach((club, ind) => {
-        club.events.forEach((event, ind) => {
-          let calendarEvent = { start: new Date(event.event_start), end: new Date(event.event_end), title: event.name };
-          myEventsList.push(calendarEvent);
-        });
-      });
-    });
-  
   return (
-    <Calendar
-      views={["month"]}
-      localizer={localizer}
-      events={myEventsList}
-      startAccessor="start"
-      endAccessor="end"
-      style={{ height: 500 }}
-      messages={{next:"▶",previous:"◀"}}
-      popup
-    />
+    <div className="student-calendar-wrapper">
+      <div className="student-calendar">
+        <Calendar />
+      </div>
+      <Footer/>
+    </div>
   )
 }
 
 export default StudentCalendar;
-
