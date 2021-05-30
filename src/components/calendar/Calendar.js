@@ -30,8 +30,8 @@ function Calendar({ student }) {
           events: [
             {
               description: 'See our Facebook events for more details.',
-              event_end: '2021-05-04T23:59:00',
-              event_start: '2021-04-25T08:00:00',
+              event_end: '2021-05-29T23:59:00',
+              event_start: '2021-05-29T08:00:00',
               id:
                 'fall-2020-recruitment-with-180-degrees-consulting-at-uc-berkeley',
               link: 'https://www.facebook.com/events/784593735644618/',
@@ -176,7 +176,7 @@ function Calendar({ student }) {
       var color = eventColors[counter % 4]
       counter++;
       club.events.forEach((event, ind) => {
-        let calendarEvent = { start: new Date(event.event_start), end: new Date(event.event_end), title: event.name, icon: club.icon, color: color};
+        let calendarEvent = { start: new Date(event.event_start), end: new Date(event.event_end), title: event.name, icon: club.icon, color: color, description: event.description, link: event.link};
         calendarEventsList.push(calendarEvent);
       });
     });
