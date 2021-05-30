@@ -190,7 +190,6 @@ function Calendar({ student }) {
         style: style
     };
   }
-  
   return (
     <div className="calendar-wrapper">
       <div className="calendar-header">
@@ -214,6 +213,7 @@ function Calendar({ student }) {
         eventPropGetter={eventStyleGetter}
       />    
     </div>
+    
   )
 }
 
