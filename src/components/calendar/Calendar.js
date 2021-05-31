@@ -339,10 +339,11 @@ function Calendar({ student, tagOptions, state}) {
         });
       });
     });
+    return calendarEventsList;
   }
 
   function createCalendarEventsList() {
-
+    return addAllEvents();
   }
 
   function eventStyleGetter(event, start, end, isSelected) {
@@ -363,9 +364,9 @@ function Calendar({ student, tagOptions, state}) {
           </i>
         </span>
       </div>
-      <div className="calendar-filters">
+      <div className="calendar-filters"> {/*NO FILTERS HAVE LOGIC YET. EVENTS SHOWN ARE ALL HARDCODED EVENTS*/}
         <div className="calendar-filters-left">
-          {/* filter by club names */}
+          {/* filter by club names. known bug: options disappear after selecting other options */}
           <Dropdown
             options={clubOptions}
             multi={true}
@@ -375,7 +376,7 @@ function Calendar({ student, tagOptions, state}) {
             defaultValue={clubs}
             set={setClubs}
           />
-          {/* filter by club tags -- not currently working because tag options can't be pulled </3 */}
+          {/* filter by club tags */}
           <Dropdown
             options={tagOptions}
             multi={true}
@@ -403,7 +404,7 @@ function Calendar({ student, tagOptions, state}) {
       <RBC
         views={["month"]}
         localizer={localizer}
-        events={calendarEventsList}
+        events={createCalendarEventsList()}
         components={{event: CalendarEvent}}
         startAccessor="start"
         endAccessor="end"
