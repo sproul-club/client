@@ -360,7 +360,7 @@ function Calendar({ student, tagOptions, state}) {
         <h2>Master Calendar</h2>
         <span>
           <i>
-            *Times are in PST
+            *Times are in PT
           </i>
         </span>
       </div>
