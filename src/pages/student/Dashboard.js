@@ -3,6 +3,7 @@ import './Dashboard.scss';
 import Footer from '../../components/layout/footer/Footer';
 import Loading from '../../components/layout/loading/Loading';
 import MasterTimeline from './MasterTimeline';
+import Calendar from '../../components/calendar/Calendar';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import ReactGA from 'react-ga';
@@ -21,9 +22,13 @@ import {
   eventsOverlap,
 } from '../../utils/formatTimeAndDate';
 import AppTracker from './AppTracker';
-import Onboarding from './studentOnboarding/Onboarding';
-import OnboardingModal from './studentOnboarding/onboardingModal/OnboardingModal';
+// import Onboarding from './studentOnboarding/Onboarding';
+// import OnboardingModal from './studentOnboarding/onboardingModal/OnboardingModal';
+import { Link } from 'react-router-dom';
 import Modal from '../../components/layout/modal/Modal';
+import { Draggable } from 'react-beautiful-dnd';
+import { Droppable } from 'react-beautiful-dnd';
+import { DragDropContext } from 'react-beautiful-dnd';
 
 function Dashboard({ student }) {
   useEffect(() => {
@@ -57,8 +62,8 @@ function Dashboard({ student }) {
           events: [
             {
               description: 'See our Facebook events for more details.',
-              event_end: '2021-09-04T23:59:00',
-              event_start: '2021-08-25T08:00:00',
+              event_end: '2021-05-04T23:59:00',
+              event_start: '2021-04-25T08:00:00',
               id:
                 'fall-2020-recruitment-with-180-degrees-consulting-at-uc-berkeley',
               link: 'https://www.facebook.com/events/784593735644618/',
@@ -66,8 +71,8 @@ function Dashboard({ student }) {
             },
             {
               description: 'See our Facebook events for more details.',
-              event_end: '2021-09-04T23:59:00',
-              event_start: '2021-09-12T08:00:00',
+              event_end: '2021-04-16T23:59:00',
+              event_start: '2021-04-12T08:00:00',
               id:
                 'fall-2020-recruitment-with-180-degrees-consulting-at-uc-berkeley',
               link: 'https://www.facebook.com/events/784593735644618/',
@@ -82,8 +87,8 @@ function Dashboard({ student }) {
           events: [
             {
               description: 'See our Facebook events for more details.',
-              event_end: '2021-09-04T23:59:00',
-              event_start: '2021-09-23T08:00:00',
+              event_end: '2021-04-16T23:59:00',
+              event_start: '2021-04-16T08:00:00',
               id:
                 'fall-2020-recruitment-with-180-degrees-consulting-at-uc-berkeley',
               link: 'https://www.facebook.com/events/784593735644618/',
@@ -189,51 +194,20 @@ function Dashboard({ student }) {
       ],
     },
   };
-  if (!student) return <Loading />;
 
   let eventDashboard = {
     today: [],
     upcoming: [],
   };
 
-  let appTracker = {
-    interested_clubs: [],
-    applied_clubs: [],
-    interviewed_clubs: [],
-  };
-
   let timeline = {};
+
+  let events = [];
 
   Object.keys(student.club_board).forEach((key) => {
     student.club_board[key].forEach((club, ind) => {
-      appTracker[key].push(
-        <div key={`tracker${ind}`} className="dashboard-clubcard">
-          <div className="dashboard-clubcard-title">
-            <img
-              className="dashboard-clubicon"
-              src={club.icon || require('../assets/default_logo.jpg')}
-              alt="icon"
-            />
-            <h4 className="dashboard-clubcard-clubname">{club.name}</h4>
-          </div>
-          <div className="dashboard-clubpage-btns">
-            <button className="dashboard-clubcard-remove">
-              <Delete className="dashboard-clubcard-delete" />
-            </button>
-            <button className="dashboard-clubcard-left">
-              <LeftArrow
-                className={key !== 'interested_clubs' ? 'active' : ''}
-              />
-            </button>
-            <button className="dashboard-clubcard-right">
-              <RightArrow
-                className={key !== 'interviewed_clubs' ? 'active' : ''}
-              />
-            </button>
-          </div>
-        </div>
-      );
       club.events.forEach((event, ind) => {
+        // events.push(event);
         let evKey;
         if (containsToday(event.event_start, event.event_end)) {
           evKey = 'today';
@@ -326,7 +300,159 @@ function Dashboard({ student }) {
     });
   });
 
+  const [appTrackerColumns, setColumns] = useState({
+    columns: {
+      "column-1": {
+        id: "column-1",
+        name: "Interested",
+        clubIds: student.club_board.interested_clubs,
+      },
+      "column-2": {
+        id: "column-2",
+        name: "Applied",
+        clubIds: student.club_board.applied_clubs,
+      },
+      "column-3": {
+        id: "column-3",
+        name: "Interview",
+        clubIds: student.club_board.interviewed_clubs,
+      }
+    },
+    columnOrder: ["column-1", "column-2", "column-3"]
+  });
+
   if (!student) return <Loading />;
+
+  const onDragEnd = result => {
+    const { destination, source, draggableId } = result;
+
+    if (!destination) {
+      return;
+    }
+
+    if (
+      destination.droppableId === source.droppableId &&
+      destination.index === source.index
+    ) {
+      return;
+    }
+
+    const start = appTrackerColumns.columns[source.droppableId];
+    const finish = appTrackerColumns.columns[destination.droppableId];
+
+    if (start === finish) {
+      const newClubIds = Array.from(start.clubIds);
+      newClubIds.splice(source.index, 1);
+      newClubIds.splice(destination.index, 0, appTrackerColumns.columns[source.droppableId].clubIds[source.index]);
+
+      const newColumn = {
+        ...start,
+        clubIds: newClubIds
+      };
+
+      const newAppTrackerColumns = {
+        ...appTrackerColumns,
+        columns: {
+          ...appTrackerColumns.columns,
+          [newColumn.id]: newColumn
+        }
+      }
+
+      setColumns(newAppTrackerColumns);
+      return;
+    } else {
+      const startColumnIds = Array.from(start.clubIds);
+      startColumnIds.splice(source.index, 1);
+      const newStart = {
+        ...start,
+        clubIds: startColumnIds,
+      };
+
+      const finishColumnIds = Array.from(finish.clubIds);
+      finishColumnIds.splice(destination.index, 0, appTrackerColumns.columns[source.droppableId].clubIds[source.index]);
+      const newFinish = {
+        ...finish,
+        clubIds: finishColumnIds,
+      };
+
+      const newAppTrackerColumns = {
+        ...appTrackerColumns,
+        columns: {
+          ...appTrackerColumns.columns,
+          [newStart.id]: newStart,
+          [newFinish.id]: newFinish
+        }
+      }
+      setColumns(newAppTrackerColumns);
+      return;
+    }
+    
+  }
+
+  function moveClubLeft(club, index, startCol) {
+    if (startCol.id === 'column-1') return;
+
+    const start = appTrackerColumns.columns[startCol.id];
+    const finish = appTrackerColumns.columns[startCol.id === 'column-2' ? 'column-1' : 'column-2'];
+
+    const startColumnIds = Array.from(start.clubIds);
+      startColumnIds.splice(index, 1);
+      const newStart = {
+        ...start,
+        clubIds: startColumnIds,
+      };
+
+      const finishColumnIds = Array.from(finish.clubIds);
+      finishColumnIds.push(club);
+      const newFinish = {
+        ...finish,
+        clubIds: finishColumnIds,
+      };
+
+      const newAppTrackerColumns = {
+        ...appTrackerColumns,
+        columns: {
+          ...appTrackerColumns.columns,
+          [newStart.id]: newStart,
+          [newFinish.id]: newFinish
+        }
+      }
+      setColumns(newAppTrackerColumns);
+      return;
+  }
+
+  function moveClubRight(club, index, startCol) {
+    if (startCol.id === 'column-3') return;
+
+    const start = appTrackerColumns.columns[startCol.id];
+    const finish = appTrackerColumns.columns[startCol.id === 'column-1' ? 'column-2' : 'column-3'];
+
+    
+    const startColumnIds = Array.from(start.clubIds);
+      startColumnIds.splice(index, 1);
+      const newStart = {
+        ...start,
+        clubIds: startColumnIds,
+      };
+
+      const finishColumnIds = Array.from(finish.clubIds);
+      finishColumnIds.push(club);
+      const newFinish = {
+        ...finish,
+        clubIds: finishColumnIds,
+      };
+
+      const newAppTrackerColumns = {
+        ...appTrackerColumns,
+        columns: {
+          ...appTrackerColumns.columns,
+          [newStart.id]: newStart,
+          [newFinish.id]: newFinish
+        }
+      }
+      setColumns(newAppTrackerColumns);
+      return;
+  }
 
   return (
     <div className="dashboard-wrapper">
@@ -364,7 +490,7 @@ function Dashboard({ student }) {
           <div className="dashboard-events-photo">
             <img
               className="dashboard-flyer-bears-img"
-              src={require('../assets/dashboard-flyer-bears.svg')}
+              src={require('../assets/dashboard-flyer-bears.svg').default}
               alt="flyer bears"
             />
           </div>
@@ -376,44 +502,86 @@ function Dashboard({ student }) {
             added to the Master Application Timeline and Events
           </span>
           <div className="dashboard-app-tracker-content">
-            <div className="dashboard-app-tracker-list">
-              <h3>Interested</h3>
-              {appTracker.interested_clubs.length > 0 ? (
-                appTracker.interested_clubs
-              ) : (
-                <span>No interested clubs.</span>
-              )}
-              <button
-                className="dashboard-add-interested"
-                onClick={() => setTrackerModal(true)}>
-                + New
-              </button>
-            </div>
-            <div className="dashboard-app-tracker-list">
-              <h3>Applied</h3>
-              {appTracker.applied_clubs.length > 0 ? (
-                appTracker.applied_clubs
-              ) : (
-                <span>No clubs selected for the application process.</span>
-              )}
-            </div>
-            <div className="dashboard-app-tracker-list">
-              <h3>Interview</h3>
-              {appTracker.interviewed_clubs.length > 0 ? (
-                appTracker.interviewed_clubs
-              ) : (
-                <span>No clubs selected for the interview process.</span>
-              )}
-            </div>
+            <DragDropContext
+              onDragEnd = {onDragEnd}>
+              {appTrackerColumns.columnOrder.map((columnId) => {
+                const column = appTrackerColumns.columns[columnId];
+                  return(
+                    <div key={column.id}>
+                      <h3>{column.name}</h3>
+                      <Droppable droppableId = {column.id}>
+                        {provided => (
+                          <div
+                          className="dashboard-app-tracker-list"
+                          ref={provided.innerRef}
+                          {...provided.droppableProps}>
+                            {column.clubIds.length > 0 ? (
+                              column.clubIds.map((club, index) => {
+                                return (
+                                  <Draggable key={club.name} draggableId={club.name} index={index}>
+                                    {provided =>
+                                      <div className="dashboard-clubcard"
+                                      {...provided.draggableProps}
+                                      {...provided.dragHandleProps}
+                                      ref={provided.innerRef}
+                                      >
+                                        <div className="dashboard-clubcard-title">
+                                          <img
+                                            className="dashboard-clubicon"
+                                            src={club.icon || require('../assets/default_logo.jpg')}
+                                            alt="icon"
+                                          />
+                                          <h4 className="dashboard-clubcard-clubname">{club.name}</h4>
+                                        </div>
+                                        <div className="dashboard-clubpage-btns">
+                                          <button className="dashboard-clubcard-remove">
+                                            <Delete className="dashboard-clubcard-delete" />
+                                          </button>
+                                          <button className="dashboard-clubcard-left">
+                                            <LeftArrow
+                                              className={column.id !== 'column-1' ? 'active' : ''}
+                                              onClick={() => moveClubLeft(club, index, column)}
+                                            />
+                                          </button>
+                                          <button className="dashboard-clubcard-right">
+                                            <RightArrow
+                                              className={column.id !== 'column-3' ? 'active' : ''}
+                                              onClick={() => moveClubRight(club, index, column)}
+                                            />
+                                          </button>
+                                        </div>
+                                      </div>
+                                    }
+                                  </Draggable>
+                                  )
+                                })
+                              ) : (
+                                <span>No clubs.</span>
+                            )}
+                            {provided.placeholder}
+                          </div>
+                        )}
+                      </Droppable>
+                      <div>
+                        {column.id === "column-1" &&
+                        <button
+                          className="dashboard-add-interested"
+                          onClick={() => setTrackerModal(true)}>
+                          + New
+                        </button>}
+                      </div>
+                    </div>
+              )})}
+            </DragDropContext>
           </div>
         </div>
-        <div className="dashboard-app-timeline">
+        {/* <div className="dashboard-app-timeline">
           <span className="dashboard-app-tl-header">
             <h2>Master Application Timeline</h2>
             <i className="dashboard-subtext">*Timeline in PST</i>
           </span>
           <MasterTimeline data={timeline} />
-        </div>
+        </div> */}
 
         <Modal
           showModal={showTrackerModal}
@@ -424,7 +592,9 @@ function Dashboard({ student }) {
           </div>
         </Modal>
 
-        <OnboardingModal
+        <Calendar />
+       
+        {/* <OnboardingModal
           showModal={showOnboardingModal}
           setShowModal={setOnboardingModal}>
           <div className="onboarding-modal">
@@ -434,10 +604,9 @@ function Dashboard({ student }) {
               close={exitOnboarding}
             />
           </div>
-        </OnboardingModal>
-
-        <Footer />
+        </OnboardingModal> */}
       </div>
+      <Footer/>
     </div>
   );
 }

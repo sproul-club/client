@@ -23,7 +23,7 @@ const Footer = () => {
           href="mailto:sproul.club@gmail.com">
           <img
             className="footer-link-image"
-            src={require('../../../pages/assets/linkImages/contact_emailLink.png')}
+            src={require('../../../pages/assets/linkImages/contact_emailLink.png').default}
             alt="email link"
           />
         </a>
@@ -33,7 +33,7 @@ const Footer = () => {
           href="https://www.facebook.com/sproul.club">
           <img
             className="footer-link-image"
-            src={require('../../../pages/assets/linkImages/facebookLink.png')}
+            src={require('../../../pages/assets/linkImages/facebookLink.png').default}
             alt="facebook link"
           />
         </a>
@@ -43,7 +43,7 @@ const Footer = () => {
           href="https://www.instagram.com/sproul.club">
           <img
             className="footer-link-image"
-            src={require('../../../pages/assets/linkImages/instagramLink.png')}
+            src={require('../../../pages/assets/linkImages/instagramLink.png').default}
             alt="instagram link"
           />
         </a>

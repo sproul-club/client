@@ -1,3 +1,7 @@
+import styled from 'styled-components'
+
+
+export const StudentSettingStyles = styled.div`
 .gallery {
     position: relative;
 
@@ -41,3 +45,4 @@
 .next-button {
     right: 0;
 }
+`
