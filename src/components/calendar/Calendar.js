@@ -184,6 +184,7 @@ function Calendar({ student, tagOptions, state}) {
     });
   });
 
+  // styles for dropdown
   const customStyles = {
     multiValue: (provided, state) => ({
       ...provided,
@@ -277,13 +278,13 @@ function Calendar({ student, tagOptions, state}) {
         transform: 'translateX(16px)',
         color: theme.palette.common.white,
         '& + $track': {
-          backgroundColor: '#ABDFFC',
+          backgroundColor: '#54A0F1',
           opacity: 1,
           border: 'none',
         },
       },
       '&$focusVisible $thumb': {
-        color: '#ABDFFC',
+        color: '#54A0F1',
         border: 'none',
       },
     },
