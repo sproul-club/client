@@ -7,8 +7,9 @@ const handleChange = (value, props) => {
       // recolor option text to light grey, to look unclickable :'(
       if (value.length > 3) {
         value.pop();                        // remove 4th tag
-        props.errorPopup('tagOverflow');    // make popup visible for ~2s
-        setTimeout(function() {props.errorPopup('tagOverflowNone');}, 1000);
+        // commented out below two lines bc i wasn't sure what they do oop
+        // props.errorPopup('tagOverflow');    // make popup visible for ~2s
+        // setTimeout(function() {props.errorPopup('tagOverflowNone');}, 1000);
       }
     }
   }
@@ -16,6 +17,7 @@ const handleChange = (value, props) => {
 }
 
 const Dropdown = (props) => {
+
   return (
     <Select
     styles={props.style}
