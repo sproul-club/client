@@ -37,7 +37,7 @@
 }
 
 .dashboard > * {
-    margin-top: 3em;
+    margin-top: 3.5em;
 }
 
 .dashboard-subtext {
@@ -45,15 +45,16 @@
 }
 
 .dashboard-flyer-bears-img {
-    display: block;
-    width: 30vw;
-    max-width: 500px;
+    display:flex;
+    width: 32vw;
+    padding-top: 4vw;
 }
 
 .dashboard-events {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
+    justify-content: space-between;
 }
 
 .dashboard-event {
@@ -81,6 +82,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    background:white;
 
     button {
         color: #C4C4C4;
@@ -119,7 +121,7 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    margin-top: 3em;
+    margin-top: 4em;
     margin-bottom: 1em;
 }
 
@@ -131,6 +133,7 @@
     display: flex;
     flex-direction: row;
     margin-top: 1em;
+    justify-content: space-between;
 }
 
 .dashboard-app-tracker-content > *:not(:last-child) {
@@ -139,6 +142,11 @@
 
 .dashboard-app-tracker-list {
     flex: 1;
+    display:flex;
+    flex-direction: column;
+    flex-grow: 1;
+    min-width: 22vw;
+    min-height: 50px;
 }
 
 .dashboard-clubcard {

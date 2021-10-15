@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './../catalog/Catalog.css';
+import './../catalog/Catalog.scss';
 import banner from './../assets/catalog_banner.jpg';
 import GridComponent from './../../components/layout/grid/GridComponent.js';
 import { connect } from 'react-redux';
@@ -110,7 +110,7 @@ const Catalog = ({
   }
 
   function changeSearch(e) {
-    setFormDetails({ name: 'name', value: e.target.value });
+    setFormDetails({ name: 'name', value: e.target.value })
   }
 
   ReactGA.initialize('UA-176775736-1');

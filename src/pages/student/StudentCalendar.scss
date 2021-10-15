@@ -1,0 +1,17 @@
+.student-calendar-wrapper {
+    min-height: 100vh;
+    max-width: 100vw;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding-top: 67px;
+    position: relative;
+    font-family: Qanelas Soft;
+    letter-spacing: 0.03em;
+}
+
+.student-calendar {
+    padding-top: 0.6em;
+    width: 80vw;
+    max-width: 1150px;
+    margin: 0 auto 0 auto;
+}

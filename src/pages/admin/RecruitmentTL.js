@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { google } from "calendar-link";
 import moment from 'moment';
 import 'moment-timezone';
-import "./RecruitmentTL.css"
+import "./RecruitmentTL.scss"
 import { justTimeFormat, simplestRangeFormat, START_DATETIME, END_DATETIME, dateTimeFormat } from '../../utils/formatTimeAndDate';
 //import { propTypes } from 'react-bootstrap/esm/Image';
 

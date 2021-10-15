@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import './Gallery.css';
+import './Gallery.scss'
 import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext, Image } from 'pure-react-carousel';
 import ReactPlayer from 'react-player'
 import "pure-react-carousel/dist/react-carousel.es.css";

@@ -1,0 +1,163 @@
+@import 'react-big-calendar/lib/sass/styles';
+
+.calendar-wrapper {
+    padding: 3vw;
+    border: 1px solid #DDD;
+    border-radius: 10px;
+    margin-bottom: 3em;
+}
+
+.calendar-header {
+    display:flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.calendar-header h2 {
+    margin-right: 10px;
+}
+
+.calendar-filters {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.calendar-filters-left {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.calendar-filters-right {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 12px;
+    color: #949494;
+}
+
+.rbc-month-view {
+    border: none;
+}
+
+.rbc-header + .rbc-header {
+    border-left: none;
+    padding-bottom: 4px;
+}
+
+.rbc-date-cell{
+    padding: 0px;
+    text-align:center;
+}
+
+.rbc-toolbar {
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+}
+
+.rbc-toolbar button {
+    border: none;
+    color: #999999;
+}
+
+.rbc-toolbar .rbc-toolbar-label {
+    display: flex;
+    flex-grow: 0;
+    align-items: flex-start;
+    font-weight: 700;
+    padding-left: 0;
+    width: 130px;
+}
+
+.rbc-date-cell a {
+    font-size: 12px;
+}
+
+.rbc-month-row{
+    border: 1px solid #DDD;
+    border-top: none;
+}
+.rbc-month-row + .rbc-month-row{
+    border-top: none;
+}
+
+.rbc-row-segment {
+    padding: 0px;
+    margin-top: 4px;
+}
+
+.rbc-btn-group button {
+    font-family: 'Qanelas Soft';
+}
+
+.rbc-btn-group button:active {
+    background: none !important;
+    box-shadow: none;
+}
+
+.rbc-btn-group button:focus {
+    background: none;
+    color: #999999;
+}
+
+
+.rbc-btn-group button:hover {
+    cursor: pointer;
+    background: none;
+    color: #54A0F1;
+    transition: 0.5s;
+}
+
+.rbc-event{
+    padding: 3px 5px;
+}
+
+.rbc-event-content{
+    font-size: 12px;
+    color: black;
+}
+
+.rbc-event:focus {
+    outline:none;
+}
+
+.rbc-event-content-inner{
+    display: flex;
+    align-items: center;
+    cursor: default;
+}
+
+.rbc-event-content img {
+    width: 20px;
+    margin: 0 0.3em 0 0.3em;
+    margin-right: 8px;
+    border-radius: 5px;
+}
+
+.rbc-overlay-header{
+    font-family: "Qanelas Soft";
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.rbc-show-more{
+    font-weight: 400;
+    font-size: 12px;
+}
+
+.rbc-overlay-header {
+    padding: 0.5em 1em;
+    margin-bottom: 0;
+}
+
+.rbc-overlay {
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+}
+
+.rbc-overlay .rbc-event {
+    margin-top: 9px;
+    font-family: 'Qanelas Soft';
+}

@@ -27,6 +27,7 @@ import FAQ from './pages/faq/FAQ';
 import Admin from './pages/admin/admin/Admin.js';
 import ClubPage from './pages/club/ClubPage';
 import Dashboard from './pages/student/Dashboard.js';
+import StudentCalendar from './pages/student/StudentCalendar';
 import Favorites from './pages/student/Favorites.js';
 import Activation from './pages/club/Activation.js';
 import store from './redux/store';
@@ -67,13 +68,14 @@ const App = () => {
           <Route path="/club/:id" component={ClubPage} />
           <PrivateRoute exact path="/security" component={Security} />
           <Route exact path="/dashboard" component={Dashboard} />
+          <Route exact path="/StudentCalendar" component={StudentCalendar} />
           <Route exact path="/FAQ" component={ComingSoon} />
           <Route exact path="/favorites" component={Favorites} />
           <Route exact path="/student/settings" component={StudentSettings} />
           <Route exact path="/student/signin" component={StudentSignIn} />
           <Route exact path="/student/register" component={RegisterStudent} />
           <PrivateRoute exact path="/security" component={Security} />
-          {/* <Route exact path="/activation" component={Activation} /> */}
+          <Route exact path="/comingsoon" component={ComingSoon} />
           <Route>
             <ErrorPage />
           </Route>

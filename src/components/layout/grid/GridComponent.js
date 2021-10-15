@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { searchClubs } from './../../../redux/actions/catalog';
-import './GridComponent.css';
+import './GridComponent.scss';
 import { filterClubs } from './../../../utils/filterClubs';
 import ClubCard from './ClubCard';
 import confusion from './../../../pages/assets/resetpwd1.png';
