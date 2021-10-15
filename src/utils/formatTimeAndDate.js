@@ -21,6 +21,11 @@ export function isSameDay(start, end) {
   return moment(start).isSame(end, 'day');
 }
 
+export function isWithinOneWeek(start) {
+  const sunday = moment().startOf('week');
+  return moment(start).isSameOrAfter(sunday, 'day') && moment(start).isBefore(sunday.add(7, 'days'));
+}
+
 export function isWithinFourWeeks(start) {
   const sunday = moment().startOf('week');
   return moment(start).isSameOrAfter(sunday, 'day') && moment(start).isBefore(sunday.add(30, 'days'));

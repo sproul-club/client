@@ -15,6 +15,7 @@ import { ComingSoon } from './pages/comingSoon/ComingSoon.js';
 import Catalog from './pages/catalog/Catalog.js';
 import { SignUp } from './pages/clubLogin/ClubRegister.js';
 import { SignIn } from './pages/clubLogin/ClubLogin.js';
+import { StudentSignIn } from './pages/student/StudentLogin.js';
 import RegisterStudent from './pages/student/RegisterStudent.js';
 import { ResetPassword } from './pages/clubLogin/ResetPassword.js';
 import { ResetPassword2 } from './pages/clubLogin/ResetPassword2.js';
@@ -69,6 +70,8 @@ const App = () => {
           <Route exact path="/FAQ" component={ComingSoon} />
           <Route exact path="/favorites" component={Favorites} />
           <Route exact path="/student/settings" component={StudentSettings} />
+          <Route exact path="/student/signin" component={StudentSignIn} />
+          <Route exact path="/student/register" component={RegisterStudent} />
           <PrivateRoute exact path="/security" component={Security} />
           {/* <Route exact path="/activation" component={Activation} /> */}
           <Route>

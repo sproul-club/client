@@ -62,7 +62,7 @@
     align-items: center;
     justify-content: space-between;
     align-items: flex-start;
-    margin: 0.5em 0 0 1.5em;
+    margin: 1em 1em 0 0;
 }
 
 .dashboard-event-content {
@@ -103,6 +103,17 @@
     height: 1.4em;
     border-radius: 6px;
 }
+
+.dashboard-eventlist {
+    height: 35vh;
+    width: 35vw;
+}
+
+.dashboard-eventlist-scroll {
+    height: 30vh;
+    overflow: auto;
+}
+
 
 .dashboard-eventlist-container {
     display: flex;
@@ -148,6 +159,10 @@
         height: 1.2em;
         margin: 0 0.5em;
     }
+    
+    &:hover {
+        filter: brightness(85%);
+    }
 }
 
 .dashboard-clubcard > * {
@@ -180,10 +195,14 @@
     }
 }
 
+.dashboard-events-photo {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
 .dashboard-modal {
-    padding-left: 20px;
-    padding-right: 20px;
-    width: 80vw;
+    max-width: 80vw;
 }
 
 .tracker-clubcard-wrapper {
@@ -230,7 +249,7 @@
     }
 
     .dashboard-event {
-        margin: 0.5em 0 0 0.5em;
+        margin: 0.5em 0 0 0;
     }
 
     .dashboard-flyer-bears-img {
@@ -243,10 +262,6 @@
 
     .dashboard-app-tracker-content > *:not(:last-child) {
         margin-right: 0;
-    }
-
-    .dashboard-clubcard {
-        padding: 0.4em;
     }
 
     .dashboard-clubcard-left {

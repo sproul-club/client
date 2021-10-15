@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import './Dashboard.scss';
 import Footer from '../../components/layout/footer/Footer';
@@ -17,10 +18,13 @@ import {
   simpleDayFormat,
   END_DATETIME,
   isSameDay,
+  isWithinOneWeek,
   isWithinFourWeeks,
   eventsOverlap,
 } from '../../utils/formatTimeAndDate';
 import AppTracker from './AppTracker';
+import ClubCardSimple from '../club/ClubCardSimple';
+import ClubEvents from './ClubEvents';
 import Onboarding from './studentOnboarding/Onboarding';
 import OnboardingModal from './studentOnboarding/onboardingModal/OnboardingModal';
 import Modal from '../../components/layout/modal/Modal';
@@ -31,6 +35,8 @@ function Dashboard({ student }) {
   }, []);
   const [showTrackerModal, setTrackerModal] = useState(false);
   const [showOnboardingModal, setOnboardingModal] = useState(true);
+  const [showBoardModal, setBoardModal] = useState(false);
+  const [showCurrentClub, setCurrentClub] = useState('');
 
   function cancelEdit() {
     setTrackerModal(false);
@@ -38,6 +44,10 @@ function Dashboard({ student }) {
 
   function exitOnboarding() {
     setOnboardingModal(false);
+  }
+
+  function exitBoardClub() {
+    setBoardModal(false);
   }
 
   /* TEMPORARY HARDCODED STUDENT FOR TESTING */
@@ -48,17 +58,39 @@ function Dashboard({ student }) {
     interests: [],
     favorited_clubs: ['Karasuno High VBC', 'User Testing'],
     visited_clubs: [],
+    recommended_clubs: [
+      {
+        link_name: "shrek-2-appreciation", 
+        name: "Recommended Club 1", 
+        logo_url: "https://sproul-club-images-prod.s3-us-west-1.amazonaws.com/logo/sproul.club-logo-cc6381f68d09a056ef7770a0e9fbdca8.png", 
+        about_us: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis facilisis ipsum. Cras ac erat nibh. Integer semper nec arcu id elementum. Vestibulum in arcu lacus. Duis sodales lectus risus, quis blandit enim suscipit et. Sed tristique turpis ex, ut vulputate ex sollicitudin quis."
+      },
+      {
+        link_name: "shrek-2-appreciation", 
+        name: "Recommended Club 2", 
+        logo_url: "https://sproul-club-images-prod.s3-us-west-1.amazonaws.com/logo/sproul.club-logo-cc6381f68d09a056ef7770a0e9fbdca8.png", 
+        about_us: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis facilisis ipsum. Cras ac erat nibh. Integer semper nec arcu id elementum. Vestibulum in arcu lacus. Duis sodales lectus risus, quis blandit enim suscipit et. Sed tristique turpis ex, ut vulputate ex sollicitudin quis."
+      },
+      {
+        link_name: "shrek-2-appreciation", 
+        name: "Recommended Club 3", 
+        logo_url: "https://sproul-club-images-prod.s3-us-west-1.amazonaws.com/logo/sproul.club-logo-cc6381f68d09a056ef7770a0e9fbdca8.png", 
+        about_us: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis facilisis ipsum. Cras ac erat nibh. Integer semper nec arcu id elementum. Vestibulum in arcu lacus. Duis sodales lectus risus, quis blandit enim suscipit et. Sed tristique turpis ex, ut vulputate ex sollicitudin quis."
+      }
+    ],
     club_board: {
       interested_clubs: [
         {
           name: 'sproul.club',
           icon:
             'https://sproul-club-images-prod.s3-us-west-1.amazonaws.com/logo/sproul.club-logo-cc6381f68d09a056ef7770a0e9fbdca8.png',
+          major_requirements: ["EECS", "Data Science", "Computer Science"],
+          class_requirements: ["CS 61A"],
           events: [
             {
               description: 'See our Facebook events for more details.',
-              event_end: '2021-09-04T23:59:00',
-              event_start: '2021-08-25T08:00:00',
+              event_end: '2021-06-01T23:59:00',
+              event_start: '2021-06-02T08:00:00',
               id:
                 'fall-2020-recruitment-with-180-degrees-consulting-at-uc-berkeley',
               link: 'https://www.facebook.com/events/784593735644618/',
@@ -66,8 +98,8 @@ function Dashboard({ student }) {
             },
             {
               description: 'See our Facebook events for more details.',
-              event_end: '2021-09-04T23:59:00',
-              event_start: '2021-09-12T08:00:00',
+              event_end: '2021-06-01T23:59:00',
+              event_start: '2021-06-02T08:00:00',
               id:
                 'fall-2020-recruitment-with-180-degrees-consulting-at-uc-berkeley',
               link: 'https://www.facebook.com/events/784593735644618/',
@@ -79,11 +111,13 @@ function Dashboard({ student }) {
           name: 'random club',
           icon:
             'https://sproul-club-images-prod.s3-us-west-1.amazonaws.com/logo/sproul.club-logo-cc6381f68d09a056ef7770a0e9fbdca8.png',
+          major_requirements: ["MCB", "Bioengineering"],
+          class_requirements: ["CHEM 1A", "CHEM 1AL"],
           events: [
             {
               description: 'See our Facebook events for more details.',
-              event_end: '2021-09-04T23:59:00',
-              event_start: '2021-09-23T08:00:00',
+              event_end: '2021-06-05T23:59:00',
+              event_start: '2021-06-06T08:00:00',
               id:
                 'fall-2020-recruitment-with-180-degrees-consulting-at-uc-berkeley',
               link: 'https://www.facebook.com/events/784593735644618/',
@@ -97,11 +131,13 @@ function Dashboard({ student }) {
           name: 'devclub',
           icon:
             'https://sproul-club-images-prod.s3-us-west-1.amazonaws.com/logo/sproul.club-logo-cc6381f68d09a056ef7770a0e9fbdca8.png',
+          major_requirements: ["Economics"],
+          class_requirements: [],
           events: [
             {
               description: 'See our Facebook events for more details.',
-              event_end: '2021-01-22T23:59:00',
-              event_start: '2021-01-10T08:00:00',
+              event_end: '2021-06-04T23:59:00',
+              event_start: '2021-06-05T08:00:00',
               id:
                 'fall-2020-recruitment-with-180-degrees-consulting-at-uc-berkeley',
               link: 'https://www.facebook.com/events/784593735644618/',
@@ -113,11 +149,13 @@ function Dashboard({ student }) {
           name: 'no club',
           icon:
             'https://sproul-club-images-prod.s3-us-west-1.amazonaws.com/logo/sproul.club-logo-cc6381f68d09a056ef7770a0e9fbdca8.png',
+          major_requirements: ["Data Science", "Computer Science"],
+          class_requirements: ["Data 8", "CS 61A"],
           events: [
             {
               description: 'See our Facebook events for more details.',
-              event_end: '2021-01-10T15:30:00',
-              event_start: '2021-01-10T11:00:00',
+              event_end: '2021-05-31T15:30:00',
+              event_start: '2021-06-01T11:00:00',
               id:
                 'fall-2020-recruitment-with-180-degrees-consulting-at-uc-berkeley',
               link: 'https://www.facebook.com/events/784593735644618/',
@@ -125,8 +163,8 @@ function Dashboard({ student }) {
             },
             {
               description: 'See our Facebook events for more details.',
-              event_end: '2021-01-13T15:30:00',
-              event_start: '2021-01-12T11:00:00',
+              event_end: '2021-06-02T15:30:00',
+              event_start: '2021-06-03T11:00:00',
               id:
                 'fall-2020-recruitment-with-180-degrees-consulting-at-uc-berkeley',
               link: 'https://www.facebook.com/events/784593735644618/',
@@ -134,8 +172,8 @@ function Dashboard({ student }) {
             },
             {
               description: 'See our Facebook events for more details.',
-              event_end: '2021-01-13T15:30:00',
-              event_start: '2021-01-07T11:00:00',
+              event_end: '2021-04-27T15:30:00',
+              event_start: '2021-04-27T11:00:00',
               id:
                 'fall-2020-recruitment-with-180-degrees-consulting-at-uc-berkeley',
               link: 'https://www.facebook.com/events/784593735644618/',
@@ -147,11 +185,13 @@ function Dashboard({ student }) {
           name: 'maybe club',
           icon:
             'https://sproul-club-images-prod.s3-us-west-1.amazonaws.com/logo/sproul.club-logo-cc6381f68d09a056ef7770a0e9fbdca8.png',
+          major_requirements: [],
+          class_requirements: [],
           events: [
             {
               description: 'See our Facebook events for more details.',
-              event_end: '2021-01-11T15:30:00',
-              event_start: '2021-01-08T11:00:00',
+              event_end: '2021-04-30T15:30:00',
+              event_start: '2021-04-30T11:00:00',
               id:
                 'fall-2020-recruitment-with-180-degrees-consulting-at-uc-berkeley',
               link: 'https://www.facebook.com/events/784593735644618/',
@@ -159,8 +199,8 @@ function Dashboard({ student }) {
             },
             {
               description: 'See our Facebook events for more details.',
-              event_end: '2021-01-13T15:30:00',
-              event_start: '2021-01-12T11:00:00',
+              event_end: '2021-06-06T15:30:00',
+              event_start: '2021-06-07T11:00:00',
               id:
                 'fall-2020-recruitment-with-180-degrees-consulting-at-uc-berkeley',
               link: 'https://www.facebook.com/events/784593735644618/',
@@ -174,11 +214,13 @@ function Dashboard({ student }) {
           name: 'offbrand club',
           icon:
             'https://sproul-club-images-prod.s3-us-west-1.amazonaws.com/logo/sproul.club-logo-cc6381f68d09a056ef7770a0e9fbdca8.png',
+          major_requirements: [],
+          class_requirements: [],
           events: [
             {
               description: 'See our Facebook events for more details.',
-              event_end: '2021-09-04T23:59:00',
-              event_start: '2021-10-30T08:00:00',
+              event_end: '2021-06-05T23:59:00',
+              event_start: '2021-06-05T08:00:00',
               id:
                 'fall-2020-recruitment-with-180-degrees-consulting-at-uc-berkeley',
               link: 'https://www.facebook.com/events/784593735644618/',
@@ -194,6 +236,7 @@ function Dashboard({ student }) {
   let eventDashboard = {
     today: [],
     upcoming: [],
+    this_week: []
   };
 
   let appTracker = {
@@ -204,10 +247,24 @@ function Dashboard({ student }) {
 
   let timeline = {};
 
+  var recommendedClubCards;
+  var recommendedClubs = student.recommended_clubs;
+  var recommendedClubCards = Object.keys(recommendedClubs).map((i) =>
+    recommendedClubs[i] !== null && recommendedClubs[i] !== '' ? (
+      <ClubCardSimple club={recommendedClubs[i]} />
+    ) : null
+  );
+
   Object.keys(student.club_board).forEach((key) => {
     student.club_board[key].forEach((club, ind) => {
       appTracker[key].push(
-        <div key={`tracker${ind}`} className="dashboard-clubcard">
+        <div key={`tracker${ind}`} 
+            className="dashboard-clubcard"
+            onClick={() => {
+              setBoardModal(true);
+              setCurrentClub(club);
+            }}
+        >
           <div className="dashboard-clubcard-title">
             <img
               className="dashboard-clubicon"
@@ -237,6 +294,8 @@ function Dashboard({ student }) {
         let evKey;
         if (containsToday(event.event_start, event.event_end)) {
           evKey = 'today';
+        } else if(isWithinOneWeek(event.event_start)) {
+          evKey = 'this_week';
         } else if (isUpcoming(event.event_start)) {
           evKey = 'upcoming';
         } else {
@@ -338,21 +397,15 @@ function Dashboard({ student }) {
               You have <b>{eventDashboard.today.length}</b> events happening
               today,
               <br />
-              and <b>{eventDashboard.upcoming.length}</b> important events
-              coming up!
+              and <b>{eventDashboard.this_week.length}</b> important events
+              this week!
             </span>
             <div className="dashboard-eventlist-container">
-              <div className="dashboard-eventlist-today">
-                <h2>Events Happening Today</h2>
-                {eventDashboard.today.length > 0
-                  ? eventDashboard.today
-                  : 'No events today.'}
-              </div>
-              <div className="dashboard-eventlist-upcoming">
-                <h2>Upcoming Events</h2>
-                {eventDashboard.upcoming.length > 0
-                  ? eventDashboard.upcoming
-                  : 'No upcoming events.'}
+              <div className='dashboard-eventlist'>
+                <h2>Events This Week</h2>
+                <div className='dashboard-eventlist-scroll'>
+                  {eventDashboard.this_week.length > 0 ? eventDashboard.this_week : "No events this week."}
+                </div>
               </div>
             </div>
             <span>
@@ -414,6 +467,10 @@ function Dashboard({ student }) {
           </span>
           <MasterTimeline data={timeline} />
         </div>
+        <div className="dashboard-recommended-clubs">
+            <h2>Recommended organizations</h2>
+            <div className="recommended-clubs">{recommendedClubCards}</div>
+        </div>
 
         <Modal
           showModal={showTrackerModal}
@@ -424,7 +481,17 @@ function Dashboard({ student }) {
           </div>
         </Modal>
 
-        <OnboardingModal
+        <Modal
+          showModal={showBoardModal}
+          setShowModal={setBoardModal}
+          close={exitBoardClub}
+        >
+          <div className="dashboard-modal events">
+            <ClubEvents club={showCurrentClub}/>
+          </div>
+        </Modal>
+
+        {/* <OnboardingModal
           showModal={showOnboardingModal}
           setShowModal={setOnboardingModal}>
           <div className="onboarding-modal">
@@ -434,7 +501,7 @@ function Dashboard({ student }) {
               close={exitOnboarding}
             />
           </div>
-        </OnboardingModal>
+        </OnboardingModal> */}
 
         <Footer />
       </div>
