@@ -24,6 +24,7 @@ import {
   eventsOverlap,
 } from '../../utils/formatTimeAndDate';
 import AppTracker from './AppTracker';
+import ClubEvents from './ClubEvents';
 // import Onboarding from './studentOnboarding/Onboarding';
 // import OnboardingModal from './studentOnboarding/onboardingModal/OnboardingModal';
 import { Link } from 'react-router-dom';
@@ -562,7 +563,13 @@ function Dashboard({ student }) {
                                       {...provided.dragHandleProps}
                                       ref={provided.innerRef}
                                       >
-                                        <div className="dashboard-clubcard-title">
+                                        <div className="dashboard-clubcard-title"
+                                            onClick={() =>  {
+                                              setBoardModal(true);
+                                              setCurrentClub(club);
+                                            }
+                                          }
+                                        >
                                           <img
                                             className="dashboard-clubicon"
                                             src={club.icon || require('../assets/default_logo.jpg')}
@@ -626,6 +633,15 @@ function Dashboard({ student }) {
           close={cancelEdit}>
           <div className="dashboard-modal">
             <AppTracker student={student} close={cancelEdit} />
+          </div>
+        </Modal>
+
+        <Modal
+          showModal={showBoardModal}
+          setShowModal={setBoardModal}
+          close={exitBoardClub}>
+          <div className="dashboard-club-events-modal">
+            <ClubEvents club={showCurrentClub}/>
           </div>
         </Modal>
 
