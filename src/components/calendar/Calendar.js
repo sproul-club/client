@@ -358,7 +358,7 @@ function Calendar({ student, tagOptions, state}) {
   return (
     <div className="calendar-wrapper">
       <div className="calendar-header">
-        <h2>Master Calendar</h2>
+        <h2>Calendar</h2>
         <span>
           <i>
             *Times are in PT
