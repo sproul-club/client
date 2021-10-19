@@ -13,7 +13,7 @@ const ClubEvents = ({ club }) => {
     ));
     let clubEvents = []
     if (club.events) {
-        club.events.forEach((event) => {
+        club.events.forEach((event, key) => {
             clubEvents.push(
                 <div className="events">
                     <div className="event-title">
