@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { updateProfile } from '../../actions/profile';
+import { updateProfile } from '../../redux/actions/profile';
 import { NotificationManager } from 'react-notifications';
 import { normalizeUrl } from '../../utils/normalizeUrl';
-import './Admin.css';
-// import { EmailOutlined } from '@material-ui/icons';
-
+import './admin/Admin.css';
 
 const ContactInfo = ({ profile, updateProfile, close }) => {
   const contactInfo = profile.social_media_links;
@@ -54,20 +52,28 @@ const ContactInfo = ({ profile, updateProfile, close }) => {
         twitter,
         youtube,
         gcalendar,
-      }
+      },
     };
     console.log(newProfile);
 
     // update backend
     try {
       await updateProfile(newProfile);
-      NotificationManager.success('Changes to Contact Information saved successfully!', '', 1500);
+      NotificationManager.success(
+        'Changes to Contact Information saved successfully!',
+        '',
+        1500
+      );
       close();
     } catch (err) {
       console.log(err);
-      NotificationManager.error('Changes to Contact Information did not successfully!', '', 1500);
+      NotificationManager.error(
+        'Changes to Contact Information did not successfully!',
+        '',
+        1500
+      );
     }
-  }
+  };
 
   return (
     <div>
@@ -89,8 +95,9 @@ const ContactInfo = ({ profile, updateProfile, close }) => {
             type="text"
           />
         </div>
-        <p style= {{marginLeft: '210px'}} className="subtitle">
-        Please enter a contact email. This field is required. <span style={{ color: '#FF0000' }}>*</span>
+        <p style={{ marginLeft: '210px' }} className="subtitle">
+          Please enter a contact email. This field is required.{' '}
+          <span style={{ color: '#FF0000' }}>*</span>
         </p>
         <div className="formElement">
           <p>Website</p>
@@ -203,8 +210,14 @@ const ContactInfo = ({ profile, updateProfile, close }) => {
           />
         </div>
       </div>
-      <button id="save-button" onClick={submit}> Save </button>
-      <button id="cancel-button" onClick={() => close()}> Cancel </button>
+      <button id="save-button" onClick={submit}>
+        {' '}
+        Save{' '}
+      </button>
+      <button id="cancel-button" onClick={() => close()}>
+        {' '}
+        Cancel{' '}
+      </button>
     </div>
   );
 };

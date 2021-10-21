@@ -9,34 +9,33 @@ import {
 import 'react-notifications/lib/notifications.css';
 import { NotificationContainer } from 'react-notifications';
 
-import { Landing } from './pages/Landing.js';
-import { ComingSoon } from './pages/ComingSoon.js';
+import { Landing } from './pages/landing/Landing.js';
+import { ComingSoon } from './pages/comingSoon/ComingSoon.js';
 // import Catalog from './pages/catalog.js';
-import Catalog2 from './pages/Catalog2.js';
-import { SignUp } from './pages/SignUp.js';
-import { SignIn } from './pages/SignIn.js';
-import RegisterStudent from './pages/RegisterStudent.js'
-import { ResetPassword } from './pages/ResetPassword.js';
-import { ResetPassword2 } from './pages/ResetPassword2.js';
-import Security from './pages/admin/Security.js';
-import ErrorPage from './pages/ErrorPage';
-import AboutPage from './pages/AboutPage';
-import About from './pages/AboutPage';
-import FAQ from './pages/FAQ';
-import Admin from './pages/admin/Admin.js';
-import ConfirmEmailBanner from './pages/admin/ConfirmEmailBanner.js';
-import ClubPage from './pages/ClubPage';
-import Dashboard from './pages/Dashboard.js';
-import Favorites from './pages/Favorites.js';
-import Activation from './pages/Activation.js';
-import store from './store';
-import ContactUs from './layout/ContactUs.js';
-import { loadProfile, getTags, getSizeTags} from './actions/profile';
-import { loadAllClubs} from './actions/catalog';
+import Catalog from './pages/catalog/Catalog.js';
+import { SignUp } from './pages/clubLogin/ClubRegister.js';
+import { SignIn } from './pages/clubLogin/ClubLogin.js';
+import RegisterStudent from './pages/student/RegisterStudent.js';
+import { ResetPassword } from './pages/clubLogin/ResetPassword.js';
+import { ResetPassword2 } from './pages/clubLogin/ResetPassword2.js';
+import Security from './pages/admin/security/Security.js';
+import ErrorPage from './pages/error/ErrorPage';
+import AboutPage from './pages/about/AboutPage';
+import About from './pages/about/AboutPage';
+import FAQ from './pages/faq/FAQ';
+import Admin from './pages/admin/admin/Admin.js';
+import ClubPage from './pages/club/ClubPage';
+import Dashboard from './pages/student/Dashboard.js';
+import StudentCalendar from './pages/student/StudentCalendar';
+import Favorites from './pages/student/Favorites.js';
+import Activation from './pages/club/Activation.js';
+import store from './redux/store';
+import ContactUs from './components/layout/contactUs/ContactUs.js';
+import { loadProfile, getTags, getSizeTags } from './redux/actions/profile';
+import { loadAllClubs } from './redux/actions/catalog';
 import { Provider } from 'react-redux';
 import PrivateRoute from './utils/PrivateRoute';
-import Navbar from './layout/Navbar';
-import UnderConstruction from './pages/UnderConstruction';
+import Navbar from './components/layout/navbar/Navbar';
 
 import Moment from 'react-moment';
 import 'moment-timezone';
@@ -60,7 +59,7 @@ const App = () => {
           <Route exact path="/" component={Landing} />
           <Route exact path="/about" component={AboutPage} />
           <PrivateRoute path="/admin" component={Admin} />
-          <Route path="/catalog" component={Catalog2} />
+          <Route path="/catalog" component={Catalog} />
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/signin" component={SignIn} />
           <Route exact path="/recover" component={ResetPassword} />
@@ -68,12 +67,12 @@ const App = () => {
           <Route path="/club/:id" component={ClubPage} />
           <PrivateRoute exact path="/security" component={Security} />
           <Route exact path="/dashboard" component={Dashboard} />
-          <Route exact path="/FAQ" component={UnderConstruction} />
+          <Route exact path="/StudentCalendar" component={StudentCalendar} />
+          <Route exact path="/FAQ" component={ComingSoon} />
           <Route exact path="/favorites" component={Favorites} />
           <Route exact path="/student/settings" component={StudentSettings} />
           <PrivateRoute exact path="/security" component={Security} />
           <Route exact path="/comingsoon" component={ComingSoon} />
-          {/* <Route exact path="/activation" component={Activation} /> */}
           <Route>
             <ErrorPage />
           </Route>

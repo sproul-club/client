@@ -1,0 +1,41 @@
+.popover-wrapper {
+    display: flex;
+	flex-direction: row;
+    background-color: white;
+    padding: 10px;
+}
+    
+.popover-flex-left {
+}
+
+.popover-flex-left img {
+    width: 57px;
+    margin: 0 0.3em 0 0.3em;
+    margin-right: 8px;
+    border-radius: 5px;
+}
+
+.popover-flex-right {
+    display: flex;
+    flex-direction: column;
+    font-family: "Qanelas Soft";
+    font-size: 12px;
+
+    .popover-event-title {
+        font-weight: bold;
+        font-size: 18px;
+        line-height: 22px;
+        padding-bottom: 5px;
+        color: #2B2B2B;
+    }
+
+    .popover-event-times {
+        color: #747474;
+        padding-bottom: 5px;
+    }
+
+    .popover-event-description {
+        color: #2B2B2B;
+    }
+}
+
