@@ -77,6 +77,7 @@ const App = () => {
           <Route exact path="/FAQ" component={ComingSoon} />
           <Route exact path="/favorites" component={enableFeature["dashboard"] ?  Favorites : ComingSoon} />
           <Route exact path="/student/settings" component={enableFeature["dashboard"] ?  StudentSettings : ComingSoon} />
+          <PrivateRoute exact path="/security" component={Security} />
           <Route exact path="/comingsoon" component={ComingSoon} />
           <Route>
             <ErrorPage />
