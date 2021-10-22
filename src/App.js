@@ -27,7 +27,8 @@ import Admin from './pages/admin/admin/Admin.js';
 import ClubPage from './pages/club/ClubPage';
 import Dashboard from './pages/student/Dashboard.js';
 import StudentCalendar from './pages/student/StudentCalendar';
-import Favorites from './pages/student/Favorites.js';
+import Bookmarks from './pages/student/Bookmarks.js';
+
 import Activation from './pages/club/Activation.js';
 import store from './redux/store';
 import ContactUs from './components/layout/contactUs/ContactUs.js';
@@ -75,7 +76,7 @@ const App = () => {
           <Route exact path="/dashboard" component={enableFeature["dashboard"] ?  Dashboard : ComingSoon} />
           <Route exact path="/StudentCalendar" component={enableFeature["dashboard"] ?  StudentCalendar : ComingSoon} />
           <Route exact path="/FAQ" component={ComingSoon} />
-          <Route exact path="/favorites" component={enableFeature["dashboard"] ?  Favorites : ComingSoon} />
+          <Route exact path="/Bookmarks" component={enableFeature["dashboard"] ?  Bookmarks : ComingSoon} />
           <Route exact path="/student/settings" component={enableFeature["dashboard"] ?  StudentSettings : ComingSoon} />
           <PrivateRoute exact path="/security" component={Security} />
           <Route exact path="/comingsoon" component={ComingSoon} />
