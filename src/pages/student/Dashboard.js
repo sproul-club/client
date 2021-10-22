@@ -386,7 +386,27 @@ function Dashboard({ student }) {
       setColumns(newAppTrackerColumns);
       return;
     }
-    
+  }
+
+  function deleteClub(club, index, column) {
+    const start = appTrackerColumns.columns[column.id];
+
+    const startColumnIds = Array.from(start.clubIds);
+    startColumnIds.splice(index, 1);
+    const newStart = {
+      ...start,
+      clubIds: startColumnIds,
+    };
+
+    const newAppTrackerColumns = {
+      ...appTrackerColumns,
+      columns: {
+        ...appTrackerColumns.columns,
+        [newStart.id]: newStart,
+      }
+    }
+    setColumns(newAppTrackerColumns);
+    return;
   }
 
   function moveClubLeft(club, index, startCol) {
@@ -535,7 +555,10 @@ function Dashboard({ student }) {
                                         </div>
                                         <div className="dashboard-clubpage-btns">
                                           <button className="dashboard-clubcard-remove">
-                                            <Delete className="dashboard-clubcard-delete" />
+                                            <Delete className="dashboard-clubcard-delete"
+                                              className={'active'} 
+                                              onClick={() => deleteClub(club, index, column)}
+                                            />
                                           </button>
                                           <button className="dashboard-clubcard-left">
                                             <LeftArrow
