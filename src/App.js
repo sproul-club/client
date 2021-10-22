@@ -27,7 +27,8 @@ import Admin from './pages/admin/admin/Admin.js';
 import ClubPage from './pages/club/ClubPage';
 import Dashboard from './pages/student/Dashboard.js';
 import StudentCalendar from './pages/student/StudentCalendar';
-import Favorites from './pages/student/Favorites.js';
+import Bookmarks from './pages/student/Bookmarks.js';
+
 import Activation from './pages/club/Activation.js';
 import store from './redux/store';
 import ContactUs from './components/layout/contactUs/ContactUs.js';
@@ -69,7 +70,7 @@ const App = () => {
           <Route exact path="/dashboard" component={Dashboard} />
           <Route exact path="/StudentCalendar" component={StudentCalendar} />
           <Route exact path="/FAQ" component={ComingSoon} />
-          <Route exact path="/favorites" component={Favorites} />
+          <Route exact path="/Bookmarks" component={Bookmarks} />
           <Route exact path="/student/settings" component={StudentSettings} />
           <PrivateRoute exact path="/security" component={Security} />
           <Route exact path="/comingsoon" component={ComingSoon} />

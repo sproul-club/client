@@ -14,7 +14,7 @@ function GridComponent({
   formDetails,
   num_displayed,
   displayBanner,
-  favorites,
+  bookmarks,
 }) {
   if (!formDetails.sort) {
     formDetails.sort = 'Fresh';
@@ -24,7 +24,7 @@ function GridComponent({
     formDetails,
     tagOptions,
     num_displayed,
-    favorites
+    bookmarks
   );
 
   const GridList = filteredClubs.map((club, i) => (

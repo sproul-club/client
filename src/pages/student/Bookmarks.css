@@ -1,0 +1,59 @@
+.bookmarks-wrapper {
+    min-height: 100vh;
+    max-width: 100vw;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding-top: 67px;
+    position: relative;
+    font-family: Qanelas Soft;
+    letter-spacing: 0.03em;
+}
+
+.bookmarks {
+    padding-top: 0.6em;
+    width: 80vw;
+    max-width: 1150px;
+    margin: 0 auto 0 auto;
+}
+
+.bookmarks > * {
+    margin-top: 3em;
+}
+
+.bookmarks h1 {
+    font-size: xxx-large;
+    margin: 0 0 0.2em 0;
+}
+
+.bookmarks h2 {
+    font-size: larger;
+    margin-bottom: -20px;
+    margin-top: 0px;
+}
+
+.bookmarks .subtext {
+    font-size: 14px;
+}
+
+.bookmarks-img {
+    display: block;
+    margin-top: -20px;
+    width: 300px;
+}
+
+.bookmarks-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: top;
+}
+
+.recommended h2 {
+    width: 100vw;
+    display: flex;
+    color: black;
+}
+
+.bookmarks .filters {
+    margin-bottom: -28px;
+}
