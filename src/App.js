@@ -23,7 +23,6 @@ import ErrorPage from './pages/error/ErrorPage';
 import AboutPage from './pages/about/AboutPage';
 import About from './pages/about/AboutPage';
 import FAQ from './pages/faq/FAQ';
-import Feature from './Feature';
 import Admin from './pages/admin/admin/Admin.js';
 import ClubPage from './pages/club/ClubPage';
 import Dashboard from './pages/student/Dashboard.js';
