@@ -28,6 +28,7 @@ import ClubPage from './pages/club/ClubPage';
 import Dashboard from './pages/student/Dashboard.js';
 import StudentCalendar from './pages/student/StudentCalendar';
 import Bookmarks from './pages/student/Bookmarks.js';
+
 import Activation from './pages/club/Activation.js';
 import store from './redux/store';
 import ContactUs from './components/layout/contactUs/ContactUs.js';
