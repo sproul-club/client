@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './Favorites.css';
+import './Bookmarks.css';
 import '../catalog/Catalog.scss';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -14,7 +14,7 @@ import {
   loadMoreClubs,
 } from '../../redux/actions/catalog';
 
-function Favorites({
+function Bookmarks({
   student,
   clearOrganization,
   tagOptions,
@@ -85,7 +85,7 @@ function Favorites({
     majors: [],
     minors: [],
     interests: [],
-    favorited_clubs: ['Karasuno High VBC', 'User Testing'],
+    bookmarked_clubs: ['Karasuno High VBC', 'User Testing'],
     visited_clubs: [],
     club_board: {
       interested_clubs: [
@@ -212,14 +212,14 @@ function Favorites({
   if (!student) return <Loading />;
 
   return (
-    <div className="favorites-wrapper">
-      <div className="favorites">
-        <div className="favorites-content">
-          <div className="favorites-text">
-            <h1>Explore your favorites!</h1>
+    <div className="bookmarks-wrapper">
+      <div className="bookmarks">
+        <div className="bookmarks-content">
+          <div className="bookmarks-text">
+            <h1>Explore your bookmarks!</h1>
             <div className="subtext">
               <span>
-                You have favorited <b>{student.favorited_clubs.length}</b> clubs
+                You have bookmarked <b>{student.bookmarked_clubs.length}</b> clubs
                 so far,
                 <br />
                 and <b>{student.club_board.interested_clubs.length}</b> are
@@ -228,15 +228,15 @@ function Favorites({
             </div>
             <div className="dashboard-eventlist-container"></div>
           </div>
-          <div className="favorites-photo">
+          <div className="bookmarks-photo">
             <img
-              className="favorites-img"
+              className="bookmarks-img"
               src={require('../assets/resetpwd2.png')}
               alt="flyer bears image"
             />
           </div>
         </div>
-        <h2>Favorites</h2>
+        <h2>Bookmarks</h2>
         <div
           style={{
             position: 'sticky',
@@ -422,7 +422,7 @@ function Favorites({
         <div className="results-content">
           <GridComponent
             displayBanner={true}
-            favorites={student.favorited_clubs}
+            bookmarks={student.bookmarked_clubs}
           />
         </div>
         <div className="recommended">
@@ -450,4 +450,4 @@ export default connect(mapStateToProps, {
   loadMoreOrgs,
   setFormDetails,
   loadMoreClubs,
-})(withRouter(Favorites));
+})(withRouter(Bookmarks));

@@ -1,4 +1,4 @@
-.favorites-wrapper {
+.bookmarks-wrapper {
     min-height: 100vh;
     max-width: 100vw;
     overflow-x: hidden;
@@ -9,39 +9,39 @@
     letter-spacing: 0.03em;
 }
 
-.favorites {
+.bookmarks {
     padding-top: 0.6em;
     width: 80vw;
     max-width: 1150px;
     margin: 0 auto 0 auto;
 }
 
-.favorites > * {
+.bookmarks > * {
     margin-top: 3em;
 }
 
-.favorites h1 {
+.bookmarks h1 {
     font-size: xxx-large;
     margin: 0 0 0.2em 0;
 }
 
-.favorites h2 {
+.bookmarks h2 {
     font-size: larger;
     margin-bottom: -20px;
     margin-top: 0px;
 }
 
-.favorites .subtext {
+.bookmarks .subtext {
     font-size: 14px;
 }
 
-.favorites-img {
+.bookmarks-img {
     display: block;
     margin-top: -20px;
     width: 300px;
 }
 
-.favorites-content {
+.bookmarks-content {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -54,6 +54,6 @@
     color: black;
 }
 
-.favorites .filters {
+.bookmarks .filters {
     margin-bottom: -28px;
 }
