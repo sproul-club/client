@@ -7,12 +7,16 @@ import ball3 from '../assets/ball3cropped.svg';
 import ball4 from '../assets/ball4cropped.svg';
 import blob1 from '../assets/blobyellow.png';
 import blob2 from '../assets/blobblue.png';
+import Login from '../../components/google-login/Login';
+import Logout from '../../components/google-login/Logout';
 
 const ComingSoon = () => {
   return (
     <div className="comingsoon">
       <div className="text">
         <h3>Coming soon</h3>
+        <Login />
+        <Logout />
         {/* <p>Stay tuned for something amazing.</p>
         <div className="buttonContainer">
           <a href="/">Return to home</a>
