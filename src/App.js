@@ -75,6 +75,7 @@ const App = () => {
           <PrivateRoute exact path="/security" component={Security} />
           <Route exact path="/dashboard" component={enableFeature["dashboard"] ?  Dashboard : ComingSoon} />
           <Route exact path="/StudentCalendar" component={enableFeature["dashboard"] ?  StudentCalendar : ComingSoon} />
+          <Route exact path="/RegisterStudent" component={enableFeature["dashboard"] ?  RegisterStudent : ComingSoon} />
           <Route exact path="/FAQ" component={ComingSoon} />
           <Route exact path="/Bookmarks" component={enableFeature["dashboard"] ?  Bookmarks : ComingSoon} />
           <Route exact path="/student/settings" component={enableFeature["dashboard"] ?  StudentSettings : ComingSoon} />
