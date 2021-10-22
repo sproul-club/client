@@ -44,7 +44,7 @@ import StudentSettings from './pages/student/StudentSettings.js';
 Moment.globalTimezone = 'America/Los_Angeles';
 
 let enableFeature = {
-  "dashboard": false,
+  "dashboard": true,
   "events": false,
   "new-club-profile": false
 }
@@ -73,10 +73,10 @@ const App = () => {
           <Route path="/club/:id" component={ClubPage} />
           <PrivateRoute exact path="/security" component={Security} />
           <Route exact path="/dashboard" component={enableFeature["dashboard"] ?  Dashboard : ComingSoon} />
-          <Route exact path="/StudentCalendar" component={StudentCalendar} />
+          <Route exact path="/StudentCalendar" component={enableFeature["dashboard"] ?  StudentCalendar : ComingSoon} />
           <Route exact path="/FAQ" component={ComingSoon} />
-          <Route exact path="/favorites" component={Favorites} />
-          <Route exact path="/student/settings" component={StudentSettings} />
+          <Route exact path="/favorites" component={enableFeature["dashboard"] ?  Favorites : ComingSoon} />
+          <Route exact path="/student/settings" component={enableFeature["dashboard"] ?  StudentSettings : ComingSoon} />
           <Route exact path="/comingsoon" component={ComingSoon} />
           <Route>
             <ErrorPage />
