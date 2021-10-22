@@ -483,7 +483,7 @@ function Dashboard({ student }) {
             </div>
             <span>
               <i>
-                *Only public events displayed. Invite-only events are hidden.
+                *Only public events displayed.
               </i>
             </span>
           </div>
