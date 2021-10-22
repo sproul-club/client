@@ -45,7 +45,7 @@ import StudentSettings from './pages/student/StudentSettings.js';
 Moment.globalTimezone = 'America/Los_Angeles';
 
 let enableFeature = {
-  "dashboard": false,
+  "dashboard": true,
   "events": false,
   "new-club-profile": false
 }
