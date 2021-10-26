@@ -24,7 +24,7 @@ import {
   eventsOverlap,
 } from '../../utils/formatTimeAndDate';
 import AppTracker from './AppTracker';
-import ClubEvents from './ClubEvents';
+import KanbanClubInfo from './KanbanClubInfo';
 // import Onboarding from './studentOnboarding/Onboarding';
 // import OnboardingModal from './studentOnboarding/onboardingModal/OnboardingModal';
 import { Link } from 'react-router-dom';
@@ -32,6 +32,7 @@ import Modal from '../../components/layout/modal/Modal';
 import { Draggable } from 'react-beautiful-dnd';
 import { Droppable } from 'react-beautiful-dnd';
 import { DragDropContext } from 'react-beautiful-dnd';
+import KanbanClubInfo from './KanbanClubInfo';
 
 function Dashboard({ student }) {
   useEffect(() => {
@@ -641,7 +642,7 @@ function Dashboard({ student }) {
           setShowModal={setBoardModal}
           close={exitBoardClub}>
           <div className="dashboard-club-events-modal">
-            <ClubEvents club={showCurrentClub}/>
+            <KanbanClubInfo club={showCurrentClub}/>
           </div>
         </Modal>
 

@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import ReactMoment from 'react-moment';
 import Tag from '../../components/tag/Tag';
 import { simplestRangeFormat, END_DATETIME } from '../../utils/formatTimeAndDate';
-import './ClubEvents.scss';
+import './KanbanClubInfo.scss';
 
-const ClubEvents = ({ club }) => {
+const KanbanClubInfo = ({ club }) => {
     let majorsList = club.major_requirements.map((tag, i) => (
         <Tag key={i} label={tag} listId={i} />
     ));
@@ -84,4 +84,4 @@ const ClubEvents = ({ club }) => {
     )
 };
 
-export default ClubEvents;
+export default KanbanClubInfo;
