@@ -39,8 +39,8 @@ function Calendar({ student, tagOptions, state}) {
           events: [
             {
               description: 'See our Facebook events for more details.',
-              event_end: '2021-05-29T23:59:00',
-              event_start: '2021-05-29T08:00:00',
+              event_end: '2021-10-29T23:59:00',
+              event_start: '2021-10-29T08:00:00',
               id:
                 'fall-2020-recruitment-with-180-degrees-consulting-at-uc-berkeley',
               link: 'https://www.facebook.com/events/784593735644618/',
@@ -48,14 +48,17 @@ function Calendar({ student, tagOptions, state}) {
             },
             {
               description: 'See our Facebook events for more details.',
-              event_end: '2021-04-16T23:59:00',
-              event_start: '2021-04-12T08:00:00',
+              event_end: '2021-10-16T23:59:00',
+              event_start: '2021-10-12T08:00:00',
               id:
                 'fall-2020-recruitment-with-180-degrees-consulting-at-uc-berkeley',
               link: 'https://www.facebook.com/events/784593735644618/',
               name: 'Workshop #1',
             },
           ],
+          tags: ['Computer Science', 'Consulting'],
+          recruiting: "Accepting new members",
+          value: 0
         },
         {
           name: 'random club',
@@ -64,14 +67,17 @@ function Calendar({ student, tagOptions, state}) {
           events: [
             {
               description: 'See our Facebook events for more details.',
-              event_end: '2021-04-16T23:59:00',
-              event_start: '2021-04-16T08:00:00',
+              event_end: '2021-10-16T23:59:00',
+              event_start: '2021-10-16T08:00:00',
               id:
                 'fall-2020-recruitment-with-180-degrees-consulting-at-uc-berkeley',
               link: 'https://www.facebook.com/events/784593735644618/',
               name: 'Infosession #2',
             },
           ],
+          value: 1,
+          tags: ['Community Service', 'Environmental'],
+          recruiting: "Accepting new members",
         },
       ],
       applied_clubs: [
@@ -82,14 +88,17 @@ function Calendar({ student, tagOptions, state}) {
           events: [
             {
               description: 'See our Facebook events for more details.',
-              event_end: '2021-01-22T23:59:00',
-              event_start: '2021-01-10T08:00:00',
+              event_end: '2021-10-22T23:59:00',
+              event_start: '2021-10-10T08:00:00',
               id:
                 'fall-2020-recruitment-with-180-degrees-consulting-at-uc-berkeley',
               link: 'https://www.facebook.com/events/784593735644618/',
               name: 'Virtual Tabling',
             },
           ],
+          tags: ['Design', 'Engineering', 'Consulting', 'Computer Science'],
+          recruiting: "Not accepting new members",
+          value: 2
         },
         {
           name: 'no club',
@@ -107,8 +116,8 @@ function Calendar({ student, tagOptions, state}) {
             },
             {
               description: 'See our Facebook events for more details.',
-              event_end: '2021-01-13T15:30:00',
-              event_start: '2021-01-12T11:00:00',
+              event_end: '2021-10-13T15:30:00',
+              event_start: '2021-10-12T11:00:00',
               id:
                 'fall-2020-recruitment-with-180-degrees-consulting-at-uc-berkeley',
               link: 'https://www.facebook.com/events/784593735644618/',
@@ -116,14 +125,17 @@ function Calendar({ student, tagOptions, state}) {
             },
             {
               description: 'See our Facebook events for more details.',
-              event_end: '2021-01-13T15:30:00',
-              event_start: '2021-01-07T11:00:00',
+              event_end: '2021-10-13T15:30:00',
+              event_start: '2021-10-07T11:00:00',
               id:
                 'fall-2020-recruitment-with-180-degrees-consulting-at-uc-berkeley',
               link: 'https://www.facebook.com/events/784593735644618/',
               name: 'First Wave Recruitment',
             },
           ],
+          tags: ['Social'],
+          recruiting: "Accepting new members",
+          value: 3
         },
         {
           name: 'maybe club',
@@ -132,8 +144,8 @@ function Calendar({ student, tagOptions, state}) {
           events: [
             {
               description: 'See our Facebook events for more details.',
-              event_end: '2021-01-11T15:30:00',
-              event_start: '2021-01-08T11:00:00',
+              event_end: '2021-10-11T15:30:00',
+              event_start: '2021-10-08T11:00:00',
               id:
                 'fall-2020-recruitment-with-180-degrees-consulting-at-uc-berkeley',
               link: 'https://www.facebook.com/events/784593735644618/',
@@ -141,14 +153,17 @@ function Calendar({ student, tagOptions, state}) {
             },
             {
               description: 'See our Facebook events for more details.',
-              event_end: '2021-01-13T15:30:00',
-              event_start: '2021-01-12T11:00:00',
+              event_end: '2021-10-13T15:30:00',
+              event_start: '2021-10-12T11:00:00',
               id:
                 'fall-2020-recruitment-with-180-degrees-consulting-at-uc-berkeley',
               link: 'https://www.facebook.com/events/784593735644618/',
               name: 'Speaker Panel #2',
             },
           ],
+          tags: ['Computer Science', 'Research', 'CalGreek'],
+          recruiting: "Not accepting new members",
+          value: 4
         },
       ],
       interviewed_clubs: [
@@ -159,14 +174,17 @@ function Calendar({ student, tagOptions, state}) {
           events: [
             {
               description: 'See our Facebook events for more details.',
-              event_end: '2021-09-04T23:59:00',
-              event_start: '2021-10-30T08:00:00',
+              event_end: '2021-10-04T23:59:00',
+              event_start: '2021-09-30T08:00:00',
               id:
                 'fall-2020-recruitment-with-180-degrees-consulting-at-uc-berkeley',
               link: 'https://www.facebook.com/events/784593735644618/',
               name: 'Virtual Tabling',
             },
           ],
+          tags: ['Social', 'Research'],
+          recruiting: "Not accepting new members",
+          value: 5
         },
       ],
     },
@@ -180,7 +198,7 @@ function Calendar({ student, tagOptions, state}) {
   let clubOptions = []; // only contains clubs in the application tracker board
   Object.keys(student.club_board).forEach((key) => {
     student.club_board[key].forEach((club, ind) => {
-      clubOptions.push({label: club.name, value: ind});
+      clubOptions.push({label: club.name, value: club.value});
     });
   });
 
@@ -335,7 +353,7 @@ function Calendar({ student, tagOptions, state}) {
         var color = eventColors[counter % 4]
         counter++;
         club.events.forEach((event, ind) => {
-          let calendarEvent = { start: new Date(event.event_start), end: new Date(event.event_end), title: event.name, icon: club.icon, color: color, description: event.description, link: event.link};
+          let calendarEvent = { club: club, start: new Date(event.event_start), end: new Date(event.event_end), title: event.name, icon: club.icon, color: color, description: event.description, link: event.link};
           calendarEventsList.push(calendarEvent);
         });
       });
@@ -344,7 +362,31 @@ function Calendar({ student, tagOptions, state}) {
   }
 
   function createCalendarEventsList() {
-    return addAllEvents();
+    var eventsList = addAllEvents();
+    var clubList = [];
+
+    if ((clubs !== null) && (clubs.length !== 0)) {
+      var clubList = [];
+      clubs.forEach((c) => {
+        clubList.push(c.label);
+      });
+      eventsList = eventsList.filter((event) => clubList.includes(event.club.name));
+    }
+
+    if ((tags !== null) && (tags.length !== 0)) {
+      eventsList = eventsList.filter((event) => {
+        let tagExists = false;
+        tags.forEach((t) => {
+          tagExists = event.club.tags.includes(t.label);
+        });
+        return tagExists;
+      });
+    }
+
+    if ((recruiting !== null) && (recruiting.length !== 0)) {
+      eventsList = eventsList.filter((event) => event.club.recruiting === recruiting.label);
+    }
+    return eventsList
   }
 
   function eventStyleGetter(event, start, end, isSelected) {
