@@ -78,11 +78,13 @@
     padding: 0 2.5em 0 0.6em;
 }
 
-.dashboard-clubcard {
-    display: flex;
+.dashboard-clubcard-section-right {
+    display: inline-block;
     flex-direction: row;
     align-items: center;
     background:white;
+    padding: 0.6em;
+    border-radius: 0 10px 10px 0;
 
     button {
         color: #C4C4C4;
@@ -96,13 +98,40 @@
     }
 }
 
+.dashboard-clubcard-section-left {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    background:white;
+    padding: 0.6em;
+    flex-grow: 100;
+    border-radius: 10px 0 0 10px;
+
+    button {
+        color: #C4C4C4;
+        margin: 0;
+        padding: 0;
+
+        .active{
+            color: #54A0F1;
+            cursor: pointer;
+        }
+    }
+}
+
+.dashboard-clubcard-btns {
+    justify-content: right;
+}
+
 .dashboard-clubcard-delete {
     cursor: pointer;
 }
 
 .dashboard-clubcard-title {
+    display: inline-block;
     width: 100%;
     height: 100%;
+    justify-content: left;
 }
 
 .dashboard-clubicon {
@@ -155,11 +184,12 @@
 }
 
 .dashboard-clubcard {
+    display: flex;
+    justify-content: space-between;
     border-radius: 10px;
-    padding: 0.6em;
+    padding: 0;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
     margin-bottom: 0.8em;
-    justify-content: space-between;
     max-width: 400px;
 
     button {
@@ -178,9 +208,10 @@
     }
 }
 
-.dashboard-clubcard > * {
+.dashboard-clubcard-section-left > *, .dashboard-clubcard-section-right > * {
     display: flex;
     flex-direction: row;
+    align-items: center;
 }
 
 .dashboard-add-interested {
