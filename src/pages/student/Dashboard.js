@@ -556,7 +556,7 @@ function Dashboard({ student }) {
                                         <div className="dashboard-clubpage-btns">
                                           <button className="dashboard-clubcard-remove">
                                             <Delete className="dashboard-clubcard-delete"
-                                              className={'active'} 
+                                              className={'active trash-icon'} 
                                               onClick={() => deleteClub(club, index, column)}
                                             />
                                           </button>
