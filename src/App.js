@@ -15,6 +15,7 @@ import { ComingSoon } from './pages/comingSoon/ComingSoon.js';
 import Catalog from './pages/catalog/Catalog.js';
 import { SignUp } from './pages/clubLogin/ClubRegister.js';
 import { SignIn } from './pages/clubLogin/ClubLogin.js';
+import { StudentSignIn } from './pages/student/StudentLogin.js';
 import RegisterStudent from './pages/student/RegisterStudent.js';
 import { ResetPassword } from './pages/clubLogin/ResetPassword.js';
 import { ResetPassword2 } from './pages/clubLogin/ResetPassword2.js';
