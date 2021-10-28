@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "npm": "6.14.4",
-    "node": "12.16.3"
+    "npm": "8.1.0",
+    "node": "16.13.0"
   },
   "dependencies": {
     "@material-ui/core": "^4.11.0",
@@ -19,19 +19,19 @@
     "draft-js-export-html": "^1.4.1",
     "draft-js-import-html": "^1.4.1",
     "form-data": "^3.0.0",
+    "immer": "9.0.6",
     "moment": "^2.28.0",
     "moment-timezone": "^0.5.31",
     "node-fetch": "^3.0.0-beta.1",
-    "node-sass": "^4.14.1",
+    "node-sass": "^6.0.0",
     "pure-react-carousel": "^1.27.6",
     "react": "^16.13.1",
     "react-accessible-accordion": "^3.3.3",
-    "react-animate-on-scroll": "^2.1.5",
-    "react-animated-css-onscroll": "^1.2.1",
     "react-beautiful-dnd": "^13.1.0",
     "react-big-calendar": "^0.33.2",
     "react-dom": "^16.13.1",
     "react-ga": "^3.1.2",
+    "react-google-login": "^5.2.2",
     "react-images-upload": "^1.2.8",
     "react-moment": "^0.9.7",
     "react-notifications": "~1.6.0",
@@ -50,7 +50,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "preinstall": "npx npm-force-resolutions"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -66,5 +67,14 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "resolutions": {
+    "immer": "9.0.6",
+    "glob-parent": "5.1.2",
+    "ansi-html": "https://registry.npmjs.org/ansi-html-community/-/ansi-html-community-0.0.8.tgz",
+    "ansi-regex": "5.0.1",
+    "set-value": "4.0.1",
+    "nth-check": "2.0.1",
+    "browserslist": "4.16.5"
   }
 }
