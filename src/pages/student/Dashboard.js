@@ -545,13 +545,21 @@ function Dashboard({ student }) {
                                       {...provided.dragHandleProps}
                                       ref={provided.innerRef}
                                       >
-                                        <div className="dashboard-clubcard-title">
-                                          <img
-                                            className="dashboard-clubicon"
-                                            src={club.icon || require('../assets/default_logo.jpg')}
-                                            alt="icon"
-                                          />
-                                          <h4 className="dashboard-clubcard-clubname">{club.name}</h4>
+                                        <div className="dashboard-clubcard-section-left"
+                                          onClick={() =>  {
+                                            setBoardModal(true);
+                                            setCurrentClub(club);
+                                            }
+                                          }
+                                        >
+                                          <div className="dashboard-clubcard-title">
+                                            <img
+                                              className="dashboard-clubicon"
+                                              src={club.icon || require('../assets/default_logo.jpg')}
+                                              alt="icon"
+                                            />
+                                            <h4 className="dashboard-clubcard-clubname">{club.name}</h4>
+                                          </div>
                                         </div>
                                         <div className="dashboard-clubpage-btns">
                                           <button className="dashboard-clubcard-remove">
