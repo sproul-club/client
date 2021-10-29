@@ -277,6 +277,10 @@
     flex-direction: row;
 }
 
+.trash-icon {
+    opacity: 0.5;
+}
+
 
 @media screen and (max-width: 850px) {
     .dashboard > * {
