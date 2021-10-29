@@ -40,7 +40,7 @@ const OnboardingEvents = ({ close }) => {
           </p>
           <p className="little-caption">
             <i>
-              Note: Only public events displayed. Invite-only events are hidden.
+              Note: Only public events displayed.
             </i>
           </p>
         </div>

@@ -316,7 +316,7 @@ const RegisterStudent = ({
               </a>
             </div>
             <div class="filler" onClick={() => setIsLoggedIn(!isLoggedIn)}>
-              .
+              {"❗❗To be used for development/testing purposes only❗❗ Click this line to redirect"}
             </div>
           </div>
         ) : (

@@ -1,0 +1,48 @@
+.club-title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.event-description {
+    margin: 0 0 0.5em 0;
+}
+
+.row {
+    display: flex;
+}
+  
+.column {
+    flex: 50%;
+    
+    .title {
+        margin: 0 0 1em 0;
+    } 
+}
+
+.header-tags {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    -webkit-touch-callout: none; 
+    -webkit-user-select: none; 
+    -khtml-user-select: none;
+    -moz-user-select: none; 
+    -ms-user-select: none;
+    user-select: none;
+
+    .tag {
+        margin: 0.25em 0.25em 0.25em 0;
+    }
+}
+
+.events {
+    align-items: flex-start;
+}
+
+.event-title > a {
+    &:hover {
+        filter: brightness(250%);
+    }
+}

@@ -15,6 +15,7 @@ import { ComingSoon } from './pages/comingSoon/ComingSoon.js';
 import Catalog from './pages/catalog/Catalog.js';
 import { SignUp } from './pages/clubLogin/ClubRegister.js';
 import { SignIn } from './pages/clubLogin/ClubLogin.js';
+import { StudentSignIn } from './pages/student/StudentLogin.js';
 import RegisterStudent from './pages/student/RegisterStudent.js';
 import { ResetPassword } from './pages/clubLogin/ResetPassword.js';
 import { ResetPassword2 } from './pages/clubLogin/ResetPassword2.js';
@@ -27,7 +28,8 @@ import Admin from './pages/admin/admin/Admin.js';
 import ClubPage from './pages/club/ClubPage';
 import Dashboard from './pages/student/Dashboard.js';
 import StudentCalendar from './pages/student/StudentCalendar';
-import Favorites from './pages/student/Favorites.js';
+import Bookmarks from './pages/student/Bookmarks.js';
+
 import Activation from './pages/club/Activation.js';
 import store from './redux/store';
 import ContactUs from './components/layout/contactUs/ContactUs.js';
@@ -42,6 +44,12 @@ import 'moment-timezone';
 import StudentSettings from './pages/student/StudentSettings.js';
 
 Moment.globalTimezone = 'America/Los_Angeles';
+
+let enableFeature = {
+  "dashboard": true,
+  "events": false,
+  "new-club-profile": false
+}
 
 const App = () => {
   useEffect(() => {
@@ -66,11 +74,12 @@ const App = () => {
           <Route exact path="/resetpassword" component={ResetPassword2} />
           <Route path="/club/:id" component={ClubPage} />
           <PrivateRoute exact path="/security" component={Security} />
-          <Route exact path="/dashboard" component={Dashboard} />
-          <Route exact path="/StudentCalendar" component={StudentCalendar} />
+          <Route exact path="/dashboard" component={enableFeature["dashboard"] ?  Dashboard : ComingSoon} />
+          <Route exact path="/StudentCalendar" component={enableFeature["dashboard"] ?  StudentCalendar : ComingSoon} />
+          <Route exact path="/RegisterStudent" component={enableFeature["dashboard"] ?  RegisterStudent : ComingSoon} />
           <Route exact path="/FAQ" component={ComingSoon} />
-          <Route exact path="/favorites" component={Favorites} />
-          <Route exact path="/student/settings" component={StudentSettings} />
+          <Route exact path="/Bookmarks" component={enableFeature["dashboard"] ?  Bookmarks : ComingSoon} />
+          <Route exact path="/student/settings" component={enableFeature["dashboard"] ?  StudentSettings : ComingSoon} />
           <PrivateRoute exact path="/security" component={Security} />
           <Route exact path="/comingsoon" component={ComingSoon} />
           <Route>
