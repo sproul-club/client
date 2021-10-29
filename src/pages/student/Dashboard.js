@@ -537,7 +537,7 @@ function Dashboard({ student }) {
           <h2>Application Tracker Board</h2>
           <span>
             Clubs added to the Application Tracker Board will be automatically
-            added to the Master Application Timeline and Events
+            added to the Calendar and Events
           </span>
           <div className="dashboard-app-tracker-content">
             <DragDropContext
