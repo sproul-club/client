@@ -430,7 +430,27 @@ function Dashboard({ student }) {
       setColumns(newAppTrackerColumns);
       return;
     }
-    
+  }
+
+  function deleteClub(club, index, column) {
+    const start = appTrackerColumns.columns[column.id];
+
+    const startColumnIds = Array.from(start.clubIds);
+    startColumnIds.splice(index, 1);
+    const newStart = {
+      ...start,
+      clubIds: startColumnIds,
+    };
+
+    const newAppTrackerColumns = {
+      ...appTrackerColumns,
+      columns: {
+        ...appTrackerColumns.columns,
+        [newStart.id]: newStart,
+      }
+    }
+    setColumns(newAppTrackerColumns);
+    return;
   }
 
   function moveClubLeft(club, index, startCol) {
