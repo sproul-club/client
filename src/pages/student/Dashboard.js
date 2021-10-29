@@ -558,6 +558,26 @@ function Dashboard({ student }) {
                                               src={club.icon || require('../assets/default_logo.jpg')}
                                               alt="icon"
                                             />
+                                            <h4 className="dashboard-clubcard-clubname">{club.name}</h4>
+                                          </div>
+                                        </div>
+                                        <div className="dashboard-clubcard-section-right">
+                                          <div className="dashboard-clubcard-btns">
+                                            <button className="dashboard-clubcard-remove">
+                                              <Delete className="dashboard-clubcard-delete" />
+                                            </button>
+                                            <button className="dashboard-clubcard-left">
+                                              <LeftArrow
+                                                className={column.id !== 'column-1' ? 'active' : ''}
+                                                onClick={() => moveClubLeft(club, index, column)}
+                                              />
+                                            </button>
+                                            <button className="dashboard-clubcard-right">
+                                              <RightArrow
+                                                className={column.id !== 'column-3' ? 'active' : ''}
+                                                onClick={() => moveClubRight(club, index, column)}
+                                              />
+                                            </button>
                                           </div>
                                         </div>
                                       </div>
