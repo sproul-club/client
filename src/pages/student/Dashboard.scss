@@ -44,6 +44,12 @@
     color: #8C8C8C;
 }
 
+.dashboard-blobblue-img {
+    width: 18vw;
+    transform: scaleX(-1) rotate(90deg);
+    height: 42vw;
+}
+
 .dashboard-flyer-bears-img {
     display:flex;
     width: 32vw;
@@ -239,7 +245,15 @@
     }
 }
 
-.dashboard-events-photo {
+.dashboard-events-photo-blob {
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+    margin-left: 150px;
+    top: -60px;
+}
+
+.dashboard-events-photo-flyer-bears {
     width: 100%;
     display: flex;
     justify-content: center;
