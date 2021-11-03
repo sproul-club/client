@@ -40,8 +40,11 @@
 	margin-top: 0.8vw;
 }
 .clubpage-content-contact {
+	h2 {
+		font-weight: 600;
+	}
 	a {
-		font-weight: 700;
+		font-weight: 600;
 		font-size: 1vw;
 		color: #367bc6;
 		&:active {
@@ -182,7 +185,7 @@
 	color: #8d8d8d;
 	background: none;
 	border: none;
-	font-weight: 700;
+	font-weight: 600;
 	font-size: 1.4vw;
 	margin: 0 15px 0 15px;
 	padding: 10px 0 10px 0;
