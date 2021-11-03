@@ -6,6 +6,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+/* for disobedient inputs and buttons that are ignoring the Qanelas Soft font rule above */
+input, button {
+  font-family: 'Qanelas Soft';
+}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
