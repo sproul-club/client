@@ -36,52 +36,6 @@ code {
 /* -------------------------------------------------- */
 /* .otf's downloaded from cufonfonts.com/font/qanelas-soft */
 /* .ttf's and .woff's generated with fontsquirrel.com/tools/webfont-generator */
-@font-face {
-  font-family: 'Qanelas Soft';
-  src: local('Qanelas Soft Regular'), local('Qanelas-Soft-Regular'),
-    url('./pages/assets/fonts/Qanelas-Soft-Regular.woff2') format('woff2'),
-    url('./pages/assets/fonts/Qanelas-Soft-Regular.woff') format('woff'),
-    url('./pages/assets/fonts/Qanelas-Soft-Regular.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Qanelas Soft Medium';
-  src: local('Qanelas Soft Medium'), local('Qanelas-Soft-Medium'),
-    url('./pages/assets/fonts/Qanelas-Soft-Medium.woff2') format('woff2'),
-    url('./pages/assets/fonts/Qanelas-Soft-Medium.woff') format('woff'),
-    url('./pages/assets/fonts/Qanelas-Soft-Medium.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Qanelas Soft Semi Bold';
-  src: local('Qanelas Soft Semi Bold'), local('Qanelas-Soft-Semi-Bold'),
-    url('./pages/assets/fonts/Qanelas-Soft-SemiBold.woff2') format('woff2'),
-    url('./pages/assets/fonts/Qanelas-Soft-SemiBold.woff') format('woff'),
-    url('./pages/assets/fonts/Qanelas-Soft-SemiBold.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Qanelas Soft Bold';
-  src: local('Qanelas Soft Bold'), local('Qanelas-Soft-Bold'),
-    url('./pages/assets/fonts/Qanelas-Soft-Bold.woff2') format('woff2'),
-    url('./pages/assets/fonts/Qanelas-Soft-Bold.woff') format('woff'),
-    url('./pages/assets/fonts/Qanelas-Soft-Bold.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Qanelas Soft Extra Bold';
-  src: local('Qanelas Soft Extra Bold'), local('Qanelas-Soft-Extra-Bold'),
-    url('./pages/assets/fonts/Qanelas-Soft-ExtraBold.woff2') format('woff2'),
-    url('./pages/assets/fonts/Qanelas-Soft-ExtraBold.woff') format('woff'),
-    url('./pages/assets/fonts/Qanelas-Soft-ExtraBold.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
 /* @font-face {
   font-family: 'Qanelas Soft';
   src: local('Qanelas Soft Regular'), local('Qanelas-Soft-Regular'),
