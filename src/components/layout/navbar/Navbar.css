@@ -29,20 +29,6 @@
   border-radius: 6px;
 }
 
-.header .join-us {
-  background: white;
-  font-style: normal;
-  color: #54a0f1;
-  text-decoration: none;
-  border-radius: 10px;
-  box-shadow: inset 0px 0px 0px 2px #54a0f1;
-  line-height: 18px;
-  padding: 10px 20px 10px 20px;
-  margin-top: 3px;
-  margin-left: 13px;
-  margin-right: 4px;
-}
-
 .header .logo-img {
   float: left;
   width: 43px;
@@ -306,9 +292,5 @@
   }
   .option.mid-option {
     border-radius: 20px;
-  }
-
-  .header .join-us {
-    margin-bottom: 13px;
   }
 }

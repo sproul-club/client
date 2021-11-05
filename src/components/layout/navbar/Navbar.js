@@ -63,12 +63,6 @@ const Navbar = ({
       <Link to="/catalog" className="nav-link">
         Discover
       </Link>
-      <a
-        href="https://www.notion.so/sproul-club-c4765bb5e0884179b8bd38498eeec40f"
-        className="nav-link join-us"
-        target="none">
-        Join our team
-      </a>
       <div
         className={`menu logout ${dropdownVis ? 'menu-open' : 'menu-close'}`}
         ref={dropDownRef}
