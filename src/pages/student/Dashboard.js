@@ -8,10 +8,10 @@ import Calendar from '../../components/calendar/Calendar';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import ReactGA from 'react-ga';
-import Delete from '@material-ui/icons/DeleteOutlineRounded';
 import RightArrow from '@material-ui/icons/ChevronRightRounded';
 import LeftArrow from '@material-ui/icons/ChevronLeftRounded';
 import ReactMoment from 'react-moment';
+import KanbanBoard from './KanbanBoard.js'
 import {
   containsToday,
   isUpcoming,
@@ -29,9 +29,6 @@ import KanbanClubInfo from './KanbanClubInfo';
 // import OnboardingModal from './studentOnboarding/onboardingModal/OnboardingModal';
 import { Link } from 'react-router-dom';
 import Modal from '../../components/layout/modal/Modal';
-import { Draggable } from 'react-beautiful-dnd';
-import { Droppable } from 'react-beautiful-dnd';
-import { DragDropContext } from 'react-beautiful-dnd';
 
 function Dashboard({ student }) {
   useEffect(() => {
@@ -60,7 +57,7 @@ function Dashboard({ student }) {
     majors: [],
     minors: [],
     interests: [],
-    favorited_clubs: ['Karasuno High VBC', 'User Testing'],
+    bookmarked_clubs: ['sproul.club', 'maybe club'],
     visited_clubs: [],
     recommended_clubs: [
       {
@@ -344,159 +341,7 @@ function Dashboard({ student }) {
     });
   });
 
-  const [appTrackerColumns, setColumns] = useState({
-    columns: {
-      "column-1": {
-        id: "column-1",
-        name: "Interested",
-        clubIds: student.club_board.interested_clubs,
-      },
-      "column-2": {
-        id: "column-2",
-        name: "Applied",
-        clubIds: student.club_board.applied_clubs,
-      },
-      "column-3": {
-        id: "column-3",
-        name: "Interview",
-        clubIds: student.club_board.interviewed_clubs,
-      }
-    },
-    columnOrder: ["column-1", "column-2", "column-3"]
-  });
-
   if (!student) return <Loading />;
-
-  const onDragEnd = result => {
-    const { destination, source, draggableId } = result;
-
-    if (!destination) {
-      return;
-    }
-
-    if (
-      destination.droppableId === source.droppableId &&
-      destination.index === source.index
-    ) {
-      return;
-    }
-
-    const start = appTrackerColumns.columns[source.droppableId];
-    const finish = appTrackerColumns.columns[destination.droppableId];
-
-    if (start === finish) {
-      const newClubIds = Array.from(start.clubIds);
-      newClubIds.splice(source.index, 1);
-      newClubIds.splice(destination.index, 0, appTrackerColumns.columns[source.droppableId].clubIds[source.index]);
-
-      const newColumn = {
-        ...start,
-        clubIds: newClubIds
-      };
-
-      const newAppTrackerColumns = {
-        ...appTrackerColumns,
-        columns: {
-          ...appTrackerColumns.columns,
-          [newColumn.id]: newColumn
-        }
-      }
-
-      setColumns(newAppTrackerColumns);
-      return;
-    } else {
-      const startColumnIds = Array.from(start.clubIds);
-      startColumnIds.splice(source.index, 1);
-      const newStart = {
-        ...start,
-        clubIds: startColumnIds,
-      };
-
-      const finishColumnIds = Array.from(finish.clubIds);
-      finishColumnIds.splice(destination.index, 0, appTrackerColumns.columns[source.droppableId].clubIds[source.index]);
-      const newFinish = {
-        ...finish,
-        clubIds: finishColumnIds,
-      };
-
-      const newAppTrackerColumns = {
-        ...appTrackerColumns,
-        columns: {
-          ...appTrackerColumns.columns,
-          [newStart.id]: newStart,
-          [newFinish.id]: newFinish
-        }
-      }
-      setColumns(newAppTrackerColumns);
-      return;
-    }
-    
-  }
-
-  function moveClubLeft(club, index, startCol) {
-    if (startCol.id === 'column-1') return;
-
-    const start = appTrackerColumns.columns[startCol.id];
-    const finish = appTrackerColumns.columns[startCol.id === 'column-2' ? 'column-1' : 'column-2'];
-
-    const startColumnIds = Array.from(start.clubIds);
-      startColumnIds.splice(index, 1);
-      const newStart = {
-        ...start,
-        clubIds: startColumnIds,
-      };
-
-      const finishColumnIds = Array.from(finish.clubIds);
-      finishColumnIds.push(club);
-      const newFinish = {
-        ...finish,
-        clubIds: finishColumnIds,
-      };
-
-      const newAppTrackerColumns = {
-        ...appTrackerColumns,
-        columns: {
-          ...appTrackerColumns.columns,
-          [newStart.id]: newStart,
-          [newFinish.id]: newFinish
-        }
-      }
-      setColumns(newAppTrackerColumns);
-      return;
-  }
-
-  function moveClubRight(club, index, startCol) {
-    if (startCol.id === 'column-3') return;
-
-    const start = appTrackerColumns.columns[startCol.id];
-    const finish = appTrackerColumns.columns[startCol.id === 'column-1' ? 'column-2' : 'column-3'];
-
-    
-    const startColumnIds = Array.from(start.clubIds);
-      startColumnIds.splice(index, 1);
-      const newStart = {
-        ...start,
-        clubIds: startColumnIds,
-      };
-
-      const finishColumnIds = Array.from(finish.clubIds);
-      finishColumnIds.push(club);
-      const newFinish = {
-        ...finish,
-        clubIds: finishColumnIds,
-      };
-
-      const newAppTrackerColumns = {
-        ...appTrackerColumns,
-        columns: {
-          ...appTrackerColumns.columns,
-          [newStart.id]: newStart,
-          [newFinish.id]: newFinish
-        }
-      }
-      setColumns(newAppTrackerColumns);
-      return;
-  }
 
   return (
     <div className="dashboard-wrapper">
@@ -544,91 +389,13 @@ function Dashboard({ student }) {
           <h2>Application Tracker Board</h2>
           <span>
             Clubs added to the Application Tracker Board will be automatically
-            added to the Master Application Timeline and Events
+            added to the Calendar and Events
           </span>
-          <div className="dashboard-app-tracker-content">
-            <DragDropContext
-              onDragEnd = {onDragEnd}>
-              {appTrackerColumns.columnOrder.map((columnId) => {
-                const column = appTrackerColumns.columns[columnId];
-                  return(
-                    <div key={column.id}>
-                      <h3>{column.name}</h3>
-                      <Droppable droppableId = {column.id}>
-                        {provided => (
-                          <div
-                          className="dashboard-app-tracker-list"
-                          ref={provided.innerRef}
-                          {...provided.droppableProps}>
-                            {column.clubIds.length > 0 ? (
-                              column.clubIds.map((club, index) => {
-                                return (
-                                  <Draggable key={club.name} draggableId={club.name} index={index}>
-                                    {provided =>
-                                      <div className="dashboard-clubcard"
-                                        {...provided.draggableProps}
-                                        {...provided.dragHandleProps}
-                                        ref={provided.innerRef}
-                                      >
-                                        <div className="dashboard-clubcard-section-left"
-                                          onClick={() =>  {
-                                            setBoardModal(true);
-                                            setCurrentClub(club);
-                                            }
-                                          }
-                                        >
-                                          <div className="dashboard-clubcard-title">
-                                            <img
-                                              className="dashboard-clubicon"
-                                              src={club.icon || require('../assets/default_logo.jpg')}
-                                              alt="icon"
-                                            />
-                                            <h4 className="dashboard-clubcard-clubname">{club.name}</h4>
-                                          </div>
-                                        </div>
-                                        <div className="dashboard-clubcard-section-right">
-                                          <div className="dashboard-clubcard-btns">
-                                            <button className="dashboard-clubcard-remove">
-                                              <Delete className="dashboard-clubcard-delete" />
-                                            </button>
-                                            <button className="dashboard-clubcard-left">
-                                              <LeftArrow
-                                                className={column.id !== 'column-1' ? 'active' : ''}
-                                                onClick={() => moveClubLeft(club, index, column)}
-                                              />
-                                            </button>
-                                            <button className="dashboard-clubcard-right">
-                                              <RightArrow
-                                                className={column.id !== 'column-3' ? 'active' : ''}
-                                                onClick={() => moveClubRight(club, index, column)}
-                                              />
-                                            </button>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    }
-                                  </Draggable>
-                                  )
-                                })
-                              ) : (
-                                <span>No clubs.</span>
-                            )}
-                            {provided.placeholder}
-                          </div>
-                        )}
-                      </Droppable>
-                      <div>
-                        {column.id === "column-1" &&
-                        <button
-                          className="dashboard-add-interested"
-                          onClick={() => setTrackerModal(true)}>
-                          + New
-                        </button>}
-                      </div>
-                    </div>
-              )})}
-            </DragDropContext>
-          </div>
+          <KanbanBoard
+            board={student.club_board}
+            setShowModal={setBoardModal}
+            setCurrentClub={setCurrentClub}
+          />
         </div>
         {/* <div className="dashboard-app-timeline">
           <span className="dashboard-app-tl-header">
@@ -639,8 +406,9 @@ function Dashboard({ student }) {
         </div> */}
 
         <Modal
-          showModal={showTrackerModal}
-          setShowModal={setTrackerModal}
+          setTrackerModal={setTrackerModal}
+          setShowModal={setBoardModal}
+          setCurrentClub={setCurrentClub}
           close={cancelEdit}>
           <div className="dashboard-modal">
             <AppTracker student={student} close={cancelEdit} />

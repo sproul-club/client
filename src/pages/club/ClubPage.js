@@ -7,7 +7,7 @@ import { Route, Switch, Link } from 'react-router-dom';
 import { getOrganization, clearOrganization } from '../../redux/actions/catalog';
 
 import RightArrow from '@material-ui/icons/CallMadeRounded';
-import HeartBordered from '@material-ui/icons/FavoriteBorderRounded';
+import BookmarkBordered from '@material-ui/icons/BookmarkBorderRounded';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 
@@ -331,10 +331,10 @@ function ClubPage({
           <div className="clubpage-header-right">
             {
               !admin
-              // && <button className="clubpage-favorite-button" /* NEED AN ONCLICK HANDLER TO ACTUALL DO SOMETHING HERE*/>
-              //     <HeartBordered fontSize="small"/>
-              //     <span>Favorite</span>
-              //   </button>
+              && <button className="clubpage-favorite-button" /* NEED AN ONCLICK HANDLER TO ACTUALL DO SOMETHING HERE*/>
+                  <BookmarkBordered fontSize="small"/>
+                  <span>Bookmark</span>
+                </button>
             }
             {admin && (
               <img

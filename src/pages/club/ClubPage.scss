@@ -5,7 +5,6 @@
 	overflow-y: auto;
 	padding-top: 67px;
 	position: relative;
-	font-family: Qanelas Soft;
 	letter-spacing: 0.03em;
 }
 .clubpage {
@@ -41,8 +40,11 @@
 	margin-top: 0.8vw;
 }
 .clubpage-content-contact {
+	h2 {
+		font-weight: 600;
+	}
 	a {
-		font-weight: 700;
+		font-weight: 600;
 		font-size: 1vw;
 		color: #367bc6;
 		&:active {
@@ -164,7 +166,7 @@
 	height: 40px;
 	border-radius: 5px;
 	border: 2px solid #e95f5f;
-	font-weight: bolder;
+	font-weight: 700;
 	color: #e95f5f;
 	span {
 		margin-left: 0.5em;
@@ -183,7 +185,7 @@
 	color: #8d8d8d;
 	background: none;
 	border: none;
-	font-weight: bolder;
+	font-weight: 600;
 	font-size: 1.4vw;
 	margin: 0 15px 0 15px;
 	padding: 10px 0 10px 0;
@@ -231,7 +233,6 @@
 .seeMoreButton {
 	background: none;
 	border: none;
-	font-family: Qanelas Soft;
 	font-size: 1vw;
 	color: #767676;
 	display: flex;
@@ -252,7 +253,6 @@
 .clubpage-apply-btn {
 	display: inline-flex;
 	background-color: #54a0f1;
-	font-family: Qanelas Soft;
 	letter-spacing: 1.5px;
 	border: none;
 	color: white;
@@ -364,7 +364,7 @@
 		padding: 5px 15px 5px 15px;
 		border-radius: 5px;
 		border: 2px solid #e95f5f;
-		font-weight: bolder;
+		font-weight: 700;
 		color: #e95f5f;
 		span {
 			margin-left: 0;

@@ -2,7 +2,6 @@
   min-height: 100vh;
   display: flex;
   justify-content: center;
-  font-family: Qanelas Soft;
 }
 
 .catalog-content {
@@ -16,6 +15,7 @@
   width: 100%;
   height: auto;
   border-radius: 10px;
+  margin-top: 75px;
 }
 .selectedDD {
   border: 1px solid #54a0f1 !important;

@@ -49,7 +49,7 @@ export const GridComponentStyles = styled.div`
   background-color: #e2e2e2;
   border-radius: 5px;
   padding: 0vw 0.5vw 0vw 0.5vw;
-  font-family: Qanelas Soft Semi Bold;
+  font-weight: 600;
   font-size: 17px;
 }
 
@@ -77,7 +77,7 @@ export const GridComponentStyles = styled.div`
 
 .noresults-text {
   margin: 0px;
-  font-family: Qanelas Soft Semi Bold;
+  font-weight: 600;
 }
 
 .card-grid {
@@ -95,7 +95,7 @@ export const GridComponentStyles = styled.div`
   height: 900px;
 
   margin-left: 8px;
-  font-family: Qanelas Soft Semi Bold;
+  font-weight: 600;
 
   /*background: #000000;*/
   justify-content: center;
