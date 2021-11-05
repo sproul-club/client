@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import ReactGA from 'react-ga';
+import Dropdown from '../../components/layout/dropdown/Dropdown.js'
 import './RegisterStudent.scss';
 import { setFormDetails } from '../../redux/actions/catalog';
 
 import cutelilbearohyesyouare from '../assets/signup.png';
 import illeniumisourlordandsavior from '../assets/login.png';
+import { Fab } from '@material-ui/core';
 
 const RegisterStudent = ({
   tagOptions,
@@ -17,7 +19,86 @@ const RegisterStudent = ({
   const [showMinorsDD, setShowMinorsDD] = useState(false);
   const [showTagsDD, setShowTagsDD] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  
+  const customStyles = {
+    multiValue: (provided, state) => ({
+      ...provided,
+      background: '#D1D3D4',
+      color: '#2b2b2b',
+      borderRadius: 4,
+    }),
+    control: (provided, state) => ({
+      display: 'flex',
+      width: 320,
+      margin: 7,
+      marginBottom: 8,
+      fontSize: 12,
+      fontFamily: 'Roboto, sans-serif',
+      fontWeight: 400,
+      fontStyle: 'normal',
+      borderRadius: 5,
+      border: 'solid 1px #949494',
+      // border: (state.selectProps.error) ? 'solid 1px #ff2d2d' : 'solid 1px #949494',
+    }),
+    menu: (provided, state) => ({
+      ...provided,
+      margin: 8,
+      marginTop: 2,
+      width: 320,
+      fontSize: '12px',
+      fontFamily: 'Qanelas Soft',
+      fontWeight: 300,
+      fontStyle: 'normal',
+      textAlign: 'left',
+      color:
+        state.selectProps.value && state.selectProps.value.length >= 3
+          ? '#cccccc'
+          : '#4e4e4e',
+    }),
+    multiValueRemove: (provided, state) => ({
+      ...provided,
+      background: '#D1D3D4',
+      color: '#2b2b2b',
+      borderRadius: 10,
+      '&:hover': {
+        color: 'hsl(0,0%,40%)',
+      },
+    }),
+    singleValue: (provided, state) => ({
+      ...provided,
+      color: '#4e4e4e',
+    }),
+    multiValueLabel: (provided, state) => ({
+      ...provided,
+      marginLeft: '4px',
+      padding: '2px',
+      paddingLeft: '5px',
+      fontSize: '12px',
+    }),
+    indicatorSeparator: (provided, state) => ({
+      ...provided,
+      width: 0,
+    }),
 
+    clearIndicator: (provided, state) => ({
+      ...provided,
+      cursor: 'pointer',
+    }),
+    dropdownIndicator: (provided, state) => ({
+      ...provided,
+      cursor: 'pointer',
+    }),
+    valueContainer: (provided, state) => ({
+      ...provided,
+      padding: '5px 8px',
+    }),
+    '@media only screen and (min-width: 1700px)': {
+      menu: (provided, state) => ({
+        ...provided,
+        width: 500,
+      }),
+    },
+  };
   const years = ['Freshman', 'Sophomore', 'Junior', 'Senior'];
   var yearSelected = false;
   const [year, setYear] = useState('');
@@ -245,7 +326,6 @@ const RegisterStudent = ({
   var selectedTags = [];
 
   const { tags } = formDetails;
-
   function setSelectedYear(value) {
     // Set profile values.
     setYear(value);
@@ -295,6 +375,8 @@ const RegisterStudent = ({
 
     console.log('Tags: ' + selectedTags);
   }
+  console.log(tagOptions)
+  console.log(years)
 
   ReactGA.initialize('UA-176775736-1');
   ReactGA.pageview('/register');
@@ -329,20 +411,29 @@ const RegisterStudent = ({
             <div class="title">Just a few more things...</div>
 
             {/* Year Dropdown */}
-            <div onClick={() => setShowYearDD(!showYearDD)} class="filter">
+            <Dropdown
+              options = {years}
+              multi = {false}
+              search = {false}
+              placeholder ='Select year'
+              defaultValue = {year}
+              set = {setSelectedYear}
+              style={customStyles}
+            />
+            {/* <div onClick={() => setShowYearDD(!showYearDD)} class="filter">
               {yearSelected ? (
                 <div class="selected"> {year} </div>
               ) : (
                 'Select year'
-              )}
+              )} */}
               {/*{!selectedYear ? "Select year" : selectedYear}*/}
-              {showYearDD ? (
+              {/* {showYearDD ? (
                 <i className="fas fa-caret-up"></i>
               ) : (
                 <i className="fas fa-caret-down"></i>
-              )}
-            </div>
-            {showYearDD && (
+              )} }
+              </div>*/}
+           {/*  {showYearDD && (
               <div className="filter-dropdown-years scrollable-content">
                 {years.map((year) => (
                   <div className="filter-selection">
@@ -357,10 +448,19 @@ const RegisterStudent = ({
                   </div>
                 ))}
               </div>
-            )}
+            )} */}
 
             {/* Majors Dropdown */}
-            <div onClick={() => setShowMajorDD(!showMajorsDD)} class="filter">
+            <Dropdown
+              options = {majorsList}
+              multi = {true}
+              search = {true}
+              placeholder ='Select major(s)'
+              defaultValue = {selectedMajors}
+              set = {addSelectedMajor}
+              style={customStyles}
+            />
+            {/* <div onClick={() => setShowMajorDD(!showMajorsDD)} class="filter">
               {majorsPopulated ? (
                 <div class="selected"> {selectedMajors.toString()} </div>
               ) : (
@@ -386,10 +486,19 @@ const RegisterStudent = ({
                   </div>
                 ))}
               </div>
-            )}
+            )} */}
 
             {/* Minors Dropdown */}
-            <div onClick={() => setShowMinorsDD(!showMinorsDD)} class="filter">
+            <Dropdown
+              options = {minorsList}
+              multi = {true}
+              search = {true}
+              placeholder ='Select minor(s)'
+              defaultValue = {selectedMinors}
+              set = {addSelectedMinor}
+              style={customStyles}
+            />
+            {/* <div onClick={() => setShowMinorsDD(!showMinorsDD)} class="filter">
               Select minor(s)
               {showMinorsDD ? (
                 <i className="fas fa-caret-up"></i>
@@ -411,10 +520,20 @@ const RegisterStudent = ({
                   </div>
                 ))}
               </div>
-            )}
+            )} */}
 
             {/* Tags Dropdown */}
-            <div>
+            <Dropdown
+              options = {tagOptions}
+              multi = {true}
+              search = {true}
+              placeholder ='Tags'
+              defaultValue = {selectedTags}
+              set = {addSelectedTag}
+              style={customStyles}
+            />
+
+            {/* <div>
               <div
                 onClick={() => setShowTagsDD(!showTagsDD)}
                 className={`${showTagsDD && 'openDD'} filter tags-filter`}>
@@ -440,7 +559,7 @@ const RegisterStudent = ({
                   ))}
                 </div>
               )}
-            </div>
+            </div> */}
 
             <div onClick class="save">
               Save
