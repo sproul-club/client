@@ -37,9 +37,11 @@ const ClubCard = ({club, tagOptions, displayBanner}) => {
             <div className="clubcard-title" ref={measuredRef}>{name}</div>
             <div className={lines + ' clubcard-description'}>{about_us.replace(/(<([^>]+)>)/gi, "").replace('&nbsp;', ' ')}</div>
           </div>
-          <div className="clubcard-like">
-            {/* <i class="fas fa-heart"></i> */}
-            {/* <i class="far fa-heart"></i> */}
+          <div className="clubcard-bookmark">
+            {/* unselected bookmark icon */}
+            <i class="far fa-bookmark"></i>
+            {/* selected bookmark icon */}
+            {/* <i class="fas fa-bookmark"></i> */}
           </div>
         </div>
         <div className="clubcard-content-row2">
