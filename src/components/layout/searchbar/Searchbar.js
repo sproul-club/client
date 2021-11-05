@@ -4,8 +4,11 @@ import './Searchbar.css';
 import resetFilters from './../../../pages/catalog/Catalog.js'
 import formDetails from './../../../pages/catalog/Catalog.js'
 
-import GridComponent from './../../../components/layout/grid/GridComponent.js';
-import { connect } from 'react-redux';
+import changeSearch from './../../../pages/catalog/Catalog.js'
+
+
+// import GridComponent from './../../../components/layout/grid/GridComponent.js';
+// import { connect } from 'react-redux';
 import {
   searchClubs,
   clearOrganization,
@@ -13,7 +16,7 @@ import {
   setFormDetails,
   loadMoreClubs,
 } from './../../../redux/actions/catalog';
-import ReactGA from 'react-ga';
+// import ReactGA from 'react-ga';
 
 // const eventsLoadedAtOnce = 18;
 
@@ -34,16 +37,16 @@ import ReactGA from 'react-ga';
 //   const [showMembersDD, setShowMembersDD] = useState(false);
 //   const [showSortDD, setShowSortDD] = useState(false);
 
-  // const {
-  //   name,
-  //   tags,
-  //   appReq,
-  //   noAppReq,
-  //   recruiting,
-  //   notRecruiting,
-  //   sort,
-  //   members,
-  // } = formDetails;
+//   const {
+//     name,
+//     tags,
+//     appReq,
+//     noAppReq,
+//     recruiting,
+//     notRecruiting,
+//     sort,
+//     members,
+//   } = formDetails;
 
 //   // clearing organization to be viewed every time navigate back to club page
 //   useEffect(() => {
@@ -66,57 +69,57 @@ import ReactGA from 'react-ga';
 //     return () => window.removeEventListener('scroll', onScroll);
 //   }, [num_displayed, num_clubs, loadMoreClubs]);
 
-//   const resetFilters = () => {
-//     setFormDetails({ name: 'name', value: '' });
-//     setFormDetails({ name: 'tags', value: 'reset' });
-//     setFormDetails({ name: 'appReq', value: false });
-//     setFormDetails({ name: 'noAppReq', value: false });
-//     setFormDetails({ name: 'recruiting', value: false });
-//     setFormDetails({ name: 'notRecruiting', value: false });
-//     setFormDetails({ name: 'members', value: 'reset' });
-//     setFormDetails({ name: 'sort', value: 'Fresh' });
-//   };
+  // const resetFilters = () => {
+  //   setFormDetails({ name: 'name', value: '' });
+  //   setFormDetails({ name: 'tags', value: 'reset' });
+  //   setFormDetails({ name: 'appReq', value: false });
+  //   setFormDetails({ name: 'noAppReq', value: false });
+  //   setFormDetails({ name: 'recruiting', value: false });
+  //   setFormDetails({ name: 'notRecruiting', value: false });
+  //   setFormDetails({ name: 'members', value: 'reset' });
+  //   setFormDetails({ name: 'sort', value: 'Fresh' });
+  // };
 
-//   const toggleTag = (tagLabel) => {
-//     setFormDetails({ name: 'tags', value: tagLabel });
-//   };
+  // const toggleTag = (tagLabel) => {
+  //   setFormDetails({ name: 'tags', value: tagLabel });
+  // };
 
-//   const toggleMembers = (tagLabel) => {
-//     console.log(tagLabel);
-//     console.log(formDetails.members);
-//     setFormDetails({ name: 'members', value: tagLabel });
-//   };
+  // const toggleMembers = (tagLabel) => {
+  //   console.log(tagLabel);
+  //   console.log(formDetails.members);
+  //   setFormDetails({ name: 'members', value: tagLabel });
+  // };
 
-//   function toggleAppReq() {
-//     setFormDetails({ name: 'appReq', value: !appReq });
-//     setFormDetails({ name: 'noAppReq', value: false });
-//   }
+  // function toggleAppReq() {
+  //   setFormDetails({ name: 'appReq', value: !appReq });
+  //   setFormDetails({ name: 'noAppReq', value: false });
+  // }
 
-//   function toggleNoAppReq() {
-//     setFormDetails({ name: 'appReq', value: false });
-//     setFormDetails({ name: 'noAppReq', value: !noAppReq });
-//   }
+  // function toggleNoAppReq() {
+  //   setFormDetails({ name: 'appReq', value: false });
+  //   setFormDetails({ name: 'noAppReq', value: !noAppReq });
+  // }
 
-//   function toggleRecruiting() {
-//     setFormDetails({ name: 'recruiting', value: !recruiting });
-//     setFormDetails({ name: 'notRecruiting', value: false });
-//   }
+  // function toggleRecruiting() {
+  //   setFormDetails({ name: 'recruiting', value: !recruiting });
+  //   setFormDetails({ name: 'notRecruiting', value: false });
+  // }
 
-//   function toggleNotRecruiting() {
-//     setFormDetails({ name: 'recruiting', value: false });
-//     setFormDetails({ name: 'notRecruiting', value: !notRecruiting });
-//   }
+  // function toggleNotRecruiting() {
+  //   setFormDetails({ name: 'recruiting', value: false });
+  //   setFormDetails({ name: 'notRecruiting', value: !notRecruiting });
+  // }
 
-//   function toggleSort(e) {
-//     setFormDetails({ name: 'sort', value: e });
-//   }
+  // function toggleSort(e) {
+  //   setFormDetails({ name: 'sort', value: e });
+  // }
 
-  function changeSearch(e) {
-    setFormDetails({ name: 'name', value: e.target.value })
-  }
+  // function changeSearch(e) {
+  //   setFormDetails({ name: 'name', value: e.target.value })
+  // }
 
-//   ReactGA.initialize('UA-176775736-1');
-//   ReactGA.pageview('/catalog');
+  // ReactGA.initialize('UA-176775736-1');
+  // ReactGA.pageview('/catalog');
 
             // {/* Search Bar */}
             // <div className="filter search-filter">
@@ -152,5 +155,5 @@ const Searchbar = () => {
 };
 
 
-export default Searchbar;
+export default Searchbar
 
