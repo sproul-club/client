@@ -85,7 +85,18 @@ function Bookmarks({
     majors: [],
     minors: [],
     interests: [],
-    bookmarked_clubs: ['Karasuno High VBC', 'User Testing'],
+    bookmarked_clubs: ["Allen's Lil Cwub", 
+                    "Character Count Online is a free onCharacter Count Online is a free on",
+                    "Justin Bieber is so HOT ndkwnejkwnej dnjwekdn fnenfjr felrf jelfjkrlf nfkenrj",
+                    "LONGASSNAMELONGASSNAMELONGASSNAMELONGASSNAMELONGASSNAMELONGASSNAMELONG",
+                    "Shrek 2 Appreciation",
+                    "The All-Nighters, of Much",
+                    "Travis Scott Burger",
+                    "caroline",
+                    "james",
+                    "matt fanclubs!matt fanclubs!matt fanclubs!matt fanclubs!matt fanclubs!",
+                    "nico's club",
+                    "the most exclusive illenium fan club (*•ө•*)"],
     visited_clubs: [],
     club_board: {
       interested_clubs: [
@@ -208,6 +219,7 @@ function Bookmarks({
       ],
     },
   };
+
 
   if (!student) return <Loading />;
 
@@ -407,7 +419,7 @@ function Bookmarks({
                   <span> Ascending</span>
                 </div>
                 <div className="filter-selection">
-                  <span> Decending</span>
+                  <span> Descending</span>
                 </div>
                 <div className="filter-selection">
                   <span> Recently Added</span>
@@ -419,11 +431,13 @@ function Bookmarks({
             )}
           </div>
         </div>
-        <div className="results-content">
-          <GridComponent
-            displayBanner={true}
-            bookmarks={student.bookmarked_clubs}
-          />
+        <div style={student.bookmarked_clubs.length > 9 ? {width: '1160px', height:'980px', overflowY: 'scroll', overflowX: 'hidden'} : null}>
+          <div className="results-content">
+            <GridComponent
+              displayBanner={true}
+              bookmarks={student.bookmarked_clubs}
+            />
+          </div>
         </div>
         <div className="recommended">
           <h2>Recommended</h2>
