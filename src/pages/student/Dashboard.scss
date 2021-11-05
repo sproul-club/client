@@ -49,9 +49,10 @@
 }
 
 .dashboard-flyer-bears-img {
-    display:flex;
-    width: 32vw;
-    padding-top: 4vw;
+    display: flex;
+    width: 472px;
+    height: 386px;
+    margin-top: 40px;
 }
 
 .dashboard-events {
@@ -182,12 +183,6 @@
     h2 {
         margin: 0 1em 0 0;
     }
-}
-
-.dashboard-events-photo {
-    width: 100%;
-    display: flex;
-    justify-content: center;
 }
 
 .dashboard-modal {

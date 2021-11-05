@@ -2,7 +2,7 @@ import React from 'react';
 import './ClubLogin.scss';
 import Footer from '../../components/layout/footer/Footer';
 import ClubLoginForm from './ClubLoginForm.js';
-import loginImage from '../assets/login.png';
+import loginImage from '../assets/dashboard-flyer-bears.svg';
 
 const SignIn = () => {
   return (
