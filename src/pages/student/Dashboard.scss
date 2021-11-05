@@ -48,11 +48,18 @@
     color: #8C8C8C;
 }
 
+.dashboard-blobblue-img {
+    position: absolute;
+    z-index: -1;
+    height: 170px;
+    margin-left: 40px;
+}
+
 .dashboard-flyer-bears-img {
-    display: flex;
-    width: 472px;
-    height: 386px;
-    margin-top: 40px;
+    display:flex;
+    z-index: -2;
+    width: 32vw;
+    padding-top: 4vw;
 }
 
 .dashboard-events {
@@ -183,6 +190,12 @@
     h2 {
         margin: 0 1em 0 0;
     }
+}
+
+.dashboard-events-photo-flyer-bears {
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .dashboard-modal {
