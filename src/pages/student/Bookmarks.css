@@ -39,6 +39,7 @@
     display: block;
     margin-top: -20px;
     width: 300px;
+    z-index: -2;
 }
 
 .bookmarks-blobblue-img {
