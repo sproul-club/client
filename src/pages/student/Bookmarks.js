@@ -231,7 +231,7 @@ function Bookmarks({
           <div className="bookmarks-photo">
             <img
               className="bookmarks-img"
-              src={require('../assets/resetpwd2.png')}
+              src={require('../assets/resetpwd2.png').default}
               alt="flyer bears image"
             />
           </div>
