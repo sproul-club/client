@@ -27,8 +27,8 @@ const Landing = () => {
           </p>
           {/* <Link to="/signup">Register Your Club</Link> */}
           <div className="buttons">
-            <Link to="/catalog">Explore clubs</Link>
-            <Link id="addbutton" to="/signup">
+            <Link to="/catalog" className="button-blue-fill">Explore clubs</Link>
+            <Link id="addbutton" to="/signup" className="button-blue-outline">
               Add a club
             </Link>
           </div>

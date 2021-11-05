@@ -131,7 +131,7 @@ const ClubLoginForm = ({ login, history, isAuthenticated }) => {
         <Link to="/recover">Forgot password?</Link> <br />
         Don't have an account? Sign up <Link to="/signup">here</Link>
       </div>
-      <button type="submit" className="submitButton" onClick={submitValue}>
+      <button type="submit" className="submitButton  button-blue-fill" onClick={submitValue}>
         Sign in
       </button>
     </form>

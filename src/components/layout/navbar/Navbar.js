@@ -64,7 +64,7 @@ const Navbar = ({
         Discover
       </Link>
       <div
-        className={`menu logout ${dropdownVis ? 'menu-open' : 'menu-close'}`}
+        className={`menu logout ${dropdownVis ? 'menu-open' : 'menu-close'} button-blue-fill`}
         ref={dropDownRef}
         onClick={toggleDropdown}>
         <div className="menu-text">

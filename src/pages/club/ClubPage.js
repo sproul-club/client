@@ -331,7 +331,7 @@ function ClubPage({
           <div className="clubpage-header-right">
             {
               !admin
-              && <button className="clubpage-favorite-button" /* NEED AN ONCLICK HANDLER TO ACTUALL DO SOMETHING HERE*/>
+              && <button className="clubpage-favorite-button button-red-outline" /* NEED AN ONCLICK HANDLER TO ACTUALL DO SOMETHING HERE*/>
                   <BookmarkBordered fontSize="small"/>
                   <span>Bookmark</span>
                 </button>
@@ -472,7 +472,7 @@ function ClubPage({
                   <a
                     href={normalizeUrl(organization.apply_link)}
                     target="_blank">
-                    <button className="clubpage-apply-btn">
+                    <button className="clubpage-apply-btn button-blue-fill">
                       Apply Now!
                       <RightArrow
                         style={{ marginLeft: 5, height: '1.6vw' }}

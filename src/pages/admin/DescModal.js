@@ -129,11 +129,11 @@ const DescModal = (profile) => {
           </div>
           <div id="buttons-flex">
             {/*(name !== propsName || link !== propsLink) ? <p>You have unsaved changes!!</p>: null */}
-            <button id="cancel-button" onClick={cancelEdit}>
+            <button id="cancel-button button-red-outline" onClick={cancelEdit}>
               {' '}
               Cancel{' '}
             </button>
-            <button id="save-button" onClick={singleSave}>
+            <button id="save-button button-blue-fill" onClick={singleSave}>
               Save
             </button>
           </div>

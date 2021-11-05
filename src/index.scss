@@ -1,14 +1,13 @@
 body {
   margin: 0;
-  font-family: 'Qanelas Soft', apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 /* for disobedient inputs and buttons that are ignoring the Qanelas Soft font rule above */
-input, button {
-  font-family: 'Qanelas Soft';
+body, input, button {
+  font-family: 'Qanelas Soft', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
 }
 
 code {
@@ -34,6 +33,42 @@ code {
 .disabled {
   display: none !important;
 }
+
+// buttons
+.button-blue-fill {
+  border-radius: 5px !important;
+  background-color: #54a0f1 !important;
+  transition-duration: 0.1s !important;
+  transition-timing-function: ease-out !important;
+  &:hover {
+    background-color: #7bb8f9 !important;
+  }
+}
+.button-blue-outline {
+  border-radius: 5px !important;
+  color: #54a0f1 !important;
+  border: solid 2px #54a0f1 !important;
+  transition-duration: 0.1s !important;
+  transition-timing-function: ease-out !important;
+  &:hover {
+    color: #7bb8f9 !important;
+    border-color: #7bb8f9 !important;
+  }
+}
+
+.button-red-outline {
+  border-radius: 5px !important;
+  color: #E95F5F !important;
+  border: solid 2px #E95F5F !important;
+  transition-duration: 0.1s !important;
+  transition-timing-function: ease-out !important;
+  &:hover {
+    color: #ee9999 !important;
+    border-color: #ee9999 !important;
+  }
+}
+
+
 
 /* -------------------------------------------------- */
 /* --------------------- Fonts ---------------------- */
