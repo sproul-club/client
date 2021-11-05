@@ -16,7 +16,6 @@ import {
 } from '../actions/types';
 
 import { TOKENS } from '../../utils/backendClient';
-import { PlaylistAddOutlined } from '@material-ui/icons';
 
 const initialState = {
   token: TOKENS.access.get(),
@@ -46,6 +45,8 @@ export default function (state = initialState, action) {
     case LOGIN_SUCCESS:
       return {
         ...state,
+        name: payload.profile.name,
+        email: payload.profile.email,
         isAuthenticated: true,
         refreshToken: payload.token.refresh,
         token: payload.token.access,
