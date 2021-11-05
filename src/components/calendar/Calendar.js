@@ -28,7 +28,7 @@ function Calendar({ student, tagOptions, state}) {
     majors: [],
     minors: [],
     interests: [],
-    favorited_clubs: ['Karasuno High VBC', 'User Testing'],
+    bookmarked_clubs: ['sproul.club', 'maybe club'],
     visited_clubs: [],
     club_board: {
       interested_clubs: [
@@ -376,15 +376,20 @@ function Calendar({ student, tagOptions, state}) {
     if ((tags !== null) && (tags.length !== 0)) {
       eventsList = eventsList.filter((event) => {
         let tagExists = false;
-        tags.forEach((t) => {
-          tagExists = event.club.tags.includes(t.label);
-        });
+        for (let i = 0; i < tags.length; i++) {
+          tagExists = event.club.tags.includes(tags[i].label);
+          if (tagExists) {break;}
+        }
         return tagExists;
       });
     }
 
     if ((recruiting !== null) && (recruiting.length !== 0)) {
       eventsList = eventsList.filter((event) => event.club.recruiting === recruiting.label);
+    }
+
+    if (bookmarked) {
+      eventsList = eventsList.filter((event) => student.bookmarked_clubs.includes(event.club.name));
     }
     return eventsList
   }

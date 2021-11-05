@@ -57,7 +57,7 @@ function Dashboard({ student }) {
     majors: [],
     minors: [],
     interests: [],
-    favorited_clubs: ['Karasuno High VBC', 'User Testing'],
+    bookmarked_clubs: ['sproul.club', 'maybe club'],
     visited_clubs: [],
     recommended_clubs: [
       {
