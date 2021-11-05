@@ -57,3 +57,18 @@
 .bookmarks .filters {
     margin-bottom: -28px;
 }
+
+.bookmarks-scroll {
+    width: 1160px;
+    height: 980px; 
+    overflow-y: scroll;
+    overflow-x: hidden
+}
+
+@media (max-width: 800px) {
+    .bookmarks-scroll {
+        width:auto;
+        height: auto;
+        overflow: hidden;
+    }
+}

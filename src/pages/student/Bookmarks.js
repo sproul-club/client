@@ -431,7 +431,7 @@ function Bookmarks({
             )}
           </div>
         </div>
-        <div style={student.bookmarked_clubs.length > 9 ? {width: '1160px', height:'980px', overflowY: 'scroll', overflowX: 'hidden'} : null}>
+        <div className={student.bookmarked_clubs.length > 9 ? "bookmarks-scroll" : null}>
           <div className="results-content">
             <GridComponent
               displayBanner={true}
