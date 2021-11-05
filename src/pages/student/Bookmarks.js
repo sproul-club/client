@@ -243,7 +243,7 @@ function Bookmarks({
           <div className="bookmarks-photo">
             <img
               className="bookmarks-img"
-              src={require('../assets/resetpwd2.png')}
+              src={require('../assets/resetpwd2.png').default}
               alt="flyer bears image"
             />
           </div>
@@ -432,7 +432,7 @@ function Bookmarks({
           </div>
         </div>
         <div className={student.bookmarked_clubs.length > 9 ? "bookmarks-scroll" : null}>
-          <div className="results-content">
+          <div className="results-content" style={{marginRight: '10px'}}>
             <GridComponent
               displayBanner={true}
               bookmarks={student.bookmarked_clubs}
