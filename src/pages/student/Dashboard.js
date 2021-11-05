@@ -526,13 +526,11 @@ function Dashboard({ student }) {
             </span>
           </div>
 
-          <div className="dashboard-events-photo-blob">
-            <img
-              className="dashboard-blobblue-img"
-              src={require('../assets/blobblue.png').default}
-              alt="blob blue"
-            />
-          </div>
+          <img
+            className="dashboard-blobblue-img"
+            src={require('../assets/blueblob.svg').default}
+            alt="blob blue"
+          />
 
           <div className="dashboard-events-photo-flyer-bears">
             <img

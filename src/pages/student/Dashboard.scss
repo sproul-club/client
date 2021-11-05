@@ -45,9 +45,10 @@
 }
 
 .dashboard-blobblue-img {
-    width: 18vw;
-    transform: scaleX(-1) rotate(90deg);
-    height: 42vw;
+    position: absolute;
+    z-index: -1;
+    height: 170px;
+    margin-left: 40px;
 }
 
 .dashboard-flyer-bears-img {
@@ -245,13 +246,6 @@
     }
 }
 
-.dashboard-events-photo-blob {
-    position: absolute;
-    width: 100%;
-    z-index: -1;
-    margin-left: 150px;
-    top: -60px;
-}
 
 .dashboard-events-photo-flyer-bears {
     width: 100%;

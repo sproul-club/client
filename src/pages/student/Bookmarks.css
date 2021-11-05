@@ -41,18 +41,11 @@
     width: 300px;
 }
 
-.dashboard-events-photo-blob {
+.bookmarks-blobblue-img {
     position: absolute;
-    width: 100%;
     z-index: -1;
-    margin-left: 150px;
-    top: -60px;
-}
-
-.dashboard-blobblue-img {
-    width: 18vw;
-    transform: scaleX(-1) rotate(90deg);
-    height: 42vw;
+    height: 170px;
+    margin-left: 40px;
 }
 
 .bookmarks-content {

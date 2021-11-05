@@ -235,13 +235,11 @@ function Bookmarks({
               alt="flyer bears image"
             />
           </div>
-          <div className="dashboard-events-photo-blob">
             <img
-              className="dashboard-blobblue-img"
-              src={require('../assets/blobblue.png').default}
+              className="bookmarks-blobblue-img"
+              src={require('../assets/blueblob.svg').default}
               alt="blob blue"
             />
-          </div>
         </div>
         <h2>Bookmarks</h2>
         <div
