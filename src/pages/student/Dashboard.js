@@ -393,7 +393,8 @@ function Dashboard({ student }) {
           </span>
           <KanbanBoard
             board={student.club_board}
-            setShowModal={setBoardModal}
+            setTrackerModal={setTrackerModal}
+            setBoardModal={setBoardModal}
             setCurrentClub={setCurrentClub}
           />
         </div>
@@ -406,8 +407,8 @@ function Dashboard({ student }) {
         </div> */}
 
         <Modal
-          setTrackerModal={setTrackerModal}
-          setShowModal={setBoardModal}
+          showModal={showTrackerModal}
+          setShowModal={setTrackerModal}
           setCurrentClub={setCurrentClub}
           close={cancelEdit}>
           <div className="dashboard-modal">
