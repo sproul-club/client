@@ -112,6 +112,10 @@
 
 .rbc-event{
     padding: 3px 5px;
+    background: inherit;
+    &:hover {
+        filter: brightness(.85);
+    }
 }
 
 .rbc-event-content{
@@ -126,7 +130,7 @@
 .rbc-event-content-inner{
     display: flex;
     align-items: center;
-    cursor: default;
+    cursor: pointer;
 }
 
 .rbc-event-content img {
