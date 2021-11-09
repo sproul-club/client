@@ -449,16 +449,16 @@ function Calendar({ student, tagOptions, state}) {
         </div>
       </div>
       <RBC
-        views={["month"]}
-        localizer={localizer}
-        events={createCalendarEventsList()}
         components={{event: CalendarEvent}}
-        startAccessor="start"
         endAccessor="end"
-        style={{ height: 700 }}
+        eventPropGetter={eventStyleGetter}
+        events={createCalendarEventsList()}
+        localizer={localizer}
         messages={{next:"▶",previous:"◀"}}
         popup
-        eventPropGetter={eventStyleGetter}
+        startAccessor="start"
+        style={{ height: 700 }}
+        views={["month"]}
       />    
     </div>
     
