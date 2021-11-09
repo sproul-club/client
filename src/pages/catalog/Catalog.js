@@ -12,6 +12,7 @@ import {
 } from './../../redux/actions/catalog';
 import ReactGA from 'react-ga';
 import Footer from './../../components/layout/footer/Footer';
+import Searchbar from './../../components/layout/searchbar/Searchbar';
 
 const eventsLoadedAtOnce = 18;
 
@@ -132,20 +133,7 @@ const Catalog = ({
               borderBottom: '1px solid #ccc',
             }}
             className="filters noselect">
-            {/* Search Bar */}
-            <div className="filter search-filter">
-              <i className="fas fa-search"></i>
-              <input
-                type="text"
-                placeholder="Search"
-                value={name}
-                onChange={(e) => changeSearch(e)}
-                className="search-input"
-              />
-              <span className="reset-filters" onClick={() => resetFilters()}>
-                reset filters
-              </span>
-            </div>
+            <Searchbar value={name} searchClubs = {changeSearch} click = {resetFilters}/>
 
             {/* Status Dropdown */}
             <div
