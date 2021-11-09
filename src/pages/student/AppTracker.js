@@ -11,6 +11,7 @@ import {
 } from '../../redux/actions/catalog';
 import '../catalog/Catalog.scss';
 import GridComponent from '../../components/layout/grid/GridComponent.js';
+import Searchbar from './../../components/searchbar/Searchbar';
 
 const AppTracker = ({
   student,
@@ -98,18 +99,7 @@ const AppTracker = ({
 
       <h3>Search from Catalog</h3>
       <div style={{ paddingBottom: '10px' }} className="filters">
-        {/* Search Bar */}
-        <div style={{ width: '50%' }} className="filter search-filter">
-          <i class="fas fa-search"></i>
-          <input
-            type="text"
-            placeholder="Search"
-            value={name}
-            onChange={(e) => changeSearch(e)}
-            className="search-input"
-          />
-          <span className="reset-filters">reset filters</span>
-        </div>
+      <Searchbar value={name} searchClubs = {changeSearch} click = {resetFilters}/>
 
         {/* App Dropdown */}
         <div
