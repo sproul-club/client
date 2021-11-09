@@ -1,26 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import '../../../pages/catalog/Catalog.scss';
 
-import changeSearch from './../../../pages/catalog/Catalog.js'
-
-// import GridComponent from './../../../components/layout/grid/GridComponent.js';
-// import { connect } from 'react-redux';
-
-            // {/* Search Bar */}
-            // <div className="filter search-filter">
-            //   <i className="fas fa-search"></i>
-            //   <input
-            //     type="text"
-            //     placeholder="Search"
-            //     value={name}
-            //     onChange={(e) => changeSearch(e)}
-            //     className="search-input"
-            //   />
-            //   <span className="reset-filters" onClick={() => resetFilters()}>
-            //     reset filters
-            //   </span>
-            // </div>
-
-const Searchbar = ({onClick, value}) => {
+const Searchbar = ({click, value, searchClubs}) => {
 	return (
     <div className="filter search-filter">
       <i className="fas fa-search"></i>
@@ -28,16 +9,15 @@ const Searchbar = ({onClick, value}) => {
           type="text"
           placeholder="Search"
           value={value}
-          onChange={(e) => changeSearch(e)}
+          onChange={(e) => searchClubs(e)}
           className="search-input"
         />
-        <span className="reset-filters" onClick={onClick}>
+        <span className="reset-filters" onClick={() => click()}>
             reset filters
         </span>
     </div>
   );
 };
-
 
 export default Searchbar
 
