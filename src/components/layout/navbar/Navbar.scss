@@ -1,0 +1,196 @@
+.header {
+  background-color: rgba(255, 255, 255, 0.6);
+  font-family: Qanelas Soft;
+  font-weight: 700;
+  font-style: normal;
+  overflow: visible;
+  padding-top: 11px;
+  padding-left: 50px;
+  padding-right: 60px;
+  padding-bottom: 11px;
+  max-width: 100vw;
+  border-bottom: 1px solid #c4c4c4a9;
+  z-index: 998;
+  position: fixed;
+  width: calc(100% - 90px);
+  background: rgba(255, 255, 255, 0.952);
+  letter-spacing: 0.03em;
+
+  .nav-link {
+    float: left;
+    color: #2b2b2b;
+    transition: color 0.12s;
+    text-align: center;
+    padding: 13px;
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 18px;
+    border-radius: 6px;
+
+    &.logo {
+      font-weight: 800;
+      font-size: 19px;
+      color: #2b2b2b;
+      padding: 13px 6px;
+    }
+  }
+
+  .logo-img {
+    float: left;
+    width: 43px;
+  }
+
+  a:hover {
+    color: #54a0f1;
+    cursor: pointer;
+  }
+}
+
+.header-right {
+  float: right;
+  margin-right: 10px;
+}
+
+.hamburger {
+  display: none;
+  float: right;
+  padding: 8px;
+  font-size: 22px;
+}
+
+.hidden {
+  display: none;
+}
+
+.nav-link.hide-sm {
+  width: auto;
+  padding-left: 0px;
+  padding-right: 0px;
+  margin-right: 60px;
+}
+
+/*** NEW HEADER STYLING (may be only for non-org header?) ***/
+
+.header-right {
+  .menu {
+    float: right;
+    margin-top: 2.5px;
+    padding: 5px 5px;
+    cursor: pointer;
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+    transition-duration: 0.13s;
+    transition-timing-function: ease-out;
+    border: 1px solid #54a0f1;
+
+    &.menu-close {
+      color: #ffffff;
+      background-color: #54a0f1;
+      // border-color: #54a0f1;
+      border-radius: 5px;
+      &:hover {
+        transition-duration: 0.05s;
+        background-color: #7bb8f9;
+        border-color: #7bb8f9;
+      }
+    }
+
+    &.menu-open {
+      color: #54a0f1;
+      background-color: #ffffff;
+      border-bottom-color: #c4c4c4;
+      border-radius: 5px 5px 0px 0px;
+    }
+
+    .menu-text {
+      margin: auto 0;
+      font-size: 13px;
+      padding: 5px 9px;
+      text-align: center;
+    }
+    
+    width: 94px;
+    margin-left: 15px;
+  }
+
+  .dropdown {
+    // dropdown width = button width - extra padding
+    width: calc(94px - 2 * 5px);
+    // dropdown padding = button padding + extra padding
+    padding: 5px calc(5px + 5px) 5px;
+    margin-top: 5px;
+    margin-left: -6px;
+    font-size: 13px;
+    position: absolute;
+    text-align: left;
+    display: flex;
+    background: white;
+    flex-direction: column;
+    border: 1px solid #54a0f1;
+    border-top-color: #c4c4c4;
+    border-radius: 0px 0px 5px 5px;
+    z-index: 999;
+
+    .option {
+      float: right;
+      background: white;
+      margin-right: 0px;
+      height: 28px;
+      line-height: 28px;
+      color: #000000;
+      text-decoration: none;
+      transition: color 0.12s;
+      &:hover {
+        color: #54a0f1;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+/*** MOBILE VIEW STYLING ***/
+
+@media screen and (max-width: 850px) {
+  .header {
+    padding-left: 10px;
+    padding-right: 10px;
+    width: calc(100vw - 20px);
+  }
+  .header-right {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 0px;
+    align-items: center;
+
+    .nav-link {
+      margin: 0px;
+      margin-top: 5px;
+    }
+
+    .menu {
+      margin: 0px;
+      padding: 0px 5px;
+      display: flex;
+      flex-direction: column;
+      .dropdown {
+        right: unset;
+        margin-top: 35px;
+      }
+
+      .menu-text {
+        height: 25px;
+        line-height: 25px;
+      }
+    }
+  }
+  .hamburger {
+    display: unset;
+  }
+  .signin {
+    margin-top: 0px !important;
+    margin: 0px !important;
+  }
+}

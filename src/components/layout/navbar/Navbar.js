@@ -3,7 +3,7 @@ import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout, login } from '../../../redux/actions/auth';
 
-import './Navbar.css';
+import './Navbar.scss';
 import useOnClickOutside from '../../../utils/useOnClickOutside';
 
 import logo from '../../../pages/assets/logo.png';
@@ -77,10 +77,10 @@ const Navbar = ({
         </div>
         {dropdownVis && (
           <div className="dropdown">
-            <Link className="option" to="/student/signin">
+            <Link to="/student/signin" className="option">
               Students
             </Link>
-            <Link className="option mid-option" to="/signin">
+            <Link to="/signin" className="option">
               Clubs
             </Link>
           </div>
@@ -90,7 +90,7 @@ const Navbar = ({
   );
 
   const loggedInStudent = (
-    <div className="logged-in-links">
+    <>
       <Link to="/about" className="nav-link">
         About
       </Link>
@@ -114,10 +114,10 @@ const Navbar = ({
             <Link to="/dashboard" className="option">
               Dashboard
             </Link>
-            <Link to="/" className="option mid-option">
+            <Link to="/" className="option">
               Favorites
             </Link>
-            <Link to="/" className="option mid-option">
+            <Link to="/" className="option">
               Settings
             </Link>
             <div className="option" onClick={logoutSelect}>
@@ -126,11 +126,11 @@ const Navbar = ({
           </div>
         )}
       </div>
-    </div>
+    </>
   );
 
   const loggedInOrg = (
-    <div className="logged-in-links">
+    <>
       <Link to="/about" className="nav-link">
         About
       </Link>
@@ -138,7 +138,7 @@ const Navbar = ({
         Discover
       </Link>
       <div
-        className={`menu login ${dropdownVis ? 'menu-open' : 'menu-close'}`}
+        className={`menu login ${dropdownVis ? 'menu-open' : 'menu-close'} button-blue-fill`}
         ref={dropDownRef}
         onClick={toggleDropdown}>
         <div className="menu-text">
@@ -154,7 +154,7 @@ const Navbar = ({
             <Link to="/admin" className="option">
               Profile
             </Link>
-            <Link to="/security" className="option mid-option">
+            <Link to="/security" className="option">
               Security
             </Link>
             <div className="option" onClick={logoutSelect}>
@@ -163,7 +163,7 @@ const Navbar = ({
           </div>
         )}
       </div>
-    </div>
+    </>
   );
 
   const display = isAuthenticated ? loggedInOrg : loading ? '' : loggedOut;
