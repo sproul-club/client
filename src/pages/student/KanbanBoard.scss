@@ -21,6 +21,7 @@
 .dashboard-clubcard {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   border-radius: 10px;
   padding: 0;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
@@ -39,10 +40,11 @@
   }
 }
 
-.dashboard-clubcard-section-left > *, .dashboard-clubcard-section-right > * {
+.dashboard-clubcard-section-left *, .dashboard-clubcard-section-right * {
   display: flex;
   flex-direction: row;
   align-items: center;
+  width: 100%;
 }
 
 .dashboard-add-interested {

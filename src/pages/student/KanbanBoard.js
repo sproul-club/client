@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Draggable } from 'react-beautiful-dnd';
 import { Droppable } from 'react-beautiful-dnd';
 import { DragDropContext } from 'react-beautiful-dnd';
+import { Link } from 'react-router-dom';
 import Delete from '@material-ui/icons/DeleteOutlineRounded';
 import './KanbanBoard.scss';
 
@@ -139,13 +140,7 @@ const KanbanBoard = ({ board, setTrackerModal, setShowModal, setCurrentClub }) =
                                   {...provided.dragHandleProps}
                                   ref={provided.innerRef}
                                 >
-                                  <div className="dashboard-clubcard-section-left"
-                                    onClick={() =>  {
-                                      setShowModal(true);
-                                      setCurrentClub(club);
-                                      }
-                                    }
-                                  >
+                                  <Link to={`/club/${club.link_name}`} className="dashboard-clubcard-section-left">
                                     <div className="dashboard-clubcard-title">
                                       <img
                                         className="dashboard-clubicon"
@@ -154,7 +149,7 @@ const KanbanBoard = ({ board, setTrackerModal, setShowModal, setCurrentClub }) =
                                       />
                                       <h4 className="dashboard-clubcard-clubname">{club.name}</h4>
                                     </div>
-                                  </div>
+                                  </Link>
                                   <div className="dashboard-clubcard-section-right">
                                     <div className="dashboard-clubcard-btns">
                                       <button className="dashboard-clubcard-remove">

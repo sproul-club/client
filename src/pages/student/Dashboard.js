@@ -85,6 +85,7 @@ function Dashboard({ student }) {
           name: 'sproul.club',
           icon:
             'https://sproul-club-images-prod.s3-us-west-1.amazonaws.com/logo/sproul.club-logo-cc6381f68d09a056ef7770a0e9fbdca8.png',
+          link_name: 'justin-bieber-is-so-hot',
           major_requirements: ["EECS", "Data Science", "Computer Science"],
           class_requirements: ["CS 61A"],
           events: [
@@ -112,6 +113,7 @@ function Dashboard({ student }) {
           name: 'random club',
           icon:
             'https://sproul-club-images-prod.s3-us-west-1.amazonaws.com/logo/sproul.club-logo-cc6381f68d09a056ef7770a0e9fbdca8.png',
+          link_name: 'justin-bieber-is-so-hot',
           major_requirements: ["MCB", "Bioengineering"],
           class_requirements: ["CHEM 1A", "CHEM 1AL"],
           events: [
@@ -132,6 +134,7 @@ function Dashboard({ student }) {
           name: 'devclub',
           icon:
             'https://sproul-club-images-prod.s3-us-west-1.amazonaws.com/logo/sproul.club-logo-cc6381f68d09a056ef7770a0e9fbdca8.png',
+          link_name: 'allen-fanclub',
           major_requirements: ["Economics"],
           class_requirements: [],
           events: [
@@ -150,6 +153,7 @@ function Dashboard({ student }) {
           name: 'no club',
           icon:
             'https://sproul-club-images-prod.s3-us-west-1.amazonaws.com/logo/sproul.club-logo-cc6381f68d09a056ef7770a0e9fbdca8.png',
+          link_name: 'allen-fanclub',
           major_requirements: ["Data Science", "Computer Science"],
           class_requirements: ["Data 8", "CS 61A"],
           events: [
@@ -186,6 +190,7 @@ function Dashboard({ student }) {
           name: 'maybe club',
           icon:
             'https://sproul-club-images-prod.s3-us-west-1.amazonaws.com/logo/sproul.club-logo-cc6381f68d09a056ef7770a0e9fbdca8.png',
+          link_name: 'allen-fanclub',
           major_requirements: [],
           class_requirements: [],
           events: [
@@ -215,6 +220,7 @@ function Dashboard({ student }) {
           name: 'offbrand club',
           icon:
             'https://sproul-club-images-prod.s3-us-west-1.amazonaws.com/logo/sproul.club-logo-cc6381f68d09a056ef7770a0e9fbdca8.png',
+          link_name: 'justin-bieber-is-so-hot',
           major_requirements: [],
           class_requirements: [],
           events: [
