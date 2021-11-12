@@ -98,7 +98,7 @@ const Navbar = ({
         Discover
       </Link>
       <div
-        className={`menu login ${dropdownVis ? 'menu-open' : 'menu-close'}`}
+        className={`menu login ${dropdownVis ? 'menu-open' : 'menu-close'} button-blue-fill`}
         ref={dropDownRef}
         onClick={toggleDropdown}>
         <div className="menu-text">
