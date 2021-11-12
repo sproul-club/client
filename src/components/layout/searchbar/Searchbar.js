@@ -12,9 +12,9 @@ const Searchbar = ({click, value, searchClubs}) => {
           onChange={(e) => searchClubs(e)}
           className="search-input"
         />
-        <span className="reset-filters" onClick={() => click()}>
+        {showReset && <span className="reset-filters" onClick={() => click()}>
             reset filters
-        </span>
+        </span>}
     </div>
   );
 };
