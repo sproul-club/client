@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../searchbar/Searchbar.scss';
 
-const Searchbar = ({click, value, searchClubs}) => {
+const Searchbar = ({click, value, searchClubs, showReset}) => {
 	return (
     <div className="filter search-filter">
       <i className="fas fa-search"></i>
