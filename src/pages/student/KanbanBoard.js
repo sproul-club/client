@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import Delete from '@material-ui/icons/DeleteOutlineRounded';
 import './KanbanBoard.scss';
 
-const KanbanBoard = ({ board, setTrackerModal, setShowModal, setCurrentClub }) => {
+const KanbanBoard = ({ board, setTrackerModal, setBoardModal, setCurrentClub }) => {
   
   const [appTrackerColumns, setColumns] = useState({
     columns: {

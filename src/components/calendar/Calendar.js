@@ -233,10 +233,7 @@ function Calendar({ student, tagOptions, state}) {
       fontWeight: 300,
       fontStyle: 'normal',
       textAlign: 'left',
-      color:
-        state.selectProps.value && state.selectProps.value.length >= 3
-          ? '#cccccc'
-          : '#4e4e4e',
+      color:'#4e4e4e',
     }),
     multiValueRemove: (provided, state) => ({
       ...provided,
@@ -418,6 +415,7 @@ function Calendar({ student, tagOptions, state}) {
           <Dropdown
             options={clubOptions}
             multi={true}
+            infinite={true}
             search={true}
             placeholder="Select clubs"
             style={customStyles}
@@ -428,8 +426,9 @@ function Calendar({ student, tagOptions, state}) {
           <Dropdown
             options={tagOptions}
             multi={true}
+            infinite={true}
             search={true}
-            placeholder="Select tags (maximum 3 tags)"
+            placeholder="Select tags"
             style={customStyles}
             defaultValue={tags}
             set={setTags}
