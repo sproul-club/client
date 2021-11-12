@@ -90,7 +90,7 @@
   color: #ffffff;
   border: 1px solid #ffffff;
   background-color: #54a0f1;
-  border-radius: 10px;
+  border-radius: 5px;
   transition-duration: 0.13s;
   transition-timing-function: ease-out;
 }
@@ -104,7 +104,7 @@
   background-color: #ffffff;
   border: 1px solid #54a0f1;
   border-bottom-color: #c4c4c4;
-  border-radius: 10px 10px 0px 0px;
+  border-radius: 5px 5px 0px 0px;
   transition-duration: 0.13s;
   transition-timing-function: ease-out;
 }
@@ -128,7 +128,7 @@
   flex-direction: column;
   border: 1px solid #54a0f1;
   border-top-color: #c4c4c4;
-  border-radius: 0px 0px 10px 10px;
+  border-radius: 0px 0px 5px 5px;
   z-index: 999;
 }
 
@@ -141,7 +141,7 @@
   color: #000000;
   text-decoration: none;
   transition: color 0.12s;
-  border-radius: 0px 0px 10px 10px;
+  border-radius: 0px 0px 5px 5px;
 }
 .dropdown .option:hover {
   color: #54a0f1;
@@ -163,7 +163,7 @@
 }
 .menu.logout .dropdown .option {
   padding: 0px 9px;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 .menu.login {

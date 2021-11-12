@@ -112,30 +112,6 @@
   justify-content: flex-end;
 }
 
-#cancel-button {
-  margin-bottom: 20px;
-  margin-right: 10px;
-  float: right;
-  background: #ffffff;
-  border-radius: 5px;
-  padding: 10px 25px;
-  /*color: #ff2d2d; */
-  color: #f76767;
-  font-weight: 700;
-  font-size: 14px;
-  /*border: 1px solid #ff2d2d;*/
-  border: 1px solid #f76767;
-}
-
-#cancel-button:hover {
-  color: #ff1111;
-  border: 1px solid #ff1111;
-}
-
-#save-button {
-  font-size: 14px;
-}
-
 /*DELETE RESOURCE MODAL STYLING*/
 .del-modal {
   width: 250px;

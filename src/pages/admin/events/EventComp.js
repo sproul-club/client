@@ -230,7 +230,7 @@ const EventComp = ({ data, entryChange, removeEvent }) => {
           <button type="submit" onClick={singleSave}>
             Save
           </button>
-          <button id="cancel-button button-red-outline" onClick={cancelEdit}>
+          <button class="cancel-button button-red-outline" onClick={cancelEdit}>
             {' '}
             Cancel{' '}
           </button>

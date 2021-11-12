@@ -235,7 +235,7 @@ const AppTracker = ({
       </div>
       <GridComponent displayBanner={true} favorites={student.favorited_clubs} />
 
-      <button id="save-button button-blue-fill" onClick={submit}>
+      <button class="save-button button-blue-fill" onClick={submit}>
         {' '}
         Save Selected{' '}
       </button>

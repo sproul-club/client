@@ -83,11 +83,11 @@ const GetInvolved = ({ profile, get_involved, updateProfile, close }) => {
           />
         </div>
       </div>
-      <button id="save-button button-blue-fill" onClick={submit}>
+      <button class="save-button button-blue-fill" onClick={submit}>
         {' '}
         Save{' '}
       </button>
-      <button id="cancel-button button-red-outline" onClick={() => close()}>
+      <button class="cancel-button button-red-outline" onClick={() => close()}>
         {' '}
         Cancel{' '}
       </button>
