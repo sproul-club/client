@@ -96,20 +96,6 @@ function ClubPage({
     }
   };
 
-  // fetchGallery();
-  /*
-  organization.gallery = [
-    {
-      type: 'i',
-      url: 'https://picsum.photos/seed/picsum/1000/500',
-      caption: '',
-    },
-    {
-      type: 'i',
-      url: 'https://picsum.photos/seed/picsum/1000/1000',
-      caption: 'The team',
-    },
-  ];*/
   let [tab, setTab] = useState('overview');
   const tempTab = path[1];
   if (tempTab) {
@@ -173,7 +159,7 @@ function ClubPage({
     <div className="clubpage-content-resource" id="resources" key={i}>
       {res.name}
       <a target="_blank" rel="noopener noreferrer" href={res.link} key={i}>
-        <img src={require('../assets/linkImages/resLink.png')} alt="resource" />
+        <img src={require('../assets/linkImages/resLink.png').default} alt="resource" />
       </a>
     </div>
   ));
@@ -193,7 +179,7 @@ function ClubPage({
               <h1>About {organization.name}</h1>
               {admin && (
                 <img
-                  src={require('../assets/Edit.svg')}
+                  src={require('../assets/Edit.svg').default}
                   className="clubpage-content-header-icon"
                   onClick={() => setShowAboutModal(admin)}
                   alt=""
@@ -224,7 +210,7 @@ function ClubPage({
                 <h1>Gallery (Beta)</h1>
                 {admin && (
                   <img
-                    src={require('../assets/Edit.svg')}
+                    src={require('../assets/Edit.svg').default}
                     className="clubpage-content-header-icon"
                     onClick={() => setShowGalleryModal(admin)}
                   />
@@ -301,13 +287,13 @@ function ClubPage({
         <img
           className="header-img"
           src={
-            organization.banner_url || require('../assets/default_banner.jpg')
+            organization.banner_url || require('../assets/default_banner.jpg').default
           }
           alt=""
         />
         {admin && (
           <img
-            src={require('../assets/Edit.svg')}
+            src={require('../assets/Edit.svg').default}
             className="clubpage-content-header-icon above-banner"
             onClick={() => setShowBannerModal(admin)}
             alt=""
@@ -318,7 +304,7 @@ function ClubPage({
             <img
               className="club-logo"
               src={
-                organization.logo_url || require('../assets/default_logo.jpg')
+                organization.logo_url || require('../assets/default_logo.jpg').default
               }
               alt="club"
             />
@@ -338,7 +324,7 @@ function ClubPage({
             }
             {admin && (
               <img
-                src={require('../assets/Edit.svg')}
+                src={require('../assets/Edit.svg').default}
                 className="clubpage-content-header-icon"
                 onClick={() => setShowProfileModal(admin)}
                 alt=""
@@ -403,7 +389,7 @@ function ClubPage({
 
                     {admin && (
                       <img
-                        src={require('../assets/Edit.svg')}
+                        src={require('../assets/Edit.svg').default}
                         className="clubpage-content-header-icon"
                         onClick={() => setShowRecrModal(admin)}
                         alt=""
@@ -435,7 +421,7 @@ function ClubPage({
                       <h1>Events</h1>
                       {admin && (
                         <img
-                          src={require('../assets/Edit.svg')}
+                          src={require('../assets/Edit.svg').default}
                           className="clubpage-content-header-icon"
                           alt=""
                         />
@@ -459,7 +445,7 @@ function ClubPage({
                 <h1>How to Get Involved</h1>
                 {admin && (
                   <img
-                    src={require('../assets/Edit.svg')}
+                    src={require('../assets/Edit.svg').default}
                     className="clubpage-content-header-icon"
                     onClick={() => setShowInvolvedModal(admin)}
                     alt=""
@@ -488,7 +474,7 @@ function ClubPage({
               <h1>Contact Information</h1>
               {admin && (
                 <img
-                  src={require('../assets/Edit.svg')}
+                  src={require('../assets/Edit.svg').default}
                   className="clubpage-content-header-icon"
                   onClick={() => setShowContactModal(admin)}
                   alt=""
