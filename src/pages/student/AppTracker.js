@@ -99,7 +99,7 @@ const AppTracker = ({
 
       <h3>Search from Catalog</h3>
       <div style={{ paddingBottom: '10px' }} className="filters">
-        <Searchbar value={name} searchClubs = {changeSearch} click = {resetFilters}/>
+        <Searchbar value={name} searchClubs = {changeSearch} click = {resetFilters} showReset = {false}/>
 
         {/* App Dropdown */}
         <div
