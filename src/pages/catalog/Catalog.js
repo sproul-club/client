@@ -133,7 +133,7 @@ const Catalog = ({
               borderBottom: '1px solid #ccc',
             }}
             className="filters noselect">
-            <Searchbar value={name} searchClubs = {changeSearch} click = {resetFilters}/>
+            <Searchbar value={name} searchClubs = {changeSearch} click = {resetFilters} showReset = {true}/>
 
             {/* Status Dropdown */}
             <div
