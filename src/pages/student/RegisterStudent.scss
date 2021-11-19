@@ -14,7 +14,6 @@
 
     span::before {
         content: "";
-        animation: animate infinite 2s;
         padding-left: 0px;
     }
 
@@ -98,7 +97,7 @@
             }
         }
 
-        .filter-dropdown-years {
+        /* .filter-dropdown-years {
             width: 350px;
             max-height: 200px;
         
@@ -211,7 +210,7 @@
         
             color: black;
             margin: 5px;
-        }
+        } */
 
         .save {
             display: flex;

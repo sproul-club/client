@@ -32,6 +32,7 @@ const Dropdown = (props) => {
       },
     })}
     classNamePrefix="drop"
+    isLoading={false}
     isSearchable={props.search}
     isMulti={props.multi}
     options={props.options}
