@@ -3,13 +3,9 @@ import React, { useEffect, useState } from 'react';
 import './Dashboard.scss';
 import Footer from '../../components/layout/footer/Footer';
 import Loading from '../../components/layout/loading/Loading';
-import MasterTimeline from './MasterTimeline';
 import Calendar from '../../components/calendar/Calendar';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import ReactGA from 'react-ga';
-import RightArrow from '@material-ui/icons/ChevronRightRounded';
-import LeftArrow from '@material-ui/icons/ChevronLeftRounded';
 import ReactMoment from 'react-moment';
 import KanbanBoard from './KanbanBoard.js'
 import {
@@ -24,10 +20,8 @@ import {
   eventsOverlap,
 } from '../../utils/formatTimeAndDate';
 import AppTracker from './AppTracker';
-import KanbanClubInfo from './KanbanClubInfo';
 // import Onboarding from './studentOnboarding/Onboarding';
 // import OnboardingModal from './studentOnboarding/onboardingModal/OnboardingModal';
-import { Link } from 'react-router-dom';
 import Modal from '../../components/layout/modal/Modal';
 
 function Dashboard({ student }) {
@@ -36,7 +30,6 @@ function Dashboard({ student }) {
   }, []);
   const [showTrackerModal, setTrackerModal] = useState(false);
   const [showOnboardingModal, setOnboardingModal] = useState(true);
-  const [showBoardModal, setBoardModal] = useState(false);
   const [showCurrentClub, setCurrentClub] = useState('');
 
   function cancelEdit() {
@@ -45,10 +38,6 @@ function Dashboard({ student }) {
 
   function exitOnboarding() {
     setOnboardingModal(false);
-  }
-
-  function exitBoardClub() {
-    setBoardModal(false);
   }
 
   /* TEMPORARY HARDCODED STUDENT FOR TESTING */
@@ -85,6 +74,7 @@ function Dashboard({ student }) {
           name: 'sproul.club',
           icon:
             'https://sproul-club-images-prod.s3-us-west-1.amazonaws.com/logo/sproul.club-logo-cc6381f68d09a056ef7770a0e9fbdca8.png',
+          link_name: 'justin-bieber-is-so-hot',
           major_requirements: ["EECS", "Data Science", "Computer Science"],
           class_requirements: ["CS 61A"],
           events: [
@@ -112,6 +102,7 @@ function Dashboard({ student }) {
           name: 'random club',
           icon:
             'https://sproul-club-images-prod.s3-us-west-1.amazonaws.com/logo/sproul.club-logo-cc6381f68d09a056ef7770a0e9fbdca8.png',
+          link_name: 'justin-bieber-is-so-hot',
           major_requirements: ["MCB", "Bioengineering"],
           class_requirements: ["CHEM 1A", "CHEM 1AL"],
           events: [
@@ -132,6 +123,7 @@ function Dashboard({ student }) {
           name: 'devclub',
           icon:
             'https://sproul-club-images-prod.s3-us-west-1.amazonaws.com/logo/sproul.club-logo-cc6381f68d09a056ef7770a0e9fbdca8.png',
+          link_name: 'allen-fanclub',
           major_requirements: ["Economics"],
           class_requirements: [],
           events: [
@@ -150,6 +142,7 @@ function Dashboard({ student }) {
           name: 'no club',
           icon:
             'https://sproul-club-images-prod.s3-us-west-1.amazonaws.com/logo/sproul.club-logo-cc6381f68d09a056ef7770a0e9fbdca8.png',
+          link_name: 'allen-fanclub',
           major_requirements: ["Data Science", "Computer Science"],
           class_requirements: ["Data 8", "CS 61A"],
           events: [
@@ -186,6 +179,7 @@ function Dashboard({ student }) {
           name: 'maybe club',
           icon:
             'https://sproul-club-images-prod.s3-us-west-1.amazonaws.com/logo/sproul.club-logo-cc6381f68d09a056ef7770a0e9fbdca8.png',
+          link_name: 'allen-fanclub',
           major_requirements: [],
           class_requirements: [],
           events: [
@@ -215,6 +209,7 @@ function Dashboard({ student }) {
           name: 'offbrand club',
           icon:
             'https://sproul-club-images-prod.s3-us-west-1.amazonaws.com/logo/sproul.club-logo-cc6381f68d09a056ef7770a0e9fbdca8.png',
+          link_name: 'justin-bieber-is-so-hot',
           major_requirements: [],
           class_requirements: [],
           events: [
@@ -370,7 +365,14 @@ function Dashboard({ student }) {
               </i>
             </span>
           </div>
-          <div className="dashboard-events-photo">
+
+          <img
+            className="dashboard-blobblue-img"
+            src={require('../assets/blueblob.svg').default}
+            alt="blob blue"
+          />
+
+          <div className="dashboard-events-photo-flyer-bears">
             <img
               className="dashboard-flyer-bears-img"
               src={require('../assets/dashboard-flyer-bears.svg').default}
@@ -386,34 +388,16 @@ function Dashboard({ student }) {
           </span>
           <KanbanBoard
             board={student.club_board}
-            setShowModal={setBoardModal}
-            setCurrentClub={setCurrentClub}
+            setTrackerModal={setTrackerModal}
           />
         </div>
-        {/* <div className="dashboard-app-timeline">
-          <span className="dashboard-app-tl-header">
-            <h2>Master Application Timeline</h2>
-            <i className="dashboard-subtext">*Timeline in PST</i>
-          </span>
-          <MasterTimeline data={timeline} />
-        </div> */}
 
         <Modal
-          setTrackerModal={setTrackerModal}
-          setShowModal={setBoardModal}
-          setCurrentClub={setCurrentClub}
+          showModal={showTrackerModal}
+          setShowModal={setTrackerModal}
           close={cancelEdit}>
           <div className="dashboard-modal">
             <AppTracker student={student} close={cancelEdit} />
-          </div>
-        </Modal>
-
-        <Modal
-          showModal={showBoardModal}
-          setShowModal={setBoardModal}
-          close={exitBoardClub}>
-          <div className="dashboard-club-events-modal">
-            <KanbanClubInfo club={showCurrentClub}/>
           </div>
         </Modal>
 

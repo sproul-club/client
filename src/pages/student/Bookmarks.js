@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import GridComponent from '../../components/layout/grid/GridComponent.js';
 import Footer from '../../components/layout/footer/Footer';
+import Searchbar from '../../components/layout/searchbar/Searchbar';
 import Loading from '../../components/layout/loading/Loading';
 import {
   searchClubs,
@@ -231,10 +232,15 @@ function Bookmarks({
           <div className="bookmarks-photo">
             <img
               className="bookmarks-img"
-              src={require('../assets/resetpwd2.png')}
+              src={require('../assets/resetpwd2.png').default}
               alt="flyer bears image"
             />
           </div>
+            <img
+              className="bookmarks-blobblue-img"
+              src={require('../assets/blueblob.svg').default}
+              alt="blob blue"
+            />
         </div>
         <h2>Bookmarks</h2>
         <div
@@ -245,18 +251,7 @@ function Bookmarks({
             borderBottom: '1px solid #ccc',
           }}
           className="filters">
-          {/* Search Bar */}
-          <div className="filter search-filter">
-            <i class="fas fa-search"></i>
-            <input
-              type="text"
-              placeholder="Search"
-              value={name}
-              onChange={(e) => changeSearch(e)}
-              className="search-input"
-            />
-            <span className="reset-filters">reset filters</span>
-          </div>
+          <Searchbar value={name} searchClubs = {changeSearch} click = {resetFilters} showReset = {true}/>
 
           {/* Status Dropdown */}
           <div
