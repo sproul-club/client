@@ -173,19 +173,10 @@
 .admin-page button {
   margin-bottom: 20px;
   float: right;
-  background: #54a0f1;
-  border-radius: 5px;
   padding: 10px 30px;
-  color: white;
   font-weight: 700;
   font-size: 16px;
-  border: none;
   margin-right: 0px;
-}
-
-.admin-page button:hover {
-  background: #6eaff5;
-  cursor: pointer;
 }
 
 .subtitle {
@@ -195,44 +186,6 @@
   /* align-self: flex-end; */
   margin-bottom: 20px;
   text-decoration: none;
-}
-
-#save-button {
-  margin-bottom: 20px;
-  float: right;
-  background: #54a0f1;
-  border-radius: 5px;
-  padding: 10px 25px;
-  color: white;
-  font-weight: 700;
-  font-size: 14px;
-  border: 1px solid #54a0f1;
-}
-
-#save-button:hover {
-  background: #6eaff5;
-  cursor: pointer;
-}
-
-#cancel-button {
-  margin-bottom: 20px;
-  margin-right: 10px;
-  float: right;
-  background: #ffffff;
-  border-radius: 5px;
-  padding: 10px 25px;
-  /*color: #ff2d2d; */
-  color: #f76767;
-  font-weight: 700;
-  font-size: 14px;
-  /*border: 1px solid #ff2d2d;*/
-  border: 1px solid #f76767;
-}
-
-#cancel-button:hover {
-  color: #ff1111;
-  border: 1px solid #ff1111;
-  cursor: pointer;
 }
 
 .modal-input {

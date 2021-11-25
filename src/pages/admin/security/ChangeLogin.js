@@ -111,7 +111,7 @@ const ChangeLogin = ({ updatePassword }) => {
         <div className="changePassword">
           <div className="changePasswordHeader">
             <h3>Change Password</h3>
-            <button onClick={openEdit}>Edit</button>
+            <button onClick={openEdit} className="button-grey-fill">Edit</button>
           </div>
           It’s a good idea to use a strong one that you aren’t using elsewhere!
         </div>
@@ -127,10 +127,10 @@ const ChangeLogin = ({ updatePassword }) => {
         number, and include 1 symbol!
       </div>
       <div className="formGroup">{swap(editing)}</div>
-      <button className={showSave} onClick={save}>
+      <button className={showSave+" button-blue-fill"}  onClick={save}>
         Save changes
       </button>
-      <button className={showCancel} onClick={cancelSave}>
+      <button className={showCancel+" button-grey-fill"} onClick={cancelSave}>
         Cancel
       </button>
     </div>

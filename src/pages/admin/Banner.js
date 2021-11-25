@@ -98,8 +98,8 @@ const Banner = ({
           </a>{' '}
           for a resource that helps you resize your images.
       </p>
-      <button id="save-button" onClick={submit}> Save </button>
-      <button id="cancel-button" onClick={() => close()}> Cancel </button>
+      <button class="save-button button-blue-fill" onClick={submit}> Save </button>
+      <button class="cancel-button button-red-outline" onClick={() => close()}> Cancel </button>
     </div>
   );
 };

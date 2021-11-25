@@ -13,7 +13,7 @@ var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-require('./index.css');
+require('./index.scss');
 
 var _reactFlipMove = require('react-flip-move');
 

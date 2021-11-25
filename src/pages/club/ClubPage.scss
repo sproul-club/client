@@ -252,21 +252,13 @@
 }
 .clubpage-apply-btn {
 	display: inline-flex;
-	background-color: #54a0f1;
-	letter-spacing: 1.5px;
 	border: none;
-	color: white;
 	font-weight: bold;
 	font-size: 1vw;
 	padding: 8px 25px 8px 25px;
-	border-radius: 10px;
+	// border-radius: 10px;
 	margin: 1vw auto 0 auto;
 	align-items: center;
-	transition: opacity 0.05s;
-	&:hover {
-		cursor: pointer;
-		opacity: 0.8;
-	}
 }
 .apply-button-wrapper {
 	width: 100%;

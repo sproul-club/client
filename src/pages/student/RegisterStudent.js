@@ -169,7 +169,7 @@ const RegisterStudent = ({
               style={customStyles}
             />
 
-            <div onClick class="save">
+            <div onClick class="save button-blue-fill">
               Save
             </div>
           </div>

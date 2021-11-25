@@ -58,11 +58,11 @@ const AboutClub = ({ profile, updateProfile, close }) => {
         </div>
       </div>
 
-      <button id="save-button" onClick={submit}>
+      <button class="save-button button-blue-fill" onClick={submit}>
         {' '}
         Save{' '}
       </button>
-      <button id="cancel-button" onClick={close}>
+      <button class="cancel-button button-red-outline" onClick={close}>
         {' '}
         Cancel{' '}
       </button>

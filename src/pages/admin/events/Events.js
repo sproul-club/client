@@ -198,7 +198,7 @@ const Events = ({ addEvent, updateEvent, deleteEvent, events }) => {
             </div>
           </div>
           <button type="submit">Save</button>
-          <button id="cancel-button" onClick={cancelAdd}>
+          <button class="cancel-button button-red-outline" onClick={cancelAdd}>
             {' '}
             Cancel{' '}
           </button>

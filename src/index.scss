@@ -1,14 +1,13 @@
 body {
   margin: 0;
-  font-family: 'Qanelas Soft', apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 /* for disobedient inputs and buttons that are ignoring the Qanelas Soft font rule above */
-input, button {
-  font-family: 'Qanelas Soft';
+body, input, button {
+  font-family: 'Qanelas Soft', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
 }
 
 code {
@@ -34,6 +33,81 @@ code {
 .disabled {
   display: none !important;
 }
+
+// buttons
+.button-blue-fill, .button-blue-outline, .button-red-outline, .button-grey-fill {
+  border-radius: 5px;
+  transition-duration: 0.1s;
+  transition-timing-function: ease-out;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.button-blue-fill, .button-grey-fill {
+  border: none;
+}
+
+.button-blue-outline, .button-red-outline {
+  background: white;
+  border-style: solid;
+  border-width: 2px;
+}
+
+.button-blue-fill {
+  color: white;
+  background-color: #54a0f1;
+  &:hover {
+    background-color: #7bb8f9;
+  }
+}
+
+.button-blue-outline {
+  color: #54a0f1;
+  border-color: #54a0f1;
+  &:hover {
+    color: #7bb8f9;
+    border-color: #7bb8f9;
+  }
+}
+
+.button-red-outline {
+  color: #e95f5f;
+  border-color: #e95f5f;
+  &:hover {
+    color: #ee9999;
+    border-color: #ee9999;
+  }
+}
+
+.button-grey-fill {
+  color: #2b2b2b;
+  background-color: #c4c4c4;
+  &:hover {
+    background-color: #747474;
+  }
+}
+
+
+.save-button {
+  margin-bottom: 20px;
+  float: right;
+  padding: 11px 26px;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.cancel-button {
+  margin-bottom: 20px;
+  margin-right: 10px;
+  float: right;
+  background: #ffffff;
+  padding: 9px 24px;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+
 
 /* -------------------------------------------------- */
 /* --------------------- Fonts ---------------------- */

@@ -240,12 +240,12 @@ const GalleryUpload = ({
                   <p className="subtext">50 character limit</p>
                   {el.changed && (
                     <div className="gallery-buttons">
-                      <button id="save-button" onClick={() => submitChanges(ind)}>
+                      <button class="save-button button-blue-fill" onClick={() => submitChanges(ind)}>
                         {' '}
                         Save{' '}
                       </button>
                       <button
-                        id="cancel-button"
+                        class="cancel-button button-red-outline"
                         onClick={() => cancelChanges(ind)}>
                         {' '}
                         Cancel{' '}

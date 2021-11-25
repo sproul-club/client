@@ -514,7 +514,7 @@ const StepOne = (props) => {
             Click here
           </a>
         </div>
-        <button onClick={props._next} className="nextButton">
+        <button onClick={props._next} className="nextButton button-blue-fill">
           Next →
         </button>
       </div>
@@ -693,10 +693,10 @@ const StepTwo = (props) => {
       </div>
 
       <div className="buttonWrapper">
-        <button className="prevButton" onClick={props._prev}>
+        <button className="prevButton button-blue-fill" onClick={props._prev}>
           ← Back
         </button>
-        <button className="submitButton" onClick={props._next}>
+        <button className="submitButton button-blue-fill" onClick={props._next}>
           Sign up
         </button>
       </div>

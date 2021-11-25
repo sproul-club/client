@@ -122,11 +122,11 @@ const Resources = ({
             </div>
           </div>
           <div id="buttons-flex">
-            <button id="cancel-button" onClick={cancelAdd}>
+            <button class="cancel-button button-red-outline" onClick={cancelAdd}>
               {' '}
               Cancel{' '}
             </button>
-            <button id="save-button" onClick={addRes}>
+            <button class="save-button button-blue-fill" onClick={addRes}>
               Save
             </button>
           </div>
