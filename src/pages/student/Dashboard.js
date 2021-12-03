@@ -403,7 +403,7 @@ function Dashboard({ student }) {
 
         <Calendar />
        
-        { <OnboardingModal
+        {/* <OnboardingModal
           showModal={showOnboardingModal}
           setShowModal={setOnboardingModal}>
           <div className="onboarding-modal">
@@ -413,7 +413,7 @@ function Dashboard({ student }) {
               close={exitOnboarding}
             />
           </div>
-        </OnboardingModal> }
+        </OnboardingModal> */}
       </div>
       <Footer/>
     </div>
