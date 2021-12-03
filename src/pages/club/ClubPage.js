@@ -166,6 +166,30 @@ function ClubPage({
 
   const overview = (
     <div>
+      <div className="bottomGallery">
+        {((organization.gallery_media &&
+          organization.gallery_media.length > 0) ||
+          admin) && (
+          <div className="clubpage-content-gallery">
+            <div className="clubpage-content-header">
+              <h1>Gallery (Beta)</h1>
+              {admin && (
+                <img
+                  src={require('../assets/Edit.svg').default}
+                  className="clubpage-content-header-icon"
+                  onClick={() => setShowGalleryModal(admin)}
+                />
+              )}
+            </div>
+            {organization.gallery_media &&
+              organization.gallery_media.length > 0 && (
+                <div className="gallery">
+                  <Gallery data={organization.gallery_media} />
+                </div>
+              )}
+          </div>
+        )}
+      </div>
       <div>
         {
           <div
@@ -201,30 +225,6 @@ function ClubPage({
           {aboutMore ? 'See less' : 'See more'}{' '}
           {aboutMore ? <ExpandLess /> : <ExpandMoreIcon />}{' '}
         </button>
-        <div className="bottomGallery">
-          {((organization.gallery_media &&
-            organization.gallery_media.length > 0) ||
-            admin) && (
-            <div className="clubpage-content-gallery">
-              <div className="clubpage-content-header">
-                <h1>Gallery (Beta)</h1>
-                {admin && (
-                  <img
-                    src={require('../assets/Edit.svg').default}
-                    className="clubpage-content-header-icon"
-                    onClick={() => setShowGalleryModal(admin)}
-                  />
-                )}
-              </div>
-              {organization.gallery_media &&
-                organization.gallery_media.length > 0 && (
-                  <div className="gallery">
-                    <Gallery data={organization.gallery_media} />
-                  </div>
-                )}
-            </div>
-          )}
-        </div>
         {/* <GridComponent displayBanner= {true}/> */}
       </div>
     </div>
