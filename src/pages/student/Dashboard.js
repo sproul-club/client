@@ -20,8 +20,8 @@ import {
   eventsOverlap,
 } from '../../utils/formatTimeAndDate';
 import AppTracker from './AppTracker';
-// import Onboarding from './studentOnboarding/Onboarding';
-// import OnboardingModal from './studentOnboarding/onboardingModal/OnboardingModal';
+import Onboarding from './studentOnboarding/Onboarding';
+import OnboardingModal from './studentOnboarding/onboardingModal/OnboardingModal';
 import Modal from '../../components/layout/modal/Modal';
 
 function Dashboard({ student }) {

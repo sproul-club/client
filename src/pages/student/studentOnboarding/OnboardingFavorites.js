@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import './OnboardingFavorites.css';
-import coloredBall from './assets/status1.png';
-import uncoloredBall from './assets/status2.png';
-import favorite from './assets/favorite.png';
-import OnboardingModal from '../components/onboardingModal/OnboardingModal';
+import coloredBall from '../../assets/status1.png';
+import uncoloredBall from '../../assets/status2.png';
+import bookmark from '../../assets/bookmark.svg';
+import OnboardingModal from '../../../components/onboardingModal/OnboardingModal';
 import OnboardingEvents from './OnboardingEvents';
 import OnboardingSkip from './OnboardingSkip';
 
@@ -29,14 +29,14 @@ const OnboardingFavorites = ({ closeOnlySkip, close }) => {
     <div className="onboarding">
       <div className="content">
         <div className="imageContainer">
-          <img src={favorite} className="favorite" alt="favorite picture" />
+          <img src={bookmark} className="bookmark" alt="bookmark picture" />
         </div>
         <br></br>
         <div className="caption-text">
           <p>
             In the Discover page, there's a catalog of clubs where you will be
-            able to favorite the clubs that catch your eye. These can then be
-            found under "Account" in "Favorites.
+            able to bookmark the clubs that catch your eye. These can then be
+            found in the navbar, under "Bookmarked."
           </p>
         </div>
 

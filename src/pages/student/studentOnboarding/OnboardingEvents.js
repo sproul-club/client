@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import events from './assets/events.png';
+import events from '../../assets/events.svg';
 import './OnboardingEvents.css';
-import coloredBall from './assets/status1.png';
-import uncoloredBall from './assets/status2.png';
-import OnboardingModal from '../components/onboardingModal/OnboardingModal';
+import coloredBall from '../../assets/status1.png';
+import uncoloredBall from '../../assets/status2.png';
+import OnboardingModal from '../../../components/onboardingModal/OnboardingModal';
 import OnboardingInterested from './OnboardingInterested';
 import OnboardingSkip from './OnboardingSkip';
 import { GolfCourseTwoTone } from '@material-ui/icons';

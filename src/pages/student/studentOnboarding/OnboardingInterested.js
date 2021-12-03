@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import interested from './assets/interested.png';
+import interested from '../../assets/interested.svg';
 import './OnboardingInterested.css';
-import coloredBall from './assets/status1.png';
-import uncoloredBall from './assets/status2.png';
-import OnboardingModal from '../components/onboardingModal/OnboardingModal';
+import coloredBall from '../../assets/status1.png';
+import uncoloredBall from '../../assets/status2.png';
+import OnboardingModal from '../../../components/onboardingModal/OnboardingModal';
 import OnboardingTimeline from './OnboardingTimeline';
 import OnboardingSkip from './OnboardingSkip';
 
@@ -39,7 +39,7 @@ const OnboardingInterested = ({ close }) => {
         <div className="caption-text">
           <p>
             On your Application Tracker Board, click on "+ New" to add clubs
-            that you're interested in applying to from your Favorites or the
+            that you're interested in applying to from your Bookmarks or the
             catalog. You can then use the arrows to move them into "Applied" or
             "Interview" throughout the club recruiting season.
           </p>

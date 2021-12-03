@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import timeline from './assets/timeline.png';
+import timeline from '../../assets/timeline.svg';
 import './OnboardingTimeline.css';
-import coloredBall from './assets/status1.png';
-import uncoloredBall from './assets/status2.png';
+import coloredBall from '../../assets/status1.png';
+import uncoloredBall from '../../assets/status2.png';
 
 const OnboardingTimeline = ({ close }) => {
   return (
@@ -13,7 +13,7 @@ const OnboardingTimeline = ({ close }) => {
         </div>
         <div className="caption-text">
           <p>
-            On your Master Application Timeline, you can see all of your clubs'
+            On your Calendar, you can see all of your clubs'
             events for the recruitment season to help you plan accordingly. Just
             click on the event itself to find more information.
           </p>

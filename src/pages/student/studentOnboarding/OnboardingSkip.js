@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import registerbear from './assets/register.png';
+import registerbear from '../../assets/register.png';
 import './OnboardingSkip.css';
-import coloredBall from './assets/status1.png';
-import uncoloredBall from './assets/status2.png';
+import coloredBall from '../../assets/status1.png';
+import uncoloredBall from '../../assets/status2.png';
 
 const OnboardingSkip = ({ closeOnlySkip, close }) => {
   return (
