@@ -3,7 +3,7 @@ import './OnboardingFavorites.css';
 import coloredBall from '../../assets/status1.png';
 import uncoloredBall from '../../assets/status2.png';
 import bookmark from '../../assets/bookmark.svg';
-import OnboardingModal from '../../../components/onboardingModal/OnboardingModal';
+import OnboardingModal from './onboardingModal/OnboardingModal';
 import OnboardingEvents from './OnboardingEvents';
 import OnboardingSkip from './OnboardingSkip';
 

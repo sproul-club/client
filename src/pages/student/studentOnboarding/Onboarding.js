@@ -3,7 +3,7 @@ import registerbear from '../../assets/register.png';
 import './Onboarding.css';
 import coloredBall from '../../assets/status1.png';
 import uncoloredBall from '../../assets/status2.png';
-import OnboardingModal from '../../../components/onboardingModal/OnboardingModal';
+import OnboardingModal from './onboardingModal/OnboardingModal';
 import OnboardingFavorites from './OnboardingFavorites';
 import OnboardingSkip from './OnboardingSkip';
 

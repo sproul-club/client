@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import useOnClickOutside from '../../utils/useOnClickOutside';
+import useOnClickOutside from '../../../../utils/useOnClickOutside';
 import './OnboardingModal.css';
 
 const OnboardingModal = ({ showModal, setShowModal, children }) => {
