@@ -11,7 +11,6 @@ import { NotificationContainer } from 'react-notifications';
 
 import { Landing } from './pages/landing/Landing.js';
 import { ComingSoon } from './pages/comingSoon/ComingSoon.js';
-// import Catalog from './pages/catalog.js';
 import Catalog from './pages/catalog/Catalog.js';
 import { SignUp } from './pages/clubLogin/ClubRegister.js';
 import { SignIn } from './pages/clubLogin/ClubLogin.js';
