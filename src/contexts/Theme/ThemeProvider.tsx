@@ -7,7 +7,7 @@ interface ThemeProviderProps {
 }
 
 const ThemeProvider = ({ children }: ThemeProviderProps) => {
-  const [theme, setTheme] = useState("");
+  const [theme, setTheme] = useState("light");
   const [localTheme, setLocalTheme] = useLocalStorage("sc-theme", "light");
 
   useEffect(() => {
