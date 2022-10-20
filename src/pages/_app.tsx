@@ -3,6 +3,7 @@ import { ReactNode, useEffect } from "react";
 import { ThemeProvider } from "../contexts/Theme";
 import useTheme from "../contexts/Theme/useTheme";
 import "../styles/globals.scss";
+import "./landing/Landing.scss";
 
 const AppWrapper = ({ Component, pageProps }: AppProps) => {
   return (
