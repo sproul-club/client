@@ -104,6 +104,10 @@
       }
     }
   }
+  // TODO: Remove any button related styling and create a new component
+  // with relevant button styling changes -- these button styles don't
+  // seem to actually affect the button, could be because Link is used
+  // from Next.js which is diff from what was used before migration
   #addbutton {
     width: 140px;
     font-size: 140px;
