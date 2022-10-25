@@ -1,0 +1,39 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Montserrat";
+}
+
+body.light {
+  --text-0: #000000;
+  --text-1: #7f7f7f;
+  --bg-0: #ededed;
+  --bg-1: #f9f9f9;
+  --box-shadow: rgba(149, 157, 165, 0.2);
+  --red: red;
+
+  background-color: var(--bg-0);
+  color: var(--text-0);
+}
+
+body.dark {
+  --text-0: #ffffff;
+  --text-1: #919191;
+  --bg-0: #111111;
+  --bg-1: #212121;
+  --box-shadow: transparent;
+  --red: red;
+
+  background-color: var(--bg-0);
+  color: var(--text-0);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
