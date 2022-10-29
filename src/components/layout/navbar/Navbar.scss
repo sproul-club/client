@@ -1,6 +1,6 @@
 .header {
   background-color: rgba(255, 255, 255, 0.6);
-  font-family: Qanelas Soft;
+  // font-family: "Qanelas Soft";
   font-weight: 700;
   font-style: normal;
   overflow: visible;
@@ -15,6 +15,11 @@
   width: calc(100% - 90px);
   background: rgba(255, 255, 255, 0.952);
   letter-spacing: 0.03em;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 100vw;
 }
 
 .header .nav-link {
@@ -27,6 +32,10 @@
   font-size: 14px;
   line-height: 18px;
   border-radius: 6px;
+}
+
+a {
+  padding-right: 30px;
 }
 
 .header .join-us {
@@ -49,7 +58,7 @@
 }
 
 .header .nav-link.logo {
-  font-family: Qanelas Soft Extra Bold;
+  // font-family: "Qanelas Soft" Extra Bold;
   font-weight: 800;
   font-size: 19px;
   font-weight: bold;
@@ -62,9 +71,18 @@
   cursor: pointer;
 }
 
+.header-left {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 .header-right {
   float: right;
   margin-right: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .hamburger {
@@ -76,6 +94,12 @@
 .logged-in-links {
   display: flex;
   flex-direction: row;
+}
+
+.loggedOut {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .hidden {
