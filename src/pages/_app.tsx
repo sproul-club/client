@@ -7,6 +7,7 @@ import "../styles/globals.scss";
 import "../pages/clubLogin/ClubLogin.scss";
 import "../pages/landing/Landing.scss";
 
+
 const AppWrapper = ({ Component, pageProps }: AppProps) => {
   return (
     <ThemeProvider>
