@@ -1,8 +1,8 @@
 import type { NextPage } from "next";
-import App from "./_app";
+import { Home } from "./landing/Landing";
 
-const Home: NextPage = () => {
-  return <App></App>;
+const myHome: NextPage = () => {
+  return <Home />;
 };
 
-export default Home;
+export default myHome;
