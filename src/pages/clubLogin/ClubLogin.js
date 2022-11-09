@@ -3,7 +3,7 @@ import React from "react";
 // import Footer from "../../components/layout/footer/Footer";
 import ClubLoginForm from "./ClubLoginForm.js";
 import Image from "next/image";
-import loginImage from "../assets/login.png";
+import loginImage from "../assets/signup.png";
 
 const SignIn = () => {
   return (
@@ -12,8 +12,7 @@ const SignIn = () => {
         <div className="loginImage">
           <Image src={loginImage} alt="bears"></Image>
         </div>
-        {/* <img src={loginImage} className="loginImage" alt="bears" /> */}
-        <div className="form">
+        <div className="loginForm">
           <ClubLoginForm />
         </div>
       </div>
