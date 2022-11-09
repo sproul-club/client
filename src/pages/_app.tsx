@@ -4,14 +4,20 @@ import { ThemeProvider } from "../contexts/Theme";
 import useTheme from "../contexts/Theme/useTheme";
 import "../styles/globals.scss";
 import { SignIn } from "../pages/clubLogin/ClubLogin.js";
+import Landing from "../pages/landing/Landing.js";
+import Navbar from "../components/layout/navbar/Navbar.js";
 import "../pages/clubLogin/ClubLogin.scss";
+import "../pages/landing/Landing.scss";
+import "../components/layout/navbar/Navbar.scss";
 import { Card } from "./card/Card";
 import "../pages/card/Card.scss";
 
 const AppWrapper = ({ Component, pageProps }: AppProps) => {
   return (
-    <>
-      <SignIn></SignIn>
+    <div>
+      <Navbar></Navbar>
+      {/* <SignIn></SignIn> */}
+      <Landing></Landing>
       <Card
         clubName={"Web Development @ Berkeley"}
         appReq={true}
@@ -20,9 +26,8 @@ const AppWrapper = ({ Component, pageProps }: AppProps) => {
           "Helping students to develop their coding & design skills in web dev."
         }
       />
-    </>
+    </div>
   );
-  // return ;
 };
 
 // interface AppLogicProps {
