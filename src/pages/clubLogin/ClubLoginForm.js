@@ -102,37 +102,60 @@ const ClubLoginForm = ({ login, history, isAuthenticated }) => {
       </div>
 
       <div className="formHeader">
-        <h2>Club sign-in portal</h2>
+        <h1>Hi there!</h1>
+        <p>Please sign in to continue.</p>
       </div>
-      <p>Email</p>
 
-      <input
-        className={`${
-          emptyEmail === "emptyEmail" || emailUnverified === "emailUnverified"
-            ? "inputInvalid"
-            : "userInput"
-        }`}
-        type="email"
-        // type="text"
-        placeholder="e.g. organizationname@gmail.com"
-        onChange={null}
-      />
-
-      <p>Password</p>
-      <input
-        className={`${
-          emptyPassword === "emptyPassword" ? "inputInvalid" : "userInput"
-        }`}
-        type="password"
-        onChange={null}
-      />
-      <div className="fine-print">
-        <Link href="/recover">Forgot password?</Link> <br />
-        Don't have an account? Sign up <Link href="/signup">here</Link>
+      <div className="nameForm">
+        {/* TODO: I will be changing this, but for demo purposes just making a margin-right */}
+        <div className="nameItem">
+          <p>First Name</p>
+          <input className="nameInput" />
+        </div>
+        <div className="nameItem">
+          <p>Last Name</p>
+          <input className="nameInput" />
+        </div>
       </div>
-      <button type="submit" className="submitButton" onClick={submitValue}>
-        Sign in
-      </button>
+
+      <div className="inputForm">
+        <p>Email</p>
+        <input
+          className={`${
+            emptyEmail === "emptyEmail" || emailUnverified === "emailUnverified"
+              ? "inputInvalid"
+              : "userInput"
+          }`}
+          type="email"
+          // type="text"
+          placeholder="e.g. organizationname@gmail.com"
+          onChange={null}
+        />
+      </div>
+
+      <div className="inputForm">
+        <p>Password</p>
+        <input
+          className={`${
+            emptyPassword === "emptyPassword" ? "inputInvalid" : "userInput"
+          }`}
+          type="password"
+          onChange={null}
+        />
+        <div className="fine-print">
+          <Link href="/recover">Forgot password?</Link> <br />
+          {/* Don't have an account? Sign up <Link href="/signup">here</Link> */}
+        </div>
+      </div>
+
+      <div className="bottom-buttons">
+        <button type="submit" className="createAccountButton">
+          Create Account
+        </button>
+        <button type="submit" className="submitButton" onClick={submitValue}>
+          Sign in
+        </button>
+      </div>
     </form>
   );
 };
