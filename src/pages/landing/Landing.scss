@@ -1,221 +1,3 @@
-/* @media screen and (max-width: 1235px) and (min-width: 980px) {
-    .landing .moreContent .feature1 img,
-    .feature2 img,
-    .feature3 img {
-      width: 42vw !important;
-      max-width: 542px;
-    }
-    .landing .moreContent .featureWrapper h2 {
-      width: 450px;
-      font-size: 1.4em;
-    }
-  }
-  @media screen and (max-width: 1080px) and (min-width: 980px) {
-    .landing .moreContent .featureWrapper h2 {
-      width: 400px;
-      line-height: 35px;
-      font-size: 1.3em;
-    }
-  } */
-/* fully mobile media-query */
-/* @media screen and (max-width: 980px) {
-    .landing {
-      background: white;
-    }
-    .landing .content {
-      width: 100%;
-      margin-top: 10px;
-      margin-bottom: 30px;
-    }
-    .landing .content .text {
-      margin: 0px;
-      margin-bottom: 75px;
-      padding: 0px;
-      text-align: center;
-      display: flex;
-      align-items: center;
-    }
-    .landing .content .text h3 {
-      font-size: 24px;
-      width: 90%;
-    }
-    .landing .content .text p {
-      font-size: 14px;
-      letter-spacing: 0.05em;
-      width: 90%;
-    }
-    .landing .content .imageContainer {
-      float: right;
-      padding-top: 20px;
-      margin: 0px;
-      width: 360px;
-      height: 275px;
-    }
-    .landing .content .imageContainer img {
-      position: absolute;
-      margin-top: 0px;
-      width: 360px;
-      height: 319px;
-    }
-    .landing .moreContent .featureWrapper {
-      flex-direction: column;
-      text-align: center;
-    }
-    .landing .moreContent .featureWrapper .description {
-      margin: 0px;
-      display: flex;
-      flex-direction: column;
-      float: none;
-      align-items: center;
-      justify-content: center;
-      box-sizing: border-box;
-      padding: 20px 50px;
-    }
-    .landing .moreContent .featureWrapper .description p {
-      text-align: center;
-      font-size: 14px;
-      width: 95%;
-    }
-    .landing .moreContent .featureWrapper .description h2 {
-      text-align: center;
-      font-size: 20px;
-      padding-left: 10px;
-      padding-right: 10px;
-      width: 98%;
-    }
-    .landing .moreContent .featureWrapper .feature1,
-    .feature3 {
-      flex-direction: column-reverse;
-      justify-content: center;
-      align-items: center;
-      margin: 0px;
-      padding: 0px;
-      margin-bottom: 40px;
-    }
-    .landing .moreContent .featureWrapper .feature2 {
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      margin: 0px;
-      padding: 0px;
-      margin-bottom: 40px;
-    }
-    .landing .moreContent .interestForm {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 300px;
-    }
-    .landing .moreContent {
-      flex-direction: column;
-      text-align: center;
-      margin-top: 0px;
-    }
-    .landing .moreContent .featureWrapper img {
-      width: 90vw;
-      max-width: 361px;
-      max-height: 280px;
-      margin-left: 76px;
-      margin-bottom: 20px;
-    }
-    .landing .moreContent .feature2 img {
-      margin-left: 4px;
-    }
-    .landing .moreContent h2 {
-      font-size: 20px;
-      width: 90%;
-    }
-    .landing .moreContent .interestForm {
-      margin-top: 0px;
-      height: 730px;
-    }
-  } */
-/* larger screens */
-/* @media screen and (min-width: 1700px) {
-    .landing .content {
-      margin-bottom: 70px;
-    }
-    .landing .content .text {
-      display: flex;
-      max-width: 900px;
-    }
-    .landing .content .text h3 {
-      font-size: 40px;
-    }
-    .landing .content .text p {
-      font-size: 24px;
-      letter-spacing: 0.05em;
-    }
-    .landing .content .text a {
-      font-size: 20px;
-      width: 300px;
-      padding: 20px 10px 20px 10px;
-    }
-    .landing .content .imageContainer {
-      width: 600px;
-      height: 500px;
-    }
-    .landing .content .imageContainer img {
-      width: 600px;
-    }
-    .landing .moreContent img {
-      min-height: 50s0px;
-      min-width: 750px;
-    }
-    .landing .moreContent .description {
-      width: 700px;
-    }
-    .landing .moreContent .description h2 {
-      font-size: 32px;
-      width: 600px;
-    }
-    .landing .moreContent .description p {
-      font-size: 24px;
-      width: 550px;
-    }
-    .landing .moreContent .feature1,
-    .feature2,
-    .feature3 {
-      margin-bottom: 150px;
-    }
-    .landing .moreContent .interestForm {
-      margin-bottom: 0px;
-    }
-    .landing .moreContent .interestForm h2 {
-      font-size: 32px;
-    }
-    .landing .moreContent .interestForm img {
-      min-height: 0px;
-      width: 250px;
-    }
-    .landing .moreContent .interestForm .imgContainer {
-      text-align: center;
-      width: 75%;
-    }
-  } */
-/* @keyframes screens {
-    from {
-      transform: translate(0, 0px);
-    }
-    65% {
-      transform: translate(0, 15px);
-    }
-    to {
-      transform: translate(0, -0px);
-    }
-  }
-  @keyframes balls {
-    from {
-      transform: translate(0, 0px);
-    }
-    65% {
-      transform: translate(0, -15px);
-    }
-    to {
-      transform: translate(0, -0px);
-    }
-  } */
 .landing {
   display: flex;
   flex-direction: column;
@@ -233,13 +15,15 @@
     user-select: none;
   }
   .content {
-    height: 120vh;
+    // TODO: changed from 120 -> change after header and footer added
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin-top: 15vh;
-    margin-bottom: 10vh;
+    // TODO: uncomment bottom two lines after header and footer are added
+    // margin-top: 15vh;
+    // margin-bottom: 10vh;
     background-image: url("../assets/landingbg.png");
     background-repeat: no-repeat;
     background-size: cover;
@@ -264,13 +48,16 @@
     max-width: 650px;
     float: left;
     align-items: center;
-    margin-top: -18vh;
+    // TODO: uncomment bottom line after header and footer are added
+    // margin-top: -18vh;
     h3 {
       color: #2b2b2b;
       font-size: 28px;
-      font-family: "Qanelas Soft" Extra Bold;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+        "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+        "Helvetica Neue", sans-serif;
       font-weight: 700;
-      font-style: normal;
+      font-style: extra bold;
       line-height: 42px;
       margin-bottom: 15px;
       margin-top: 0;
@@ -281,7 +68,9 @@
     p {
       color: #2b2b2b;
       font-size: 16px;
-      //   font-family: "Qanelas Soft";
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+        "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+        "Helvetica Neue", sans-serif;
       font-weight: 400;
       font-style: normal;
       padding-bottom: 12px;
@@ -297,7 +86,9 @@
       width: 100px;
       font-size: 14px;
       background: white;
-      font-family: "Qanelas Soft" Semi Bold;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+        "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+        "Helvetica Neue", sans-serif;
       font-weight: 700;
       font-style: normal;
       color: #ffffff;
@@ -313,9 +104,13 @@
       }
     }
   }
+  // TODO: Remove any button related styling and create a new component
+  // with relevant button styling changes -- these button styles don't
+  // seem to actually affect the button, could be because Link is used
+  // from Next.js which is diff from what was used before migration
   #addbutton {
-    width: 100px;
-    font-size: 14px;
+    width: 140px;
+    font-size: 140px;
     line-height: 1em;
     background: white;
     font-style: normal;
@@ -337,7 +132,7 @@
   }
   .buttons {
     width: 30vw;
-    min-width: 350px;
+    min-width: 500px;
     display: flex;
     justify-content: center;
   }
@@ -355,7 +150,9 @@
       p {
         font-size: 1.1em;
         width: 400px;
-        font-family: "Qanelas Soft";
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+          "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+          "Helvetica Neue", sans-serif;
         font-weight: 400;
         font-style: normal;
         letter-spacing: 0.06em;
@@ -366,7 +163,9 @@
         font-size: 1.6em;
         line-height: 40px;
         width: 500px;
-        font-family: "Qanelas Soft" Bold;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+          "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+          "Helvetica Neue", sans-serif;
         font-weight: 700;
         font-style: normal;
         margin: 0;
