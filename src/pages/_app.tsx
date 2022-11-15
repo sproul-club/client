@@ -9,7 +9,6 @@ import Navbar from "../components/layout/navbar/Navbar.js";
 import "../pages/clubLogin/ClubLogin.scss";
 import "../pages/landing/Landing.scss";
 import "../components/layout/navbar/Navbar.scss";
-import { Card } from "./card/Card";
 import "../pages/card/Card.scss";
 
 const AppWrapper = ({ Component, pageProps }: AppProps) => {
@@ -18,14 +17,6 @@ const AppWrapper = ({ Component, pageProps }: AppProps) => {
       <Navbar></Navbar>
       {/* <SignIn></SignIn> */}
       <Landing></Landing>
-      <Card
-        clubName={"Web Development @ Berkeley"}
-        appReq={true}
-        open={true}
-        desc={
-          "Helping students to develop their coding & design skills in web dev."
-        }
-      />
     </div>
   );
 };

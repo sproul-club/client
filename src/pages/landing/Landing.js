@@ -9,6 +9,7 @@ import { Link } from "next/link";
 // import mock3 from './assets/mock3.png';
 // import bearshehe from './assets/landingbears.svg';
 // import ReactGA from "react-ga";
+import { Card } from "./card/Card";
 
 const Landing = () => {
   //   ReactGA.initialize("UA-176775736-1");
@@ -35,6 +36,14 @@ const Landing = () => {
             </Link>
           </div> */}
         </div>
+        <Card
+          clubName={"Web Development @ Berkeley"}
+          appReq={true}
+          open={true}
+          desc={
+            "Helping students to develop their coding & design skills in web dev."
+          }
+        />
       </div>
       {/* <div className="moreContent">
         <div className="featureWrapper">
