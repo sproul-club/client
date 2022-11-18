@@ -1,31 +1,22 @@
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-// import { connect } from "react-redux";
-// import { logout, login } from "../../../redux/actions/auth";
-
-// import "./Navbar.scss";
+import styles from "./Navbar.module.scss";
 import useOnClickOutside from "../../../utils/useOnClickOutside";
 
 import logo from "../../../pages/assets/logo.png";
 
-const Navbar = ({
-  organizationEmail,
-  orgId,
-  isAuthenticated,
-  logout,
-  login,
-  history,
-  loading,
-}) => {
+interface NavBar_Props {}
+
+const NavBar = ({}: NavBar_Props) => {
   const [navbarVis, setNavbarVis] = useState(false);
   const [dropdownVis, setDropownVis] = useState(false);
 
   const toggleNavbar = () => setNavbarVis((navbarVis) => !navbarVis);
   const toggleDropdown = () => setDropownVis((dropdownVis) => !dropdownVis);
 
-  const navbarRef = useRef();
-  const dropDownRef = useRef();
+  const navbarRef = useRef() as React.LegacyRef<HTMLInputElement>;
+  const dropDownRef = useRef() as React.LegacyRef<HTMLInputElement>;
 
   // Close navbar on page change (mobile)
   // Close dropdown on page change
@@ -49,42 +40,47 @@ const Navbar = ({
     }
   });
 
-  useEffect(() => {}, [isAuthenticated]);
-
   const logoutSelect = () => {
     setDropownVis(false);
-    logout(history);
+    // logout(history);
   };
 
   const loggedOut = (
-    <div className="loggedOut">
-      <Link href="/about" className="nav-link">
+    <div className={styles["loggedOut"]}>
+      <Link href="/about" className={styles["nav-link"]}>
         <a>About</a>
       </Link>
-      <Link href="/catalog" className="nav-link">
+      <Link href="/catalog" className={styles["nav-link"]}>
         <a>Discover</a>
       </Link>
       <a
         href="https://www.notion.so/sproul-club-c4765bb5e0884179b8bd38498eeec40f"
-        className="nav-link join-us"
+        className={`${styles["nav-link"]} ${styles["join-us"]}`}
         target="none"
       >
         Join our team
       </a>
       <div
-        className={`menu logout ${dropdownVis ? "menu-open" : "menu-close"}`}
+        className={`${styles["menu"]} ${styles["logout"]} ${
+          dropdownVis ? styles["menu-open"] : styles["menu-close"]
+        }`}
         ref={dropDownRef}
         onClick={toggleDropdown}
       >
-        <div className="menu-text">
+        <div className={styles["menu-text"]}>
           Sign in
           <i
             style={{ marginLeft: "9px" }}
-            className={`fas ${dropdownVis ? "fa-angle-up" : "fa-angle-down"}`}
+            className={`${styles["fas"]} ${
+              dropdownVis ? styles["fa-angle-up"] : styles["fa-angle-down"]
+            }`}
           ></i>
         </div>
         {dropdownVis && (
-          <Link className="option mid-option" href="/signin">
+          <Link
+            className={`${styles["option"]} ${styles["mid-option"]}`}
+            href="/signin"
+          >
             <a>Clubs</a>
           </Link>
         )}
@@ -173,8 +169,8 @@ const Navbar = ({
 
   return (
     <>
-      <div className="header" ref={navbarRef}>
-        <div className="header-left">
+      <div className={styles["container"]} ref={navbarRef}>
+        <div className={styles["header-left"]}>
           <Image
             src={logo}
             className="logo-img"
@@ -182,26 +178,26 @@ const Navbar = ({
             width="43px"
             height="43px"
           ></Image>
-          <Link href="/" className="nav-link logo">
+          <Link href="/" className={`${styles["nav-link"]} ${styles["logo"]}`}>
             <a>sproul.club</a>
           </Link>
         </div>
         {/* <div className="hamburger" onClick={toggleNavbar}>
           <i className="fas fa-bars"></i>
         </div> */}
-        <div className="header-right">{loggedOut}</div>
+        <div className={styles["header-right"]}>{loggedOut}</div>
       </div>
     </>
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: any) => ({
   isAuthenticated: state.auth.isAuthenticated,
   organizationEmail: state.profile.owner,
   orgId: state.profile.link_name,
   loading: state.auth.loading,
 });
 
-export default Navbar;
+export default NavBar;
 
 // export default connect(mapStateToProps, { logout, login })(withRouter(Navbar));

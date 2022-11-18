@@ -1,14 +1,18 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link, withRouter } from "react-router-dom";
 import Image from "next/image";
 
 import defaultLogo from "../assets/default_logo.jpg";
 import checkMark from "../assets/icons/check_mark.png";
 import vector from "../assets/icons/vector.png";
 import redVector from "../assets/icons/red_vector.png";
+import Club from "../../models/Club";
 
-const Card = ({ clubName, appReq, open, desc }) => {
-  const textStyle = {};
+interface ClubCard_Props {
+  data: Club;
+}
+
+const ClubCard = ({ data }: ClubCard_Props) => {
+  const { name, description, appsOpen, appRequired } = data;
   return (
     <div className="card">
       <div className="background">
@@ -21,9 +25,9 @@ const Card = ({ clubName, appReq, open, desc }) => {
             />
           </div>
           <div className="right">
-            <text className="club-name">{clubName}</text>
+            <text className="club-name">{name}</text>
             <div style={{ display: "flex", justifyContent: "space-between" }}>
-              {open ? (
+              {appsOpen ? (
                 <div>
                   <Image src={checkMark} className="check-mark-logo" />
                   <text className="app-info open">OPEN</text>
@@ -31,7 +35,7 @@ const Card = ({ clubName, appReq, open, desc }) => {
               ) : (
                 <></>
               )}
-              {appReq ? (
+              {appRequired ? (
                 <div>
                   <Image src={vector} alt="vector-logo" />
                   <text className="app-info req">APPLICATION</text>
@@ -45,10 +49,10 @@ const Card = ({ clubName, appReq, open, desc }) => {
             </div>
           </div>
         </div>
-        <text className="desc">{desc}</text>
+        <text className="desc">{description}</text>
       </div>
     </div>
   );
 };
 
-export { Card };
+export default ClubCard;
