@@ -7,13 +7,13 @@ import "../styles/globals.scss";
 
 const AppWrapper = ({ Component, pageProps }: AppProps) => {
   return (
-    <ThemeProvider>
-      <AuthProvider>
+    <AuthProvider>
+      <ThemeProvider>
         <AppLogic>
           <Component {...pageProps} />
         </AppLogic>
-      </AuthProvider>
-    </ThemeProvider>
+      </ThemeProvider>
+    </AuthProvider>
   );
 };
 

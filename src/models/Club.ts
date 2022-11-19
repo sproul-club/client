@@ -1,9 +1,17 @@
+// Club has a one-to-many relationship w/ Member
+
 interface Club {
+  id: string;
   name: string;
+  profile_photo: string;
+  heading_photo: string;
   description: string;
-  appsOpen: boolean;
-  appRequired: boolean;
+  applications_open: boolean;
+  application_required: boolean;
   tags: string[];
+  members: string[]; // member ids NOT student ids, these are correlated but not independent
+  events_upcoming: string[];
+  events_previous: string[];
 }
 
 export default Club;
