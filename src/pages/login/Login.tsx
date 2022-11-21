@@ -8,10 +8,7 @@ const Login = () => {
   // const isHeaderOpen = props.active ? 'active' : 'muted';
   // ReactGA.initialize("UA-176775736-1");
   // ReactGA.pageview("/signup");
-  const { loginWithEmail } = useAuth();
-  const handleSubmit = (data: any) => {
-    loginWithEmail;
-  };
+  const handleSubmit = (data: any) => {};
 
   return (
     <div className="signup">

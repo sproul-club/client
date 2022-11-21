@@ -7,13 +7,17 @@ interface ThemeContext_Props {
   toggleTheme: () => void;
 }
 
-interface ThemeProviderProps {
+interface ThemeProvider_Props {
   children: ReactNode;
 }
 
-export const ThemeContext = createContext<ThemeContext_Props | null>(null);
+export const ThemeContext = createContext<ThemeContext_Props>({
+  theme: "light",
+  setTheme: () => null,
+  toggleTheme: () => null,
+});
 
-const ThemeProvider = ({ children }: ThemeProviderProps) => {
+const ThemeProvider = ({ children }: ThemeProvider_Props) => {
   const [theme, setTheme] = useState("light");
   const [localTheme, setLocalTheme] = useLocalStorage("sc-theme", "light");
 

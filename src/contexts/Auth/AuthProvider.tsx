@@ -22,19 +22,25 @@ interface Register_Params {
 interface AuthContext_Props {
   user: User | null;
   isAuthenticated: boolean;
-  loginWithCalNet: () => void;
+  loginWithOAuth: () => void;
   loginWithEmail: ({}: LoginWithEmail_Params) => void;
   register: ({}: Register_Params) => void;
 }
 
-export const AuthContext = createContext<AuthContext_Props | null>(null);
+export const AuthContext = createContext<AuthContext_Props>({
+  user: null,
+  isAuthenticated: false,
+  loginWithOAuth: () => null,
+  loginWithEmail: () => null,
+  register: () => null,
+});
 
 const AuthProvider = ({ children }: AuthProvider_Props) => {
   const [user, setUser] = useState<User | null>(null);
 
   const loginWithEmail = ({ email, password }: LoginWithEmail_Params) => {};
 
-  const loginWithCalNet = () => {};
+  const loginWithOAuth = () => {};
 
   const register = ({
     email,
@@ -52,7 +58,7 @@ const AuthProvider = ({ children }: AuthProvider_Props) => {
       value={{
         user: user,
         isAuthenticated: !!user,
-        loginWithCalNet: loginWithCalNet,
+        loginWithOAuth: loginWithOAuth,
         loginWithEmail: loginWithEmail,
         register: register,
       }}
