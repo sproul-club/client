@@ -10,8 +10,7 @@ interface Club {
   application_required: boolean;
   tags: string[];
   members: string[]; // member ids NOT student ids, these are correlated but not independent
-  events_upcoming: string[];
-  events_previous: string[];
+  events: string[];
 }
 
 export default Club;

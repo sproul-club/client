@@ -1,11 +1,11 @@
 import Role from "./Role";
 
-interface Student {
+interface User {
   id: string;
 
   // Personal Attributes
-  name_first: string;
-  name_last: string;
+  firstName: string;
+  lastName: string;
   nickname: string;
   pronouns: string;
   race: string;
@@ -26,7 +26,7 @@ interface Student {
   twitter: string;
 
   // App Attributes
-  creation: string;
+  createdAt: string;
   interests: string[];
   recommendations: string[];
   favorites: string[];
@@ -34,4 +34,4 @@ interface Student {
   roles: Role[];
 }
 
-export default Student;
+export default User;
