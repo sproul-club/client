@@ -2,13 +2,16 @@ import React from "react";
 import Footer from "../../components/layout/Footer";
 import styles from "./Login.module.scss";
 import LoginForm from "./components/LoginForm";
+import useAuth from "../../contexts/Auth/useAuth";
 
 const Login = () => {
   // const isHeaderOpen = props.active ? 'active' : 'muted';
   // ReactGA.initialize("UA-176775736-1");
   // ReactGA.pageview("/signup");
-
-  const handleSubmit = (data: any) => {};
+  const { loginWithEmail } = useAuth();
+  const handleSubmit = (data: any) => {
+    loginWithEmail;
+  };
 
   return (
     <div className="signup">
