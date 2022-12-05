@@ -4,7 +4,7 @@ import Image from "next/image";
 import styles from "./Navbar.module.scss";
 import useOnClickOutside from "../../../utils/useOnClickOutside";
 
-import logo from "../../../pages/assets/logo.png";
+import logo from "../../../assets/logo.png";
 
 interface NavBar_Props {}
 
@@ -60,7 +60,17 @@ const NavBar = ({}: NavBar_Props) => {
       >
         Join our team
       </a>
-      <div
+
+      {/* This is assuming we have only one sign in page. */}
+      <a
+        href="/signup"
+        className={`${styles["nav-link"]} ${styles["sign-in"]}`}
+        target="none"
+      >
+        Sign in
+      </a>
+
+      {/* <div
         className={`${styles["menu"]} ${styles["logout"]} ${
           dropdownVis ? styles["menu-open"] : styles["menu-close"]
         }`}
@@ -84,7 +94,7 @@ const NavBar = ({}: NavBar_Props) => {
             <a>Clubs</a>
           </Link>
         )}
-      </div>
+      </div> */}
     </div>
   );
 
