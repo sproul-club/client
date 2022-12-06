@@ -1,8 +1,8 @@
 import type { NextPage } from "next";
-import { Home } from "./landing/Landing";
 
-const myHome: NextPage = () => {
-  return <Home />;
+// Auto redirect to /landing, no component needed
+const Home: NextPage = () => {
+  return <div></div>;
 };
 
-export default myHome;
+export default Home;

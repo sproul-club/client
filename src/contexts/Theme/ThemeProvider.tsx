@@ -1,12 +1,23 @@
-import { ReactNode, useEffect, useState } from "react";
+import { createContext, ReactNode, useEffect, useState } from "react";
 import useLocalStorage from "../../hooks/useLocalStorage";
-import ThemeContext from "./ThemeContext";
 
-interface ThemeProviderProps {
+interface ThemeContext_Props {
+  theme: string;
+  setTheme: (arg0: "light" | "dark") => void;
+  toggleTheme: () => void;
+}
+
+interface ThemeProvider_Props {
   children: ReactNode;
 }
 
-const ThemeProvider = ({ children }: ThemeProviderProps) => {
+export const ThemeContext = createContext<ThemeContext_Props>({
+  theme: "light",
+  setTheme: () => null,
+  toggleTheme: () => null,
+});
+
+const ThemeProvider = ({ children }: ThemeProvider_Props) => {
   const [theme, setTheme] = useState("light");
   const [localTheme, setLocalTheme] = useLocalStorage("sc-theme", "light");
 

@@ -1,5 +1,5 @@
 {
-  "name": "sc-frontend",
+  "name": "sproul-club/client",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -14,11 +14,13 @@
     "node-sass": "^7.0.1",
     "react": "18.1.0",
     "react-dom": "18.1.0",
+    "react-hook-form": "^7.39.4",
+    "react-router-dom": "^6.4.3",
     "sass": "^1.54.0"
   },
   "devDependencies": {
-    "@types/node": "17.0.31",
-    "@types/react": "18.0.9",
+    "@types/node": "18.11.9",
+    "@types/react": "18.0.24",
     "@types/react-dom": "18.0.3",
     "@typescript-eslint/eslint-plugin": "^5.31.0",
     "@typescript-eslint/parser": "^5.31.0",
@@ -30,6 +32,6 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.30.1",
     "prettier": "^2.7.1",
-    "typescript": "^4.6.4"
+    "typescript": "4.8.4"
   }
 }
