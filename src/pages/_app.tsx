@@ -9,9 +9,9 @@ const AppWrapper = ({ Component, pageProps }: AppProps) => {
   return (
     <AuthProvider>
       <ThemeProvider>
-        <AppLogic>
+        <App>
           <Component {...pageProps} />
-        </AppLogic>
+        </App>
       </ThemeProvider>
     </AuthProvider>
   );
@@ -21,7 +21,7 @@ interface AppLogicProps {
   children: ReactNode;
 }
 
-const AppLogic = ({ children }: AppLogicProps) => {
+const App = ({ children }: AppLogicProps) => {
   const { theme } = useTheme();
 
   useEffect(() => {

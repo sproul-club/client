@@ -1,13 +1,9 @@
 import React from "react";
 import Footer from "../../components/layout/Footer";
-import styles from "./Register.module.scss";
 import RegisterForm from "./components/RegisterForm";
+import styles from "./Register.module.scss";
 
 const Register = () => {
-  // const isHeaderOpen = props.active ? 'active' : 'muted';
-  // ReactGA.initialize("UA-176775736-1");
-  // ReactGA.pageview("/signup");
-
   const handleSubmit = (data: any) => {};
 
   return (

@@ -1,12 +1,12 @@
-import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import { NextResponse } from "next/server";
 
 export function middleware(request: NextRequest) {
   const url = request.nextUrl.clone();
 
-  // Redirect index to landing page
-  if (url.pathname === "/") {
-    url.pathname = "/landing";
+  // Redirect landing to index page
+  if (url.pathname === "/landing") {
+    url.pathname = "/";
     return NextResponse.redirect(url);
   }
 }

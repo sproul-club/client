@@ -1,11 +1,8 @@
-import type { NextPage } from "next";
 import Link from "next/link";
-import Image from "next/image";
-import ClubCard from "../../components/ClubCard";
 
 import styles from "./Landing.module.scss";
 
-export const Home: NextPage = () => {
+export default function Landing() {
   return (
     <div className={styles["landing"]}>
       <div className={styles["content"]}>
@@ -19,7 +16,7 @@ export const Home: NextPage = () => {
             <Link href="/catalog">
               <a>Explore clubs</a>
             </Link>
-            <Link href="/signup">
+            <Link href="/register">
               <a>Add a club</a>
             </Link>
           </div>
@@ -27,6 +24,4 @@ export const Home: NextPage = () => {
       </div>
     </div>
   );
-};
-
-export default Home;
+}
