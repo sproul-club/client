@@ -1,4 +1,4 @@
-.header {
+.container {
   background-color: rgba(255, 255, 255, 0.6);
   // font-family: "Qanelas Soft";
   font-weight: 700;
@@ -22,7 +22,7 @@
   min-width: 100vw;
 }
 
-.header .nav-link {
+.container .nav-link {
   float: left;
   color: #2b2b2b;
   transition: color 0.12s;
@@ -34,11 +34,11 @@
   border-radius: 6px;
 }
 
-a {
+.container a {
   padding-right: 30px;
 }
 
-.header .join-us {
+.container .join-us {
   background: white;
   font-style: normal;
   color: #54a0f1;
@@ -52,12 +52,12 @@ a {
   margin-right: 4px;
 }
 
-.header .logo-img {
+.container .logo-img {
   float: left;
   width: 43px;
 }
 
-.header .nav-link.logo {
+.container .nav-link.logo {
   // font-family: "Qanelas Soft" Extra Bold;
   font-weight: 800;
   font-size: 19px;
@@ -66,7 +66,7 @@ a {
   padding: 13px 6px;
 }
 
-.header a:hover {
+.container a:hover {
   color: #54a0f1;
   cursor: pointer;
 }
@@ -277,7 +277,7 @@ a {
 /*** MOBILE VIEW STYLING ***/
 
 @media screen and (max-width: 850px) {
-  .header {
+  .container {
     padding-left: 10px;
     padding-right: 10px;
     width: calc(100vw - 20px);
@@ -330,7 +330,7 @@ a {
     border-radius: 20px;
   }
 
-  .header .join-us {
+  .container .join-us {
     margin-bottom: 13px;
   }
 }

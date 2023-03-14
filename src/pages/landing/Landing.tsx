@@ -1,22 +1,22 @@
-import type { NextPage } from "next";
 import Link from "next/link";
-import Image from "next/image";
 
-export const Home: NextPage = () => {
+import styles from "./Landing.module.scss";
+
+export default function Landing() {
   return (
-    <div className="landing">
-      <div className="content">
-        <div className="text">
+    <div className={styles["landing"]}>
+      <div className={styles["content"]}>
+        <div className={styles["text"]}>
           <h3>Find your community at Berkeley</h3>
           <p>
             sproul.club helps you discover student clubs, organizations, and
             communities on campus - built by students, for students!
           </p>
-          <div className="buttons">
+          <div className={styles["buttons"]}>
             <Link href="/catalog">
               <a>Explore clubs</a>
             </Link>
-            <Link href="/signup">
+            <Link href="/register">
               <a>Add a club</a>
             </Link>
           </div>
@@ -24,6 +24,4 @@ export const Home: NextPage = () => {
       </div>
     </div>
   );
-};
-
-export default Home;
+}
