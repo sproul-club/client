@@ -2,25 +2,20 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  --color: #3e40e8;
   margin-top: 8px;
-  border: 1.5px solid var(--color);
-  color: var(--color);
+  border: 1.5px solid var(--primary);
+  color: var(--primary);
   font-weight: 500;
-  border-radius: 6px;
-  padding: 6px 10px;
+  border-radius: 12px;
+  padding: 10px 15px;
 
-  &.red {
-    --color: red;
-  }
-
-  &.white {
-    --color: white;
-    color: #3e40e8;
-    background-color: white;
+  &.filled {
+    background-color: var(--primary);
+    color: white;
 
     &:hover {
-      background-color: transparent;
+      background-color: var(--primary-accent);
+      border-color: var(--primary-accent);
     }
   }
 

@@ -1,9 +1,9 @@
 import { ReactNode } from 'react';
-import styles from './Subheading.module.scss';
+import styles from './SectionHeading.module.scss';
 interface Props {
   children: ReactNode;
 }
 
-export default function Subheading({ children }: Props) {
+export default function SectionHeading({ children }: Props) {
   return <h3 className={styles.text}>{children}</h3>;
 }

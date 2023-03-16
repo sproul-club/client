@@ -10,6 +10,10 @@ body.light {
   --text-1: #7f7f7f;
   --bg-0: #ededed;
   --bg-1: #f9f9f9;
+
+  --primary: #3D6EA8;
+  --primary-accent: blue;
+
   --box-shadow: rgba(149, 157, 165, 0.2);
   --red: red;
 
@@ -24,6 +28,9 @@ body.dark {
   --bg-1: #212121;
   --box-shadow: transparent;
   --red: red;
+
+  --primary: #3D6EA8;
+  --primary-accent: blue;
 
   background-color: var(--bg-0);
   color: var(--text-0);

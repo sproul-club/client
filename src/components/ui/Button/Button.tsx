@@ -3,24 +3,23 @@ import classes from '../../../utils/classes';
 import styles from './Button.module.scss';
 interface Props
   extends ButtonHTMLAttributes<HTMLButtonElement | HTMLAnchorElement> {
-  variant?: 'red' | 'white';
+  variant?: 'filled' | 'outlined';
   href?: string;
 }
 
 export default function Button({
-  variant,
+  variant = 'filled',
   className,
   href,
   ...buttonProps
 }: Props) {
-  const colorClass = !!variant ? styles[variant] : null;
   buttonProps.type ||= 'button';
 
   if (href)
     return (
       <a
         href={href}
-        className={classes(styles.button, colorClass, className)}
+        className={classes(styles.button, styles[variant], className)}
         {...buttonProps}
       >
         {buttonProps.children}
@@ -28,7 +27,7 @@ export default function Button({
     );
   return (
     <button
-      className={classes(styles.button, colorClass, className)}
+      className={classes(styles.button, styles[variant], className)}
       {...buttonProps}
     >
       {buttonProps.children}

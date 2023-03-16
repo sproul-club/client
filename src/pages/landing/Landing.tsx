@@ -1,25 +1,20 @@
-import Link from "next/link";
+import Link from 'next/link';
+import Button from '../../components/ui/Button';
 
-import styles from "./Landing.module.scss";
+import styles from './Landing.module.scss';
 
 export default function Landing() {
   return (
-    <div className={styles["landing"]}>
-      <div className={styles["content"]}>
-        <div className={styles["text"]}>
-          <h3>Find your community at Berkeley</h3>
-          <p>
-            sproul.club helps you discover student clubs, organizations, and
-            communities on campus - built by students, for students!
-          </p>
-          <div className={styles["buttons"]}>
-            <Link href="/catalog">
-              <a>Explore clubs</a>
-            </Link>
-            <Link href="/register">
-              <a>Add a club</a>
-            </Link>
-          </div>
+    <div className={styles['container']}>
+      <div className={styles['content']}>
+        <h1 className={styles['header']}>Find your community at Berkeley!</h1>
+        <p className={styles['subheader']}>
+          sproul.club helps you discover student clubs, organizations, and
+          communities on campus - built by students, for students!
+        </p>
+        <div className={styles['buttonContainer']}>
+          <Button href="/catalog">Explore Clubs</Button>
+          <Button href="/catalog">Add your club</Button>
         </div>
       </div>
     </div>

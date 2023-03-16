@@ -5,12 +5,16 @@
     "text-0": "#000000",
     "text-1": "#7f7f7f",
     "bg-0": "#ededed",
-    "bg-1": "#f9f9f9"
+    "bg-1": "#f9f9f9",
+    "primary": "blue",
+    "primary-accent": "darkblue"
   },
   "dark": {
     "text-0": "#ffffff",
     "text-1": "#919191",
     "bg-0": "#111111",
-    "bg-1": "#212121"
+    "bg-1": "#212121",
+    "primary": "blue",
+    "primary-accent": "darkblue"
   }
 }
