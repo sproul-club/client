@@ -1,0 +1,31 @@
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  --color: #3e40e8;
+  margin-top: 8px;
+  border: 1.5px solid var(--color);
+  color: var(--color);
+  font-weight: 500;
+  border-radius: 6px;
+  padding: 6px 10px;
+
+  &.red {
+    --color: red;
+  }
+
+  &.white {
+    --color: white;
+    color: #3e40e8;
+    background-color: white;
+
+    &:hover {
+      background-color: transparent;
+    }
+  }
+
+  &:hover {
+    background-color: var(--color);
+    color: white;
+  }
+}

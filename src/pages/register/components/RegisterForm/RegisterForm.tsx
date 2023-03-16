@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useForm } from "react-hook-form";
+import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
 
 interface RegisterForm_Props {
   onSubmit: (data: any) => void;
@@ -27,19 +27,19 @@ const RegisterForm = ({ onSubmit }: RegisterForm_Props) => {
     <form onSubmit={handleFormSubmit}>
       <input
         type="text"
-        {...register("firstName", {
+        {...register('firstName', {
           required: true,
         })}
       />
       <input
         type="text"
-        {...register("lastName", {
+        {...register('lastName', {
           required: true,
         })}
       />
       <input
         type="email"
-        {...register("email", {
+        {...register('email', {
           required: true,
         })}
       />

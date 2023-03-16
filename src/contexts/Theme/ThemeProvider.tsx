@@ -1,9 +1,9 @@
-import { createContext, ReactNode, useEffect, useState } from "react";
-import useLocalStorage from "../../hooks/useLocalStorage";
+import { createContext, ReactNode, useEffect, useState } from 'react';
+import useLocalStorage from '../../hooks/useLocalStorage';
 
 interface ThemeContext_Props {
   theme: string;
-  setTheme: (arg0: "light" | "dark") => void;
+  setTheme: (arg0: 'light' | 'dark') => void;
   toggleTheme: () => void;
 }
 
@@ -11,15 +11,11 @@ interface ThemeProvider_Props {
   children: ReactNode;
 }
 
-export const ThemeContext = createContext<ThemeContext_Props>({
-  theme: "light",
-  setTheme: () => null,
-  toggleTheme: () => null,
-});
+export const ThemeContext = createContext<ThemeContext_Props | null>(null);
 
 const ThemeProvider = ({ children }: ThemeProvider_Props) => {
-  const [theme, setTheme] = useState("light");
-  const [localTheme, setLocalTheme] = useLocalStorage("sc-theme", "light");
+  const [theme, setTheme] = useState('light');
+  const [localTheme, setLocalTheme] = useLocalStorage('sc-theme', 'light');
 
   useEffect(() => {
     setTheme(localTheme);
@@ -32,7 +28,7 @@ const ThemeProvider = ({ children }: ThemeProvider_Props) => {
 
   const toggleTheme = () => {
     setTheme((prev) => {
-      const newTheme = prev === "light" ? "dark" : "light";
+      const newTheme = prev === 'light' ? 'dark' : 'light';
       setLocalTheme(newTheme);
       return newTheme;
     });

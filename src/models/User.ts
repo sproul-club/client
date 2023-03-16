@@ -1,4 +1,6 @@
-import Role from "./Role";
+import Club from './club/Club';
+import Role from './club/Role';
+import Timestamp from './primitives/Timestamp';
 
 interface User {
   id: string;
@@ -10,13 +12,13 @@ interface User {
   pronouns: string;
   race: string;
   ethnicity: string;
-  profile_photo: string;
+  profilePhotoURI: string;
   majors: string[];
   minors: string[];
 
   // Contact Info
-  email_personal: string;
-  email_school: string;
+  emailPersonal: string;
+  emailSchool: string;
   phone: string;
 
   // Socials
@@ -26,12 +28,12 @@ interface User {
   twitter: string;
 
   // App Attributes
-  createdAt: string;
+  createdAt: Timestamp;
   interests: string[];
   recommendations: string[];
-  favorites: string[];
+  favorites: Club['id'][];
   applications: string[];
-  roles: Role[];
+  roles: Role['id'][];
 }
 
 export default User;

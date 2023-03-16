@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
-import Link from "next/link";
-import Image from "next/image";
-import styles from "./Navbar.module.scss";
-import useOnClickOutside from "../../../utils/useOnClickOutside";
+import Image from 'next/image';
+import Link from 'next/link';
+import React, { useEffect, useRef, useState } from 'react';
+import useOnClickOutside from '../../../hooks/useOnClickOutside';
+import styles from './Navbar.module.scss';
 
-import logo from "../../../pages/assets/logo.png";
+import logo from '../../../pages/assets/logo.png';
 
 interface NavBar_Props {}
 
@@ -46,39 +46,39 @@ const NavBar = ({}: NavBar_Props) => {
   };
 
   const loggedOut = (
-    <div className={styles["loggedOut"]}>
-      <Link href="/about" className={styles["nav-link"]}>
+    <div className={styles['loggedOut']}>
+      <Link href="/about" className={styles['nav-link']}>
         <a>About</a>
       </Link>
-      <Link href="/catalog" className={styles["nav-link"]}>
+      <Link href="/catalog" className={styles['nav-link']}>
         <a>Discover</a>
       </Link>
       <a
         href="https://www.notion.so/sproul-club-c4765bb5e0884179b8bd38498eeec40f"
-        className={`${styles["nav-link"]} ${styles["join-us"]}`}
+        className={`${styles['nav-link']} ${styles['join-us']}`}
         target="none"
       >
         Join our team
       </a>
       <div
-        className={`${styles["menu"]} ${styles["logout"]} ${
-          dropdownVis ? styles["menu-open"] : styles["menu-close"]
+        className={`${styles['menu']} ${styles['logout']} ${
+          dropdownVis ? styles['menu-open'] : styles['menu-close']
         }`}
         ref={dropDownRef}
         onClick={toggleDropdown}
       >
-        <div className={styles["menu-text"]}>
+        <div className={styles['menu-text']}>
           Sign in
           <i
-            style={{ marginLeft: "9px" }}
-            className={`${styles["fas"]} ${
-              dropdownVis ? styles["fa-angle-up"] : styles["fa-angle-down"]
+            style={{ marginLeft: '9px' }}
+            className={`${styles['fas']} ${
+              dropdownVis ? styles['fa-angle-up'] : styles['fa-angle-down']
             }`}
           ></i>
         </div>
         {dropdownVis && (
           <Link
-            className={`${styles["option"]} ${styles["mid-option"]}`}
+            className={`${styles['option']} ${styles['mid-option']}`}
             href="/signin"
           >
             <a>Clubs</a>
@@ -169,8 +169,8 @@ const NavBar = ({}: NavBar_Props) => {
 
   return (
     <>
-      <div className={styles["container"]} ref={navbarRef}>
-        <div className={styles["header-left"]}>
+      <div className={styles['container']} ref={navbarRef}>
+        <div className={styles['header-left']}>
           <Image
             src={logo}
             className="logo-img"
@@ -178,14 +178,14 @@ const NavBar = ({}: NavBar_Props) => {
             width="43px"
             height="43px"
           ></Image>
-          <Link href="/" className={`${styles["nav-link"]} ${styles["logo"]}`}>
+          <Link href="/" className={`${styles['nav-link']} ${styles['logo']}`}>
             <a>sproul.club</a>
           </Link>
         </div>
         {/* <div className="hamburger" onClick={toggleNavbar}>
           <i className="fas fa-bars"></i>
         </div> */}
-        <div className={styles["header-right"]}>{loggedOut}</div>
+        <div className={styles['header-right']}>{loggedOut}</div>
       </div>
     </>
   );

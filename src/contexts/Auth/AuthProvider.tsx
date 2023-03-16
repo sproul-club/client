@@ -1,6 +1,6 @@
-import { createContext, ReactNode, useState } from "react";
-import useLocalStorage from "../../hooks/useLocalStorage";
-import User from "../../models/User";
+import { createContext, ReactNode, useState } from 'react';
+import useLocalStorage from '../../hooks/useLocalStorage';
+import User from '../../models/User';
 // import AuthContext from "./AuthContext";
 
 interface AuthProvider_Props {
