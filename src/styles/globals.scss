@@ -8,8 +8,9 @@ body {
 body.light {
   --text-0: #000000;
   --text-1: #7f7f7f;
-  --bg-0: #ededed;
+  --bg-0: #ffffff;
   --bg-1: #f9f9f9;
+  --border: #9f9f9f;
 
   --primary: #3D6EA8;
   --primary-accent: blue;
@@ -26,6 +27,7 @@ body.dark {
   --text-1: #919191;
   --bg-0: #111111;
   --bg-1: #212121;
+  --border: #9f9f9f;
   --box-shadow: transparent;
   --red: red;
 

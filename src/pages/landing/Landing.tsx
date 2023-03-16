@@ -13,7 +13,7 @@ export default function Landing() {
           communities on campus - built by students, for students!
         </p>
         <div className={styles['buttonContainer']}>
-          <Button href="/catalog">Explore Clubs</Button>
+          <Button href="/discover">Explore Clubs</Button>
           <Button href="/catalog">Add your club</Button>
         </div>
       </div>

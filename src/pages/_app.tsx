@@ -1,5 +1,7 @@
 import type { AppProps } from 'next/app';
 import { ReactNode, useEffect } from 'react';
+import Footer from '../components/layout/Footer';
+import NavBar from '../components/layout/NavBar';
 import { AuthProvider } from '../contexts/Auth';
 import { ThemeProvider } from '../contexts/Theme';
 import useTheme from '../contexts/Theme/useTheme';
@@ -10,7 +12,9 @@ const AppWrapper = ({ Component, pageProps }: AppProps) => {
     <AuthProvider>
       <ThemeProvider>
         <App>
+          <NavBar />
           <Component {...pageProps} />
+          <Footer />
         </App>
       </ThemeProvider>
     </AuthProvider>
