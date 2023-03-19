@@ -1,21 +1,31 @@
 .button {
+  --color: var(--primary);
+
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 8px;
-  border: 1.5px solid var(--primary);
+  border: 1.5px solid var(--color);
   color: var(--primary);
   font-weight: 500;
+  font-size: 0.9em;
   border-radius: 12px;
-  padding: 10px 15px;
+  padding: 10px 18px;
+
+  transition: 0.15s ease-in;
+
+  &.dark {
+    --color: var(--primary-dark);
+  }
 
   &.filled {
-    background-color: var(--primary);
+    background-color: var(--color);
     color: white;
 
     &:hover {
-      background-color: var(--primary-accent);
-      border-color: var(--primary-accent);
+      --dimlevel: 92%;
+      filter: brightness(var(--dimlevel));
+      -webkit-filter: brightness(var(--dimlevel));
     }
   }
 

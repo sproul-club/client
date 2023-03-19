@@ -14,7 +14,9 @@ export default function Landing() {
         </p>
         <div className={styles['buttonContainer']}>
           <Button href="/discover">Explore Clubs</Button>
-          <Button href="/catalog">Add your club</Button>
+          <Button href="/catalog" variant="outlined">
+            Add your club
+          </Button>
         </div>
       </div>
     </div>
