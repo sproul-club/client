@@ -1,6 +1,7 @@
 // Club has a one-to-many relationship w/ Member
 
 import Event from '../Event';
+import Branch from './Branch';
 import RecruitingSeason from './RecruitingSeason';
 
 interface Club {
@@ -16,6 +17,10 @@ interface Club {
   events: Event['id'][];
   recruitingSeasons: RecruitingSeason['id'][];
   numMembers: number;
+
+  // Time-related
+  yearFounded: string;
+  branches: Branch[];
 
   // Socials
   website?: string;
