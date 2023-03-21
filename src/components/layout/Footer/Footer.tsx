@@ -10,7 +10,9 @@ const Footer = () => {
     <div className={styles.loveMsg}>
       <div>made with</div>
       <Image src={heart} alt="heart" width={20} height={18} />
-      <div className={styles.flex}>by<div className={styles.lightBlue}> Web Development at Berkeley</div>!</div>
+      <div className={styles.space}>by</div>
+      <div className={styles.lightBlue}>Web Development at Berkeley</div>
+      <div className={styles.noGap}>!</div>
     </div>
     <div className={styles.icons}>
       <Image src={instagram} alt="Instagram" width={20} height={20} />
