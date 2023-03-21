@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import heart from '../../../assets/icons/heart.svg';
 import instagram from '../../../assets/instagram.svg';
 import globe from '../../../assets/globe.svg';
@@ -15,8 +16,16 @@ const Footer = () => {
       <div className={styles.noGap}>!</div>
     </div>
     <div className={styles.icons}>
-      <Image src={instagram} alt="Instagram" width={20} height={20} />
-      <Image src={globe} alt="globe" width={20} height={20} />
+      <Link href="https://www.instagram.com/webatberkeley">
+        <a className={styles.iconLink}>
+          <Image src={instagram} alt="Instagram" width={20} height={20} />
+        </a>
+      </Link>
+      <Link href="https://www.webatberkeley.org/">
+        <a className={styles.iconLink}>
+          <Image src={globe} alt="globe" width={20} height={20} />
+        </a>
+      </Link>
     </div>
 
   </div >;
