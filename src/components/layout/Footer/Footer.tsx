@@ -1,34 +1,42 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import globe from '../../../assets/globe.svg';
 import heart from '../../../assets/icons/heart.svg';
 import instagram from '../../../assets/instagram.svg';
-import globe from '../../../assets/globe.svg';
 
 import styles from './Footer.module.scss';
 
 const Footer = () => {
-  return <div>
-    <div className={styles.loveMsg}>
-      <div>made with</div>
-      <Image src={heart} alt="heart" width={20} height={18} />
-      <div className={styles.space}>by</div>
-      <div className={styles.lightBlue}>Web Development at Berkeley</div>
-      <div className={styles.noGap}>!</div>
-    </div>
-    <div className={styles.icons}>
-      <Link href="https://www.instagram.com/webatberkeley">
-        <a className={styles.iconLink}>
-          <Image src={instagram} alt="Instagram" width={20} height={20} />
+  return (
+    <div className={styles.container}>
+      <div className={styles.loveMsg}>
+        <div>made with</div>
+        <Image src={heart} alt="heart" width={20} height={18} />
+        <div className={styles.space}>by</div>
+        <a
+          className={styles.lightBlue}
+          href="https://www.webatberkeley.org/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Web Development at Berkeley
         </a>
-      </Link>
-      <Link href="https://www.webatberkeley.org/">
-        <a className={styles.iconLink}>
-          <Image src={globe} alt="globe" width={20} height={20} />
-        </a>
-      </Link>
+        <div className={styles.noGap}>!</div>
+      </div>
+      <div className={styles.icons}>
+        <Link href="https://www.instagram.com/webatberkeley">
+          <a className={styles.iconLink}>
+            <Image src={instagram} alt="Instagram" width={20} height={20} />
+          </a>
+        </Link>
+        <Link href="https://www.webatberkeley.org/">
+          <a className={styles.iconLink}>
+            <Image src={globe} alt="globe" width={20} height={20} />
+          </a>
+        </Link>
+      </div>
     </div>
-
-  </div >;
+  );
 };
 
 export default Footer;

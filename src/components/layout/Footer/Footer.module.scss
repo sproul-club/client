@@ -1,28 +1,37 @@
-.lightBlue {
-    color: #54A0F1;
-}
-.flex {
-    display: flex;
-}
-.center {
-    align-items: center;
-}
-.loveMsg {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-    gap: 5px;
-    font-size: max(min(15px, 3.8vw), 12px);
-}
-.icons {
-    display: flex;
-    gap: 8px;
-    justify-content: center;
-    margin: 6px 0 20px 0;
-}
-.noGap {
-    margin-left: -4px;
-}
-.iconLink:hover {
-    cursor: pointer;
+.container {
+
+    .lightBlue {
+        color: #54A0F1;
+    }
+
+    .flex {
+        display: flex;
+    }
+
+    .center {
+        align-items: center;
+    }
+
+    .loveMsg {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+        gap: 5px;
+        font-size: max(min(15px, 3.8vw), 12px);
+    }
+
+    .icons {
+        display: flex;
+        gap: 8px;
+        justify-content: center;
+        margin: 6px 0 20px 0;
+    }
+
+    .noGap {
+        margin-left: -4px;
+    }
+
+    .iconLink:hover {
+        cursor: pointer;
+    }
 }
