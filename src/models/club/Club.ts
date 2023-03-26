@@ -4,7 +4,7 @@ import Event from '../Event';
 import Branch from './Branch';
 import RecruitingSeason from './RecruitingSeason';
 
-interface Club {
+export interface Club {
   id: string;
   name: string;
   abbreviation: string;

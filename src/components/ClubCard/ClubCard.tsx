@@ -1,63 +1,84 @@
-import Image from 'next/image';
-import Club from '../../models/club/Club';
-import classes from '../../utils/classes';
-import defaultLogo from '../assets/default_logo.jpg';
-import checkMark from '../assets/icons/check_mark.png';
-import redVector from '../assets/icons/red_vector.png';
-import vector from '../assets/icons/vector.png';
+import React from 'react';
+import Link from 'next/link';
 import styles from './Card.module.scss';
+import Club from '../../models/club/Club';
 
-interface ClubCard_Props {
+interface ClubCardProps {
   data: Club;
 }
 
-const ClubCard = ({ data }: ClubCard_Props) => {
-  const { name, description, isApplicationOpen, isApplicationRequired } = data;
+const ClubCard: React.FC<ClubCardProps> = ({ data }) => {
+  const { name, description, categories, website, numMembers, yearFounded } =
+    data;
+  const application = data.isApplicationOpen ? 'Open' : 'Closed';
+  const timeline = `${yearFounded} - Present`;
+
+  const socialLinks = [
+    { platform: 'Website', href: website },
+    { platform: 'Instagram', href: data.instagram },
+    { platform: 'LinkedIn', href: data.linkedin },
+    { platform: 'Facebook', href: data.facebook },
+    { platform: 'Twitter', href: data.twitter },
+    { platform: 'Discord', href: data.discord },
+    {
+      platform: 'Email',
+      href: data.email ? `mailto:${data.email}` : undefined,
+    },
+  ].filter((link) => link.href);
+
   return (
-    <div className={styles.card}>
-      <div className={styles.background}>
-        <div className={styles.content}>
-          <div className={styles.bear}>
-            <Image
-              src={defaultLogo}
-              className={styles['default-logo']}
-              alt="default-logo"
-            />
-          </div>
-          <div className="right">
-            <text className="club-name">{name}</text>
-            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-              {isApplicationOpen ? (
-                <div>
-                  <Image src={checkMark} className="check-mark-logo" />
-                  <text className={classes(styles['app-info'], styles['open'])}>
-                    OPEN
-                  </text>
-                </div>
-              ) : (
-                <></>
-              )}
-              {isApplicationRequired ? (
-                <div>
-                  <Image src={vector} alt="vector-logo" />
-                  <text className={classes(styles['app-info'], styles['req'])}>
-                    APPLICATION
-                  </text>
-                </div>
-              ) : (
-                <div>
-                  <Image src={redVector} alt="red-vector-logo" />
-                  <text
-                    className={classes(styles['app-info'], styles['not-req'])}
-                  >
-                    NO APPLICATION
-                  </text>
-                </div>
-              )}
-            </div>
+    <div className={styles.clubCard}>
+      <div className={styles.header}>
+        <div className={styles.nameAndButtons}>
+          <h2 className={styles.clubName}>{name}</h2>
+          <div className={styles.buttons}>
+            <button className={styles.applyButton}>Apply</button>
+            <button>Visit Website</button>
           </div>
         </div>
-        <text className={styles.desc}>{description}</text>
+        <div className={styles.details}>
+          <div>
+            <span className={styles.icon}>📝</span>
+            <span>Application: {application}</span>
+          </div>
+          <div>
+            <span className={styles.icon}>⏳</span>
+            <span>Timeline: {timeline}</span>
+          </div>
+          <div>
+            <span className={styles.icon}>👥</span>
+            <span>Members: {numMembers}</span>
+          </div>
+        </div>
+      </div>
+      <div className={styles.content}>
+        <div className={styles.leftColumn}>
+          <div className={styles.about}>
+            <h3>About Us</h3>
+            <p>{description}</p>
+          </div>
+        </div>
+        <div className={styles.rightColumn}>
+          <h3>Tags</h3>
+          <div className={styles.tags}>
+            {categories.map((tag) => (
+              <span key={tag} className={styles.tag}>
+                {tag}
+              </span>
+            ))}
+          </div>
+          <h3>Links</h3>
+          <div className={styles.links}>
+            {socialLinks.map(({ platform, href }) => (
+              <Link
+                key={platform}
+                href={'https://www.instagram.com/webatberkeley'}
+              >
+                {platform}
+              </Link>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
