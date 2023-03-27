@@ -3,9 +3,8 @@
 .container {
   position: absolute;
   width: 100%;
-  top: 225px;
+  top: 90px;
   height: 500px;
-  font-family: 'Inter';
   display: flex;
   background-image: url('discover_bg.png');
   align-items: center;
@@ -16,6 +15,9 @@
   color: #000000;
 }
 .desc {
+  color: #000000;
+  font-size: 20px;
+  width: 50%;
 }
 
 .searchbar {
@@ -25,4 +27,5 @@
   height: 49px;
   border: 0.5px solid #000000;
   border-radius: 25px;
+  padding-left: 20px;
 }
