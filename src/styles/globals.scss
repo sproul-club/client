@@ -3,7 +3,7 @@ body {
   position: relative;
   padding: 0;
   margin: 0;
-  font-family: "Montserrat";
+  font-family: 'Montserrat';
 }
 
 body.light {
@@ -13,14 +13,14 @@ body.light {
   --bg-1: #f9f9f9;
   --border: #9f9f9f;
 
-  --primary: #54A0F1;
-  --primary-dark: #3D6EA8;
+  --primary: #54a0f1;
+  --primary-dark: #3d6ea8;
 
   --box-shadow: rgba(149, 157, 165, 0.2);
   --red: red;
 
   background-color: var(--bg-0);
-  color: var(--text-0);
+  color: var(--text-1);
 }
 
 body.dark {
@@ -32,8 +32,8 @@ body.dark {
   --box-shadow: transparent;
   --red: red;
 
-  --primary: #54A0F1;
-  --primary-dark: #3D6EA8;
+  --primary: #54a0f1;
+  --primary-dark: #3d6ea8;
 
   background-color: var(--bg-0);
   color: var(--text-0);

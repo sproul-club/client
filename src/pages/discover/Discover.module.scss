@@ -1,0 +1,28 @@
+// @use '../../styles/globals.scss';
+
+.container {
+  position: absolute;
+  width: 100%;
+  top: 225px;
+  height: 500px;
+  font-family: 'Inter';
+  display: flex;
+  background-image: url('discover_bg.png');
+  align-items: center;
+  flex-direction: column;
+}
+
+.title {
+  color: #000000;
+}
+.desc {
+}
+
+.searchbar {
+  box-sizing: border-box;
+  flex-basis: 100%;
+  width: 702px;
+  height: 49px;
+  border: 0.5px solid #000000;
+  border-radius: 25px;
+}
