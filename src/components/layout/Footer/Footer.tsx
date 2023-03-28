@@ -24,16 +24,16 @@ const Footer = () => {
         <div className={styles.noGap}>!</div>
       </div>
       <div className={styles.icons}>
-        {/* <Link href="https://www.instagram.com/webatberkeley">
-          <a className={styles.iconLink}>
+        <Link href="https://www.instagram.com/webatberkeley">
+          <div className={styles.iconLink}>
             <Image src={instagram} alt="Instagram" width={20} height={20} />
-          </a>
+          </div>
         </Link>
         <Link href="https://www.webatberkeley.org/">
-          <a className={styles.iconLink}>
+          <div className={styles.iconLink}>
             <Image src={globe} alt="globe" width={20} height={20} />
-          </a>
-        </Link> */}
+          </div>
+        </Link>
       </div>
     </div>
   );
