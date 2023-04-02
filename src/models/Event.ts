@@ -12,6 +12,7 @@ interface Event {
   userHosts: User['id'][];
   location: string;
   meetingURI: string;
+  tags: string[];
 }
 
 export default Event;
