@@ -3,6 +3,7 @@ import Club from '../../models/club/Club';
 import { useState } from 'react';
 import styles from './Discover.module.scss';
 import { ClubTab } from './ClubTab';
+import { Dropdowns } from './Dropdowns';
 
 const club1: Club = {
   id: '1',
@@ -84,6 +85,7 @@ const Discover: React.FC = () => {
           onChange={(e) => setSearchValue(e.target.value)}
           placeholder="Search Clubs"
         />
+        <Dropdowns />
       </div>
 
       <div className={styles.leftColumn}>

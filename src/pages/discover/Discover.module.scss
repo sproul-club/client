@@ -5,7 +5,16 @@
 }
 
 .searchparams {
+  display: flex;
   width: 100%;
+}
+
+.droprow {
+  display: flex;
+  height: 49px;
+  width: 50%;
+  align-items: center;
+  justify-content: space-around;
 }
 
 .searchbar {
@@ -100,4 +109,17 @@
 .closedStatus {
   font-weight: bold;
   color: red;
+}
+
+.dropdown {
+  display: inline-block;
+  position: relative;
+  margin-right: 10px;
+}
+
+.dropdown select {
+  border-radius: 3px;
+  padding: 5px 20px 5px 5px;
+  font-size: 16px;
+  width: 150px;
 }
