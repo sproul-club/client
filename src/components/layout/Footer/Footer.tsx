@@ -1,5 +1,42 @@
+import Image from 'next/image';
+import Link from 'next/link';
+import globe from '../../../assets/globe.svg';
+import heart from '../../../assets/icons/heart.svg';
+import instagram from '../../../assets/instagram.svg';
+
+import styles from './Footer.module.scss';
+
 const Footer = () => {
-  return <div></div>;
+  return (
+    <div className={styles.container}>
+      <div className={styles.loveMsg}>
+        <div>made with</div>
+        <Image src={heart} alt="heart" width={20} height={18} />
+        <div className={styles.space}>by</div>
+        <a
+          className={styles.lightBlue}
+          href="https://www.webatberkeley.org/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Web Development at Berkeley
+        </a>
+        <div className={styles.noGap}>!</div>
+      </div>
+      <div className={styles.icons}>
+        <Link href="https://www.instagram.com/webatberkeley">
+          <div className={styles.iconLink}>
+            <Image src={instagram} alt="Instagram" width={20} height={20} />
+          </div>
+        </Link>
+        <Link href="https://www.webatberkeley.org/">
+          <div className={styles.iconLink}>
+            <Image src={globe} alt="globe" width={20} height={20} />
+          </div>
+        </Link>
+      </div>
+    </div>
+  );
 };
 
 export default Footer;

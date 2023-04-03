@@ -1,31 +1,86 @@
-// @use '../../styles/globals.scss';
-
-.container {
-  position: absolute;
-  width: 100%;
-  top: 90px;
-  height: 500px;
+.discover {
   display: flex;
-  background-image: url('discover_bg.png');
-  align-items: center;
+  margin: 2% 2% 0 2%;
+}
+
+.leftColumn {
+  flex: 0 0 30%;
+  max-width: 30%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.rightColumn {
+  flex: 1;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding-top: 1rem;
+  margin-left: 1rem;
+}
+
+.clubList {
+  display: flex;
   flex-direction: column;
 }
 
-.title {
-  color: #000000;
-}
-.desc {
-  color: #000000;
-  font-size: 20px;
-  width: 50%;
+.clubListItem {
+  display: flex;
+  padding: 1rem;
+  border-bottom: 1px solid #ccc;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #f0f0f0;
+  }
 }
 
-.searchbar {
-  box-sizing: border-box;
-  flex-basis: 100%;
-  width: 702px;
-  height: 49px;
-  border: 0.5px solid #000000;
-  border-radius: 25px;
-  padding-left: 20px;
+.active {
+  background-color: #eaf6ff;
+}
+
+.clubImage {
+  width: 50px;
+  height: 50px;
+  border-radius: 20%;
+  object-fit: cover;
+  margin-right: 1rem;
+}
+
+.clubInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.clubName {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.clubTags {
+  display: flex;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.tag {
+  padding: 2px 8px;
+  border-radius: 12px;
+  border: 1px solid #3498db;
+  color: #3498db;
+}
+
+.clubStatus {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.9rem;
+}
+
+.openStatus {
+  font-weight: bold;
+  color: #2ecc71;
+}
+.closedStatus {
+  font-weight: bold;
+  color: red;
 }
