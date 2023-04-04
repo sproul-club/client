@@ -9,7 +9,7 @@ interface Props {
 export default function Layout({ children }: Props) {
   return (
     <>
-      <NavBar />
+      <NavBar authenticated={false} hasClub={true}/>
       <main>{children}</main>
       <Footer />
     </>
