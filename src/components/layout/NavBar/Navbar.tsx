@@ -61,7 +61,9 @@ export default function NavBar({ authenticated, hasClub }: Props) {
     </div>
     <div>
     {navOpen ?
+    <div className={styles.collapsedMenu}>
       <MenuOverlay navOpen={navOpen} closeNav={closeNav} hasClub={true}/>
+    </div>
       : null}
     </div>
     </>
