@@ -128,7 +128,7 @@ export default function Events({ events }: Props) {
             <div className={styles.title}>
               <div className={styles.titleContent}>
                 <div className={styles.eventName}>{events[1].name}</div>
-                <div className={styles.clubName}>Club: {events[1].clubHosts}</div>
+                <div className={styles.clubName}>Club: {events[1].clubHosts.map(clubID => clubs.find(item => item.id === clubID)?.name).join(', ')}</div>
                 <div className={styles.iconList}>
                   <div className={styles.meetingItem}>
                     <Image src={calendar} alt="calendar" width={16} height={16} />
@@ -159,7 +159,7 @@ export default function Events({ events }: Props) {
               <div className={styles.sidebar}>
                 <div className={styles.tagsTitle}>Tags</div>
                 <div className={styles.tags}>
-                  {events[1].tags.map((tag) => (
+                  {events[1].tags.sort().map((tag) => (
                     <div className={styles.tag}>{tag}</div>
                   ))}
                 </div>
@@ -168,7 +168,7 @@ export default function Events({ events }: Props) {
                   var club = clubs.find(item => item.id === clubID)
                   return (
                     <div>
-                      {club.website && <div className={styles.link}>{club.website}</div>}
+                      {club.website && <div className={styles.link}><div className={styles.underline}>{club.website}</div></div>}
                       {club.email && <div className={styles.link}>{club.email}</div>}
                     </div>
                   )
