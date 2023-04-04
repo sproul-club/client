@@ -1,13 +1,39 @@
 .discover {
   display: flex;
+  flex-wrap: wrap;
   margin: 2% 2% 0 2%;
+}
+
+.searchparams {
+  display: flex;
+  width: 100%;
+}
+
+.droprow {
+  display: flex;
+  height: 49px;
+  width: 50%;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.searchbar {
+  box-sizing: border-box;
+  width: 30%;
+  margin-bottom: 20px;
+  height: 49px;
+  border: 0.5px solid #000000;
+  border-radius: 10px;
+  padding-left: 20px;
+}
+.innerLeft {
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 .leftColumn {
   flex: 0 0 30%;
   max-width: 30%;
-  border: 1px solid #ccc;
-  border-radius: 5px;
 }
 
 .rightColumn {
@@ -83,4 +109,17 @@
 .closedStatus {
   font-weight: bold;
   color: red;
+}
+
+.dropdown {
+  display: inline-block;
+  position: relative;
+  margin-right: 10px;
+}
+
+.dropdown select {
+  border-radius: 3px;
+  padding: 5px 20px 5px 5px;
+  font-size: 16px;
+  width: 150px;
 }

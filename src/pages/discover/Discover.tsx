@@ -2,6 +2,8 @@ import ClubCard from '../../components/ClubCard';
 import Club from '../../models/club/Club';
 import { useState } from 'react';
 import styles from './Discover.module.scss';
+import { ClubTab } from './ClubTab';
+import { Dropdowns } from './Dropdowns';
 
 const club1: Club = {
   id: '1',
@@ -53,8 +55,23 @@ const club2: Club = {
 
 const clubs: Club[] = [club1, club2];
 
+function searchMatches(search: string, clubName: string): boolean {
+  // Check if the length of the first string is greater than or equal to the second string
+  if (clubName.length >= search.length) {
+    // Check if the prefixes of both strings match
+    if (
+      clubName.substring(0, search.length).toLowerCase() ===
+      search.toLowerCase()
+    ) {
+      return true;
+    }
+  }
+  return false;
+}
+
 const Discover: React.FC = () => {
   const [selectedClub, setSelectedClub] = useState<Club | null>(clubs[0]);
+  const [searchValue, setSearchValue] = useState<string>('');
 
   const handleClubClick = (club: Club) => {
     setSelectedClub(club);
@@ -62,45 +79,30 @@ const Discover: React.FC = () => {
 
   return (
     <div className={styles.discover}>
+      <div className={styles.searchparams}>
+        <input
+          className={styles.searchbar}
+          value={searchValue}
+          onChange={(e) => setSearchValue(e.target.value)}
+          placeholder="Search Clubs"
+        />
+        <Dropdowns />
+      </div>
+
       <div className={styles.leftColumn}>
         <div className={styles.clubList}>
-          {clubs.map((club) => (
-            // Can put this into another component
-            <div
-              key={club.id}
-              className={`${styles.clubListItem} ${
-                selectedClub && club.id === selectedClub.id ? styles.active : ''
-              }`}
-              onClick={() => handleClubClick(club)}
-            >
-              <img
-                src={club.profilePhoto}
-                alt={club.name}
-                className={styles.clubImage}
+          {clubs.map((club) =>
+            searchMatches(searchValue, club.name) ? (
+              <ClubTab
+                club={club}
+                handleClubClick={handleClubClick}
+                selectedClub={selectedClub}
+                key={club.id}
               />
-              <div className={styles.clubInfo}>
-                <h3 className={styles.clubName}>{club.name}</h3>
-                <div className={styles.clubTags}>
-                  {club.categories.map((tag) => (
-                    <span key={tag} className={styles.tag}>
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                <div className={styles.clubStatus}>
-                  {club.isApplicationOpen ? (
-                    <div className={styles.openStatus}>Open</div>
-                  ) : (
-                    <div className={styles.closedStatus}>Closed</div>
-                  )}
-
-                  {club.isApplicationRequired && (
-                    <span>Application Required</span>
-                  )}
-                </div>
-              </div>
-            </div>
-          ))}
+            ) : (
+              <></>
+            )
+          )}
         </div>
       </div>
       <div className={styles.rightColumn}>
