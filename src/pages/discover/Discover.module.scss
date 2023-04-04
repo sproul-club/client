@@ -34,12 +34,16 @@
 .leftColumn {
   flex: 0 0 30%;
   max-width: 30%;
+  border: 1px solid #464444;
+
+  border-radius: 10px;
 }
 
 .rightColumn {
   flex: 1;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  border: 1px solid #464444;
+
+  border-radius: 10px;
   padding-top: 1rem;
   margin-left: 1rem;
 }
@@ -51,17 +55,15 @@
 
 .clubListItem {
   display: flex;
+  position: relative;
   padding: 1rem;
   border-bottom: 1px solid #ccc;
+  border-radius: 10px;
   cursor: pointer;
 
   &:hover {
     background-color: #f0f0f0;
   }
-}
-
-.active {
-  background-color: #eaf6ff;
 }
 
 .clubImage {
@@ -78,7 +80,7 @@
 }
 
 .clubName {
-  margin: 0;
+  margin: 0 0 0.5rem 0;
   font-size: 1.2rem;
   font-weight: bold;
 }
@@ -87,13 +89,6 @@
   display: flex;
   font-size: 0.9rem;
   margin-bottom: 0.5rem;
-}
-
-.tag {
-  padding: 2px 8px;
-  border-radius: 12px;
-  border: 1px solid #3498db;
-  color: #3498db;
 }
 
 .clubStatus {
@@ -111,6 +106,20 @@
   color: red;
 }
 
+.separator {
+  margin: 0 5px;
+}
+
+.heartIcon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.active {
+  background-color: #eaf6ff;
+}
+
 .dropdown {
   display: inline-block;
   position: relative;
@@ -122,4 +131,50 @@
   padding: 5px 20px 5px 5px;
   font-size: 16px;
   width: 150px;
+}
+
+@media (max-width: 480px) {
+  .clubListItem {
+    grid-template-columns: 80px 1fr 24px;
+    grid-gap: 8px;
+    padding: 8px;
+
+    .clubImage {
+      width: 80px;
+      height: 80px;
+    }
+
+    .clubName {
+      font-size: 14px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 100%;
+    }
+
+    .clubTags {
+      font-size: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+
+      .tag {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100%;
+      }
+
+      .separator {
+        margin: 0 4px;
+      }
+    }
+
+    .clubStatus {
+      font-size: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+  }
 }
