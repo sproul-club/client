@@ -10,16 +10,16 @@
         display: flex;
         justify-content: space-between;
         margin: 35px 55px 55px;
-        width: 1336px;
+        max-width: 1336px;
         .category {
             width: 220px;
             height: 81px;
             border: 1px solid black;
             border-radius: 6px;
-            line-height: 53px;
             font-size: 20px;
-            padding-left: 16px;
+            padding: 16px 0 0 16px;
             font-weight: 600;
+            overflow-wrap: break-word;
         }
     }
     .body {
@@ -149,6 +149,71 @@
                 overflow-y: auto;
                 max-height: 100vh;
                 background-color: white;
+                .title {
+                    .titleContent {
+                        .eventName {
+
+                        }
+                        .clubName {
+
+                        }
+                        .iconList {
+                            display: flex;
+                            color: rgba(0, 0, 0, 0.6);
+                            gap: 16px;
+                            .meetingItem {
+                                display: flex;
+                                gap: 7px;
+                                .text {
+                                    font-size: 14px;
+                                }
+                            }
+                        }
+                    }
+                    .calAndHeart {
+                        .addCalendar {
+
+                        }
+                        .favorite {
+                        position: absolute;
+                        right: 21px;
+                        top: 18px;
+                        .heartOutline {
+                            stroke: #5e6266 60%;
+                            fill: none;
+                        }
+                        .heartFilled {
+                            stroke: #f38787 !important;
+                            fill: #f38787 !important;
+                        }
+                    }
+                    }
+                }
+                .content {
+                    .about {
+                        .aboutHeading {
+
+                        }
+                        .aboutDescription {
+
+                        }
+                    }
+                    .sidebar {
+                        .tagsTitle {
+
+                        }
+                        .tags {
+                            .tag {
+
+                            }
+                        }
+                        .linksTitle {
+                            .link {
+                                
+                            }
+                        }
+                    }
+                }
             }
         }
     }
