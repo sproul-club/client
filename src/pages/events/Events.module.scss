@@ -246,11 +246,14 @@
                             gap: 7px 14px;
                             margin-top: 12px;
                             .tag {
+                                display: flex;
+                                align-items: center;
                                 padding: 4px 9px;
                                 font-size: 15px;
                                 border: 1px solid rgb(61, 110, 168);
                                 color: rgb(61, 110, 168);
                                 border-radius: 10px;
+                                height: 22px;
                             }
                         }
                         .linksTitle {
