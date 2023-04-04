@@ -146,7 +146,7 @@ export default function Events({ events }: Props) {
                   </div>
                 </div>
               </div>
-              <div className={styles.calAndHeart}>
+              <div className={styles.calendarAndHeart}>
                 <div className={styles.addCalendar}>Add to calendar</div>
                 <div className={styles.favorite}>
                   <Image src={heartOutline} alt="heart-outline" width={27} height={25} className={styles.heartOutline} onClick={toggleFavorite} />

@@ -184,7 +184,7 @@
                             }
                         }
                     }
-                    .calAndHeart {
+                    .calendarAndHeart {
                         display: flex;
                         .addCalendar {
                             width: 158px;
@@ -221,10 +221,10 @@
                 .content {
                     display: flex;
                     margin-top: 38px;
+                    padding-left: 33px;
                     .about {
                         width: 530px;
                         margin-right: 46px;
-                        padding-left: 33px;
                         .aboutHeading {
                             font-size: 19px;
                             font-weight: 800;
@@ -235,6 +235,7 @@
                         }
                     }
                     .sidebar {
+                        width: 260px;
                         .tagsTitle {
                             font-size: 19px;
                             font-weight: 800;
