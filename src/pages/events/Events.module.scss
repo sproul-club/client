@@ -1,9 +1,10 @@
 .container {
     background-color: #f8fbff;
     font-weight: 400;
+    padding: 27px 0;
     .categoriesTitle {
         font-size: 30px;
-        padding: 27px 0 0 55px;
+        padding-left: 55px;
         font-weight: 600;
     }
     .categories {
@@ -20,6 +21,10 @@
             padding: 16px 0 0 16px;
             font-weight: 600;
             overflow-wrap: break-word;
+            &:hover {
+                background-color: rgb(234, 246, 255);
+                cursor: pointer;
+            }
         }
     }
     .body {
@@ -149,17 +154,26 @@
                 overflow-y: auto;
                 max-height: 100vh;
                 background-color: white;
+                position: relative;
                 .title {
+                    display: flex;
+                    padding: 30px 0 0 33px;
                     .titleContent {
+                        margin-right: 24px;
+                        width: 530px;
                         .eventName {
-
+                            font-size: 32px;
+                            font-weight: 700;
+                            height: 41px;
                         }
                         .clubName {
-
+                            font-size: 16px;
+                            height: 32px;
                         }
                         .iconList {
+                            margin-top: 18px;
                             display: flex;
-                            color: rgba(0, 0, 0, 0.6);
+                            color: black;
                             gap: 16px;
                             .meetingItem {
                                 display: flex;
@@ -171,13 +185,28 @@
                         }
                     }
                     .calAndHeart {
+                        display: flex;
                         .addCalendar {
-
+                            width: 158px;
+                            height: 34px;
+                            text-align: center;
+                            border: 1px solid rgb(61, 110, 168);
+                            border-radius: 10px;
+                            color: rgb(61, 110, 168);
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            font-size: 15px;
+                            &:hover {
+                                background-color: rgb(61, 110, 168);
+                                color: white;
+                                cursor: pointer;
+                            }
                         }
                         .favorite {
                         position: absolute;
-                        right: 21px;
-                        top: 18px;
+                        right: 39px;
+                        top: 36px;
                         .heartOutline {
                             stroke: #5e6266 60%;
                             fill: none;
@@ -190,31 +219,56 @@
                     }
                 }
                 .content {
+                    display: flex;
+                    margin-top: 38px;
                     .about {
+                        width: 530px;
+                        margin-right: 46px;
+                        padding-left: 33px;
                         .aboutHeading {
-
+                            font-size: 19px;
+                            font-weight: 800;
                         }
                         .aboutDescription {
-
+                            margin-top: 15px;
+                            font-size: 18px;
                         }
                     }
                     .sidebar {
                         .tagsTitle {
-
+                            font-size: 19px;
+                            font-weight: 800;
+                            height: 25px;
                         }
                         .tags {
+                            display: flex;
+                            flex-wrap: wrap;
+                            gap: 7px 14px;
+                            margin-top: 12px;
                             .tag {
-
+                                padding: 4px 9px;
+                                font-size: 15px;
+                                border: 1px solid rgb(61, 110, 168);
+                                color: rgb(61, 110, 168);
+                                border-radius: 10px;
                             }
                         }
                         .linksTitle {
-                            .link {
-                                
-                            }
+                            font-size: 19px;
+                            font-weight: 800;
+                            height: 25px;
+                            margin: 45px 0 10px 0;
+                        }
+                        .link {
+                            font-size: 19px;
+                            height: 32px;
                         }
                     }
                 }
             }
         }
+    }
+    .underline {
+        text-decoration: underline;
     }
 }
