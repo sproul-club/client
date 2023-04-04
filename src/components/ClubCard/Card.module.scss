@@ -7,7 +7,6 @@
 .header {
   display: flex;
   flex-direction: column;
-  margin-bottom: 1.5rem;
 }
 
 .nameAndButtons {
@@ -19,8 +18,6 @@
 
 .clubName {
   margin: 0;
-  font-size: 1.5rem;
-  font-weight: bold;
 }
 
 .buttons {
@@ -30,7 +27,7 @@
   button {
     padding: 0.5rem 1rem;
     font-size: 1rem;
-    border-radius: 5px;
+    border-radius: 10px;
     border: 1px solid #ccc;
     cursor: pointer;
 
@@ -40,11 +37,11 @@
   }
 
   .applyButton {
-    background-color: #3d6ea8;
+    background-color: var(--primary-dark);
     color: #fff;
 
     &:hover {
-      background-color: #3d6ea8;
+      background-color: var(--primary-dark);
     }
   }
 }
@@ -52,6 +49,9 @@
 .details {
   display: flex;
   gap: 1rem;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 25px;
 
   div {
     display: flex;
@@ -72,7 +72,7 @@
 
 .leftColumn {
   flex: 0 0 80%;
-  padding-right: 1rem;
+  padding-right: 44px;
 }
 
 .rightColumn {
@@ -99,7 +99,13 @@
     display: inline-block;
     padding: 0.2rem 0.5rem;
     border-radius: 12px;
-    border: 1px solid #3d6ea8;
+    border: 1px solid var(--primary-dark);
+    color: var(--primary-dark);
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 18px;
+    display: flex;
+    align-items: center;
   }
 }
 

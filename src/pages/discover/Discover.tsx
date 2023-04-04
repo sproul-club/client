@@ -7,7 +7,8 @@ const club1: Club = {
   id: '1',
   name: 'Club Development at Berkeley',
   abbreviation: 'CDB',
-  description: 'This is a club about something interesting.',
+  description:
+    'We are a human-centered design consultancy at UC Berkeley founded in 2003. Our mission is to provide a community for students interested in design to develop their skills and experience, and make design education & resources more accessible to everyone at Berkeley. Every semester, we work on design projects that give members hands-on experience with the entire design process, from conducting user research to building and marketing prototypesWe are looking for sick cunts',
   profilePhoto: 'https://via.placeholder.com/150',
   headingPhoto: 'https://via.placeholder.com/300',
   isApplicationOpen: true,
