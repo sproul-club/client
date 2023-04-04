@@ -17,7 +17,7 @@ interface Props extends HTMLProps<HTMLDivElement> {
 }
 
 export default function Events({ events }: Props) {
-  console.log(events)
+  //test data -- unsure as to how this will be passed in through the Props so I hard coded for now
   var clubs = [{ id: 'innovate', name: 'Innovate Design', abbreviation: '', description: '', profilePhoto: '', headingPhoto: '', isApplicationOpen: true, isApplicationRequired: true, categories: [], events: [], recruitingSeasons: [], numMembers: 0, yearFounded: '2023', branches: [], website: 'www.sproul.club.com', email: 'sproulclub@gmail.com' }];
   events = [
     { id: '1', name: 'Test', description: 'this is the description', startTimestamp: '5:30', endTimestamp: '6:30 pm', clubHosts: [], userHosts: [], location: 'Wheeler 150', meetingURI: '', tags: ['a', 'b'], image: '' },
@@ -29,9 +29,7 @@ export default function Events({ events }: Props) {
 
   ]
 
-  // clicking event to expand
-
-  // toggle favorite
+  // TODO: toggle favorite heart
   const toggleFavorite = useCallback((event) => {
     console.log(event.target.classList)
     if (event.target.classList.contains(`.${styles.heartOutline}`)) {
@@ -45,7 +43,7 @@ export default function Events({ events }: Props) {
   }, []);
 
 
-  // search functionality
+  // TODO: search functionality
   const [query, setQuery] = useState('')
   const onChange = useCallback((event) => {
     const query = event.target.value
@@ -60,7 +58,11 @@ export default function Events({ events }: Props) {
     setQuery(query)
   }, [])
 
+  // TODO: clicking event to expand
 
+  // TODO: filter functionality
+
+  //TODO: add event to calendar
 
   return (
     <div className={styles.container}>
@@ -164,6 +166,7 @@ export default function Events({ events }: Props) {
                   ))}
                 </div>
                 <div className={styles.linksTitle}>Links</div>
+                {/* TODO: make links functional */}
                 {events[1].clubHosts.map((clubID) => {
                   var club = clubs.find(item => item.id === clubID)
                   return (
