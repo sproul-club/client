@@ -63,8 +63,13 @@ export default function Events({ events }: Props) {
 
   return (
     <div className={styles.container}>
+      <div className={styles.categoriesTitle}>Featured club categories</div>
       <div className={styles.categories}>
-        Finish categories
+        <div className={styles.category}>Design</div>
+        <div className={styles.category}>Pre-Professional</div>
+        <div className={styles.category}>Social Good</div>
+        <div className={styles.category}>Sports & Rec</div>
+        <div className={styles.category}>Computer Science</div>
       </div>
       <div className={styles.body}>
         <div className={styles.search}>
