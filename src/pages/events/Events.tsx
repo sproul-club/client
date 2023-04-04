@@ -18,9 +18,10 @@ interface Props extends HTMLProps<HTMLDivElement> {
 
 export default function Events({ events }: Props) {
   console.log(events)
+  var clubs = [{ id: 'innovate', name: 'Innovate Design', abbreviation: '', description: '', profilePhoto: '', headingPhoto: '', isApplicationOpen: true, isApplicationRequired: true, categories: [], events: [], recruitingSeasons: [], numMembers: 0, yearFounded: '2023', branches: [], website: 'www.sproul.club.com', email: 'sproulclub@gmail.com' }];
   events = [
     { id: '1', name: 'Test', description: 'this is the description', startTimestamp: '5:30', endTimestamp: '6:30 pm', clubHosts: [], userHosts: [], location: 'Wheeler 150', meetingURI: '', tags: ['a', 'b'], image: '' },
-    { id: '1', name: 'Innovative Design Workshop', description: 'this is the description', startTimestamp: '5:30', endTimestamp: '6:30 pm', clubHosts: [], userHosts: [], location: 'Wheeler 150', meetingURI: '', tags: ['Design', 'Technology', 'Social Good'], image: '' },
+    { id: '1', name: 'Innovative Design Workshop', description: 'this is the description', startTimestamp: '5:30', endTimestamp: '6:30 pm', clubHosts: ['innovate'], userHosts: [], location: 'Wheeler 150', meetingURI: '', tags: ['Design', 'Technology', 'Social Good'], image: '' },
     { id: '1', name: 'Innovative Design Workshop', description: 'this is the description', startTimestamp: '5:30', endTimestamp: '6:30 pm', clubHosts: [], userHosts: [], location: 'Wheeler 150', meetingURI: '', tags: ['Design', 'Technology', 'Social Good'], image: '' },
     { id: '1', name: 'Innovative Design Workshop', description: 'this is the description', startTimestamp: '5:30', endTimestamp: '6:30 pm', clubHosts: [], userHosts: [], location: 'Wheeler 150', meetingURI: '', tags: ['Design', 'Technology', 'Social Good'], image: '' },
     { id: '1', name: 'Innovative Design Workshop', description: 'this is the description', startTimestamp: '5:30', endTimestamp: '6:30 pm', clubHosts: [], userHosts: [], location: 'Wheeler 150', meetingURI: '', tags: ['Design', 'Technology', 'Social Good'], image: '' },
@@ -124,7 +125,57 @@ export default function Events({ events }: Props) {
             ))}
           </div>
           <div className={styles.bigEvent}>
-
+            <div className={styles.title}>
+              <div className={styles.titleContent}>
+                <div className={styles.eventName}>{events[1].name}</div>
+                <div className={styles.clubName}>Club: {events[1].clubHosts}</div>
+                <div className={styles.iconList}>
+                  <div className={styles.meetingItem}>
+                    <Image src={calendar} alt="calendar" width={16} height={16} />
+                    <div className={styles.text}>date</div>
+                  </div>
+                  <div className={styles.meetingItem}>
+                    <Image src={clock} alt="clock" width={16} height={16} />
+                    <div className={styles.text}>{events[1].startTimestamp}-{events[1].endTimestamp}</div>
+                  </div>
+                  <div className={styles.meetingItem}>
+                    <Image src={pin} alt="pin" width={16} height={16} />
+                    <div className={styles.text}>{events[1].location}</div>
+                  </div>
+                </div>
+              </div>
+              <div className={styles.calAndHeart}>
+                <div className={styles.addCalendar}>Add to calendar</div>
+                <div className={styles.favorite}>
+                  <Image src={heartOutline} alt="heart-outline" width={27} height={25} className={styles.heartOutline} onClick={toggleFavorite} />
+                </div>
+              </div>
+            </div>
+            <div className={styles.content}>
+              <div className={styles.about}>
+                <div className={styles.aboutHeading}>About event</div>
+                <div className={styles.aboutDescription}>{events[1].description}</div>
+              </div>
+              <div className={styles.sidebar}>
+                <div className={styles.tagsTitle}>Tags</div>
+                <div className={styles.tags}>
+                  {events[1].tags.map((tag) => (
+                    <div className={styles.tag}>{tag}</div>
+                  ))}
+                </div>
+                <div className={styles.linksTitle}>Links</div>
+                {events[1].clubHosts.map((clubID) => {
+                  var club = clubs.find(item => item.id === clubID)
+                  return (
+                    <div>
+                      {club.website && <div className={styles.link}>{club.website}</div>}
+                      {club.email && <div className={styles.link}>{club.email}</div>}
+                    </div>
+                  )
+                })}
+                {/* user images might go here, unsure based on figma */}
+              </div>
+            </div>
           </div>
         </div>
       </div>
