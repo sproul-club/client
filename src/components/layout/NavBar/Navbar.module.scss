@@ -10,14 +10,15 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  cursor: pointer;
 }
 
 .options {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 12px;
-  padding-right: 15px;
+  gap: 16px;
+  padding-right: 25px;
 }
 
 .hamburger {
@@ -43,4 +44,3 @@
     display: none;
   }
 }
-
