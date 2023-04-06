@@ -4,7 +4,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 8px;
+  //margin-top: 8px;
   border: 1.5px solid var(--color);
   color: var(--primary);
   font-weight: 500;
@@ -16,6 +16,7 @@
 
   &.dark {
     --color: var(--primary-dark);
+    color: var(--primary-dark);  
   }
 
   &.filled {

@@ -1,0 +1,36 @@
+.overlayContainer {   
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    z-index: 1; 
+    left: 0;
+    top: 55px;
+    background-color: white;
+    overflow-x: hidden; 
+}
+
+.listContainer {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: 15%; 
+    width: 100%;
+    text-align: center; 
+    gap: 20px;
+}
+
+.menuOption {
+    font-size: large;
+}
+
+.selectedMenuOption {
+    font-size: large;
+    color: var(--primary);
+}
+
+.menuDivider {
+    color: #bbb;
+    opacity: 0.5;
+    width: 100px;
+    border-top: 1px solid #bbb;
+}

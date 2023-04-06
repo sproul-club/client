@@ -1,4 +1,4 @@
-import styles from './MenuIcon.module.scss';
+import styles from './Hamburger.module.scss';
 
 interface Props {
   onClick: () => void;
