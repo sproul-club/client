@@ -71,12 +71,12 @@ function searchMatches(search: string, clubName: string): boolean {
 const Discover: React.FC = () => {
   const [selectedClub, setSelectedClub] = useState<Club | null>(clubs[0]);
   const [searchValue, setSearchValue] = useState<string>('');
-
+  const [hitSearch, setHitSearch] = useState<boolean>(false);
   const handleClubClick = (club: Club) => {
     setSelectedClub(club);
   };
 
-  return (
+  return hitSearch ? (
     <div className={styles.discover}>
       <div className={styles.searchparams}>
         <input
@@ -106,6 +106,27 @@ const Discover: React.FC = () => {
       </div>
       <div className={styles.rightColumn}>
         {selectedClub && <ClubCard data={selectedClub} />}
+      </div>
+    </div>
+  ) : (
+    <div className={styles.container}>
+      <h1 className={styles.title}>Find your community at Berkeley!</h1>;
+      <p className={styles.desc}>
+        sproul.club helps you discover student clubs, organizations, and
+        communities on campus -- built by students, for students!
+      </p>
+      <div>
+        <input
+          className={styles.searchbar2}
+          placeholder="Search Clubs"
+          onKeyDown={(event) => {
+            if (event.key === 'Enter') {
+              // "Enter" key was pressed
+              setHitSearch(true);
+              setSearchValue(event.target.value);
+            }
+          }}
+        />
       </div>
     </div>
   );
