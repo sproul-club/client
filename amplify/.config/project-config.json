@@ -1,17 +1,17 @@
 {
-  "projectName": "client",
+  "providers": [
+    "awscloudformation"
+  ],
+  "projectName": "sproulclub",
   "version": "3.1",
   "frontend": "javascript",
   "javascript": {
     "framework": "react",
     "config": {
-      "SourceDir": "src",
+      "SourceDir": ".",
       "DistributionDir": "build",
-      "BuildCommand": "npm.cmd run-script build",
-      "StartCommand": "npm.cmd run-script start"
+      "BuildCommand": "npm run-script build",
+      "StartCommand": "npm run-script start"
     }
-  },
-  "providers": [
-    "awscloudformation"
-  ]
+  }
 }
