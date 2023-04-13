@@ -267,6 +267,15 @@
                             font-size: 19px;
                             height: 32px;
                         }
+                        .hosts {
+                            display: flex;
+                            gap: 15px;
+                            width: 210px;
+                            flex-wrap: wrap;
+                            .user {
+                                border-radius: 50%;
+                            }
+                        }
                     }
                 }
             }
