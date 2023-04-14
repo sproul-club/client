@@ -32,7 +32,7 @@ const App = ({ children }: HTMLProps<any>) => {
 function Layout({ children }: HTMLProps<any>) {
   return (
     <>
-      <NavBar />
+      <NavBar authenticated={false} hasClub={true}/>
       <main>{children}</main>
       <Footer />
     </>

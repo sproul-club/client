@@ -3,31 +3,40 @@ import styles from './Events.module.scss';
 import { HTMLProps, useState, useCallback } from 'react';
 import $ from 'jquery';
 import { Console } from 'console';
+import Club from '../../models/club/Club';
 import Event from '../../models/Event';
+import User from '../../models/User';
 import heartOutline from '../../assets/icons/heartoutline.svg';
 import calendar from '../../assets/icons/Property 1=calendar.svg';
 import clock from '../../assets/icons/Property 1=clock.svg';
 import pin from '../../assets/icons/pin.svg';
+import defaultClub from '../../assets/default-club-photo.png';
 import dropdown from '../../assets/icons/dropdown.svg';
 import { setDefaultResultOrder } from 'dns';
 
 
 interface Props extends HTMLProps<HTMLDivElement> {
   events: Event[];
+  clubs: Club[];
+  users: User[];
 }
 
-export default function Events({ events }: Props) {
+export default function Events({ events, clubs }: Props) {
   //test data -- unsure as to how this will be passed in through the Props so I hard coded for now
-  var clubs = [{ id: 'innovate', name: 'Innovate Design', abbreviation: '', description: '', profilePhoto: '', headingPhoto: '', isApplicationOpen: true, isApplicationRequired: true, categories: [], events: [], recruitingSeasons: [], numMembers: 0, yearFounded: '2023', branches: [], website: 'www.sproul.club.com', email: 'sproulclub@gmail.com' }];
+  // assuming a list of event objects
+  clubs = [
+    { id: 'innovate', name: 'Innovate Design', abbreviation: '', description: '', profilePhoto: '', headingPhoto: '', isApplicationOpen: true, isApplicationRequired: true, categories: [], events: ['2'], recruitingSeasons: [], numMembers: 0, yearFounded: '2023', branches: [], website: 'www.sproul.club.com', email: 'sproulclub@gmail.com' }
+  ]
   events = [
-    { id: '1', name: 'Test', description: 'this is the description', startTimestamp: '5:30', endTimestamp: '6:30 pm', clubHosts: [], userHosts: [], location: 'Wheeler 150', meetingURI: '', tags: ['a', 'b'], image: '' },
-    { id: '1', name: 'Innovative Design Workshop', description: 'this is the description', startTimestamp: '5:30', endTimestamp: '6:30 pm', clubHosts: ['innovate'], userHosts: [], location: 'Wheeler 150', meetingURI: '', tags: ['Design', 'Technology', 'Social Good'], image: '' },
-    { id: '1', name: 'Innovative Design Workshop', description: 'this is the description', startTimestamp: '5:30', endTimestamp: '6:30 pm', clubHosts: [], userHosts: [], location: 'Wheeler 150', meetingURI: '', tags: ['Design', 'Technology', 'Social Good'], image: '' },
-    { id: '1', name: 'Innovative Design Workshop', description: 'this is the description', startTimestamp: '5:30', endTimestamp: '6:30 pm', clubHosts: [], userHosts: [], location: 'Wheeler 150', meetingURI: '', tags: ['Design', 'Technology', 'Social Good'], image: '' },
-    { id: '1', name: 'Innovative Design Workshop', description: 'this is the description', startTimestamp: '5:30', endTimestamp: '6:30 pm', clubHosts: [], userHosts: [], location: 'Wheeler 150', meetingURI: '', tags: ['Design', 'Technology', 'Social Good'], image: '' },
-    { id: '1', name: 'Innovative Design Workshop', description: 'this is the description', startTimestamp: '5:30', endTimestamp: '6:30 pm', clubHosts: [], userHosts: [], location: 'Wheeler 150', meetingURI: '', tags: ['Design', 'Technology', 'Social Good'], image: '' }
+    { id: '1', name: 'Test', description: 'this is the description', startTimestamp: '2023-10-13T17:30:00Z', endTimestamp: '2023-10-13T18:30:00Z', clubHosts: [], userHosts: [], location: 'Wheeler 150', meetingURI: '', tags: ['a', 'b'], image: '' },
+    { id: '2', name: 'Innovative Design Workshop', description: 'this is the description', startTimestamp: '2023-10-13T17:30:00Z', endTimestamp: '2023-10-13T18:30:00Z', clubHosts: ['innovate'], userHosts: [], location: 'Wheeler 150', meetingURI: '', tags: ['Design', 'Technology', 'Social Good'], image: '' },
+    { id: '3', name: 'Innovative Design Workshop', description: 'this is the description', startTimestamp: '2023-10-13T17:30:00Z', endTimestamp: '2023-10-13T18:30:00Z', clubHosts: [], userHosts: [], location: 'Wheeler 150', meetingURI: '', tags: ['Design', 'Technology', 'Social Good'], image: '' },
+    { id: '4', name: 'Innovative Design Workshop', description: 'this is the description', startTimestamp: '2023-10-13T17:30:00Z', endTimestamp: '2023-10-13T18:30:00Z', clubHosts: [], userHosts: [], location: 'Wheeler 150', meetingURI: '', tags: ['Design', 'Technology', 'Social Good'], image: '' },
+    { id: '5', name: 'Innovative Design Workshop', description: 'this is the description', startTimestamp: '2023-10-13T17:30:00Z', endTimestamp: '2023-10-13T18:30:00Z', clubHosts: [], userHosts: [], location: 'Wheeler 150', meetingURI: '', tags: ['Design', 'Technology', 'Social Good'], image: '' },
+    { id: '6', name: 'Innovative Design Workshop', description: 'this is the description', startTimestamp: '2023-10-13T17:30:00Z', endTimestamp: '2023-10-13T18:30:00Z', clubHosts: [], userHosts: [], location: 'Wheeler 150', meetingURI: '', tags: ['Design', 'Technology', 'Social Good'], image: '' }
 
   ]
+  var months = ['Jan.', 'Feb.', 'Mar.', 'Apr.', 'May', 'Jun.', 'Jul.', 'Aug.', 'Sep.', 'Oct.', 'Nov.', 'Dec.']
 
   // TODO: toggle favorite heart
   const toggleFavorite = useCallback((event) => {
@@ -103,7 +112,7 @@ export default function Events({ events }: Props) {
                   <Image src={heartOutline} alt="heart-outline" width={27} height={25} className={styles.heartOutline} onClick={toggleFavorite} />
                 </div>
 
-                <div className={styles.eventImage} style={e.image ? { backgroundImage: 'url(' + e.image + ')' } : { border: '2px solid rgba(0, 0, 0, 0.6)' }}></div>
+                <div className={styles.eventImage} style={e.image ? { backgroundImage: 'url(' + e.image + ')' } : { backgroundImage: 'url(' + defaultClub + ')' }}></div>
 
                 <div className={styles.eventContent}>
                   <div className={styles.eventName}>{e.name}</div>
@@ -111,11 +120,11 @@ export default function Events({ events }: Props) {
                   <div className={styles.iconList}>
                     <div className={styles.meetingItem}>
                       <Image src={calendar} alt="calendar" width={16} height={16} />
-                      <div className={styles.text}>date</div>
+                      <div className={styles.text}>{months[new Date(e.startTimestamp).getMonth() - 1]} {new Date(e.startTimestamp).getDay()}</div>
                     </div>
                     <div className={styles.meetingItem}>
                       <Image src={clock} alt="clock" width={16} height={16} />
-                      <div className={styles.text}>{e.startTimestamp}-{e.endTimestamp}</div>
+                      <div className={styles.text}>{new Date(e.startTimestamp).getHours() % 12}:{}-{new Date(e.endTimestamp).getTime()}</div>
                     </div>
                     <div className={styles.meetingItem}>
                       <Image src={pin} alt="pin" width={16} height={16} />
@@ -176,7 +185,14 @@ export default function Events({ events }: Props) {
                     </div>
                   )
                 })}
-                {/* user images might go here, unsure based on figma */}
+                <div className={styles.hosts}>
+                  {events[1].userHosts.map((userID) => {
+                    var user = users.find(item => item.id === userID)
+                    return (
+                      <Image src={user.profilePhotoURI} alt="profile photo" width={41} height={41} className={styles.user} />
+                    )
+                  })}
+                </div>
               </div>
             </div>
           </div>
