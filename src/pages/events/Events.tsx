@@ -21,7 +21,7 @@ interface Props extends HTMLProps<HTMLDivElement> {
   users: User[];
 }
 
-export default function Events({ events, clubs }: Props) {
+export default function Events({ events, clubs, users }: Props) {
   //test data -- unsure as to how this will be passed in through the Props so I hard coded for now
   // assuming a list of event objects
   clubs = [
@@ -29,12 +29,15 @@ export default function Events({ events, clubs }: Props) {
   ]
   events = [
     { id: '1', name: 'Test', description: 'this is the description', startTimestamp: '2023-10-13T17:30:00Z', endTimestamp: '2023-10-13T18:30:00Z', clubHosts: [], userHosts: [], location: 'Wheeler 150', meetingURI: '', tags: ['a', 'b'], image: '' },
-    { id: '2', name: 'Innovative Design Workshop', description: 'this is the description', startTimestamp: '2023-10-13T17:30:00Z', endTimestamp: '2023-10-13T18:30:00Z', clubHosts: ['innovate'], userHosts: [], location: 'Wheeler 150', meetingURI: '', tags: ['Design', 'Technology', 'Social Good'], image: '' },
+    { id: '2', name: 'Innovative Design Workshop', description: 'this is the description', startTimestamp: '2023-10-13T17:30:00Z', endTimestamp: '2023-10-13T18:30:00Z', clubHosts: ['innovate'], userHosts: ['jane'], location: 'Wheeler 150', meetingURI: '', tags: ['Design', 'Technology', 'Social Good'], image: '' },
     { id: '3', name: 'Innovative Design Workshop', description: 'this is the description', startTimestamp: '2023-10-13T17:30:00Z', endTimestamp: '2023-10-13T18:30:00Z', clubHosts: [], userHosts: [], location: 'Wheeler 150', meetingURI: '', tags: ['Design', 'Technology', 'Social Good'], image: '' },
     { id: '4', name: 'Innovative Design Workshop', description: 'this is the description', startTimestamp: '2023-10-13T17:30:00Z', endTimestamp: '2023-10-13T18:30:00Z', clubHosts: [], userHosts: [], location: 'Wheeler 150', meetingURI: '', tags: ['Design', 'Technology', 'Social Good'], image: '' },
     { id: '5', name: 'Innovative Design Workshop', description: 'this is the description', startTimestamp: '2023-10-13T17:30:00Z', endTimestamp: '2023-10-13T18:30:00Z', clubHosts: [], userHosts: [], location: 'Wheeler 150', meetingURI: '', tags: ['Design', 'Technology', 'Social Good'], image: '' },
     { id: '6', name: 'Innovative Design Workshop', description: 'this is the description', startTimestamp: '2023-10-13T17:30:00Z', endTimestamp: '2023-10-13T18:30:00Z', clubHosts: [], userHosts: [], location: 'Wheeler 150', meetingURI: '', tags: ['Design', 'Technology', 'Social Good'], image: '' }
 
+  ]
+  users = [
+    { id: 'jane', firstName: 'Jane', lastName: 'Doe', nickname: 'Jane', pronouns: 'she/her', race: '', ethnicity: '', profilePhotoURI: '', majors: [], minors: [], emailPersonal: 'test@gmail.com', emailSchool: 'testschool@gmail.com', phone: '', linkedin: '', website: '', github: '', twitter: '', createdAt: '', interests: [], recommendations: [], favorites: [], applications: [], roles: [] }
   ]
   var months = ['Jan.', 'Feb.', 'Mar.', 'Apr.', 'May', 'Jun.', 'Jul.', 'Aug.', 'Sep.', 'Oct.', 'Nov.', 'Dec.']
 
@@ -106,34 +109,38 @@ export default function Events({ events, clubs }: Props) {
         </div>
         <div className={styles.eventsContainer}>
           <div id='eventsList' className={styles.eventsList}>
-            {events.map((e, i) => (
-              <div className={styles.event} style={i + 1 === events.length ? { border: 'none' } : { borderBottom: '1px solid #dbdbdb' }}>
-                <div className={styles.favorite}>
-                  <Image src={heartOutline} alt="heart-outline" width={27} height={25} className={styles.heartOutline} onClick={toggleFavorite} />
-                </div>
+            {events.map((e, i) => {
+              var start = new Date(e.startTimestamp)
+              var end = new Date(e.endTimestamp)
+              return (
+                <div className={styles.event} style={i + 1 === events.length ? { border: 'none' } : { borderBottom: '1px solid #dbdbdb' }}>
+                  <div className={styles.favorite}>
+                    <Image src={heartOutline} alt="heart-outline" width={27} height={25} className={styles.heartOutline} onClick={toggleFavorite} />
+                  </div>
 
-                <div className={styles.eventImage} style={e.image ? { backgroundImage: 'url(' + e.image + ')' } : { backgroundImage: 'url(' + defaultClub + ')' }}></div>
+                  <div className={styles.eventImage} style={e.image ? { backgroundImage: 'url(' + e.image + ')' } : { backgroundImage: 'url(' + defaultClub + ')' }}></div>
 
-                <div className={styles.eventContent}>
-                  <div className={styles.eventName}>{e.name}</div>
-                  <div className={styles.tagList}>{e.tags.join(' · ')}</div>
-                  <div className={styles.iconList}>
-                    <div className={styles.meetingItem}>
-                      <Image src={calendar} alt="calendar" width={16} height={16} />
-                      <div className={styles.text}>{months[new Date(e.startTimestamp).getMonth() - 1]} {new Date(e.startTimestamp).getDay()}</div>
-                    </div>
-                    <div className={styles.meetingItem}>
-                      <Image src={clock} alt="clock" width={16} height={16} />
-                      <div className={styles.text}>{new Date(e.startTimestamp).getHours() % 12}:{}-{new Date(e.endTimestamp).getTime()}</div>
-                    </div>
-                    <div className={styles.meetingItem}>
-                      <Image src={pin} alt="pin" width={16} height={16} />
-                      <div className={styles.text}>{e.location}</div>
+                  <div className={styles.eventContent}>
+                    <div className={styles.eventName}>{e.name}</div>
+                    <div className={styles.tagList}>{e.tags.join(' · ')}</div>
+                    <div className={styles.iconList}>
+                      <div className={styles.meetingItem}>
+                        <Image src={calendar} alt="calendar" width={16} height={16} />
+                        <div className={styles.text}>{months[start.getMonth()]} {start.getDay()}</div>
+                      </div>
+                      <div className={styles.meetingItem}>
+                        <Image src={clock} alt="clock" width={16} height={16} />
+                        <div className={styles.text}>{start.getHours() % 12}:-{end.getTime()}</div>
+                      </div>
+                      <div className={styles.meetingItem}>
+                        <Image src={pin} alt="pin" width={16} height={16} />
+                        <div className={styles.text}>{e.location}</div>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              )
+            })}
           </div>
           <div className={styles.bigEvent}>
             <div className={styles.title}>
@@ -143,11 +150,11 @@ export default function Events({ events, clubs }: Props) {
                 <div className={styles.iconList}>
                   <div className={styles.meetingItem}>
                     <Image src={calendar} alt="calendar" width={16} height={16} />
-                    <div className={styles.text}>date</div>
+                    <div className={styles.text}>{months[new Date(events[1].startTimestamp).getMonth()]} {new Date(events[1].startTimestamp).getDay()}</div>
                   </div>
                   <div className={styles.meetingItem}>
                     <Image src={clock} alt="clock" width={16} height={16} />
-                    <div className={styles.text}>{events[1].startTimestamp}-{events[1].endTimestamp}</div>
+                    <div className={styles.text}>clock</div>
                   </div>
                   <div className={styles.meetingItem}>
                     <Image src={pin} alt="pin" width={16} height={16} />
