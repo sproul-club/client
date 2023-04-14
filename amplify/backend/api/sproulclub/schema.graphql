@@ -9,20 +9,7 @@ type Branch {
   description: String
 }
 
-type Clubs
-  @model
-  @auth(
-    rules: [
-      { allow: owner, operations: [create, read, update, delete] }
-      {
-        allow: groups
-        groups: ["Admins"]
-        operations: [create, read, update, delete]
-      }
-    ]
-  )
-  @index(name: "byClub", fields: ["id"]) 
-{
+type Clubs @model @auth(rules: [{ allow: public }]) {
   id: ID!
   name: String
   abbreviation: String
@@ -32,13 +19,9 @@ type Clubs
   isApplicationOpen: Boolean
   isApplicationRequired: Branch
   categories: [String]
-  events: [Events] @hasMany(indexName: "byClub", fields: ["id"])
-  recruitingSeasons: RecruitingSeason
   numMembers: Int
-
   yearFounded: String
   branches: [Branch]
-
   website: String
   instagram: String
   linkedin: String
@@ -46,29 +29,5 @@ type Clubs
   twitter: String
   discord: String
   email: String
-}
-
-
-type Events
-  @model
-  @auth(
-    rules: [
-      { allow: owner, operations: [create, read, update, delete] }
-      {
-        allow: groups
-        groups: ["Admins"]
-        operations: [create, read, update, delete]
-      }
-    ]
-  )
-  @index(name: "byClub", fields: ["clubId"]) 
-{
-  id: ID!
-  name: String
-  description: String
-  startTimestamp: AWSDateTime!
-  endTimestamp: AWSDateTime!
-  location: String
-  clubId: ID!
-  club: Clubs @belongsTo(fields: ["clubId"])
+  recruitingSeasons: RecruitingSeason
 }

@@ -10,6 +10,11 @@
       "StackName": "amplify-amplify308f41cbc5a94-staging-202332",
       "StackId": "arn:aws:cloudformation:us-west-1:855935189350:stack/amplify-amplify308f41cbc5a94-staging-202332/e517e8a0-d96f-11ed-b7f5-020ef12756d1",
       "AmplifyAppId": "d2oa074cufqbo8"
+    },
+    "categories": {
+      "api": {
+        "sproulclub": {}
+      }
     }
   },
   "dev": {
