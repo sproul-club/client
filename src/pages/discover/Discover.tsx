@@ -10,7 +10,7 @@ const club1: Club = {
   name: 'Club Development at Berkeley',
   abbreviation: 'CDB',
   description:
-    'We are a human-centered design consultancy at UC Berkeley founded in 2003. Our mission is to provide a community for students interested in design to develop their skills and experience, and make design education & resources more accessible to everyone at Berkeley. Every semester, we work on design projects that give members hands-on experience with the entire design process, from conducting user research to building and marketing prototypesWe are looking for sick cunts',
+    'We are a human-centered design consultancy at UC Berkeley founded in 2003. Our mission is to provide a community for students interested in design to develop their skills and experience, and make design education & resources more accessible to everyone at Berkeley. Every semester, we work on design projects that give members hands-on experience with the entire design process, from conducting user research to building and marketing prototypes',
   profilePhoto: 'https://via.placeholder.com/150',
   headingPhoto: 'https://via.placeholder.com/300',
   isApplicationOpen: true,
@@ -52,26 +52,76 @@ const club2: Club = {
   discord: 'https://discord.com',
   email: 'email@example.com',
 };
+const club3: Club = {
+  id: '3',
+  name: 'Web Dawgs',
+  abbreviation: 'WD',
+  description: 'This is a club about something interesting.',
+  profilePhoto: 'https://via.placeholder.com/150',
+  headingPhoto: 'https://via.placeholder.com/300',
+  isApplicationOpen: false,
+  isApplicationRequired: true,
+  categories: ['Tag4'],
+  events: ['event1', 'event2'],
+  recruitingSeasons: ['season1', 'season2'],
+  numMembers: 20,
+  yearFounded: '2020',
+  branches: [],
+  website: 'https://example.com',
+  instagram: 'https://instagram.com',
+  linkedin: 'https://linkedin.com',
+  facebook: 'https://facebook.com',
+  twitter: 'https://twitter.com',
+  discord: 'https://discord.com',
+  email: 'email@example.com',
+};
 
-const clubs: Club[] = [club1, club2];
+const clubs: Club[] = [club1, club2, club3];
 
-function searchMatches(search: string, clubName: string): boolean {
-  // Check if the length of the first string is greater than or equal to the second string
-  if (clubName.length >= search.length) {
+function checkMatch(
+  search: string,
+  club: Club,
+  appOpen: string,
+  appRequired: string,
+  tag: string
+): boolean {
+  const appOpenMatch =
+    appOpen === 'any' ||
+    (appOpen === 'app-open' && club.isApplicationOpen) ||
+    (appOpen === 'app-closed' && !club.isApplicationOpen);
+
+  const appReqMatch =
+    appRequired === 'any' ||
+    (appRequired === 'app-needed' && club.isApplicationRequired) ||
+    (appRequired === 'no-app' && !club.isApplicationRequired);
+
+  let searchMatch = false;
+  if (club.name.length >= search.length) {
     // Check if the prefixes of both strings match
     if (
-      clubName.substring(0, search.length).toLowerCase() ===
+      club.name.substring(0, search.length).toLowerCase() ===
       search.toLowerCase()
     ) {
-      return true;
+      searchMatch = true;
     }
   }
-  return false;
+  const tagsMatch =
+    tag === 'any' ||
+    club.categories.some(
+      (item) =>
+        item.toLowerCase().replaceAll(' ', '') ==
+        tag.toLowerCase().replaceAll(' ', '')
+    );
+  return searchMatch && appOpenMatch && appReqMatch && tagsMatch;
 }
 
 const Discover: React.FC = () => {
   const [selectedClub, setSelectedClub] = useState<Club | null>(clubs[0]);
   const [searchValue, setSearchValue] = useState<string>('');
+
+  const [appOpen, setAppOpen] = useState('any');
+  const [appRequired, setAppRequired] = useState('any');
+  const [tag, setTag] = useState('any');
 
   const handleClubClick = (club: Club) => {
     setSelectedClub(club);
@@ -86,27 +136,38 @@ const Discover: React.FC = () => {
           onChange={(e) => setSearchValue(e.target.value)}
           placeholder="Search Clubs"
         />
-        <Dropdowns />
+
+        <Dropdowns
+          appOpen={appOpen}
+          setAppOpen={setAppOpen}
+          appRequired={appRequired}
+          setAppRequired={setAppRequired}
+          tag={tag}
+          setTag={setTag}
+        />
       </div>
 
-      <div className={styles.leftColumn}>
-        <div className={styles.clubList}>
-          {clubs.map((club) =>
-            searchMatches(searchValue, club.name) ? (
-              <ClubTab
-                club={club}
-                handleClubClick={handleClubClick}
-                selectedClub={selectedClub}
-                key={club.id}
-              />
-            ) : (
-              <></>
-            )
-          )}
+      <div className={styles.content}>
+        <div className={styles.leftColumn}>
+          <div className={styles.clubList}>
+            {clubs.map((club) =>
+              checkMatch(searchValue, club, appOpen, appRequired, tag) ? (
+                <ClubTab
+                  club={club}
+                  handleClubClick={handleClubClick}
+                  selectedClub={selectedClub}
+                  key={club.id}
+                />
+              ) : (
+                <></>
+              )
+            )}
+          </div>
         </div>
-      </div>
-      <div className={styles.rightColumn}>
-        {selectedClub && <ClubCard data={selectedClub} />}
+
+        <div className={styles.rightColumn}>
+          {selectedClub && <ClubCard data={selectedClub} />}
+        </div>
       </div>
     </div>
   );
