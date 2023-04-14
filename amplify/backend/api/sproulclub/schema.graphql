@@ -9,7 +9,7 @@ type Branch {
   description: String
 }
 
-type Clubs @model @auth(rules: [{ allow: public }]) {
+type Clubs @model @auth(rules: [{allow: public}]) {
   id: ID!
   name: String
   abbreviation: String
@@ -31,3 +31,4 @@ type Clubs @model @auth(rules: [{ allow: public }]) {
   email: String
   recruitingSeasons: RecruitingSeason
 }
+ 
