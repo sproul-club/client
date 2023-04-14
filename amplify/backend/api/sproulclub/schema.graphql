@@ -1,7 +1,7 @@
 type RecruitingSeason {
   isActive: Boolean
-  startTimestamp: String
-  endTimestamp: String
+  startTimestamp: AWSDateTime
+  endTimestamp: AWSDateTime
 }
 
 type Branch {
@@ -17,7 +17,7 @@ type Clubs @model @auth(rules: [{ allow: public }]) {
   profilePhoto: String
   headingPhoto: String
   isApplicationOpen: Boolean
-  isApplicationRequired: Branch
+  isApplicationRequired: Boolean
   categories: [String]
   numMembers: Int
   yearFounded: String

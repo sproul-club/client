@@ -20,6 +20,7 @@ export declare type ClubsUpdateFormInputValues = {
     profilePhoto?: string;
     headingPhoto?: string;
     isApplicationOpen?: boolean;
+    isApplicationRequired?: boolean;
     categories?: string[];
     numMembers?: number;
     yearFounded?: string;
@@ -38,6 +39,7 @@ export declare type ClubsUpdateFormValidationValues = {
     profilePhoto?: ValidationFunction<string>;
     headingPhoto?: ValidationFunction<string>;
     isApplicationOpen?: ValidationFunction<boolean>;
+    isApplicationRequired?: ValidationFunction<boolean>;
     categories?: ValidationFunction<string>;
     numMembers?: ValidationFunction<number>;
     yearFounded?: ValidationFunction<string>;
@@ -58,6 +60,7 @@ export declare type ClubsUpdateFormOverridesProps = {
     profilePhoto?: PrimitiveOverrideProps<TextFieldProps>;
     headingPhoto?: PrimitiveOverrideProps<TextFieldProps>;
     isApplicationOpen?: PrimitiveOverrideProps<SwitchFieldProps>;
+    isApplicationRequired?: PrimitiveOverrideProps<SwitchFieldProps>;
     categories?: PrimitiveOverrideProps<TextFieldProps>;
     numMembers?: PrimitiveOverrideProps<TextFieldProps>;
     yearFounded?: PrimitiveOverrideProps<TextFieldProps>;

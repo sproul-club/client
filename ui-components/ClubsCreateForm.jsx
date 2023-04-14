@@ -199,6 +199,7 @@ export default function ClubsCreateForm(props) {
     profilePhoto: "",
     headingPhoto: "",
     isApplicationOpen: false,
+    isApplicationRequired: false,
     categories: [],
     numMembers: "",
     yearFounded: "",
@@ -226,6 +227,9 @@ export default function ClubsCreateForm(props) {
   const [isApplicationOpen, setIsApplicationOpen] = React.useState(
     initialValues.isApplicationOpen
   );
+  const [isApplicationRequired, setIsApplicationRequired] = React.useState(
+    initialValues.isApplicationRequired
+  );
   const [categories, setCategories] = React.useState(initialValues.categories);
   const [numMembers, setNumMembers] = React.useState(initialValues.numMembers);
   const [yearFounded, setYearFounded] = React.useState(
@@ -246,6 +250,7 @@ export default function ClubsCreateForm(props) {
     setProfilePhoto(initialValues.profilePhoto);
     setHeadingPhoto(initialValues.headingPhoto);
     setIsApplicationOpen(initialValues.isApplicationOpen);
+    setIsApplicationRequired(initialValues.isApplicationRequired);
     setCategories(initialValues.categories);
     setCurrentCategoriesValue("");
     setNumMembers(initialValues.numMembers);
@@ -269,6 +274,7 @@ export default function ClubsCreateForm(props) {
     profilePhoto: [],
     headingPhoto: [],
     isApplicationOpen: [],
+    isApplicationRequired: [],
     categories: [],
     numMembers: [],
     yearFounded: [],
@@ -312,6 +318,7 @@ export default function ClubsCreateForm(props) {
           profilePhoto,
           headingPhoto,
           isApplicationOpen,
+          isApplicationRequired,
           categories,
           numMembers,
           yearFounded,
@@ -382,6 +389,7 @@ export default function ClubsCreateForm(props) {
               profilePhoto,
               headingPhoto,
               isApplicationOpen,
+              isApplicationRequired,
               categories,
               numMembers,
               yearFounded,
@@ -421,6 +429,7 @@ export default function ClubsCreateForm(props) {
               profilePhoto,
               headingPhoto,
               isApplicationOpen,
+              isApplicationRequired,
               categories,
               numMembers,
               yearFounded,
@@ -460,6 +469,7 @@ export default function ClubsCreateForm(props) {
               profilePhoto,
               headingPhoto,
               isApplicationOpen,
+              isApplicationRequired,
               categories,
               numMembers,
               yearFounded,
@@ -499,6 +509,7 @@ export default function ClubsCreateForm(props) {
               profilePhoto: value,
               headingPhoto,
               isApplicationOpen,
+              isApplicationRequired,
               categories,
               numMembers,
               yearFounded,
@@ -538,6 +549,7 @@ export default function ClubsCreateForm(props) {
               profilePhoto,
               headingPhoto: value,
               isApplicationOpen,
+              isApplicationRequired,
               categories,
               numMembers,
               yearFounded,
@@ -577,6 +589,7 @@ export default function ClubsCreateForm(props) {
               profilePhoto,
               headingPhoto,
               isApplicationOpen: value,
+              isApplicationRequired,
               categories,
               numMembers,
               yearFounded,
@@ -603,6 +616,48 @@ export default function ClubsCreateForm(props) {
         hasError={errors.isApplicationOpen?.hasError}
         {...getOverrideProps(overrides, "isApplicationOpen")}
       ></SwitchField>
+      <SwitchField
+        label="Is application required"
+        defaultChecked={false}
+        isDisabled={false}
+        isChecked={isApplicationRequired}
+        onChange={(e) => {
+          let value = e.target.checked;
+          if (onChange) {
+            const modelFields = {
+              name,
+              abbreviation,
+              description,
+              profilePhoto,
+              headingPhoto,
+              isApplicationOpen,
+              isApplicationRequired: value,
+              categories,
+              numMembers,
+              yearFounded,
+              website,
+              instagram,
+              linkedin,
+              facebook,
+              twitter,
+              discord,
+              email,
+            };
+            const result = onChange(modelFields);
+            value = result?.isApplicationRequired ?? value;
+          }
+          if (errors.isApplicationRequired?.hasError) {
+            runValidationTasks("isApplicationRequired", value);
+          }
+          setIsApplicationRequired(value);
+        }}
+        onBlur={() =>
+          runValidationTasks("isApplicationRequired", isApplicationRequired)
+        }
+        errorMessage={errors.isApplicationRequired?.errorMessage}
+        hasError={errors.isApplicationRequired?.hasError}
+        {...getOverrideProps(overrides, "isApplicationRequired")}
+      ></SwitchField>
       <ArrayField
         onChange={async (items) => {
           let values = items;
@@ -614,6 +669,7 @@ export default function ClubsCreateForm(props) {
               profilePhoto,
               headingPhoto,
               isApplicationOpen,
+              isApplicationRequired,
               categories: values,
               numMembers,
               yearFounded,
@@ -681,6 +737,7 @@ export default function ClubsCreateForm(props) {
               profilePhoto,
               headingPhoto,
               isApplicationOpen,
+              isApplicationRequired,
               categories,
               numMembers: value,
               yearFounded,
@@ -720,6 +777,7 @@ export default function ClubsCreateForm(props) {
               profilePhoto,
               headingPhoto,
               isApplicationOpen,
+              isApplicationRequired,
               categories,
               numMembers,
               yearFounded: value,
@@ -759,6 +817,7 @@ export default function ClubsCreateForm(props) {
               profilePhoto,
               headingPhoto,
               isApplicationOpen,
+              isApplicationRequired,
               categories,
               numMembers,
               yearFounded,
@@ -798,6 +857,7 @@ export default function ClubsCreateForm(props) {
               profilePhoto,
               headingPhoto,
               isApplicationOpen,
+              isApplicationRequired,
               categories,
               numMembers,
               yearFounded,
@@ -837,6 +897,7 @@ export default function ClubsCreateForm(props) {
               profilePhoto,
               headingPhoto,
               isApplicationOpen,
+              isApplicationRequired,
               categories,
               numMembers,
               yearFounded,
@@ -876,6 +937,7 @@ export default function ClubsCreateForm(props) {
               profilePhoto,
               headingPhoto,
               isApplicationOpen,
+              isApplicationRequired,
               categories,
               numMembers,
               yearFounded,
@@ -915,6 +977,7 @@ export default function ClubsCreateForm(props) {
               profilePhoto,
               headingPhoto,
               isApplicationOpen,
+              isApplicationRequired,
               categories,
               numMembers,
               yearFounded,
@@ -954,6 +1017,7 @@ export default function ClubsCreateForm(props) {
               profilePhoto,
               headingPhoto,
               isApplicationOpen,
+              isApplicationRequired,
               categories,
               numMembers,
               yearFounded,
@@ -993,6 +1057,7 @@ export default function ClubsCreateForm(props) {
               profilePhoto,
               headingPhoto,
               isApplicationOpen,
+              isApplicationRequired,
               categories,
               numMembers,
               yearFounded,
