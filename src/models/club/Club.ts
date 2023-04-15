@@ -21,15 +21,6 @@ export interface Club {
   // Time-related
   yearFounded: string;
   branches: Branch[];
-
-  // Socials
-  website?: string;
-  instagram?: string;
-  linkedin?: string;
-  facebook?: string;
-  twitter?: string;
-  discord?: string;
-  email?: string;
 }
 
 export default Club;

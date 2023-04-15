@@ -3,7 +3,17 @@ import Button from '../../components/ui/Button';
 
 import styles from './Landing.module.scss';
 
+import { DataStore } from '@aws-amplify/datastore';
+import { Clubs } from '../../models';
+
 export default function Landing() {
+  const getData = async () => {
+    const models = await DataStore.query(Clubs);
+    console.log(models);
+  };
+
+  getData();
+
   return (
     <div className={styles['container']}>
       <div className={styles['content']}>
