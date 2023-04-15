@@ -5,7 +5,7 @@
  **************************************************************************/
 
 /* eslint-disable */
-import * as React from 'react';
+import * as React from "react";
 import {
   Badge,
   Button,
@@ -18,11 +18,11 @@ import {
   Text,
   TextField,
   useTheme,
-} from '@aws-amplify/ui-react';
-import { getOverrideProps } from '@aws-amplify/ui-react/internal';
-import { Clubs } from '../../models';
-import { fetchByPath, validateField } from './utils';
-import { DataStore } from 'aws-amplify';
+} from "@aws-amplify/ui-react";
+import { getOverrideProps } from "@aws-amplify/ui-react/internal";
+import { Clubs } from "../models";
+import { fetchByPath, validateField } from "./utils";
+import { DataStore } from "aws-amplify";
 function ArrayField({
   items = [],
   onChange,
@@ -61,7 +61,7 @@ function ArrayField({
     if (
       currentFieldValue !== undefined &&
       currentFieldValue !== null &&
-      currentFieldValue !== '' &&
+      currentFieldValue !== "" &&
       !hasError
     ) {
       const newItems = [...items];
@@ -78,18 +78,18 @@ function ArrayField({
   const arraySection = (
     <React.Fragment>
       {!!items?.length && (
-        <ScrollView height="inherit" width="inherit" maxHeight={'7rem'}>
+        <ScrollView height="inherit" width="inherit" maxHeight={"7rem"}>
           {items.map((value, index) => {
             return (
               <Badge
                 key={index}
                 style={{
-                  cursor: 'pointer',
-                  alignItems: 'center',
+                  cursor: "pointer",
+                  alignItems: "center",
                   marginRight: 3,
                   marginTop: 3,
                   backgroundColor:
-                    index === selectedBadgeIndex ? '#B8CEF9' : '',
+                    index === selectedBadgeIndex ? "#B8CEF9" : "",
                 }}
                 onClick={() => {
                   setSelectedBadgeIndex(index);
@@ -100,7 +100,7 @@ function ArrayField({
                 {getBadgeText ? getBadgeText(value) : value.toString()}
                 <Icon
                   style={{
-                    cursor: 'pointer',
+                    cursor: "pointer",
                     paddingLeft: 3,
                     width: 20,
                     height: 20,
@@ -108,8 +108,8 @@ function ArrayField({
                   viewBox={{ width: 20, height: 20 }}
                   paths={[
                     {
-                      d: 'M10 10l5.09-5.09L10 10l5.09 5.09L10 10zm0 0L4.91 4.91 10 10l-5.09 5.09L10 10z',
-                      stroke: 'black',
+                      d: "M10 10l5.09-5.09L10 10l5.09 5.09L10 10zm0 0L4.91 4.91 10 10l-5.09 5.09L10 10z",
+                      stroke: "black",
                     },
                   ]}
                   ariaLabel="button"
@@ -173,7 +173,7 @@ function ArrayField({
             isDisabled={hasError}
             onClick={addItem}
           >
-            {selectedBadgeIndex !== undefined ? 'Save' : 'Add'}
+            {selectedBadgeIndex !== undefined ? "Save" : "Add"}
           </Button>
         </Flex>
       )}
@@ -181,10 +181,9 @@ function ArrayField({
     </React.Fragment>
   );
 }
-export default function ClubsUpdateForm(props) {
+export default function ClubsCreateForm(props) {
   const {
-    id: idProp,
-    clubs: clubsModelProp,
+    clearOnSuccess = true,
     onSuccess,
     onError,
     onSubmit,
@@ -194,23 +193,23 @@ export default function ClubsUpdateForm(props) {
     ...rest
   } = props;
   const initialValues = {
-    name: '',
-    abbreviation: '',
-    description: '',
-    profilePhoto: '',
-    headingPhoto: '',
+    name: "",
+    abbreviation: "",
+    description: "",
+    profilePhoto: "",
+    headingPhoto: "",
     isApplicationOpen: false,
     isApplicationRequired: false,
     categories: [],
-    numMembers: '',
-    yearFounded: '',
-    website: '',
-    instagram: '',
-    linkedin: '',
-    facebook: '',
-    twitter: '',
-    discord: '',
-    email: '',
+    numMembers: "",
+    yearFounded: "",
+    website: "",
+    instagram: "",
+    linkedin: "",
+    facebook: "",
+    twitter: "",
+    discord: "",
+    email: "",
   };
   const [name, setName] = React.useState(initialValues.name);
   const [abbreviation, setAbbreviation] = React.useState(
@@ -245,42 +244,28 @@ export default function ClubsUpdateForm(props) {
   const [email, setEmail] = React.useState(initialValues.email);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
-    const cleanValues = clubsRecord
-      ? { ...initialValues, ...clubsRecord }
-      : initialValues;
-    setName(cleanValues.name);
-    setAbbreviation(cleanValues.abbreviation);
-    setDescription(cleanValues.description);
-    setProfilePhoto(cleanValues.profilePhoto);
-    setHeadingPhoto(cleanValues.headingPhoto);
-    setIsApplicationOpen(cleanValues.isApplicationOpen);
-    setIsApplicationRequired(cleanValues.isApplicationRequired);
-    setCategories(cleanValues.categories ?? []);
-    setCurrentCategoriesValue('');
-    setNumMembers(cleanValues.numMembers);
-    setYearFounded(cleanValues.yearFounded);
-    setWebsite(cleanValues.website);
-    setInstagram(cleanValues.instagram);
-    setLinkedin(cleanValues.linkedin);
-    setFacebook(cleanValues.facebook);
-    setTwitter(cleanValues.twitter);
-    setDiscord(cleanValues.discord);
-    setEmail(cleanValues.email);
+    setName(initialValues.name);
+    setAbbreviation(initialValues.abbreviation);
+    setDescription(initialValues.description);
+    setProfilePhoto(initialValues.profilePhoto);
+    setHeadingPhoto(initialValues.headingPhoto);
+    setIsApplicationOpen(initialValues.isApplicationOpen);
+    setIsApplicationRequired(initialValues.isApplicationRequired);
+    setCategories(initialValues.categories);
+    setCurrentCategoriesValue("");
+    setNumMembers(initialValues.numMembers);
+    setYearFounded(initialValues.yearFounded);
+    setWebsite(initialValues.website);
+    setInstagram(initialValues.instagram);
+    setLinkedin(initialValues.linkedin);
+    setFacebook(initialValues.facebook);
+    setTwitter(initialValues.twitter);
+    setDiscord(initialValues.discord);
+    setEmail(initialValues.email);
     setErrors({});
   };
-  const [clubsRecord, setClubsRecord] = React.useState(clubsModelProp);
-  React.useEffect(() => {
-    const queryData = async () => {
-      const record = idProp
-        ? await DataStore.query(Clubs, idProp)
-        : clubsModelProp;
-      setClubsRecord(record);
-    };
-    queryData();
-  }, [idProp, clubsModelProp]);
-  React.useEffect(resetStateValues, [clubsRecord]);
   const [currentCategoriesValue, setCurrentCategoriesValue] =
-    React.useState('');
+    React.useState("");
   const categoriesRef = React.createRef();
   const validations = {
     name: [],
@@ -369,17 +354,16 @@ export default function ClubsUpdateForm(props) {
         }
         try {
           Object.entries(modelFields).forEach(([key, value]) => {
-            if (typeof value === 'string' && value.trim() === '') {
+            if (typeof value === "string" && value.trim() === "") {
               modelFields[key] = undefined;
             }
           });
-          await DataStore.save(
-            Clubs.copyOf(clubsRecord, (updated) => {
-              Object.assign(updated, modelFields);
-            })
-          );
+          await DataStore.save(new Clubs(modelFields));
           if (onSuccess) {
             onSuccess(modelFields);
+          }
+          if (clearOnSuccess) {
+            resetStateValues();
           }
         } catch (err) {
           if (onError) {
@@ -387,7 +371,7 @@ export default function ClubsUpdateForm(props) {
           }
         }
       }}
-      {...getOverrideProps(overrides, 'ClubsUpdateForm')}
+      {...getOverrideProps(overrides, "ClubsCreateForm")}
       {...rest}
     >
       <TextField
@@ -421,14 +405,14 @@ export default function ClubsUpdateForm(props) {
             value = result?.name ?? value;
           }
           if (errors.name?.hasError) {
-            runValidationTasks('name', value);
+            runValidationTasks("name", value);
           }
           setName(value);
         }}
-        onBlur={() => runValidationTasks('name', name)}
+        onBlur={() => runValidationTasks("name", name)}
         errorMessage={errors.name?.errorMessage}
         hasError={errors.name?.hasError}
-        {...getOverrideProps(overrides, 'name')}
+        {...getOverrideProps(overrides, "name")}
       ></TextField>
       <TextField
         label="Abbreviation"
@@ -461,14 +445,14 @@ export default function ClubsUpdateForm(props) {
             value = result?.abbreviation ?? value;
           }
           if (errors.abbreviation?.hasError) {
-            runValidationTasks('abbreviation', value);
+            runValidationTasks("abbreviation", value);
           }
           setAbbreviation(value);
         }}
-        onBlur={() => runValidationTasks('abbreviation', abbreviation)}
+        onBlur={() => runValidationTasks("abbreviation", abbreviation)}
         errorMessage={errors.abbreviation?.errorMessage}
         hasError={errors.abbreviation?.hasError}
-        {...getOverrideProps(overrides, 'abbreviation')}
+        {...getOverrideProps(overrides, "abbreviation")}
       ></TextField>
       <TextField
         label="Description"
@@ -501,14 +485,14 @@ export default function ClubsUpdateForm(props) {
             value = result?.description ?? value;
           }
           if (errors.description?.hasError) {
-            runValidationTasks('description', value);
+            runValidationTasks("description", value);
           }
           setDescription(value);
         }}
-        onBlur={() => runValidationTasks('description', description)}
+        onBlur={() => runValidationTasks("description", description)}
         errorMessage={errors.description?.errorMessage}
         hasError={errors.description?.hasError}
-        {...getOverrideProps(overrides, 'description')}
+        {...getOverrideProps(overrides, "description")}
       ></TextField>
       <TextField
         label="Profile photo"
@@ -541,14 +525,14 @@ export default function ClubsUpdateForm(props) {
             value = result?.profilePhoto ?? value;
           }
           if (errors.profilePhoto?.hasError) {
-            runValidationTasks('profilePhoto', value);
+            runValidationTasks("profilePhoto", value);
           }
           setProfilePhoto(value);
         }}
-        onBlur={() => runValidationTasks('profilePhoto', profilePhoto)}
+        onBlur={() => runValidationTasks("profilePhoto", profilePhoto)}
         errorMessage={errors.profilePhoto?.errorMessage}
         hasError={errors.profilePhoto?.hasError}
-        {...getOverrideProps(overrides, 'profilePhoto')}
+        {...getOverrideProps(overrides, "profilePhoto")}
       ></TextField>
       <TextField
         label="Heading photo"
@@ -581,14 +565,14 @@ export default function ClubsUpdateForm(props) {
             value = result?.headingPhoto ?? value;
           }
           if (errors.headingPhoto?.hasError) {
-            runValidationTasks('headingPhoto', value);
+            runValidationTasks("headingPhoto", value);
           }
           setHeadingPhoto(value);
         }}
-        onBlur={() => runValidationTasks('headingPhoto', headingPhoto)}
+        onBlur={() => runValidationTasks("headingPhoto", headingPhoto)}
         errorMessage={errors.headingPhoto?.errorMessage}
         hasError={errors.headingPhoto?.hasError}
-        {...getOverrideProps(overrides, 'headingPhoto')}
+        {...getOverrideProps(overrides, "headingPhoto")}
       ></TextField>
       <SwitchField
         label="Is application open"
@@ -621,16 +605,16 @@ export default function ClubsUpdateForm(props) {
             value = result?.isApplicationOpen ?? value;
           }
           if (errors.isApplicationOpen?.hasError) {
-            runValidationTasks('isApplicationOpen', value);
+            runValidationTasks("isApplicationOpen", value);
           }
           setIsApplicationOpen(value);
         }}
         onBlur={() =>
-          runValidationTasks('isApplicationOpen', isApplicationOpen)
+          runValidationTasks("isApplicationOpen", isApplicationOpen)
         }
         errorMessage={errors.isApplicationOpen?.errorMessage}
         hasError={errors.isApplicationOpen?.hasError}
-        {...getOverrideProps(overrides, 'isApplicationOpen')}
+        {...getOverrideProps(overrides, "isApplicationOpen")}
       ></SwitchField>
       <SwitchField
         label="Is application required"
@@ -663,16 +647,16 @@ export default function ClubsUpdateForm(props) {
             value = result?.isApplicationRequired ?? value;
           }
           if (errors.isApplicationRequired?.hasError) {
-            runValidationTasks('isApplicationRequired', value);
+            runValidationTasks("isApplicationRequired", value);
           }
           setIsApplicationRequired(value);
         }}
         onBlur={() =>
-          runValidationTasks('isApplicationRequired', isApplicationRequired)
+          runValidationTasks("isApplicationRequired", isApplicationRequired)
         }
         errorMessage={errors.isApplicationRequired?.errorMessage}
         hasError={errors.isApplicationRequired?.hasError}
-        {...getOverrideProps(overrides, 'isApplicationRequired')}
+        {...getOverrideProps(overrides, "isApplicationRequired")}
       ></SwitchField>
       <ArrayField
         onChange={async (items) => {
@@ -701,16 +685,16 @@ export default function ClubsUpdateForm(props) {
             values = result?.categories ?? values;
           }
           setCategories(values);
-          setCurrentCategoriesValue('');
+          setCurrentCategoriesValue("");
         }}
         currentFieldValue={currentCategoriesValue}
-        label={'Categories'}
+        label={"Categories"}
         items={categories}
         hasError={errors?.categories?.hasError}
         errorMessage={errors?.categories?.errorMessage}
         setFieldValue={setCurrentCategoriesValue}
         inputFieldRef={categoriesRef}
-        defaultFieldValue={''}
+        defaultFieldValue={""}
       >
         <TextField
           label="Categories"
@@ -720,18 +704,18 @@ export default function ClubsUpdateForm(props) {
           onChange={(e) => {
             let { value } = e.target;
             if (errors.categories?.hasError) {
-              runValidationTasks('categories', value);
+              runValidationTasks("categories", value);
             }
             setCurrentCategoriesValue(value);
           }}
           onBlur={() =>
-            runValidationTasks('categories', currentCategoriesValue)
+            runValidationTasks("categories", currentCategoriesValue)
           }
           errorMessage={errors.categories?.errorMessage}
           hasError={errors.categories?.hasError}
           ref={categoriesRef}
           labelHidden={true}
-          {...getOverrideProps(overrides, 'categories')}
+          {...getOverrideProps(overrides, "categories")}
         ></TextField>
       </ArrayField>
       <TextField
@@ -769,14 +753,14 @@ export default function ClubsUpdateForm(props) {
             value = result?.numMembers ?? value;
           }
           if (errors.numMembers?.hasError) {
-            runValidationTasks('numMembers', value);
+            runValidationTasks("numMembers", value);
           }
           setNumMembers(value);
         }}
-        onBlur={() => runValidationTasks('numMembers', numMembers)}
+        onBlur={() => runValidationTasks("numMembers", numMembers)}
         errorMessage={errors.numMembers?.errorMessage}
         hasError={errors.numMembers?.hasError}
-        {...getOverrideProps(overrides, 'numMembers')}
+        {...getOverrideProps(overrides, "numMembers")}
       ></TextField>
       <TextField
         label="Year founded"
@@ -809,14 +793,14 @@ export default function ClubsUpdateForm(props) {
             value = result?.yearFounded ?? value;
           }
           if (errors.yearFounded?.hasError) {
-            runValidationTasks('yearFounded', value);
+            runValidationTasks("yearFounded", value);
           }
           setYearFounded(value);
         }}
-        onBlur={() => runValidationTasks('yearFounded', yearFounded)}
+        onBlur={() => runValidationTasks("yearFounded", yearFounded)}
         errorMessage={errors.yearFounded?.errorMessage}
         hasError={errors.yearFounded?.hasError}
-        {...getOverrideProps(overrides, 'yearFounded')}
+        {...getOverrideProps(overrides, "yearFounded")}
       ></TextField>
       <TextField
         label="Website"
@@ -849,14 +833,14 @@ export default function ClubsUpdateForm(props) {
             value = result?.website ?? value;
           }
           if (errors.website?.hasError) {
-            runValidationTasks('website', value);
+            runValidationTasks("website", value);
           }
           setWebsite(value);
         }}
-        onBlur={() => runValidationTasks('website', website)}
+        onBlur={() => runValidationTasks("website", website)}
         errorMessage={errors.website?.errorMessage}
         hasError={errors.website?.hasError}
-        {...getOverrideProps(overrides, 'website')}
+        {...getOverrideProps(overrides, "website")}
       ></TextField>
       <TextField
         label="Instagram"
@@ -889,14 +873,14 @@ export default function ClubsUpdateForm(props) {
             value = result?.instagram ?? value;
           }
           if (errors.instagram?.hasError) {
-            runValidationTasks('instagram', value);
+            runValidationTasks("instagram", value);
           }
           setInstagram(value);
         }}
-        onBlur={() => runValidationTasks('instagram', instagram)}
+        onBlur={() => runValidationTasks("instagram", instagram)}
         errorMessage={errors.instagram?.errorMessage}
         hasError={errors.instagram?.hasError}
-        {...getOverrideProps(overrides, 'instagram')}
+        {...getOverrideProps(overrides, "instagram")}
       ></TextField>
       <TextField
         label="Linkedin"
@@ -929,14 +913,14 @@ export default function ClubsUpdateForm(props) {
             value = result?.linkedin ?? value;
           }
           if (errors.linkedin?.hasError) {
-            runValidationTasks('linkedin', value);
+            runValidationTasks("linkedin", value);
           }
           setLinkedin(value);
         }}
-        onBlur={() => runValidationTasks('linkedin', linkedin)}
+        onBlur={() => runValidationTasks("linkedin", linkedin)}
         errorMessage={errors.linkedin?.errorMessage}
         hasError={errors.linkedin?.hasError}
-        {...getOverrideProps(overrides, 'linkedin')}
+        {...getOverrideProps(overrides, "linkedin")}
       ></TextField>
       <TextField
         label="Facebook"
@@ -969,14 +953,14 @@ export default function ClubsUpdateForm(props) {
             value = result?.facebook ?? value;
           }
           if (errors.facebook?.hasError) {
-            runValidationTasks('facebook', value);
+            runValidationTasks("facebook", value);
           }
           setFacebook(value);
         }}
-        onBlur={() => runValidationTasks('facebook', facebook)}
+        onBlur={() => runValidationTasks("facebook", facebook)}
         errorMessage={errors.facebook?.errorMessage}
         hasError={errors.facebook?.hasError}
-        {...getOverrideProps(overrides, 'facebook')}
+        {...getOverrideProps(overrides, "facebook")}
       ></TextField>
       <TextField
         label="Twitter"
@@ -1009,14 +993,14 @@ export default function ClubsUpdateForm(props) {
             value = result?.twitter ?? value;
           }
           if (errors.twitter?.hasError) {
-            runValidationTasks('twitter', value);
+            runValidationTasks("twitter", value);
           }
           setTwitter(value);
         }}
-        onBlur={() => runValidationTasks('twitter', twitter)}
+        onBlur={() => runValidationTasks("twitter", twitter)}
         errorMessage={errors.twitter?.errorMessage}
         hasError={errors.twitter?.hasError}
-        {...getOverrideProps(overrides, 'twitter')}
+        {...getOverrideProps(overrides, "twitter")}
       ></TextField>
       <TextField
         label="Discord"
@@ -1049,14 +1033,14 @@ export default function ClubsUpdateForm(props) {
             value = result?.discord ?? value;
           }
           if (errors.discord?.hasError) {
-            runValidationTasks('discord', value);
+            runValidationTasks("discord", value);
           }
           setDiscord(value);
         }}
-        onBlur={() => runValidationTasks('discord', discord)}
+        onBlur={() => runValidationTasks("discord", discord)}
         errorMessage={errors.discord?.errorMessage}
         hasError={errors.discord?.hasError}
-        {...getOverrideProps(overrides, 'discord')}
+        {...getOverrideProps(overrides, "discord")}
       ></TextField>
       <TextField
         label="Email"
@@ -1089,42 +1073,38 @@ export default function ClubsUpdateForm(props) {
             value = result?.email ?? value;
           }
           if (errors.email?.hasError) {
-            runValidationTasks('email', value);
+            runValidationTasks("email", value);
           }
           setEmail(value);
         }}
-        onBlur={() => runValidationTasks('email', email)}
+        onBlur={() => runValidationTasks("email", email)}
         errorMessage={errors.email?.errorMessage}
         hasError={errors.email?.hasError}
-        {...getOverrideProps(overrides, 'email')}
+        {...getOverrideProps(overrides, "email")}
       ></TextField>
       <Flex
         justifyContent="space-between"
-        {...getOverrideProps(overrides, 'CTAFlex')}
+        {...getOverrideProps(overrides, "CTAFlex")}
       >
         <Button
-          children="Reset"
+          children="Clear"
           type="reset"
           onClick={(event) => {
             event.preventDefault();
             resetStateValues();
           }}
-          isDisabled={!(idProp || clubsModelProp)}
-          {...getOverrideProps(overrides, 'ResetButton')}
+          {...getOverrideProps(overrides, "ClearButton")}
         ></Button>
         <Flex
           gap="15px"
-          {...getOverrideProps(overrides, 'RightAlignCTASubFlex')}
+          {...getOverrideProps(overrides, "RightAlignCTASubFlex")}
         >
           <Button
             children="Submit"
             type="submit"
             variation="primary"
-            isDisabled={
-              !(idProp || clubsModelProp) ||
-              Object.values(errors).some((e) => e?.hasError)
-            }
-            {...getOverrideProps(overrides, 'SubmitButton')}
+            isDisabled={Object.values(errors).some((e) => e?.hasError)}
+            {...getOverrideProps(overrides, "SubmitButton")}
           ></Button>
         </Flex>
       </Flex>

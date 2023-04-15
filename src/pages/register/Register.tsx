@@ -3,7 +3,7 @@ import Footer from '../../components/layout/Footer';
 import RegisterForm from './components/RegisterForm';
 import styles from './Register.module.scss';
 
-import ClubsCreateForm from '../ui-components/ClubsCreateForm';
+import ClubsCreateForm from '../../ui-components/ClubsCreateForm';
 
 const Register = () => {
   const handleSubmit = (data: any) => {};
