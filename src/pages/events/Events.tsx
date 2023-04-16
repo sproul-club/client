@@ -119,6 +119,17 @@ export default function Events({ events, clubs, users }: Props) {
       }
     });
   }, [])
+  const tagChange = useCallback((event) => {
+    const query = event.target.value
+    $(`.${styles.event}`).each(function (i, item) {
+      var tags = $(this).find(`.${styles.tagList}`).html().toLowerCase()
+      if (tags.includes(query)) {
+        $(item).css("display", "flex")
+      } else {
+        $(item).css("display", "none")
+      }
+    });
+  }, [])
 
 
   //TODO: add event to calendar
@@ -168,11 +179,12 @@ export default function Events({ events, clubs, users }: Props) {
               <option value="afternoon">Afternoon</option>
               <option value="evening">Evening</option>
             </select>
-            <select className={styles.tagsDropdown} name="tags" id="tags">
+            <select className={styles.tagsDropdown} name="tags" id="tags" onChange={tagChange}>
               <option value="" disabled selected>Tags</option>
               <option value="design">Design</option>
               <option value="technology">Technology</option>
               <option value="social-good">Social Good</option>
+              <option value="pre-professional">Pre-Professional</option>
             </select>
           </div>
         </div>
