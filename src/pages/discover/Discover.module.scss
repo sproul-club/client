@@ -140,13 +140,13 @@
 
 //DISCOVER 2
 .container {
-  position: absolute;
   width: 100%;
   top: 90px;
   height: 500px;
   display: flex;
   background-image: url('discover_bg.png');
   align-items: center;
+  justify-content: center;
   flex-direction: column;
 }
 
