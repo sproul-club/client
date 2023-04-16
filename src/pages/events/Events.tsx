@@ -86,6 +86,19 @@ export default function Events({ events, clubs, users }: Props) {
   // TODO: clicking event to expand
 
   // TODO: filter functionality
+  // date filter
+  const dateChange = useCallback((event) => {
+    const query = event.target.value
+    $(`.${styles.event}`).each(function (i, item) {
+      var monthAbbrev = $(this).find(`#date`).html().slice(0, 3)
+      if (searchMatches(monthAbbrev, query)) {
+        $(item).css("display", "flex")
+      } else {
+        $(item).css("display", "none")
+      }
+    });
+  }, [])
+
 
   //TODO: add event to calendar
 
@@ -109,8 +122,20 @@ export default function Events({ events, clubs, users }: Props) {
             onChange={onChange}
           />
           <div className={styles.dropdowns}>
-            <select className={styles.dateDropdown} name="date" id="date">
+            <select className={styles.dateDropdown} name="date" id="date" onChange={dateChange}>
               <option value="" disabled selected>Date</option>
+              <option value="January">January</option>
+              <option value="February">February</option>
+              <option value="March">March</option>
+              <option value="April">April</option>
+              <option value="May">May</option>
+              <option value="June">June</option>
+              <option value="July">July</option>
+              <option value="August">August</option>
+              <option value="September">September</option>
+              <option value="October">October</option>
+              <option value="November">November</option>
+              <option value="December">December</option>
             </select>
             <select className={styles.timeDropdown} name="time" id="time">
               <option value="" disabled selected>Time</option>
@@ -142,7 +167,7 @@ export default function Events({ events, clubs, users }: Props) {
                     <div className={styles.iconList}>
                       <div className={styles.meetingItem}>
                         <Image src={calendar} alt="calendar" width={16} height={16} />
-                        <div className={styles.text}>{months[start.getMonth()]} {start.getDay()}</div>
+                        <div className={styles.text} id='date'>{months[start.getMonth()]} {start.getDay()}</div>
                       </div>
                       <div className={styles.meetingItem}>
                         <Image src={clock} alt="clock" width={16} height={16} />
@@ -198,7 +223,7 @@ export default function Events({ events, clubs, users }: Props) {
                   ))}
                 </div>
                 <div className={styles.linksTitle}>Links</div>
-                {/* TODO: make links functional */}
+
                 {events[1].clubHosts.map((clubID) => {
                   var club = clubs.find(item => item.id === clubID)
                   var website = 'https://' + club?.website
