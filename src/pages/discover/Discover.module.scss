@@ -1,7 +1,7 @@
 .discover {
   display: flex;
-  flex-wrap: wrap;
-  margin: 2% 2% 0 2%;
+  flex-direction: column;
+  margin: 1rem 1rem 0 1rem;
 }
 
 .searchparams {
@@ -12,36 +12,43 @@
 .droprow {
   display: flex;
   height: 49px;
-  width: 50%;
+  width: 25%;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
+  margin-left: 0.5rem;
 }
 
 .searchbar {
   box-sizing: border-box;
   width: 30%;
-  margin-bottom: 20px;
+  margin-right: 0.5rem;
   height: 49px;
   border: 0.5px solid #000000;
   border-radius: 10px;
-  padding-left: 20px;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
 }
-.innerLeft {
-  border: 1px solid #ccc;
-  border-radius: 5px;
+
+.content {
+  display: flex;
+  flex-direction: row;
+  margin-right: 1rem;
 }
 
 .leftColumn {
   flex: 0 0 30%;
-  max-width: 30%;
+  border: 1px solid #464444;
+  border-radius: 10px;
 }
 
 .rightColumn {
-  flex: 1;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  flex: 0 0 70%;
+  border: 1px solid #464444;
+  border-radius: 10px;
   padding-top: 1rem;
   margin-left: 1rem;
+  margin-right: 1rem;
+  // margin: 0.5rem;
 }
 
 .clubList {
@@ -51,17 +58,16 @@
 
 .clubListItem {
   display: flex;
+  position: relative;
   padding: 1rem;
   border-bottom: 1px solid #ccc;
+  border-radius: 10px;
   cursor: pointer;
+  overflow: hidden;
 
   &:hover {
     background-color: #f0f0f0;
   }
-}
-
-.active {
-  background-color: #eaf6ff;
 }
 
 .clubImage {
@@ -78,22 +84,16 @@
 }
 
 .clubName {
-  margin: 0;
+  margin: 0 1rem 0.5rem 0;
   font-size: 1.2rem;
   font-weight: bold;
+  word-wrap: break-word;
 }
 
 .clubTags {
   display: flex;
   font-size: 0.9rem;
   margin-bottom: 0.5rem;
-}
-
-.tag {
-  padding: 2px 8px;
-  border-radius: 12px;
-  border: 1px solid #3498db;
-  color: #3498db;
 }
 
 .clubStatus {
@@ -109,6 +109,20 @@
 .closedStatus {
   font-weight: bold;
   color: red;
+}
+
+.separator {
+  margin: 0 5px;
+}
+
+.heartIcon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.active {
+  background-color: #eaf6ff;
 }
 
 .dropdown {

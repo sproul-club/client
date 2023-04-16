@@ -2,6 +2,15 @@ import React from 'react';
 import Link from 'next/link';
 import styles from './Card.module.scss';
 import Club from '../../models/club/Club';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEnvelope, faGlobe } from '@fortawesome/free-solid-svg-icons';
+import {
+  faFacebookF,
+  faInstagram,
+  faTwitter,
+  faLinkedin,
+  faDiscord,
+} from '@fortawesome/free-brands-svg-icons';
 
 interface ClubCardProps {
   data: Club;
@@ -12,12 +21,16 @@ const ClubCard: React.FC<ClubCardProps> = ({ data }) => {
   const timeline = data.isApplicationOpen ? 'Open' : 'Closed';
   // TODO: add icons
   const socialLinks = [
-    { platform: 'Website', href: data.website },
-    { platform: 'Instagram', href: data.instagram },
-    { platform: 'LinkedIn', href: data.linkedin },
-    { platform: 'Facebook', href: data.facebook },
-    { platform: 'Twitter', href: data.twitter },
-    { platform: 'Discord', href: data.discord },
+    { platform: 'Instagram', href: data.instagram, icon: faInstagram },
+    { platform: 'LinkedIn', href: data.linkedin, icon: faLinkedin },
+    { platform: 'Facebook', href: data.facebook, icon: faFacebookF },
+    { platform: 'Twitter', href: data.twitter, icon: faTwitter },
+    { platform: 'Discord', href: data.discord, icon: faDiscord },
+    {
+      platform: 'Email',
+      href: data.email ? `mailto:${data.email}` : undefined,
+      icon: faEnvelope,
+    },
   ].filter((link) => link.href);
 
   return (
@@ -103,13 +116,12 @@ const ClubCard: React.FC<ClubCardProps> = ({ data }) => {
             ))}
           </div>
           <h3>Links</h3>
-          <div className={styles.links}>
-            {socialLinks.map(({ platform, href }) => (
-              <Link
-                key={platform}
-                href={'https://www.instagram.com/webatberkeley'}
-              >
-                {platform}
+          <div className={styles.icons}>
+            {socialLinks.map(({ platform, href, icon }) => (
+              <Link key={platform} href={href!}>
+                <a className={styles.iconLink} title={platform}>
+                  <FontAwesomeIcon icon={icon} className={styles.socialIcon} />
+                </a>
               </Link>
             ))}
           </div>

@@ -3,7 +3,11 @@ body {
   position: relative;
   padding: 0;
   margin: 0;
-  font-family: 'Montserrat';
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 25px;
 }
 
 body.light {
@@ -20,7 +24,7 @@ body.light {
   --red: red;
 
   background-color: var(--bg-0);
-  color: var(--text-1);
+  color: var(--text-0);
 }
 
 body.dark {
@@ -46,4 +50,20 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+h2 {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 41px;
+  letter-spacing: 0em;
+  color: black;
+}
+
+h3 {
+  font-size: 19px;
+  font-weight: 800;
+  line-height: 25px;
+  letter-spacing: 0em;
+  color: black;
 }

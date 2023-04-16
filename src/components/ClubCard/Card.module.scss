@@ -7,51 +7,52 @@
 .header {
   display: flex;
   flex-direction: column;
-  margin-bottom: 1.5rem;
-}
 
-.nameAndButtons {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1.5rem;
-}
+  .nameAndButtons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px;
 
-.clubName {
-  margin: 0;
-  font-size: 1.5rem;
-  font-weight: bold;
-}
+    .clubName {
+      margin: 0 0.5rem 0 0;
+    }
 
-.buttons {
-  display: flex;
-  gap: 1rem;
+    .buttons {
+      display: flex;
+      gap: 1rem;
 
-  button {
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    cursor: pointer;
+      button {
+        padding: 0.5rem 1.25rem;
+        font-size: 1rem;
+        border-radius: 10px;
+        border: 1px solid var(--primary-dark);
+        cursor: pointer;
+        color: var(--primary-dark);
+        background-color: var(--bg-0);
 
-    &:hover {
-      background-color: #f0f0f0;
+        &:hover {
+          background-color: var(--bg-1);
+        }
+      }
     }
   }
 
   .applyButton {
-    background-color: #3d6ea8;
+    background-color: var(--primary-dark);
     color: #fff;
 
     &:hover {
-      background-color: #3d6ea8;
+      background-color: var(--primary);
     }
   }
 }
 
 .details {
   display: flex;
-  gap: 1rem;
+  gap: 1.5rem;
+  font-size: 16px;
+  margin-bottom: 1.5rem;
 
   div {
     display: flex;
@@ -72,7 +73,7 @@
 
 .leftColumn {
   flex: 0 0 80%;
-  padding-right: 1rem;
+  padding-right: 44px;
 }
 
 .rightColumn {
@@ -85,7 +86,6 @@
 
   h3 {
     margin: 0 0 0.5rem 0;
-    font-size: 1.2rem;
   }
 }
 
@@ -99,22 +99,21 @@
     display: inline-block;
     padding: 0.2rem 0.5rem;
     border-radius: 12px;
-    border: 1px solid #3d6ea8;
+    border: 1px solid var(--primary-dark);
+    color: var(--primary-dark);
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 18px;
+    display: flex;
+    align-items: center;
   }
-}
-
-.links {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
 }
 
 .icons {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  justify-content: flex-end;
+  justify-content: flex-start;
 
   .icon {
     width: 25px;
