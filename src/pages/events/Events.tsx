@@ -151,11 +151,11 @@ export default function Events({ events, clubs, users }: Props) {
     <div className={styles.container}>
       <div className={styles.categoriesTitle}>Featured club categories</div>
       <div className={styles.categories}>
-        <div className={styles.category} onClick={categoryChange} value="design">Design</div>
-        <div className={styles.category} onClick={categoryChange} value="pre-professional">Pre-Professional</div>
-        <div className={styles.category} onClick={categoryChange} value="social good">Social Good</div>
-        <div className={styles.category} onClick={categoryChange} value="sports & rec">Sports & Rec</div>
-        <div className={styles.category} onClick={categoryChange} value="computer science">Computer Science</div>
+        <div className={styles.category} onClick={categoryChange}>Design</div>
+        <div className={styles.category} onClick={categoryChange}>Pre-Professional</div>
+        <div className={styles.category} onClick={categoryChange}>Social Good</div>
+        <div className={styles.category} onClick={categoryChange}>Sports & Rec</div>
+        <div className={styles.category} onClick={categoryChange}>Computer Science</div>
       </div>
       <div className={styles.body}>
         <div className={styles.search}>
