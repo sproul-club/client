@@ -28,28 +28,31 @@ export default function Events({ events, clubs, users }: Props) {
     { id: 'innovate', name: 'Innovate Design', abbreviation: '', description: '', profilePhoto: '', headingPhoto: '', isApplicationOpen: true, isApplicationRequired: true, categories: [], events: ['2'], recruitingSeasons: [], numMembers: 0, yearFounded: '2023', branches: [], website: 'www.sproul.club', email: 'sproulclub@gmail.com' }
   ]
   events = [
-    { id: '1', name: 'Test', description: 'this is the description', startTimestamp: '2023-10-13T17:30:00Z', endTimestamp: '2023-10-13T18:30:00Z', clubHosts: [], userHosts: [], location: 'Wheeler 150', meetingURI: '', tags: ['a', 'b'], image: '' },
-    { id: '2', name: 'Innovative Design Workshop', description: 'this is the description', startTimestamp: '2023-10-13T17:30:00Z', endTimestamp: '2023-10-13T18:30:00Z', clubHosts: ['innovate'], userHosts: ['jane'], location: 'Wheeler 150', meetingURI: '', tags: ['Design', 'Technology', 'Social Good'], image: '' },
-    { id: '3', name: 'Innovative Design Workshop', description: 'this is the description', startTimestamp: '2023-10-13T17:30:00Z', endTimestamp: '2023-10-13T18:30:00Z', clubHosts: [], userHosts: [], location: 'Wheeler 150', meetingURI: '', tags: ['Design', 'Technology', 'Social Good'], image: '' },
-    { id: '4', name: 'Innovative Design Workshop', description: 'this is the description', startTimestamp: '2023-10-13T17:30:00Z', endTimestamp: '2023-10-13T18:30:00Z', clubHosts: [], userHosts: [], location: 'Wheeler 150', meetingURI: '', tags: ['Design', 'Technology', 'Social Good'], image: '' },
-    { id: '5', name: 'Innovative Design Workshop', description: 'this is the description', startTimestamp: '2023-10-13T17:30:00Z', endTimestamp: '2023-10-13T18:30:00Z', clubHosts: [], userHosts: [], location: 'Wheeler 150', meetingURI: '', tags: ['Design', 'Technology', 'Social Good'], image: '' },
-    { id: '6', name: 'Innovative Design Workshop', description: 'this is the description', startTimestamp: '2023-10-13T17:30:00Z', endTimestamp: '2023-10-13T18:30:00Z', clubHosts: [], userHosts: [], location: 'Wheeler 150', meetingURI: '', tags: ['Design', 'Technology', 'Social Good'], image: '' }
+    { id: '1', name: 'Test', description: 'this is the description', startTimestamp: '2023-10-13T17:30:00', endTimestamp: '2023-10-13T18:30:00', clubHosts: [], userHosts: [], location: 'Wheeler 150', meetingURI: '', tags: ['a', 'b'], image: '' },
+    { id: '2', name: 'Innovative Design Workshop', description: 'this is the description', startTimestamp: '2023-10-13T17:30:00', endTimestamp: '2023-10-13T18:30:00', clubHosts: ['innovate'], userHosts: ['jane'], location: 'Wheeler 150', meetingURI: '', tags: ['Design', 'Technology', 'Social Good'], image: '' },
+    { id: '3', name: 'Innovative Design Workshop', description: 'this is the description', startTimestamp: '2023-10-13T17:30:00', endTimestamp: '2023-10-13T18:30:00', clubHosts: [], userHosts: [], location: 'Wheeler 150', meetingURI: '', tags: ['Design', 'Technology', 'Social Good'], image: '' },
+    { id: '4', name: 'Innovative Design Workshop', description: 'this is the description', startTimestamp: '2023-10-13T17:30:00', endTimestamp: '2023-10-13T18:30:00', clubHosts: [], userHosts: [], location: 'Wheeler 150', meetingURI: '', tags: ['Design', 'Technology', 'Social Good'], image: '' },
+    { id: '5', name: 'Innovative Design Workshop', description: 'this is the description', startTimestamp: '2023-10-13T17:30:00', endTimestamp: '2023-10-13T18:30:00', clubHosts: [], userHosts: [], location: 'Wheeler 150', meetingURI: '', tags: ['Design', 'Technology', 'Social Good'], image: '' },
+    { id: '6', name: 'Innovative Design Workshop', description: 'this is the description', startTimestamp: '2023-10-13T17:30:00', endTimestamp: '2023-10-13T18:30:00', clubHosts: [], userHosts: [], location: 'Wheeler 150', meetingURI: '', tags: ['Design', 'Technology', 'Social Good'], image: '' }
 
   ]
   users = [
     { id: 'jane', firstName: 'Jane', lastName: 'Doe', nickname: 'Jane', pronouns: 'she/her', race: '', ethnicity: '', profilePhotoURI: '', majors: [], minors: [], emailPersonal: 'test@gmail.com', emailSchool: 'testschool@gmail.com', phone: '', linkedin: '', website: '', github: '', twitter: '', createdAt: '', interests: [], recommendations: [], favorites: [], applications: [], roles: [] }
   ]
   var months = ['Jan.', 'Feb.', 'Mar.', 'Apr.', 'May', 'Jun.', 'Jul.', 'Aug.', 'Sep.', 'Oct.', 'Nov.', 'Dec.']
+  var timeOfDay = ['AM', 'PM']
 
   // TODO: toggle favorite heart
   const toggleFavorite = useCallback((event) => {
-    console.log(event.target.classList)
+    console.log($(this).html())
     if (event.target.classList.contains(`.${styles.heartOutline}`)) {
-      event.target.classList.add(`.${styles.heartFilled}`);
-      event.target.classList.remove(`.${styles.heartOutline}`);
+      console.log("got here")
+      $(this).removeClass(`.${styles.heartOutline}`)
+      $(this).addClass(`.${styles.heartFilled}`)
     } else {
-      event.target.classList.remove(`.${styles.heartFilled}`);
-      event.target.classList.add(`.${styles.heartOutline}`);
+      console.log("here instead")
+      $(this).removeClass(`.${styles.heartFilled}`)
+      $(this).addClass(`.${styles.heartOutline}`)
     }
 
   }, []);
@@ -101,6 +104,10 @@ export default function Events({ events, clubs, users }: Props) {
 
 
   //TODO: add event to calendar
+  const addToCalendar = useCallback((event) => {
+    const name = $(`.${styles.bigEvent}`).find($(`.${styles.eventName}`)).html()
+    console.log(name + " added to calendar")
+  }, [])
 
   return (
     <div className={styles.container}>
@@ -139,9 +146,15 @@ export default function Events({ events, clubs, users }: Props) {
             </select>
             <select className={styles.timeDropdown} name="time" id="time">
               <option value="" disabled selected>Time</option>
+              <option value="morning">Morning</option>
+              <option value="afternoon">Afternoon</option>
+              <option value="evening">Evening</option>
             </select>
             <select className={styles.tagsDropdown} name="tags" id="tags">
               <option value="" disabled selected>Tags</option>
+              <option value="design">Design</option>
+              <option value="technology">Technology</option>
+              <option value="social-good">Social Good</option>
             </select>
           </div>
         </div>
@@ -150,16 +163,17 @@ export default function Events({ events, clubs, users }: Props) {
             {events.map((e, i) => {
               var start = new Date(e.startTimestamp)
               var end = new Date(e.endTimestamp)
+              var startSuffix = timeOfDay[Math.floor(start.getHours() / 12)]
+              var endSuffix = timeOfDay[Math.floor(end.getHours() / 12)]
               return (
                 <div className={styles.event} style={i + 1 === events.length ? { border: 'none' } : { borderBottom: '1px solid #dbdbdb' }}>
-                  <div className={styles.favorite}>
-                    <Image src={heartOutline} alt="heart-outline" width={27} height={25} className={styles.heartOutline} onClick={toggleFavorite} />
+                  <div className={styles.favorite} onClick={toggleFavorite}>
+                    <Image src={heartOutline} alt="heart-outline" width={27} height={25} className={styles.heartOutline} />
                   </div>
                   {e.image
                     ? <div className={styles.eventImage} style={{ backgroundImage: 'url(' + e.image + ')' }}></div>
                     : <div className={styles.eventImage}><Image src={defaultClub} /></div>
                   }
-
 
                   <div className={styles.eventContent}>
                     <div className={styles.eventName}>{e.name}</div>
@@ -171,7 +185,7 @@ export default function Events({ events, clubs, users }: Props) {
                       </div>
                       <div className={styles.meetingItem}>
                         <Image src={clock} alt="clock" width={16} height={16} />
-                        <div className={styles.text}>{start.getHours() % 12}:-{end.getTime()}</div>
+                        <div className={styles.text}>{start.getHours() % 12}:{start.getMinutes()} {startSuffix}-{end.getHours() % 12}:{end.getMinutes()} {endSuffix}</div>
                       </div>
                       <div className={styles.meetingItem}>
                         <Image src={pin} alt="pin" width={16} height={16} />
@@ -195,7 +209,12 @@ export default function Events({ events, clubs, users }: Props) {
                   </div>
                   <div className={styles.meetingItem}>
                     <Image src={clock} alt="clock" width={16} height={16} />
-                    <div className={styles.text}>clock</div>
+                    <div className={styles.text}>
+                      {new Date(events[1].startTimestamp).getHours() % 12}:{new Date(events[1].startTimestamp).getMinutes()} {timeOfDay[Math.floor(new Date(events[1].startTimestamp).getHours() / 12)]}
+                        -
+                        {new Date(events[1].endTimestamp).getHours() % 12}:{new Date(events[1].endTimestamp).getMinutes()} {timeOfDay[Math.floor(new Date(events[1].endTimestamp).getHours() / 12)]}
+                    </div>
+
                   </div>
                   <div className={styles.meetingItem}>
                     <Image src={pin} alt="pin" width={16} height={16} />
@@ -204,7 +223,7 @@ export default function Events({ events, clubs, users }: Props) {
                 </div>
               </div>
               <div className={styles.calendarAndHeart}>
-                <div className={styles.addCalendar}>Add to calendar</div>
+                <div className={styles.addCalendar} onClick={addToCalendar}>Add to calendar</div>
                 <div className={styles.favorite}>
                   <Image src={heartOutline} alt="heart-outline" width={27} height={25} className={styles.heartOutline} onClick={toggleFavorite} />
                 </div>
