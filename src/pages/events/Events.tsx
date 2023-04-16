@@ -101,6 +101,24 @@ export default function Events({ events, clubs, users }: Props) {
       }
     });
   }, [])
+  const timeChange = useCallback((event) => {
+    const query = event.target.value
+    $(`.${styles.event}`).each(function (i, item) {
+      var time = $(this).find(`#time`).html()
+      if (time.includes('AM')) {
+        var tod = "Morning"
+      } else if (parseInt(time.slice(0, 1)) >= 5) {
+        var tod = "Evening"
+      } else {
+        var tod = "Afternoon"
+      }
+      if (searchMatches(tod, query)) {
+        $(item).css("display", "flex")
+      } else {
+        $(item).css("display", "none")
+      }
+    });
+  }, [])
 
 
   //TODO: add event to calendar
@@ -144,7 +162,7 @@ export default function Events({ events, clubs, users }: Props) {
               <option value="November">November</option>
               <option value="December">December</option>
             </select>
-            <select className={styles.timeDropdown} name="time" id="time">
+            <select className={styles.timeDropdown} name="time" id="time" onChange={timeChange}>
               <option value="" disabled selected>Time</option>
               <option value="morning">Morning</option>
               <option value="afternoon">Afternoon</option>
@@ -185,7 +203,7 @@ export default function Events({ events, clubs, users }: Props) {
                       </div>
                       <div className={styles.meetingItem}>
                         <Image src={clock} alt="clock" width={16} height={16} />
-                        <div className={styles.text}>{start.getHours() % 12}:{start.getMinutes()} {startSuffix}-{end.getHours() % 12}:{end.getMinutes()} {endSuffix}</div>
+                        <div className={styles.text} id='time'>{start.getHours() % 12}:{start.getMinutes()} {startSuffix}-{end.getHours() % 12}:{end.getMinutes()} {endSuffix}</div>
                       </div>
                       <div className={styles.meetingItem}>
                         <Image src={pin} alt="pin" width={16} height={16} />
