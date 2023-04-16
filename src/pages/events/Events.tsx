@@ -44,15 +44,12 @@ export default function Events({ events, clubs, users }: Props) {
 
   // TODO: toggle favorite heart
   const toggleFavorite = useCallback((event) => {
-    console.log($(this).html())
-    if (event.target.classList.contains(`.${styles.heartOutline}`)) {
-      console.log("got here")
-      $(this).removeClass(`.${styles.heartOutline}`)
-      $(this).addClass(`.${styles.heartFilled}`)
+    if (event.target.classList.length == 0 || event.target.classList.contains(`.${styles.heartOutline}`)) {
+      $(event.target).removeClass(`.${styles.heartOutline}`)
+      $(event.target).addClass(`.${styles.heartFilled}`)
     } else {
-      console.log("here instead")
-      $(this).removeClass(`.${styles.heartFilled}`)
-      $(this).addClass(`.${styles.heartOutline}`)
+      $(event.target).removeClass(`.${styles.heartFilled}`)
+      $(event.target).addClass(`.${styles.heartOutline}`)
     }
 
   }, []);
@@ -197,8 +194,8 @@ export default function Events({ events, clubs, users }: Props) {
               var endSuffix = timeOfDay[Math.floor(end.getHours() / 12)]
               return (
                 <div className={styles.event} style={i + 1 === events.length ? { border: 'none' } : { borderBottom: '1px solid #dbdbdb' }}>
-                  <div className={styles.favorite} onClick={toggleFavorite}>
-                    <Image src={heartOutline} alt="heart-outline" width={27} height={25} className={styles.heartOutline} />
+                  <div className={styles.favorite}>
+                    <Image src={heartOutline} alt="heart-outline" width={27} height={25} onClick={toggleFavorite} />
                   </div>
                   {e.image
                     ? <div className={styles.eventImage} style={{ backgroundImage: 'url(' + e.image + ')' }}></div>
