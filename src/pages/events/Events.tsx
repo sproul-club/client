@@ -85,7 +85,19 @@ export default function Events({ events, clubs, users }: Props) {
 
   // TODO: clicking event to expand
 
-  // TODO: filter functionality
+  // category filter (options at the top)
+  const categoryChange = useCallback((event) => {
+    const query = $(event.target).html().toLowerCase()
+    $(`.${styles.event}`).each(function (i, item) {
+      var tags = $(this).find(`.${styles.tagList}`).html().toLowerCase()
+      if (tags.includes(query)) {
+        $(item).css("display", "flex")
+      } else {
+        $(item).css("display", "none")
+      }
+    });
+  }, [])
+
   // date filter
   const dateChange = useCallback((event) => {
     const query = event.target.value
@@ -139,11 +151,11 @@ export default function Events({ events, clubs, users }: Props) {
     <div className={styles.container}>
       <div className={styles.categoriesTitle}>Featured club categories</div>
       <div className={styles.categories}>
-        <div className={styles.category}>Design</div>
-        <div className={styles.category}>Pre-Professional</div>
-        <div className={styles.category}>Social Good</div>
-        <div className={styles.category}>Sports & Rec</div>
-        <div className={styles.category}>Computer Science</div>
+        <div className={styles.category} onClick={categoryChange} value="design">Design</div>
+        <div className={styles.category} onClick={categoryChange} value="pre-professional">Pre-Professional</div>
+        <div className={styles.category} onClick={categoryChange} value="social good">Social Good</div>
+        <div className={styles.category} onClick={categoryChange} value="sports & rec">Sports & Rec</div>
+        <div className={styles.category} onClick={categoryChange} value="computer science">Computer Science</div>
       </div>
       <div className={styles.body}>
         <div className={styles.search}>
