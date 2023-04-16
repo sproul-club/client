@@ -55,7 +55,7 @@ export default function Events({ events, clubs, users }: Props) {
   }, []);
 
 
-  // TODO: search functionality
+  // search functionality
   const [query, setQuery] = useState('')
   const onChange = useCallback((event) => {
     const query = event.target.value
