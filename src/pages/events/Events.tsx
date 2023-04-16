@@ -1,8 +1,8 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import styles from './Events.module.scss';
 import { HTMLProps, useState, useCallback } from 'react';
 import $ from 'jquery';
-import { Console } from 'console';
 import Club from '../../models/club/Club';
 import Event from '../../models/Event';
 import User from '../../models/User';
@@ -25,7 +25,7 @@ export default function Events({ events, clubs, users }: Props) {
   //test data -- unsure as to how this will be passed in through the Props so I hard coded for now
   // assuming a list of event objects
   clubs = [
-    { id: 'innovate', name: 'Innovate Design', abbreviation: '', description: '', profilePhoto: '', headingPhoto: '', isApplicationOpen: true, isApplicationRequired: true, categories: [], events: ['2'], recruitingSeasons: [], numMembers: 0, yearFounded: '2023', branches: [], website: 'www.sproul.club.com', email: 'sproulclub@gmail.com' }
+    { id: 'innovate', name: 'Innovate Design', abbreviation: '', description: '', profilePhoto: '', headingPhoto: '', isApplicationOpen: true, isApplicationRequired: true, categories: [], events: ['2'], recruitingSeasons: [], numMembers: 0, yearFounded: '2023', branches: [], website: 'www.sproul.club', email: 'sproulclub@gmail.com' }
   ]
   events = [
     { id: '1', name: 'Test', description: 'this is the description', startTimestamp: '2023-10-13T17:30:00Z', endTimestamp: '2023-10-13T18:30:00Z', clubHosts: [], userHosts: [], location: 'Wheeler 150', meetingURI: '', tags: ['a', 'b'], image: '' },
@@ -130,8 +130,11 @@ export default function Events({ events, clubs, users }: Props) {
                   <div className={styles.favorite}>
                     <Image src={heartOutline} alt="heart-outline" width={27} height={25} className={styles.heartOutline} onClick={toggleFavorite} />
                   </div>
+                  {e.image
+                    ? <div className={styles.eventImage} style={{ backgroundImage: 'url(' + e.image + ')' }}></div>
+                    : <div className={styles.eventImage}><Image src={defaultClub} /></div>
+                  }
 
-                  <div className={styles.eventImage} style={e.image ? { backgroundImage: 'url(' + e.image + ')' } : { backgroundImage: 'url(' + defaultClub + ')' }}></div>
 
                   <div className={styles.eventContent}>
                     <div className={styles.eventName}>{e.name}</div>
@@ -198,19 +201,28 @@ export default function Events({ events, clubs, users }: Props) {
                 {/* TODO: make links functional */}
                 {events[1].clubHosts.map((clubID) => {
                   var club = clubs.find(item => item.id === clubID)
+                  var website = 'https://' + club?.website
+                  var mailto = 'mailto: ' + club?.email
                   return (
                     <div>
-                      {club.website && <div className={styles.link}><div className={styles.underline}>{club.website}</div></div>}
-                      {club.email && <div className={styles.link}>{club.email}</div>}
+                      {club?.website && <div className={styles.link}><Link href={website} className={styles.underline}>{club.website}</Link></div>}
+                      {club?.email && <div className={styles.link}><Link href={mailto} className={styles.underline}>{club.email}</Link></div>}
                     </div>
                   )
                 })}
                 <div className={styles.hosts}>
                   {events[1].userHosts.map((userID) => {
                     var user = users.find(item => item.id === userID)
-                    return (
-                      <Image src={user.profilePhotoURI} alt="profile photo" width={41} height={41} className={styles.user} />
-                    )
+                    if (user?.profilePhotoURI) {
+                      return (
+                        <Image src={user.profilePhotoURI} alt="profile photo" width={41} height={41} className={styles.user} />
+                      )
+                    } else {
+                      return (
+                        <div className={styles.noPhoto}></div>
+                      )
+                    }
+
                   })}
                 </div>
               </div>
