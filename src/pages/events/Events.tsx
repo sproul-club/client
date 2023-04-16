@@ -59,9 +59,9 @@ export default function Events({ events, clubs, users }: Props) {
   const [query, setQuery] = useState('')
   const onChange = useCallback((event) => {
     const query = event.target.value
-    const formattedQuery = query.toLowerCase()
     $(`.${styles.event}`).each(function (i, item) {
-      if ($(item).find(`.${styles.event_name}`).text().toLowerCase().startsWith(formattedQuery)) {
+      var clubName = $(this).find(`.${styles.eventName}`).html()
+      if (searchMatches(query, clubName)) {
         $(item).css("display", "flex")
       } else {
         $(item).css("display", "none")
@@ -69,6 +69,19 @@ export default function Events({ events, clubs, users }: Props) {
     });
     setQuery(query)
   }, [])
+  function searchMatches(search: string, clubName: string): boolean {
+    // Check if the length of the first string is greater than or equal to the second string
+    if (clubName.length >= search.length) {
+      // Check if the prefixes of both strings match
+      if (
+        clubName.substring(0, search.length).toLowerCase() ===
+        search.toLowerCase()
+      ) {
+        return true;
+      }
+    }
+    return false;
+  }
 
   // TODO: clicking event to expand
 
