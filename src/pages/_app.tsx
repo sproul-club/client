@@ -6,6 +6,10 @@ import { AuthProvider } from '../contexts/Auth';
 import { ThemeProvider } from '../contexts/Theme';
 import useTheme from '../contexts/Theme/useTheme';
 import '../styles/globals.scss';
+import awsconfig from './../aws-exports';
+import {Amplify, Auth} from 'aws-amplify';
+
+Amplify.configure(awsconfig);
 
 const AppWrapper = ({ Component, pageProps }: AppProps) => {
   return (

@@ -1,9 +1,11 @@
 import ClubCard from '../../components/ClubCard';
 import Club from '../../models/club/Club';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from './Discover.module.scss';
 import { ClubTab } from './ClubTab';
 import { Dropdowns } from './Dropdowns';
+import { DataStore } from '@aws-amplify/datastore';
+import { Clubs } from '../../models';
 
 const club1: Club = {
   id: '1',
@@ -76,7 +78,7 @@ const club3: Club = {
   email: 'email@example.com',
 };
 
-const clubs: Club[] = [club1, club2, club3];
+// const clubs: Club[] = [club1, club2, club3];
 
 function checkMatch(
   search: string,
@@ -116,6 +118,18 @@ function checkMatch(
 }
 
 const Discover: React.FC = () => {
+  const [clubs, setClubs] = useState<any>([]);
+  useEffect(() => {
+    const getData = async () => {
+      const models = await DataStore.query(Clubs);
+      console.log(models);
+      setClubs(models);
+    };
+    getData();
+    console.log('df');
+    console.log(clubs);
+  }, []);
+
   const [selectedClub, setSelectedClub] = useState<Club | null>(clubs[0]);
   const [searchValue, setSearchValue] = useState<string>('');
   const [hitSearch, setHitSearch] = useState<boolean>(false);
