@@ -3,6 +3,7 @@ import Footer from '../../components/layout/Footer';
 import styles from './Login.module.scss';
 import LoginForm from './components/LoginForm';
 import useAuth from '../../contexts/Auth/useAuth';
+import { useRouter } from 'next/router';
 
 import { Amplify } from 'aws-amplify';
 
@@ -12,10 +13,21 @@ import '@aws-amplify/ui-react/styles.css';
 import awsExports from './../../aws-exports';
 Amplify.configure(awsExports);
 
+// function LoginBox({ signOut, user }: any) {
+//   return (
+//     <>
+//       <h1>Hello {user.username}</h1>
+//       <button onClick={signOut}>Sign out</button>
+//     </>
+//   );
+// }
+
 function LoginBox({ signOut, user }: any) {
+  const router = useRouter();
+  router.push('/');
   return (
     <>
-      <h1>Hello {user.username}</h1>
+      <h1>Hello {user.attributes.name}!</h1>
       <button onClick={signOut}>Sign out</button>
     </>
   );

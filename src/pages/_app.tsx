@@ -8,17 +8,18 @@ import useTheme from '../contexts/Theme/useTheme';
 import '../styles/globals.scss';
 import { Amplify, Auth } from 'aws-amplify';
 import awsconfig from './../aws-exports';
+import { Authenticator, View } from '@aws-amplify/ui-react';
 Amplify.configure(awsconfig);
 
 const AppWrapper = ({ Component, pageProps }: AppProps) => {
   return (
-    <AuthProvider>
+    <Authenticator.Provider>
       <ThemeProvider>
         <App>
           <Component {...pageProps} />
         </App>
       </ThemeProvider>
-    </AuthProvider>
+    </Authenticator.Provider>
   );
 };
 
