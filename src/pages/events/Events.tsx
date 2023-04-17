@@ -39,11 +39,11 @@ export default function Events({ events, clubs, users }: Props) {
   users = [
     { id: 'jane', firstName: 'Jane', lastName: 'Doe', nickname: 'Jane', pronouns: 'she/her', race: '', ethnicity: '', profilePhotoURI: '', majors: [], minors: [], emailPersonal: 'test@gmail.com', emailSchool: 'testschool@gmail.com', phone: '', linkedin: '', website: '', github: '', twitter: '', createdAt: '', interests: [], recommendations: [], favorites: [], applications: [], roles: [] }
   ]
-  var months = ['Jan.', 'Feb.', 'Mar.', 'Apr.', 'May', 'Jun.', 'Jul.', 'Aug.', 'Sep.', 'Oct.', 'Nov.', 'Dec.']
-  var timeOfDay = ['AM', 'PM']
+  const months = ['Jan.', 'Feb.', 'Mar.', 'Apr.', 'May', 'Jun.', 'Jul.', 'Aug.', 'Sep.', 'Oct.', 'Nov.', 'Dec.']
+  const timeOfDay = ['AM', 'PM']
 
   // TODO: toggle favorite heart
-  const toggleFavorite = useCallback((event) => {
+  const toggleFavorite = useCallback((event: any) => {
     if (event.target.classList.length == 0 || event.target.classList.contains(`.${styles.heartOutline}`)) {
       $(event.target).removeClass(`.${styles.heartOutline}`)
       $(event.target).addClass(`.${styles.heartFilled}`)
@@ -57,7 +57,7 @@ export default function Events({ events, clubs, users }: Props) {
 
   // search functionality
   const [query, setQuery] = useState('')
-  const onChange = useCallback((event) => {
+  const onChange = useCallback((event: any) => {
     const query = event.target.value
     $(`.${styles.event}`).each(function (i, item) {
       var clubName = $(this).find(`.${styles.eventName}`).html()
@@ -84,9 +84,17 @@ export default function Events({ events, clubs, users }: Props) {
   }
 
   // TODO: clicking event to expand
+  const [selectedEvent, setSelectedEvent] = useState<Event | null>(events[0]);
+  const handleEventClick = (event: any) => {
+    event.stopPropagation()
+    console.log(event.target)
+    setSelectedEvent(event)
+
+
+  };
 
   // category filter (options at the top)
-  const categoryChange = useCallback((event) => {
+  const categoryChange = useCallback((event: any) => {
     const query = $(event.target).html().toLowerCase()
     $(`.${styles.event}`).each(function (i, item) {
       var tags = $(this).find(`.${styles.tagList}`).html().toLowerCase()
@@ -99,7 +107,7 @@ export default function Events({ events, clubs, users }: Props) {
   }, [])
 
   // date filter
-  const dateChange = useCallback((event) => {
+  const dateChange = useCallback((event: any) => {
     const query = event.target.value
     $(`.${styles.event}`).each(function (i, item) {
       var monthAbbrev = $(this).find(`#date`).html().slice(0, 3)
@@ -110,7 +118,7 @@ export default function Events({ events, clubs, users }: Props) {
       }
     });
   }, [])
-  const timeChange = useCallback((event) => {
+  const timeChange = useCallback((event: any) => {
     const query = event.target.value
     $(`.${styles.event}`).each(function (i, item) {
       var time = $(this).find(`#time`).html()
@@ -128,7 +136,7 @@ export default function Events({ events, clubs, users }: Props) {
       }
     });
   }, [])
-  const tagChange = useCallback((event) => {
+  const tagChange = useCallback((event: any) => {
     const query = event.target.value
     $(`.${styles.event}`).each(function (i, item) {
       var tags = $(this).find(`.${styles.tagList}`).html().toLowerCase()
@@ -142,7 +150,7 @@ export default function Events({ events, clubs, users }: Props) {
 
 
   //TODO: add event to calendar
-  const addToCalendar = useCallback((event) => {
+  const addToCalendar = useCallback((event: any) => {
     const name = $(`.${styles.bigEvent}`).find($(`.${styles.eventName}`)).html()
     console.log(name + " added to calendar")
   }, [])
@@ -205,7 +213,7 @@ export default function Events({ events, clubs, users }: Props) {
               var startSuffix = timeOfDay[Math.floor(start.getHours() / 12)]
               var endSuffix = timeOfDay[Math.floor(end.getHours() / 12)]
               return (
-                <div className={styles.event} style={i + 1 === events.length ? { border: 'none' } : { borderBottom: '1px solid #dbdbdb' }}>
+                <div data-event={e} className={styles.event} style={i + 1 === events.length ? { border: 'none' } : { borderBottom: '1px solid #dbdbdb' }} onClick={handleEventClick}>
                   <div className={styles.favorite}>
                     <Image src={heartOutline} alt="heart-outline" width={27} height={25} onClick={toggleFavorite} />
                   </div>
@@ -239,7 +247,7 @@ export default function Events({ events, clubs, users }: Props) {
           <div className={styles.bigEvent}>
             <div className={styles.title}>
               <div className={styles.titleContent}>
-                <div className={styles.eventName}>{events[1].name}</div>
+                <div className={styles.eventName}>{selectedEvent.name}</div>
                 <div className={styles.clubName}>Club: {events[1].clubHosts.map(clubID => clubs.find(item => item.id === clubID)?.name).join(', ')}</div>
                 <div className={styles.iconList}>
                   <div className={styles.meetingItem}>
