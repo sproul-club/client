@@ -38,7 +38,7 @@ export const Dropdowns: React.FC<DropdownProps> = ({
           value={appOpen.toString()}
           onChange={handleAppOpenChange}
         >
-          <option value="any">Any</option>
+          <option value="any">Recruiting</option>
           <option value="app-open">Open</option>
           <option value="app-closed">Closed</option>
         </select>
@@ -49,17 +49,17 @@ export const Dropdowns: React.FC<DropdownProps> = ({
           value={appRequired.toString()}
           onChange={handleAppRequiredChange}
         >
-          <option value="any">Any</option>
+          <option value="any">Application</option>
           <option value="app-needed">App Needed</option>
           <option value="no-app">No Application</option>
         </select>
       </div>
       <div className={styles.dropdown}>
         <select id="tag" value={tag.toString()} onChange={handleTagChange}>
-          <option value="any">Any</option>
-          <option value="tag1">Tag 1</option>
-          <option value="tag2">Tag 2</option>
-          <option value="tag3">Tag 3</option>
+          <option value="any">Tags</option>
+          <option value="Tech">Tech</option>
+          <option value="Development">Development</option>
+          <option value="Undergrad">Undergrad</option>
         </select>
       </div>
     </div>

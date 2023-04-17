@@ -40,9 +40,9 @@ const ClubCard: React.FC<ClubCardProps> = ({ data }) => {
           <h2 className={styles.clubName}>{data.name}</h2>
           <div className={styles.buttons}>
             <button className={styles.applyButton}>Apply</button>
-            <a href={data.Website}>
+            <Link href={data.website}>
               <button>Visit Website</button>
-            </a>
+            </Link>
           </div>
         </div>
         <div className={styles.details}>

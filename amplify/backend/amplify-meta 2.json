@@ -36,7 +36,7 @@
       },
       "providerPlugin": "awscloudformation",
       "service": "AppSync",
-      "lastPushTimeStamp": "2023-04-17T00:55:46.668Z",
+      "lastPushTimeStamp": "2023-04-17T18:53:17.857Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplify308f41cbc5a94-staging-202332-deployment/amplify-cfn-templates/api/cloudformation-template.json",
         "logicalId": "apisproulclub"
@@ -84,7 +84,7 @@
         "IdentityPoolName": "testAuthIdentityPool__staging",
         "UserPoolName": "sproulclub"
       },
-      "lastPushTimeStamp": "2023-04-17T00:55:46.670Z",
+      "lastPushTimeStamp": "2023-04-17T18:53:17.858Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplify308f41cbc5a94-staging-202332-deployment/amplify-cfn-templates/auth/sproulclub-cloudformation-template.json",
         "logicalId": "authsproulclub"
@@ -109,7 +109,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplify308f41cbc5a94-staging-202332-deployment/amplify-cfn-templates/function/S3Triggerd64f9cd5-cloudformation-template.json",
         "logicalId": "functionS3Triggerd64f9cd5"
       },
-      "lastPushTimeStamp": "2023-04-17T00:55:46.670Z",
+      "lastPushTimeStamp": "2023-04-17T18:53:17.859Z",
       "output": {
         "LambdaExecutionRoleArn": "arn:aws:iam::855935189350:role/S3Triggerd64f9cd5LambdaRoled64f9cd5-staging",
         "Region": "us-west-1",
@@ -135,7 +135,7 @@
           ]
         }
       ],
-      "lastPushTimeStamp": "2023-04-17T00:55:48.045Z",
+      "lastPushTimeStamp": "2023-04-17T18:53:19.170Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplify308f41cbc5a94-staging-202332-deployment/amplify-cfn-templates/storage/cloudformation-template.json",
         "logicalId": "storageclubLogos"

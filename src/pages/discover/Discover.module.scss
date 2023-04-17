@@ -22,8 +22,8 @@
   box-sizing: border-box;
   width: 30%;
   margin-right: 0.5rem;
-  height: 49px;
-  border: 0.5px solid #000000;
+  height: 40px;
+  border: 0.7px solid #000000;
   border-radius: 10px;
   padding: 0.5rem;
   margin-bottom: 1rem;
@@ -136,10 +136,15 @@
 }
 
 .dropdown select {
-  border-radius: 3px;
+  border-radius: 10px;
   padding: 5px 20px 5px 5px;
   font-size: 16px;
   width: 150px;
+  height: 40px;
+  margin-bottom: .5rem;
+  border: 0.7px solid #000000;
+
+
 }
 
 //DISCOVER 2
