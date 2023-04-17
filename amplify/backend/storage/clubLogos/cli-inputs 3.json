@@ -1,0 +1,14 @@
+{
+  "resourceName": "clubLogos",
+  "policyUUID": "b1f822b4",
+  "bucketName": "sproulclub44b893ace0574e03a41da91223ccdfdf",
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "READ"
+  ],
+  "authAccess": [
+    "CREATE_AND_UPDATE"
+  ],
+  "triggerFunction": "S3Triggerd64f9cd5",
+  "groupAccess": {}
+}

@@ -32,13 +32,16 @@
 .content {
   display: flex;
   flex-direction: row;
-  margin-right: 1rem;
+  padding-right: 1rem;
+  background-color: #f7fbfc;
+
 }
 
 .leftColumn {
   flex: 0 0 30%;
   border: 1px solid #464444;
   border-radius: 10px;
+  
 }
 
 .rightColumn {
@@ -47,7 +50,8 @@
   border-radius: 10px;
   padding-top: 1rem;
   margin-left: 1rem;
-  margin-right: 1rem;
+  // margin-right: 1rem;
+  
   // margin: 0.5rem;
 }
 
@@ -157,6 +161,7 @@
   color: #000000;
   font-size: 20px;
   width: 50%;
+  text-align: center;
 }
 
 .searchbar2 {
