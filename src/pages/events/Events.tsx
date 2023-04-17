@@ -233,6 +233,10 @@ export default function Events({
   );
   const selectedEvent = mappedEvents[selectedEventId];
 
+  function handleEventClick(eventId: Event['id']) {
+    setSelectedEvent(eventId);
+  }
+
   function handleQueryChange(event: ChangeEvent<HTMLInputElement>) {
     setFilters((prev) => ({ ...prev, query: event.target.value }));
   }
@@ -337,7 +341,7 @@ export default function Events({
                 key={eventIdx}
                 event={e}
                 isSelected={e.id === selectedEventId}
-                onClick={() => setSelectedEvent(e.id)}
+                onClick={() => handleEventClick(e.id)}
               />
             ))}
           </div>
