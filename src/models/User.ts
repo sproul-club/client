@@ -1,3 +1,4 @@
+import Event from './Event';
 import Club from './club/Club';
 import Role from './club/Role';
 import Timestamp from './primitives/Timestamp';
@@ -31,7 +32,8 @@ interface User {
   createdAt: Timestamp;
   interests: string[];
   recommendations: string[];
-  favorites: Club['id'][];
+  favoriteClubs: Club['id'][];
+  favoriteEvents: Event['id'][];
   applications: string[];
   roles: Role['id'][];
 }

@@ -1,6 +1,8 @@
+import useLocalStorage from 'hooks/useLocalStorage';
+import type Club from 'models/club/Club';
+import Event from 'models/Event';
+import User from 'models/User';
 import { createContext, ReactNode, useState } from 'react';
-import useLocalStorage from '../../hooks/useLocalStorage';
-import User from '../../models/User';
 // import AuthContext from "./AuthContext";
 
 interface AuthProvider_Props {
@@ -25,15 +27,14 @@ interface AuthContext_Props {
   loginWithOAuth: () => void;
   loginWithEmail: ({}: LoginWithEmail_Params) => void;
   register: ({}: Register_Params) => void;
+
+  toggleFavoriteClub: (id: Club['id']) => void;
+  toggleFavoriteEvent: (id: Event['id']) => void;
 }
 
-export const AuthContext = createContext<AuthContext_Props>({
-  user: null,
-  isAuthenticated: false,
-  loginWithOAuth: () => null,
-  loginWithEmail: () => null,
-  register: () => null,
-});
+export const AuthContext = createContext<AuthContext_Props | undefined>(
+  undefined
+);
 
 const AuthProvider = ({ children }: AuthProvider_Props) => {
   const [user, setUser] = useState<User | null>(null);
@@ -53,6 +54,26 @@ const AuthProvider = ({ children }: AuthProvider_Props) => {
     setUser(null);
   };
 
+  function toggleFavoriteClub(clubId: Club['id']) {
+    if (!user)
+      throw new Error(`Cannot toggle favorites for unauthenticated users`);
+    if (user.favoriteClubs.includes(clubId)) {
+      user.favoriteClubs = user.favoriteClubs.filter((id) => id != clubId);
+    } else {
+      user.favoriteClubs.push(clubId);
+    }
+  }
+
+  function toggleFavoriteEvent(eventId: Event['id']) {
+    if (!user)
+      throw new Error(`Cannot toggle favorites for unauthenticated users`);
+    if (user.favoriteEvents.includes(eventId)) {
+      user.favoriteEvents = user.favoriteEvents.filter((id) => id != eventId);
+    } else {
+      user.favoriteEvents.push(eventId);
+    }
+  }
+
   return (
     <AuthContext.Provider
       value={{
@@ -61,6 +82,9 @@ const AuthProvider = ({ children }: AuthProvider_Props) => {
         loginWithOAuth: loginWithOAuth,
         loginWithEmail: loginWithEmail,
         register: register,
+
+        toggleFavoriteEvent: toggleFavoriteEvent,
+        toggleFavoriteClub: toggleFavoriteClub,
       }}
     >
       {children}

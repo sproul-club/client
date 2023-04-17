@@ -1,5 +1,6 @@
 import type { AppProps } from 'next/app';
 import { HTMLProps, ReactNode, useEffect } from 'react';
+import '../../String.extensions';
 import Footer from '../components/layout/Footer';
 import NavBar from '../components/layout/NavBar';
 import { AuthProvider } from '../contexts/Auth';
@@ -42,7 +43,7 @@ const App = ({ children }: HTMLProps<any>) => {
 function Layout({ children }: HTMLProps<any>) {
   return (
     <>
-      <NavBar authenticated={false} hasClub={true}/>
+      <NavBar authenticated={false} hasClub={true} />
       <main>{children}</main>
       <Footer />
     </>
