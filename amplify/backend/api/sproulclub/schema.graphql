@@ -1,3 +1,14 @@
+type Events @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  description: String
+  startTimeStamp: AWSDateTime
+  endTimeStamp: AWSDateTime
+  location: String
+  meetingUrl: AWSURL
+  clubs: [Clubs] @manyToMany(relationName: "EventsClubs")
+}
+
 type RecruitingSeason {
   isActive: Boolean
   startTimestamp: AWSDateTime
@@ -30,5 +41,6 @@ type Clubs @model @auth(rules: [{allow: public}]) {
   discord: String
   email: String
   recruitingSeasons: RecruitingSeason
+  Events: [Events] @manyToMany(relationName: "EventsClubs")
 }
  

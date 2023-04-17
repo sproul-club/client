@@ -1,6 +1,6 @@
 import { ModelInit, MutableModel, __modelMeta__, ManagedIdentifier } from "@aws-amplify/datastore";
 // @ts-ignore
-import { LazyLoading, LazyLoadingDisabled } from "@aws-amplify/datastore";
+import { LazyLoading, LazyLoadingDisabled, AsyncCollection, AsyncItem } from "@aws-amplify/datastore";
 
 
 
@@ -34,6 +34,46 @@ export declare type Branch = LazyLoading extends LazyLoadingDisabled ? EagerBran
 
 export declare const Branch: (new (init: ModelInit<Branch>) => Branch)
 
+type EagerEvents = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<Events, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly name?: string | null;
+  readonly description?: string | null;
+  readonly startTimeStamp?: string | null;
+  readonly endTimeStamp?: string | null;
+  readonly location?: string | null;
+  readonly meetingUrl?: string | null;
+  readonly clubs?: (EventsClubs | null)[] | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+type LazyEvents = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<Events, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly name?: string | null;
+  readonly description?: string | null;
+  readonly startTimeStamp?: string | null;
+  readonly endTimeStamp?: string | null;
+  readonly location?: string | null;
+  readonly meetingUrl?: string | null;
+  readonly clubs: AsyncCollection<EventsClubs>;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+export declare type Events = LazyLoading extends LazyLoadingDisabled ? EagerEvents : LazyEvents
+
+export declare const Events: (new (init: ModelInit<Events>) => Events) & {
+  copyOf(source: Events, mutator: (draft: MutableModel<Events>) => MutableModel<Events> | void): Events;
+}
+
 type EagerClubs = {
   readonly [__modelMeta__]: {
     identifier: ManagedIdentifier<Clubs, 'id'>;
@@ -59,6 +99,7 @@ type EagerClubs = {
   readonly discord?: string | null;
   readonly email?: string | null;
   readonly recruitingSeasons?: RecruitingSeason | null;
+  readonly Events?: (EventsClubs | null)[] | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -88,6 +129,7 @@ type LazyClubs = {
   readonly discord?: string | null;
   readonly email?: string | null;
   readonly recruitingSeasons?: RecruitingSeason | null;
+  readonly Events: AsyncCollection<EventsClubs>;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -96,4 +138,38 @@ export declare type Clubs = LazyLoading extends LazyLoadingDisabled ? EagerClubs
 
 export declare const Clubs: (new (init: ModelInit<Clubs>) => Clubs) & {
   copyOf(source: Clubs, mutator: (draft: MutableModel<Clubs>) => MutableModel<Clubs> | void): Clubs;
+}
+
+type EagerEventsClubs = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<EventsClubs, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly eventsId?: string | null;
+  readonly clubsId?: string | null;
+  readonly events: Events;
+  readonly clubs: Clubs;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+type LazyEventsClubs = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<EventsClubs, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly eventsId?: string | null;
+  readonly clubsId?: string | null;
+  readonly events: AsyncItem<Events>;
+  readonly clubs: AsyncItem<Clubs>;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+export declare type EventsClubs = LazyLoading extends LazyLoadingDisabled ? EagerEventsClubs : LazyEventsClubs
+
+export declare const EventsClubs: (new (init: ModelInit<EventsClubs>) => EventsClubs) & {
+  copyOf(source: EventsClubs, mutator: (draft: MutableModel<EventsClubs>) => MutableModel<EventsClubs> | void): EventsClubs;
 }
