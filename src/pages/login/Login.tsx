@@ -32,7 +32,6 @@ const Login = () => {
         </div>
         <LoginForm onSubmit={handleSubmit} />
       </div>
-      <Footer />
     </div>
   );
 };
