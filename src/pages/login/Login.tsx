@@ -1,5 +1,4 @@
 import React from "react";
-import Footer from "../../components/layout/Footer";
 import styles from "./Login.module.scss";
 import LoginForm from "./components/LoginForm";
 import useAuth from "../../contexts/Auth/useAuth";
