@@ -11,6 +11,9 @@ import useAuth from '../../../contexts/Auth/useAuth';
 import Button from '../../ui/Button/Button';
 import Hamburger from '../../Hamburger/Hamburger';
 import MenuOverlay from '../../MenuOverlay/MenuOverlay';
+import { Auth } from 'aws-amplify';
+import { useAuthenticator } from '@aws-amplify/ui-react';
+
 
 interface Props {
   authenticated: boolean;
@@ -18,6 +21,16 @@ interface Props {
 }
 
 export default function NavBar({ authenticated, hasClub }: Props) {
+  const { user, signOut } = useAuthenticator((context) => [context.user]);
+  const signOut2 = async () => {
+    try {
+      await Auth.signOut();
+      window.location.reload();
+    } catch (error) {
+      console.log('error signing out: ', error);
+      window.location.reload();
+    }
+  };
   const auth = useAuth();
   const router = useRouter();
   const [navOpen, setNavOpen] = useState(false)
@@ -28,44 +41,83 @@ export default function NavBar({ authenticated, hasClub }: Props) {
 
   return (
     <>
-    <div className={styles.container}>
-      <Link href="/">
-        <div className={styles.logoContainer}>
-          <Image src={logo} alt="bear" height={50} width={50} />
-          <span>sproul.club</span>
+      <div className={styles.container}>
+        <Link href="/">
+          <div className={styles.logoContainer}>
+            <Image src={logo} alt="bear" height={50} width={50} />
+            <span>sproul.club</span>
+          </div>
+        </Link>
+        <div className={[styles.options, styles.fullMenu].join(' ')}>
+          <div
+            className={router.pathname == '/' ? styles.selectedOption : ''}
+          >
+            <Link href="/">About</Link>
+          </div>
+          <div
+            className={
+              router.pathname == '/discover' ? styles.selectedOption : ''
+            }
+          >
+            <Link href="/discover">Discover</Link>
+          </div>
+          <div
+            className={
+              router.pathname == '/events' ? styles.selectedOption : ''
+            }
+          >
+            <Link href="/events">Events</Link>
+          </div>
+          <div
+            className={
+              router.pathname == '/account' ? styles.selectedOption : ''
+            }
+          >
+            <Link href="/account">Account</Link>
+          </div>
+          {hasClub ? (
+            <Button
+              href="/register"
+              variant="outlined"
+              className="styles.navbarButton"
+              colorVariant="dark"
+            >
+              Add your club
+            </Button>
+          ) : null}
+          {user ? (
+            <Button
+              // href="/"
+              onClick={signOut2}
+              colorVariant="dark"
+            >
+              Sign Out
+            </Button>
+          ) : (
+            <Button
+              href="/login"
+              colorVariant="dark"
+            >
+              Sign In
+            </Button>
+          )}
         </div>
-      </Link>
-      <div className={[styles.options, styles.fullMenu].join(' ')}>
-        <div className={router.pathname == "/about" ? styles.selectedOption : ""}>
-          <Link href="/about">About</Link>
+        <div className={[styles.hamburger, styles.collapsedMenu].join(' ')}>
+          <Hamburger
+            isOpen={navOpen}
+            onClick={() => {
+              setNavOpen(!navOpen);
+            }}
+          />
         </div>
-        <div className={router.pathname == "/discover" ? styles.selectedOption : ""}>
-          <Link href="/discover">Discover</Link>
-        </div>
-        <div className={router.pathname == "/events" ? styles.selectedOption : ""}>
-          <Link href="/events">Events</Link>
-        </div>
-        <div className={router.pathname == "/account" ? styles.selectedOption : ""}>
-          <Link href="/account">Account</Link>
-        </div>
-        {hasClub ?
-        <Button href="/club" variant="outlined" className="styles.navbarButton" colorVariant='dark'>
-          Add your club
-        </Button> : null}
-        {auth.isAuthenticated ? null :
-        <Button href="/login" className={styles.navbarButton} colorVariant='dark'>Sign In</Button> }
       </div>
-      <div className={[styles.hamburger, styles.collapsedMenu].join(' ')}>
-        <Hamburger isOpen={navOpen} onClick={()=> { setNavOpen(!navOpen)}}/>
+      <div>
+        {navOpen ? (
+          <div className={styles.collapsedMenu}>
+            <MenuOverlay navOpen={navOpen} closeNav={closeNav} hasClub={true} />
+          </div>
+        ) : null}
       </div>
-    </div>
-    <div>
-    {navOpen ?
-    <div className={styles.collapsedMenu}>
-      <MenuOverlay navOpen={navOpen} closeNav={closeNav} hasClub={true}/>
-    </div>
-      : null}
-    </div>
     </>
   );
 }

@@ -1,0 +1,46 @@
+type Events @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  description: String
+  startTimeStamp: AWSDateTime
+  endTimeStamp: AWSDateTime
+  location: String
+  meetingUrl: AWSURL
+  clubs: [Clubs] @manyToMany(relationName: "EventsClubs")
+}
+
+type RecruitingSeason {
+  isActive: Boolean
+  startTimestamp: AWSDateTime
+  endTimestamp: AWSDateTime
+}
+
+type Branch {
+  title: String
+  description: String
+}
+
+type Clubs @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  abbreviation: String
+  description: String
+  profilePhoto: String
+  headingPhoto: String
+  isApplicationOpen: Boolean
+  isApplicationRequired: Boolean
+  categories: [String]
+  numMembers: Int
+  yearFounded: String
+  branches: [Branch]
+  website: String
+  instagram: String
+  linkedin: String
+  facebook: String
+  twitter: String
+  discord: String
+  email: String
+  recruitingSeasons: RecruitingSeason
+  Events: [Events] @manyToMany(relationName: "EventsClubs")
+}
+ 
