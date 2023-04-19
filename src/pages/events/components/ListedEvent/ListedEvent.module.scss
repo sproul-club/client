@@ -4,6 +4,10 @@
   position: relative;
   display: flex;
 
+  &:hover {
+    cursor: pointer;
+  }
+
   .favorite {
     position: absolute;
     right: 21px;

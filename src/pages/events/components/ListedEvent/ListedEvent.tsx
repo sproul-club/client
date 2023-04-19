@@ -62,10 +62,10 @@ export default function ListedEvent({
           style={{ backgroundImage: 'url(' + event.image + ')' }}
         ></div>
       ) : (
-        <div className={styles.eventImage}>
-          <Image src={defaultClub} />
-        </div>
-      )}
+          <div className={styles.eventImage}>
+            <Image src={defaultClub} />
+          </div>
+        )}
 
       <div className={styles.eventContent}>
         <div className={styles.eventName}>{event.name}</div>

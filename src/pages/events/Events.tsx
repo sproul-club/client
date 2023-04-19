@@ -210,9 +210,24 @@ function filterEvents(filters: Filters, events: Event[]) {
       return false;
     }
     if (filters.date) {
-      const date = filters.date;
-
+      const date = filters.date.toLowerCase();
+      const eventMonthNumber = parseInt(event.startTimestamp.slice(5, 7));
+      if (date == allMonths[eventMonthNumber - 1]) return true;
       return false;
+    }
+    if (filters.time) {
+      const time = filters.time.toLowerCase();
+      const eventHourNumber = parseInt(event.startTimestamp.slice(11, 13));
+      console.log(eventHourNumber)
+      if (time == 'morning') return eventHourNumber < 12;
+      else if (time == 'afternoon') return (eventHourNumber >= 12 && eventHourNumber < 17);
+      else if (time == 'evening') return eventHourNumber >= 17;
+      return false;
+    }
+    if (filters.tags) {
+      console.log(filters.tags)
+      //TODO: finish tag filtering -- start with a single tag?
+
     }
     /* @ggams2020 the rest of the checks can be done here (i.e. date, tags, etc.*/
     return true;
@@ -332,17 +347,35 @@ export default function Events({
                 </option>
               ))}
             </select>
+            <select
+              className={styles.tagsDropdown}
+              name="date"
+              id="date"
+              value={filters.tags}
+              onChange={handleDateChange}
+            >
+              <option value="" disabled selected>
+                Tags
+              </option>
+              {Category.allCategories.map((tag, tagIdx) => (
+                <option key={tagIdx} value={tag}>
+                  {tag.toTitleCase()}
+                </option>
+              ))}
+            </select>
           </div>
         </div>
         <div className={styles.eventsContainer}>
           <div className={styles.eventsList}>
             {queryResults.map((e, eventIdx) => (
-              <ListedEvent
-                key={eventIdx}
-                event={e}
-                isSelected={e.id === selectedEventId}
-                onClick={() => handleEventClick(e.id)}
-              />
+              <div style={eventIdx + 1 === events.length ? { border: 'none' } : { borderBottom: '1px solid #dbdbdb' }}>
+                <ListedEvent
+                  key={eventIdx}
+                  event={e}
+                  isSelected={e.id === selectedEventId}
+                  onClick={() => handleEventClick(e.id)}
+                />
+              </div>
             ))}
           </div>
           <div className={styles.bigEvent}>
@@ -351,7 +384,7 @@ export default function Events({
                 <div className={styles.eventName}>{selectedEvent.name}</div>
                 <div className={styles.clubName}>
                   Club:{' '}
-                  {events[1].clubHosts
+                  {selectedEvent.clubHosts
                     .map(
                       (clubID) => clubs.find((item) => item.id === clubID)?.name
                     )
@@ -366,28 +399,28 @@ export default function Events({
                       height={16}
                     />
                     <div className={styles.text}>
-                      {months[new Date(events[1].startTimestamp).getMonth()]}{' '}
-                      {new Date(events[1].startTimestamp).getDay()}
+                      {months[new Date(selectedEvent.startTimestamp).getMonth()]}{' '}
+                      {new Date(selectedEvent.startTimestamp).getDay()}
                     </div>
                   </div>
                   <div className={styles.meetingItem}>
                     <Image src={clock} alt="clock" width={16} height={16} />
                     <div className={styles.text}>
-                      {new Date(events[1].startTimestamp).getHours() % 12}:
-                      {new Date(events[1].startTimestamp).getMinutes()}{' '}
+                      {new Date(selectedEvent.startTimestamp).getHours() % 12}:
+                      {new Date(selectedEvent.startTimestamp).getMinutes()}{' '}
                       {
                         timeOfDay[
                         Math.floor(
-                          new Date(events[1].startTimestamp).getHours() / 12
+                          new Date(selectedEvent.startTimestamp).getHours() / 12
                         )
                         ]
                       }
-                      -{new Date(events[1].endTimestamp).getHours() % 12}:
-                      {new Date(events[1].endTimestamp).getMinutes()}{' '}
+                      -{new Date(selectedEvent.endTimestamp).getHours() % 12}:
+                      {new Date(selectedEvent.endTimestamp).getMinutes()}{' '}
                       {
                         timeOfDay[
                         Math.floor(
-                          new Date(events[1].endTimestamp).getHours() / 12
+                          new Date(selectedEvent.endTimestamp).getHours() / 12
                         )
                         ]
                       }
@@ -419,13 +452,13 @@ export default function Events({
               <div className={styles.about}>
                 <div className={styles.aboutHeading}>About event</div>
                 <div className={styles.aboutDescription}>
-                  {events[1].description}
+                  {selectedEvent.description}
                 </div>
               </div>
               <div className={styles.sidebar}>
                 <div className={styles.tagsTitle}>Tags</div>
                 <div className={styles.tags}>
-                  {events[1].categories.sort().map((tag, tagIdx) => (
+                  {selectedEvent.categories.sort().map((tag, tagIdx) => (
                     <div key={tagIdx} className={styles.tag}>
                       {tag}
                     </div>
@@ -433,7 +466,7 @@ export default function Events({
                 </div>
                 <div className={styles.linksTitle}>Links</div>
 
-                {events[1].clubHosts.map((clubId) => {
+                {selectedEvent.clubHosts.map((clubId) => {
                   const club = clubs.find((item) => item.id === clubId);
                   if (!club) return;
                   const website = 'https://' + club?.website;
@@ -458,7 +491,7 @@ export default function Events({
                   );
                 })}
                 <div className={styles.hosts}>
-                  {events[1].userHosts.map((userID) => {
+                  {selectedEvent.userHosts.map((userID) => {
                     const user = users.find((item) => item.id === userID);
                     if (user?.profilePhotoURI) {
                       return (
