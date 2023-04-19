@@ -53,8 +53,8 @@ const dummyEvents: Event[] = [
     id: '2',
     name: 'Innovative Design Workshop',
     description: 'this is the description',
-    startTimestamp: '2023-10-13T17:30:00',
-    endTimestamp: '2023-10-13T18:30:00',
+    startTimestamp: '2023-10-15T17:30:00',
+    endTimestamp: '2023-10-15T18:30:00',
     clubHosts: ['innovate'],
     userHosts: ['jane'],
     location: 'Wheeler 150',
@@ -377,18 +377,18 @@ export default function Events({
                       {new Date(events[1].startTimestamp).getMinutes()}{' '}
                       {
                         timeOfDay[
-                          Math.floor(
-                            new Date(events[1].startTimestamp).getHours() / 12
-                          )
+                        Math.floor(
+                          new Date(events[1].startTimestamp).getHours() / 12
+                        )
                         ]
                       }
                       -{new Date(events[1].endTimestamp).getHours() % 12}:
                       {new Date(events[1].endTimestamp).getMinutes()}{' '}
                       {
                         timeOfDay[
-                          Math.floor(
-                            new Date(events[1].endTimestamp).getHours() / 12
-                          )
+                        Math.floor(
+                          new Date(events[1].endTimestamp).getHours() / 12
+                        )
                         ]
                       }
                     </div>
