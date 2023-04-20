@@ -3,7 +3,7 @@ import calendar from 'assets/icons/calendar.svg';
 import heartOutline from 'assets/icons/heartoutline.svg';
 import pin from 'assets/icons/pin.svg';
 import useAuth from 'contexts/Auth/useAuth';
-import Category from 'models/Category';
+import Category, { CategoryString } from 'models/Category';
 import Event from 'models/Event';
 import User from 'models/User';
 import Club from 'models/club/Club';
@@ -188,8 +188,8 @@ interface Filters {
   query?: string;
   date?: string;
   time?: string;
-  categories?: string[];
-  tags?: string[];
+  categories?: CategoryString[];
+  tag?: CategoryString;
   /* @ggams2020 implement the rest of the potential filters*/
 }
 
@@ -218,16 +218,19 @@ function filterEvents(filters: Filters, events: Event[]) {
     if (filters.time) {
       const time = filters.time.toLowerCase();
       const eventHourNumber = parseInt(event.startTimestamp.slice(11, 13));
-      console.log(eventHourNumber)
-      if (time == 'morning') return eventHourNumber < 12;
+      if (time == 'morning') return (eventHourNumber < 12);
       else if (time == 'afternoon') return (eventHourNumber >= 12 && eventHourNumber < 17);
-      else if (time == 'evening') return eventHourNumber >= 17;
+      else if (time == 'evening') return (eventHourNumber >= 17);
       return false;
     }
-    if (filters.tags) {
-      console.log(filters.tags)
+    console.log(filters.tag);
+    if (filters.tag) {
       //TODO: finish tag filtering -- start with a single tag?
-
+      const tag = filters.tag as CategoryString;
+      const eventTagsFormatted = event.categories;
+      console.log(eventTagsFormatted);
+      if (eventTagsFormatted.includes(tag)) return true;
+      return false;
     }
     /* @ggams2020 the rest of the checks can be done here (i.e. date, tags, etc.*/
     return true;
@@ -256,7 +259,7 @@ export default function Events({
     setFilters((prev) => ({ ...prev, query: event.target.value }));
   }
 
-  function addCategory(category: string) {
+  function addCategory(category: CategoryString) {
     // TODO @ggams2020
     // Currently only allows for a single category at a time (limitation of your selection implementation)
     // I didnt want to mess with your css too much so opted to let you update to multiple category selection
@@ -286,6 +289,10 @@ export default function Events({
     setFilters((prev) => ({ ...prev, time: event.target.value }));
   }
 
+  function handleTagChange(event: ChangeEvent<HTMLSelectElement>) {
+    setFilters((prev) => ({ ...prev, tag: event.target.value as CategoryString }));
+  }
+
   // TODO: add event to calendar
   function addToCalendar() {
     console.log(`${selectedEvent.name} added to calendar`);
@@ -299,7 +306,7 @@ export default function Events({
           <div
             key={catIdx}
             className={styles.category}
-            onClick={() => addCategory(category)}
+            onClick={() => addCategory(category as CategoryString)}
           >
             {category}
           </div>
@@ -351,8 +358,8 @@ export default function Events({
               className={styles.tagsDropdown}
               name="date"
               id="date"
-              value={filters.tags}
-              onChange={handleDateChange}
+              value={filters.tag}
+              onChange={handleTagChange}
             >
               <option value="" disabled selected>
                 Tags
