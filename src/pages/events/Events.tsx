@@ -203,6 +203,7 @@ function getMap(events: Event[]) {
 
 function filterEvents(filters: Filters, events: Event[]) {
   return events.filter((event) => {
+    console.log(filters);
     if (filters.query) {
       const query = filters.query.toLowerCase();
       if (event.name.toLowerCase().includes(query)) return true;

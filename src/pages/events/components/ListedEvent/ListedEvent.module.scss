@@ -1,8 +1,9 @@
 .event {
   width: 100%;
-  height: 128px;
+  height: auto;
   position: relative;
   display: flex;
+  padding-bottom: 10px;
 
   &:hover {
     cursor: pointer;
