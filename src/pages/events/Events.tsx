@@ -38,10 +38,10 @@ const dummyClubs = [
 const dummyEvents: Event[] = [
   {
     id: '1',
-    name: 'Test',
+    name: 'Case in point: a guide to finance',
     description: 'this is the description',
-    startTimestamp: '2023-10-13T17:30:00',
-    endTimestamp: '2023-10-13T18:30:00',
+    startTimestamp: '2023-10-13T08:30:00',
+    endTimestamp: '2023-10-13T10:30:00',
     clubHosts: [],
     userHosts: [],
     location: 'Wheeler 150',
@@ -53,8 +53,8 @@ const dummyEvents: Event[] = [
     id: '2',
     name: 'Innovative Design Workshop',
     description: 'this is the description',
-    startTimestamp: '2023-10-15T17:30:00',
-    endTimestamp: '2023-10-15T18:30:00',
+    startTimestamp: '2023-04-05T17:30:00',
+    endTimestamp: '2023-04-05T18:30:00',
     clubHosts: ['innovate'],
     userHosts: ['jane'],
     location: 'Wheeler 150',
@@ -64,9 +64,9 @@ const dummyEvents: Event[] = [
   },
   {
     id: '3',
-    name: 'Innovative Design Workshop',
+    name: 'Intro to consulting in the world of social good',
     description: 'this is the description',
-    startTimestamp: '2023-10-13T17:30:00',
+    startTimestamp: '2023-01-01T17:30:00',
     endTimestamp: '2023-10-13T18:30:00',
     clubHosts: [],
     userHosts: [],
@@ -77,9 +77,9 @@ const dummyEvents: Event[] = [
   },
   {
     id: '4',
-    name: 'Innovative Design Workshop',
+    name: 'Audio design in VR',
     description: 'this is the description',
-    startTimestamp: '2023-10-13T17:30:00',
+    startTimestamp: '2023-04-02T17:30:00',
     endTimestamp: '2023-10-13T18:30:00',
     clubHosts: [],
     userHosts: [],
@@ -92,7 +92,7 @@ const dummyEvents: Event[] = [
     id: '5',
     name: 'Innovative Design Workshop',
     description: 'this is the description',
-    startTimestamp: '2023-10-13T17:30:00',
+    startTimestamp: '2023-07-04T17:30:00',
     endTimestamp: '2023-10-13T18:30:00',
     clubHosts: [],
     userHosts: [],
@@ -105,7 +105,7 @@ const dummyEvents: Event[] = [
     id: '6',
     name: 'Innovative Design Workshop',
     description: 'this is the description',
-    startTimestamp: '2023-10-13T17:30:00',
+    startTimestamp: '2023-11-17T17:30:00',
     endTimestamp: '2023-10-13T18:30:00',
     clubHosts: [],
     userHosts: [],
@@ -407,7 +407,7 @@ export default function Events({
                     />
                     <div className={styles.text}>
                       {months[new Date(selectedEvent.startTimestamp).getMonth()]}{' '}
-                      {new Date(selectedEvent.startTimestamp).getDay()}
+                      {new Date(selectedEvent.startTimestamp).getDate()}
                     </div>
                   </div>
                   <div className={styles.meetingItem}>

@@ -74,7 +74,7 @@ export default function ListedEvent({
           <div className={styles.meetingItem}>
             <Image src={calendar} alt="calendar" width={16} height={16} />
             <div className={styles.text} id="date">
-              {months[start.getMonth()]} {start.getDay()}
+              {months[start.getMonth()]} {start.getDate()}
             </div>
           </div>
           <div className={styles.meetingItem}>
