@@ -237,6 +237,8 @@ export default function Events({
   clubs = dummyClubs,
   users = dummyUsers,
 }: Props) {
+  // to do: implement adding and removing categories.  Currently only adding works
+  const [categoryStyle, setStyle] = useState(styles.category);
   const { toggleFavoriteEvent } = useAuth();
   const mappedEvents = useMemo(() => getMap(events), [events]);
   const [filters, setFilters] = useState<Filters>({});
