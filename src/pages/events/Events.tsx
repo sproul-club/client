@@ -203,38 +203,38 @@ function getMap(events: Event[]) {
 
 function filterEvents(filters: Filters, events: Event[]) {
   return events.filter((event) => {
-    console.log(filters);
+    var filtered = true;
     if (filters.query) {
       const query = filters.query.toLowerCase();
-      if (event.name.toLowerCase().includes(query)) return true;
-      if (event.description.toLowerCase().includes(query)) return true;
-      return false;
+      if (!(event.name.toLowerCase().includes(query) || event.description.toLowerCase().includes(query))) filtered = false;
     }
     if (filters.date) {
       const date = filters.date.toLowerCase();
       const eventMonthNumber = parseInt(event.startTimestamp.slice(5, 7));
-      if (date == allMonths[eventMonthNumber - 1]) return true;
-      return false;
+      if (!(date == allMonths[eventMonthNumber - 1])) filtered = false;
     }
     if (filters.time) {
+      console.log(filters.time);
       const time = filters.time.toLowerCase();
       const eventHourNumber = parseInt(event.startTimestamp.slice(11, 13));
-      if (time == 'morning') return (eventHourNumber < 12);
-      else if (time == 'afternoon') return (eventHourNumber >= 12 && eventHourNumber < 17);
-      else if (time == 'evening') return (eventHourNumber >= 17);
-      return false;
+      if ((time == 'morning') && !(eventHourNumber < 12)) filtered = false;
+      else if ((time == 'afternoon') && !(eventHourNumber >= 12 && eventHourNumber < 17)) filtered = false;
+      else if ((time == 'evening') && !(eventHourNumber >= 17)) filtered = false;
     }
-    console.log(filters.tag);
     if (filters.tag) {
-      //TODO: finish tag filtering -- start with a single tag?
       const tag = filters.tag as CategoryString;
       const eventTagsFormatted = event.categories;
-      console.log(eventTagsFormatted);
-      if (eventTagsFormatted.includes(tag)) return true;
-      return false;
+      if (!(eventTagsFormatted.includes(tag))) filtered = false;
     }
-    /* @ggams2020 the rest of the checks can be done here (i.e. date, tags, etc.*/
-    return true;
+    if (filters.categories) {
+      const categs = filters.categories
+      for (var i = 0; i < categs.length; i++) {
+        var c = categs[i];
+        const eventTagsFormatted = event.categories;
+        if (!(eventTagsFormatted.includes(c))) filtered = false;
+      }
+    }
+    return filtered;
   });
 }
 
@@ -265,11 +265,12 @@ export default function Events({
     // Currently only allows for a single category at a time (limitation of your selection implementation)
     // I didnt want to mess with your css too much so opted to let you update to multiple category selection
     // later
+    console.log("adding category");
     setFilters((prev) => ({
       ...prev,
-      categories: prev.categories
-        ? [/* ...prev.categories, */ category]
-        : [category],
+      categories: (prev.categories
+        ? prev.categories.concat(category)
+        : [category]),
     }));
   }
 
@@ -357,8 +358,8 @@ export default function Events({
             </select>
             <select
               className={styles.tagsDropdown}
-              name="date"
-              id="date"
+              name="tag"
+              id="tag"
               value={filters.tag}
               onChange={handleTagChange}
             >
