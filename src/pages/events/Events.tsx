@@ -1,14 +1,9 @@
-import clock from 'assets/icons/Property 1=clock.svg';
-import calendar from 'assets/icons/calendar.svg';
-import heartOutline from 'assets/icons/heartoutline.svg';
-import pin from 'assets/icons/pin.svg';
 import useAuth from 'contexts/Auth/useAuth';
 import Category, { CategoryString } from 'models/Category';
 import Event from 'models/Event';
+import EventCard from '../../components/EventCard';
 import User from 'models/User';
 import Club from 'models/club/Club';
-import Image from 'next/image';
-import Link from 'next/link';
 import { ChangeEvent, HTMLProps, useMemo, useState } from 'react';
 import styles from './Events.module.scss';
 import ListedEvent from './components/ListedEvent/ListedEvent';
@@ -214,7 +209,6 @@ function filterEvents(filters: Filters, events: Event[]) {
       if (!(date == allMonths[eventMonthNumber - 1])) filtered = false;
     }
     if (filters.time) {
-      console.log(filters.time);
       const time = filters.time.toLowerCase();
       const eventHourNumber = parseInt(event.startTimestamp.slice(11, 13));
       if ((time == 'morning') && !(eventHourNumber < 12)) filtered = false;
@@ -261,11 +255,6 @@ export default function Events({
   }
 
   function addCategory(category: CategoryString) {
-    // TODO @ggams2020
-    // Currently only allows for a single category at a time (limitation of your selection implementation)
-    // I didnt want to mess with your css too much so opted to let you update to multiple category selection
-    // later
-    console.log("adding category");
     setFilters((prev) => ({
       ...prev,
       categories: (prev.categories
@@ -293,11 +282,6 @@ export default function Events({
 
   function handleTagChange(event: ChangeEvent<HTMLSelectElement>) {
     setFilters((prev) => ({ ...prev, tag: event.target.value as CategoryString }));
-  }
-
-  // TODO: add event to calendar
-  function addToCalendar() {
-    console.log(`${selectedEvent.name} added to calendar`);
   }
 
   return (
@@ -387,139 +371,7 @@ export default function Events({
               </div>
             ))}
           </div>
-          <div className={styles.bigEvent}>
-            <div className={styles.title}>
-              <div className={styles.titleContent}>
-                <div className={styles.eventName}>{selectedEvent.name}</div>
-                <div className={styles.clubName}>
-                  Club:{' '}
-                  {selectedEvent.clubHosts
-                    .map(
-                      (clubID) => clubs.find((item) => item.id === clubID)?.name
-                    )
-                    .join(', ')}
-                </div>
-                <div className={styles.iconList}>
-                  <div className={styles.meetingItem}>
-                    <Image
-                      src={calendar}
-                      alt="calendar"
-                      width={16}
-                      height={16}
-                    />
-                    <div className={styles.text}>
-                      {months[new Date(selectedEvent.startTimestamp).getMonth()]}{' '}
-                      {new Date(selectedEvent.startTimestamp).getDate()}
-                    </div>
-                  </div>
-                  <div className={styles.meetingItem}>
-                    <Image src={clock} alt="clock" width={16} height={16} />
-                    <div className={styles.text}>
-                      {new Date(selectedEvent.startTimestamp).getHours() % 12}:
-                      {new Date(selectedEvent.startTimestamp).getMinutes()}{' '}
-                      {
-                        timeOfDay[
-                        Math.floor(
-                          new Date(selectedEvent.startTimestamp).getHours() / 12
-                        )
-                        ]
-                      }
-                      -{new Date(selectedEvent.endTimestamp).getHours() % 12}:
-                      {new Date(selectedEvent.endTimestamp).getMinutes()}{' '}
-                      {
-                        timeOfDay[
-                        Math.floor(
-                          new Date(selectedEvent.endTimestamp).getHours() / 12
-                        )
-                        ]
-                      }
-                    </div>
-                  </div>
-                  <div className={styles.meetingItem}>
-                    <Image src={pin} alt="pin" width={16} height={16} />
-                    <div className={styles.text}>{events[1].location}</div>
-                  </div>
-                </div>
-              </div>
-              <div className={styles.calendarAndHeart}>
-                <div className={styles.addCalendar} onClick={addToCalendar}>
-                  Add to calendar
-                </div>
-                <div className={styles.favorite}>
-                  <Image
-                    src={heartOutline}
-                    alt="heart-outline"
-                    width={27}
-                    height={25}
-                    className={styles.heartOutline}
-                    onClick={() => toggleFavoriteEvent(selectedEvent.id)}
-                  />
-                </div>
-              </div>
-            </div>
-            <div className={styles.content}>
-              <div className={styles.about}>
-                <div className={styles.aboutHeading}>About event</div>
-                <div className={styles.aboutDescription}>
-                  {selectedEvent.description}
-                </div>
-              </div>
-              <div className={styles.sidebar}>
-                <div className={styles.tagsTitle}>Tags</div>
-                <div className={styles.tags}>
-                  {selectedEvent.categories.sort().map((tag, tagIdx) => (
-                    <div key={tagIdx} className={styles.tag}>
-                      {tag}
-                    </div>
-                  ))}
-                </div>
-                <div className={styles.linksTitle}>Links</div>
-
-                {selectedEvent.clubHosts.map((clubId) => {
-                  const club = clubs.find((item) => item.id === clubId);
-                  if (!club) return;
-                  const website = 'https://' + club?.website;
-                  const mailto = 'mailto: ' + club?.email;
-                  return (
-                    <div key={clubId}>
-                      {club.website && (
-                        <div className={styles.link}>
-                          <Link href={website} className={styles.underline}>
-                            {club.website}
-                          </Link>
-                        </div>
-                      )}
-                      {club.email && (
-                        <div className={styles.link}>
-                          <Link href={mailto} className={styles.underline}>
-                            {club.email}
-                          </Link>
-                        </div>
-                      )}
-                    </div>
-                  );
-                })}
-                <div className={styles.hosts}>
-                  {selectedEvent.userHosts.map((userID) => {
-                    const user = users.find((item) => item.id === userID);
-                    if (user?.profilePhotoURI) {
-                      return (
-                        <Image
-                          src={user.profilePhotoURI}
-                          alt="profile photo"
-                          width={41}
-                          height={41}
-                          className={styles.user}
-                        />
-                      );
-                    } else {
-                      return <div className={styles.noPhoto}></div>;
-                    }
-                  })}
-                </div>
-              </div>
-            </div>
-          </div>
+          {selectedEvent && <EventCard data={selectedEvent} clubs={clubs} users={users} />}
         </div>
       </div>
     </div>
