@@ -1,9 +1,10 @@
-import ClubCard from '../../components/ClubCard';
 import Club from '../../models/club/Club';
 import { useState } from 'react';
 import styles from './Discover.module.scss';
 import { ClubTab } from './ClubTab';
 import { Dropdowns } from './Dropdowns';
+import { ClubCard2 } from './ClubCard2';
+import ClubCard from '../../components/ClubCard';
 
 const club1: Club = {
   id: '1',
@@ -172,24 +173,56 @@ const Discover: React.FC = () => {
       </div>
     </div>
   ) : (
-    <div className={styles.container}>
-      <h1 className={styles.title}>Find your community at Berkeley!</h1>;
-      <p className={styles.desc}>
-        sproul.club helps you discover student clubs, organizations, and
-        communities on campus -- built by students, for students!
-      </p>
-      <div>
-        <input
-          className={styles.searchbar2}
-          placeholder="Search Clubs"
-          onKeyDown={(event) => {
-            if (event.key === 'Enter') {
-              // "Enter" key was pressed
-              setHitSearch(true);
-              setSearchValue(event.target.value);
-            }
-          }}
-        />
+    <div>
+      <div className={styles.container}>
+        <h1 className={styles.title}>Find your community at Berkeley!</h1>;
+        <p className={styles.desc}>
+          sproul.club helps you discover student clubs, organizations, and
+          communities on campus -- built by students, for students!
+        </p>
+        <div>
+          <input
+            className={styles.searchbar2}
+            placeholder="Search Clubs"
+            onKeyDown={(event) => {
+              if (event.key === 'Enter') {
+                // "Enter" key was pressed
+                setHitSearch(true);
+                setSearchValue(event.target.value);
+              }
+            }}
+          />
+        </div>
+      </div>
+      <h1>Business</h1>
+      <div className={styles.clubScroll}>
+        {clubs.map((club) =>
+          checkMatch(searchValue, club, appOpen, appRequired, tag) ? (
+            <ClubCard2
+              club={club}
+              handleClubClick={handleClubClick}
+              selectedClub={selectedClub}
+              key={club.id}
+            />
+          ) : (
+            <></>
+          )
+        )}
+      </div>
+      <h1>Design</h1>
+      <div className={styles.clubScroll}>
+        {clubs.map((club) =>
+          checkMatch(searchValue, club, appOpen, appRequired, tag) ? (
+            <ClubCard2
+              club={club}
+              handleClubClick={handleClubClick}
+              selectedClub={selectedClub}
+              key={club.id}
+            />
+          ) : (
+            <></>
+          )
+        )}
       </div>
     </div>
   );
