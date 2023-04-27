@@ -8,6 +8,9 @@ import { ChangeEvent, HTMLProps, useMemo, useState } from 'react';
 import styles from './Events.module.scss';
 import ListedEvent from './components/ListedEvent/ListedEvent';
 
+import { DataStore } from '@aws-amplify / datastore';
+import { Events } from '../../models';
+
 // test data -- unsure as to how this will be passed in through the Props so I hard coded for now
 // assuming a list of event objects
 const dummyClubs = [
