@@ -1,13 +1,13 @@
 import styles from './EventCard.module.scss';
-import Event from 'models/Event';
+import Event from '../../models/Event';
 import Image from 'next/image';
-import User from 'models/User';
-import Club from 'models/club/Club';
+import User from '../../models/User';
+import Club from '../../models/club/Club';
 import calendar from 'assets/icons/calendar.svg';
 import clock from 'assets/icons/Property 1=clock.svg';
 import heartOutline from 'assets/icons/heartoutline.svg';
 import pin from 'assets/icons/pin.svg';
-import useAuth from 'contexts/Auth/useAuth';
+import useAuth from '../../contexts/Auth/useAuth';
 import Link from 'next/link';
 
 

@@ -3,11 +3,11 @@ import clock from 'assets/icons/Property 1=clock.svg';
 import calendar from 'assets/icons/calendar.svg';
 import heartOutline from 'assets/icons/heartoutline.svg';
 import pin from 'assets/icons/pin.svg';
-import useAuth from 'contexts/Auth/useAuth';
-import Event from 'models/Event';
+import useAuth from '../../../../contexts/Auth/useAuth';
+import Event from '../../../../models/Event';
 import Image from 'next/image';
 import { MouseEvent } from 'react';
-import classes from 'utils/classes';
+import classes from '../../../../utils/classes';
 import styles from './ListedEvent.module.scss';
 
 interface Props {

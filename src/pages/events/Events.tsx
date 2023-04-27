@@ -1,9 +1,9 @@
-import useAuth from 'contexts/Auth/useAuth';
-import Category, { CategoryString } from 'models/Category';
-import Event from 'models/Event';
+import useAuth from '../../contexts/Auth/useAuth';
+import Category, { CategoryString } from '../../models/Category';
+import Event from '../../models/Event';
 import EventCard from '../../components/EventCard';
-import User from 'models/User';
-import Club from 'models/club/Club';
+import User from '../../models/User';
+import Club from '../../models/club/Club';
 import { ChangeEvent, HTMLProps, useMemo, useState } from 'react';
 import styles from './Events.module.scss';
 import ListedEvent from './components/ListedEvent/ListedEvent';
