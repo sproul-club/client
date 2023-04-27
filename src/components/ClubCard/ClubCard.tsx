@@ -38,6 +38,7 @@ const ClubCard: React.FC<ClubCardProps> = ({ data }) => {
       <div className={styles.header}>
         <div className={styles.nameAndButtons}>
           <h2 className={styles.clubName}>{data.name}</h2>
+          {/* <div className={styles.spacer}></div> */}
           <div className={styles.buttons}>
             <button className={styles.applyButton}>Apply</button>
             <Link href={data.website}>
@@ -111,11 +112,12 @@ const ClubCard: React.FC<ClubCardProps> = ({ data }) => {
         <div className={styles.rightColumn}>
           <h3>Tags</h3>
           <div className={styles.tags}>
-            {data.categories.map((tag) => (
-              <span key={tag} className={styles.tag}>
-                {tag}
-              </span>
-            ))}
+            {data.categories &&
+              data.categories.map((tag) => (
+                <span key={tag} className={styles.tag}>
+                  {tag}
+                </span>
+              ))}
           </div>
           <h3>Links</h3>
           <div className={styles.icons}>

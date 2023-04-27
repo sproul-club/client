@@ -9,13 +9,15 @@
   flex-direction: column;
 
   .nameAndButtons {
-    display: flex;
-    justify-content: space-between;
+    display: inline-flex;
+    // flex-wrap: wrap;
+
     align-items: center;
     margin-bottom: 28px;
 
     .clubName {
       margin: 0 0.5rem 0 0;
+      flex: 1 1;
     }
 
     .buttons {
@@ -30,6 +32,7 @@
         cursor: pointer;
         color: var(--primary-dark);
         background-color: var(--bg-0);
+        white-space: nowrap;
 
         &:hover {
           background-color: var(--bg-1);
@@ -50,9 +53,10 @@
 
 .details {
   display: flex;
-  gap: 1.5rem;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
   font-size: 16px;
-  margin-bottom: 1.5rem;
+  white-space: nowrap;
 
   div {
     display: flex;
@@ -63,6 +67,7 @@
 
 .content {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .leftColumn,
@@ -72,12 +77,12 @@
 }
 
 .leftColumn {
-  flex: 0 0 80%;
+  flex: 1 0 80%;
   padding-right: 44px;
 }
 
 .rightColumn {
-  flex: 1;
+  flex: 1 0 20%;
   align-items: flex-start;
 }
 

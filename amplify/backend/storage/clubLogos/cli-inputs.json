@@ -4,10 +4,14 @@
   "bucketName": "sproulclub44b893ace0574e03a41da91223ccdfdf",
   "storageAccess": "authAndGuest",
   "guestAccess": [
-    "READ"
+    "READ",
+    "CREATE_AND_UPDATE",
+    "DELETE"
   ],
   "authAccess": [
-    "CREATE_AND_UPDATE"
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
   ],
   "triggerFunction": "S3Triggerd64f9cd5",
   "groupAccess": {}

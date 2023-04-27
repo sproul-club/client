@@ -36,14 +36,15 @@ export const ClubTab = ({
       <div className={styles.clubInfo}>
         <h3 className={styles.clubName}>{club.name}</h3>
         <div className={styles.clubTags}>
-          {club.categories.map((tag, index, arr) => (
-            <React.Fragment key={tag}>
-              <span className={styles.tag}>{tag}</span>
-              {index < arr.length - 1 && (
-                <span className={styles.separator}>·</span>
-              )}
-            </React.Fragment>
-          ))}
+          {club.categories &&
+            club.categories.map((tag, index, arr) => (
+              <React.Fragment key={tag}>
+                <span className={styles.tag}>{tag}</span>
+                {index < arr.length - 1 && (
+                  <span className={styles.separator}>·</span>
+                )}
+              </React.Fragment>
+            ))}
         </div>
         <div className={styles.clubStatus}>
           {club.isApplicationOpen ? (

@@ -7,7 +7,6 @@ import { Dropdowns } from './Dropdowns';
 import { DataStore } from '@aws-amplify/datastore';
 import { Clubs } from '../../models';
 
-
 function checkMatch(
   search: string,
   club: Club,
@@ -93,18 +92,19 @@ const Discover: React.FC = () => {
       <div className={styles.content}>
         <div className={styles.leftColumn}>
           <div className={styles.clubList}>
-            {clubs.map((club) =>
-              checkMatch(searchValue, club, appOpen, appRequired, tag) ? (
-                <ClubTab
-                  club={club}
-                  handleClubClick={handleClubClick}
-                  selectedClub={selectedClub}
-                  key={club.id}
-                />
-              ) : (
-                <></>
-              )
-            )}
+            {clubs &&
+              clubs.map((club: Club) =>
+                checkMatch(searchValue, club, appOpen, appRequired, tag) ? (
+                  <ClubTab
+                    club={club}
+                    handleClubClick={handleClubClick}
+                    selectedClub={selectedClub}
+                    key={club.id}
+                  />
+                ) : (
+                  <></>
+                )
+              )}
           </div>
         </div>
 

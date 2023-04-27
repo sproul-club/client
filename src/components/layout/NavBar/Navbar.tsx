@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import logo from '../../../assets/logo.png'
+import logo from '../../../assets/logo.png';
 
 import React, { useState } from 'react';
 import styles from './Navbar.module.scss';
@@ -13,7 +13,6 @@ import Hamburger from '../../Hamburger/Hamburger';
 import MenuOverlay from '../../MenuOverlay/MenuOverlay';
 import { Auth } from 'aws-amplify';
 import { useAuthenticator } from '@aws-amplify/ui-react';
-
 
 interface Props {
   authenticated: boolean;
@@ -33,11 +32,11 @@ export default function NavBar({ authenticated, hasClub }: Props) {
   };
   const auth = useAuth();
   const router = useRouter();
-  const [navOpen, setNavOpen] = useState(false)
+  const [navOpen, setNavOpen] = useState(false);
 
   const closeNav = () => {
     setNavOpen(false);
-  }
+  };
 
   return (
     <>
@@ -49,9 +48,7 @@ export default function NavBar({ authenticated, hasClub }: Props) {
           </div>
         </Link>
         <div className={[styles.options, styles.fullMenu].join(' ')}>
-          <div
-            className={router.pathname == '/' ? styles.selectedOption : ''}
-          >
+          <div className={router.pathname == '/' ? styles.selectedOption : ''}>
             <Link href="/">About</Link>
           </div>
           <div
@@ -94,10 +91,7 @@ export default function NavBar({ authenticated, hasClub }: Props) {
               Sign Out
             </Button>
           ) : (
-            <Button
-              href="/login"
-              colorVariant="dark"
-            >
+            <Button href="/login" colorVariant="dark">
               Sign In
             </Button>
           )}
