@@ -96,7 +96,7 @@ const ClubCard: React.FC<ClubCardProps> = ({ data }) => {
         <div className={styles.rightColumn}>
           <h3>Tags</h3>
           <div className={styles.tags}>
-            {data.categories.map((tag) => (
+            {data.categories?.map((tag) => (
               <span key={tag} className={styles.tag}>
                 {tag}
               </span>
@@ -104,7 +104,7 @@ const ClubCard: React.FC<ClubCardProps> = ({ data }) => {
           </div>
           <h3>Links</h3>
           <div className={styles.links}>
-            {socialLinks.map(({ platform, href }) => (
+            {socialLinks?.map(({ platform, href }) => (
               <Link
                 key={platform}
                 href={'https://www.instagram.com/webatberkeley'}

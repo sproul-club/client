@@ -14,6 +14,18 @@
     "categories": {
       "auth": {
         "sproulclub": {}
+      },
+      "function": {
+        "S3Triggerd64f9cd5": {
+          "deploymentBucketName": "amplify-amplify308f41cbc5a94-staging-202332-deployment",
+          "s3Key": "amplify-builds/S3Triggerd64f9cd5-45572b382f506238505a-build.zip"
+        }
+      },
+      "api": {
+        "sproulclub": {}
+      },
+      "storage": {
+        "clubLogos": {}
       }
     }
   },

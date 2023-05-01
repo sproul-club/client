@@ -8,6 +8,7 @@ import useTheme from '../contexts/Theme/useTheme';
 import '../styles/globals.scss';
 import { Amplify, Auth } from 'aws-amplify';
 import awsconfig from './../aws-exports';
+
 Amplify.configure(awsconfig);
 
 const AppWrapper = ({ Component, pageProps }: AppProps) => {
